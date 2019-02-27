@@ -1,0 +1,187 @@
+{
+    "scale": 1,
+    "pyxel_density": 40,
+    "root": {
+        "name": "body",
+        "shape": "CUBE",
+        "origin": [0, 0, 0],
+        "position": [0, 0, 0],
+        "rotation": [0, 1, 1, 1],
+        "size": [26, 33, 16],
+        "uv": [0, 60],
+        "mirror": false,
+        "nodes": [
+            {
+                "name": "neck",
+                "shape": "CUBE",
+                "origin": [0, 0, 0],
+                "position": [0, 18, 0],
+                "rotation": [0, 1, 1, 1],
+                "size": [12, 4, 12],
+                "uv": [0, 44],
+                "mirror": false,
+                "nodes": [
+                    {
+                        "name": "head",
+                        "shape": "CUBE",
+                        "origin": [0, 0, 0],
+                        "position": [0, 12.5, 0],
+                        "rotation": [0, 1, 1, 1],
+                        "size": [22, 22, 22],
+                        "uv": [0, 0],
+                        "mirror": false,
+                        "nodes": [
+
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "arm_r",
+                "shape": "CUBE",
+                "origin": [0, 0, 0],
+                "position": [-19.4, 15.5, 0],
+                "rotation": [0, 1, 1, 1],
+                "size": [13, 8, 8],
+                "uv": [88, 85],
+                "mirror": false,
+                "nodes": [
+                    {
+                        "name": "forearm_r",
+                        "shape": "CUBE",
+                        "origin": [0, 0, 0],
+                        "position": [-12.9, 0, 0],
+                        "rotation": [0, 1, 1, 1],
+                        "size": [13, 8, 8],
+                        "uv": [88, 101],
+                        "mirror": false,
+                        "nodes": [
+                            {
+                                "name": "hand_r",
+                                "shape": "CUBE",
+                                "origin": [0, 0, 0],
+                                "position": [-10.9, -0.5, 0],
+                                "rotation": [0, 1, 1, 1],
+                                "size": [9, 9, 10],
+                                "uv": [88, 117],
+                                "mirror": false,
+                                "nodes": [
+
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "arm_l",
+                "shape": "CUBE",
+                "origin": [0, 0, 0],
+                "position": [19.4, 15.5, 0],
+                "rotation": [0, 1, 1, 1],
+                "size": [13, 8, 8],
+                "uv": [88, 85],
+                "mirror": true,
+                "nodes": [
+                    {
+                        "name": "forearm_l",
+                        "shape": "CUBE",
+                        "origin": [0, 0, 0],
+                        "position": [12.9, 0, 0],
+                        "rotation": [0, 1, 1, 1],
+                        "size": [13, 8, 8],
+                        "uv": [88, 101],
+                        "mirror": true,
+                        "nodes": [
+                            {
+                                "name": "hand_l",
+                                "shape": "CUBE",
+                                "origin": [0, 0, 0],
+                                "position": [10.9, -0.5, 0],
+                                "rotation": [0, 1, 1, 1],
+                                "size": [9, 9, 10],
+                                "uv": [88, 117],
+                                "mirror": true,
+                                "nodes": [
+
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "thig_r",
+                "shape": "CUBE",
+                "origin": [0, 0, 0],
+                "position": [-7, -24, 0],
+                "rotation": [0, 1, 1, 1],
+                "size": [10, 15, 12],
+                "uv": [0, 109],
+                "mirror": false,
+                "nodes": [
+                    {
+                        "name": "leg_r",
+                        "shape": "CUBE",
+                        "origin": [0, 0, 0],
+                        "position": [0, -15, 0],
+                        "rotation": [0, 1, 1, 1],
+                        "size": [10, 15, 10],
+                        "uv": [44, 109],
+                        "mirror": false,
+                        "nodes": [
+                            {
+                                "name": "foot_r",
+                                "shape": "CUBE",
+                                "origin": [0, 0, 0],
+                                "position": [-0.5, -9.5, 1.75],
+                                "rotation": [0, 1, 1, 1],
+                                "size": [12, 4, 16],
+                                "uv": [68, 44],
+                                "mirror": false,
+                                "nodes": [
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "thig_l",
+                "shape": "CUBE",
+                "origin": [0, 0, 0],
+                "position": [7, -24, 0],
+                "rotation": [0, 1, 1, 1],
+                "size": [10, 15, 12],
+                "uv": [0, 109],
+                "mirror": true,
+                "nodes": [
+                    {
+                        "name": "leg_l",
+                        "shape": "CUBE",
+                        "origin": [0, 0, 0],
+                        "position": [0, -15, 0],
+                        "rotation": [0, 1, 1, 1],
+                        "size": [10, 15, 10],
+                        "uv": [44, 109],
+                        "mirror": true,
+                        "nodes": [
+                            {
+                                "name": "foot_l",
+                                "shape": "CUBE",
+                                "origin": [0, 0, 0],
+                                "position": [0.5, -9.5, 1.75],
+                                "rotation": [0, 1, 1, 1],
+                                "size": [12, 4, 16],
+                                "uv": [68, 44],
+                                "mirror": true,
+                                "nodes": [
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
