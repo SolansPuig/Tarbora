@@ -1,1 +1,8 @@
-Install dependencies: sudo apt-get install libglfw3-dev libglfw3 libglm-dev
+Compile:
+    mkdir build
+    cd build
+    cmake ..
+    make
+
+Test:
+    ./tarbora
