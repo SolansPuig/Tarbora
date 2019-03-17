@@ -10,7 +10,7 @@ namespace Tarbora {
         Test_Gui() : Layer()
         {}
 
-        void OnDraw() override
+        void Draw() override
         {
             static bool open = true;
             static float slider = 0.0f;

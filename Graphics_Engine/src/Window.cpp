@@ -150,9 +150,9 @@ namespace Tarbora {
         glfwPollEvents();
     }
 
-    void Window::Clear(float r, float g, float b)
+    void Window::Clear()
     {
-        glClearColor(r, g, b, 1.0f);
+        glClearColor(m_r, m_g, m_b, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 

@@ -10,7 +10,7 @@ namespace Tarbora {
         Demo_Window() : Layer()
         {}
 
-        void OnDraw() override
+        void Draw() override
         {
             bool open = true;
             ImGui::ShowDemoWindow(&open);

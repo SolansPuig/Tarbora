@@ -1,5 +1,7 @@
 #pragma once
-#include "Logger.hpp"
+
+#include <list>
+#include <memory>
 
 namespace Tarbora {
     class Layer
@@ -11,7 +13,7 @@ namespace Tarbora {
         virtual void OnActivate() {}
         virtual void OnDeactivate() {}
 
-        virtual void OnDraw() {}
+        virtual void Draw() {}
 
         void SetActive(bool active)
         {
@@ -20,11 +22,13 @@ namespace Tarbora {
             else OnDeactivate();
         }
 
-        bool IsActive()
+        bool IsActive() const
         {
             return m_active;
         }
     private:
         bool m_active;
     };
+
+    typedef std::list<std::shared_ptr<Layer>> LayerList;
 }

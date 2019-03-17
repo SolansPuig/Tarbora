@@ -10,7 +10,7 @@ namespace Tarbora {
         Metrics_Gui() : Layer(), m_dt(0.0f)
         {}
 
-        void OnDraw() override
+        void Draw() override
         {
             const float DISTANCE = 10.0f;
             bool open = true;
@@ -25,9 +25,9 @@ namespace Tarbora {
             ImGui::End();
         }
 
-        void SetTime(float dt)
+        void SetTime(float elapsed_time)
         {
-            m_dt = dt * 1000;
+            m_Elapsed_time = elapsed_time * 1000;
         }
     };
 }

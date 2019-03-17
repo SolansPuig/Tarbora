@@ -6,6 +6,7 @@
 #include "Input.hpp"
 #include "Demo_Window.hpp"
 #include "Test_Gui.hpp"
+#include "Human_View.hpp"
 
 namespace Tarbora {
     Application::Application() : m_run(true), m_time(0.0f)
@@ -16,13 +17,15 @@ namespace Tarbora {
 
         Graphics_Engine::Init();
         Input::Init();
+        std::shared_ptr<Game_View> human_view(new Human_View(1, 1, 1));
+        m_Game_Views.push_back(human_view);
 
-        Graphics_Engine::AddGuiLayer(m_Metrics);
-        m_Metrics.SetActive(false);
-        Test_Gui* test = new Test_Gui();
-        Graphics_Engine::AddGuiLayer(*test);
-        // Demo_Window* demo = new Demo_Window();
-        // Graphics_Engine::AddGuiLayer(*demo);
+        // Graphics_Engine::AddGuiLayer(m_Metrics);
+        // m_Metrics.SetActive(false);
+        // Test_Gui* test = new Test_Gui();
+        // Graphics_Engine::AddGuiLayer(*test);
+        // // Demo_Window* demo = new Demo_Window();
+        // // Graphics_Engine::AddGuiLayer(*demo);
 
         Event::WindowClose.Subscribe([this](WindowCloseEvent& e) {
             (void)(e);
@@ -31,8 +34,8 @@ namespace Tarbora {
 
         Event::KeyRelease.Subscribe([this](KeyReleaseEvent& e)
         {
-            if (e.key == KEY_F3) m_Metrics.SetActive(!m_Metrics.IsActive());
-            else if (e.key == KEY_ESCAPE) m_run = false;
+            // if (e.key == KEY_F3) m_Metrics.SetActive(!m_Metrics.IsActive());
+            if (e.key == KEY_ESCAPE) m_run = false;
         });
 
         LOG_INFO("Application: Successfully created application");
@@ -60,15 +63,20 @@ namespace Tarbora {
     void Application::Update()
     {
         float current_time = (float)glfwGetTime();
-        float dt = m_time > 0.0 ? (current_time - m_time) : (1.0f/60.0f);
+        float elapsed_time = m_time > 0.0 ? (current_time - m_time) : (1.0f/60.0f);
         m_time = current_time;
-        m_Metrics.SetTime(dt);
+        // m_Metrics.SetTime(elapsed_time);
+        for (auto &itr : m_Game_Views)
+        {
+            itr->Update(elapsed_time);
+        }
     }
 
     void Application::Draw()
     {
-        Graphics_Engine::BeforeDraw();
-        Graphics_Engine::Draw();
-        Graphics_Engine::AfterDraw();
+        for (auto &itr : m_Game_Views)
+        {
+            itr->Draw();
+        }
     }
 }

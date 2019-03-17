@@ -1,5 +1,5 @@
 #pragma once
-#include "Metrics_Gui.hpp"
+#include "Game_View.hpp"
 
 namespace Tarbora {
     class Application
@@ -14,6 +14,6 @@ namespace Tarbora {
     private:
         bool m_run;
         float m_time;
-        Metrics_Gui m_Metrics;
+        GameViewList m_Game_Views;
     };
 }
