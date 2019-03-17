@@ -1,3 +1,6 @@
-[submodule "glfw"]
-	path = glfw
+[submodule "Graphics_Engine/glfw"]
+	path = Graphics_Engine/glfw
 	url = https://github.com/glfw/glfw
+[submodule "Graphics_Engine/imgui"]
+	path = Graphics_Engine/imgui
+	url = https://github.com/ocornut/imgui

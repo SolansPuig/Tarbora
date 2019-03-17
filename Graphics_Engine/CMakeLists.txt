@@ -1,2 +1,4 @@
 include_directories(inc/)
-add_library (Graphics_Engine SHARED src/graphics_engine.cpp src/node.cpp src/shader.cpp src/window.cpp)
+add_subdirectory (glfw)
+add_subdirectory (imgui)
+add_library (Graphics_Engine SHARED src/Window.cpp src/Graphics_Engine.cpp src/ImGuiBuild.cpp src/Layer_Stack.cpp src/Gui.cpp)
