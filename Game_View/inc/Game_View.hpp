@@ -1,5 +1,4 @@
 #pragma once
-
 #include <list>
 #include <memory>
 
@@ -15,6 +14,7 @@ namespace Tarbora {
         virtual ~Game_View() {};
 
         virtual void OnCreate(GameViewId id) = 0;
+        virtual void OnDestroy() = 0;
         virtual void Update(float elapsed_time) = 0;
         virtual void Draw() = 0;
 
@@ -23,4 +23,5 @@ namespace Tarbora {
     };
 
     typedef std::list<std::shared_ptr<Game_View>> GameViewList;
+    typedef std::shared_ptr<Game_View> GameViewPtr;
 }

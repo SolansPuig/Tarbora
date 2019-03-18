@@ -1,7 +1,7 @@
 #pragma once
-
 #include "Game_View.hpp"
 #include "Layer.hpp"
+#include <memory>
 
 namespace Tarbora {
     class Human_View : public Game_View
@@ -10,7 +10,8 @@ namespace Tarbora {
         Human_View(float r, float g, float b);
         ~Human_View();
 
-        virtual void OnCreate(GameViewId id) override { m_Id = id; }
+        virtual void OnCreate(GameViewId id) override;
+        virtual void OnDestroy() override;
         virtual void Update(float elapsed_time) override;
         virtual void Draw() override;
 
@@ -23,5 +24,10 @@ namespace Tarbora {
     protected:
         GameViewId m_Id;
         LayerList m_Layers;
+
+        // Ids of the event subscription, to allow a desubscription
+        unsigned int EvtKeyPressId, EvtKeyReleaseId, EvtButtonPressId, EvtButtonReleaseId, EvtMouseMoveId, EvtMouseScrollId;
     };
+
+    typedef std::shared_ptr<Human_View> HumanViewPtr;
 }

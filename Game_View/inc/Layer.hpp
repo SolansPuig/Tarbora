@@ -1,7 +1,7 @@
 #pragma once
-
 #include <list>
 #include <memory>
+#include "Events.hpp"
 
 namespace Tarbora {
     class Layer
@@ -13,7 +13,10 @@ namespace Tarbora {
         virtual void OnActivate() {}
         virtual void OnDeactivate() {}
 
+        virtual void Update(float elapsed_time) { (void)(elapsed_time); }
         virtual void Draw() {}
+
+        virtual bool OnEvent(Event *e) { (void)(e); return false; }
 
         void SetActive(bool active)
         {
@@ -28,6 +31,7 @@ namespace Tarbora {
         }
     private:
         bool m_active;
+        bool m_event_blocking;
     };
 
     typedef std::list<std::shared_ptr<Layer>> LayerList;

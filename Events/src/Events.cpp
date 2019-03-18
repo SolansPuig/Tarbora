@@ -1,17 +1,27 @@
 #include "Events.hpp"
 
 namespace Tarbora {
-    namespace Event {
-        EventConnection<WindowCloseEvent> WindowClose;
-        EventConnection<WindowResizeEvent> WindowResize;
-        EventConnection<WindowFocusEvent> WindowFocus;
-        EventConnection<WindowMoveEvent> WindowMove;
-        EventConnection<WindowIconifyEvent> WindowIconify;
-        EventConnection<KeyPressEvent> KeyPress;
-        EventConnection<KeyReleaseEvent> KeyRelease;
-        EventConnection<MouseButtonPressEvent> MouseButtonPress;
-        EventConnection<MouseButtonReleaseEvent> MouseButtonRelease;
-        EventConnection<MouseMoveEvent> MouseMove;
-        EventConnection<MouseScrollEvent> MouseScroll;
-    }
+    namespace EventManager
+    {
+        EventListenerMap m_Listeners;
+
+        EventId Subscribe(EventType type, EventFn func)
+        {
+            m_Listeners[type].push_back(func);
+            return m_Listeners[type].size() -1;
+        }
+
+        void Unsubscribe(EventType type, EventId id)
+        {
+            m_Listeners[type].erase(m_Listeners[type].begin() + id);
+        }
+
+        void Trigger(EventType type, Event* event)
+        {
+            for (auto itr=m_Listeners[type].begin(); itr != m_Listeners[type].end(); itr++)
+            {
+                (*itr)(event);
+            }
+        }
+    };
 }

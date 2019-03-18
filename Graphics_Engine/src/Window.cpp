@@ -34,7 +34,7 @@ namespace Tarbora {
         {
             (void)(window);
             WindowMoveEvent event(x, y);
-            Event::WindowMove.Trigger(event);
+            EventManager::Trigger(EventType::WindowMove, &event);
         });
 
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
@@ -47,28 +47,28 @@ namespace Tarbora {
             glViewport(0, 0, width, height);
 
 			WindowResizeEvent event(width, height);
-			Event::WindowResize.Trigger(event);
+			EventManager::Trigger(EventType::WindowResize, &event);
         });
 
         glfwSetWindowIconifyCallback(m_Window, [](GLFWwindow* window, int iconified)
         {
             (void)(window);
             WindowIconifyEvent event(iconified);
-            Event::WindowIconify.Trigger(event);
+            EventManager::Trigger(EventType::WindowIconify, &event);
         });
 
         glfwSetWindowFocusCallback(m_Window, [](GLFWwindow* window, int focused)
         {
             (void)(window);
             WindowFocusEvent event(focused);
-            Event::WindowFocus.Trigger(event);
+            EventManager::Trigger(EventType::WindowFocus, &event);
         });
 
         glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 		{
             (void)(window);
 			WindowCloseEvent event;
-			Event::WindowClose.Trigger(event);
+			EventManager::Trigger(EventType::WindowClose, &event);
         });
 
         glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -78,19 +78,19 @@ namespace Tarbora {
                 case GLFW_PRESS:
                 {
                     KeyPressEvent event(key, mods, 0);
-                    Event::KeyPress.Trigger(event);
+                    EventManager::Trigger(EventType::KeyPress, &event);
                     break;
                 }
                 case GLFW_RELEASE:
                 {
                     KeyReleaseEvent event(key, mods);
-                    Event::KeyRelease.Trigger(event);
+                    EventManager::Trigger(EventType::KeyRelease, &event);
                     break;
                 }
                 case GLFW_REPEAT:
                 {
                     KeyPressEvent event(key, mods, 1);
-                    Event::KeyPress.Trigger(event);
+                    EventManager::Trigger(EventType::KeyPress, &event);
                     break;
                 }
             }
@@ -100,7 +100,7 @@ namespace Tarbora {
         {
             (void)(window);
             MouseMoveEvent event((int)x, (int)y);
-            Event::MouseMove.Trigger(event);
+            EventManager::Trigger(EventType::MouseMove, &event);
         });
 
         glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
@@ -110,13 +110,13 @@ namespace Tarbora {
                 case GLFW_PRESS:
                 {
                     MouseButtonPressEvent event(button, mods);
-                    Event::MouseButtonPress.Trigger(event);
+                    EventManager::Trigger(EventType::MouseButtonPress, &event);
                     break;
                 }
                 case GLFW_RELEASE:
                 {
                     MouseButtonReleaseEvent event(button, mods);
-                    Event::MouseButtonRelease.Trigger(event);
+                    EventManager::Trigger(EventType::MouseButtonRelease, &event);
                     break;
                 }
             }
@@ -126,7 +126,7 @@ namespace Tarbora {
         {
             (void)(window);
             MouseScrollEvent event((int)x, (int)y);
-            Event::MouseScroll.Trigger(event);
+            EventManager::Trigger(EventType::MouseScroll, &event);
         });
     }
 

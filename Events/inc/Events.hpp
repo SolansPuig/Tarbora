@@ -14,111 +14,98 @@ namespace Tarbora {
         MouseButtonPress, MouseButtonRelease, MouseMove, MouseScroll
     };
 
-    template <typename T>
-    class EventConnection
+    struct Event
     {
-        using EventFn = std::function<void(T&)>;
-        std::vector<EventFn> m_Observers;
-    public:
-        EventConnection()
-        {}
-
-        unsigned int Subscribe(const EventFn func)
-        {
-            m_Observers.push_back(func);
-            return m_Observers.size()-1;
-        }
-
-        void Unsubscribe(unsigned int i)
-        {
-            m_Observers.erase(m_Observers.begin() + i);
-        }
-
-        void Trigger(T& e)
-        {
-            for (auto itr=m_Observers.begin(); itr != m_Observers.end(); itr++)
-            {
-                (*itr)(e);
-            }
-        }
+        Event() {}
+        virtual EventType GetType() = 0;
     };
 
-    struct WindowCloseEvent
+    struct WindowCloseEvent : public Event
     {
         WindowCloseEvent() {}
+        EventType GetType() override { return EventType::WindowClose; }
     };
 
-    struct WindowResizeEvent
+    struct WindowResizeEvent : public Event
     {
         WindowResizeEvent(int w, int h) : width(w), height(h) {}
+        EventType GetType() override { return EventType::WindowResize; }
         int width, height;
     };
 
-    struct WindowFocusEvent
+    struct WindowFocusEvent : public Event
     {
         WindowFocusEvent(int f) : focused(f) {}
+        EventType GetType() override { return EventType::WindowFocus; }
         char focused;
     };
 
-    struct WindowMoveEvent
+    struct WindowMoveEvent : public Event
     {
         WindowMoveEvent(int nx, int ny) : x(nx), y(ny) {}
+        EventType GetType() override { return EventType::WindowMove; }
         int x, y;
     };
 
-    struct WindowIconifyEvent
+    struct WindowIconifyEvent : public Event
     {
         WindowIconifyEvent(int ic) : iconified(ic) {}
+        EventType GetType() override { return EventType::WindowIconify; }
         int iconified;
     };
 
-    struct KeyPressEvent
+    struct KeyPressEvent : public Event
     {
         KeyPressEvent(int k, int m, int r) : key(k), mods(m), repeat(r) {}
+        EventType GetType() override { return EventType::KeyPress; }
         int key, mods, repeat;
     };
 
-    struct KeyReleaseEvent
+    struct KeyReleaseEvent : public Event
     {
         KeyReleaseEvent(int k, int m) : key(k), mods(m) {}
+        EventType GetType() override { return EventType::KeyRelease; }
         int key, mods;
     };
 
-    struct MouseButtonPressEvent
+    struct MouseButtonPressEvent : public Event
     {
         MouseButtonPressEvent(int b, int m) : button(b), mods(m) {}
+        EventType GetType() override { return EventType::MouseButtonPress; }
         int button, mods;
     };
 
-    struct MouseButtonReleaseEvent
+    struct MouseButtonReleaseEvent : public Event
     {
         MouseButtonReleaseEvent(int b, int m) : button(b), mods(m) {}
+        EventType GetType() override { return EventType::MouseButtonRelease; }
         int button, mods;
     };
 
-    struct MouseMoveEvent
+    struct MouseMoveEvent : public Event
     {
         MouseMoveEvent(int nx, int ny) : x(nx), y(ny) {}
+        EventType GetType() override { return EventType::MouseMove; }
         int x, y;
     };
 
-    struct MouseScrollEvent
+    struct MouseScrollEvent : public Event
     {
         MouseScrollEvent(int nx, int ny) : xoffset(nx), yoffset(ny) {}
+        EventType GetType() override { return EventType::MouseScroll; }
         int xoffset, yoffset;
     };
 
-    namespace Event {
-        extern EventConnection<WindowCloseEvent> WindowClose;
-        extern EventConnection<WindowResizeEvent> WindowResize;
-        extern EventConnection<WindowFocusEvent> WindowFocus;
-        extern EventConnection<WindowMoveEvent> WindowMove;
-        extern EventConnection<WindowIconifyEvent> WindowIconify;
-        extern EventConnection<KeyPressEvent> KeyPress;
-        extern EventConnection<KeyReleaseEvent> KeyRelease;
-        extern EventConnection<MouseButtonPressEvent> MouseButtonPress;
-        extern EventConnection<MouseButtonReleaseEvent> MouseButtonRelease;
-        extern EventConnection<MouseMoveEvent> MouseMove;
-        extern EventConnection<MouseScrollEvent> MouseScroll;
-    }
+    typedef std::function<void(Event*)> EventFn;
+    typedef unsigned int EventId;
+
+    namespace EventManager
+    {
+        typedef std::vector<EventFn> EventListenerList;
+        typedef std::map<EventType, EventListenerList> EventListenerMap;
+
+        EventId Subscribe(EventType type, EventFn func);
+        void Unsubscribe(EventType type, EventId id);
+        void Trigger(EventType type, Event* event);
+    };
 }
