@@ -7,7 +7,7 @@ namespace Tarbora {
     class Human_View : public Game_View
     {
     public:
-        Human_View(float r, float g, float b);
+        Human_View();
         ~Human_View();
 
         virtual void OnCreate(GameViewId id) override;

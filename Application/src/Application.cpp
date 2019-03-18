@@ -7,14 +7,16 @@
 #include "Demo_Window.hpp"
 #include "Test_Gui.hpp"
 #include "Human_View.hpp"
+#include "Settings.hpp"
 
 namespace Tarbora {
-    Application::Application() : m_run(true), m_time(0.0f)
+    Application::Application(const char *settings_path) : m_run(true), m_time(0.0f)
     {
         Logger::Init(stdout);
         LOG_LEVEL(Tarbora::Logger::LogLevel::DEBUG);
         LOG_INFO("Application: Creating application...");
 
+        Settings::Load(settings_path);
         Graphics_Engine::Init();
         Input::Init();
 

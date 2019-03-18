@@ -21,12 +21,6 @@ namespace Tarbora {
         ~Window();
 
         void SetTitle(const char* title);
-        void SetClearColor(float r, float g, float b)
-        {
-            m_r = r;
-            m_g = g;
-            m_b = b;
-        }
 
         void Close();
         void Update();
@@ -39,7 +33,6 @@ namespace Tarbora {
     private:
         GLFWwindow* m_Window;
         WindowProps m_Props;
-        float m_r, m_g, m_b; // Clear color
     };
 
     typedef std::shared_ptr<Window> WindowPtr;

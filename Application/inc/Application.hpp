@@ -1,11 +1,12 @@
 #pragma once
 #include "Game_View.hpp"
+#include "Settings.hpp"
 
 namespace Tarbora {
     class Application
     {
     public:
-        Application();
+        Application(const char *settings_path);
         ~Application();
 
         void Run();

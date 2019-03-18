@@ -1,6 +1,7 @@
 #include "Window.hpp"
 #include "Logger.hpp"
 #include "Events.hpp"
+#include "Settings.hpp"
 
 namespace Tarbora {
     Window::Window(const char *title, int width, int height)
@@ -152,7 +153,7 @@ namespace Tarbora {
 
     void Window::Clear()
     {
-        glClearColor(m_r, m_g, m_b, 1.0f);
+        glClearColor(Settings::clear_r, Settings::clear_g, Settings::clear_b, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 

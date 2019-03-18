@@ -3,9 +3,8 @@
 #include "Graphics_Engine.hpp"
 
 namespace Tarbora {
-    Human_View::Human_View(float r, float g, float b)
+    Human_View::Human_View()
     {
-        Graphics_Engine::GetWindow()->SetClearColor(r, g, b);
     }
 
     Human_View::~Human_View()

@@ -9,7 +9,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     set (CMAKE_CXX_STANDARD_LIBRARIES "-lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW")
 endif (CMAKE_COMPILER_IS_GNUCXX)
 
-set (CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories (Demo/inc)

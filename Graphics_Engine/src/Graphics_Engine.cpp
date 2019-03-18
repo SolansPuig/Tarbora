@@ -2,6 +2,7 @@
 #include <memory>
 #include "Logger.hpp"
 #include "Gui.hpp"
+#include "Settings.hpp"
 
 namespace Tarbora {
     namespace Graphics_Engine {
@@ -11,7 +12,7 @@ namespace Tarbora {
         void Init()
         {
             glfwInit();
-            Main_Window = std::unique_ptr<Window>(new Window("Tarbora Game Engine", 1280, 720));
+            Main_Window = std::unique_ptr<Window>(new Window(Settings::window_title.c_str(), Settings::window_width, Settings::window_height));
 
             glewExperimental = GL_TRUE;
             if (glewInit() != GLEW_OK) {
