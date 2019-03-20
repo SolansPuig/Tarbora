@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.hpp"
 #include "Layer.hpp"
+// #include "shader.hpp"
 
 namespace Tarbora {
     namespace Graphics_Engine {
@@ -11,5 +12,6 @@ namespace Tarbora {
         void AfterDraw();
 
         WindowPtr GetWindow();
+        // Shader *GetShader();
     }
 }

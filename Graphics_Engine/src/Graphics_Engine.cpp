@@ -8,6 +8,7 @@ namespace Tarbora {
     namespace Graphics_Engine {
         std::shared_ptr<Window> Main_Window;
         std::unique_ptr<Gui> m_Gui;
+        // Shader m_Shader;
 
         void Init()
         {
@@ -20,6 +21,7 @@ namespace Tarbora {
                 glfwTerminate();
             }
 
+            // m_Shader.LoadFromFile("../resources/shaders/mainShader/vs", "../resources/shaders/mainShader/fs");
             m_Gui = std::unique_ptr<Gui>(new Gui());
         }
 
@@ -44,5 +46,10 @@ namespace Tarbora {
         {
             return Main_Window;
         }
+
+        // Shader *GetShader()
+        // {
+        //     return &m_Shader;
+        // }
     }
 }

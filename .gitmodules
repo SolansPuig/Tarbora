@@ -4,3 +4,6 @@
 [submodule "Graphics_Engine/imgui"]
 	path = Graphics_Engine/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "Graphics_Engine/glm"]
+	path = Graphics_Engine/glm
+	url = https://github.com/g-truc/glm

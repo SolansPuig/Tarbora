@@ -99,7 +99,7 @@ namespace Tarbora {
     typedef std::function<void(Event*)> EventFn;
     typedef unsigned int EventId;
 
-    namespace EventManager
+    namespace Event_Manager
     {
         typedef std::vector<EventFn> EventListenerList;
         typedef std::map<EventType, EventListenerList> EventListenerMap;

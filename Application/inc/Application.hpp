@@ -1,6 +1,7 @@
 #pragma once
-#include "Game_View.hpp"
+#include "GameView.hpp"
 #include "Settings.hpp"
+#include "ResourceManager.hpp"
 
 namespace Tarbora {
     class Application

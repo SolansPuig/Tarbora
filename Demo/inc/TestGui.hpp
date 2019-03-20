@@ -3,11 +3,11 @@
 
 namespace Tb = Tarbora;
 
-class Test_Gui : public Tb::Layer
+class TestGui : public Tb::Layer
 {
     float m_dt;
 public:
-    Test_Gui() : Tb::Layer()
+    TestGui() : Tb::Layer()
     {}
 
     void Draw() override

@@ -4,9 +4,7 @@
 #include "Events.hpp"
 #include "KeyCodes.hpp"
 #include "Input.hpp"
-#include "Demo_Window.hpp"
-#include "Test_Gui.hpp"
-#include "Human_View.hpp"
+#include "HumanView.hpp"
 #include "Settings.hpp"
 
 namespace Tarbora {
@@ -16,6 +14,7 @@ namespace Tarbora {
         LOG_LEVEL(Tarbora::Logger::LogLevel::DEBUG);
         LOG_INFO("Application: Creating application...");
 
+        ResourceManager::Init(1024, "../resources/");
         Settings::Load(settings_path);
         Graphics_Engine::Init();
         Input::Init();

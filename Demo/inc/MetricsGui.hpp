@@ -3,11 +3,11 @@
 
 namespace Tb = Tarbora;
 
-class Metrics_Gui : public Tb::Layer
+class MetricsGui : public Tb::Layer
 {
     float m_elapsed_time;
 public:
-    Metrics_Gui() : Tb::Layer(), m_elapsed_time(0.0f)
+    MetricsGui() : Tb::Layer(), m_elapsed_time(0.0f)
     {}
 
     void Update(float elapsed_time) override
