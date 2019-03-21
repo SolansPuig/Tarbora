@@ -77,6 +77,7 @@ namespace Tarbora {
         Shader(std::string name, unsigned int id) : Resource(name), m_Id(id) {}
         ~Shader();
         void Use();
+        unsigned int GetId() const { return m_Id; }
         void Set(const std::string &name, bool value);
         void Set(const std::string &name, int value);
         void Set(const std::string &name, float value);
@@ -95,6 +96,45 @@ namespace Tarbora {
     {
     public:
         virtual const std::string GetPattern() override { return "*.shader.json"; };
+        virtual ResourcePtr Load(std::string path) override;
+    };
+
+    class Texture : public Resource
+    {
+    public:
+        Texture(std::string name, unsigned int id, int width, int height)
+            : Resource(name), m_Id(id), m_Width(width), m_Height(height) {}
+        ~Texture();
+        unsigned int GetId() const { return m_Id; }
+        int GetWidth() const { return m_Width; }
+        int GetHeight() const { return m_Height; }
+    protected:
+        unsigned int m_Id;
+        int m_Width, m_Height;
+    };
+
+    class TextureResourceLoader : public ResourceLoader
+    {
+    public:
+        virtual const std::string GetPattern() override { return "*.png"; };
+        virtual ResourcePtr Load(std::string path) override;
+    };
+
+    class MeshResource : public Resource
+    {
+    public:
+        MeshResource(std::string name, unsigned int id) : Resource(name), m_Id(id) {}
+        ~MeshResource();
+        unsigned int GetId() const { return m_Id; }
+    protected:
+        unsigned int m_Id;
+        int m_Width, m_Height;
+    };
+
+    class MeshResourceLoader : public ResourceLoader
+    {
+    public:
+        virtual const std::string GetPattern() override { return "*.mesh"; };
         virtual ResourcePtr Load(std::string path) override;
     };
 }

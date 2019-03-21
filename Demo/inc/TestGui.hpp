@@ -8,7 +8,8 @@ class TestGui : public Tb::Layer
     float m_dt;
 public:
     TestGui() : Tb::Layer()
-    {}
+    {
+    }
 
     void Draw() override
     {
@@ -41,6 +42,7 @@ public:
             {
                 LOG_INFO("Test Gui: Text: %s!", text);
             }
+
             ImGui::End();
         }
 

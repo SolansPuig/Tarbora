@@ -106,5 +106,62 @@ namespace Tarbora {
         // {
         //     return &m_Shader;
         // }
+
+        unsigned int LoadTexture(unsigned char *data, int width, int height, int nrComponents)
+        {
+            // Detect the format
+            GLenum format;
+            if (nrComponents == 1)
+                format = GL_RED;
+            else if (nrComponents == 3)
+                format = GL_RGB;
+            else
+                format = GL_RGBA;
+
+            // Create the texture
+            unsigned int id = 0;
+            glGenTextures(1, &id);
+            glBindTexture(GL_TEXTURE_2D, id);
+            glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+            glGenerateMipmap(GL_TEXTURE_2D);
+
+            // Configure the texture
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+            return id;
+        }
+
+        void DeleteTexture(unsigned int id)
+        {
+            glDeleteTextures(1, &id);
+        }
+
+        unsigned int LoadMesh(std::vector<float> vertices)
+        {
+            unsigned int VBO, VAO;
+            glGenVertexArrays(1, &VAO);
+            glGenBuffers(1, &VBO);
+            glBindBuffer(GL_ARRAY_BUFFER, VBO);
+            glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), &vertices[0], GL_STATIC_DRAW);
+
+            glBindVertexArray(VAO);
+            glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+            glEnableVertexAttribArray(0);
+            glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+            glEnableVertexAttribArray(1);
+            glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+            glEnableVertexAttribArray(2);
+
+            glDeleteBuffers(1, &VBO);
+            return VAO;
+        }
+
+        void DeleteMesh(unsigned int id)
+        {
+            glDeleteVertexArrays(1, &id);
+        }
     }
 }

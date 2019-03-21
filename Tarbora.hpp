@@ -7,6 +7,7 @@
 #include "Events.hpp"
 #include "Graphics_Engine.hpp"
 #include "ResourceManager.hpp"
+#include "Resource.hpp"
 #include "Gui.hpp"
 #include "Input.hpp"
 #include "KeyCodes.hpp"

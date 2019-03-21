@@ -1,6 +1,9 @@
 #include "Resource.hpp"
 #include "Graphics_Engine.hpp"
 #include <glm/gtc/type_ptr.hpp>
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+#include <sstream>
 
 namespace Tarbora {
     ResourcePtr TextResourceLoader::Load(std::string path)
@@ -125,5 +128,65 @@ namespace Tarbora {
         ResourcePtr r = ResourcePtr(new JsonResource(path, program));
         file.close();
         return r;
+    }
+
+    Texture::~Texture()
+    {
+        Graphics_Engine::DeleteTexture(m_Id);
+    }
+
+    ResourcePtr TextureResourceLoader::Load(std::string path)
+    {
+        int nrComponents, width, height;
+
+        // Load the raw image
+        unsigned char *data = stbi_load(path.c_str(), &width, &height, &nrComponents, 0);
+        if (data == nullptr)
+        {
+            LOG_ERR("TextureLoader: The image %s failed to load due to: %s", path.c_str(), stbi_failure_reason());
+            data = stbi_load("../resources/textures/missing.png", &width, &height, &nrComponents, 0);
+            if (data == nullptr)
+                LOG_ERR("TextureLoader: The image textures/missing.png failed to load due to: %s", stbi_failure_reason());
+        }
+
+        unsigned int id = Graphics_Engine::LoadTexture(data, width, height, nrComponents);
+
+        // Delete the image, as it is already on the GPU
+        stbi_image_free(data);
+
+        ResourcePtr r = ResourcePtr(new Texture(path, id, width, height));
+        return r;
+    }
+
+    ResourcePtr MeshResourceLoader::Load(std::string path)
+    {
+        std::ifstream file;
+        file.open(path.c_str());
+        if (file.fail())
+            return ResourcePtr();
+
+        // Read the file into a vector
+        std::string line;
+        std::vector<float> v;
+        while (std::getline(file, line))
+        {
+            float value;
+            std::stringstream ss(line);
+            while (ss >> value)
+            {
+                v.push_back(value);
+            }
+        }
+
+        // Create the Mesh
+        unsigned int id = Graphics_Engine::LoadMesh(v);
+
+        ResourcePtr r = ResourcePtr(new MeshResource(path, id));
+        return r;
+    }
+
+    MeshResource::~MeshResource()
+    {
+        Graphics_Engine::DeleteMesh(m_Id);
     }
 }

@@ -19,12 +19,15 @@ namespace Tarbora {
         ResourceManager::RegisterLoader(LoaderPtr(new TextResourceLoader()));
         ResourceManager::RegisterLoader(LoaderPtr(new JsonResourceLoader()));
         ResourceManager::RegisterLoader(LoaderPtr(new ShaderResourceLoader()));
+        ResourceManager::RegisterLoader(LoaderPtr(new TextureResourceLoader()));
+        ResourceManager::RegisterLoader(LoaderPtr(new MeshResourceLoader()));
 
         Settings::Load(settings_path);
         Graphics_Engine::Init();
         Input::Init();
 
         GET_RESOURCE(Shader, "shaders/mainShader.shader.json");
+        GET_RESOURCE(Shader, "meshes/cube.mesh");
 
         LOG_INFO("Application: Successfully created application");
     }
