@@ -10,13 +10,16 @@ namespace Tarbora {
 
     namespace ResourceManager
     {
-        void Init(unsigned int sizeInMb, const std::string resourceFolderPath);
+        void Init(const std::string resourceFolderPath);
         void RegisterLoader(LoaderPtr);
 
-        ResourcePtr GetResource(const std::string resource);
+        ResourcePtr Get(const std::string resource);
         // TODO: int Preload(const std::string pattern);
-        void Allocate(unsigned int size);
-        void MemoryHasBeenFreed(unsigned int size);
         void Flush(void);
+        void Free(ResourcePtr resource);
+
+        std::string GetResourceFolder();
     };
 }
+
+#define GET_RESOURCE(TYPE, NAME) std::static_pointer_cast<TYPE>(::Tarbora::ResourceManager::Get(NAME))

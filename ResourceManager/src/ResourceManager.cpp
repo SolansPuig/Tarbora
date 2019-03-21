@@ -10,27 +10,20 @@ namespace Tarbora {
     typedef std::map<std::string, ResourcePtr> ResourceMap;
     typedef std::list<LoaderPtr> ResourceLoaders;
 
-    ResourceList m_LRU; // least recently used list
+    ResourceList m_List;
     ResourceMap m_Resources;
     ResourceLoaders m_ResourceLoaders;
 
     std::string m_ResourceFolderPath;
 
-    unsigned int m_CacheSize;
-    unsigned int m_Allocated;
-
     namespace ResourceManager {
         ResourcePtr Find(const std::string resource);
-        void Update(ResourcePtr resource);
         ResourcePtr Load(const std::string resource);
-        bool MakeRoom(unsigned int size);
-        void FreeOneResource();
+        void Free(ResourcePtr resource);
     }
 
-    void ResourceManager::Init(unsigned int sizeInMb, std::string resourceFolderPath)
+    void ResourceManager::Init(std::string resourceFolderPath)
     {
-        m_CacheSize = sizeInMb * 1024 * 1024;
-        m_Allocated = 0;
         m_ResourceFolderPath = resourceFolderPath;
         RegisterLoader(LoaderPtr(new DefaultResourceLoader()));
     }
@@ -40,13 +33,11 @@ namespace Tarbora {
         m_ResourceLoaders.push_front(loader);
     }
 
-    ResourcePtr ResourceManager::GetResource(const std::string resource)
+    ResourcePtr ResourceManager::Get(const std::string resource)
     {
         ResourcePtr r(Find(resource));
         if (r == NULL)
             r = Load(resource);
-        else
-            Update(r);
         return r;
     }
 
@@ -73,10 +64,10 @@ namespace Tarbora {
 
         if (r)
         {
-            m_LRU.push_front(r);
+            m_List.push_front(r);
             m_Resources[r->GetName()] = r;
         } else {
-            LOG_ERR("ResourceManager: Could not load resource %s.", resource);
+            LOG_ERR("ResourceManager: Could not load resource %s with loader %s.", resource.c_str(), loader->GetPattern().c_str());
         }
 
         return r;
@@ -90,61 +81,23 @@ namespace Tarbora {
         return itr->second;
     }
 
-    void ResourceManager::Update(ResourcePtr resource)
+    void ResourceManager::Free(ResourcePtr r)
     {
-        m_LRU.remove(resource);
-        m_LRU.push_front(resource);
-    }
-
-    void ResourceManager::Allocate(unsigned int size)
-    {
-        if (MakeRoom(size))
-            m_Allocated += size;
-    }
-
-    bool ResourceManager::MakeRoom(unsigned int size)
-    {
-        if (size > m_CacheSize)
-        {
-            LOG_ERR("ResourceManager: Could not allocate %d bytes.", size);
-            return false;
-        }
-
-        while (size > (m_CacheSize - m_Allocated))
-        {
-            if (m_LRU.empty())
-            {
-                LOG_ERR("ResourceManager: Could not allocate %d bytes.", size);
-                return false;
-            }
-
-            FreeOneResource();
-        }
-
-        return true;
-    }
-
-    void ResourceManager::FreeOneResource()
-    {
-        auto gonner = m_LRU.end();
-        gonner--;
-
-        ResourcePtr r = *gonner;
-
-        m_LRU.pop_back();
+        m_List.remove(r);
         m_Resources.erase(r->GetName());
     }
 
     void ResourceManager::Flush()
     {
-    	while (!m_LRU.empty())
+    	while (!m_List.empty())
     	{
-    		FreeOneResource();
+            auto gonner = m_List.end();
+            gonner--;
+
+            ResourcePtr r = *gonner;
+    		Free(r);
     	}
     }
 
-    void ResourceManager::MemoryHasBeenFreed(unsigned int size)
-    {
-        m_Allocated -= size;
-    }
+    std::string ResourceManager::GetResourceFolder() { return m_ResourceFolderPath; }
 }

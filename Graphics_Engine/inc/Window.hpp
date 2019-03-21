@@ -1,7 +1,8 @@
 #pragma once
-#define GLEW_STATIC // This must be included BEFORE Window.hpp!!
-#include <GL/glew.h> // This must be included BEFORE Window.hpp!!
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#define GLM_FORCE_CXX98
 #include <memory>
 
 namespace Tarbora {

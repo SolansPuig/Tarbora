@@ -6,7 +6,7 @@
 namespace Tb = Tarbora;
 
 int main() {
-    Tb::Application* app = new Tb::Application("../resources/Settings.json");
+    Tb::Application* app = new Tb::Application("Settings.json");
     Tb::HumanViewPtr human_view(new Tb::HumanView());
     app->AddView(human_view);
 

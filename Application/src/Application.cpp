@@ -6,6 +6,7 @@
 #include "Input.hpp"
 #include "HumanView.hpp"
 #include "Settings.hpp"
+#include "Resource.hpp"
 
 namespace Tarbora {
     Application::Application(const char *settings_path) : m_run(true), m_time(0.0f)
@@ -14,10 +15,16 @@ namespace Tarbora {
         LOG_LEVEL(Tarbora::Logger::LogLevel::DEBUG);
         LOG_INFO("Application: Creating application...");
 
-        ResourceManager::Init(1024, "../resources/");
+        ResourceManager::Init("../resources/");
+        ResourceManager::RegisterLoader(LoaderPtr(new TextResourceLoader()));
+        ResourceManager::RegisterLoader(LoaderPtr(new JsonResourceLoader()));
+        ResourceManager::RegisterLoader(LoaderPtr(new ShaderResourceLoader()));
+
         Settings::Load(settings_path);
         Graphics_Engine::Init();
         Input::Init();
+
+        GET_RESOURCE(Shader, "shaders/mainShader.shader.json");
 
         LOG_INFO("Application: Successfully created application");
     }

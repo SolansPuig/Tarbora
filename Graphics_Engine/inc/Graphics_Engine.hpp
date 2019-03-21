@@ -13,5 +13,9 @@ namespace Tarbora {
 
         WindowPtr GetWindow();
         // Shader *GetShader();
+
+        unsigned int CompileShader(std::string type, const char *code);
+        unsigned int LinkProgram(unsigned int *ids);
+        void DeleteProgram(unsigned int id);
     }
 }

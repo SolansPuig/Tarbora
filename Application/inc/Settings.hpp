@@ -1,10 +1,8 @@
 #pragma once
-#include "json.hpp"
 #include "Logger.hpp"
+#include "Resource.hpp"
 #include <string>
 #include <fstream>
-
-typedef nlohmann::json json;
 
 namespace Tarbora {
     struct Settings {
@@ -14,11 +12,10 @@ namespace Tarbora {
 
         static void Load(const char *path)
         {
-            std::ifstream ifs(path);
-            if (!ifs.fail())
+            auto J = GET_RESOURCE(JsonResource, path);
+            if (J)
             {
-                json j = json::parse(ifs);
-                json window = j["window"];
+                json j = J->GetJson();
 
                 if (j.find("window") != j.end() &&
                     j["window"].find("title") != j["window"].end())
