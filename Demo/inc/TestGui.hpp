@@ -7,8 +7,13 @@ class TestGui : public Tb::Layer
 {
     float m_dt;
 public:
-    TestGui() : Tb::Layer()
+    ImTextureID m_Id;
+    ImVec2 m_Size;
+    TestGui(bool start_active) : Tb::Layer(start_active)
     {
+        // std::shared_ptr<Tb::Texture> tex = GET_RESOURCE(Tb::Texture, "textures/sky.png");
+        // m_Id = (ImTextureID)tex->GetId();
+        // m_Size = ImVec2(tex->GetWidth()/4.0, tex->GetHeight()/4.0);
     }
 
     void Draw() override
@@ -42,6 +47,8 @@ public:
             {
                 LOG_INFO("Test Gui: Text: %s!", text);
             }
+
+            // ImGui::Image(m_Id, m_Size);
 
             ImGui::End();
         }

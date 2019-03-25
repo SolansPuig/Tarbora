@@ -15,12 +15,18 @@ namespace Tarbora {
         void Update(float deltaTime);
         void Draw();
 
-        void AddChild(ActorId id, SceneNodePtr);
+        void AddChild(SceneNodePtr);
         SceneNodePtr GetChild(ActorId id);
         bool RemoveChild(ActorId id);
+
+        void SetCamera(CameraPtr camera) { m_Camera = camera; }
+        const CameraPtr GetCamera() const { return m_Camera; }
+
     protected:
         SceneNodePtr m_Root;
+        CameraPtr m_Camera;
         SceneActorMap m_ActorMap;
-        glm::mat4 m_Matrix;
+        glm::mat4 m_Projection;
+        unsigned int EvtWindowResizeId, EvtActorMoveId, EvtActorRotateId;
     };
 }

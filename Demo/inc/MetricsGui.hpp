@@ -7,7 +7,7 @@ class MetricsGui : public Tb::Layer
 {
     float m_elapsed_time;
 public:
-    MetricsGui() : Tb::Layer(), m_elapsed_time(0.0f)
+    MetricsGui(bool start_active) : Tb::Layer(start_active), m_elapsed_time(0.0f)
     {}
 
     void Update(float elapsed_time) override

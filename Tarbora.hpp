@@ -4,6 +4,7 @@
 #include "GameView.hpp"
 #include "HumanView.hpp"
 #include "Layer.hpp"
+#include "GameLayer.hpp"
 #include "Events.hpp"
 #include "Graphics_Engine.hpp"
 #include "ResourceManager.hpp"

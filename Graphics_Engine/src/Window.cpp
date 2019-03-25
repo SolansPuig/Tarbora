@@ -22,9 +22,11 @@ namespace Tarbora {
 
         glfwMakeContextCurrent(m_Window);
 
+        glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);  
+
         glEnable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        // glEnable(GL_BLEND);
+        // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glEnable(GL_CULL_FACE);
 
         glViewport(0, 0, m_Props.m_width, m_Props.m_height);
@@ -35,7 +37,7 @@ namespace Tarbora {
         {
             (void)(window);
             WindowMoveEvent event(x, y);
-            Event_Manager::Trigger(EventType::WindowMove, &event);
+            EventManager::Trigger(EventType::WindowMove, &event);
         });
 
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
@@ -44,32 +46,33 @@ namespace Tarbora {
 			WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
 			data.m_width = width;
 			data.m_height = height;
+            data.m_ratio = (float)width / (float)height;
 
             glViewport(0, 0, width, height);
 
 			WindowResizeEvent event(width, height);
-			Event_Manager::Trigger(EventType::WindowResize, &event);
+			EventManager::Trigger(EventType::WindowResize, &event);
         });
 
         glfwSetWindowIconifyCallback(m_Window, [](GLFWwindow* window, int iconified)
         {
             (void)(window);
             WindowIconifyEvent event(iconified);
-            Event_Manager::Trigger(EventType::WindowIconify, &event);
+            EventManager::Trigger(EventType::WindowIconify, &event);
         });
 
         glfwSetWindowFocusCallback(m_Window, [](GLFWwindow* window, int focused)
         {
             (void)(window);
             WindowFocusEvent event(focused);
-            Event_Manager::Trigger(EventType::WindowFocus, &event);
+            EventManager::Trigger(EventType::WindowFocus, &event);
         });
 
         glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 		{
             (void)(window);
 			WindowCloseEvent event;
-			Event_Manager::Trigger(EventType::WindowClose, &event);
+			EventManager::Trigger(EventType::WindowClose, &event);
         });
 
         glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -79,19 +82,19 @@ namespace Tarbora {
                 case GLFW_PRESS:
                 {
                     KeyPressEvent event(key, mods, 0);
-                    Event_Manager::Trigger(EventType::KeyPress, &event);
+                    EventManager::Trigger(EventType::KeyPress, &event);
                     break;
                 }
                 case GLFW_RELEASE:
                 {
                     KeyReleaseEvent event(key, mods);
-                    Event_Manager::Trigger(EventType::KeyRelease, &event);
+                    EventManager::Trigger(EventType::KeyRelease, &event);
                     break;
                 }
                 case GLFW_REPEAT:
                 {
                     KeyPressEvent event(key, mods, 1);
-                    Event_Manager::Trigger(EventType::KeyPress, &event);
+                    EventManager::Trigger(EventType::KeyPress, &event);
                     break;
                 }
             }
@@ -101,7 +104,7 @@ namespace Tarbora {
         {
             (void)(window);
             MouseMoveEvent event((int)x, (int)y);
-            Event_Manager::Trigger(EventType::MouseMove, &event);
+            EventManager::Trigger(EventType::MouseMove, &event);
         });
 
         glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
@@ -111,13 +114,13 @@ namespace Tarbora {
                 case GLFW_PRESS:
                 {
                     MouseButtonPressEvent event(button, mods);
-                    Event_Manager::Trigger(EventType::MouseButtonPress, &event);
+                    EventManager::Trigger(EventType::MouseButtonPress, &event);
                     break;
                 }
                 case GLFW_RELEASE:
                 {
                     MouseButtonReleaseEvent event(button, mods);
-                    Event_Manager::Trigger(EventType::MouseButtonRelease, &event);
+                    EventManager::Trigger(EventType::MouseButtonRelease, &event);
                     break;
                 }
             }
@@ -127,7 +130,7 @@ namespace Tarbora {
         {
             (void)(window);
             MouseScrollEvent event((int)x, (int)y);
-            Event_Manager::Trigger(EventType::MouseScroll, &event);
+            EventManager::Trigger(EventType::MouseScroll, &event);
         });
     }
 

@@ -2,6 +2,7 @@
 #include <map>
 #include <vector>
 #include <functional>
+#include "glm/glm.hpp"
 #include "Logger.hpp"
 
 #define BIND(x) std::bind(&x, this, std::placeholders::_1)
@@ -11,7 +12,8 @@ namespace Tarbora {
     {
         WindowClose, WindowResize, WindowFocus, WindowMove, WindowIconify,
         KeyPress, KeyRelease,
-        MouseButtonPress, MouseButtonRelease, MouseMove, MouseScroll
+        MouseButtonPress, MouseButtonRelease, MouseMove, MouseScroll,
+        ActorMove, ActorRotate, ActorScale
     };
 
     struct Event
@@ -96,10 +98,33 @@ namespace Tarbora {
         int xoffset, yoffset;
     };
 
+    struct ActorEvent : public Event
+    {
+        ActorEvent(unsigned long int id, std::string n) : actorId(id), name(n) {}
+        unsigned long int actorId;
+        std::string name;
+    };
+
+    struct ActorMoveEvent : public ActorEvent
+    {
+        ActorMoveEvent(unsigned long int id, std::string n, glm::vec3 pos) :
+            ActorEvent(id, n), position(pos) {}
+        EventType GetType() override { return EventType::ActorMove; }
+        glm::vec3 position;
+    };
+
+    struct ActorRotateEvent : public ActorEvent
+    {
+        ActorRotateEvent(unsigned long int id, std::string n, glm::vec3 rot) :
+            ActorEvent(id, n), rotation(rot) {}
+        EventType GetType() override { return EventType::ActorRotate; }
+        glm::vec3 rotation;
+    };
+
     typedef std::function<void(Event*)> EventFn;
     typedef unsigned int EventId;
 
-    namespace Event_Manager
+    namespace EventManager
     {
         typedef std::vector<EventFn> EventListenerList;
         typedef std::map<EventType, EventListenerList> EventListenerMap;

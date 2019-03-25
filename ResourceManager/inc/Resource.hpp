@@ -5,6 +5,7 @@
 #include "ResourceManager.hpp"
 #include "json.hpp"
 #include <glm/glm.hpp>
+#include "Logger.hpp"
 typedef nlohmann::json json;
 
 namespace Tarbora {
@@ -81,13 +82,13 @@ namespace Tarbora {
         void Set(const std::string &name, bool value);
         void Set(const std::string &name, int value);
         void Set(const std::string &name, float value);
-        void Set(const std::string &name, glm::vec2 value);
+        void Set(const std::string &name, glm::vec2 *value);
         void Set(const std::string &name, float x, float y);
-        void Set(const std::string &name, glm::vec3 value);
+        void Set(const std::string &name, glm::vec3 *value);
         void Set(const std::string &name, float x, float y, float z);
-        void Set(const std::string &name, glm::vec4 value);
+        void Set(const std::string &name, glm::vec4 *value);
         void Set(const std::string &name, float x, float y, float z, float w);
-        void Set(const std::string &name, glm::mat4 value);
+        void Set(const std::string &name, glm::mat4 *value);
     protected:
         unsigned int m_Id;
     };
@@ -123,12 +124,13 @@ namespace Tarbora {
     class MeshResource : public Resource
     {
     public:
-        MeshResource(std::string name, unsigned int id) : Resource(name), m_Id(id) {}
+        MeshResource(std::string name, unsigned int id, int vertices) : Resource(name), m_Id(id), m_Vertices(vertices) {}
         ~MeshResource();
         unsigned int GetId() const { return m_Id; }
+        int GetVertices() const { return m_Vertices; }
     protected:
         unsigned int m_Id;
-        int m_Width, m_Height;
+        int m_Vertices;
     };
 
     class MeshResourceLoader : public ResourceLoader

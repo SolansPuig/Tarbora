@@ -7,7 +7,7 @@ class DemoWindow : public Tb::Layer
 {
     float m_dt;
 public:
-    DemoWindow() : Tb::Layer()
+    DemoWindow(bool start_active) : Tb::Layer(start_active)
     {}
 
     void Draw() override

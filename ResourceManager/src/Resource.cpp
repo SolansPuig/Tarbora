@@ -48,33 +48,33 @@ namespace Tarbora {
     {
         glUniform1f(glGetUniformLocation(m_Id, name.c_str()), value);
     }
-    void Shader::Set(const std::string &name, glm::vec2 value)
+    void Shader::Set(const std::string &name, glm::vec2 *value)
     {
-        glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
+        glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(*value));
     }
     void Shader::Set(const std::string &name, float x, float y)
     {
         glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec2(x, y)));
     }
-    void Shader::Set(const std::string &name, glm::vec3 value)
+    void Shader::Set(const std::string &name, glm::vec3 *value)
     {
-        glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
+        glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(*value));
     }
     void Shader::Set(const std::string &name, float x, float y, float z)
     {
         glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec3(x, y, z)));
     }
-    void Shader::Set(const std::string &name, glm::vec4 value)
+    void Shader::Set(const std::string &name, glm::vec4 *value)
     {
-        glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
+        glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(*value));
     }
     void Shader::Set(const std::string &name, float x, float y, float z, float w)
     {
         glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec4(x, y, z, w)));
     }
-    void Shader::Set(const std::string &name, glm::mat4 value)
+    void Shader::Set(const std::string &name, glm::mat4 *value)
     {
-        glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+        glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(*value));
     }
 
     unsigned int CompileShader(json j, const char* type)
@@ -124,8 +124,7 @@ namespace Tarbora {
 
         // Link the program
         unsigned int program = Graphics_Engine::LinkProgram(ids);
-
-        ResourcePtr r = ResourcePtr(new JsonResource(path, program));
+        ResourcePtr r = ResourcePtr(new Shader(path, program));
         file.close();
         return r;
     }
@@ -168,20 +167,24 @@ namespace Tarbora {
         // Read the file into a vector
         std::string line;
         std::vector<float> v;
+        int vertices = 0;
         while (std::getline(file, line))
         {
             float value;
+            bool valid_line = false;
             std::stringstream ss(line);
             while (ss >> value)
             {
                 v.push_back(value);
+                valid_line = true;
             }
+            if (valid_line) vertices++;
         }
 
         // Create the Mesh
         unsigned int id = Graphics_Engine::LoadMesh(v);
 
-        ResourcePtr r = ResourcePtr(new MeshResource(path, id));
+        ResourcePtr r = ResourcePtr(new MeshResource(path, id, vertices));
         return r;
     }
 

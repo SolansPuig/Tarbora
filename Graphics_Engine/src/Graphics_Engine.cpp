@@ -36,10 +36,28 @@ namespace Tarbora {
             m_Gui->BeforeDraw();
         }
 
+        void DrawMesh(std::shared_ptr<MeshResource> mesh)
+        {
+            glBindVertexArray(mesh->GetId());
+            glDrawArrays(GL_TRIANGLES, 0, mesh->GetVertices());
+        }
+
         void AfterDraw()
         {
             m_Gui->AfterDraw();
             Main_Window->Update();
+        }
+
+        void BeforeDrawSky()
+        {
+            glDepthFunc(GL_LEQUAL);
+            glDisable(GL_CULL_FACE);
+        }
+
+        void AfterDrawSky()
+        {
+            glDepthFunc(GL_LESS);
+            glEnable(GL_CULL_FACE);
         }
 
         WindowPtr GetWindow()
@@ -66,7 +84,7 @@ namespace Tarbora {
             glGetShaderiv(id, GL_COMPILE_STATUS, &success);
             if (!success) {
                 glGetShaderInfoLog(id, 512, NULL, infoLog);
-                LOG_ERR("ShaderCompiler: Error while compiling %s shader. \n %s", type, infoLog);
+                LOG_ERR("ShaderCompiler: Error while compiling %s shader. \n %s", type.c_str(), infoLog);
             }
 
             return id;
@@ -134,6 +152,11 @@ namespace Tarbora {
             return id;
         }
 
+        void BindTexture(unsigned int id)
+        {
+            glBindTexture(GL_TEXTURE_2D, id);
+        }
+
         void DeleteTexture(unsigned int id)
         {
             glDeleteTextures(1, &id);
@@ -155,7 +178,7 @@ namespace Tarbora {
             glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
             glEnableVertexAttribArray(2);
 
-            glDeleteBuffers(1, &VBO);
+            // glDeleteBuffers(1, &VBO);
             return VAO;
         }
 

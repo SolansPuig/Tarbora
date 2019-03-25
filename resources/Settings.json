@@ -2,6 +2,6 @@
     "window": {
         "title": "Tarbora Game Engine",
         "size": [1280, 720],
-        "clear_color": [0, 0, 0]
+        "clear_color": [1, 0, 0]
     }
 }

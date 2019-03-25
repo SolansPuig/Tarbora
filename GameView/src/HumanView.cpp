@@ -3,18 +3,8 @@
 #include "Graphics_Engine.hpp"
 
 namespace Tarbora {
-    HumanView::HumanView()
+    HumanView::HumanView(ActorId id)
     {
-    }
-
-    HumanView::~HumanView()
-    {
-    }
-
-    void HumanView::OnCreate(GameViewId id)
-    {
-        m_Id = id;
-
         EventFn onEvent = [this](Event* e)
         {
             for (auto itr = m_Layers.rbegin(); itr != m_Layers.rend(); itr++)
@@ -23,23 +13,26 @@ namespace Tarbora {
                     break;
             }
         };
+        EvtKeyPressId = EventManager::Subscribe(EventType::KeyPress, onEvent);
+        EvtKeyReleaseId = EventManager::Subscribe(EventType::KeyRelease, onEvent);
+        EvtButtonPressId = EventManager::Subscribe(EventType::MouseButtonPress, onEvent);
+        EvtButtonReleaseId = EventManager::Subscribe(EventType::MouseButtonRelease, onEvent);
+        EvtMouseMoveId = EventManager::Subscribe(EventType::MouseMove, onEvent);
+        EvtMouseScrollId = EventManager::Subscribe(EventType::MouseScroll, onEvent);
 
-        EvtKeyPressId = Event_Manager::Subscribe(EventType::KeyPress, onEvent);
-        EvtKeyReleaseId = Event_Manager::Subscribe(EventType::KeyRelease, onEvent);
-        EvtButtonPressId = Event_Manager::Subscribe(EventType::MouseButtonPress, onEvent);
-        EvtButtonReleaseId = Event_Manager::Subscribe(EventType::MouseButtonRelease, onEvent);
-        EvtMouseMoveId = Event_Manager::Subscribe(EventType::MouseMove, onEvent);
-        EvtMouseScrollId = Event_Manager::Subscribe(EventType::MouseScroll, onEvent);
+        m_GameLayer.reset(new GameLayer(true));
+        PushLayer(m_GameLayer);
+        m_GameLayer->SetTargetId(id);
     }
 
-    void HumanView::OnDestroy()
+    HumanView::~HumanView()
     {
-        Event_Manager::Unsubscribe(EventType::KeyPress, EvtKeyPressId);
-        Event_Manager::Unsubscribe(EventType::KeyRelease, EvtKeyReleaseId);
-        Event_Manager::Unsubscribe(EventType::MouseButtonPress, EvtButtonPressId);
-        Event_Manager::Unsubscribe(EventType::MouseButtonRelease, EvtButtonReleaseId);
-        Event_Manager::Unsubscribe(EventType::MouseMove, EvtMouseMoveId);
-        Event_Manager::Unsubscribe(EventType::MouseScroll, EvtMouseScrollId);
+        EventManager::Unsubscribe(EventType::KeyPress, EvtKeyPressId);
+        EventManager::Unsubscribe(EventType::KeyRelease, EvtKeyReleaseId);
+        EventManager::Unsubscribe(EventType::MouseButtonPress, EvtButtonPressId);
+        EventManager::Unsubscribe(EventType::MouseButtonRelease, EvtButtonReleaseId);
+        EventManager::Unsubscribe(EventType::MouseMove, EvtMouseMoveId);
+        EventManager::Unsubscribe(EventType::MouseScroll, EvtMouseScrollId);
     }
 
     void HumanView::Update(float elapsed_time)

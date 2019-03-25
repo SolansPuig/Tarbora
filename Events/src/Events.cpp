@@ -1,7 +1,7 @@
 #include "Events.hpp"
 
 namespace Tarbora {
-    namespace Event_Manager
+    namespace EventManager
     {
         EventListenerMap m_Listeners;
 

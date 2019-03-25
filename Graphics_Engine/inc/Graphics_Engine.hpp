@@ -1,7 +1,7 @@
 #pragma once
 #include "Window.hpp"
 #include "Layer.hpp"
-// #include "shader.hpp"
+#include "Resource.hpp"
 
 namespace Tarbora {
     namespace Graphics_Engine {
@@ -9,7 +9,11 @@ namespace Tarbora {
         void Close();
 
         void BeforeDraw();
+        void DrawMesh(std::shared_ptr<MeshResource> mesh);
         void AfterDraw();
+
+        void BeforeDrawSky();
+        void AfterDrawSky();
 
         WindowPtr GetWindow();
         // Shader *GetShader();
@@ -19,6 +23,7 @@ namespace Tarbora {
         void DeleteProgram(unsigned int id);
 
         unsigned int LoadTexture(unsigned char *data, int width, int height, int nrComponents);
+        void BindTexture(unsigned int id);
         void DeleteTexture(unsigned int id);
 
         unsigned int LoadMesh(std::vector<float> vertices);
