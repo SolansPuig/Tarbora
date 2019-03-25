@@ -42,7 +42,7 @@ namespace Tarbora {
     {
         if (m_Root)
         {
-            m_Root->Update(deltaTime);
+            m_Root->Update(this, deltaTime);
         }
     }
 
@@ -50,9 +50,7 @@ namespace Tarbora {
     {
         if (m_Root)
         {
-            glm::mat4 view = m_Camera->GetView();
-            glm::mat4 matrix = m_Projection * view;
-            m_Root->DrawChildren(this, &matrix);
+            m_Root->DrawChildren(this, &m_Projection);
         }
     }
 

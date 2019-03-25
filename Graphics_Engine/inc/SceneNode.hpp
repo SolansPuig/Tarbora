@@ -37,7 +37,7 @@ namespace Tarbora {
         SceneNode(ActorId actorId, std::string name, RenderPass render_pass, const glm::mat4 *to=nullptr);
         virtual ~SceneNode() {}
 
-        virtual void Update(float deltaTime);
+        virtual void Update(Scene *scene, float deltaTime);
         virtual void Draw(Scene *scene, glm::mat4 *parentTransform) { (void)(scene); (void)(parentTransform); }
         virtual void DrawChildren(Scene *scene, glm::mat4 *parentTransform);
 
@@ -59,8 +59,16 @@ namespace Tarbora {
         {
             if (toWorld) *toWorld = m_ToWorld;
         }
-        void SetPosition(const glm::vec3 &pos) { m_ToWorld[3] = glm::vec4(pos, 1); }
-        glm::vec3 GetPosition() { return glm::vec3( m_ToWorld[3]); }
+        void SetPosition(const glm::vec3 &pos)
+        {
+            m_ToWorld[0][3] = pos.x;
+            m_ToWorld[1][3] = pos.y;
+            m_ToWorld[2][3] = pos.z;
+
+            m_FromWorld[3] = glm::vec4(pos, 1);
+        }
+        glm::vec3 GetPosition() { return glm::vec3( m_FromWorld[3]); }
+
         virtual glm::mat4 GetWorldMatrix();
         void SetRadius(float radius) { m_Radius = radius; }
         float GetRadius() const { return m_Radius; }
@@ -74,10 +82,7 @@ namespace Tarbora {
         std::string m_Name;
         glm::mat4 m_ToWorld;
         glm::mat4 m_FromWorld;
-        glm::vec3 m_Front;
-        glm::vec3 m_Right;
-        glm::vec3 m_Up;
-        glm::vec3 m_Position;
+        glm::vec3 m_Movement;
         float m_Pitch, m_Yaw, m_Roll;
         float m_Radius;
         RenderPass m_RenderPass;
@@ -111,6 +116,7 @@ namespace Tarbora {
     public:
         Camera(ActorId actorId, std::string name, glm::mat4 *to=nullptr);
         const glm::mat4 GetView();
+        const glm::mat4 GetViewAngle();
     private:
         glm::mat4 m_View;
     };

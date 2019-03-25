@@ -39,13 +39,35 @@ namespace Tarbora {
             } else if (e->GetType() == EventType::KeyPress)
             {
                 KeyPressEvent *ev = static_cast<KeyPressEvent*>(e);
+                if (ev->repeat == 0)
+                {
+                    switch (ev->key)
+                    {
+                        case KEY_W:
+                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, 1)));
+                            break;
+                        case KEY_S:
+                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, -1)));
+                            break;
+                        case KEY_A:
+                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(1, 0, 0)));
+                            break;
+                        case KEY_D:
+                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(-1, 0, 0)));
+                            break;
+                    }
+                }
+                return true;
+            } else if (e->GetType() == EventType::KeyRelease)
+            {
+                KeyReleaseEvent *ev = static_cast<KeyReleaseEvent*>(e);
                 switch (ev->key)
                 {
                     case KEY_W:
-                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, 1)));
+                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, -1)));
                         break;
                     case KEY_S:
-                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, -1)));
+                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, 1)));
                         break;
                     case KEY_A:
                         EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(-1, 0, 0)));
