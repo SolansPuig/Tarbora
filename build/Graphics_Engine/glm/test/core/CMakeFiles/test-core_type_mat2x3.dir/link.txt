@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -Ofast -g -D DEBUG_MODE=true  -rdynamic CMakeFiles/test-core_type_mat2x3.dir/core_type_mat2x3.cpp.o  -o test-core_type_mat2x3 -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

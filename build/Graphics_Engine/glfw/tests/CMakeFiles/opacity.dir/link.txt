@@ -1,1 +1,0 @@
-/usr/bin/cc -g  -rdynamic CMakeFiles/opacity.dir/opacity.c.o CMakeFiles/opacity.dir/__/deps/glad.c.o  -o opacity ../src/libglfw3.a -lm -lrt -lm -ldl -lX11 -lpthread 

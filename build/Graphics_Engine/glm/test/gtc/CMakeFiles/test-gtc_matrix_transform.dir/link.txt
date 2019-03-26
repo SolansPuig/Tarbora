@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -Ofast -g -D DEBUG_MODE=true  -rdynamic CMakeFiles/test-gtc_matrix_transform.dir/gtc_matrix_transform.cpp.o  -o test-gtc_matrix_transform -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

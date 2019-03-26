@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -Ofast -g -D DEBUG_MODE=true  -rdynamic CMakeFiles/test-ext_quaternion_geometric.dir/ext_quaternion_geometric.cpp.o  -o test-ext_quaternion_geometric -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

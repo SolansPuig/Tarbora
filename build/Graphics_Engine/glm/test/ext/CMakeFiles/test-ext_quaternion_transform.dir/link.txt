@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -Ofast -g -D DEBUG_MODE=true  -rdynamic CMakeFiles/test-ext_quaternion_transform.dir/ext_quaternion_transform.cpp.o  -o test-ext_quaternion_transform -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 
