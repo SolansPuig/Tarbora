@@ -1,4 +1,3 @@
-#pragma once
 #include "SceneNode.hpp"
 #include "Logger.hpp"
 #include "Graphics_Engine.hpp"
@@ -209,6 +208,7 @@ namespace Tarbora {
 
     void Skybox::Draw(Scene *scene, glm::mat4 *parentTransform)
     {
+        (void)(scene);
         m_Shader->Use();
         m_Shader->Set("transform", parentTransform);
 

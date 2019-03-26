@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Helpers/inc/Logger.hpp
+stdio.h
+-
+
+/home/roger/Workspace/UPC/tfg-tarboragameengine/Tarbora/Helpers/src/Logger.cpp
+Logger.hpp
+/home/roger/Workspace/UPC/tfg-tarboragameengine/Tarbora/Helpers/src/Logger.hpp
+stdarg.h
+-
+ctime
+-
+

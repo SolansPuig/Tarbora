@@ -3,6 +3,9 @@
 #include "Logger.hpp"
 #include "Gui.hpp"
 #include "Settings.hpp"
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
+#include <time.h>
 
 namespace Tarbora {
     namespace Graphics_Engine {
@@ -23,6 +26,8 @@ namespace Tarbora {
 
             // m_Shader.LoadFromFile("../resources/shaders/mainShader/vs", "../resources/shaders/mainShader/fs");
             m_Gui = std::unique_ptr<Gui>(new Gui());
+
+            stbi_flip_vertically_on_write(1);
         }
 
         void Close()
@@ -185,6 +190,30 @@ namespace Tarbora {
         void DeleteMesh(unsigned int id)
         {
             glDeleteVertexArrays(1, &id);
+        }
+
+        int TakeScreenshot(const std::string &filename)
+        {
+            // Get the window width and height and reserve memory
+            int width = Main_Window->GetWidth();
+            int height = Main_Window->GetHeight();
+            char *data = (char*) malloc((size_t) (width * height * 3));
+
+            // Configure the format for storing the pixels and read them
+            glPixelStorei(GL_PACK_ALIGNMENT, 1);
+            glReadPixels(0, 0, width, height,  GL_RGB, GL_UNSIGNED_BYTE, data);
+
+            // Generate the timestamp for the name
+            time_t t = time(NULL);
+            char buffer[30];
+            strftime(buffer, 30, "_%Y%m%d_%H%M%S.png", localtime(&t));
+
+            // Store the screnshoot and free the reserved memory
+            int saved = stbi_write_png((filename + buffer).c_str(), width, height, 3, data, 0);
+            free(data);
+
+            LOG_INFO("Graphics_Engine: Saved screenshot %s", (filename + buffer).c_str());
+            return saved;
         }
     }
 }

@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Ofast -g -D DEBUG_MODE=true  -rdynamic CMakeFiles/test-gtx_extend.dir/gtx_extend.cpp.o  -o test-gtx_extend -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

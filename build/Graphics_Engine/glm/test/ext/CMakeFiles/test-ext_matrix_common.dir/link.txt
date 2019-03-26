@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Ofast -g -D DEBUG_MODE=true  -rdynamic CMakeFiles/test-ext_matrix_common.dir/ext_matrix_common.cpp.o  -o test-ext_matrix_common -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

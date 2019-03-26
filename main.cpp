@@ -29,6 +29,7 @@ int main() {
     {
         Tb::KeyReleaseEvent *e = static_cast<Tb::KeyReleaseEvent*>(ev);
         if (e->key == KEY_F3) metrics->SetActive(!metrics->IsActive());
+        else if (e->key == KEY_F2) Tb::Graphics_Engine::TakeScreenshot("../screenshots/test");
         else if (e->key == KEY_ESCAPE) app->Close();
     });
 

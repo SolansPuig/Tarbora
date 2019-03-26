@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -Wall -Wextra -Ofast -g -D DEBUG_MODE=true  -shared -Wl,-soname,libimgui.so -o libimgui.so CMakeFiles/imgui.dir/imgui/imgui.cpp.o CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.o CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.o CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

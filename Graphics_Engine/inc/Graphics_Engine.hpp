@@ -28,5 +28,7 @@ namespace Tarbora {
 
         unsigned int LoadMesh(std::vector<float> vertices);
         void DeleteMesh(unsigned int id);
+
+        int TakeScreenshot(const std::string &filename);
     }
 }
