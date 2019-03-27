@@ -7,7 +7,7 @@ namespace Tb = Tarbora;
 
 int main() {
     Tb::Application* app = new Tb::Application("Settings.json");
-    Tb::HumanViewPtr human_view(new Tb::HumanView(MAIN_CAMERA_ID));
+    Tb::HumanViewPtr human_view(new Tb::HumanView(15));
     app->AddView(human_view);
 
     std::shared_ptr<MetricsGui> metrics(new MetricsGui(false));
@@ -29,7 +29,7 @@ int main() {
     {
         Tb::KeyReleaseEvent *e = static_cast<Tb::KeyReleaseEvent*>(ev);
         if (e->key == KEY_F3) metrics->SetActive(!metrics->IsActive());
-        else if (e->key == KEY_F2) Tb::Graphics_Engine::TakeScreenshot("../screenshots/test");
+        else if (e->key == KEY_F2) Tb::Graphics_Engine::TakeScreenshot("/home/roger/Imatges/test");
         else if (e->key == KEY_ESCAPE) app->Close();
     });
 

@@ -33,8 +33,8 @@ namespace Tarbora {
                 m_LastX = ev->x;
                 m_LastY = ev->y;
 
-                float sensitivity = 0.05;
-                EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", glm::vec3(yoffset * sensitivity, xoffset * sensitivity, 0)));
+                float sensitivity = 0.02;
+                EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", glm::vec3(-yoffset * sensitivity, xoffset * sensitivity, 0)));
                 return true;
             } else if (e->GetType() == EventType::KeyPress)
             {
@@ -55,6 +55,9 @@ namespace Tarbora {
                         case KEY_D:
                             EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(-1, 0, 0)));
                             break;
+                        case KEY_C:
+                            if (m_TargetId == 1) m_TargetId = 15;
+                            else if (m_TargetId == 15) m_TargetId = 1;
                     }
                 }
                 return true;

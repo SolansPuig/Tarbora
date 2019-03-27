@@ -15,8 +15,12 @@ namespace Tarbora {
         m_RenderPass = render_pass;
         SetTransform(to);
         SetRadius(0);
+        m_OldPitch = 0.0f;
+        m_OldYaw = 0.0f;
+        m_OldRoll = 0.0f;
         m_Pitch = 0.0f;
-        m_Yaw = -90.0f;
+        m_Yaw = 0.0f;
+        m_Roll = 0.0f;
         m_Movement = glm::vec3(0, 0, 0);
     }
 
@@ -52,26 +56,25 @@ namespace Tarbora {
 
     void SceneNode::Update(Scene *scene, float deltaTime)
     {
-        glm::vec3 front, right, up, pos;
-        front.x = cos(glm::radians(m_Pitch)) * cos(glm::radians(m_Yaw));
-        front.y = sin(glm::radians(m_Pitch));
-        front.z = cos(glm::radians(m_Pitch)) * sin(glm::radians(m_Yaw));
-        front = glm::normalize(front);
+        // glm::vec3 front, right, up;
+        // front.x = cos(glm::radians(m_Pitch)) * cos(glm::radians(m_Yaw));
+        // front.y = sin(glm::radians(m_Pitch));
+        // front.z = cos(glm::radians(m_Pitch)) * sin(glm::radians(m_Yaw));
+        // front = glm::normalize(front);
+        // right = glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f));
+        // right = glm::normalize(right);
+        // up = glm::cross(right, front);
+        // up = glm::normalize(up);
 
-        right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f)));
-        up = glm::normalize(glm::cross(right, front));
+        m_ToWorld = glm::translate(m_ToWorld, 5 * deltaTime * glm::vec3(m_Movement[0], m_Movement[1], m_Movement[2]));
+        m_ToWorld = glm::rotate(m_ToWorld, glm::radians(m_Roll - m_OldRoll), glm::vec3(0.0f, 0.0f, 1.0f));
+        m_ToWorld = glm::rotate(m_ToWorld, glm::radians(m_Yaw - m_OldYaw), glm::vec3(0.0f, 1.0f, 0.0f));
+        m_ToWorld = glm::rotate(m_ToWorld, glm::radians(m_Pitch - m_OldPitch), glm::vec3(1.0f, 0.0f, 0.0f));
+        m_FromWorld = glm::transpose(m_ToWorld);
 
-        pos = m_FromWorld[3];
-        pos += deltaTime * (m_Movement[0] * right + m_Movement[1] * up + m_Movement[2] * front);
-
-        m_ToWorld[0] = glm::vec4(right.x, up.x, front.x, pos.x);
-        m_ToWorld[1] = glm::vec4(right.y, up.y, front.y, pos.y);
-        m_ToWorld[2] = glm::vec4(right.z, up.z, front.z, pos.z);
-
-        m_FromWorld[0] = glm::vec4(right, m_FromWorld[0][3]);
-        m_FromWorld[1] = glm::vec4(up, m_FromWorld[1][3]);
-        m_FromWorld[2] = glm::vec4(front, m_FromWorld[2][3]);
-        m_FromWorld[3] = glm::vec4(pos, m_FromWorld[3][3]);
+        m_OldYaw = m_Yaw;
+        m_OldPitch = m_Pitch;
+        m_OldRoll = m_Roll;
 
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
             (*itr)->Update(scene, deltaTime);
@@ -162,10 +165,10 @@ namespace Tarbora {
 
     void RootNode::DrawChildren(Scene *scene, glm::mat4 *parentTransform)
     {
+        glm::mat4 view = scene->GetCamera()->GetView();
+        glm::mat4 new_transform = *parentTransform * view;
         for (int pass = RenderPass::Zero; pass < RenderPass::Last; pass++)
         {
-            glm::mat4 view = scene->GetCamera()->GetView();
-            glm::mat4 new_transform = *parentTransform * view;
             switch (pass)
             {
                 case RenderPass::Static:
@@ -195,12 +198,49 @@ namespace Tarbora {
         return m_Children[pass]->AddChild(child);
     }
 
+    Camera::Camera(ActorId actorId, std::string name, glm::mat4 *to) : SceneNode(actorId, name, RenderPass::Actor, to) {}
+
+    const glm::mat4 Camera::GetView()
+    {
+        glm::mat4 matrix = glm::transpose(GetWorldMatrix());
+        glm::vec3 up = glm::vec3(matrix[1]);
+        glm::vec3 front = glm::vec3(matrix[2]);
+        glm::vec3 position = glm::vec3(matrix[3]);
+        glm::mat4 view = glm::lookAt(position, position + front, up);
+        return view;
+    }
+
+    const glm::mat4 Camera::GetViewAngle()
+    {
+        glm::mat4 matrix = glm::transpose(GetWorldMatrix());
+        glm::vec3 up = glm::vec3(matrix[1]);
+        glm::vec3 front = glm::vec3(matrix[2]);
+        glm::vec3 position = glm::vec3(0, 0, 0);
+        glm::mat4 view = glm::lookAt(position, position + front, up);
+        return view;
+    }
+
+    MeshNode::MeshNode(ActorId actorId, std::string name, RenderPass renderPass, glm::mat4 *to, std::string mesh, std::string shader, std::string texture) : SceneNode(actorId, name, renderPass, to)
+    {
+        if (texture != "") m_Texture = GET_RESOURCE(Texture, texture);
+        m_Shader = GET_RESOURCE(Shader, shader);
+        m_Mesh = GET_RESOURCE(MeshResource, mesh);
+    }
+
+    void MeshNode::Draw(Scene *scene, glm::mat4 *parentTransform)
+    {
+        (void)(scene);
+        m_Shader->Use();
+        glm::mat4 newMat = *parentTransform * m_ToWorld;
+        m_Shader->Set("transform", &newMat);
+
+        if (m_Texture) Graphics_Engine::BindTexture(m_Texture->GetId());
+        Graphics_Engine::DrawMesh(m_Mesh);
+    }
+
     Skybox::Skybox(std::string shader, std::string texture) : SceneNode(SKY_ID, "skybox", RenderPass::Sky)
     {
-        if (texture != "")
-        {
-            m_Texture = GET_RESOURCE(Texture, texture);
-        }
+        if (texture != "") m_Texture = GET_RESOURCE(Texture, texture);
         m_Shader = GET_RESOURCE(Shader, shader);
         m_Mesh = GET_RESOURCE(MeshResource, "meshes/cube.mesh");
         m_Active = true;
@@ -215,33 +255,4 @@ namespace Tarbora {
         if (m_Texture) Graphics_Engine::BindTexture(m_Texture->GetId());
         Graphics_Engine::DrawMesh(m_Mesh);
     }
-
-    Camera::Camera(ActorId actorId, std::string name, glm::mat4 *to) : SceneNode(actorId, name, RenderPass::Actor, to) {}
-
-    const glm::mat4 Camera::GetView()
-    {
-        glm::mat4 matrix = GetWorldMatrix();
-        glm::vec3 up = glm::vec3(matrix[1]);
-        glm::vec3 front = glm::vec3(matrix[2]);
-        glm::vec3 position = glm::vec3(matrix[3]);
-        glm::mat4 view = glm::lookAt(position, position + front, up);
-        return view;
-    }
-
-    const glm::mat4 Camera::GetViewAngle()
-    {
-        glm::mat4 matrix = GetWorldMatrix();
-        glm::vec3 up = glm::vec3(matrix[1]);
-        glm::vec3 front = glm::vec3(matrix[2]);
-        glm::vec3 position = glm::vec3(0, 0, 0);
-        glm::mat4 view = glm::lookAt(position, position + front, up);
-        return view;
-    }
-
-    // MeshNode::MeshNode(ActorId actorId, RenderPass renderPass, std::string name, glm::mat4 *to) : SceneNode(actorId, name, renderPass, to) {};
-    //
-    // MeshNode::Draw(Scene *scene, glm::mat4 parentTransform)
-    // {
-    //     Graphics_Engine::GetShader()->SetMat4("model", *parentTransform * m_ToWorld);
-    // }
 }

@@ -13,6 +13,11 @@ namespace Tarbora {
         AddChild(m_Camera);
         m_Projection = glm::perspective(glm::radians(45.0f), Graphics_Engine::GetWindow()->GetRatio(), 0.1f, 100.0f);
 
+        glm::mat4 mat = glm::mat4(1.0f);
+        mat = glm::translate(mat, glm::vec3(0.0, 0.0, 12.0));
+        std::shared_ptr<MeshNode> cube = std::shared_ptr<MeshNode>(new MeshNode(15, "body", RenderPass::Static, &mat, "meshes/cube.mesh", "shaders/model.shader.json", "textures/minecraft.png"));
+        AddChild(cube);
+
         EventFn changeProjection = [this](Event* e)
         {
             (void)(e);

@@ -83,7 +83,8 @@ namespace Tarbora {
         glm::mat4 m_ToWorld;
         glm::mat4 m_FromWorld;
         glm::vec3 m_Movement;
-        float m_Pitch, m_Yaw, m_Roll;
+        glm::vec3 m_OldFront;
+        float m_Pitch, m_Yaw, m_Roll, m_OldPitch, m_OldYaw, m_OldRoll;
         float m_Radius;
         RenderPass m_RenderPass;
     };
@@ -122,10 +123,14 @@ namespace Tarbora {
     };
     typedef std::shared_ptr<Camera> CameraPtr;
 
-    // class MeshNode : public SceneNode
-    // {
-    // public:
-    //     MeshNode(ActorId actorId, std::string name, glm::mat4 *to);
-    //     virtual void Draw(Scene *scene, glm::mat4 *parentTransform) override;
-    // };
+    class MeshNode : public SceneNode
+    {
+    public:
+        MeshNode(ActorId actorId, std::string name, RenderPass renderPass, glm::mat4 *to, std::string mesh, std::string shader, std::string texture="");
+        virtual void Draw(Scene *scene, glm::mat4 *parentTransform);
+    protected:
+        std::shared_ptr<Texture> m_Texture;
+        std::shared_ptr<Shader> m_Shader;
+        std::shared_ptr<MeshResource> m_Mesh;
+    };
 }
