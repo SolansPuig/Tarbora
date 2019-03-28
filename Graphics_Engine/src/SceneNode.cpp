@@ -66,10 +66,11 @@ namespace Tarbora {
         // up = glm::cross(right, front);
         // up = glm::normalize(up);
 
-        m_ToWorld = glm::translate(m_ToWorld, 5 * deltaTime * glm::vec3(m_Movement[0], m_Movement[1], m_Movement[2]));
         m_ToWorld = glm::rotate(m_ToWorld, glm::radians(m_Roll - m_OldRoll), glm::vec3(0.0f, 0.0f, 1.0f));
-        m_ToWorld = glm::rotate(m_ToWorld, glm::radians(m_Yaw - m_OldYaw), glm::vec3(0.0f, 1.0f, 0.0f));
         m_ToWorld = glm::rotate(m_ToWorld, glm::radians(m_Pitch - m_OldPitch), glm::vec3(1.0f, 0.0f, 0.0f));
+        glm::vec3 up = glm::vec4(0.0f, 1.0f, 0.0f, 0.0f) * m_ToWorld;
+        m_ToWorld = glm::rotate(m_ToWorld, glm::radians(m_Yaw - m_OldYaw), up);
+        m_ToWorld = glm::translate(m_ToWorld, 5 * deltaTime * glm::vec3(m_Movement[0], m_Movement[1], m_Movement[2]));
         m_FromWorld = glm::transpose(m_ToWorld);
 
         m_OldYaw = m_Yaw;
