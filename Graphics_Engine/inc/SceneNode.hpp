@@ -34,12 +34,12 @@ namespace Tarbora {
         friend class Scene;
         typedef std::vector<SceneNodePtr> SceneNodeList;
     public:
-        SceneNode(ActorId actorId, std::string name, RenderPass render_pass, const glm::mat4 *to=nullptr);
+        SceneNode(ActorId actorId, std::string name, RenderPass render_pass, const glm::mat4 *matrix=nullptr);
         virtual ~SceneNode() {}
 
         virtual void Update(Scene *scene, float deltaTime);
-        virtual void Draw(Scene *scene, glm::mat4 *parentTransform) { (void)(scene); (void)(parentTransform); }
-        virtual void DrawChildren(Scene *scene, glm::mat4 *parentTransform);
+        virtual void Draw(Scene *scene, glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
+        virtual void DrawChildren(Scene *scene, glm::mat4 &parentTransform);
 
         virtual bool AddChild(SceneNodePtr child);
         virtual SceneNodePtr GetChild(ActorId id);
@@ -53,23 +53,20 @@ namespace Tarbora {
 
         ActorId GetActorId() const { return m_ActorId; }
         const char *GetName() const { return m_Name.c_str(); }
-        void SetTransform(const glm::mat4 *to=nullptr);
-        glm::mat4 const &GetToWorld() const { return m_ToWorld; }
-        void GetTransform(glm::mat4 *toWorld) const
-        {
-            if (toWorld) *toWorld = m_ToWorld;
-        }
-        void SetPosition(const glm::vec3 &pos)
-        {
-            m_ToWorld[0][3] = pos.x;
-            m_ToWorld[1][3] = pos.y;
-            m_ToWorld[2][3] = pos.z;
 
-            m_FromWorld[3] = glm::vec4(pos, 1);
-        }
-        glm::vec3 GetPosition() { return glm::vec3( m_FromWorld[3]); }
+        void SetTransform(const glm::mat4 *matrix=nullptr);
+        glm::mat4 const GetGlobalMatrix();
+        glm::mat4 const &GetLocalMatrix() const { return m_LocalMatrix; }
+        void SetPosition(const glm::vec3 &pos);
+        glm::vec3 const GetPosition();
+        void RotateGlobal(glm::vec3 &rotation);
+        void RotateLocal(glm::vec3 &rotation);
+        void RotateAround(float angle, glm::vec3 &dir);
+        void MoveGlobal(glm::vec3 &movement);
+        void MoveLocal(glm::vec3 &movement);
+        void MoveTo(glm::vec3 &dir);
 
-        virtual glm::mat4 GetWorldMatrix();
+
         void SetRadius(float radius) { m_Radius = radius; }
         float GetRadius() const { return m_Radius; }
         RenderPass GetRenderPass() const { return m_RenderPass; }
@@ -80,11 +77,7 @@ namespace Tarbora {
 
         ActorId m_ActorId;
         std::string m_Name;
-        glm::mat4 m_ToWorld;
-        glm::mat4 m_FromWorld;
-        glm::vec3 m_Movement;
-        glm::vec3 m_OldFront;
-        float m_Pitch, m_Yaw, m_Roll, m_OldPitch, m_OldYaw, m_OldRoll;
+        glm::mat4 m_LocalMatrix;
         float m_Radius;
         RenderPass m_RenderPass;
     };
@@ -94,7 +87,7 @@ namespace Tarbora {
     public:
         RootNode();
         virtual bool AddChild(SceneNodePtr child) override;
-        virtual void DrawChildren(Scene *scene, glm::mat4 *parentTransform) override;
+        virtual void DrawChildren(Scene *scene, glm::mat4 &parentTransform) override;
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
     };
 
@@ -102,7 +95,7 @@ namespace Tarbora {
     {
     public:
         Skybox(std::string shader, std::string texture="");
-        virtual void Draw(Scene *scene, glm::mat4 *parentTransform);
+        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return m_Active; }
         void SetActive(bool active) { m_Active = active; }
     private:
@@ -115,7 +108,7 @@ namespace Tarbora {
     class Camera : public SceneNode
     {
     public:
-        Camera(ActorId actorId, std::string name, glm::mat4 *to=nullptr);
+        Camera(ActorId actorId, std::string name, glm::mat4 *matrix=nullptr);
         const glm::mat4 GetView();
         const glm::mat4 GetViewAngle();
     private:
@@ -126,8 +119,8 @@ namespace Tarbora {
     class MeshNode : public SceneNode
     {
     public:
-        MeshNode(ActorId actorId, std::string name, RenderPass renderPass, glm::mat4 *to, std::string mesh, std::string shader, std::string texture="");
-        virtual void Draw(Scene *scene, glm::mat4 *parentTransform);
+        MeshNode(ActorId actorId, std::string name, RenderPass renderPass, glm::mat4 *matrix, std::string mesh, std::string shader, std::string texture="");
+        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
     protected:
         std::shared_ptr<Texture> m_Texture;
         std::shared_ptr<Shader> m_Shader;

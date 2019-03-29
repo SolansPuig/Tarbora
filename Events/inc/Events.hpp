@@ -105,20 +105,23 @@ namespace Tarbora {
         std::string name;
     };
 
+    enum Space { Global, Local, Relative };
     struct ActorMoveEvent : public ActorEvent
     {
-        ActorMoveEvent(unsigned long int id, std::string n, glm::vec3 pos) :
-            ActorEvent(id, n), position(pos) {}
+        ActorMoveEvent(unsigned long int id, std::string n, glm::vec3 pos, Space s) :
+            ActorEvent(id, n), position(pos), space(s) {}
         EventType GetType() override { return EventType::ActorMove; }
         glm::vec3 position;
+        Space space;
     };
 
     struct ActorRotateEvent : public ActorEvent
     {
-        ActorRotateEvent(unsigned long int id, std::string n, glm::vec3 rot) :
-            ActorEvent(id, n), rotation(rot) {}
+        ActorRotateEvent(unsigned long int id, std::string n, glm::vec3 rot, Space s) :
+            ActorEvent(id, n), rotation(rot), space(s) {}
         EventType GetType() override { return EventType::ActorRotate; }
         glm::vec3 rotation;
+        Space space;
     };
 
     typedef std::function<void(Event*)> EventFn;

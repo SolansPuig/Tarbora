@@ -55,7 +55,7 @@ namespace Tarbora {
     {
         if (m_Root)
         {
-            m_Root->DrawChildren(this, &m_Projection);
+            m_Root->DrawChildren(this, m_Projection);
         }
     }
 

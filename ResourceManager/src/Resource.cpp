@@ -40,41 +40,41 @@ namespace Tarbora {
         glUseProgram(m_Id);
     }
 
-    void Shader::Set(const std::string &name, int value)
+    void Shader::Set(const std::string name, int value)
     {
         glUniform1i(glGetUniformLocation(m_Id, name.c_str()), value);
     }
-    void Shader::Set(const std::string &name, float value)
+    void Shader::Set(const std::string name, float value)
     {
         glUniform1f(glGetUniformLocation(m_Id, name.c_str()), value);
     }
-    void Shader::Set(const std::string &name, glm::vec2 *value)
+    void Shader::Set(const std::string name, glm::vec2 &value)
     {
-        glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(*value));
+        glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
     }
-    void Shader::Set(const std::string &name, float x, float y)
+    void Shader::Set(const std::string name, float x, float y)
     {
         glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec2(x, y)));
     }
-    void Shader::Set(const std::string &name, glm::vec3 *value)
+    void Shader::Set(const std::string name, glm::vec3 &value)
     {
-        glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(*value));
+        glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
     }
-    void Shader::Set(const std::string &name, float x, float y, float z)
+    void Shader::Set(const std::string name, float x, float y, float z)
     {
         glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec3(x, y, z)));
     }
-    void Shader::Set(const std::string &name, glm::vec4 *value)
+    void Shader::Set(const std::string name, glm::vec4 &value)
     {
-        glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(*value));
+        glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
     }
-    void Shader::Set(const std::string &name, float x, float y, float z, float w)
+    void Shader::Set(const std::string name, float x, float y, float z, float w)
     {
         glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec4(x, y, z, w)));
     }
-    void Shader::Set(const std::string &name, glm::mat4 *value)
+    void Shader::Set(const std::string name, glm::mat4 &value)
     {
-        glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(*value));
+        glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
     }
 
     unsigned int CompileShader(json j, const char* type)

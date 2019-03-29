@@ -11,12 +11,16 @@ namespace Tarbora {
         {
             m_Skybox.reset(new Skybox("shaders/sky.shader.json", "textures/sky.png"));
             m_Scene.AddChild(m_Skybox);
+            m_Movement = glm::vec3(0.0f, 0.0f, 0.0f);
+            m_Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
         }
 
         ~GameLayer() {}
 
         virtual bool OnEvent(Event *e) override
         {
+            float sensitivity = 0.8;
+            float speed = 5;
             if (e->GetType() == EventType::MouseMove)
             {
                 MouseMoveEvent *ev = static_cast<MouseMoveEvent*>(e);
@@ -33,8 +37,8 @@ namespace Tarbora {
                 m_LastX = ev->x;
                 m_LastY = ev->y;
 
-                float sensitivity = 0.02;
-                EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", glm::vec3(-yoffset * sensitivity, xoffset * sensitivity, 0)));
+                m_Rotation[0] += yoffset * sensitivity;
+                m_Rotation[1] -= xoffset * sensitivity;
                 return true;
             } else if (e->GetType() == EventType::KeyPress)
             {
@@ -44,16 +48,16 @@ namespace Tarbora {
                     switch (ev->key)
                     {
                         case KEY_W:
-                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, 1)));
+                            m_Movement[2] += speed;
                             break;
                         case KEY_S:
-                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, -1)));
+                            m_Movement[2] -= speed;
                             break;
                         case KEY_A:
-                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(1, 0, 0)));
+                            m_Movement[0] += speed;
                             break;
                         case KEY_D:
-                            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(-1, 0, 0)));
+                            m_Movement[0] -= speed;
                             break;
                         case KEY_C:
                             if (m_TargetId == 1) m_TargetId = 15;
@@ -67,16 +71,16 @@ namespace Tarbora {
                 switch (ev->key)
                 {
                     case KEY_W:
-                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, -1)));
+                        m_Movement[2] -= speed;
                         break;
                     case KEY_S:
-                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(0, 0, 1)));
+                        m_Movement[2] += speed;
                         break;
                     case KEY_A:
-                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(-1, 0, 0)));
+                        m_Movement[0] -= speed;
                         break;
                     case KEY_D:
-                        EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", glm::vec3(1, 0, 0)));
+                        m_Movement[0] += speed;
                         break;
                 }
                 return true;
@@ -86,6 +90,10 @@ namespace Tarbora {
 
         void Update(float deltaTime) override
         {
+            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", deltaTime * m_Movement, Space::Local));
+            if (m_Rotation[0] != 0.0f) EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", deltaTime * glm::vec3(m_Rotation[0], 0.0f, 0.0f), Space::Local));
+            if (m_Rotation[1] != 0.0f) EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", deltaTime * glm::vec3(0.0f, m_Rotation[1], 0.0f), Space::Global));
+            m_Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
             m_Scene.Update(deltaTime);
         }
 
@@ -102,6 +110,8 @@ namespace Tarbora {
         Scene m_Scene;
         ActorId m_TargetId;
         float m_LastX, m_LastY; // Last mouse position
+        glm::vec3 m_Rotation;
+        glm::vec3 m_Movement;
         std::shared_ptr<Skybox> m_Skybox;
     };
 }
