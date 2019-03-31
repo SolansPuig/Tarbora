@@ -26,9 +26,6 @@ namespace Tarbora {
         Graphics_Engine::Init();
         Input::Init();
 
-        GET_RESOURCE(Shader, "shaders/mainShader.shader.json");
-        GET_RESOURCE(Shader, "meshes/cube.mesh");
-
         LOG_INFO("Application: Successfully created application");
     }
 

@@ -29,6 +29,9 @@ namespace Tarbora {
         unsigned int LoadMesh(std::vector<float> vertices);
         void DeleteMesh(unsigned int id);
 
+        void UseShader(std::shared_ptr<Shader> shader);
+        std::shared_ptr<Shader> GetShader();
+
         int TakeScreenshot(const std::string &filename);
     }
 }

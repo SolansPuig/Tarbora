@@ -1,8 +1,0 @@
-{
-    "vertex": "shaders/mainShader.vert",
-    "tes_control": "",
-    "tes_eval": "",
-    "geometry": "",
-    "fragment": "shaders/mainShader.frag",
-    "compute": ""
-}

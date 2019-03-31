@@ -11,7 +11,7 @@ namespace Tarbora {
     namespace Graphics_Engine {
         std::shared_ptr<Window> Main_Window;
         std::unique_ptr<Gui> m_Gui;
-        // Shader m_Shader;
+        std::shared_ptr<Shader> m_Shader;
 
         void Init()
         {
@@ -24,7 +24,6 @@ namespace Tarbora {
                 glfwTerminate();
             }
 
-            // m_Shader.LoadFromFile("../resources/shaders/mainShader/vs", "../resources/shaders/mainShader/fs");
             m_Gui = std::unique_ptr<Gui>(new Gui());
 
             stbi_flip_vertically_on_write(1);
@@ -190,6 +189,17 @@ namespace Tarbora {
         void DeleteMesh(unsigned int id)
         {
             glDeleteVertexArrays(1, &id);
+        }
+
+        void UseShader(std::shared_ptr<Shader> shader)
+        {
+            m_Shader = shader;
+            m_Shader->Use();
+        }
+
+        std::shared_ptr<Shader> GetShader()
+        {
+            return m_Shader;
         }
 
         int TakeScreenshot(const std::string &filename)

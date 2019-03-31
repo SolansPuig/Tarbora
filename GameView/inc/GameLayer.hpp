@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.hpp"
 #include "KeyCodes.hpp"
+#include "Skybox.hpp"
 #include <memory>
 
 namespace Tarbora {
@@ -9,17 +10,17 @@ namespace Tarbora {
     public:
         GameLayer(bool start_active=true) : Layer(start_active)
         {
-            m_Skybox.reset(new Skybox("shaders/sky.shader.json", "textures/sky.png"));
-            m_Scene.AddChild(m_Skybox);
+            m_Skybox.reset(new Skybox(m_Scene, "shaders/sky.shader.json", "textures/sky.png"));
             m_Movement = glm::vec3(0.0f, 0.0f, 0.0f);
             m_Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+            m_Pitch = 0;
         }
 
         ~GameLayer() {}
 
         virtual bool OnEvent(Event *e) override
         {
-            float sensitivity = 0.8;
+            float sensitivity = 0.05f;
             float speed = 5;
             if (e->GetType() == EventType::MouseMove)
             {
@@ -37,8 +38,14 @@ namespace Tarbora {
                 m_LastX = ev->x;
                 m_LastY = ev->y;
 
-                m_Rotation[0] += yoffset * sensitivity;
+                if ((m_Pitch + yoffset * sensitivity) < 89 && (m_Pitch + yoffset * sensitivity) > -89)
+                {
+                    m_Pitch += yoffset * sensitivity;
+                    m_Rotation[0] += yoffset * sensitivity;
+                }
+
                 m_Rotation[1] -= xoffset * sensitivity;
+
                 return true;
             } else if (e->GetType() == EventType::KeyPress)
             {
@@ -90,9 +97,12 @@ namespace Tarbora {
 
         void Update(float deltaTime) override
         {
-            EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", deltaTime * m_Movement, Space::Local));
-            if (m_Rotation[0] != 0.0f) EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", deltaTime * glm::vec3(m_Rotation[0], 0.0f, 0.0f), Space::Local));
-            if (m_Rotation[1] != 0.0f) EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", deltaTime * glm::vec3(0.0f, m_Rotation[1], 0.0f), Space::Global));
+            if (m_Movement != glm::vec3(0.0f, 0.0f, 0.0f))
+                EventManager::Trigger(ActorMove, new ActorMoveEvent(m_TargetId, "body", deltaTime * m_Movement, Space::Local));
+            if (m_Rotation[0] != 0.0f)
+                EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", glm::vec3(m_Rotation[0], 0.0f, 0.0f), Space::Local));
+            if (m_Rotation[1] != 0.0f)
+                EventManager::Trigger(ActorRotate, new ActorRotateEvent(m_TargetId, "body", glm::vec3(0.0f, m_Rotation[1], 0.0f), Space::Global));
             m_Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
             m_Scene.Update(deltaTime);
         }
@@ -102,7 +112,7 @@ namespace Tarbora {
             m_Scene.Draw();
         }
 
-        std::shared_ptr<Skybox> GetSkybox() const { return m_Skybox; }
+        SkyboxPtr GetSkybox() const { return m_Skybox; }
 
         void SetTargetId(ActorId id) { m_TargetId = id; }
         ActorId GetTargetId() const { return m_TargetId; }
@@ -111,7 +121,8 @@ namespace Tarbora {
         ActorId m_TargetId;
         float m_LastX, m_LastY; // Last mouse position
         glm::vec3 m_Rotation;
+        float m_Pitch;
         glm::vec3 m_Movement;
-        std::shared_ptr<Skybox> m_Skybox;
+        SkyboxPtr m_Skybox;
     };
 }
