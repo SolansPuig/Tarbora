@@ -31,7 +31,7 @@ namespace Tarbora {
         }
     private:
         bool m_active;
-        bool m_event_blocking;
+        bool m_Event_blocking;
     };
 
     typedef std::list<std::shared_ptr<Layer>> LayerList;

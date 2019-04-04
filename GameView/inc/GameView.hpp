@@ -1,9 +1,9 @@
 #pragma once
 #include <list>
 #include <memory>
+#include "Actors.hpp"
 
 namespace Tarbora {
-    typedef unsigned long ActorId;
     enum GameViewType {
         GV_Human, GV_Remote, GV_AI, GV_Recorder, GV_Other
     };

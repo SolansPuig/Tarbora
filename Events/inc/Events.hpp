@@ -5,15 +5,14 @@
 #include "glm/glm.hpp"
 #include "Logger.hpp"
 
-#define BIND(x) std::bind(&x, this, std::placeholders::_1)
-
 namespace Tarbora {
     enum EventType
     {
         WindowClose, WindowResize, WindowFocus, WindowMove, WindowIconify,
         KeyPress, KeyRelease,
         MouseButtonPress, MouseButtonRelease, MouseMove, MouseScroll,
-        ActorMove, ActorRotate, ActorScale
+        ActorMove, ActorRotate, ActorScale,
+        CreateActor, CreateActorModel
     };
 
     struct Event
@@ -100,7 +99,7 @@ namespace Tarbora {
 
     struct ActorEvent : public Event
     {
-        ActorEvent(unsigned long int id, std::string n) : actorId(id), name(n) {}
+        ActorEvent(unsigned int id, std::string n) : actorId(id), name(n) {}
         unsigned long int actorId;
         std::string name;
     };
@@ -108,7 +107,7 @@ namespace Tarbora {
     enum Space { Global, Local, Relative };
     struct ActorMoveEvent : public ActorEvent
     {
-        ActorMoveEvent(unsigned long int id, std::string n, glm::vec3 pos, Space s) :
+        ActorMoveEvent(unsigned int id, std::string n, glm::vec3 pos, Space s) :
             ActorEvent(id, n), position(pos), space(s) {}
         EventType GetType() override { return EventType::ActorMove; }
         glm::vec3 position;
@@ -117,15 +116,35 @@ namespace Tarbora {
 
     struct ActorRotateEvent : public ActorEvent
     {
-        ActorRotateEvent(unsigned long int id, std::string n, glm::vec3 rot, Space s) :
+        ActorRotateEvent(unsigned int id, std::string n, glm::vec3 rot, Space s) :
             ActorEvent(id, n), rotation(rot), space(s) {}
         EventType GetType() override { return EventType::ActorRotate; }
         glm::vec3 rotation;
         Space space;
     };
 
+    struct CreateActorEvent : public Event
+    {
+        CreateActorEvent(std::string e) :
+            entity(e) {}
+        EventType GetType() override { return EventType::CreateActor; }
+        std::string entity;
+    };
+
+    struct CreateActorModelEvent : public Event
+    {
+        CreateActorModelEvent(unsigned int id, int pass, std::string m, std::string s, std::string t) :
+            actorId(id), renderPass(pass), model(m), shader(s), texture(t) {}
+        EventType GetType() override { return EventType::CreateActorModel; }
+        unsigned int actorId;
+        int renderPass;
+        std::string model, shader, texture;
+    };
+
     typedef std::function<void(Event*)> EventFn;
+    typedef std::function<void(Event*)> CommandFn;
     typedef unsigned int EventId;
+    typedef unsigned int CommandId;
 
     namespace EventManager
     {
@@ -134,6 +153,6 @@ namespace Tarbora {
 
         EventId Subscribe(EventType type, EventFn func);
         void Unsubscribe(EventType type, EventId id);
-        void Trigger(EventType type, Event* event);
+        void Trigger(EventType type, Event *event);
     };
 }

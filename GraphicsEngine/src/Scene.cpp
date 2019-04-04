@@ -2,7 +2,7 @@
 #include <utility>
 #include "Logger.hpp"
 #include "Events.hpp"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 #include <glm/gtx/string_cast.hpp>
 
 namespace Tarbora {
@@ -11,17 +11,19 @@ namespace Tarbora {
         m_Root.reset(new RootNode());
         m_Camera.reset(new Camera(MAIN_CAMERA_ID, "body"));
         AddChild(m_Camera, RenderPass::Actor);
-        m_Projection = glm::perspective(glm::radians(45.0f), Graphics_Engine::GetWindow()->GetRatio(), 0.1f, 100.0f);
+        m_Projection = glm::perspective(glm::radians(45.0f), GraphicsEngine::GetWindow()->GetRatio(), 0.1f, 100.0f);
 
-        CreateActor(15, "models/human.json", "shaders/model.shader.json", "textures/male.png");
-
-        EventFn changeProjection = [this](Event* e)
+        EvtWindowResizeId = EventManager::Subscribe(EventType::WindowResize, [this](Event *e)
         {
             (void)(e);
-            m_Projection = glm::perspective(glm::radians(45.0f), Graphics_Engine::GetWindow()->GetRatio(), 0.1f, 100.0f);
-        };
+            m_Projection = glm::perspective(glm::radians(45.0f), GraphicsEngine::GetWindow()->GetRatio(), 0.1f, 100.0f);
+        });
 
-        EvtWindowResizeId = EventManager::Subscribe(EventType::WindowResize, changeProjection);
+        EvtCreateActorModelId = EventManager::Subscribe(EventType::CreateActorModel, [this](Event *e)
+        {
+            CreateActorModelEvent *ev = static_cast<CreateActorModelEvent*>(e);
+            CreateActor(ev->actorId, static_cast<RenderPass>(ev->renderPass), ev->model, ev->shader, ev->texture);
+        });
 
         EventFn onActorEvent = [this](Event* e)
         {
@@ -45,6 +47,7 @@ namespace Tarbora {
         EventManager::Unsubscribe(EventType::WindowResize, EvtWindowResizeId);
         EventManager::Unsubscribe(EventType::ActorMove, EvtActorMoveId);
         EventManager::Unsubscribe(EventType::ActorRotate, EvtActorRotateId);
+        EventManager::Unsubscribe(EventType::CreateActorModel, EvtCreateActorModelId);
     }
 
     void Scene::Update(float deltaTime)
@@ -98,17 +101,19 @@ namespace Tarbora {
         return node;
     }
 
-    void Scene::CreateActor(ActorId id, std::string model, std::string shader, std::string texture)
+    void Scene::CreateActor(ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture)
     {
+        LOG_DEBUG("Create model %s with id %d", model.c_str(), id);
         json j = GET_RESOURCE(JsonResource, model)->GetJson();
-        std::shared_ptr<MaterialNode> mat = std::shared_ptr<MaterialNode>(new MaterialNode(id, "texture", shader, texture));
+        std::shared_ptr<MaterialNode> mat = std::shared_ptr<MaterialNode>(new MaterialNode(id, std::to_string(id), shader, texture));
         mat->AddChild(CreateNode(id, j["root"]));
-        AddChild(mat, RenderPass::Static);
+        AddChild(mat, renderPass);
     }
 
     void Scene::AddChild(SceneNodePtr child, RenderPass renderPass)
     {
         ActorId id = child->GetActorId();
+        LOG_DEBUG("Add model with id %d", id);
         if (id != INVALID_ID)
             m_ActorMap[id] = child;
         m_Root->AddChild(child, renderPass);

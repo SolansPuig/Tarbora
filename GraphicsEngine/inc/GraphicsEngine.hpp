@@ -4,7 +4,7 @@
 #include "Resource.hpp"
 
 namespace Tarbora {
-    namespace Graphics_Engine {
+    namespace GraphicsEngine {
         void Init();
         void Close();
 

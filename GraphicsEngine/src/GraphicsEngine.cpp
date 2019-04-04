@@ -1,4 +1,4 @@
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 #include <memory>
 #include "Logger.hpp"
 #include "Gui.hpp"
@@ -8,7 +8,7 @@
 #include <time.h>
 
 namespace Tarbora {
-    namespace Graphics_Engine {
+    namespace GraphicsEngine {
         std::shared_ptr<Window> Main_Window;
         std::unique_ptr<Gui> m_Gui;
         std::shared_ptr<Shader> m_Shader;
@@ -20,7 +20,7 @@ namespace Tarbora {
 
             glewExperimental = GL_TRUE;
             if (glewInit() != GLEW_OK) {
-                LOG_ERR("Graphics_Engine: Failed to initialize GLEW");
+                LOG_ERR("GraphicsEngine: Failed to initialize GLEW");
                 glfwTerminate();
             }
 
@@ -222,7 +222,7 @@ namespace Tarbora {
             int saved = stbi_write_png((filename + buffer).c_str(), width, height, 3, data, 0);
             free(data);
 
-            LOG_INFO("Graphics_Engine: Saved screenshot %s", (filename + buffer).c_str());
+            LOG_INFO("GraphicsEngine: Saved screenshot %s", (filename + buffer).c_str());
             return saved;
         }
     }

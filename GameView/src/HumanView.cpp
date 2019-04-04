@@ -1,6 +1,6 @@
 #include "HumanView.hpp"
 #include "Events.hpp"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 
 namespace Tarbora {
     HumanView::HumanView(ActorId id)
@@ -46,7 +46,7 @@ namespace Tarbora {
 
     void HumanView::Draw()
     {
-        Graphics_Engine::BeforeDraw();
+        GraphicsEngine::BeforeDraw();
 
         for (auto &itr : m_Layers)
         {
@@ -54,7 +54,7 @@ namespace Tarbora {
                 itr->Draw();
         }
 
-        Graphics_Engine::AfterDraw();
+        GraphicsEngine::AfterDraw();
     }
 
     void HumanView::PushLayer(std::shared_ptr<Layer> layer)

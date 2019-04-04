@@ -1,0 +1,15 @@
+{
+    "components": [
+        {
+            "name": "type",
+            "types": ["human"]
+        },
+        {
+            "name": "model",
+            "renderPass": 1,
+            "model": "models/human.json",
+            "texture": "textures/male.png",
+            "shader": "shaders/model.shader.json"
+        }
+    ]
+}

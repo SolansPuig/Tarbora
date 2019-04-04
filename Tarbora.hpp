@@ -6,7 +6,7 @@
 #include "Layer.hpp"
 #include "GameLayer.hpp"
 #include "Events.hpp"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 #include "ResourceManager.hpp"
 #include "Resource.hpp"
 #include "Gui.hpp"

@@ -1,9 +1,9 @@
-[submodule "Graphics_Engine/glfw"]
-	path = Graphics_Engine/glfw
+[submodule "GraphicsEngine/glfw"]
+	path = GraphicsEngine/glfw
 	url = https://github.com/glfw/glfw
-[submodule "Graphics_Engine/imgui"]
-	path = Graphics_Engine/imgui
+[submodule "GraphicsEngine/imgui"]
+	path = GraphicsEngine/imgui
 	url = https://github.com/ocornut/imgui
-[submodule "Graphics_Engine/glm"]
-	path = Graphics_Engine/glm
+[submodule "GraphicsEngine/glm"]
+	path = GraphicsEngine/glm
 	url = https://github.com/g-truc/glm

@@ -2,7 +2,7 @@
 #include "imgui.h"
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 
 namespace Tarbora {
     Gui::Gui()
@@ -21,7 +21,7 @@ namespace Tarbora {
             style.WindowRounding = 0.0f;
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
-        ImGui_ImplGlfw_InitForOpenGL(Graphics_Engine::GetWindow()->GetWindow(), true);
+        ImGui_ImplGlfw_InitForOpenGL(GraphicsEngine::GetWindow()->GetWindow(), true);
         ImGui_ImplOpenGL3_Init("#version 410");
     }
 

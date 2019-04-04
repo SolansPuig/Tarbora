@@ -1,6 +1,6 @@
 #include "Application.hpp"
 #include "Logger.hpp"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 #include "Events.hpp"
 #include "KeyCodes.hpp"
 #include "Input.hpp"
@@ -23,8 +23,9 @@ namespace Tarbora {
         ResourceManager::RegisterLoader(LoaderPtr(new MeshResourceLoader()));
 
         Settings::Load(settings_path);
-        Graphics_Engine::Init();
+        GraphicsEngine::Init();
         Input::Init();
+        m_Actors.Init(1000);
 
         LOG_INFO("Application: Successfully created application");
     }
@@ -33,7 +34,7 @@ namespace Tarbora {
     {
         LOG_INFO("Application: Destroying application...");
 
-        Graphics_Engine::Close();
+        GraphicsEngine::Close();
 
         LOG_INFO("Application: Successfully destroyed application");
         Logger::Close();
@@ -54,6 +55,7 @@ namespace Tarbora {
         float m_elapsed_time = m_time > 0.0 ? (current_time - m_time) : (1.0f/60.0f);
         m_time = current_time;
         // m_Metrics.SetTime(elapsed_time);
+        m_Actors.Update(m_elapsed_time);
         for (auto &itr : m_Game_Views)
         {
             itr->Update(m_elapsed_time);

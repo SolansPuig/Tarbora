@@ -1,5 +1,5 @@
 #include "Resource.hpp"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 #include <glm/gtc/type_ptr.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -32,7 +32,7 @@ namespace Tarbora {
 
     Shader::~Shader()
     {
-        Graphics_Engine::DeleteProgram(m_Id);
+        GraphicsEngine::DeleteProgram(m_Id);
     }
 
     void Shader::Use()
@@ -95,7 +95,7 @@ namespace Tarbora {
             file.close();
             const char *code = s.c_str();
             // Compile it
-            id = Graphics_Engine::CompileShader(type, code);
+            id = GraphicsEngine::CompileShader(type, code);
         } else {
             if (type == std::string("vertex") || type == std::string("fragment"))
                 LOG_ERR("ShaderCompiler: Shader type %s is required.", type);
@@ -123,7 +123,7 @@ namespace Tarbora {
         ids[5] = CompileShader(j, "compute");
 
         // Link the program
-        unsigned int program = Graphics_Engine::LinkProgram(ids);
+        unsigned int program = GraphicsEngine::LinkProgram(ids);
         ResourcePtr r = ResourcePtr(new Shader(path, program));
         file.close();
         return r;
@@ -131,7 +131,7 @@ namespace Tarbora {
 
     Texture::~Texture()
     {
-        Graphics_Engine::DeleteTexture(m_Id);
+        GraphicsEngine::DeleteTexture(m_Id);
     }
 
     ResourcePtr TextureResourceLoader::Load(std::string path)
@@ -148,7 +148,7 @@ namespace Tarbora {
                 LOG_ERR("TextureLoader: The image textures/missing.png failed to load due to: %s", stbi_failure_reason());
         }
 
-        unsigned int id = Graphics_Engine::LoadTexture(data, width, height, nrComponents);
+        unsigned int id = GraphicsEngine::LoadTexture(data, width, height, nrComponents);
 
         // Delete the image, as it is already on the GPU
         stbi_image_free(data);
@@ -182,7 +182,7 @@ namespace Tarbora {
         }
 
         // Create the Mesh
-        unsigned int id = Graphics_Engine::LoadMesh(v);
+        unsigned int id = GraphicsEngine::LoadMesh(v);
 
         ResourcePtr r = ResourcePtr(new MeshResource(path, id, vertices));
         return r;
@@ -190,6 +190,6 @@ namespace Tarbora {
 
     MeshResource::~MeshResource()
     {
-        Graphics_Engine::DeleteMesh(m_Id);
+        GraphicsEngine::DeleteMesh(m_Id);
     }
 }

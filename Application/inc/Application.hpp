@@ -2,6 +2,7 @@
 #include "GameView.hpp"
 #include "Settings.hpp"
 #include "ResourceManager.hpp"
+#include "Actors.hpp"
 
 namespace Tarbora {
     class Application
@@ -24,5 +25,7 @@ namespace Tarbora {
         float m_time;
         float m_elapsed_time;
         GameViewList m_Game_Views;
+
+        Actors m_Actors;
     };
 }

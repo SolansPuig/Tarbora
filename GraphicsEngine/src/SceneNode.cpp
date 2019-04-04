@@ -1,6 +1,6 @@
 #include "SceneNode.hpp"
 #include "Logger.hpp"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 #include "Settings.hpp"
 #include "Scene.hpp"
 #include <glm/gtx/string_cast.hpp>
@@ -56,19 +56,20 @@ namespace Tarbora {
     {
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
         {
+            LOG_DEBUG("Draw children with id %d", itr->second->GetActorId());
             glm::mat4 newTransform = parentTransform * m_LocalMatrix;
-            if ((*itr).second->IsVisible(scene))
+            if (itr->second->IsVisible(scene))
             {
                 // TODO: Check alpha
-                (*itr).second->Draw(scene, newTransform);
-                (*itr).second->DrawChildren(scene, newTransform);
+                itr->second->Draw(scene, newTransform);
+                itr->second->DrawChildren(scene, newTransform);
             }
         }
     }
 
     bool SceneNode::AddChild(SceneNodePtr child)
     {
-        m_Children.emplace(child->GetName(), child);
+        m_Children[child->GetName()] = child;
         child->m_Parent = this;
         float new_radius = child->GetPosition().length() + child->GetRadius();
         if (new_radius > m_Radius)
@@ -78,12 +79,11 @@ namespace Tarbora {
 
     SceneNodePtr SceneNode::GetChild(ActorId id)
     {
-        for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
+        std::string name = std::to_string(id);
+        auto itr = m_Children.find(name);
+        if (itr != m_Children.end())
         {
-            if (id == itr->second->GetActorId())
-            {
-                return itr->second;
-            }
+            return itr->second;
         }
         return SceneNodePtr();
     }
@@ -100,14 +100,13 @@ namespace Tarbora {
 
     bool SceneNode::RemoveChild(ActorId id)
     {
-        for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
-    	{
-    		if (id == itr->second->GetActorId())
-    		{
-    			m_Children.erase(itr);
-    			return true;
-    		}
-    	}
+        std::string name = std::to_string(id);
+        auto itr = m_Children.find(name);
+        if (itr != m_Children.end())
+        {
+            m_Children.erase(itr);
+            return true;
+        }
         return false;
     }
 
@@ -220,9 +219,9 @@ namespace Tarbora {
                 case RenderPass::Sky:
                     view = scene->GetCamera()->GetViewAngle();
                     newMat = parentTransform * view;
-                    Graphics_Engine::BeforeDrawSky();
+                    GraphicsEngine::BeforeDrawSky();
                     m_Children["skyGroup"]->DrawChildren(scene, newMat);
-                    Graphics_Engine::AfterDrawSky();
+                    GraphicsEngine::AfterDrawSky();
                     break;
             }
         }
@@ -230,6 +229,7 @@ namespace Tarbora {
 
     bool RootNode::AddChild(SceneNodePtr child, RenderPass renderPass)
     {
+        LOG_DEBUG("Add model with id %d to render pass %d", child->GetActorId(), (int)renderPass);
         switch (renderPass)
         {
             case RenderPass::Static:
@@ -272,8 +272,9 @@ namespace Tarbora {
     void MaterialNode::Draw(Scene *scene, glm::mat4 &parentTransform)
     {
         (void)(scene); (void)(parentTransform);
-        Graphics_Engine::UseShader(m_Shader);
-        if (m_Texture) Graphics_Engine::BindTexture(m_Texture->GetId());
+        LOG_DEBUG("Draw %d", m_ActorId);
+        GraphicsEngine::UseShader(m_Shader);
+        if (m_Texture) GraphicsEngine::BindTexture(m_Texture->GetId());
     }
 
     MeshNode::MeshNode(ActorId actorId, std::string name, std::string mesh) :
@@ -289,10 +290,10 @@ namespace Tarbora {
     {
         (void)(scene);
         glm::mat4 newMat = parentTransform * m_LocalMatrix * m_Scale;
-        Graphics_Engine::GetShader()->Set("transform", newMat);
-        Graphics_Engine::GetShader()->Set("uv", m_Uv);
-        Graphics_Engine::GetShader()->Set("size", m_TexSize);
-        Graphics_Engine::DrawMesh(m_Mesh);
+        GraphicsEngine::GetShader()->Set("transform", newMat);
+        GraphicsEngine::GetShader()->Set("uv", m_Uv);
+        GraphicsEngine::GetShader()->Set("size", m_TexSize);
+        GraphicsEngine::DrawMesh(m_Mesh);
     }
 
     void MeshNode::Scale(glm::vec3 &scale) {

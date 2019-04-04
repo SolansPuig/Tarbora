@@ -1,5 +1,5 @@
 #include "Input.hpp"
-#include "Graphics_Engine.hpp"
+#include "GraphicsEngine.hpp"
 #include "Logger.hpp"
 
 namespace Tarbora {
@@ -8,7 +8,7 @@ namespace Tarbora {
 
         void Init()
         {
-            window = Graphics_Engine::GetWindow()->GetWindow();
+            window = GraphicsEngine::GetWindow()->GetWindow();
         }
 
         bool IsKeyPressed(int keycode)

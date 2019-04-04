@@ -29,12 +29,15 @@ int main() {
     {
         Tb::KeyReleaseEvent *e = static_cast<Tb::KeyReleaseEvent*>(ev);
         if (e->key == KEY_F3) metrics->SetActive(!metrics->IsActive());
-        else if (e->key == KEY_F2) Tb::Graphics_Engine::TakeScreenshot("/home/roger/Imatges/test");
+        else if (e->key == KEY_F2) Tb::GraphicsEngine::TakeScreenshot("/home/roger/Imatges/test");
         else if (e->key == KEY_ESCAPE) app->Close();
     });
 
+    Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/human.json");
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+
     app->Run();
 
-    delete app;
     return 0;
 }

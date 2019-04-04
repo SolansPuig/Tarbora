@@ -5,16 +5,10 @@
 #include <vector>
 #include "Resource.hpp"
 #include "Events.hpp"
-
-#define INVALID_ID 0
-#define MAIN_CAMERA_ID 1
-#define SKY_ID 10
+#include "Actor.hpp"
 
 namespace Tarbora {
     class Scene;
-
-    // Temporal
-    typedef unsigned long ActorId;
 
     enum RenderPass
     {

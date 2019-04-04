@@ -16,7 +16,7 @@ namespace Tarbora {
             m_Listeners[type].erase(m_Listeners[type].begin() + id);
         }
 
-        void Trigger(EventType type, Event* event)
+        void Trigger(EventType type, Event *event)
         {
             for (auto itr=m_Listeners[type].begin(); itr != m_Listeners[type].end(); itr++)
             {
