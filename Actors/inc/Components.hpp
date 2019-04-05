@@ -18,7 +18,7 @@ namespace Tarbora {
 
         bool HasType(std::string type) { return count(m_Types.begin(), m_Types.end(), type) > 0; }
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new TypeComponent); }
+        static ActorComponentPtr Creator() { return ActorComponentPtr(new TypeComponent()); }
     private:
         std::vector<std::string> m_Types;
     };
@@ -42,7 +42,7 @@ namespace Tarbora {
         std::string GetTexture() { return m_Texture; }
         std::string GetShader() { return m_Shader; }
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new ModelComponent); }
+        static ActorComponentPtr Creator() { return ActorComponentPtr(new ModelComponent()); }
     private:
         int m_RenderPass;
         std::string m_Model, m_Texture, m_Shader;

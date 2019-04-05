@@ -4,7 +4,7 @@
 namespace Tarbora {
     ActorFactory::ActorFactory() {}
 
-    bool ActorFactory::Create(ActorPtr actor, std::string actorResource)
+    bool ActorFactory::Create(Actor *actor, std::string actorResource)
     {
         json j = GET_RESOURCE(JsonResource, actorResource)->GetJson();
         if (!actor->Init(j))

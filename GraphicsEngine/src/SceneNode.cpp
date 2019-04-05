@@ -56,7 +56,6 @@ namespace Tarbora {
     {
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
         {
-            LOG_DEBUG("Draw children with id %d", itr->second->GetActorId());
             glm::mat4 newTransform = parentTransform * m_LocalMatrix;
             if (itr->second->IsVisible(scene))
             {
@@ -229,7 +228,6 @@ namespace Tarbora {
 
     bool RootNode::AddChild(SceneNodePtr child, RenderPass renderPass)
     {
-        LOG_DEBUG("Add model with id %d to render pass %d", child->GetActorId(), (int)renderPass);
         switch (renderPass)
         {
             case RenderPass::Static:
@@ -272,7 +270,6 @@ namespace Tarbora {
     void MaterialNode::Draw(Scene *scene, glm::mat4 &parentTransform)
     {
         (void)(scene); (void)(parentTransform);
-        LOG_DEBUG("Draw %d", m_ActorId);
         GraphicsEngine::UseShader(m_Shader);
         if (m_Texture) GraphicsEngine::BindTexture(m_Texture->GetId());
     }

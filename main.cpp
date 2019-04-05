@@ -6,7 +6,7 @@
 namespace Tb = Tarbora;
 
 int main() {
-    Tb::Application* app = new Tb::Application("Settings.json");
+    std::unique_ptr<Tb::Application> app(new Tb::Application("Settings.json"));
     Tb::HumanViewPtr human_view(new Tb::HumanView(15));
     app->AddView(human_view);
 
@@ -34,7 +34,6 @@ int main() {
     });
 
     Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/human.json");
-    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
 
     app->Run();

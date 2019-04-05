@@ -22,9 +22,9 @@ namespace Tarbora {
         virtual ComponentId GetId() const = 0;
 
     protected:
-        void SetOwner(ActorPtr owner) { m_Owner = owner; }
+        void SetOwner(Actor *owner) { m_Owner = owner; }
 
-        ActorPtr m_Owner;
+        Actor *m_Owner;
     };
 
     typedef std::shared_ptr<ActorComponent> ActorComponentPtr;

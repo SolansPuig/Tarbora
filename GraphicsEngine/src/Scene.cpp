@@ -103,7 +103,6 @@ namespace Tarbora {
 
     void Scene::CreateActor(ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture)
     {
-        LOG_DEBUG("Create model %s with id %d", model.c_str(), id);
         json j = GET_RESOURCE(JsonResource, model)->GetJson();
         std::shared_ptr<MaterialNode> mat = std::shared_ptr<MaterialNode>(new MaterialNode(id, std::to_string(id), shader, texture));
         mat->AddChild(CreateNode(id, j["root"]));
@@ -113,7 +112,6 @@ namespace Tarbora {
     void Scene::AddChild(SceneNodePtr child, RenderPass renderPass)
     {
         ActorId id = child->GetActorId();
-        LOG_DEBUG("Add model with id %d", id);
         if (id != INVALID_ID)
             m_ActorMap[id] = child;
         m_Root->AddChild(child, renderPass);

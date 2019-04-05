@@ -34,7 +34,7 @@ namespace Tarbora {
         if (m_FirstAvailable != nullptr)
         {
             Actor *actor = m_FirstAvailable;
-            if (m_ActorFactory.Create(ActorPtr(actor), entity))
+            if (m_ActorFactory.Create(actor, entity))
             {
                 LOG_DEBUG("Create actor of entity %s with id %d", entity.c_str(), actor->GetId());
                 m_FirstAvailable = actor->GetNext();

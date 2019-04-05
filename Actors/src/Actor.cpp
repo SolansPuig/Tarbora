@@ -32,6 +32,7 @@ namespace Tarbora {
         for (auto itr = m_Components.begin(); itr != m_Components.end(); itr++)
         {
             itr->second->Destroy();
+            m_Components.erase(itr);
         }
     }
 
