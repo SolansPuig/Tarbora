@@ -35,6 +35,8 @@ int main() {
 
     Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/human.json");
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    Tb::CreateActorEvent ev2 = Tb::CreateActorEvent("entities/ground.json");
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev2);
 
     app->Run();
 

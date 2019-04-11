@@ -1,5 +1,7 @@
 #include "Actors.hpp"
 #include "Components.hpp"
+#include "TransformComponent.hpp"
+#include "PhysicsComponent.hpp"
 #include "Events.hpp"
 
 namespace Tarbora {
@@ -21,6 +23,8 @@ namespace Tarbora {
 
         AddComponentCreator("type", TypeComponent::Creator);
         AddComponentCreator("model", ModelComponent::Creator);
+        AddComponentCreator("transform", TransformComponent::Creator);
+        AddComponentCreator("physics", PhysicsComponent::Creator);
 
         EventManager::Subscribe(EventType::CreateActor, [&](Event *e)
         {
@@ -61,9 +65,17 @@ namespace Tarbora {
 
     void Actors::Destroy(ActorId id)
     {
-        m_ActorList[id].Destroy();
-        m_ActorList[id].SetNext(m_FirstAvailable);
+        m_ActorList[id-1].Destroy();
+        m_ActorList[id-1].SetNext(m_FirstAvailable);
         m_FirstAvailable = &m_ActorList[id];
+    }
+
+    void Actors::Close()
+    {
+        for (ActorId id = 1; id <= m_ActorList.size(); id++)
+        {
+            Destroy(id);
+        }
     }
 
     ActorPtr Actors::Get(ActorId id)

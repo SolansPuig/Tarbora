@@ -20,28 +20,13 @@ namespace Tarbora {
     bool SceneNode::OnActorEvent(ActorEvent *e)
     {
         bool parsed = false;
-        if (e->name == m_Name)
+        if (e->GetType() == EventType::ActorMove)
         {
-            if (e->GetType() == EventType::ActorMove)
-            {
-                ActorMoveEvent *ev = static_cast<ActorMoveEvent*>(e);
-                if (ev->space == Space::Local) TranslateLocal(ev->position);
-                else if (ev->space == Space::Global) TranslateGlobal(ev->position);
-            } else if (e->GetType() == EventType::ActorRotate)
-            {
-                ActorRotateEvent *ev = static_cast<ActorRotateEvent*>(e);
-                if (ev->space == Space::Local) RotateLocal(ev->rotation);
-                else if (ev->space == Space::Global) RotateGlobal(ev->rotation);
-            }
+            ActorMoveEvent *ev = static_cast<ActorMoveEvent*>(e);
+            SetPosition(ev->position);
+            SetRotation(ev->rotation);
 
             parsed = true;
-        } else {
-            auto itr = m_Children.begin();
-            while (!parsed && itr != m_Children.end())
-            {
-                parsed = itr->second->OnActorEvent(e);
-                itr++;
-            }
         }
         return parsed;
     }
@@ -134,14 +119,19 @@ namespace Tarbora {
 
     void SceneNode::SetPosition(const glm::vec3 &pos)
     {
-        m_LocalMatrix[0][3] = pos.x;
-        m_LocalMatrix[1][3] = pos.y;
-        m_LocalMatrix[2][3] = pos.z;
+        m_LocalMatrix[3] = glm::vec4(pos.x, pos.y, pos.z, 1.0f);
     }
 
     const glm::vec3 SceneNode::GetPosition()
     {
-        return glm::vec3( m_LocalMatrix[0][3], m_LocalMatrix[1][3], m_LocalMatrix[2][3]);
+        return glm::vec3(m_LocalMatrix[3]);
+    }
+
+    void SceneNode::SetRotation(const glm::mat3 &rot)
+    {
+        m_LocalMatrix[0] = glm::vec4(rot[0][0], rot[1][0], rot[2][0], m_LocalMatrix[0][3]);
+        m_LocalMatrix[1] = glm::vec4(rot[0][1], rot[1][1], rot[2][1], m_LocalMatrix[1][3]);
+        m_LocalMatrix[2] = glm::vec4(rot[0][2], rot[1][2], rot[2][2], m_LocalMatrix[2][3]);
     }
 
     const glm::mat4 SceneNode::GetGlobalMatrix()

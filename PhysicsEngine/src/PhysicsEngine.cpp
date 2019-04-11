@@ -1,4 +1,6 @@
 #include "PhysicsEngine.hpp"
+#include <set>
+#include "Logger.hpp"
 
 namespace Tarbora {
     namespace PhysicsEngine {
@@ -7,60 +9,48 @@ namespace Tarbora {
         btCollisionDispatcher *m_Dispatcher;
         btConstraintSolver *m_Solver;
         btDefaultCollisionConfiguration *m_CollisionConfiguration;
-        BulletDebugDrawer *m_DebugDrawer;
-
-        typedef std::map<btRigidBody const *, ActorId>RigidBodyToActorId;
-        typedef std::map<ActorId, btRigidBody const *>ActorIdToRigidBody;
-        RigidBodyToActorId m_ActorIdToRigidBody;
-        ActorIdToRigidBody m_RigidBodyToActorId;
-        ActorId FindActorId(btRigidBody const * rb) const { return m_RigidBodyToActorId[rb]; }
-        btRigidBody *FindRigidBody(ActorId id) const { return m_ActorIdToRigidBody[id]; }
+        // BulletDebugDrawer *m_DebugDrawer;
 
         typedef std::pair<btRigidBody const *, btRigidBody const *> CollisionPair;
         typedef std::set<CollisionPair> CollisionPairs;
         CollisionPairs m_PreviousTickCollisionPairs;
 
-        void SendCollisionPairEvent(btPersistentManifold const *manifold, btRigidBody const *body0, btRigidBody const *body1);
+        btRigidBody *AddShape(btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform);
 
-        void AddShape(ActorPtr actor, btCollisionShape *shape, float mass, float friction, float density, float restitution);
-        void RemoveCollisionObject(btCollisionObject *object);
-
-        static void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep);
+        void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep);
 
 
         bool Init()
         {
             m_CollisionConfiguration = new btDefaultCollisionConfiguration();
-            m_Dispatcher = new btCollisionDispatcher(m_CollisionConfiguration.get());
-            m_Broadphase = new btObvBroadphase();
+            m_Dispatcher = new btCollisionDispatcher(m_CollisionConfiguration);
+            m_Broadphase = new btDbvtBroadphase();
             m_Solver = new btSequentialImpulseConstraintSolver();
             m_DynamicsWorld = new btDiscreteDynamicsWorld(m_Dispatcher, m_Broadphase, m_Solver, m_CollisionConfiguration);
-            m_DebugDrawer = new BulletDebugDrawer();
+            // m_DebugDrawer = new BulletDebugDrawer();
 
-            if (!m_CollisionConfiguration || !m_Dispatcher || !m_Broadphase || !m_Solver || !m_DynamicsWorld || !m_DebugDrawer)
+            if (!m_CollisionConfiguration || !m_Dispatcher || !m_Broadphase || !m_Solver || !m_DynamicsWorld /*|| !m_DebugDrawer*/)
             {
                 LOG_ERR("PhysicsEngine: Initialization failed.");
                 return false;
             }
 
-            m_DynamicsWorld->setDebugDrawer(m_DebugDrawer);
+            // m_DynamicsWorld->setDebugDrawer(m_DebugDrawer);
             m_DynamicsWorld->setInternalTickCallback(BulletInternalTickCallback);
-            m_DynamicsWorld->setWorldUserInfo(this);
+            m_DynamicsWorld->setGravity(btVector3(0, -9.81, 0));
 
             return true;
         }
 
-        void Shutdown()
+        void Close()
         {
             for (int i = m_DynamicsWorld->getNumCollisionObjects()-1; i >= 0; i--)
             {
                 btCollisionObject * const obj = m_DynamicsWorld->getCollisionObjectArray()[i];
-                RemoveCollisionObject(obj);
+                RemoveObject(obj);
             }
 
-            m_ActorBodies.clear();
-
-            delete m_DebugDrawer;
+            // delete m_DebugDrawer;
             delete m_DynamicsWorld;
             delete m_Solver;
             delete m_Broadphase;
@@ -73,5 +63,136 @@ namespace Tarbora {
             m_DynamicsWorld->stepSimulation(deltaTime, 4);
         }
 
+        btRigidBody *AddSphere(float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+        {
+            btSphereShape *const shape = new btSphereShape(radius);
+            return AddShape(shape, mass, friction, density, restitution, transform);
+        }
+
+        btRigidBody *AddShape(btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+        {
+            btVector3 localInertia(0.f, 0.f, 0.f);
+            if (mass > 0.f) shape->calculateLocalInertia(mass, localInertia);
+
+            ActorMotionState *motionState = new ActorMotionState(transform);
+            btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, shape, localInertia);
+            rbInfo.m_restitution = restitution;
+            rbInfo.m_friction = friction;
+
+            btRigidBody *const body = new btRigidBody(rbInfo);
+            m_DynamicsWorld->addRigidBody(body);
+
+            return body;
+        }
+
+        void RemoveObject(btCollisionObject *object)
+        {
+            m_DynamicsWorld->removeCollisionObject(object);
+
+            // Remove all the collision pairs
+            for (auto itr = m_PreviousTickCollisionPairs.begin(); itr != m_PreviousTickCollisionPairs.end();)
+            {
+                auto next = itr;
+                next++;
+
+                if (itr->first == object || itr->second == object)
+                {
+                    m_PreviousTickCollisionPairs.erase(itr);
+                }
+
+                itr = next;
+            }
+
+            if (btRigidBody *const body = btRigidBody::upcast(object))
+            {
+                delete body->getMotionState();
+                delete body->getCollisionShape();
+                delete body->getUserPointer();
+
+                for (int i = body->getNumConstraintRefs()-1; i >= 0; i--)
+                {
+                    btTypedConstraint *const constraint = body->getConstraintRef(i);
+                    m_DynamicsWorld->removeConstraint(constraint);
+                    delete constraint;
+                }
+            }
+
+            delete object;
+        }
+
+        void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep)
+        {
+            CollisionPairs currentTickPairs;
+            btDispatcher *const dispatcher = world->getDispatcher();
+            for (int id = 0; id < dispatcher->getNumManifolds(); id++)
+            {
+                btPersistentManifold const *const manifold = dispatcher->getManifoldByIndexInternal(id);
+                btRigidBody const *const body0 = static_cast<btRigidBody const *>(manifold->getBody0());
+                btRigidBody const *const body1 = static_cast<btRigidBody const *>(manifold->getBody1());
+
+                const bool swapped = body0 > body1;
+                btRigidBody const *const sortedBodyA = swapped ? body1 : body0;
+                btRigidBody const *const sortedBodyB = swapped ? body0 : body1;
+
+                CollisionPair const thisPair = std::make_pair(sortedBodyA, sortedBodyB);
+                currentTickPairs.insert(thisPair);
+
+                if (m_PreviousTickCollisionPairs.find(thisPair) == m_PreviousTickCollisionPairs.end())
+                {
+                    // CollisionEvent ev(manifold, body0, body1);
+                    // EventManager::Trigger(EventType::Collision, &ev);
+                }
+            }
+        }
+    }
+
+    void ActorMotionState::getWorldTransform(btTransform &transform) const
+    {
+        btMatrix3x3 rotation;
+        btVector3 position;
+        for (int i = 0; i < 3; i++)
+        {
+            position[i] = m_Transform[3][i];
+            for (int j = 0; j < 3; j++)
+            {
+                rotation[i][j] = m_Transform[j][i];
+            }
+        }
+
+        transform = btTransform(rotation, position);
+    }
+
+    void ActorMotionState::setWorldTransform(const btTransform &transform)
+    {
+        btMatrix3x3 const &rotation = transform.getBasis();
+        btVector3 const &position = transform.getOrigin();
+        for (int i = 0; i < 4; i++)
+        {
+            m_Transform[3][i] = position[i];
+            for (int j = 0; j < 4; j++)
+            {
+                m_Transform[i][j] = rotation[j][i];
+            }
+        }
+    }
+
+    void ActorMotionState::getWorldTransform(glm::mat4 &transform) const
+    {
+        transform = m_Transform;
+    }
+
+    void ActorMotionState::setWorldTransform(const glm::mat4 &transform)
+    {
+        m_Transform = transform;
+    }
+
+    glm::vec3 ActorMotionState::getPosition()
+    {
+        return glm::vec3(m_Transform[0][3], m_Transform[1][3], m_Transform[2][3]);
+    }
+
+    glm::mat3 ActorMotionState::getRotation()
+    {
+        return glm::mat3(m_Transform);
     }
 }

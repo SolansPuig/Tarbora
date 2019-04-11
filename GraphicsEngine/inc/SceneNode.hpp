@@ -55,6 +55,7 @@ namespace Tarbora {
         glm::mat4 const &GetLocalMatrix() const { return m_LocalMatrix; }
         void SetPosition(const glm::vec3 &pos);
         glm::vec3 const GetPosition();
+        void SetRotation(const glm::mat3 &rot);
         void SetOrigin(glm::vec3 &origin);
         void RotateGlobal(glm::vec3 &rotation);
         void RotateLocal(glm::vec3 &rotation);

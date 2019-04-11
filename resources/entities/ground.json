@@ -2,13 +2,13 @@
     "components": [
         {
             "name": "type",
-            "types": ["human"]
+            "types": ["ground"]
         },
         {
             "name": "model",
             "renderPass": 1,
-            "model": "models/human.json",
-            "texture": "textures/male.png",
+            "model": "models/ground.json",
+            "texture": "textures/minecraft.png",
             "shader": "shaders/model.shader.json"
         },
         {
@@ -18,7 +18,7 @@
             "name": "physics",
             "shape": "sphere",
             "radius": 5.0,
-            "density": 1,
+            "density": 0,
             "friction": 0.1,
             "restitution": 0.1
         }

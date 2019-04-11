@@ -1,6 +1,7 @@
 {
     "scale": 1,
-    "pyxel_density": 40,
+    "pixel_density": 40,
+    "texture_size": 136,
     "root": {
         "name": "body",
         "shape": "meshes/cube.mesh",

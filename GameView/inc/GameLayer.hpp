@@ -99,18 +99,18 @@ namespace Tarbora {
         {
             if (m_Movement != glm::vec3(0.0f, 0.0f, 0.0f))
             {
-                ActorMoveEvent ev = ActorMoveEvent(m_TargetId, "body", deltaTime * m_Movement, Space::Local);
-                EventManager::Trigger(ActorMove, &ev);
+                // ActorMoveEvent ev = ActorMoveEvent(m_TargetId, "body", deltaTime * m_Movement, Space::Local);
+                // EventManager::Trigger(ActorMove, &ev);
             }
             if (m_Rotation[0] != 0.0f)
             {
-                ActorRotateEvent ev = ActorRotateEvent(m_TargetId, "body", glm::vec3(m_Rotation[0], 0.0f, 0.0f), Space::Local);
-                EventManager::Trigger(ActorRotate, &ev);
+                // ActorRotateEvent ev = ActorRotateEvent(m_TargetId, "body", glm::vec3(m_Rotation[0], 0.0f, 0.0f), Space::Local);
+                // EventManager::Trigger(ActorRotate, &ev);
             }
             if (m_Rotation[1] != 0.0f)
             {
-                ActorRotateEvent ev = ActorRotateEvent(m_TargetId, "body", glm::vec3(0.0f, m_Rotation[1], 0.0f), Space::Global);
-                EventManager::Trigger(ActorRotate, &ev);
+                // ActorRotateEvent ev = ActorRotateEvent(m_TargetId, "body", glm::vec3(0.0f, m_Rotation[1], 0.0f), Space::Global);
+                // EventManager::Trigger(ActorRotate, &ev);
             }
             m_Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
             m_Scene.Update(deltaTime);

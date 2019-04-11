@@ -13,6 +13,7 @@ namespace Tarbora {
             ActorId Create(std::string entity);
             void Update(float deltaTime);
             void Destroy(ActorId id);
+            void Close();
             ActorPtr Get(ActorId id);
             ActorComponentPtr GetComponent(ActorId id, ComponentId compId);
 

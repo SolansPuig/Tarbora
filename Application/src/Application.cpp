@@ -7,6 +7,7 @@
 #include "HumanView.hpp"
 #include "Settings.hpp"
 #include "Resource.hpp"
+#include "PhysicsEngine.hpp"
 
 namespace Tarbora {
     Application::Application(const char *settings_path) : m_run(true), m_time(0.0f)
@@ -24,6 +25,7 @@ namespace Tarbora {
 
         Settings::Load(settings_path);
         GraphicsEngine::Init();
+        PhysicsEngine::Init();
         Input::Init();
         m_Actors.Init(1000);
 
@@ -34,6 +36,9 @@ namespace Tarbora {
     {
         LOG_INFO("Application: Destroying application...");
 
+        m_Actors.Close();
+
+        PhysicsEngine::Close();
         GraphicsEngine::Close();
 
         LOG_INFO("Application: Successfully destroyed application");
@@ -52,13 +57,13 @@ namespace Tarbora {
     void Application::Update()
     {
         float current_time = (float)glfwGetTime();
-        float m_elapsed_time = m_time > 0.0 ? (current_time - m_time) : (1.0f/60.0f);
+        float deltaTime = m_time > 0.0 ? (current_time - m_time) : (1.0f/60.0f);
         m_time = current_time;
-        // m_Metrics.SetTime(elapsed_time);
-        m_Actors.Update(m_elapsed_time);
+        PhysicsEngine::Update(deltaTime);
+        m_Actors.Update(deltaTime);
         for (auto &itr : m_Game_Views)
         {
-            itr->Update(m_elapsed_time);
+            itr->Update(deltaTime);
         }
     }
 

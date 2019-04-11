@@ -11,7 +11,7 @@ namespace Tarbora {
         WindowClose, WindowResize, WindowFocus, WindowMove, WindowIconify,
         KeyPress, KeyRelease,
         MouseButtonPress, MouseButtonRelease, MouseMove, MouseScroll,
-        ActorMove, ActorRotate, ActorScale,
+        ActorMove,
         CreateActor, CreateActorModel
     };
 
@@ -99,28 +99,17 @@ namespace Tarbora {
 
     struct ActorEvent : public Event
     {
-        ActorEvent(unsigned int id, std::string n) : actorId(id), name(n) {}
+        ActorEvent(unsigned int id) : actorId(id) {}
         unsigned long int actorId;
-        std::string name;
     };
 
-    enum Space { Global, Local, Relative };
     struct ActorMoveEvent : public ActorEvent
     {
-        ActorMoveEvent(unsigned int id, std::string n, glm::vec3 pos, Space s) :
-            ActorEvent(id, n), position(pos), space(s) {}
+        ActorMoveEvent(unsigned int id, glm::vec3 p, glm::mat3 r) :
+            ActorEvent(id), position(p), rotation(r) {}
         EventType GetType() override { return EventType::ActorMove; }
         glm::vec3 position;
-        Space space;
-    };
-
-    struct ActorRotateEvent : public ActorEvent
-    {
-        ActorRotateEvent(unsigned int id, std::string n, glm::vec3 rot, Space s) :
-            ActorEvent(id, n), rotation(rot), space(s) {}
-        EventType GetType() override { return EventType::ActorRotate; }
-        glm::vec3 rotation;
-        Space space;
+        glm::mat3 rotation;
     };
 
     struct CreateActorEvent : public Event
