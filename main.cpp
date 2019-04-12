@@ -30,13 +30,20 @@ int main() {
         Tb::KeyReleaseEvent *e = static_cast<Tb::KeyReleaseEvent*>(ev);
         if (e->key == KEY_F3) metrics->SetActive(!metrics->IsActive());
         else if (e->key == KEY_F2) Tb::GraphicsEngine::TakeScreenshot("/home/roger/Imatges/test");
+        else if (e->key == KEY_SPACE)
+        {
+            Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(0.2f, 5.f, -5.f));
+            Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+        }
         else if (e->key == KEY_ESCAPE) app->Close();
     });
 
-    Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(-0.2f, 10.f, -5.f));
+    Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(-0.2f, 5.f, -5.f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
-    Tb::CreateActorEvent ev2 = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -2.f, -5.f));
+    Tb::CreateActorEvent ev2 = Tb::CreateActorEvent("entities/cube.json", glm::vec3(0.2f, 7.f, -5.1f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev2);
+    Tb::CreateActorEvent ev3 = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -2.f, -5.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev3);
 
     app->Run();
 

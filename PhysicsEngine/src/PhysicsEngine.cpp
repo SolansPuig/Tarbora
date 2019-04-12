@@ -71,6 +71,12 @@ namespace Tarbora {
             return AddShape(shape, mass, friction, density, restitution, transform);
         }
 
+        btRigidBody *AddBox(glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+        {
+            btBoxShape *const shape = new btBoxShape(btVector3(dimensions.x/2, dimensions.y/2, dimensions.z/2));
+            return AddShape(shape, mass, friction, density, restitution, transform);
+        }
+
         btRigidBody *AddShape(btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform)
         {
             btVector3 localInertia(0.f, 0.f, 0.f);

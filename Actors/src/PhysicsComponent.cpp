@@ -14,6 +14,13 @@ namespace Tarbora {
             m_Body->SetProperties(data["friction"], data["density"], data["restitution"]);
             return true;
         }
+        else if (shape == "box")
+        {
+            glm::vec3 dimensions = glm::vec3(data["size"][0], data["size"][1], data["size"][2]);
+            m_Body.reset(new BoxBody(dimensions));
+            m_Body->SetProperties(data["friction"], data["density"], data["restitution"]);
+            return true;
+        }
 
         return false;
     }

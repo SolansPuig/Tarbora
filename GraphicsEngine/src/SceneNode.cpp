@@ -129,9 +129,10 @@ namespace Tarbora {
 
     void SceneNode::SetRotation(const glm::mat3 &rot)
     {
-        m_LocalMatrix[0] = glm::vec4(rot[0][0], rot[1][0], rot[2][0], m_LocalMatrix[0][3]);
-        m_LocalMatrix[1] = glm::vec4(rot[0][1], rot[1][1], rot[2][1], m_LocalMatrix[1][3]);
-        m_LocalMatrix[2] = glm::vec4(rot[0][2], rot[1][2], rot[2][2], m_LocalMatrix[2][3]);
+        glm::mat3 newrot = glm::transpose(rot);
+        m_LocalMatrix[0] = glm::vec4(newrot[0][0], newrot[1][0], newrot[2][0], m_LocalMatrix[0][3]);
+        m_LocalMatrix[1] = glm::vec4(newrot[0][1], newrot[1][1], newrot[2][1], m_LocalMatrix[1][3]);
+        m_LocalMatrix[2] = glm::vec4(newrot[0][2], newrot[1][2], newrot[2][2], m_LocalMatrix[2][3]);
     }
 
     const glm::mat4 SceneNode::GetGlobalMatrix()

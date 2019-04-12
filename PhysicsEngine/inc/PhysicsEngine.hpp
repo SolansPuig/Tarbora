@@ -10,7 +10,7 @@ namespace Tarbora {
         void Update(float deltaTime);
 
         btRigidBody *AddSphere(float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform);
-        // void AddBox(const glm::vec3 &dimensions, ActorPtr actor, float mass, float friction, float density, float restitution);
+        btRigidBody *AddBox(glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform);
         void RemoveObject(btCollisionObject *object);
 
         // void CreateTrigger(ActorPtr actor, const glm::vec3 &position, const glm::vec3 &dimensions);

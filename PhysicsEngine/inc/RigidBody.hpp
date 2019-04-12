@@ -3,7 +3,7 @@
 #include <memory>
 
 namespace Tarbora {
-    typedef enum { Sphere } Shape;
+    typedef enum { Sphere, Box } Shape;
 
     class RigidBody
     {
@@ -60,5 +60,23 @@ namespace Tarbora {
 
     protected:
         float m_Radius;
+    };
+
+    class BoxBody : public RigidBody
+    {
+    public:
+        BoxBody(glm::vec3 &dimensions);
+        ~BoxBody();
+
+        virtual Shape GetType() override { return Shape::Box; }
+        virtual void Register(glm::mat4 &transform) override;
+        virtual void Unregister() override;
+        virtual void CalcVolume() override;
+
+        void SetDimensions(glm::vec3 &dimensions) { m_Dimensions = dimensions; CalcVolume(); }
+        glm::vec3 &GetRadius() { return m_Dimensions; }
+
+    protected:
+        glm::vec3 m_Dimensions;
     };
 }
