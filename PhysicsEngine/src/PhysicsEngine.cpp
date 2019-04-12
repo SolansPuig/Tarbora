@@ -1,6 +1,8 @@
 #include "PhysicsEngine.hpp"
 #include <set>
 #include "Logger.hpp"
+#include <glm/gtx/string_cast.hpp>
+#include <algorithm>
 
 namespace Tarbora {
     namespace PhysicsEngine {
@@ -139,10 +141,23 @@ namespace Tarbora {
 
                 if (m_PreviousTickCollisionPairs.find(thisPair) == m_PreviousTickCollisionPairs.end())
                 {
+                    LOG_DEBUG("Collision!");
                     // CollisionEvent ev(manifold, body0, body1);
                     // EventManager::Trigger(EventType::Collision, &ev);
                 }
             }
+
+            CollisionPairs removedCollisionPairs;
+            std::set_difference(m_PreviousTickCollisionPairs.begin(), m_PreviousTickCollisionPairs.end(),
+                currentTickPairs.begin(), currentTickPairs.end(),
+                std::inserter(removedCollisionPairs, removedCollisionPairs.begin()));
+
+            for (auto itr = removedCollisionPairs.begin(), end = removedCollisionPairs.end(); itr != end; itr++)
+            {
+                LOG_DEBUG("No more collision!");
+            }
+
+            m_PreviousTickCollisionPairs = currentTickPairs;
         }
     }
 

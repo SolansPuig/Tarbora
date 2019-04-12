@@ -3,7 +3,7 @@
 #include "RigidBody.hpp"
 #include "Actor.hpp"
 
-#define PhysicsId 4
+#define PhysicsId 3
 
 namespace Tarbora {
     class PhysicsComponent : public ActorComponent

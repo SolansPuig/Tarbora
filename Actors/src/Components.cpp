@@ -1,4 +1,5 @@
 #include "Components.hpp"
+#include "TransformComponent.hpp"
 #include "Events.hpp"
 
 namespace Tarbora {
@@ -20,7 +21,15 @@ namespace Tarbora {
 
     void ModelComponent::AfterInit()
     {
-        CreateActorModelEvent ev = CreateActorModelEvent(m_Owner->GetId(), m_RenderPass, m_Model, m_Shader, m_Texture);
+        ActorId id = m_Owner->GetId();
+        CreateActorModelEvent ev = CreateActorModelEvent(id, m_RenderPass, m_Model, m_Shader, m_Texture);
         EventManager::Trigger(CreateActorModel, &ev);
+
+        std::shared_ptr<TransformComponent> transform = std::static_pointer_cast<TransformComponent>(m_Owner->GetComponent(TransformId));
+        if (transform)
+        {
+            ActorMoveEvent ev(id, transform->GetPosition(), transform->GetRotation());
+            EventManager::Trigger(EventType::ActorMove, &ev);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Tarbora {
             ~Actors();
 
             void Init(ActorId maxNumber);
-            ActorId Create(std::string entity);
+            ActorId Create(std::string entity, glm::vec3 initialPos, glm::vec3 initalRot);
             void Update(float deltaTime);
             void Destroy(ActorId id);
             void Close();

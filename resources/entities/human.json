@@ -12,15 +12,12 @@
             "shader": "shaders/model.shader.json"
         },
         {
-            "name": "transform"
-        },
-        {
             "name": "physics",
             "shape": "sphere",
-            "radius": 5.0,
+            "radius": 0.8,
             "density": 1,
             "friction": 0.1,
-            "restitution": 0.1
+            "restitution": 0.9
         }
     ]
 }

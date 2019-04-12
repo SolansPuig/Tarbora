@@ -4,7 +4,7 @@
 namespace Tarbora {
     ActorFactory::ActorFactory() {}
 
-    bool ActorFactory::Create(Actor *actor, std::string actorResource)
+    bool ActorFactory::Create(Actor *actor, std::string actorResource, glm::vec3 initialPos, glm::vec3 initialRot)
     {
         json j = GET_RESOURCE(JsonResource, actorResource)->GetJson();
         if (!actor->Init(j))
@@ -12,6 +12,15 @@ namespace Tarbora {
             LOG_ERR("ActorFactory: Failed to initialize actor %s.", actorResource.c_str());
             return false;
         }
+
+        // Everyting has a transform component
+        json transform;
+        transform["name"] = "transform";
+        transform["position"] = { initialPos.x, initialPos.y, initialPos.z };
+        transform["rotation"] = { initialRot.x, initialRot.y, initialRot.z };
+        ActorComponentPtr component = ActorComponentPtr(CreateComponent(transform));
+        actor->AddComponent(component);
+
         json components = j["components"];
         for (auto itr = components.begin(); itr != components.end(); itr++)
         {

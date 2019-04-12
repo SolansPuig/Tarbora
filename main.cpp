@@ -33,9 +33,9 @@ int main() {
         else if (e->key == KEY_ESCAPE) app->Close();
     });
 
-    Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/human.json");
+    Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(-0.2f, 10.f, -5.f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
-    Tb::CreateActorEvent ev2 = Tb::CreateActorEvent("entities/ground.json");
+    Tb::CreateActorEvent ev2 = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -2.f, -5.f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev2);
 
     app->Run();

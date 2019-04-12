@@ -23,7 +23,8 @@ namespace Tarbora {
         std::shared_ptr<TransformComponent> transform = std::static_pointer_cast<TransformComponent>(m_Owner->GetComponent(TransformId));
         if (transform)
         {
-            m_Body->Register(transform->GetTransform());
+            glm::mat4 transposed = transform->GetTransform();
+            m_Body->Register(transposed);
         }
     }
 

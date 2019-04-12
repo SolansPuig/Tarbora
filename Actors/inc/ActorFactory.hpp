@@ -10,7 +10,7 @@ namespace Tarbora {
     public:
         ActorFactory();
         void AddComponentCreator(std::string name, ActorComponentCreator func);
-        bool Create(Actor *actor, std::string actorResource);
+        bool Create(Actor *actor, std::string actorResource, glm::vec3 initialPos, glm::vec3 initalRot);
 
     protected:
         ActorComponentPtr CreateComponent(json data);

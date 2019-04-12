@@ -29,16 +29,16 @@ namespace Tarbora {
         EventManager::Subscribe(EventType::CreateActor, [&](Event *e)
         {
             CreateActorEvent *ev = static_cast<CreateActorEvent*>(e);
-            Create(ev->entity);
+            Create(ev->entity, ev->position, ev->rotation);
         });
     }
 
-    ActorId Actors::Create(std::string entity)
+    ActorId Actors::Create(std::string entity, glm::vec3 initialPos, glm::vec3 initalRot)
     {
         if (m_FirstAvailable != nullptr)
         {
             Actor *actor = m_FirstAvailable;
-            if (m_ActorFactory.Create(actor, entity))
+            if (m_ActorFactory.Create(actor, entity, initialPos, initalRot))
             {
                 LOG_DEBUG("Create actor of entity %s with id %d", entity.c_str(), actor->GetId());
                 m_FirstAvailable = actor->GetNext();

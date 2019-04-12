@@ -114,10 +114,11 @@ namespace Tarbora {
 
     struct CreateActorEvent : public Event
     {
-        CreateActorEvent(std::string e) :
-            entity(e) {}
+        CreateActorEvent(std::string e, glm::vec3 p=glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 r=glm::vec3(0.0f, 0.0f, 0.0f)) :
+            entity(e), position(p), rotation(r) {}
         EventType GetType() override { return EventType::CreateActor; }
         std::string entity;
+        glm::vec3 position, rotation;
     };
 
     struct CreateActorModelEvent : public Event
