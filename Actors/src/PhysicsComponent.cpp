@@ -31,7 +31,7 @@ namespace Tarbora {
         if (transform)
         {
             glm::mat4 transposed = transform->GetTransform();
-            m_Body->Register(transposed);
+            m_Body->Register(m_Owner->GetId(), transposed);
         }
     }
 

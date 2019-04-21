@@ -14,7 +14,7 @@ namespace Tarbora {
         virtual Shape GetType() = 0;
 
         void SetProperties(float friction, float density, float resitution);
-        virtual void Register(glm::mat4 &transform) = 0;
+        virtual void Register(unsigned int id, glm::mat4 &transform) = 0;
         virtual void Unregister() = 0;
 
         btRigidBody *Get() { return m_Body; }
@@ -30,6 +30,11 @@ namespace Tarbora {
         void CalcMass() { m_Mass = m_Volume * m_Density; }
         float GetVolume() { return m_Volume; }
         float GetMass() { return m_Mass; }
+
+        void ApplyForce(float newtons, const glm::vec3 &direction);
+        void ApplyTorque(float magnitude, const glm::vec3 &direction);
+        void SetVelocity(const glm::vec3 &velocity);
+        void Stop();
 
         void Calc()
         {
@@ -51,7 +56,7 @@ namespace Tarbora {
         ~SphereBody();
 
         virtual Shape GetType() override { return Shape::Sphere; }
-        virtual void Register(glm::mat4 &transform) override;
+        virtual void Register(unsigned int id, glm::mat4 &transform) override;
         virtual void Unregister() override;
         virtual void CalcVolume() override;
 
@@ -69,7 +74,7 @@ namespace Tarbora {
         ~BoxBody();
 
         virtual Shape GetType() override { return Shape::Box; }
-        virtual void Register(glm::mat4 &transform) override;
+        virtual void Register(unsigned int id, glm::mat4 &transform) override;
         virtual void Unregister() override;
         virtual void CalcVolume() override;
 

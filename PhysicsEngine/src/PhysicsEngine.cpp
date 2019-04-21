@@ -17,7 +17,7 @@ namespace Tarbora {
         typedef std::set<CollisionPair> CollisionPairs;
         CollisionPairs m_PreviousTickCollisionPairs;
 
-        btRigidBody *AddShape(btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform);
+        btRigidBody *AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform);
 
         void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep);
 
@@ -65,19 +65,19 @@ namespace Tarbora {
             m_DynamicsWorld->stepSimulation(deltaTime, 4);
         }
 
-        btRigidBody *AddSphere(float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+        btRigidBody *AddSphere(unsigned int id, float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform)
         {
             btSphereShape *const shape = new btSphereShape(radius);
-            return AddShape(shape, mass, friction, density, restitution, transform);
+            return AddShape(id, shape, mass, friction, density, restitution, transform);
         }
 
-        btRigidBody *AddBox(glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+        btRigidBody *AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform)
         {
             btBoxShape *const shape = new btBoxShape(btVector3(dimensions.x/2, dimensions.y/2, dimensions.z/2));
-            return AddShape(shape, mass, friction, density, restitution, transform);
+            return AddShape(id, shape, mass, friction, density, restitution, transform);
         }
 
-        btRigidBody *AddShape(btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+        btRigidBody *AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform)
         {
             btVector3 localInertia(0.f, 0.f, 0.f);
             if (mass > 0.f) shape->calculateLocalInertia(mass, localInertia);
@@ -88,6 +88,7 @@ namespace Tarbora {
             rbInfo.m_friction = friction;
 
             btRigidBody *const body = new btRigidBody(rbInfo);
+            body->setUserIndex(id);
             m_DynamicsWorld->addRigidBody(body);
 
             return body;
@@ -128,6 +129,29 @@ namespace Tarbora {
             delete object;
         }
 
+        void ApplyForce(btRigidBody *body, float newtons, const glm::vec3 &direction)
+        {
+            btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+            body->applyCentralImpulse(force);
+        }
+
+        void ApplyTorque(btRigidBody *body, float magnitude, const glm::vec3 &direction)
+        {
+            btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
+            body->applyTorqueImpulse(torque);
+        }
+
+        void SetVelocity(btRigidBody *body, const glm::vec3 &velocity)
+        {
+            btVector3 const vel(velocity.x, velocity.y, velocity.z);
+            body->setLinearVelocity(vel);
+        }
+
+        void Stop(btRigidBody *body)
+        {
+            SetVelocity(body, glm::vec3(0.0f, 0.0f, 0.0f));
+        }
+
         void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep)
         {
             CollisionPairs currentTickPairs;
@@ -147,7 +171,7 @@ namespace Tarbora {
 
                 if (m_PreviousTickCollisionPairs.find(thisPair) == m_PreviousTickCollisionPairs.end())
                 {
-                    LOG_DEBUG("Collision!");
+                    LOG_DEBUG("Collision between %u and %u!", body0->getUserIndex(), body1->getUserIndex());
                     // CollisionEvent ev(manifold, body0, body1);
                     // EventManager::Trigger(EventType::Collision, &ev);
                 }

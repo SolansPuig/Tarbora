@@ -8,7 +8,7 @@
             "name": "model",
             "renderPass": 1,
             "model": "models/cube.json",
-            "texture": "textures/cube.png",
+            "texture": "textures/minecraft.png",
             "shader": "shaders/model.shader.json"
         },
         {

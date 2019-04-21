@@ -9,13 +9,15 @@ namespace Tarbora {
         void Close();
         void Update(float deltaTime);
 
-        btRigidBody *AddSphere(float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform);
-        btRigidBody *AddBox(glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform);
+        btRigidBody *AddSphere(unsigned int id, float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform);
+        btRigidBody *AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform);
         void RemoveObject(btCollisionObject *object);
 
         // void CreateTrigger(ActorPtr actor, const glm::vec3 &position, const glm::vec3 &dimensions);
-        // void ApplyForce(float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform);
-        // void ApplyTorque(ActorId id, float newtons, const glm::vec3 &direction);
+        void ApplyForce(btRigidBody *body, float newtons, const glm::vec3 &direction);
+        void ApplyTorque(btRigidBody *body, float magnitude, const glm::vec3 &direction);
+        void SetVelocity(btRigidBody *body, const glm::vec3 &velocity);
+        void Stop(btRigidBody *body);
         // bool KinematicMove(ActorId id, const glm::mat4 &matrix);
 
         // void RenderDiagnostics();

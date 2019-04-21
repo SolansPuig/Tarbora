@@ -10,6 +10,27 @@ namespace Tarbora {
         Calc();
     }
 
+    void RigidBody::ApplyForce(float newtons, const glm::vec3 &direction)
+    {
+        PhysicsEngine::ApplyForce(m_Body, newtons, direction);
+    }
+
+    void RigidBody::ApplyTorque(float magnitude, const glm::vec3 &direction)
+    {
+        PhysicsEngine::ApplyTorque(m_Body, magnitude, direction);
+    }
+
+    void RigidBody::SetVelocity(const glm::vec3 &velocity)
+    {
+        PhysicsEngine::SetVelocity(m_Body, velocity);
+    }
+
+    void RigidBody::Stop()
+    {
+        PhysicsEngine::Stop(m_Body);
+    }
+
+
     SphereBody::SphereBody(float radius)
     {
         m_Radius = radius;
@@ -20,9 +41,9 @@ namespace Tarbora {
         Unregister();
     }
 
-    void SphereBody::Register(glm::mat4 &transform)
+    void SphereBody::Register(unsigned int id, glm::mat4 &transform)
     {
-        m_Body = PhysicsEngine::AddSphere(m_Radius, m_Mass, m_Friction, m_Density, m_Restitution, transform);
+        m_Body = PhysicsEngine::AddSphere(id, m_Radius, m_Mass, m_Friction, m_Density, m_Restitution, transform);
     }
 
     void SphereBody::Unregister()
@@ -45,9 +66,9 @@ namespace Tarbora {
         Unregister();
     }
 
-    void BoxBody::Register(glm::mat4 &transform)
+    void BoxBody::Register(unsigned int id, glm::mat4 &transform)
     {
-        m_Body = PhysicsEngine::AddBox(m_Dimensions, m_Mass, m_Friction, m_Density, m_Restitution, transform);
+        m_Body = PhysicsEngine::AddBox(id, m_Dimensions, m_Mass, m_Friction, m_Density, m_Restitution, transform);
     }
 
     void BoxBody::Unregister()
