@@ -33,6 +33,30 @@ namespace Tarbora {
             glm::mat4 transposed = transform->GetTransform();
             m_Body->Register(m_Owner->GetId(), transposed);
         }
+
+        EventManager::Subscribe(EventType::ApplyForce, [&](Event *ev)
+        {
+            ApplyForceEvent *e = static_cast<ApplyForceEvent*>(ev);
+            m_Body->ApplyForce(e->newtons, e->direction);
+        });
+
+        EventManager::Subscribe(EventType::ApplyTorque, [&](Event *ev)
+        {
+            ApplyTorqueEvent *e = static_cast<ApplyTorqueEvent*>(ev);
+            m_Body->ApplyTorque(e->magnitude, e->direction);
+        });
+
+        EventManager::Subscribe(EventType::ApplyForce, [&](Event *ev)
+        {
+            ApplyForceEvent *e = static_cast<ApplyForceEvent*>(ev);
+            m_Body->SetVelocity(e->direction);
+        });
+
+        EventManager::Subscribe(EventType::Stop, [&](Event *ev)
+        {
+            StopEvent *e = static_cast<StopEvent*>(ev);
+            m_Body->Stop(e->newtons, e->direction);
+        });
     }
 
     void PhysicsComponent::Update(float deltaTime)
