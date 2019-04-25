@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Tarbora.hpp"
+#include "../../Tarbora/Tarbora.hpp"
 
 namespace Tb = Tarbora;
 

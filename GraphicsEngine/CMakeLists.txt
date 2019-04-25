@@ -1,5 +1,0 @@
-include_directories(inc/)
-add_subdirectory (glfw)
-add_subdirectory (glm)
-add_library (GraphicsEngine SHARED src/Window.cpp src/GraphicsEngine.cpp src/ImGuiBuild.cpp src/Gui.cpp src/Scene.cpp src/SceneNode.cpp)
-add_library (imgui SHARED imgui/imgui.cpp imgui/imgui_draw.cpp imgui/imgui_demo.cpp imgui/imgui_widgets.cpp)

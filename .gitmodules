@@ -1,12 +1,12 @@
-[submodule "GraphicsEngine/glfw"]
-	path = GraphicsEngine/glfw
-	url = https://github.com/glfw/glfw
-[submodule "GraphicsEngine/imgui"]
-	path = GraphicsEngine/imgui
+[submodule "Tarbora/Framework/GraphicsEngine/imgui"]
+	path = Tarbora/Framework/GraphicsEngine/imgui
 	url = https://github.com/ocornut/imgui
-[submodule "GraphicsEngine/glm"]
-	path = GraphicsEngine/glm
+[submodule "Tarbora/Framework/GraphicsEngine/glfw"]
+	path = Tarbora/Framework/GraphicsEngine/glfw
+	url = https://github.com/glfw/glfw
+[submodule "Tarbora/Framework/Maths/glm"]
+	path = Tarbora/Framework/Maths/glm
 	url = https://github.com/g-truc/glm
-[submodule "PhysicsEngine/bullet3"]
-	path = PhysicsEngine/bullet3
+[submodule "Tarbora/Framework/PhysicsEngine/bullet3"]
+	path = Tarbora/Framework/PhysicsEngine/bullet3
 	url = https://github.com/bulletphysics/bullet3

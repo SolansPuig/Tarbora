@@ -1,13 +1,13 @@
-#include "Tarbora.hpp"
-#include "DemoWindow.hpp"
-#include "MetricsGui.hpp"
-#include "TestGui.hpp"
+#include "Tarbora/Tarbora.hpp"
+#include "Demo/inc/DemoWindow.hpp"
+#include "Demo/inc/MetricsGui.hpp"
+#include "Demo/inc/TestGui.hpp"
 
 namespace Tb = Tarbora;
 
 int main() {
-    std::unique_ptr<Tb::Application> app(new Tb::Application("Settings.json"));
-    Tb::HumanViewPtr human_view(new Tb::HumanView(15));
+    std::unique_ptr<Tb::Application> app(new Tb::Application());
+    Tb::HumanViewPtr human_view(new Tb::HumanView(1));
     app->AddView(human_view);
 
     std::shared_ptr<MetricsGui> metrics(new MetricsGui(false));
@@ -40,12 +40,23 @@ int main() {
         if (e->key == KEY_F3) metrics->SetActive(!metrics->IsActive());
         else if (e->key == KEY_F2) Tb::GraphicsEngine::TakeScreenshot("/home/roger/Imatges/test");
         else if (e->key == KEY_ESCAPE) app->Close();
+        else if (e->key == KEY_X)
+        {
+            Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(0.f, 5.f, -5.f));
+            Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+        };
     });
 
-    Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(-0.2f, 5.f, -5.f));
+    Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/ball.json", glm::vec3(-2.f, 5.f, -5.f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
-    Tb::CreateActorEvent ev2 = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -2.f, -5.f));
-    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev2);
+    ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(0.5f, 5.f, -5.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(0.f, 5.f, -5.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -2.f, -5.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(-5.f, -2.f, -5.f), glm::vec3(0.f, 0.f, 90.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
 
     app->Run();
 

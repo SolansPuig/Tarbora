@@ -8,16 +8,16 @@
             "name": "model",
             "renderPass": 1,
             "model": "models/cube.json",
-            "texture": "textures/minecraft.png",
+            "texture": "textures/red.png",
             "shader": "shaders/model.shader.json"
         },
         {
             "name": "physics",
-            "shape": "box",
-            "size": [1, 1, 1],
-            "density": 10,
+            "shape": "sphere",
+            "radius": 0.5,
+            "density": 100,
             "friction": 1,
-            "restitution": 0.2
+            "restitution": 0.6
         }
     ]
 }
