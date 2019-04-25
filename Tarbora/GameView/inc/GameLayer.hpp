@@ -98,7 +98,7 @@ namespace Tarbora {
             }
             if (m_Rotation != glm::vec3(0.0f, 0.0f, 0.0f))
             {
-                ApplyTorqueEvent ev = ApplyTorqueEvent(m_TargetId, 1, glm::normalize(m_Rotation));
+                ApplyTorqueEvent ev = ApplyTorqueEvent(m_TargetId, 5, glm::normalize(m_Rotation));
                 EventManager::Trigger(ApplyTorque, &ev);
             }
             if (m_Jump)

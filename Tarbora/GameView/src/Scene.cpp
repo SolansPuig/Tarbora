@@ -103,7 +103,9 @@ namespace Tarbora {
     {
         json j = GET_RESOURCE(JsonResource, model)->GetJson();
         std::shared_ptr<MaterialNode> mat = std::shared_ptr<MaterialNode>(new MaterialNode(id, std::to_string(id), shader, texture));
-        mat->AddChild(CreateNode(id, j["root"], j["pixel_density"], j["texture_size"]));
+        MeshNodePtr root = CreateNode(id, j["root"], j["pixel_density"], j["texture_size"]);
+        root->Scale(j["scale"]);
+        mat->AddChild(root);
         AddChild(mat, renderPass);
     }
 

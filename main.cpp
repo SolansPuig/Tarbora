@@ -25,15 +25,6 @@ int main() {
         app->Close();
     });
 
-    Tb::EventManager::Subscribe(Tb::EventType::KeyPress, [&](Tb::Event *ev)
-    {
-        Tb::KeyPressEvent *e = static_cast<Tb::KeyPressEvent*>(ev);
-        if (e->key == KEY_SPACE)
-        {
-
-        }
-    });
-
     Tb::EventManager::Subscribe(Tb::EventType::KeyRelease, [&](Tb::Event *ev)
     {
         Tb::KeyReleaseEvent *e = static_cast<Tb::KeyReleaseEvent*>(ev);
@@ -44,6 +35,11 @@ int main() {
         {
             Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(0.f, 5.f, -5.f));
             Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+        }
+        else if (e->key == KEY_Z)
+        {
+            Tb::CreateActorEvent ev = Tb::CreateActorEvent("entities/ball.json", glm::vec3(0.f, 5.f, -5.f));
+            Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
         };
     });
 
@@ -53,9 +49,15 @@ int main() {
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
     ev = Tb::CreateActorEvent("entities/cube.json", glm::vec3(0.f, 5.f, -5.f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
-    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -2.f, -5.f));
+    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -3.f, -5.f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
-    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(-5.f, -2.f, -5.f), glm::vec3(0.f, 0.f, 90.f));
+    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(-5.f, -3.f, -5.f), glm::vec3(0.f, 0.f, 90.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -3.f, -10.f), glm::vec3(90.f, 0.f, 0.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(0.f, -6.5f, 0.f), glm::vec3(90.f, 0.f, 0.f));
+    Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
+    ev = Tb::CreateActorEvent("entities/ground.json", glm::vec3(5.f, -3.f, -5.f), glm::vec3(0.f, 0.f, 90.f));
     Tb::EventManager::Trigger(Tb::EventType::CreateActor, &ev);
 
     app->Run();
