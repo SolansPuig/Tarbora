@@ -7,7 +7,7 @@ namespace Tarbora {
         LOG_LEVEL(Tarbora::Logger::LogLevel::DEBUG);
         LOG_INFO("Application: Creating application...");
 
-        ResourceManager::Init("../resources/");
+        ResourceManager::Init("../Resources/");
 
         GraphicsEngine::Init();
         PhysicsEngine::Init();

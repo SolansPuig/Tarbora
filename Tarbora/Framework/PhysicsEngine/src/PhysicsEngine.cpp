@@ -131,18 +131,21 @@ namespace Tarbora {
         {
             btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
             body->applyCentralImpulse(force);
+            body->activate();
         }
 
         void ApplyTorque(btRigidBody *body, float magnitude, const glm::vec3 &direction)
         {
             btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
             body->applyTorqueImpulse(torque);
+            body->activate();
         }
 
         void SetVelocity(btRigidBody *body, const glm::vec3 &velocity)
         {
             btVector3 const vel(velocity.x, velocity.y, velocity.z);
             body->setLinearVelocity(vel);
+            body->activate();
         }
 
         void Stop(btRigidBody *body)
