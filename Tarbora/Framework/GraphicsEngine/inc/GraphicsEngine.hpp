@@ -34,6 +34,7 @@ namespace Tarbora {
 
         void UseShader(std::shared_ptr<Shader> shader);
         std::shared_ptr<Shader> GetShader();
+        bool ShaderAvailable();
 
         int TakeScreenshot(const std::string &filename);
     }

@@ -1,7 +1,5 @@
 #pragma once
 #include "ResourceManager.hpp"
-#include "../../Utility/inc/json.hpp"
-typedef nlohmann::json json;
 
 namespace Tarbora {
     class ResourceLoader;
@@ -48,22 +46,6 @@ namespace Tarbora {
     {
     public:
         virtual const std::string GetPattern() override { return "*.txt"; };
-        virtual ResourcePtr Load(std::string path) override;
-    };
-
-    class JsonResource : public Resource
-    {
-    public:
-        JsonResource(std::string name, json j) : Resource(name), m_JSON(j) {}
-        const json GetJson() const { return m_JSON; }
-    protected:
-        json m_JSON;
-    };
-
-    class JsonResourceLoader : public ResourceLoader
-    {
-    public:
-        virtual const std::string GetPattern() override { return "*.json"; };
         virtual ResourcePtr Load(std::string path) override;
     };
 }

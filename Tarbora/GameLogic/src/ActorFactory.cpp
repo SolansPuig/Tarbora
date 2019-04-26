@@ -5,36 +5,44 @@ namespace Tarbora {
 
     bool ActorFactory::Create(ActorTest *actor, std::string actorResource, glm::vec3 initialPos, glm::vec3 initialRot)
     {
-        json j = GET_RESOURCE(JsonResource, actorResource)->GetJson();
-        if (!actor->Init(j))
+        JsonPtr resource = GET_RESOURCE(Json, actorResource);
+        if (resource != NULL)
         {
-            LOG_ERR("ActorFactory: Failed to initialize actor %s.", actorResource.c_str());
-            return false;
-        }
-
-        // Everyting has a transform component
-        json transform;
-        transform["name"] = "transform";
-        transform["position"] = { initialPos.x, initialPos.y, initialPos.z };
-        transform["rotation"] = { initialRot.x, initialRot.y, initialRot.z };
-        ActorComponentPtr component = ActorComponentPtr(CreateComponent(transform));
-        actor->AddComponent(component);
-
-        json components = j["components"];
-        for (auto itr = components.begin(); itr != components.end(); itr++)
-        {
-            ActorComponentPtr component = ActorComponentPtr(CreateComponent(*itr));
-            if (component)
+            if (!actor->Init(resource))
             {
-                actor->AddComponent(component);
-                component->SetOwner(actor);
-            } else
-            {
+                LOG_ERR("ActorFactory: Failed to initialize actor %s.", actorResource.c_str());
                 return false;
             }
+
+            // Everyting has a transform component
+            json transform;
+            transform["position"] = { initialPos.x, initialPos.y, initialPos.z };
+            transform["rotation"] = { initialRot.x, initialRot.y, initialRot.z };
+            ActorComponentPtr component = ActorComponentPtr(CreateComponent(resource, "transform", transform));
+            actor->AddComponent(component);
+
+            json components;
+            resource->Get("components", &components, true, true);
+
+            for (auto &itr : components.items())
+            {
+                ActorComponentPtr component = ActorComponentPtr(CreateComponent(resource, itr.key(), itr.value()));
+                if (component)
+                {
+                    actor->AddComponent(component);
+                    component->SetOwner(actor);
+                } else
+                {
+                    return false;
+                }
+            }
+            actor->AfterInit();
+            return true;
         }
-        actor->AfterInit();
-        return true;
+        else
+        {
+            return false;
+        }
     }
 
     void ActorFactory::AddComponentCreator(std::string name, ActorComponentCreator func)
@@ -42,10 +50,8 @@ namespace Tarbora {
         m_ActorComponentCreators[name] = func;
     }
 
-    ActorComponentPtr ActorFactory::CreateComponent(json data)
+    ActorComponentPtr ActorFactory::CreateComponent(JsonPtr resource, std::string name, json data)
     {
-        std::string name = data["name"];
-
         ActorComponentPtr component;
         auto itr = m_ActorComponentCreators.find(name);
         if (itr != m_ActorComponentCreators.end())
@@ -60,7 +66,7 @@ namespace Tarbora {
 
         if (component)
         {
-            if (!component->Init(data))
+            if (!component->Init(resource, data))
             {
                 LOG_ERR("ActorFactory: Component %s failed to initialize.", name.c_str());
                 return ActorComponentPtr();

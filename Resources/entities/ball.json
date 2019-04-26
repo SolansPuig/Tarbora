@@ -1,23 +1,18 @@
 {
-    "components": [
-        {
-            "name": "type",
-            "types": ["ground"]
-        },
-        {
-            "name": "model",
+    "components": {
+        "type": ["ground"],
+        "model": {
             "renderPass": 1,
             "model": "models/cube_compound.json",
             "texture": "textures/redstone.png",
             "shader": "shaders/model.shader.json"
         },
-        {
-            "name": "physics",
+        "physics": {
             "shape": "sphere",
             "radius": 0.5,
             "density": 100,
             "friction": 1,
             "restitution": 0.6
         }
-    ]
+    }
 }

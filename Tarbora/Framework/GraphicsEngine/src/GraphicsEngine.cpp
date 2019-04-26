@@ -2,6 +2,7 @@
 #include <time.h>
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "../../Utility/inc/stb_image_write.h"
+#include "../../ResourceManager/inc/Json.hpp"
 
 namespace Tarbora {
     namespace GraphicsEngine {
@@ -16,25 +17,19 @@ namespace Tarbora {
             std::string window_title = "Tarbora Game Engine";
             int window_width = 1280, window_height = 720;
 
-            auto settings = GET_RESOURCE(JsonResource, "Settings.json");
+            auto settings = GET_RESOURCE(Json, "Settings.json");
             if (settings)
             {
-                json j = settings->GetJson();
-
-                if (j.find("window") != j.end() &&
-                    j["window"].find("title") != j["window"].end())
+                json window;
+                settings->Get("window", &window, true);
+                if (!window.empty())
                 {
-                    window_title = j["window"]["title"];
-                } else LOG_WARN("Settings: Could not find a valid window title. Using default.");
+                    settings->Get(window, "title", &window_title, true);
 
-                if (j.find("window") != j.end() &&
-                    j["window"].find("size") != j["window"].end() &&
-                    j["window"]["size"].size() == 2)
-                {
-                    window_width = j["window"]["size"][0];
-                    window_height = j["window"]["size"][1];
-                } else LOG_WARN("Settings: Could not find a valid window size. Using default");
-            } else LOG_WARN("Settings: Could not find a valid Settings file. Using default.");
+                    settings->GetArray(window, "size", 0, &window_width, true);
+                    settings->GetArray(window, "size", 1, &window_height, true);
+                }
+            };
 
             Main_Window = std::unique_ptr<Window>(new Window(window_title.c_str(), window_width, window_height));
 
@@ -224,6 +219,11 @@ namespace Tarbora {
         std::shared_ptr<Shader> GetShader()
         {
             return m_Shader;
+        }
+
+        bool ShaderAvailable()
+        {
+            return m_Shader != nullptr;
         }
 
         int TakeScreenshot(const std::string &filename)

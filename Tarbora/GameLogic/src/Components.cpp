@@ -2,19 +2,26 @@
 #include "../inc/TransformComponent.hpp"
 
 namespace Tarbora {
-    bool TypeComponent::Init(json data)
+    bool TypeComponent::Init(JsonPtr resource, json data)
     {
-        for (auto itr = data["types"].begin(); itr != data["types"].end(); itr++)
-            m_Types.push_back(*itr);
+        for (int i = 0; i < data.size(); i++)
+        {
+            m_Types.push_back(resource->GetString(data, i, "type"));
+        }
         return true;
     }
 
-    bool ModelComponent::Init(json data)
+    bool ModelComponent::Init(JsonPtr resource, json data)
     {
-        m_RenderPass = data["renderPass"];
-        m_Model = data["model"];
-        m_Texture = data["texture"];
-        m_Shader = data["shader"];
+        m_RenderPass = 1;
+        m_Model = "models/cube.json";
+        m_Texture = "textures/missing.png";
+        m_Shader = "shaders/model.shader.json";
+
+        resource->Get(data, "renderPass", &m_RenderPass, true);
+        resource->Get(data, "model", &m_Model, true);
+        resource->Get(data, "texture", &m_Texture, true);
+        resource->Get(data, "shader", &m_Shader, true);
         return true;
     }
 

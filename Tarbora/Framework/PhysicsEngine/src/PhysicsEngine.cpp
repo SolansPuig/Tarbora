@@ -172,7 +172,7 @@ namespace Tarbora {
 
                 if (m_PreviousTickCollisionPairs.find(thisPair) == m_PreviousTickCollisionPairs.end())
                 {
-                    LOG_DEBUG("Collision between %u and %u!", body0->getUserIndex(), body1->getUserIndex());
+                    // LOG_DEBUG("Collision between %u and %u!", body0->getUserIndex(), body1->getUserIndex());
                     // CollisionEvent ev(manifold, body0, body1);
                     // EventManager::Trigger(EventType::Collision, &ev);
                 }
@@ -185,7 +185,7 @@ namespace Tarbora {
 
             for (auto itr = removedCollisionPairs.begin(), end = removedCollisionPairs.end(); itr != end; itr++)
             {
-                LOG_DEBUG("No more collision!");
+                // LOG_DEBUG("No more collision!");
             }
 
             m_PreviousTickCollisionPairs = currentTickPairs;

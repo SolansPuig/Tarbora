@@ -64,23 +64,18 @@ namespace Tarbora {
         }
     }
 
-    MeshNodePtr Scene::CreateNode(ActorId id, json j, float pixelDensity, float textureSize)
+    MeshNodePtr Scene::CreateNode(ActorId id, JsonPtr resource, json j, float pixelDensity, float textureSize)
     {
         // Read all the parameters for the node
-        std::string name = j["name"];
-        std::string shape = j["shape"];
+        std::string name = resource->GetString(j, "name");
+        std::string shape = resource->GetString(j, "shape");
 
-        json o = j["origin"];
-        json p = j["position"];
-        json r = j["rotation"];
-        json s = j["size"];
-        json u = j["uv"];
-        glm::vec3 origin = glm::vec3(o[0], o[1], o[2]);
-        glm::vec3 position = glm::vec3((float)p[0]/pixelDensity, (float)p[1]/pixelDensity, (float)p[2]/pixelDensity);
-        glm::vec3 rotation = glm::vec3(r[0], r[1], r[2]);
-        glm::vec3 size = glm::vec3((float)s[0]/pixelDensity, (float)s[1]/pixelDensity, (float)s[2]/pixelDensity);
-        glm::vec3 texSize = glm::vec3((float)s[0]/textureSize, (float)s[1]/textureSize, (float)s[2]/textureSize);
-        glm::vec2 uv = glm::vec2((float)u[0]/textureSize, (float)u[1]/textureSize);
+        glm::vec3 origin = glm::vec3(resource->GetFloatArray(j, "origin", 0), resource->GetFloatArray(j, "origin", 1), resource->GetFloatArray(j, "origin", 2));
+        glm::vec3 position = glm::vec3(resource->GetFloatArray(j, "position", 0)/pixelDensity, resource->GetFloatArray(j, "position", 1)/pixelDensity, resource->GetFloatArray(j, "position", 2)/pixelDensity);
+        glm::vec3 rotation = glm::vec3(resource->GetFloatArray(j, "rotation", 0), resource->GetFloatArray(j, "rotation", 1), resource->GetFloatArray(j, "rotation", 2));
+        glm::vec3 size = glm::vec3(resource->GetFloatArray(j, "size", 0)/pixelDensity, resource->GetFloatArray(j, "size", 1)/pixelDensity, resource->GetFloatArray(j, "size", 2)/pixelDensity);
+        glm::vec3 texSize = glm::vec3(resource->GetFloatArray(j, "size", 0)/textureSize, resource->GetFloatArray(j, "size", 1)/textureSize, resource->GetFloatArray(j, "size", 2)/textureSize);
+        glm::vec2 uv = glm::vec2(resource->GetFloatArray(j, "uv", 0)/textureSize, resource->GetFloatArray(j, "uv", 1)/textureSize);
 
         // Create the node
         MeshNodePtr node = MeshNodePtr(new MeshNode(id, name, shape));
@@ -91,8 +86,10 @@ namespace Tarbora {
         node->RotateLocal(rotation);
 
         // Create all its child nodes and add them as children to this
-        for (auto itr = j["nodes"].begin(); itr != j["nodes"].end(); itr++) {
-            MeshNodePtr new_node = CreateNode(id, *itr, pixelDensity, textureSize);
+        json nodes;
+        resource->Get(j, "nodes", &nodes, true, true);
+        for (auto itr = nodes.begin(); itr != nodes.end(); itr++) {
+            MeshNodePtr new_node = CreateNode(id, resource, *itr, pixelDensity, textureSize);
             node->AddChild(new_node);
         }
 
@@ -101,12 +98,17 @@ namespace Tarbora {
 
     void Scene::CreateActor(ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture)
     {
-        json j = GET_RESOURCE(JsonResource, model)->GetJson();
-        std::shared_ptr<MaterialNode> mat = std::shared_ptr<MaterialNode>(new MaterialNode(id, std::to_string(id), shader, texture));
-        MeshNodePtr root = CreateNode(id, j["root"], j["pixel_density"], j["texture_size"]);
-        root->Scale(j["scale"]);
-        mat->AddChild(root);
-        AddChild(mat, renderPass);
+        JsonPtr resource = GET_RESOURCE(Json, model);
+        if (resource != NULL)
+        {
+            std::shared_ptr<MaterialNode> mat = std::shared_ptr<MaterialNode>(new MaterialNode(id, std::to_string(id), shader, texture));
+            MeshNodePtr root = CreateNode(id, resource, resource->GetJson("root"), resource->GetFloat("pixel_density"), resource->GetFloat("texture_size"));
+            float scale = 1.0f;
+            resource->Get("scale", &scale, true, true);
+            root->Scale(scale);
+            mat->AddChild(root);
+            AddChild(mat, renderPass);
+        }
     }
 
     void Scene::AddChild(SceneNodePtr child, RenderPass renderPass)

@@ -12,9 +12,9 @@ namespace Tarbora {
         Destroy();
     }
 
-    bool ActorTest::Init(json data)
+    bool ActorTest::Init(JsonPtr resource)
     {
-        (void)(data);
+        (void)(resource);
         return true;
     }
 

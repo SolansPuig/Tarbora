@@ -1,4 +1,6 @@
 #include "../inc/GraphicsEngine.hpp"
+#include "../../Utility/inc/json.hpp"
+typedef nlohmann::json json;
 
 namespace Tarbora {
     Shader::~Shader()
@@ -50,7 +52,7 @@ namespace Tarbora {
     {
         glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec4(x, y, z, w)));
     }
-    
+
     void Shader::Set(const std::string name, glm::mat4 &value)
     {
         glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
@@ -60,7 +62,7 @@ namespace Tarbora {
     {
         unsigned int id;
 
-        if (j.find(type) != j.end() && j[type] != "")
+        if (j[type].is_string() && j[type] != "")
         {
             // Read the shader file
             std::ifstream file;
@@ -90,7 +92,18 @@ namespace Tarbora {
         file.open(path.c_str());
         if (file.fail())
             return ResourcePtr();
-        json j = json::parse(file);
+
+            json j;
+            try
+            {
+                j = json::parse(file);
+            }
+            catch (json::parse_error& e)
+            {
+                LOG_ERR("JsonResourceLoader: Trying to parse file \"%s\" found exception: \n \"%s\"", path.c_str(), e.what());
+                file.close();
+                return ResourcePtr();
+            }
 
         // Read each entry and create and compile the shaders
         unsigned int ids[6];

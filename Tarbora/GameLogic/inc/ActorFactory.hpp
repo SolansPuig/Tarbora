@@ -13,7 +13,7 @@ namespace Tarbora {
         bool Create(ActorTest *actor, std::string actorResource, glm::vec3 initialPos, glm::vec3 initalRot);
 
     protected:
-        ActorComponentPtr CreateComponent(json data);
+        ActorComponentPtr CreateComponent(JsonPtr resource, std::string name, json data);
         ActorComponentCreatorMap m_ActorComponentCreators;
     };
 }

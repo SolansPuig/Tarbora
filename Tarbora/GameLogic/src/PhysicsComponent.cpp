@@ -2,24 +2,33 @@
 #include "../inc/TransformComponent.hpp"
 
 namespace Tarbora {
-    bool PhysicsComponent::Init(json data)
+    bool PhysicsComponent::Init(JsonPtr resource, json data)
     {
-        std::string shape = data["shape"];
+        bool ret = false;
+        std::string shape = "box";
+        resource->Get(data, "shape", &shape, true);
+
         if (shape == "sphere")
         {
-            m_Body.reset(new SphereBody(data["radius"]));
-            m_Body->SetProperties(data["friction"], data["density"], data["restitution"]);
-            return true;
+            m_Body.reset(new SphereBody(resource->GetFloat(data, "radius")));
+            ret = true;
         }
         else if (shape == "box")
         {
-            glm::vec3 dimensions = glm::vec3(data["size"][0], data["size"][1], data["size"][2]);
+            glm::vec3 dimensions = glm::vec3(resource->GetFloatArray(data, "size", 0), resource->GetFloatArray(data, "size", 1), resource->GetFloatArray(data, "size", 2));
             m_Body.reset(new BoxBody(dimensions));
-            m_Body->SetProperties(data["friction"], data["density"], data["restitution"]);
-            return true;
+            ret = true;
         }
 
-        return false;
+        float friction = 0.9;
+        float density = 1;
+        float restitution = 0.2;
+        resource->Get(data, "friction", &friction, true);
+        resource->Get(data, "density", &density, true);
+        resource->Get(data, "restitution", &restitution, true);
+        m_Body->SetProperties(friction, density, restitution);
+
+        return ret;
     }
 
     void PhysicsComponent::AfterInit()

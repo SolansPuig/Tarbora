@@ -248,21 +248,23 @@ namespace Tarbora {
     MaterialNode::MaterialNode(ActorId actorId, std::string name, std::string shader, std::string texture) :
         SceneNode(actorId, name)
     {
-        m_Texture = (texture != "") ? GET_RESOURCE(Texture, texture) : nullptr;
+        m_Texture = (texture != "") ? GET_RESOURCE(Texture, texture) : GET_RESOURCE(Texture, "textures/white.png");
+        if (m_Texture == nullptr) m_Texture = GET_RESOURCE(Texture, "textures/missing.png");
         m_Shader = GET_RESOURCE(Shader, shader);
     }
 
     void MaterialNode::Draw(Scene *scene, glm::mat4 &parentTransform)
     {
         (void)(scene); (void)(parentTransform);
-        GraphicsEngine::UseShader(m_Shader);
-        if (m_Texture) GraphicsEngine::BindTexture(m_Texture->GetId());
+        if (m_Shader != nullptr) GraphicsEngine::UseShader(m_Shader);
+        GraphicsEngine::BindTexture(m_Texture->GetId());
     }
 
     MeshNode::MeshNode(ActorId actorId, std::string name, std::string mesh) :
         SceneNode(actorId, name)
     {
         m_Mesh = GET_RESOURCE(Mesh, mesh);
+        if (m_Mesh == nullptr) m_Mesh = GET_RESOURCE(Mesh, "meshes/cube.mesh");
         m_Scale = glm::mat4(1.0f);
         m_Uv = glm::vec2(0.0f, 0.0f);
         m_TexSize = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -271,11 +273,14 @@ namespace Tarbora {
     void MeshNode::Draw(Scene *scene, glm::mat4 &parentTransform)
     {
         (void)(scene);
-        glm::mat4 newMat = parentTransform * m_LocalMatrix * m_Scale;
-        GraphicsEngine::GetShader()->Set("transform", newMat);
-        GraphicsEngine::GetShader()->Set("uv", m_Uv);
-        GraphicsEngine::GetShader()->Set("size", m_TexSize);
-        GraphicsEngine::DrawMesh(m_Mesh);
+        if (m_Mesh != nullptr && GraphicsEngine::ShaderAvailable())
+        {
+            glm::mat4 newMat = parentTransform * m_LocalMatrix * m_Scale;
+            GraphicsEngine::GetShader()->Set("transform", newMat);
+            GraphicsEngine::GetShader()->Set("uv", m_Uv);
+            GraphicsEngine::GetShader()->Set("size", m_TexSize);
+            GraphicsEngine::DrawMesh(m_Mesh);
+        }
     }
 
     void MeshNode::Scale(glm::vec3 &scale) {

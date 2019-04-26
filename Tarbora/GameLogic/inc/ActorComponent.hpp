@@ -11,7 +11,7 @@ namespace Tarbora {
     public:
         virtual ~ActorComponent() {}
 
-        virtual bool Init(json data) = 0;
+        virtual bool Init(JsonPtr resource, json data) = 0;
         virtual void Destroy() {}
         virtual void AfterInit() {}
         virtual void Update(float deltaTime) { (void)(deltaTime); }

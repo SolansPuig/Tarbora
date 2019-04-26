@@ -13,7 +13,7 @@ namespace Tarbora {
         ActorTest(ActorId id);
         ~ActorTest();
 
-        bool Init(json data);
+        bool Init(JsonPtr resource);
         void AfterInit();
         void Destroy();
         void Update(float deltaTime);

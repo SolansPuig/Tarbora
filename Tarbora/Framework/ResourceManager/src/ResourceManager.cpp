@@ -1,4 +1,5 @@
 #include "../inc/Resource.hpp"
+#include "../inc/Json.hpp"
 #include <fnmatch.h>
 
 namespace Tarbora {
@@ -65,7 +66,7 @@ namespace Tarbora {
             m_List.push_front(r);
             m_Resources[r->GetName()] = r;
         } else {
-            LOG_ERR("ResourceManager: Could not load resource %s with loader %s.", resource.c_str(), loader->GetPattern().c_str());
+            LOG_ERR("ResourceManager: Could not load resource \"%s\" with loader \"%s\".", resource.c_str(), loader->GetPattern().c_str());
         }
 
         return r;

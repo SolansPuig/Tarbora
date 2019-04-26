@@ -17,7 +17,7 @@ namespace Tarbora {
         if (data == nullptr)
         {
             LOG_ERR("TextureLoader: The image %s failed to load due to: %s", path.c_str(), stbi_failure_reason());
-            data = stbi_load("../resources/textures/missing.png", &width, &height, &nrComponents, 0);
+            data = stbi_load("../Resources/textures/missing.png", &width, &height, &nrComponents, 0);
             if (data == nullptr)
                 LOG_ERR("TextureLoader: The image textures/missing.png failed to load due to: %s", stbi_failure_reason());
         }
