@@ -70,12 +70,35 @@ namespace Tarbora {
         std::string name = resource->GetString(j, "name");
         std::string shape = resource->GetString(j, "shape");
 
-        glm::vec3 origin = glm::vec3(resource->GetFloatArray(j, "origin", 0), resource->GetFloatArray(j, "origin", 1), resource->GetFloatArray(j, "origin", 2));
-        glm::vec3 position = glm::vec3(resource->GetFloatArray(j, "position", 0)/pixelDensity, resource->GetFloatArray(j, "position", 1)/pixelDensity, resource->GetFloatArray(j, "position", 2)/pixelDensity);
-        glm::vec3 rotation = glm::vec3(resource->GetFloatArray(j, "rotation", 0), resource->GetFloatArray(j, "rotation", 1), resource->GetFloatArray(j, "rotation", 2));
-        glm::vec3 size = glm::vec3(resource->GetFloatArray(j, "size", 0)/pixelDensity, resource->GetFloatArray(j, "size", 1)/pixelDensity, resource->GetFloatArray(j, "size", 2)/pixelDensity);
-        glm::vec3 texSize = glm::vec3(resource->GetFloatArray(j, "size", 0)/textureSize, resource->GetFloatArray(j, "size", 1)/textureSize, resource->GetFloatArray(j, "size", 2)/textureSize);
-        glm::vec2 uv = glm::vec2(resource->GetFloatArray(j, "uv", 0)/textureSize, resource->GetFloatArray(j, "uv", 1)/textureSize);
+        glm::vec3 origin = glm::vec3(
+            resource->GetFloatArray(j, "origin", 0),
+            resource->GetFloatArray(j, "origin", 1),
+            resource->GetFloatArray(j, "origin", 2)
+        );
+        glm::vec3 position = glm::vec3(
+            resource->GetFloatArray(j, "position", 0)/pixelDensity,
+            resource->GetFloatArray(j, "position", 1)/pixelDensity,
+            resource->GetFloatArray(j, "position", 2)/pixelDensity
+        );
+        glm::vec3 rotation = glm::vec3(
+            resource->GetFloatArray(j, "rotation", 0),
+            resource->GetFloatArray(j, "rotation", 1),
+            resource->GetFloatArray(j, "rotation", 2)
+        );
+        glm::vec3 size = glm::vec3(
+            resource->GetFloatArray(j, "size", 0)/pixelDensity,
+            resource->GetFloatArray(j, "size", 1)/pixelDensity,
+            resource->GetFloatArray(j, "size", 2)/pixelDensity
+        );
+        glm::vec3 texSize = glm::vec3(
+            resource->GetFloatArray(j, "size", 0)/textureSize,
+            resource->GetFloatArray(j, "size", 1)/textureSize,
+            resource->GetFloatArray(j, "size", 2)/textureSize
+        );
+        glm::vec2 uv = glm::vec2(
+            resource->GetFloatArray(j, "uv", 0)/textureSize,
+            resource->GetFloatArray(j, "uv", 1)/textureSize
+        );
 
         // Create the node
         MeshNodePtr node = MeshNodePtr(new MeshNode(id, name, shape));
@@ -87,11 +110,15 @@ namespace Tarbora {
 
         // Create all its child nodes and add them as children to this
         json nodes;
-        resource->Get(j, "nodes", &nodes, true, true);
-        for (auto itr = nodes.begin(); itr != nodes.end(); itr++) {
-            MeshNodePtr new_node = CreateNode(id, resource, *itr, pixelDensity, textureSize);
+        resource->Get(j, "nodes", &nodes, {true, true});
+        resource->PushErrName("nodes");
+        for (int i = 0; i < nodes.size(); i++) {
+            resource->PushErrName(std::to_string(i).c_str());
+            MeshNodePtr new_node = CreateNode(id, resource, resource->GetJson(nodes, i), pixelDensity, textureSize);
+            resource->PopErrName();
             node->AddChild(new_node);
         }
+        resource->PopErrName();
 
         return node;
     }
@@ -102,9 +129,11 @@ namespace Tarbora {
         if (resource != NULL)
         {
             std::shared_ptr<MaterialNode> mat = std::shared_ptr<MaterialNode>(new MaterialNode(id, std::to_string(id), shader, texture));
+            resource->PushErrName("root");
             MeshNodePtr root = CreateNode(id, resource, resource->GetJson("root"), resource->GetFloat("pixel_density"), resource->GetFloat("texture_size"));
+            resource->PopErrName();
             float scale = 1.0f;
-            resource->Get("scale", &scale, true, true);
+            resource->Get("scale", &scale, {true, true});
             root->Scale(scale);
             mat->AddChild(root);
             AddChild(mat, renderPass);

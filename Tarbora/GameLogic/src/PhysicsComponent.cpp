@@ -5,29 +5,41 @@ namespace Tarbora {
     bool PhysicsComponent::Init(JsonPtr resource, json data)
     {
         bool ret = false;
-        std::string shape = "box";
-        resource->Get(data, "shape", &shape, true);
-
-        if (shape == "sphere")
+        std::string shape = "null";
+        resource->Get(data, "shape", &shape);
+        if (shape != "null")
         {
-            m_Body.reset(new SphereBody(resource->GetFloat(data, "radius")));
-            ret = true;
-        }
-        else if (shape == "box")
-        {
-            glm::vec3 dimensions = glm::vec3(resource->GetFloatArray(data, "size", 0), resource->GetFloatArray(data, "size", 1), resource->GetFloatArray(data, "size", 2));
-            m_Body.reset(new BoxBody(dimensions));
-            ret = true;
-        }
+            if (shape == "sphere")
+            {
+                m_Body.reset(new SphereBody(resource->GetFloat(data, "radius")));
+                ret = true;
+            }
+            else if (shape == "box")
+            {
+                glm::vec3 dimensions = glm::vec3(
+                    resource->GetFloatArray(data, "size", 0),
+                    resource->GetFloatArray(data, "size", 1),
+                    resource->GetFloatArray(data, "size", 2)
+                );
+                m_Body.reset(new BoxBody(dimensions));
+                ret = true;
+            }
 
-        float friction = 0.9;
-        float density = 1;
-        float restitution = 0.2;
-        resource->Get(data, "friction", &friction, true);
-        resource->Get(data, "density", &density, true);
-        resource->Get(data, "restitution", &restitution, true);
-        m_Body->SetProperties(friction, density, restitution);
-
+            if (ret)
+            {
+                float friction = 0.9;
+                float density = 1;
+                float restitution = 0.2;
+                resource->Get(data, "friction", &friction, {true});
+                resource->Get(data, "density", &density, {true});
+                resource->Get(data, "restitution", &restitution, {true});
+                m_Body->SetProperties(friction, density, restitution);
+            }
+            else
+            {
+                LOG_ERR("PhysicsComponent: \"%s\" is not a valid physics shape.", shape.c_str());
+            }
+        }
         return ret;
     }
 

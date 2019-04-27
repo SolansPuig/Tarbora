@@ -22,20 +22,26 @@ namespace Tarbora {
             actor->AddComponent(component);
 
             json components;
-            resource->Get("components", &components, true, true);
+            resource->Get("components", &components, {true, true});
+            resource->PushErrName("components");
 
             for (auto &itr : components.items())
             {
+                resource->PushErrName(itr.key());
                 ActorComponentPtr component = ActorComponentPtr(CreateComponent(resource, itr.key(), itr.value()));
+                resource->PopErrName();
                 if (component)
                 {
                     actor->AddComponent(component);
                     component->SetOwner(actor);
                 } else
                 {
+                    actor->Destroy();
                     return false;
                 }
             }
+
+            resource->PopErrName();
             actor->AfterInit();
             return true;
         }

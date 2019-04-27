@@ -17,17 +17,21 @@ namespace Tarbora {
             std::string window_title = "Tarbora Game Engine";
             int window_width = 1280, window_height = 720;
 
-            auto settings = GET_RESOURCE(Json, "Settings.json");
+            JsonPtr settings = GET_RESOURCE(Json, "Settings.json");
             if (settings)
             {
                 json window;
-                settings->Get("window", &window, true);
+                settings->Get("window", &window, {true});
                 if (!window.empty())
                 {
-                    settings->Get(window, "title", &window_title, true);
+                    settings->PushErrName("window");
 
-                    settings->GetArray(window, "size", 0, &window_width, true);
-                    settings->GetArray(window, "size", 1, &window_height, true);
+                    settings->Get(window, "title", &window_title, {true});
+
+                    settings->GetArray(window, "size", 0, &window_width, {true});
+                    settings->GetArray(window, "size", 1, &window_height, {true});
+
+                    settings->PopErrName();
                 }
             };
 

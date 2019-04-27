@@ -4,7 +4,7 @@ namespace Tarbora {
     Application::Application() : m_run(true), m_time(0.0f)
     {
         Logger::Init(stdout);
-        LOG_LEVEL(Tarbora::Logger::LogLevel::DEBUG);
+        LOG_LEVEL(Tarbora::Logger::LogLevel::INFO);
         LOG_INFO("Application: Creating application...");
 
         ResourceManager::Init("../Resources/");

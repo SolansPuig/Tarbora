@@ -14,6 +14,19 @@ namespace Tarbora {
             m_Movement = glm::vec3(0.0f, 0.0f, 0.0f);
             m_Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
             m_Jump = false;
+
+            JsonPtr settings = GET_RESOURCE(Json, "Settings.json");
+            if (settings)
+            {
+                json controls = settings->GetJson("controls");
+                settings->PushErrName("controls");
+
+                settings->Get(controls, "jump_impulse", &m_JumpImpulse);
+                settings->Get(controls, "direction_impulse", &m_DirectionImpulse);
+                settings->Get(controls, "torque_impulse", &m_TorqueImpulse);
+
+                settings->PopErrName();
+            }
         }
 
         ~GameLayer() {}
@@ -93,17 +106,17 @@ namespace Tarbora {
         {
             if (m_Movement != glm::vec3(0.0f, 0.0f, 0.0f))
             {
-                ApplyForceEvent ev = ApplyForceEvent(m_TargetId, 15, glm::normalize(m_Movement));
+                ApplyForceEvent ev = ApplyForceEvent(m_TargetId, m_DirectionImpulse, glm::normalize(m_Movement));
                 EventManager::Trigger(ApplyForce, &ev);
             }
             if (m_Rotation != glm::vec3(0.0f, 0.0f, 0.0f))
             {
-                ApplyTorqueEvent ev = ApplyTorqueEvent(m_TargetId, 5, glm::normalize(m_Rotation));
+                ApplyTorqueEvent ev = ApplyTorqueEvent(m_TargetId, m_TorqueImpulse, glm::normalize(m_Rotation));
                 EventManager::Trigger(ApplyTorque, &ev);
             }
             if (m_Jump)
             {
-                ApplyForceEvent ev = ApplyForceEvent(m_TargetId, 500, glm::vec3(0.0f, 1.0f, 0.0f));
+                ApplyForceEvent ev = ApplyForceEvent(m_TargetId, m_JumpImpulse, glm::vec3(0.0f, 1.0f, 0.0f));
                 EventManager::Trigger(ApplyForce, &ev);
                 m_Jump = false;
             }
@@ -129,5 +142,6 @@ namespace Tarbora {
         glm::vec3 m_Movement;
         SkyboxPtr m_Skybox;
         bool m_Jump;
+        float m_JumpImpulse, m_DirectionImpulse, m_TorqueImpulse;
     };
 }

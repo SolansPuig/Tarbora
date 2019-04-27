@@ -2,5 +2,10 @@
     "window": {
         "title": "Tarbora Game Engine",
         "size": [1280, 720]
+    },
+    "controls": {
+        "jump_impulse": 300,
+        "direction_impulse": 10,
+        "torque_impulse": 10
     }
 }

@@ -4,10 +4,11 @@
 namespace Tarbora {
     bool TypeComponent::Init(JsonPtr resource, json data)
     {
-        for (int i = 0; i < data.size(); i++)
+        for (unsigned int i = 0; i < data.size(); i++)
         {
-            m_Types.push_back(resource->GetString(data, i, "type"));
+            m_Types.push_back(resource->GetString(data, i));
         }
+
         return true;
     }
 
@@ -15,13 +16,14 @@ namespace Tarbora {
     {
         m_RenderPass = 1;
         m_Model = "models/cube.json";
-        m_Texture = "textures/missing.png";
+        m_Texture = "textures/white.png";
         m_Shader = "shaders/model.shader.json";
 
-        resource->Get(data, "renderPass", &m_RenderPass, true);
-        resource->Get(data, "model", &m_Model, true);
-        resource->Get(data, "texture", &m_Texture, true);
-        resource->Get(data, "shader", &m_Shader, true);
+        resource->Get(data, "renderPass", &m_RenderPass, {true});
+        resource->Get(data, "model", &m_Model, {true});
+        resource->Get(data, "texture", &m_Texture, {true, true});
+        resource->Get(data, "shader", &m_Shader, {true});
+
         return true;
     }
 
