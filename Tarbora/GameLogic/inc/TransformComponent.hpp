@@ -12,7 +12,7 @@ namespace Tarbora {
 
         ComponentId GetId() const { return TransformId; }
 
-        bool Init(JsonPtr resource, json data)
+        bool Init(JsonPtr resource, raw_json data)
         {
             m_Transform = glm::mat4(1.0f);
             m_Transform = glm::translate(m_Transform, glm::vec3(resource->GetFloatArray(data, "position", 0), resource->GetFloatArray(data, "position", 1), resource->GetFloatArray(data, "position", 2)));

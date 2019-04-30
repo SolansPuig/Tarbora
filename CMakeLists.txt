@@ -16,7 +16,7 @@ include_directories(Tarbora/Framework/PhysicsEngine/bullet3/src)
 include_directories(Tarbora/Framework/GraphicsEngine/imgui)
 include_directories(Tarbora/Framework/GraphicsEngine/glfw/include)
 
-add_subdirectory (Demo)
+# add_subdirectory (Demo)
 add_subdirectory (Tarbora)
 
 add_executable (tarbora main.cpp)

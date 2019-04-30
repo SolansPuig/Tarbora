@@ -2,7 +2,7 @@
 #include "../inc/TransformComponent.hpp"
 
 namespace Tarbora {
-    bool PhysicsComponent::Init(JsonPtr resource, json data)
+    bool PhysicsComponent::Init(JsonPtr resource, raw_json data)
     {
         bool ret = false;
         std::string shape = "null";

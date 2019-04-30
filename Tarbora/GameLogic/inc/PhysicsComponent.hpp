@@ -12,7 +12,7 @@ namespace Tarbora {
 
         ComponentId GetId() const { return PhysicsId; }
 
-        bool Init(JsonPtr resource, json data);
+        bool Init(JsonPtr resource, raw_json data);
         void AfterInit();
         virtual void Update(float deltaTime) override;
 

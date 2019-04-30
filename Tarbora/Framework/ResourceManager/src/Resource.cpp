@@ -9,7 +9,7 @@ namespace Tarbora {
             return ResourcePtr();
 
         std::string s = std::string (std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
-        ResourcePtr r = ResourcePtr(new TextResource(path, s));
+        ResourcePtr r = ResourcePtr(new Text(path, s));
         file.close();
         return r;
     }

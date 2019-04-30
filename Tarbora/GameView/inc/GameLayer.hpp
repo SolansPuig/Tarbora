@@ -18,7 +18,7 @@ namespace Tarbora {
             JsonPtr settings = GET_RESOURCE(Json, "Settings.json");
             if (settings)
             {
-                json controls = settings->GetJson("controls");
+                raw_json controls = settings->GetJson("controls");
                 settings->PushErrName("controls");
 
                 settings->Get(controls, "jump_impulse", &m_JumpImpulse);

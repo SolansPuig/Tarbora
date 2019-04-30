@@ -15,13 +15,13 @@ namespace Tarbora {
             }
 
             // Everyting has a transform component
-            json transform;
+            raw_json transform;
             transform["position"] = { initialPos.x, initialPos.y, initialPos.z };
             transform["rotation"] = { initialRot.x, initialRot.y, initialRot.z };
             ActorComponentPtr component = ActorComponentPtr(CreateComponent(resource, "transform", transform));
             actor->AddComponent(component);
 
-            json components;
+            raw_json components;
             resource->Get("components", &components, {true, true});
             resource->PushErrName("components");
 
@@ -56,7 +56,7 @@ namespace Tarbora {
         m_ActorComponentCreators[name] = func;
     }
 
-    ActorComponentPtr ActorFactory::CreateComponent(JsonPtr resource, std::string name, json data)
+    ActorComponentPtr ActorFactory::CreateComponent(JsonPtr resource, std::string name, raw_json data)
     {
         ActorComponentPtr component;
         auto itr = m_ActorComponentCreators.find(name);

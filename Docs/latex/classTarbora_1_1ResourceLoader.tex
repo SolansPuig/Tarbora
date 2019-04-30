@@ -1,0 +1,48 @@
+\hypertarget{classTarbora_1_1ResourceLoader}{}\section{Tarbora\+:\+:Resource\+Loader Class Reference}
+\label{classTarbora_1_1ResourceLoader}\index{Tarbora\+::\+Resource\+Loader@{Tarbora\+::\+Resource\+Loader}}
+
+
+An abstract resource loader, used to load a \hyperlink{classTarbora_1_1Resource}{Resource} from file.  
+
+
+
+
+{\ttfamily \#include $<$Resource.\+hpp$>$}
+
+
+
+Inheritance diagram for Tarbora\+:\+:Resource\+Loader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTarbora_1_1ResourceLoader__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ResourceLoader_a03897df5acadacb55a9b85c6054cb1d9}\label{classTarbora_1_1ResourceLoader_a03897df5acadacb55a9b85c6054cb1d9}} 
+virtual const std\+::string \hyperlink{classTarbora_1_1ResourceLoader_a03897df5acadacb55a9b85c6054cb1d9}{Get\+Pattern} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the pattern that will be used to select a suitable loader for a file, a regex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1ResourceLoader_af64faaac34968cb8bb5582fdfa449ca8}\label{classTarbora_1_1ResourceLoader_af64faaac34968cb8bb5582fdfa449ca8}} 
+virtual Resource\+Ptr \hyperlink{classTarbora_1_1ResourceLoader_af64faaac34968cb8bb5582fdfa449ca8}{Load} (std\+::string path)=0
+\begin{DoxyCompactList}\small\item\em Load the file located in {\itshape path}. Returns a nullptr if not found or if any error occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract resource loader, used to load a \hyperlink{classTarbora_1_1Resource}{Resource} from file. 
+
+This will be called only once for every resource (probably in startup or level load).
+
+If you want to implement your own resource, create also a \hyperlink{classTarbora_1_1ResourceLoader}{Resource\+Loader} inherited from this class.
+
+You must register the resource loader to the Resource\+Manager
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classTarbora_1_1Resource}{Resource} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Framework/\+Resource\+Manager/inc/Resource.\+hpp\end{DoxyCompactItemize}

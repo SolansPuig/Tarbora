@@ -4,8 +4,8 @@
 namespace Tarbora {
     class Shader : public Resource
     {
+        friend class ShaderResourceLoader;
     public:
-        Shader(std::string name, unsigned int id) : Resource(name), m_Id(id) {}
         ~Shader();
         void Use();
         unsigned int GetId() const { return m_Id; }
@@ -19,7 +19,9 @@ namespace Tarbora {
         void Set(const std::string name, glm::vec4 &value);
         void Set(const std::string name, float x, float y, float z, float w);
         void Set(const std::string name, glm::mat4 &value);
-    protected:
+    private:
+        Shader(std::string name, unsigned int id) : Resource(name), m_Id(id) {}
+
         unsigned int m_Id;
     };
 

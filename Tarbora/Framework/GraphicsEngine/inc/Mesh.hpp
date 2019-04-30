@@ -4,12 +4,13 @@
 namespace Tarbora {
     class Mesh : public Resource
     {
+        friend class MeshResourceLoader;
     public:
-        Mesh(std::string name, unsigned int id, int vertices) : Resource(name), m_Id(id), m_Vertices(vertices) {}
         ~Mesh();
         unsigned int GetId() const { return m_Id; }
         int GetVertices() const { return m_Vertices; }
-    protected:
+    private:
+        Mesh(std::string name, unsigned int id, int vertices) : Resource(name), m_Id(id), m_Vertices(vertices) {}
         unsigned int m_Id;
         int m_Vertices;
     };

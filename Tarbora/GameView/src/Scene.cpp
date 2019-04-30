@@ -64,7 +64,7 @@ namespace Tarbora {
         }
     }
 
-    MeshNodePtr Scene::CreateNode(ActorId id, JsonPtr resource, json j, float pixelDensity, float textureSize)
+    MeshNodePtr Scene::CreateNode(ActorId id, JsonPtr resource, raw_json j, float pixelDensity, float textureSize)
     {
         // Read all the parameters for the node
         std::string name = resource->GetString(j, "name");
@@ -109,7 +109,7 @@ namespace Tarbora {
         node->RotateLocal(rotation);
 
         // Create all its child nodes and add them as children to this
-        json nodes;
+        raw_json nodes;
         resource->Get(j, "nodes", &nodes, {true, true});
         resource->PushErrName("nodes");
         for (int i = 0; i < nodes.size(); i++) {

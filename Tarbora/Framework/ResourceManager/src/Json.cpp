@@ -13,7 +13,7 @@ namespace Tarbora {
         m_ErrName = m_ErrName.substr(0,found+1);
     }
 
-    void Json::Get(const char * key, json *target, JsonOptions options)
+    void Json::Get(const char * key, raw_json *target, JsonOptions options)
     {
         Get(m_JSON, key, target, options);
     }
@@ -43,9 +43,9 @@ namespace Tarbora {
         Get(m_JSON, key, target, options);
     }
 
-    void Json::Get(json j, const char * key, json *target, JsonOptions options)
+    void Json::Get(raw_json j, const char * key, raw_json *target, JsonOptions options)
     {
-        json r = j[key];
+        raw_json r = j[key];
 
         if (r.is_null())
         {
@@ -67,9 +67,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, const char * key, bool *target, JsonOptions options)
+    void Json::Get(raw_json j, const char * key, bool *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -95,9 +95,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, const char * key, int *target, JsonOptions options)
+    void Json::Get(raw_json j, const char * key, int *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -128,9 +128,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, const char * key, float *target, JsonOptions options)
+    void Json::Get(raw_json j, const char * key, float *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -156,9 +156,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, const char * key, unsigned int *target, JsonOptions options)
+    void Json::Get(raw_json j, const char * key, unsigned int *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -194,9 +194,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, const char * key, std::string *target, JsonOptions options)
+    void Json::Get(raw_json j, const char * key, std::string *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -222,7 +222,7 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, int key, json *target, JsonOptions options)
+    void Json::Get(raw_json j, int key, raw_json *target, JsonOptions options)
     {
         if (j.is_array())
         {
@@ -260,7 +260,7 @@ namespace Tarbora {
             }
         }
 
-        json r = j[key];
+        raw_json r = j[key];
 
         if (r.is_null())
         {
@@ -282,9 +282,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, int key, bool *target, JsonOptions options)
+    void Json::Get(raw_json j, int key, bool *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -310,9 +310,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, int key, int *target, JsonOptions options)
+    void Json::Get(raw_json j, int key, int *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -343,9 +343,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, int key, float *target, JsonOptions options)
+    void Json::Get(raw_json j, int key, float *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -371,9 +371,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, int key, unsigned int *target, JsonOptions options)
+    void Json::Get(raw_json j, int key, unsigned int *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -409,9 +409,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::Get(json j, int key, std::string *target, JsonOptions options)
+    void Json::Get(raw_json j, int key, std::string *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -437,7 +437,7 @@ namespace Tarbora {
         }
     }
 
-    void Json::GetArray(const char * key, int i, json *target, JsonOptions options)
+    void Json::GetArray(const char * key, int i, raw_json *target, JsonOptions options)
     {
         GetArray(m_JSON, key, i, target, options);
     }
@@ -467,9 +467,9 @@ namespace Tarbora {
         GetArray(m_JSON, key, i, target, options);
     }
 
-    void Json::GetArray(json j, const char * key, int i, json *target, JsonOptions options)
+    void Json::GetArray(raw_json j, const char * key, int i, raw_json *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
 
         if (!r.is_null())
@@ -512,9 +512,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::GetArray(json j, const char * key, int i, bool *target, JsonOptions options)
+    void Json::GetArray(raw_json j, const char * key, int i, bool *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         GetArray(j, key, i, &r, options);
 
         if (!r.is_null())
@@ -540,9 +540,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::GetArray(json j, const char * key, int i, int *target, JsonOptions options)
+    void Json::GetArray(raw_json j, const char * key, int i, int *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         GetArray(j, key, i, &r, options);
 
         if (!r.is_null())
@@ -573,9 +573,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::GetArray(json j, const char * key, int i, float *target, JsonOptions options)
+    void Json::GetArray(raw_json j, const char * key, int i, float *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         GetArray(j, key, i, &r, options);
 
         if (!r.is_null())
@@ -601,9 +601,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::GetArray(json j, const char * key, int i, unsigned int *target, JsonOptions options)
+    void Json::GetArray(raw_json j, const char * key, int i, unsigned int *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         GetArray(j, key, i, &r, options);
 
         if (!r.is_null())
@@ -639,9 +639,9 @@ namespace Tarbora {
         }
     }
 
-    void Json::GetArray(json j, const char * key, int i, std::string *target, JsonOptions options)
+    void Json::GetArray(raw_json j, const char * key, int i, std::string *target, JsonOptions options)
     {
-        json r;
+        raw_json r;
         GetArray(j, key, i, &r, options);
 
         if (!r.is_null())
@@ -667,9 +667,9 @@ namespace Tarbora {
         }
     }
 
-    json Json::GetJson(const char * key, JsonOptions options)
+    raw_json Json::GetJson(const char * key, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(key, &r, options);
         return r;
     }
@@ -709,93 +709,93 @@ namespace Tarbora {
         return r;
     }
 
-    json Json::GetJson(json j, const char * key, JsonOptions options)
+    raw_json Json::GetJson(raw_json j, const char * key, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
         return r;
     }
 
-    bool Json::GetBool(json j, const char * key, JsonOptions options)
+    bool Json::GetBool(raw_json j, const char * key, JsonOptions options)
     {
         bool r;
         Get(j, key, &r, options);
         return r;
     }
 
-    int Json::GetInt(json j, const char * key, JsonOptions options)
+    int Json::GetInt(raw_json j, const char * key, JsonOptions options)
     {
         int r;
         Get(j, key, &r, options);
         return r;
     }
 
-    float Json::GetFloat(json j, const char * key, JsonOptions options)
+    float Json::GetFloat(raw_json j, const char * key, JsonOptions options)
     {
         float r;
         Get(j, key, &r, options);
         return r;
     }
 
-    unsigned int Json::GetUInt(json j, const char * key, JsonOptions options)
+    unsigned int Json::GetUInt(raw_json j, const char * key, JsonOptions options)
     {
         unsigned int r;
         Get(j, key, &r, options);
         return r;
     }
 
-    std::string Json::GetString(json j, const char * key, JsonOptions options)
+    std::string Json::GetString(raw_json j, const char * key, JsonOptions options)
     {
         std::string r;
         Get(j, key, &r, options);
         return r;
     }
 
-    json Json::GetJson(json j, int key, JsonOptions options)
+    raw_json Json::GetJson(raw_json j, int key, JsonOptions options)
     {
-        json r;
+        raw_json r;
         Get(j, key, &r, options);
         return r;
     }
 
-    bool Json::GetBool(json j, int key, JsonOptions options)
+    bool Json::GetBool(raw_json j, int key, JsonOptions options)
     {
         bool r;
         Get(j, key, &r, options);
         return r;
     }
 
-    int Json::GetInt(json j, int key, JsonOptions options)
+    int Json::GetInt(raw_json j, int key, JsonOptions options)
     {
         int r;
         Get(j, key, &r, options);
         return r;
     }
 
-    float Json::GetFloat(json j, int key, JsonOptions options)
+    float Json::GetFloat(raw_json j, int key, JsonOptions options)
     {
         float r;
         Get(j, key, &r, options);
         return r;
     }
 
-    unsigned int Json::GetUInt(json j, int key, JsonOptions options)
+    unsigned int Json::GetUInt(raw_json j, int key, JsonOptions options)
     {
         unsigned int r;
         Get(j, key, &r, options);
         return r;
     }
 
-    std::string Json::GetString(json j, int key, JsonOptions options)
+    std::string Json::GetString(raw_json j, int key, JsonOptions options)
     {
         std::string r;
         Get(j, key, &r, options);
         return r;
     }
 
-    json Json::GetJsonArray(const char * key, int i, JsonOptions options)
+    raw_json Json::GetJsonArray(const char * key, int i, JsonOptions options)
     {
-        json r;
+        raw_json r;
         GetArray(key, i, &r, options);
         return r;
     }
@@ -835,42 +835,42 @@ namespace Tarbora {
         return r;
     }
 
-    json Json::GetJsonArray(json j, const char * key, int i, JsonOptions options)
+    raw_json Json::GetJsonArray(raw_json j, const char * key, int i, JsonOptions options)
     {
-        json r;
+        raw_json r;
         GetArray(j, key, i, &r, options);
         return r;
     }
 
-    bool Json::GetBoolArray(json j, const char * key, int i, JsonOptions options)
+    bool Json::GetBoolArray(raw_json j, const char * key, int i, JsonOptions options)
     {
         bool r;
         GetArray(j, key, i, &r, options);
         return r;
     }
 
-    int Json::GetIntArray(json j, const char * key, int i, JsonOptions options)
+    int Json::GetIntArray(raw_json j, const char * key, int i, JsonOptions options)
     {
         int r;
         GetArray(j, key, i, &r, options);
         return r;
     }
 
-    float Json::GetFloatArray(json j, const char * key, int i, JsonOptions options)
+    float Json::GetFloatArray(raw_json j, const char * key, int i, JsonOptions options)
     {
         float r;
         GetArray(j, key, i, &r, options);
         return r;
     }
 
-    unsigned int Json::GetUIntArray(json j, const char * key, int i, JsonOptions options)
+    unsigned int Json::GetUIntArray(raw_json j, const char * key, int i, JsonOptions options)
     {
         unsigned int r;
         GetArray(j, key, i, &r, options);
         return r;
     }
 
-    std::string Json::GetStringArray(json j, const char * key, int i, JsonOptions options)
+    std::string Json::GetStringArray(raw_json j, const char * key, int i, JsonOptions options)
     {
         std::string r;
         GetArray(j, key, i, &r, options);
@@ -886,12 +886,12 @@ namespace Tarbora {
             return ResourcePtr();
         }
 
-        json data;
+        raw_json data;
         try
         {
-            data = json::parse(file);
+            data = raw_json::parse(file);
         }
-        catch (json::parse_error& e)
+        catch (raw_json::parse_error& e)
         {
             LOG_ERR("JsonResourceLoader: Trying to parse file \"%s\" found exception: \n \"%s\"", path.c_str(), e.what());
             file.close();

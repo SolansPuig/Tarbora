@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classTarbora_1_1ResourceLoader.html" title="An abstract resource loader, used to load a Resource from file. " alt="" coords="5,56,175,83"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1MeshResourceLoader.html" title="Tarbora::MeshResourceLoader" alt="" coords="227,5,429,32"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1ShaderResourceLoader.html" title="Tarbora::ShaderResourceLoader" alt="" coords="223,56,433,83"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1TextureResourceLoader.html" title="Tarbora::TextureResource\lLoader" alt="" coords="241,107,415,149"/>
+</map>

@@ -17,7 +17,7 @@ namespace Tarbora {
         SceneNodePtr GetChild(ActorId id);
         bool RemoveChild(ActorId id);
 
-        MeshNodePtr CreateNode(ActorId id, JsonPtr resource, json j, float pixelDensity, float textureSize);
+        MeshNodePtr CreateNode(ActorId id, JsonPtr resource, raw_json j, float pixelDensity, float textureSize);
         void CreateActor(ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture);
 
         void SetCamera(CameraPtr camera) { m_Camera = camera; }

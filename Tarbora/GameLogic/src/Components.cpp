@@ -2,7 +2,7 @@
 #include "../inc/TransformComponent.hpp"
 
 namespace Tarbora {
-    bool TypeComponent::Init(JsonPtr resource, json data)
+    bool TypeComponent::Init(JsonPtr resource, raw_json data)
     {
         for (unsigned int i = 0; i < data.size(); i++)
         {
@@ -12,7 +12,7 @@ namespace Tarbora {
         return true;
     }
 
-    bool ModelComponent::Init(JsonPtr resource, json data)
+    bool ModelComponent::Init(JsonPtr resource, raw_json data)
     {
         m_RenderPass = 1;
         m_Model = "models/cube.json";

@@ -20,7 +20,7 @@ namespace Tarbora {
             JsonPtr settings = GET_RESOURCE(Json, "Settings.json");
             if (settings)
             {
-                json window;
+                raw_json window;
                 settings->Get("window", &window, {true});
                 if (!window.empty())
                 {

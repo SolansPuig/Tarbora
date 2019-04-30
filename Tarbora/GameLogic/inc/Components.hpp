@@ -11,7 +11,7 @@ namespace Tarbora {
         TypeComponent() {}
         ~TypeComponent() {}
 
-        bool Init(JsonPtr resource, json data);
+        bool Init(JsonPtr resource, raw_json data);
         ComponentId GetId() const { return TypeId; }
 
         bool HasType(std::string type) { return count(m_Types.begin(), m_Types.end(), type) > 0; }
@@ -27,7 +27,7 @@ namespace Tarbora {
         ModelComponent() {}
         ~ModelComponent() {}
 
-        bool Init(JsonPtr resource, json data);
+        bool Init(JsonPtr resource, raw_json data);
         void AfterInit();
         ComponentId GetId() const { return RenderId; }
 
