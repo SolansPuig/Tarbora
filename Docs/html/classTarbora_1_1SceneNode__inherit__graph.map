@@ -1,6 +1,0 @@
-<map id="Tarbora::SceneNode" name="Tarbora::SceneNode">
-<area shape="rect" id="node2" href="$classTarbora_1_1Camera.html" title="Tarbora::Camera" alt="" coords="5,80,125,107"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1MaterialNode.html" title="Tarbora::MaterialNode" alt="" coords="150,80,301,107"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1MeshNode.html" title="Tarbora::MeshNode" alt="" coords="325,80,462,107"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1RootNode.html" title="Tarbora::RootNode" alt="" coords="487,80,620,107"/>
-</map>

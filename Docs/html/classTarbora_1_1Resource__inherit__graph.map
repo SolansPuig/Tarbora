@@ -1,7 +1,0 @@
-<map id="Tarbora::Resource" name="Tarbora::Resource">
-<area shape="rect" id="node2" href="$classTarbora_1_1Json.html" title="A wrapper class to securely access Json files.json. " alt="" coords="5,80,108,107"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1Mesh.html" title="Tarbora::Mesh" alt="" coords="133,80,239,107"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1Shader.html" title="Tarbora::Shader" alt="" coords="263,80,378,107"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1Text.html" title="Wrapper class for a raw text file. " alt="" coords="403,80,503,107"/>
-<area shape="rect" id="node6" href="$classTarbora_1_1Texture.html" title="Tarbora::Texture" alt="" coords="527,80,645,107"/>
-</map>
