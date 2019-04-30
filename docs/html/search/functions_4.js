@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['registerloader',['RegisterLoader',['../classTarbora_1_1ResourceManager.html#a531683525f49833ac4b06916cd8a2bc8',1,'Tarbora::ResourceManager']]]
+  ['log',['Log',['../classTarbora_1_1Logger.html#aa32641fca455178d88f3b1c8b2f552ab',1,'Tarbora::Logger']]]
 ];

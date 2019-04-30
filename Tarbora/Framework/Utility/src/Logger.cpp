@@ -3,66 +3,61 @@
 #include <ctime>
 
 namespace Tarbora {
-    namespace Logger {
-        LogLevel log_level;
-        FILE *log_stream;
-        bool isFile;
+    void Logger::Init(FILE *stream)
+    {
+        m_LogStream = stream;
+        m_IsFile = false;
+    }
 
-        void Init(FILE *stream)
-        {
-            log_stream = stream;
-            isFile = false;
-        }
+    void Logger::Init(const char *file_path)
+    {
+        m_LogStream = fopen (file_path, "w");
+        m_IsFile = true;
+    }
 
-        void Init(const char *file_path)
-        {
-            log_stream = fopen (file_path, "w");
-            isFile = true;
-        }
+    void Logger::Close()
+    {
+        if (m_IsFile)
+            fclose(m_LogStream);
+    }
 
-        void Close()
-        {
-            if (isFile)
-                fclose(log_stream);
-        }
+    void Logger::SetLevel(LogLevel level)
+    {
+        m_LogLevel = level;
+    }
 
-        void SetLevel(LogLevel level)
-        {
-            log_level = level;
-        }
+    void Logger::Log(LogLevel level, const char *text, ...)
+    {
+        // Only do something if the level is higher than the current log level.
+        if (m_LogLevel <= level) {
+            va_list args;
+            va_start(args, text);
 
-        void Log(LogLevel level, const char *text, ...)
-        {
-            if (log_level <= level) {
-                va_list args;
-                va_start(args, text);
+            // Print the current time
+            time_t now = time(0);
+            tm *ltm = localtime(&now);
+            fprintf(m_LogStream, "[%02d:%02d:%02d]", ltm->tm_hour, ltm->tm_min, ltm->tm_sec);
 
-                // Print the current time
-                time_t now = time(0);
-                tm *ltm = localtime(&now);
-                fprintf(log_stream, "[%02d:%02d:%02d]", ltm->tm_hour, ltm->tm_min, ltm->tm_sec);
-
-                // Print the Log Level
-                switch (level) {
-                    case LogLevel::DEBUG:
-                        fprintf(log_stream, " \033[1;36mDEBUG:\033[0m ");
-                        break;
-                    case LogLevel::INFO:
-                        fprintf(log_stream, " \033[1;37mINFO:\033[0m  ");
-                        break;
-                    case LogLevel::WARN:
-                        fprintf(log_stream, " \033[1;93mWARN:\033[0m  ");
-                        break;
-                    case LogLevel::ERR:
-                        fprintf(log_stream, " \033[1;31mERR:\033[0m   ");
-                        break;
-                }
-
-                // Print the message
-                vfprintf(log_stream, text, args);
-                va_end(args);
-                fprintf(log_stream, "\n");
+            // Print the Log Level colored. Does not work on windows.
+            switch (level) {
+                case LogLevel::DEBUG:
+                    fprintf(m_LogStream, " \033[1;36mDEBUG:\033[0m ");
+                    break;
+                case LogLevel::INFO:
+                    fprintf(m_LogStream, " \033[1;37mINFO:\033[0m  ");
+                    break;
+                case LogLevel::WARN:
+                    fprintf(m_LogStream, " \033[1;93mWARN:\033[0m  ");
+                    break;
+                case LogLevel::ERR:
+                    fprintf(m_LogStream, " \033[1;31mERR:\033[0m   ");
+                    break;
             }
+
+            // Print the message
+            vfprintf(m_LogStream, text, args);
+            va_end(args);
+            fprintf(m_LogStream, "\n");
         }
     }
 }

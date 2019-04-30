@@ -10,6 +10,7 @@
 #include <list>
 #include <map>
 #include <vector>
+#include <set>
 
 #define INVALID_ID 0
 #define SKY_ID 10

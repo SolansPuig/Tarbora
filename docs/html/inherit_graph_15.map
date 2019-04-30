@@ -1,7 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classTarbora_1_1SceneNode.html" title="Tarbora::SceneNode" alt="" coords="5,81,148,108"/>
-<area shape="rect" id="node2" href="$classTarbora_1_1Camera.html" title="Tarbora::Camera" alt="" coords="211,5,331,32"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1MaterialNode.html" title="Tarbora::MaterialNode" alt="" coords="196,56,347,83"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1MeshNode.html" title="Tarbora::MeshNode" alt="" coords="203,107,340,133"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1RootNode.html" title="Tarbora::RootNode" alt="" coords="205,157,338,184"/>
+<area shape="rect" id="node1" href="$classTarbora_1_1RigidBody.html" title="Tarbora::RigidBody" alt="" coords="5,31,140,57"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1BoxBody.html" title="Tarbora::BoxBody" alt="" coords="197,5,324,32"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1SphereBody.html" title="Tarbora::SphereBody" alt="" coords="188,56,333,83"/>
 </map>

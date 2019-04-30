@@ -2,6 +2,7 @@ var searchData=
 [
   ['scene',['Scene',['../classTarbora_1_1Scene.html',1,'Tarbora']]],
   ['scenenode',['SceneNode',['../classTarbora_1_1SceneNode.html',1,'Tarbora']]],
+  ['setlevel',['SetLevel',['../classTarbora_1_1Logger.html#af2a11244236bad59fce9cc6a1360af29',1,'Tarbora::Logger']]],
   ['setvelocityevent',['SetVelocityEvent',['../structTarbora_1_1SetVelocityEvent.html',1,'Tarbora']]],
   ['shader',['Shader',['../classTarbora_1_1Shader.html',1,'Tarbora']]],
   ['silent',['silent',['../structTarbora_1_1JsonOptions.html#af8949cb54a5a7e8f08c104f9e9b1cd6f',1,'Tarbora::JsonOptions']]],

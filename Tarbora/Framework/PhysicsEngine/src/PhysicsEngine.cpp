@@ -1,195 +1,176 @@
 #include "../inc/PhysicsEngine.hpp"
-#include <set>
 #include <algorithm>
 
 namespace Tarbora {
-    namespace PhysicsEngine {
-        btDynamicsWorld *m_DynamicsWorld;
-        btBroadphaseInterface *m_Broadphase;
-        btCollisionDispatcher *m_Dispatcher;
-        btConstraintSolver *m_Solver;
-        btDefaultCollisionConfiguration *m_CollisionConfiguration;
-        // BulletDebugDrawer *m_DebugDrawer;
+    bool PhysicsEngine::Init()
+    {
+        m_CollisionConfiguration = new btDefaultCollisionConfiguration();
+        m_Dispatcher = new btCollisionDispatcher(m_CollisionConfiguration);
+        m_Broadphase = new btDbvtBroadphase();
+        m_Solver = new btSequentialImpulseConstraintSolver();
+        m_DynamicsWorld = new btDiscreteDynamicsWorld(m_Dispatcher, m_Broadphase, m_Solver, m_CollisionConfiguration);
+        // m_DebugDrawer = new BulletDebugDrawer();
 
-        typedef std::pair<btRigidBody const *, btRigidBody const *> CollisionPair;
-        typedef std::set<CollisionPair> CollisionPairs;
-        CollisionPairs m_PreviousTickCollisionPairs;
-
-        btRigidBody *AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform);
-
-        void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep);
-
-
-        bool Init()
+        if (!m_CollisionConfiguration || !m_Dispatcher || !m_Broadphase || !m_Solver || !m_DynamicsWorld /*|| !m_DebugDrawer*/)
         {
-            m_CollisionConfiguration = new btDefaultCollisionConfiguration();
-            m_Dispatcher = new btCollisionDispatcher(m_CollisionConfiguration);
-            m_Broadphase = new btDbvtBroadphase();
-            m_Solver = new btSequentialImpulseConstraintSolver();
-            m_DynamicsWorld = new btDiscreteDynamicsWorld(m_Dispatcher, m_Broadphase, m_Solver, m_CollisionConfiguration);
-            // m_DebugDrawer = new BulletDebugDrawer();
+            LOG_ERR("PhysicsEngine: Initialization failed.");
+            return false;
+        }
 
-            if (!m_CollisionConfiguration || !m_Dispatcher || !m_Broadphase || !m_Solver || !m_DynamicsWorld /*|| !m_DebugDrawer*/)
+        // m_DynamicsWorld->setDebugDrawer(m_DebugDrawer);
+        m_DynamicsWorld->setInternalTickCallback(BulletInternalTickCallback);
+        m_DynamicsWorld->setGravity(btVector3(0, -9.81, 0));
+
+        return true;
+    }
+
+    void PhysicsEngine::Close()
+    {
+        for (int i = m_DynamicsWorld->getNumCollisionObjects()-1; i >= 0; i--)
+        {
+            btCollisionObject * const obj = m_DynamicsWorld->getCollisionObjectArray()[i];
+            RemoveObject(obj);
+        }
+
+        // delete m_DebugDrawer;
+        delete m_DynamicsWorld;
+        delete m_Solver;
+        delete m_Broadphase;
+        delete m_Dispatcher;
+        delete m_CollisionConfiguration;
+    }
+
+    void PhysicsEngine::Update(float deltaTime)
+    {
+        m_DynamicsWorld->stepSimulation(deltaTime, 4);
+    }
+
+    btRigidBody *PhysicsEngine::AddSphere(unsigned int id, float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+    {
+        btSphereShape *const shape = new btSphereShape(radius);
+        return AddShape(id, shape, mass, friction, density, restitution, transform);
+    }
+
+    btRigidBody *PhysicsEngine::AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+    {
+        btBoxShape *const shape = new btBoxShape(btVector3(dimensions.x/2, dimensions.y/2, dimensions.z/2));
+        return AddShape(id, shape, mass, friction, density, restitution, transform);
+    }
+
+    btRigidBody *PhysicsEngine::AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+    {
+        btVector3 localInertia(0.f, 0.f, 0.f);
+        if (mass > 0.f) shape->calculateLocalInertia(mass, localInertia);
+
+        ActorMotionState *motionState = new ActorMotionState(transform);
+        btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, shape, localInertia);
+        rbInfo.m_restitution = restitution;
+        rbInfo.m_friction = friction;
+
+        btRigidBody *const body = new btRigidBody(rbInfo);
+        body->setUserIndex(id);
+        m_DynamicsWorld->addRigidBody(body);
+
+        return body;
+    }
+
+    void PhysicsEngine::RemoveObject(btCollisionObject *object)
+    {
+        m_DynamicsWorld->removeCollisionObject(object);
+
+        // Remove all the collision pairs
+        for (auto itr = m_PreviousTickCollisionPairs.begin(); itr != m_PreviousTickCollisionPairs.end();)
+        {
+            auto next = itr;
+            next++;
+
+            if (itr->first == object || itr->second == object)
             {
-                LOG_ERR("PhysicsEngine: Initialization failed.");
-                return false;
+                m_PreviousTickCollisionPairs.erase(itr);
             }
 
-            // m_DynamicsWorld->setDebugDrawer(m_DebugDrawer);
-            m_DynamicsWorld->setInternalTickCallback(BulletInternalTickCallback);
-            m_DynamicsWorld->setGravity(btVector3(0, -9.81, 0));
-
-            return true;
+            itr = next;
         }
 
-        void Close()
+        if (btRigidBody *const body = btRigidBody::upcast(object))
         {
-            for (int i = m_DynamicsWorld->getNumCollisionObjects()-1; i >= 0; i--)
+            delete body->getMotionState();
+            delete body->getCollisionShape();
+            delete body->getUserPointer();
+
+            for (int i = body->getNumConstraintRefs()-1; i >= 0; i--)
             {
-                btCollisionObject * const obj = m_DynamicsWorld->getCollisionObjectArray()[i];
-                RemoveObject(obj);
+                btTypedConstraint *const constraint = body->getConstraintRef(i);
+                m_DynamicsWorld->removeConstraint(constraint);
+                delete constraint;
             }
-
-            // delete m_DebugDrawer;
-            delete m_DynamicsWorld;
-            delete m_Solver;
-            delete m_Broadphase;
-            delete m_Dispatcher;
-            delete m_CollisionConfiguration;
         }
 
-        void Update(float deltaTime)
+        delete object;
+    }
+
+    void PhysicsEngine::ApplyForce(btRigidBody *body, float newtons, const glm::vec3 &direction)
+    {
+        btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+        body->applyCentralImpulse(force);
+        body->activate();
+    }
+
+    void PhysicsEngine::ApplyTorque(btRigidBody *body, float magnitude, const glm::vec3 &direction)
+    {
+        btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
+        body->applyTorqueImpulse(torque);
+        body->activate();
+    }
+
+    void PhysicsEngine::SetVelocity(btRigidBody *body, const glm::vec3 &velocity)
+    {
+        btVector3 const vel(velocity.x, velocity.y, velocity.z);
+        body->setLinearVelocity(vel);
+        body->activate();
+    }
+
+    void PhysicsEngine::Stop(btRigidBody *body)
+    {
+        SetVelocity(body, glm::vec3(0.0f, 0.0f, 0.0f));
+    }
+
+    void PhysicsEngine::BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep)
+    {
+        CollisionPairs currentTickPairs;
+        btDispatcher *const dispatcher = world->getDispatcher();
+        for (int id = 0; id < dispatcher->getNumManifolds(); id++)
         {
-            m_DynamicsWorld->stepSimulation(deltaTime, 4);
-        }
+            btPersistentManifold const *const manifold = dispatcher->getManifoldByIndexInternal(id);
+            btRigidBody const *const body0 = static_cast<btRigidBody const *>(manifold->getBody0());
+            btRigidBody const *const body1 = static_cast<btRigidBody const *>(manifold->getBody1());
 
-        btRigidBody *AddSphere(unsigned int id, float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform)
-        {
-            btSphereShape *const shape = new btSphereShape(radius);
-            return AddShape(id, shape, mass, friction, density, restitution, transform);
-        }
+            const bool swapped = body0 > body1;
+            btRigidBody const *const sortedBodyA = swapped ? body1 : body0;
+            btRigidBody const *const sortedBodyB = swapped ? body0 : body1;
 
-        btRigidBody *AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform)
-        {
-            btBoxShape *const shape = new btBoxShape(btVector3(dimensions.x/2, dimensions.y/2, dimensions.z/2));
-            return AddShape(id, shape, mass, friction, density, restitution, transform);
-        }
+            CollisionPair const thisPair = std::make_pair(sortedBodyA, sortedBodyB);
+            currentTickPairs.insert(thisPair);
 
-        btRigidBody *AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform)
-        {
-            btVector3 localInertia(0.f, 0.f, 0.f);
-            if (mass > 0.f) shape->calculateLocalInertia(mass, localInertia);
-
-            ActorMotionState *motionState = new ActorMotionState(transform);
-            btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, shape, localInertia);
-            rbInfo.m_restitution = restitution;
-            rbInfo.m_friction = friction;
-
-            btRigidBody *const body = new btRigidBody(rbInfo);
-            body->setUserIndex(id);
-            m_DynamicsWorld->addRigidBody(body);
-
-            return body;
-        }
-
-        void RemoveObject(btCollisionObject *object)
-        {
-            m_DynamicsWorld->removeCollisionObject(object);
-
-            // Remove all the collision pairs
-            for (auto itr = m_PreviousTickCollisionPairs.begin(); itr != m_PreviousTickCollisionPairs.end();)
+            if (m_PreviousTickCollisionPairs.find(thisPair) == m_PreviousTickCollisionPairs.end())
             {
-                auto next = itr;
-                next++;
-
-                if (itr->first == object || itr->second == object)
-                {
-                    m_PreviousTickCollisionPairs.erase(itr);
-                }
-
-                itr = next;
+                // LOG_DEBUG("Collision between %u and %u!", body0->getUserIndex(), body1->getUserIndex());
+                // CollisionEvent ev(manifold, body0, body1);
+                // EventManager::Trigger(EventType::Collision, &ev);
             }
-
-            if (btRigidBody *const body = btRigidBody::upcast(object))
-            {
-                delete body->getMotionState();
-                delete body->getCollisionShape();
-                delete body->getUserPointer();
-
-                for (int i = body->getNumConstraintRefs()-1; i >= 0; i--)
-                {
-                    btTypedConstraint *const constraint = body->getConstraintRef(i);
-                    m_DynamicsWorld->removeConstraint(constraint);
-                    delete constraint;
-                }
-            }
-
-            delete object;
         }
 
-        void ApplyForce(btRigidBody *body, float newtons, const glm::vec3 &direction)
+        CollisionPairs removedCollisionPairs;
+        std::set_difference(m_PreviousTickCollisionPairs.begin(), m_PreviousTickCollisionPairs.end(),
+            currentTickPairs.begin(), currentTickPairs.end(),
+            std::inserter(removedCollisionPairs, removedCollisionPairs.begin()));
+
+        for (auto itr = removedCollisionPairs.begin(), end = removedCollisionPairs.end(); itr != end; itr++)
         {
-            btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
-            body->applyCentralImpulse(force);
-            body->activate();
+            // LOG_DEBUG("No more collision!");
         }
 
-        void ApplyTorque(btRigidBody *body, float magnitude, const glm::vec3 &direction)
-        {
-            btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
-            body->applyTorqueImpulse(torque);
-            body->activate();
-        }
-
-        void SetVelocity(btRigidBody *body, const glm::vec3 &velocity)
-        {
-            btVector3 const vel(velocity.x, velocity.y, velocity.z);
-            body->setLinearVelocity(vel);
-            body->activate();
-        }
-
-        void Stop(btRigidBody *body)
-        {
-            SetVelocity(body, glm::vec3(0.0f, 0.0f, 0.0f));
-        }
-
-        void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep)
-        {
-            CollisionPairs currentTickPairs;
-            btDispatcher *const dispatcher = world->getDispatcher();
-            for (int id = 0; id < dispatcher->getNumManifolds(); id++)
-            {
-                btPersistentManifold const *const manifold = dispatcher->getManifoldByIndexInternal(id);
-                btRigidBody const *const body0 = static_cast<btRigidBody const *>(manifold->getBody0());
-                btRigidBody const *const body1 = static_cast<btRigidBody const *>(manifold->getBody1());
-
-                const bool swapped = body0 > body1;
-                btRigidBody const *const sortedBodyA = swapped ? body1 : body0;
-                btRigidBody const *const sortedBodyB = swapped ? body0 : body1;
-
-                CollisionPair const thisPair = std::make_pair(sortedBodyA, sortedBodyB);
-                currentTickPairs.insert(thisPair);
-
-                if (m_PreviousTickCollisionPairs.find(thisPair) == m_PreviousTickCollisionPairs.end())
-                {
-                    // LOG_DEBUG("Collision between %u and %u!", body0->getUserIndex(), body1->getUserIndex());
-                    // CollisionEvent ev(manifold, body0, body1);
-                    // EventManager::Trigger(EventType::Collision, &ev);
-                }
-            }
-
-            CollisionPairs removedCollisionPairs;
-            std::set_difference(m_PreviousTickCollisionPairs.begin(), m_PreviousTickCollisionPairs.end(),
-                currentTickPairs.begin(), currentTickPairs.end(),
-                std::inserter(removedCollisionPairs, removedCollisionPairs.begin()));
-
-            for (auto itr = removedCollisionPairs.begin(), end = removedCollisionPairs.end(); itr != end; itr++)
-            {
-                // LOG_DEBUG("No more collision!");
-            }
-
-            m_PreviousTickCollisionPairs = currentTickPairs;
-        }
+        m_PreviousTickCollisionPairs = currentTickPairs;
     }
 
     void ActorMotionState::getWorldTransform(btTransform &transform) const

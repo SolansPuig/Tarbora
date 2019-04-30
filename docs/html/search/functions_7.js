@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['hastype',['HasType',['../classTarbora_1_1TypeComponent.html#a79528bf8a263bb1e40a9d0de234e11d1',1,'Tarbora::TypeComponent']]],
-  ['humanview',['HumanView',['../classTarbora_1_1HumanView.html#aa8cb78e48fc80415f510c1c6f602b9ad',1,'Tarbora::HumanView']]]
+  ['setlevel',['SetLevel',['../classTarbora_1_1Logger.html#af2a11244236bad59fce9cc6a1360af29',1,'Tarbora::Logger']]]
 ];

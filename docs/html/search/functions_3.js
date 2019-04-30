@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['poperrname',['PopErrName',['../classTarbora_1_1Json.html#a14019f06d3bd76edd6a6e78134519d11',1,'Tarbora::Json']]],
-  ['pusherrname',['PushErrName',['../classTarbora_1_1Json.html#a061eac4f16dac3b9b3a26a66de0ea8f0',1,'Tarbora::Json']]]
+  ['init',['Init',['../classTarbora_1_1ResourceManager.html#a1db550759320be50e86b316275da889c',1,'Tarbora::ResourceManager::Init()'],['../classTarbora_1_1Logger.html#a55be0d3eeea01a9fbb0a26e029451411',1,'Tarbora::Logger::Init(FILE *stream)'],['../classTarbora_1_1Logger.html#af5cc4f3b068f2bde26943da40e1d6e91',1,'Tarbora::Logger::Init(const char *file_path)']]]
 ];
