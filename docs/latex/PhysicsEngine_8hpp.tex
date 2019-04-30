@@ -1,0 +1,56 @@
+\hypertarget{PhysicsEngine_8hpp}{}\section{Tarbora/\+Framework/\+Physics\+Engine/inc/\+Physics\+Engine.hpp File Reference}
+\label{PhysicsEngine_8hpp}\index{Tarbora/\+Framework/\+Physics\+Engine/inc/\+Physics\+Engine.\+hpp@{Tarbora/\+Framework/\+Physics\+Engine/inc/\+Physics\+Engine.\+hpp}}
+{\ttfamily \#include \char`\"{}../../\+Global.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bt\+Bullet\+Collision\+Common.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bt\+Bullet\+Dynamics\+Common.\+h\char`\"{}}\newline
+Include dependency graph for Physics\+Engine.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PhysicsEngine_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PhysicsEngine_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classTarbora_1_1ActorMotionState}{Tarbora\+::\+Actor\+Motion\+State}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceTarbora}{Tarbora}
+\item 
+ \hyperlink{namespaceTarbora_1_1PhysicsEngine}{Tarbora\+::\+Physics\+Engine}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespaceTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}{Tarbora\+::\+Physics\+Engine\+::\+Init} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_ae7c68706207e34b87dabf53fbf6886d1}{Tarbora\+::\+Physics\+Engine\+::\+Close} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_aecd7f940778147cff721cf877fefe046}{Tarbora\+::\+Physics\+Engine\+::\+Update} (float delta\+Time)
+\item 
+bt\+Rigid\+Body $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a0a4d9d85104abee858af7f74dfc7213a}{Tarbora\+::\+Physics\+Engine\+::\+Add\+Sphere} (unsigned int id, float radius, float mass, float friction, float density, float restitution, glm\+::mat4 \&transform)
+\item 
+bt\+Rigid\+Body $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a948faad823ce1e338a86d61c226e679e}{Tarbora\+::\+Physics\+Engine\+::\+Add\+Box} (unsigned int id, glm\+::vec3 \&dimensions, float mass, float friction, float density, float restitution, glm\+::mat4 \&transform)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}{Tarbora\+::\+Physics\+Engine\+::\+Remove\+Object} (bt\+Collision\+Object $\ast$object)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}{Tarbora\+::\+Physics\+Engine\+::\+Apply\+Force} (bt\+Rigid\+Body $\ast$body, float newtons, const glm\+::vec3 \&direction)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}{Tarbora\+::\+Physics\+Engine\+::\+Apply\+Torque} (bt\+Rigid\+Body $\ast$body, float magnitude, const glm\+::vec3 \&direction)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}{Tarbora\+::\+Physics\+Engine\+::\+Set\+Velocity} (bt\+Rigid\+Body $\ast$body, const glm\+::vec3 \&velocity)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_aca13d6e0e807662cd096fe899c5b8776}{Tarbora\+::\+Physics\+Engine\+::\+Stop} (bt\+Rigid\+Body $\ast$body)
+\end{DoxyCompactItemize}

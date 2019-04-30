@@ -1,27 +1,14 @@
+#include "../inc/ResourceManager.hpp"
 #include "../inc/Resource.hpp"
 #include "../inc/Json.hpp"
 #include <fnmatch.h>
 
 namespace Tarbora {
-    typedef std::list<ResourcePtr> ResourceList;
-    typedef std::map<std::string, ResourcePtr> ResourceMap;
-    typedef std::list<LoaderPtr> ResourceLoaders;
-
-    ResourceList m_List;
-    ResourceMap m_Resources;
-    ResourceLoaders m_ResourceLoaders;
-
-    std::string m_ResourceFolderPath;
-
-    namespace ResourceManager {
-        ResourcePtr Find(const std::string resource);
-        ResourcePtr Load(const std::string resource);
-        void Free(ResourcePtr resource);
-    }
-
     void ResourceManager::Init(std::string resourceFolderPath)
     {
         m_ResourceFolderPath = resourceFolderPath;
+
+        // Register the default loaders.
         RegisterLoader(LoaderPtr(new DefaultResourceLoader()));
         RegisterLoader(LoaderPtr(new TextResourceLoader()));
         RegisterLoader(LoaderPtr(new JsonResourceLoader()));
@@ -32,20 +19,23 @@ namespace Tarbora {
         m_ResourceLoaders.push_front(loader);
     }
 
-    ResourcePtr ResourceManager::Get(const std::string resource)
+    ResourcePtr ResourceManager::GetResource(const std::string resource)
     {
-        ResourcePtr r(Find(resource));
-        if (r == NULL)
-            r = Load(resource);
+        // Try to find the resource, if not found, load it.
+        ResourcePtr r(FindResource(resource));
+        if (!r)
+            r = LoadResource(resource);
         return r;
     }
 
-    ResourcePtr ResourceManager::Load(const std::string resource)
+    ResourcePtr ResourceManager::LoadResource(const std::string resource)
     {
+        // Find a loader that matches the resource's file name.
         LoaderPtr loader;
         for (auto itr = m_ResourceLoaders.begin(); itr != m_ResourceLoaders.end(); itr++)
         {
             LoaderPtr testLoader = *itr;
+            // This will not work on windows.
             if (fnmatch(testLoader->GetPattern().c_str(), resource.c_str(), FNM_CASEFOLD) == 0)
             {
                 loader = testLoader;
@@ -53,14 +43,18 @@ namespace Tarbora {
             }
         }
 
+        // If no loader is found, that means that not event the default loaders are registered.
+        // This should never happen.
         if (!loader)
         {
             LOG_ERR("ResourceManager: Default resource loader not found.");
             return ResourcePtr();
         }
 
+        // Use the loader to load the resource.
         ResourcePtr r = loader->Load(m_ResourceFolderPath + resource);
 
+        // If the resource gets loaded, store it. Else throw an error.
         if (r)
         {
             m_List.push_front(r);
@@ -69,10 +63,11 @@ namespace Tarbora {
             LOG_ERR("ResourceManager: Could not load resource \"%s\" with loader \"%s\".", resource.c_str(), loader->GetPattern().c_str());
         }
 
+        // Return even if it's nullptr. It's callers responsibility to decide what to do.
         return r;
     }
 
-    ResourcePtr ResourceManager::Find(const std::string resource)
+    ResourcePtr ResourceManager::FindResource(const std::string resource)
     {
         auto itr = m_Resources.find(resource);
         if (itr == m_Resources.end())
@@ -80,23 +75,25 @@ namespace Tarbora {
         return itr->second;
     }
 
-    void ResourceManager::Free(ResourcePtr r)
+    void ResourceManager::FreeResource(ResourcePtr r)
     {
+        // Remove the resource from the list and the map. Don't destroy it as some
+        // system may be still using it. As it's a shared pointer, it will eventually
+        // get destroyed when no longer used.
         m_List.remove(r);
         m_Resources.erase(r->GetName());
     }
 
     void ResourceManager::Flush()
     {
+        // Iterate the list freeing one by one all the resources.
     	while (!m_List.empty())
     	{
             auto gonner = m_List.end();
             gonner--;
 
             ResourcePtr r = *gonner;
-    		Free(r);
+    		FreeResource(r);
     	}
     }
-
-    std::string ResourceManager::GetResourceFolder() { return m_ResourceFolderPath; }
 }

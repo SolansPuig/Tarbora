@@ -15,10 +15,13 @@ namespace Tarbora {
         int m_Vertices;
     };
 
+    //! \cond HIDDEN_SYMBOLS
     class MeshResourceLoader : public ResourceLoader
     {
-    public:
+        friend class ResourceManager;
+    private:
         virtual const std::string GetPattern() override { return "*.mesh"; };
         virtual ResourcePtr Load(std::string path) override;
     };
+    //! \endcond
 }

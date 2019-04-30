@@ -1,0 +1,198 @@
+\hypertarget{namespaceTarbora_1_1GraphicsEngine}{}\section{Tarbora\+:\+:Graphics\+Engine Namespace Reference}
+\label{namespaceTarbora_1_1GraphicsEngine}\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a9badc9df53b131e9629b433765b18d86}{Init} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a2429f1284717c7c7e80ea2b7adb6dfd1}{Close} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a7d09b2a2f6d44913d6a3b9622e5fdc55}{Before\+Draw} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_aa63a14a3dea4c47f2b9d4e8d15086d96}{Draw\+Mesh} (std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Mesh}{Mesh} $>$ mesh)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a3e3774928c037ea12d427d4fc2c77582}{After\+Draw} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ace56d35cedd39989e8ba748654698f8a}{Before\+Draw\+Sky} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a4a2e963c758cea1f12415c57e1bd2f7a}{After\+Draw\+Sky} ()
+\item 
+\hyperlink{namespaceTarbora_a39d9bc5a791c73dc51bee4255997ac12}{Window\+Ptr} \hyperlink{namespaceTarbora_1_1GraphicsEngine_a35bd82a619d7fdff0fc626955545f352}{Get\+Window} ()
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a5b52e66f40e2afaaf168e0a585a1f4b8}{Compile\+Shader} (std\+::string type, const char $\ast$code)
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a1f9fb33b0760c37663a9056694b63ddf}{Link\+Program} (unsigned int $\ast$ids)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ab306520bce25cd5f1beb827fcb11dafc}{Delete\+Program} (unsigned int id)
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a87f26fb14a8bdf13628ec744244b8a22}{Load\+Texture} (unsigned char $\ast$data, int width, int height, int nr\+Components)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a43401d758fe6a6347980216de1326ba1}{Bind\+Texture} (unsigned int id)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ad212ed9a51a58dc369eefb2e301ec743}{Delete\+Texture} (unsigned int id)
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a163d201479c73d4466ca74cd87a607ba}{Load\+Mesh} (std\+::vector$<$ float $>$ vertices)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ae98495c4c24e81b1d495fd1312446d74}{Delete\+Mesh} (unsigned int id)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a66a31b19920edf27310cb217770479b8}{Use\+Shader} (std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Shader}{Shader} $>$ shader)
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Shader}{Shader} $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_ada6e8675191b45d7896d78be9a578471}{Get\+Shader} ()
+\item 
+bool \hyperlink{namespaceTarbora_1_1GraphicsEngine_a8b3f957fefc40d8ab8bd54d2f421a567}{Shader\+Available} ()
+\item 
+int \hyperlink{namespaceTarbora_1_1GraphicsEngine_aa3bb6bce620c74256c817ee5324e2b94}{Take\+Screenshot} (const std\+::string \&filename)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Window}{Window} $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_a9746a5d218b0daadbf44858a3a21156b}{Main\+\_\+\+Window}
+\item 
+std\+::unique\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Gui}{Gui} $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_a4be33c3123e2b5a20b816da7bba5ab45}{m\+\_\+\+Gui}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Shader}{Shader} $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_a814ff9e615b93f128a28efe62fd20d7b}{m\+\_\+\+Shader}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a3e3774928c037ea12d427d4fc2c77582}\label{namespaceTarbora_1_1GraphicsEngine_a3e3774928c037ea12d427d4fc2c77582}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!After\+Draw@{After\+Draw}}
+\index{After\+Draw@{After\+Draw}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{After\+Draw()}{AfterDraw()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+After\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a4a2e963c758cea1f12415c57e1bd2f7a}\label{namespaceTarbora_1_1GraphicsEngine_a4a2e963c758cea1f12415c57e1bd2f7a}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!After\+Draw\+Sky@{After\+Draw\+Sky}}
+\index{After\+Draw\+Sky@{After\+Draw\+Sky}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{After\+Draw\+Sky()}{AfterDrawSky()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+After\+Draw\+Sky (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a7d09b2a2f6d44913d6a3b9622e5fdc55}\label{namespaceTarbora_1_1GraphicsEngine_a7d09b2a2f6d44913d6a3b9622e5fdc55}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Before\+Draw@{Before\+Draw}}
+\index{Before\+Draw@{Before\+Draw}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Before\+Draw()}{BeforeDraw()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Before\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_ace56d35cedd39989e8ba748654698f8a}\label{namespaceTarbora_1_1GraphicsEngine_ace56d35cedd39989e8ba748654698f8a}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Before\+Draw\+Sky@{Before\+Draw\+Sky}}
+\index{Before\+Draw\+Sky@{Before\+Draw\+Sky}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Before\+Draw\+Sky()}{BeforeDrawSky()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Before\+Draw\+Sky (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a43401d758fe6a6347980216de1326ba1}\label{namespaceTarbora_1_1GraphicsEngine_a43401d758fe6a6347980216de1326ba1}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Bind\+Texture@{Bind\+Texture}}
+\index{Bind\+Texture@{Bind\+Texture}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Bind\+Texture()}{BindTexture()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Bind\+Texture (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a2429f1284717c7c7e80ea2b7adb6dfd1}\label{namespaceTarbora_1_1GraphicsEngine_a2429f1284717c7c7e80ea2b7adb6dfd1}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Close@{Close}}
+\index{Close@{Close}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a5b52e66f40e2afaaf168e0a585a1f4b8}\label{namespaceTarbora_1_1GraphicsEngine_a5b52e66f40e2afaaf168e0a585a1f4b8}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Compile\+Shader@{Compile\+Shader}}
+\index{Compile\+Shader@{Compile\+Shader}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Compile\+Shader()}{CompileShader()}}
+{\footnotesize\ttfamily unsigned int Tarbora\+::\+Graphics\+Engine\+::\+Compile\+Shader (\begin{DoxyParamCaption}\item[{std\+::string}]{type,  }\item[{const char $\ast$}]{code }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_ae98495c4c24e81b1d495fd1312446d74}\label{namespaceTarbora_1_1GraphicsEngine_ae98495c4c24e81b1d495fd1312446d74}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Delete\+Mesh@{Delete\+Mesh}}
+\index{Delete\+Mesh@{Delete\+Mesh}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Delete\+Mesh()}{DeleteMesh()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Delete\+Mesh (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_ab306520bce25cd5f1beb827fcb11dafc}\label{namespaceTarbora_1_1GraphicsEngine_ab306520bce25cd5f1beb827fcb11dafc}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Delete\+Program@{Delete\+Program}}
+\index{Delete\+Program@{Delete\+Program}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Delete\+Program()}{DeleteProgram()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Delete\+Program (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_ad212ed9a51a58dc369eefb2e301ec743}\label{namespaceTarbora_1_1GraphicsEngine_ad212ed9a51a58dc369eefb2e301ec743}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Delete\+Texture@{Delete\+Texture}}
+\index{Delete\+Texture@{Delete\+Texture}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Delete\+Texture()}{DeleteTexture()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Delete\+Texture (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_aa63a14a3dea4c47f2b9d4e8d15086d96}\label{namespaceTarbora_1_1GraphicsEngine_aa63a14a3dea4c47f2b9d4e8d15086d96}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Draw\+Mesh@{Draw\+Mesh}}
+\index{Draw\+Mesh@{Draw\+Mesh}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Draw\+Mesh()}{DrawMesh()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Draw\+Mesh (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Mesh}{Mesh} $>$}]{mesh }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_ada6e8675191b45d7896d78be9a578471}\label{namespaceTarbora_1_1GraphicsEngine_ada6e8675191b45d7896d78be9a578471}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Get\+Shader@{Get\+Shader}}
+\index{Get\+Shader@{Get\+Shader}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Get\+Shader()}{GetShader()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Shader}{Shader} $>$ Tarbora\+::\+Graphics\+Engine\+::\+Get\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a35bd82a619d7fdff0fc626955545f352}\label{namespaceTarbora_1_1GraphicsEngine_a35bd82a619d7fdff0fc626955545f352}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Get\+Window@{Get\+Window}}
+\index{Get\+Window@{Get\+Window}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Get\+Window()}{GetWindow()}}
+{\footnotesize\ttfamily \hyperlink{namespaceTarbora_a39d9bc5a791c73dc51bee4255997ac12}{Window\+Ptr} Tarbora\+::\+Graphics\+Engine\+::\+Get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a9badc9df53b131e9629b433765b18d86}\label{namespaceTarbora_1_1GraphicsEngine_a9badc9df53b131e9629b433765b18d86}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Init@{Init}}
+\index{Init@{Init}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a1f9fb33b0760c37663a9056694b63ddf}\label{namespaceTarbora_1_1GraphicsEngine_a1f9fb33b0760c37663a9056694b63ddf}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Link\+Program@{Link\+Program}}
+\index{Link\+Program@{Link\+Program}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Link\+Program()}{LinkProgram()}}
+{\footnotesize\ttfamily unsigned int Tarbora\+::\+Graphics\+Engine\+::\+Link\+Program (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{ids }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a163d201479c73d4466ca74cd87a607ba}\label{namespaceTarbora_1_1GraphicsEngine_a163d201479c73d4466ca74cd87a607ba}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Load\+Mesh@{Load\+Mesh}}
+\index{Load\+Mesh@{Load\+Mesh}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Load\+Mesh()}{LoadMesh()}}
+{\footnotesize\ttfamily unsigned int Tarbora\+::\+Graphics\+Engine\+::\+Load\+Mesh (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{vertices }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a87f26fb14a8bdf13628ec744244b8a22}\label{namespaceTarbora_1_1GraphicsEngine_a87f26fb14a8bdf13628ec744244b8a22}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Load\+Texture@{Load\+Texture}}
+\index{Load\+Texture@{Load\+Texture}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Load\+Texture()}{LoadTexture()}}
+{\footnotesize\ttfamily unsigned int Tarbora\+::\+Graphics\+Engine\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{nr\+Components }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a8b3f957fefc40d8ab8bd54d2f421a567}\label{namespaceTarbora_1_1GraphicsEngine_a8b3f957fefc40d8ab8bd54d2f421a567}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Shader\+Available@{Shader\+Available}}
+\index{Shader\+Available@{Shader\+Available}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Shader\+Available()}{ShaderAvailable()}}
+{\footnotesize\ttfamily bool Tarbora\+::\+Graphics\+Engine\+::\+Shader\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_aa3bb6bce620c74256c817ee5324e2b94}\label{namespaceTarbora_1_1GraphicsEngine_aa3bb6bce620c74256c817ee5324e2b94}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Take\+Screenshot@{Take\+Screenshot}}
+\index{Take\+Screenshot@{Take\+Screenshot}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Take\+Screenshot()}{TakeScreenshot()}}
+{\footnotesize\ttfamily int Tarbora\+::\+Graphics\+Engine\+::\+Take\+Screenshot (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a66a31b19920edf27310cb217770479b8}\label{namespaceTarbora_1_1GraphicsEngine_a66a31b19920edf27310cb217770479b8}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Use\+Shader@{Use\+Shader}}
+\index{Use\+Shader@{Use\+Shader}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Use\+Shader()}{UseShader()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Graphics\+Engine\+::\+Use\+Shader (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Shader}{Shader} $>$}]{shader }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a4be33c3123e2b5a20b816da7bba5ab45}\label{namespaceTarbora_1_1GraphicsEngine_a4be33c3123e2b5a20b816da7bba5ab45}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!m\+\_\+\+Gui@{m\+\_\+\+Gui}}
+\index{m\+\_\+\+Gui@{m\+\_\+\+Gui}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Gui}{m\_Gui}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\hyperlink{classTarbora_1_1Gui}{Gui}$>$ Tarbora\+::\+Graphics\+Engine\+::m\+\_\+\+Gui}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a814ff9e615b93f128a28efe62fd20d7b}\label{namespaceTarbora_1_1GraphicsEngine_a814ff9e615b93f128a28efe62fd20d7b}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!m\+\_\+\+Shader@{m\+\_\+\+Shader}}
+\index{m\+\_\+\+Shader@{m\+\_\+\+Shader}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Shader}{m\_Shader}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{classTarbora_1_1Shader}{Shader}$>$ Tarbora\+::\+Graphics\+Engine\+::m\+\_\+\+Shader}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1GraphicsEngine_a9746a5d218b0daadbf44858a3a21156b}\label{namespaceTarbora_1_1GraphicsEngine_a9746a5d218b0daadbf44858a3a21156b}} 
+\index{Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}!Main\+\_\+\+Window@{Main\+\_\+\+Window}}
+\index{Main\+\_\+\+Window@{Main\+\_\+\+Window}!Tarbora\+::\+Graphics\+Engine@{Tarbora\+::\+Graphics\+Engine}}
+\subsubsection{\texorpdfstring{Main\+\_\+\+Window}{Main\_Window}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{classTarbora_1_1Window}{Window}$>$ Tarbora\+::\+Graphics\+Engine\+::\+Main\+\_\+\+Window}
+

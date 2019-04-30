@@ -112,7 +112,7 @@ namespace Tarbora {
         raw_json nodes;
         resource->Get(j, "nodes", &nodes, {true, true});
         resource->PushErrName("nodes");
-        for (int i = 0; i < nodes.size(); i++) {
+        for (unsigned int i = 0; i < nodes.size(); i++) {
             resource->PushErrName(std::to_string(i).c_str());
             MeshNodePtr new_node = CreateNode(id, resource, resource->GetJson(nodes, i), pixelDensity, textureSize);
             resource->PopErrName();

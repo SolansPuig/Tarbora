@@ -13,10 +13,65 @@ namespace Tarbora {
         Make sure your constructor calls the \ref Resource constructor with the
         filename of the resource.
 
-        A resource constructor should be private, as it should only be created
-        inside a \ref ResourceLoader.
+        A resource constructor must be private, as it can only be created
+        inside a \a ResourceLoader.
 
-        \see ResourceLoader
+        A ResourceLoader is also needed, it must inherit from \a ResourceLoader,
+        be a friend of the class \ref ResourceManager and implement two private methods:
+
+        \code{.cpp}
+            virtual const std::string GetPattern();
+            virtual ResourcePtr Load(std::string path);
+        \endcode
+
+        \a GetPattern returns a regex, the files that match it will be loaded with that loader.
+
+        \a Load loads the file in \a path, reading it from disk and parsing it or doing the needed
+        conversions.
+
+        All ResourceLoaders need to be registered in \ref ResourceManager to work.
+
+        If a file would match the pattern of several ResourceLoaders, it will be loaded by
+        the lastest registered one.
+
+        Here's an example of the implementation of a Resource and its \a ResourceLoader for txt
+        files:
+
+        \code{.cpp}
+            class Text : public Resource
+            {
+                friend class TextResourceLoader;
+            public:
+                const std::string GetText() const { return m_Text; }
+            private:
+                Text(std::string name, std::string text) : Resource(name), m_Text(text) {}
+
+                std::string m_Text;
+            };
+
+            class TextResourceLoader : public ResourceLoader
+            {
+                friend class ResourceManager;
+            private:
+                virtual const std::string GetPattern() override { return "*.txt"; }
+                virtual ResourcePtr Load(std::string path) override
+                {
+                    // Try to open the file.
+                    std::ifstream file;
+                    file.open(path.c_str());
+                    if (file.fail())
+                        return ResourcePtr();
+
+                    // Parse the contents to a string.
+                    std::string s = std::string(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
+                    ResourcePtr r = ResourcePtr(new Text(path, s)); // Create the Resource.
+                    file.close(); // Remember to close the file!
+                    return r;
+                }
+            };
+        \endcode
+
+        \see ResourceManager
         \see Json
         \see Text
     */
@@ -36,39 +91,29 @@ namespace Tarbora {
 
     typedef std::shared_ptr<Resource> ResourcePtr;
 
-    //! An abstract resource loader, used to load a \ref Resource from file.
-    /*!
-        This will be called only once for every resource (probably in startup or level load).
-
-        If you want to implement your own resource, create also a ResourceLoader
-        inherited from this class.
-
-        You must register the resource loader to the \ref ResourceManager
-
-        \see Resource
-    */
+    //! \cond HIDDEN_SYMBOLS
     class ResourceLoader
     {
-    public:
-        //! Returns the pattern that will be used to select a suitable loader for a file, a regex.
+        friend class ResourceManager;
+    private:
         virtual const std::string GetPattern() = 0;
-
-        //! Load the file located in \a path. Returns a nullptr if not found or if any error occurs.
         virtual ResourcePtr Load(std::string path) = 0;
     };
+    //! \endcond
 
     typedef std::shared_ptr<ResourceLoader> LoaderPtr;
 
     //! \cond HIDDEN_SYMBOLS
     class DefaultResourceLoader : public ResourceLoader
     {
-    public:
+        friend class ResourceManager;
+    private:
         virtual const std::string GetPattern() override { return "*"; }
         virtual ResourcePtr Load(std::string path) override { (void)(path); return ResourcePtr(); }
     };
     //! \endcond
 
-    //! Wrapper class for a raw text file.
+    //! A wrapper class for a raw text file.
     class Text : public Resource
     {
         friend class TextResourceLoader;
@@ -84,7 +129,8 @@ namespace Tarbora {
     //! \cond HIDDEN_SYMBOLS
     class TextResourceLoader : public ResourceLoader
     {
-    public:
+        friend class ResourceManager;
+    private:
         virtual const std::string GetPattern() override { return "*.txt"; }
         virtual ResourcePtr Load(std::string path) override;
     };

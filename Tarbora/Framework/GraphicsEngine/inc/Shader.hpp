@@ -25,10 +25,13 @@ namespace Tarbora {
         unsigned int m_Id;
     };
 
+    //! \cond HIDDEN_SYMBOLS
     class ShaderResourceLoader : public ResourceLoader
     {
-    public:
+        friend class ResourceManager;
+    private:
         virtual const std::string GetPattern() override { return "*.shader.json"; };
         virtual ResourcePtr Load(std::string path) override;
     };
+    //! \endcond
 }

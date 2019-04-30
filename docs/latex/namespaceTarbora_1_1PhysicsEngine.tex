@@ -1,0 +1,180 @@
+\hypertarget{namespaceTarbora_1_1PhysicsEngine}{}\section{Tarbora\+:\+:Physics\+Engine Namespace Reference}
+\label{namespaceTarbora_1_1PhysicsEngine}\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::pair$<$ bt\+Rigid\+Body const $\ast$, bt\+Rigid\+Body const $\ast$ $>$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a4f1d409d44b0a7cde617d3a30ed02b02}{Collision\+Pair}
+\item 
+typedef std\+::set$<$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a4f1d409d44b0a7cde617d3a30ed02b02}{Collision\+Pair} $>$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_af696c3b94fb96f65c63f51e52b0e7238}{Collision\+Pairs}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespaceTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}{Init} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_ae7c68706207e34b87dabf53fbf6886d1}{Close} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_aecd7f940778147cff721cf877fefe046}{Update} (float delta\+Time)
+\item 
+bt\+Rigid\+Body $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a0a4d9d85104abee858af7f74dfc7213a}{Add\+Sphere} (unsigned int id, float radius, float mass, float friction, float density, float restitution, glm\+::mat4 \&transform)
+\item 
+bt\+Rigid\+Body $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a948faad823ce1e338a86d61c226e679e}{Add\+Box} (unsigned int id, glm\+::vec3 \&dimensions, float mass, float friction, float density, float restitution, glm\+::mat4 \&transform)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}{Remove\+Object} (bt\+Collision\+Object $\ast$object)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}{Apply\+Force} (bt\+Rigid\+Body $\ast$body, float newtons, const glm\+::vec3 \&direction)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}{Apply\+Torque} (bt\+Rigid\+Body $\ast$body, float magnitude, const glm\+::vec3 \&direction)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}{Set\+Velocity} (bt\+Rigid\+Body $\ast$body, const glm\+::vec3 \&velocity)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_aca13d6e0e807662cd096fe899c5b8776}{Stop} (bt\+Rigid\+Body $\ast$body)
+\item 
+bt\+Rigid\+Body $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_aabb5cc7e74e00e34239fd621939e9dec}{Add\+Shape} (unsigned int id, bt\+Collision\+Shape $\ast$shape, float mass, float friction, float density, float restitution, glm\+::mat4 \&transform)
+\item 
+void \hyperlink{namespaceTarbora_1_1PhysicsEngine_ad4662a4ef3aac14f8a53fffc5689be89}{Bullet\+Internal\+Tick\+Callback} (bt\+Dynamics\+World $\ast$const world, bt\+Scalar const time\+Step)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Dynamics\+World $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_ad71e472576f1233d63c8097d093452d8}{m\+\_\+\+Dynamics\+World}
+\item 
+bt\+Broadphase\+Interface $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_aad0a3208848771a8315e5312545c5cb3}{m\+\_\+\+Broadphase}
+\item 
+bt\+Collision\+Dispatcher $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a42f89e700be9b0bef8bff4a45c22210f}{m\+\_\+\+Dispatcher}
+\item 
+bt\+Constraint\+Solver $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a498afcd43ca7dc066fc7d8933d9ece84}{m\+\_\+\+Solver}
+\item 
+bt\+Default\+Collision\+Configuration $\ast$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a80854f5ca1d38da19b98bc3991833545}{m\+\_\+\+Collision\+Configuration}
+\item 
+\hyperlink{namespaceTarbora_1_1PhysicsEngine_af696c3b94fb96f65c63f51e52b0e7238}{Collision\+Pairs} \hyperlink{namespaceTarbora_1_1PhysicsEngine_a2d6e21958893f5904e8a862eb3428359}{m\+\_\+\+Previous\+Tick\+Collision\+Pairs}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a4f1d409d44b0a7cde617d3a30ed02b02}\label{namespaceTarbora_1_1PhysicsEngine_a4f1d409d44b0a7cde617d3a30ed02b02}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Collision\+Pair@{Collision\+Pair}}
+\index{Collision\+Pair@{Collision\+Pair}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Collision\+Pair}{CollisionPair}}
+{\footnotesize\ttfamily typedef std\+::pair$<$bt\+Rigid\+Body const $\ast$, bt\+Rigid\+Body const $\ast$$>$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_a4f1d409d44b0a7cde617d3a30ed02b02}{Tarbora\+::\+Physics\+Engine\+::\+Collision\+Pair}}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_af696c3b94fb96f65c63f51e52b0e7238}\label{namespaceTarbora_1_1PhysicsEngine_af696c3b94fb96f65c63f51e52b0e7238}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Collision\+Pairs@{Collision\+Pairs}}
+\index{Collision\+Pairs@{Collision\+Pairs}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Collision\+Pairs}{CollisionPairs}}
+{\footnotesize\ttfamily typedef std\+::set$<$\hyperlink{namespaceTarbora_1_1PhysicsEngine_a4f1d409d44b0a7cde617d3a30ed02b02}{Collision\+Pair}$>$ \hyperlink{namespaceTarbora_1_1PhysicsEngine_af696c3b94fb96f65c63f51e52b0e7238}{Tarbora\+::\+Physics\+Engine\+::\+Collision\+Pairs}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a948faad823ce1e338a86d61c226e679e}\label{namespaceTarbora_1_1PhysicsEngine_a948faad823ce1e338a86d61c226e679e}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Add\+Box@{Add\+Box}}
+\index{Add\+Box@{Add\+Box}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Add\+Box()}{AddBox()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body $\ast$ Tarbora\+::\+Physics\+Engine\+::\+Add\+Box (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{glm\+::vec3 \&}]{dimensions,  }\item[{float}]{mass,  }\item[{float}]{friction,  }\item[{float}]{density,  }\item[{float}]{restitution,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_aabb5cc7e74e00e34239fd621939e9dec}\label{namespaceTarbora_1_1PhysicsEngine_aabb5cc7e74e00e34239fd621939e9dec}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Add\+Shape@{Add\+Shape}}
+\index{Add\+Shape@{Add\+Shape}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Add\+Shape()}{AddShape()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body $\ast$ Tarbora\+::\+Physics\+Engine\+::\+Add\+Shape (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{bt\+Collision\+Shape $\ast$}]{shape,  }\item[{float}]{mass,  }\item[{float}]{friction,  }\item[{float}]{density,  }\item[{float}]{restitution,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a0a4d9d85104abee858af7f74dfc7213a}\label{namespaceTarbora_1_1PhysicsEngine_a0a4d9d85104abee858af7f74dfc7213a}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Add\+Sphere@{Add\+Sphere}}
+\index{Add\+Sphere@{Add\+Sphere}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Add\+Sphere()}{AddSphere()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body $\ast$ Tarbora\+::\+Physics\+Engine\+::\+Add\+Sphere (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{float}]{radius,  }\item[{float}]{mass,  }\item[{float}]{friction,  }\item[{float}]{density,  }\item[{float}]{restitution,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}\label{namespaceTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Apply\+Force@{Apply\+Force}}
+\index{Apply\+Force@{Apply\+Force}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Apply\+Force()}{ApplyForce()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Apply\+Force (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body $\ast$}]{body,  }\item[{float}]{newtons,  }\item[{const glm\+::vec3 \&}]{direction }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}\label{namespaceTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Apply\+Torque@{Apply\+Torque}}
+\index{Apply\+Torque@{Apply\+Torque}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Apply\+Torque()}{ApplyTorque()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Apply\+Torque (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body $\ast$}]{body,  }\item[{float}]{magnitude,  }\item[{const glm\+::vec3 \&}]{direction }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_ad4662a4ef3aac14f8a53fffc5689be89}\label{namespaceTarbora_1_1PhysicsEngine_ad4662a4ef3aac14f8a53fffc5689be89}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Bullet\+Internal\+Tick\+Callback@{Bullet\+Internal\+Tick\+Callback}}
+\index{Bullet\+Internal\+Tick\+Callback@{Bullet\+Internal\+Tick\+Callback}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Bullet\+Internal\+Tick\+Callback()}{BulletInternalTickCallback()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Bullet\+Internal\+Tick\+Callback (\begin{DoxyParamCaption}\item[{bt\+Dynamics\+World $\ast$const}]{world,  }\item[{bt\+Scalar const}]{time\+Step }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_ae7c68706207e34b87dabf53fbf6886d1}\label{namespaceTarbora_1_1PhysicsEngine_ae7c68706207e34b87dabf53fbf6886d1}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Close@{Close}}
+\index{Close@{Close}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}\label{namespaceTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Init@{Init}}
+\index{Init@{Init}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily bool Tarbora\+::\+Physics\+Engine\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}\label{namespaceTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Remove\+Object@{Remove\+Object}}
+\index{Remove\+Object@{Remove\+Object}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Remove\+Object()}{RemoveObject()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Remove\+Object (\begin{DoxyParamCaption}\item[{bt\+Collision\+Object $\ast$}]{object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}\label{namespaceTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Set\+Velocity@{Set\+Velocity}}
+\index{Set\+Velocity@{Set\+Velocity}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Set\+Velocity()}{SetVelocity()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Set\+Velocity (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body $\ast$}]{body,  }\item[{const glm\+::vec3 \&}]{velocity }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_aca13d6e0e807662cd096fe899c5b8776}\label{namespaceTarbora_1_1PhysicsEngine_aca13d6e0e807662cd096fe899c5b8776}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Stop@{Stop}}
+\index{Stop@{Stop}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Stop (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body $\ast$}]{body }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_aecd7f940778147cff721cf877fefe046}\label{namespaceTarbora_1_1PhysicsEngine_aecd7f940778147cff721cf877fefe046}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Update@{Update}}
+\index{Update@{Update}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_aad0a3208848771a8315e5312545c5cb3}\label{namespaceTarbora_1_1PhysicsEngine_aad0a3208848771a8315e5312545c5cb3}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!m\+\_\+\+Broadphase@{m\+\_\+\+Broadphase}}
+\index{m\+\_\+\+Broadphase@{m\+\_\+\+Broadphase}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Broadphase}{m\_Broadphase}}
+{\footnotesize\ttfamily bt\+Broadphase\+Interface$\ast$ Tarbora\+::\+Physics\+Engine\+::m\+\_\+\+Broadphase}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a80854f5ca1d38da19b98bc3991833545}\label{namespaceTarbora_1_1PhysicsEngine_a80854f5ca1d38da19b98bc3991833545}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!m\+\_\+\+Collision\+Configuration@{m\+\_\+\+Collision\+Configuration}}
+\index{m\+\_\+\+Collision\+Configuration@{m\+\_\+\+Collision\+Configuration}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Collision\+Configuration}{m\_CollisionConfiguration}}
+{\footnotesize\ttfamily bt\+Default\+Collision\+Configuration$\ast$ Tarbora\+::\+Physics\+Engine\+::m\+\_\+\+Collision\+Configuration}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a42f89e700be9b0bef8bff4a45c22210f}\label{namespaceTarbora_1_1PhysicsEngine_a42f89e700be9b0bef8bff4a45c22210f}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!m\+\_\+\+Dispatcher@{m\+\_\+\+Dispatcher}}
+\index{m\+\_\+\+Dispatcher@{m\+\_\+\+Dispatcher}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Dispatcher}{m\_Dispatcher}}
+{\footnotesize\ttfamily bt\+Collision\+Dispatcher$\ast$ Tarbora\+::\+Physics\+Engine\+::m\+\_\+\+Dispatcher}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_ad71e472576f1233d63c8097d093452d8}\label{namespaceTarbora_1_1PhysicsEngine_ad71e472576f1233d63c8097d093452d8}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!m\+\_\+\+Dynamics\+World@{m\+\_\+\+Dynamics\+World}}
+\index{m\+\_\+\+Dynamics\+World@{m\+\_\+\+Dynamics\+World}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Dynamics\+World}{m\_DynamicsWorld}}
+{\footnotesize\ttfamily bt\+Dynamics\+World$\ast$ Tarbora\+::\+Physics\+Engine\+::m\+\_\+\+Dynamics\+World}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a2d6e21958893f5904e8a862eb3428359}\label{namespaceTarbora_1_1PhysicsEngine_a2d6e21958893f5904e8a862eb3428359}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!m\+\_\+\+Previous\+Tick\+Collision\+Pairs@{m\+\_\+\+Previous\+Tick\+Collision\+Pairs}}
+\index{m\+\_\+\+Previous\+Tick\+Collision\+Pairs@{m\+\_\+\+Previous\+Tick\+Collision\+Pairs}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Previous\+Tick\+Collision\+Pairs}{m\_PreviousTickCollisionPairs}}
+{\footnotesize\ttfamily \hyperlink{namespaceTarbora_1_1PhysicsEngine_af696c3b94fb96f65c63f51e52b0e7238}{Collision\+Pairs} Tarbora\+::\+Physics\+Engine\+::m\+\_\+\+Previous\+Tick\+Collision\+Pairs}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1PhysicsEngine_a498afcd43ca7dc066fc7d8933d9ece84}\label{namespaceTarbora_1_1PhysicsEngine_a498afcd43ca7dc066fc7d8933d9ece84}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!m\+\_\+\+Solver@{m\+\_\+\+Solver}}
+\index{m\+\_\+\+Solver@{m\+\_\+\+Solver}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Solver}{m\_Solver}}
+{\footnotesize\ttfamily bt\+Constraint\+Solver$\ast$ Tarbora\+::\+Physics\+Engine\+::m\+\_\+\+Solver}
+

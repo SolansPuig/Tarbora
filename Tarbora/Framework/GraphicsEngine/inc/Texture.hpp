@@ -18,10 +18,13 @@ namespace Tarbora {
         int m_Width, m_Height;
     };
 
+    //! \cond HIDDEN_SYMBOLS
     class TextureResourceLoader : public ResourceLoader
     {
-    public:
+        friend class ResourceManager;
+    private:
         virtual const std::string GetPattern() override { return "*.png"; };
         virtual ResourcePtr Load(std::string path) override;
     };
+    //! \endcond
 }

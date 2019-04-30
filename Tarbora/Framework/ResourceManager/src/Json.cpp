@@ -4,15 +4,18 @@
 namespace Tarbora {
     void Json::PushErrName(std::string name)
     {
+        // Append the name to the end of m_ErrName, and a dot.
         m_ErrName += (name + ".");
     }
 
     void Json::PopErrName()
     {
+        // Find the second-to-last dot and remove everythin from it.
         std::size_t found = m_ErrName.find_last_of(".", m_ErrName.size()-2);
         m_ErrName = m_ErrName.substr(0,found+1);
     }
 
+    // This is Chaos.
     void Json::Get(const char * key, raw_json *target, JsonOptions options)
     {
         Get(m_JSON, key, target, options);
@@ -879,6 +882,7 @@ namespace Tarbora {
 
     ResourcePtr JsonResourceLoader::Load(std::string path)
     {
+        // Try to open the file.
         std::ifstream file;
         file.open(path.c_str());
         if (file.fail())
@@ -886,6 +890,7 @@ namespace Tarbora {
             return ResourcePtr();
         }
 
+        // Try to parse the file.
         raw_json data;
         try
         {
@@ -898,8 +903,9 @@ namespace Tarbora {
             return ResourcePtr();
         }
 
+        // Crate the Resource.
         ResourcePtr r = ResourcePtr(new Json(path, data));
-        file.close();
+        file.close(); // Close the file.
         return r;
     }
 }

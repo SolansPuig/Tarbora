@@ -1,0 +1,114 @@
+\hypertarget{classTarbora_1_1ResourceManager}{}\section{Tarbora\+:\+:Resource\+Manager Class Reference}
+\label{classTarbora_1_1ResourceManager}\index{Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}}
+
+
+Load resources and make them available to all the systems.  
+
+
+
+
+{\ttfamily \#include $<$Resource\+Manager.\+hpp$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classTarbora_1_1ResourceManager_a1db550759320be50e86b316275da889c}{Init} (const std\+::string resource\+Folder\+Path)
+\begin{DoxyCompactList}\small\item\em Start the \hyperlink{classTarbora_1_1ResourceManager}{Resource\+Manager}. \end{DoxyCompactList}\item 
+static void \hyperlink{classTarbora_1_1ResourceManager_a531683525f49833ac4b06916cd8a2bc8}{Register\+Loader} (Loader\+Ptr loader)
+\begin{DoxyCompactList}\small\item\em Register a {\itshape Resource\+Loader}. \end{DoxyCompactList}\item 
+static Resource\+Ptr \hyperlink{classTarbora_1_1ResourceManager_a755c3216ac424ec13d28fa84b0814e0b}{Get\+Resource} (const std\+::string resource)
+\begin{DoxyCompactList}\small\item\em Get a \hyperlink{classTarbora_1_1Resource}{Resource} by name. \end{DoxyCompactList}\item 
+static void \hyperlink{classTarbora_1_1ResourceManager_a7267c1da4dc124b41f34b6c870fdb10e}{Free\+Resource} (Resource\+Ptr resource)
+\begin{DoxyCompactList}\small\item\em Destroy a \hyperlink{classTarbora_1_1Resource}{Resource}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1ResourceManager_aaef7ce514df5baa069b870aa69d9626e}\label{classTarbora_1_1ResourceManager_aaef7ce514df5baa069b870aa69d9626e}} 
+static void \hyperlink{classTarbora_1_1ResourceManager_aaef7ce514df5baa069b870aa69d9626e}{Flush} (void)
+\begin{DoxyCompactList}\small\item\em Destroy all the Resources. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1ResourceManager_a302419fdf0455a322394fcd7fb754593}\label{classTarbora_1_1ResourceManager_a302419fdf0455a322394fcd7fb754593}} 
+static std\+::string \hyperlink{classTarbora_1_1ResourceManager_a302419fdf0455a322394fcd7fb754593}{Get\+Resource\+Folder} ()
+\begin{DoxyCompactList}\small\item\em Get the path to folder where all the resource files are be located at. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Load resources and make them available to all the systems. 
+
+See an example of usage in \hyperlink{classTarbora_1_1Json}{Json}. \begin{DoxySeeAlso}{See also}
+\hyperlink{classTarbora_1_1Resource}{Resource} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTarbora_1_1ResourceManager_a7267c1da4dc124b41f34b6c870fdb10e}\label{classTarbora_1_1ResourceManager_a7267c1da4dc124b41f34b6c870fdb10e}} 
+\index{Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}!Free\+Resource@{Free\+Resource}}
+\index{Free\+Resource@{Free\+Resource}!Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{Free\+Resource()}{FreeResource()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Resource\+Manager\+::\+Free\+Resource (\begin{DoxyParamCaption}\item[{Resource\+Ptr}]{resource }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Destroy a \hyperlink{classTarbora_1_1Resource}{Resource}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource} & The file name of the resource to destroy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTarbora_1_1ResourceManager_a755c3216ac424ec13d28fa84b0814e0b}\label{classTarbora_1_1ResourceManager_a755c3216ac424ec13d28fa84b0814e0b}} 
+\index{Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}!Get\+Resource@{Get\+Resource}}
+\index{Get\+Resource@{Get\+Resource}!Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{Get\+Resource()}{GetResource()}}
+{\footnotesize\ttfamily Resource\+Ptr Tarbora\+::\+Resource\+Manager\+::\+Get\+Resource (\begin{DoxyParamCaption}\item[{const std\+::string}]{resource }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a \hyperlink{classTarbora_1_1Resource}{Resource} by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource} & The file name of the resource. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a \hyperlink{classTarbora_1_1Resource}{Resource}.
+\end{DoxyReturn}
+The returned \hyperlink{classTarbora_1_1Resource}{Resource} must be casted to the required type, so a macro is provided to make Get easier, as it typecasts the result\+: 
+\begin{DoxyCode}
+GET\_RESOURCE(TYPE, NAME)
+\end{DoxyCode}
+
+
+If the \hyperlink{classTarbora_1_1Resource}{Resource} isn\textquotesingle{}t loaded yet, \hyperlink{classTarbora_1_1ResourceManager_a755c3216ac424ec13d28fa84b0814e0b}{Get\+Resource} automatically finds the appropiate {\itshape Resource\+Loader} (see \hyperlink{classTarbora_1_1Resource}{Resource}) and loads it. \mbox{\Hypertarget{classTarbora_1_1ResourceManager_a1db550759320be50e86b316275da889c}\label{classTarbora_1_1ResourceManager_a1db550759320be50e86b316275da889c}} 
+\index{Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}!Init@{Init}}
+\index{Init@{Init}!Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Resource\+Manager\+::\+Init (\begin{DoxyParamCaption}\item[{const std\+::string}]{resource\+Folder\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Start the \hyperlink{classTarbora_1_1ResourceManager}{Resource\+Manager}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource\+Folder\+Path} & The path to folder where all the resource files are be located at. It must be called on startup, before initializing any system that uses resources. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTarbora_1_1ResourceManager_a531683525f49833ac4b06916cd8a2bc8}\label{classTarbora_1_1ResourceManager_a531683525f49833ac4b06916cd8a2bc8}} 
+\index{Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}!Register\+Loader@{Register\+Loader}}
+\index{Register\+Loader@{Register\+Loader}!Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{Register\+Loader()}{RegisterLoader()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Resource\+Manager\+::\+Register\+Loader (\begin{DoxyParamCaption}\item[{Loader\+Ptr}]{loader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Register a {\itshape Resource\+Loader}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & A pointer to the loader. See \hyperlink{classTarbora_1_1Resource}{Resource}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Framework/\+Resource\+Manager/inc/Resource\+Manager.\+hpp\item 
+Tarbora/\+Framework/\+Resource\+Manager/src/Resource\+Manager.\+cpp\end{DoxyCompactItemize}

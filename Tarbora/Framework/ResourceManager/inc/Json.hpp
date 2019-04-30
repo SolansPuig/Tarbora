@@ -14,7 +14,7 @@ namespace Tarbora {
         bool silent; //!< Set this to avoid displaying any warnings. Default: false
     };
 
-    //! A wrapper class to securely access Json files.json
+    //! Secure access Json files
     /*!
         The class raw_json is from the package nlohmann::json, you can find its documentation here: https://nlohmann.github.io/json/
 
@@ -56,25 +56,30 @@ namespace Tarbora {
             }
             resource->PopErrName();
         \endcode
+
+        \see Resource
+        \see ResourceManager
     */
     class Json : public Resource
     {
         friend class JsonResourceLoader;
     public:
-        //! Get the raw Json. Not recommended
+        //! Get the raw Json. Not recommended.
         const raw_json GetJson() const { return m_JSON; }
 
         //! Add a name to the error path that will be shown if an error occurs.
         /*!
             See the \ref Json class description for an example.
-            Use it along with \ref PopErrName
+
+            Use it along with \ref PopErrName.
         */
         void PushErrName(std::string name);
 
         //! Remove the last name from the error path.
         /*!
             See the \ref Json class description for an example.
-            Use it along with \ref PushErrName
+
+            Use it along with \ref PushErrName.
         */
         void PopErrName();
 
@@ -351,7 +356,8 @@ namespace Tarbora {
     //! \cond HIDDEN_SYMBOLS
     class JsonResourceLoader : public ResourceLoader
     {
-    public:
+        friend class ResourceManager;
+    private:
         virtual const std::string GetPattern() override { return "*.json"; };
         virtual ResourcePtr Load(std::string path) override;
     };

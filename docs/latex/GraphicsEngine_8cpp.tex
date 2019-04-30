@@ -1,0 +1,87 @@
+\hypertarget{GraphicsEngine_8cpp}{}\section{Tarbora/\+Framework/\+Graphics\+Engine/src/\+Graphics\+Engine.cpp File Reference}
+\label{GraphicsEngine_8cpp}\index{Tarbora/\+Framework/\+Graphics\+Engine/src/\+Graphics\+Engine.\+cpp@{Tarbora/\+Framework/\+Graphics\+Engine/src/\+Graphics\+Engine.\+cpp}}
+{\ttfamily \#include \char`\"{}../inc/\+Graphics\+Engine.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../../\+Utility/inc/stb\+\_\+image\+\_\+write.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+Resource\+Manager/inc/\+Json.\+hpp\char`\"{}}\newline
+Include dependency graph for Graphics\+Engine.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{GraphicsEngine_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceTarbora}{Tarbora}
+\item 
+ \hyperlink{namespaceTarbora_1_1GraphicsEngine}{Tarbora\+::\+Graphics\+Engine}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{GraphicsEngine_8cpp_aefe397a94e8feddc652f92ef40ce9597}{S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a9badc9df53b131e9629b433765b18d86}{Tarbora\+::\+Graphics\+Engine\+::\+Init} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a2429f1284717c7c7e80ea2b7adb6dfd1}{Tarbora\+::\+Graphics\+Engine\+::\+Close} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a7d09b2a2f6d44913d6a3b9622e5fdc55}{Tarbora\+::\+Graphics\+Engine\+::\+Before\+Draw} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_aa63a14a3dea4c47f2b9d4e8d15086d96}{Tarbora\+::\+Graphics\+Engine\+::\+Draw\+Mesh} (std\+::shared\+\_\+ptr$<$ Mesh $>$ mesh)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a3e3774928c037ea12d427d4fc2c77582}{Tarbora\+::\+Graphics\+Engine\+::\+After\+Draw} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ace56d35cedd39989e8ba748654698f8a}{Tarbora\+::\+Graphics\+Engine\+::\+Before\+Draw\+Sky} ()
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a4a2e963c758cea1f12415c57e1bd2f7a}{Tarbora\+::\+Graphics\+Engine\+::\+After\+Draw\+Sky} ()
+\item 
+Window\+Ptr \hyperlink{namespaceTarbora_1_1GraphicsEngine_a35bd82a619d7fdff0fc626955545f352}{Tarbora\+::\+Graphics\+Engine\+::\+Get\+Window} ()
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a5b52e66f40e2afaaf168e0a585a1f4b8}{Tarbora\+::\+Graphics\+Engine\+::\+Compile\+Shader} (std\+::string type, const char $\ast$code)
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a1f9fb33b0760c37663a9056694b63ddf}{Tarbora\+::\+Graphics\+Engine\+::\+Link\+Program} (unsigned int $\ast$ids)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ab306520bce25cd5f1beb827fcb11dafc}{Tarbora\+::\+Graphics\+Engine\+::\+Delete\+Program} (unsigned int id)
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a87f26fb14a8bdf13628ec744244b8a22}{Tarbora\+::\+Graphics\+Engine\+::\+Load\+Texture} (unsigned char $\ast$data, int width, int height, int nr\+Components)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a43401d758fe6a6347980216de1326ba1}{Tarbora\+::\+Graphics\+Engine\+::\+Bind\+Texture} (unsigned int id)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ad212ed9a51a58dc369eefb2e301ec743}{Tarbora\+::\+Graphics\+Engine\+::\+Delete\+Texture} (unsigned int id)
+\item 
+unsigned int \hyperlink{namespaceTarbora_1_1GraphicsEngine_a163d201479c73d4466ca74cd87a607ba}{Tarbora\+::\+Graphics\+Engine\+::\+Load\+Mesh} (std\+::vector$<$ float $>$ vertices)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_ae98495c4c24e81b1d495fd1312446d74}{Tarbora\+::\+Graphics\+Engine\+::\+Delete\+Mesh} (unsigned int id)
+\item 
+void \hyperlink{namespaceTarbora_1_1GraphicsEngine_a66a31b19920edf27310cb217770479b8}{Tarbora\+::\+Graphics\+Engine\+::\+Use\+Shader} (std\+::shared\+\_\+ptr$<$ Shader $>$ shader)
+\item 
+std\+::shared\+\_\+ptr$<$ Shader $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_ada6e8675191b45d7896d78be9a578471}{Tarbora\+::\+Graphics\+Engine\+::\+Get\+Shader} ()
+\item 
+bool \hyperlink{namespaceTarbora_1_1GraphicsEngine_a8b3f957fefc40d8ab8bd54d2f421a567}{Tarbora\+::\+Graphics\+Engine\+::\+Shader\+Available} ()
+\item 
+int \hyperlink{namespaceTarbora_1_1GraphicsEngine_aa3bb6bce620c74256c817ee5324e2b94}{Tarbora\+::\+Graphics\+Engine\+::\+Take\+Screenshot} (const std\+::string \&filename)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ Window $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_a9746a5d218b0daadbf44858a3a21156b}{Tarbora\+::\+Graphics\+Engine\+::\+Main\+\_\+\+Window}
+\item 
+std\+::unique\+\_\+ptr$<$ Gui $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_a4be33c3123e2b5a20b816da7bba5ab45}{Tarbora\+::\+Graphics\+Engine\+::m\+\_\+\+Gui}
+\item 
+std\+::shared\+\_\+ptr$<$ Shader $>$ \hyperlink{namespaceTarbora_1_1GraphicsEngine_a814ff9e615b93f128a28efe62fd20d7b}{Tarbora\+::\+Graphics\+Engine\+::m\+\_\+\+Shader}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{GraphicsEngine_8cpp_aefe397a94e8feddc652f92ef40ce9597}\label{GraphicsEngine_8cpp_aefe397a94e8feddc652f92ef40ce9597}} 
+\index{Graphics\+Engine.\+cpp@{Graphics\+Engine.\+cpp}!S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON@{S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\index{S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON@{S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}!Graphics\+Engine.\+cpp@{Graphics\+Engine.\+cpp}}
+\subsubsection{\texorpdfstring{S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}{STB\_IMAGE\_WRITE\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+

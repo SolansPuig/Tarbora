@@ -1,0 +1,68 @@
+\hypertarget{namespaceTarbora_1_1EventManager}{}\section{Tarbora\+:\+:Event\+Manager Namespace Reference}
+\label{namespaceTarbora_1_1EventManager}\index{Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ \hyperlink{namespaceTarbora_a418b0f026f0664511b2a0c4129edc11f}{Event\+Fn} $>$ \hyperlink{namespaceTarbora_1_1EventManager_af2a8ccc3af56c94f352b42f5efa966dd}{Event\+Listener\+List}
+\item 
+typedef std\+::map$<$ \hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type}, \hyperlink{namespaceTarbora_1_1EventManager_af2a8ccc3af56c94f352b42f5efa966dd}{Event\+Listener\+List} $>$ \hyperlink{namespaceTarbora_1_1EventManager_a9254759257c0dc7fd52908f87bfa68ec}{Event\+Listener\+Map}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceTarbora_a5373bb1f8a65622379828cdefc8d42e5}{Event\+Id} \hyperlink{namespaceTarbora_1_1EventManager_a7296edcf388f134db3dbf86787ce7040}{Subscribe} (\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type} type, \hyperlink{namespaceTarbora_a418b0f026f0664511b2a0c4129edc11f}{Event\+Fn} func)
+\item 
+void \hyperlink{namespaceTarbora_1_1EventManager_ab1d0fc452783db5cfb1b5d962f408482}{Unsubscribe} (\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type} type, \hyperlink{namespaceTarbora_a5373bb1f8a65622379828cdefc8d42e5}{Event\+Id} id)
+\item 
+void \hyperlink{namespaceTarbora_1_1EventManager_a9ac99b33a5dd3509625ac20520d722ab}{Trigger} (\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type} type, \hyperlink{structTarbora_1_1Event}{Event} $\ast$event)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceTarbora_1_1EventManager_a9254759257c0dc7fd52908f87bfa68ec}{Event\+Listener\+Map} \hyperlink{namespaceTarbora_1_1EventManager_af82d09c8ed322ff016f5b88bc955a6df}{m\+\_\+\+Listeners}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1EventManager_af2a8ccc3af56c94f352b42f5efa966dd}\label{namespaceTarbora_1_1EventManager_af2a8ccc3af56c94f352b42f5efa966dd}} 
+\index{Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}!Event\+Listener\+List@{Event\+Listener\+List}}
+\index{Event\+Listener\+List@{Event\+Listener\+List}!Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}}
+\subsubsection{\texorpdfstring{Event\+Listener\+List}{EventListenerList}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\hyperlink{namespaceTarbora_a418b0f026f0664511b2a0c4129edc11f}{Event\+Fn}$>$ \hyperlink{namespaceTarbora_1_1EventManager_af2a8ccc3af56c94f352b42f5efa966dd}{Tarbora\+::\+Event\+Manager\+::\+Event\+Listener\+List}}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1EventManager_a9254759257c0dc7fd52908f87bfa68ec}\label{namespaceTarbora_1_1EventManager_a9254759257c0dc7fd52908f87bfa68ec}} 
+\index{Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}!Event\+Listener\+Map@{Event\+Listener\+Map}}
+\index{Event\+Listener\+Map@{Event\+Listener\+Map}!Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}}
+\subsubsection{\texorpdfstring{Event\+Listener\+Map}{EventListenerMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type}, \hyperlink{namespaceTarbora_1_1EventManager_af2a8ccc3af56c94f352b42f5efa966dd}{Event\+Listener\+List}$>$ \hyperlink{namespaceTarbora_1_1EventManager_a9254759257c0dc7fd52908f87bfa68ec}{Tarbora\+::\+Event\+Manager\+::\+Event\+Listener\+Map}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1EventManager_a7296edcf388f134db3dbf86787ce7040}\label{namespaceTarbora_1_1EventManager_a7296edcf388f134db3dbf86787ce7040}} 
+\index{Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}!Subscribe@{Subscribe}}
+\index{Subscribe@{Subscribe}!Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}}
+\subsubsection{\texorpdfstring{Subscribe()}{Subscribe()}}
+{\footnotesize\ttfamily \hyperlink{namespaceTarbora_a5373bb1f8a65622379828cdefc8d42e5}{Event\+Id} Tarbora\+::\+Event\+Manager\+::\+Subscribe (\begin{DoxyParamCaption}\item[{\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type}}]{type,  }\item[{\hyperlink{namespaceTarbora_a418b0f026f0664511b2a0c4129edc11f}{Event\+Fn}}]{func }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1EventManager_a9ac99b33a5dd3509625ac20520d722ab}\label{namespaceTarbora_1_1EventManager_a9ac99b33a5dd3509625ac20520d722ab}} 
+\index{Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}}
+\subsubsection{\texorpdfstring{Trigger()}{Trigger()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Event\+Manager\+::\+Trigger (\begin{DoxyParamCaption}\item[{\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type}}]{type,  }\item[{\hyperlink{structTarbora_1_1Event}{Event} $\ast$}]{event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceTarbora_1_1EventManager_ab1d0fc452783db5cfb1b5d962f408482}\label{namespaceTarbora_1_1EventManager_ab1d0fc452783db5cfb1b5d962f408482}} 
+\index{Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}!Unsubscribe@{Unsubscribe}}
+\index{Unsubscribe@{Unsubscribe}!Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}}
+\subsubsection{\texorpdfstring{Unsubscribe()}{Unsubscribe()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Event\+Manager\+::\+Unsubscribe (\begin{DoxyParamCaption}\item[{\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Event\+Type}}]{type,  }\item[{\hyperlink{namespaceTarbora_a5373bb1f8a65622379828cdefc8d42e5}{Event\+Id}}]{id }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceTarbora_1_1EventManager_af82d09c8ed322ff016f5b88bc955a6df}\label{namespaceTarbora_1_1EventManager_af82d09c8ed322ff016f5b88bc955a6df}} 
+\index{Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}!m\+\_\+\+Listeners@{m\+\_\+\+Listeners}}
+\index{m\+\_\+\+Listeners@{m\+\_\+\+Listeners}!Tarbora\+::\+Event\+Manager@{Tarbora\+::\+Event\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Listeners}{m\_Listeners}}
+{\footnotesize\ttfamily \hyperlink{namespaceTarbora_1_1EventManager_a9254759257c0dc7fd52908f87bfa68ec}{Event\+Listener\+Map} Tarbora\+::\+Event\+Manager\+::m\+\_\+\+Listeners}
+

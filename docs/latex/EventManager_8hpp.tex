@@ -1,0 +1,122 @@
+\hypertarget{EventManager_8hpp}{}\section{Tarbora/\+Framework/\+Event\+Manager/inc/\+Event\+Manager.hpp File Reference}
+\label{EventManager_8hpp}\index{Tarbora/\+Framework/\+Event\+Manager/inc/\+Event\+Manager.\+hpp@{Tarbora/\+Framework/\+Event\+Manager/inc/\+Event\+Manager.\+hpp}}
+{\ttfamily \#include \char`\"{}../../\+Global.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+Include dependency graph for Event\+Manager.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{EventManager_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{EventManager_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structTarbora_1_1Event}{Tarbora\+::\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1WindowCloseEvent}{Tarbora\+::\+Window\+Close\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1WindowResizeEvent}{Tarbora\+::\+Window\+Resize\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1WindowFocusEvent}{Tarbora\+::\+Window\+Focus\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1WindowMoveEvent}{Tarbora\+::\+Window\+Move\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1WindowIconifyEvent}{Tarbora\+::\+Window\+Iconify\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1KeyPressEvent}{Tarbora\+::\+Key\+Press\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1KeyReleaseEvent}{Tarbora\+::\+Key\+Release\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1MouseButtonPressEvent}{Tarbora\+::\+Mouse\+Button\+Press\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1MouseButtonReleaseEvent}{Tarbora\+::\+Mouse\+Button\+Release\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1MouseMoveEvent}{Tarbora\+::\+Mouse\+Move\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1MouseScrollEvent}{Tarbora\+::\+Mouse\+Scroll\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1ActorEvent}{Tarbora\+::\+Actor\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1ActorMoveEvent}{Tarbora\+::\+Actor\+Move\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1CreateActorEvent}{Tarbora\+::\+Create\+Actor\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1CreateActorModelEvent}{Tarbora\+::\+Create\+Actor\+Model\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1ApplyForceEvent}{Tarbora\+::\+Apply\+Force\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1ApplyTorqueEvent}{Tarbora\+::\+Apply\+Torque\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1SetVelocityEvent}{Tarbora\+::\+Set\+Velocity\+Event}
+\item 
+struct \hyperlink{structTarbora_1_1StopEvent}{Tarbora\+::\+Stop\+Event}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceTarbora}{Tarbora}
+\item 
+ \hyperlink{namespaceTarbora_1_1EventManager}{Tarbora\+::\+Event\+Manager}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::function$<$ void(Event $\ast$)$>$ \hyperlink{namespaceTarbora_a418b0f026f0664511b2a0c4129edc11f}{Tarbora\+::\+Event\+Fn}
+\item 
+typedef std\+::function$<$ void(Event $\ast$)$>$ \hyperlink{namespaceTarbora_a20140292404b48531b04defa2af01724}{Tarbora\+::\+Command\+Fn}
+\item 
+typedef unsigned int \hyperlink{namespaceTarbora_a5373bb1f8a65622379828cdefc8d42e5}{Tarbora\+::\+Event\+Id}
+\item 
+typedef unsigned int \hyperlink{namespaceTarbora_a80dd00c7124f78a02d3d899eb0edbd29}{Tarbora\+::\+Command\+Id}
+\item 
+typedef std\+::vector$<$ Event\+Fn $>$ \hyperlink{namespaceTarbora_1_1EventManager_af2a8ccc3af56c94f352b42f5efa966dd}{Tarbora\+::\+Event\+Manager\+::\+Event\+Listener\+List}
+\item 
+typedef std\+::map$<$ Event\+Type, Event\+Listener\+List $>$ \hyperlink{namespaceTarbora_1_1EventManager_a9254759257c0dc7fd52908f87bfa68ec}{Tarbora\+::\+Event\+Manager\+::\+Event\+Listener\+Map}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967e}{Tarbora\+::\+Event\+Type} \{ \newline
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967eaa79d27c884c88a76b352b0d277e680d4}{Tarbora\+::\+Window\+Close}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea07a20ae048df50f9203810252a3c2b66}{Tarbora\+::\+Window\+Resize}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea417477136da91e1c47a6f814ff3bebfb}{Tarbora\+::\+Window\+Focus}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967eae7b51031e4a68db74a97277075ca7123}{Tarbora\+::\+Window\+Move}, 
+\newline
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea0cfe5592321c252451d0993f20389826}{Tarbora\+::\+Window\+Iconify}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea981dd6ce156b50eb086b29f792017c50}{Tarbora\+::\+Key\+Press}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967eac9f85a708fefe8de22fee50b819ccb8f}{Tarbora\+::\+Key\+Release}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea1d5f55d813d3e83cf677122e7a0a1270}{Tarbora\+::\+Mouse\+Button\+Press}, 
+\newline
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967eaf98571f74e7ab53ac3745761e00bd45c}{Tarbora\+::\+Mouse\+Button\+Release}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea7fa1d8580f4f1d572a6cd4c0a3227802}{Tarbora\+::\+Mouse\+Move}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ead0e8318a24cac57564d87829c4517a4f}{Tarbora\+::\+Mouse\+Scroll}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ead1f7b6280f26f974eda3f4cff4c752c3}{Tarbora\+::\+Actor\+Move}, 
+\newline
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967eac0fd38f9a6bbfca5b00b4cc24f4b5c17}{Tarbora\+::\+Create\+Actor}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967eaae57c238aebf15f848280799e59d377f}{Tarbora\+::\+Create\+Actor\+Model}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea0ab4fdcb1407a654ae36bb9171ce10a3}{Tarbora\+::\+Apply\+Force}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea59c630e3223ebdf0bbae3b7b74698902}{Tarbora\+::\+Apply\+Torque}, 
+\newline
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea1c85f04f7704f1007442306639c8e6cc}{Tarbora\+::\+Set\+Velocity}, 
+\hyperlink{namespaceTarbora_a70bd9c4d542b943fff3793f78189967ea4781a23839299e30e3c9bf75c4dfc4b2}{Tarbora\+::\+Stop}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Id \hyperlink{namespaceTarbora_1_1EventManager_a7296edcf388f134db3dbf86787ce7040}{Tarbora\+::\+Event\+Manager\+::\+Subscribe} (Event\+Type type, Event\+Fn func)
+\item 
+void \hyperlink{namespaceTarbora_1_1EventManager_ab1d0fc452783db5cfb1b5d962f408482}{Tarbora\+::\+Event\+Manager\+::\+Unsubscribe} (Event\+Type type, Event\+Id id)
+\item 
+void \hyperlink{namespaceTarbora_1_1EventManager_a9ac99b33a5dd3509625ac20520d722ab}{Tarbora\+::\+Event\+Manager\+::\+Trigger} (Event\+Type type, Event $\ast$event)
+\end{DoxyCompactItemize}
