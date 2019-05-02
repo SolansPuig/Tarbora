@@ -4,6 +4,7 @@
 namespace Tarbora {
     bool PhysicsEngine::Init()
     {
+        // Configuration of Bullet3
         m_CollisionConfiguration = new btDefaultCollisionConfiguration();
         m_Dispatcher = new btCollisionDispatcher(m_CollisionConfiguration);
         m_Broadphase = new btDbvtBroadphase();
@@ -26,12 +27,14 @@ namespace Tarbora {
 
     void PhysicsEngine::Close()
     {
+        // Delete all registered objects.
         for (int i = m_DynamicsWorld->getNumCollisionObjects()-1; i >= 0; i--)
         {
             btCollisionObject * const obj = m_DynamicsWorld->getCollisionObjectArray()[i];
             RemoveObject(obj);
         }
 
+        // Delete all Bullet3 variables.
         // delete m_DebugDrawer;
         delete m_DynamicsWorld;
         delete m_Solver;
@@ -45,19 +48,19 @@ namespace Tarbora {
         m_DynamicsWorld->stepSimulation(deltaTime, 4);
     }
 
-    btRigidBody *PhysicsEngine::AddSphere(unsigned int id, float radius, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+    btRigidBody *PhysicsEngine::AddSphere(unsigned int id, float radius, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btSphereShape *const shape = new btSphereShape(radius);
-        return AddShape(id, shape, mass, friction, density, restitution, transform);
+        return AddShape(id, shape, mass, friction, restitution, transform);
     }
 
-    btRigidBody *PhysicsEngine::AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+    btRigidBody *PhysicsEngine::AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btBoxShape *const shape = new btBoxShape(btVector3(dimensions.x/2, dimensions.y/2, dimensions.z/2));
-        return AddShape(id, shape, mass, friction, density, restitution, transform);
+        return AddShape(id, shape, mass, friction, restitution, transform);
     }
 
-    btRigidBody *PhysicsEngine::AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float density, float restitution, glm::mat4 &transform)
+    btRigidBody *PhysicsEngine::AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btVector3 localInertia(0.f, 0.f, 0.f);
         if (mass > 0.f) shape->calculateLocalInertia(mass, localInertia);
@@ -137,6 +140,7 @@ namespace Tarbora {
 
     void PhysicsEngine::BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep)
     {
+        // Check the collisions and store them in the list.
         CollisionPairs currentTickPairs;
         btDispatcher *const dispatcher = world->getDispatcher();
         for (int id = 0; id < dispatcher->getNumManifolds(); id++)

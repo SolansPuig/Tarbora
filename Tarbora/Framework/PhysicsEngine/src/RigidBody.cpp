@@ -6,7 +6,7 @@ namespace Tarbora {
         m_Friction = friction;
         m_Density = density;
         m_Restitution = restitution;
-        Calc();
+        CalcVolume();
     }
 
     void RigidBody::ApplyForce(float newtons, const glm::vec3 &direction)
@@ -42,7 +42,7 @@ namespace Tarbora {
 
     void SphereBody::Register(unsigned int id, glm::mat4 &transform)
     {
-        m_Body = PhysicsEngine::AddSphere(id, m_Radius, m_Mass, m_Friction, m_Density, m_Restitution, transform);
+        m_Body = PhysicsEngine::AddSphere(id, m_Radius, m_Mass, m_Friction, m_Restitution, transform);
     }
 
     void SphereBody::Unregister()
@@ -67,7 +67,7 @@ namespace Tarbora {
 
     void BoxBody::Register(unsigned int id, glm::mat4 &transform)
     {
-        m_Body = PhysicsEngine::AddBox(id, m_Dimensions, m_Mass, m_Friction, m_Density, m_Restitution, transform);
+        m_Body = PhysicsEngine::AddBox(id, m_Dimensions, m_Mass, m_Friction, m_Restitution, transform);
     }
 
     void BoxBody::Unregister()

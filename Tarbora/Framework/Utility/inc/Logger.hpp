@@ -9,15 +9,13 @@ namespace Tarbora {
 
         //! Initialize the logger to an open stream.
         /*!
-            \param stream The stream (file or console) where the logger will print.
+            \param stream The stream (file or console) where the logger will print. Either an opened stream like stdout or a file name. 
+            It must be called on startup, the first thing.
         */
         static bool Init(FILE *stream);
 
-        //! Initialize the logger to a file.
-        /*!
-            \param file_path The name of the file where the logger will print.
-        */
-        static bool Init(std::string file_path);
+        //! \overload
+        static bool Init(std::string stream);
 
         //! Close the logger.
         static void Close();

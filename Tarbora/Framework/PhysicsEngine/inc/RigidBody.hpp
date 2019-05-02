@@ -5,6 +5,9 @@ namespace Tarbora {
     typedef enum { Sphere, Box } Shape;
 
     //! An abstract physics rigid body
+    /*!
+        \see PhysicsEngine
+    */
     class RigidBody
     {
     public:
@@ -26,9 +29,9 @@ namespace Tarbora {
 
         //! Set all the properties that define a physics object.
         /*!
-            \param friction \see SetFriction.
-            \param density \see SetDensity.
-            \param resitution \see SetRestitution.
+            \param friction See \ref SetFriction
+            \param density See \ref SetDensity
+            \param resitution See \ref SetRestitution
         */
         void SetProperties(float friction, float density, float resitution);
 
@@ -106,6 +109,7 @@ namespace Tarbora {
 
     //! A physics rigid body representing an sphere.
     /*!
+        \see PhysicsEngine
         \see RigidBody
         \see BoxBody
     */
@@ -140,6 +144,7 @@ namespace Tarbora {
 
     //! A physics rigid body representing a cube.
     /*!
+        \see PhysicsEngine
         \see RigidBody
         \see SphereBody
     */

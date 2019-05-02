@@ -1,1 +1,1 @@
-Check the docs at https://solanspuig.github.io/Tarbora/html/index.html
+Check out the docs at https://solanspuig.github.io/Tarbora/html/index.html

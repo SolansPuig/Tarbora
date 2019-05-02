@@ -1,38 +1,183 @@
 \hypertarget{classTarbora_1_1PhysicsEngine}{}\section{Tarbora\+:\+:Physics\+Engine Class Reference}
 \label{classTarbora_1_1PhysicsEngine}\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+
+
+The system that manages the movement and the collisions of all the actors.  
+
+
+
+
+{\ttfamily \#include $<$Physics\+Engine.\+hpp$>$}
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}\label{classTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}} 
-static bool {\bfseries Init} ()
-\item 
+static bool \hyperlink{classTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}{Init} ()
+\begin{DoxyCompactList}\small\item\em Start the Physics Engine. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_ae7c68706207e34b87dabf53fbf6886d1}\label{classTarbora_1_1PhysicsEngine_ae7c68706207e34b87dabf53fbf6886d1}} 
-static void {\bfseries Close} ()
-\item 
+static void \hyperlink{classTarbora_1_1PhysicsEngine_ae7c68706207e34b87dabf53fbf6886d1}{Close} ()
+\begin{DoxyCompactList}\small\item\em Stop the Physics Engine. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_aecd7f940778147cff721cf877fefe046}\label{classTarbora_1_1PhysicsEngine_aecd7f940778147cff721cf877fefe046}} 
-static void {\bfseries Update} (float delta\+Time)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a0a4d9d85104abee858af7f74dfc7213a}\label{classTarbora_1_1PhysicsEngine_a0a4d9d85104abee858af7f74dfc7213a}} 
-static bt\+Rigid\+Body $\ast$ {\bfseries Add\+Sphere} (unsigned int id, float radius, float mass, float friction, float density, float restitution, glm\+::mat4 \&transform)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a948faad823ce1e338a86d61c226e679e}\label{classTarbora_1_1PhysicsEngine_a948faad823ce1e338a86d61c226e679e}} 
-static bt\+Rigid\+Body $\ast$ {\bfseries Add\+Box} (unsigned int id, glm\+::vec3 \&dimensions, float mass, float friction, float density, float restitution, glm\+::mat4 \&transform)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}\label{classTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}} 
-static void {\bfseries Remove\+Object} (bt\+Collision\+Object $\ast$object)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}\label{classTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}} 
-static void {\bfseries Apply\+Force} (bt\+Rigid\+Body $\ast$body, float newtons, const glm\+::vec3 \&direction)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}\label{classTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}} 
-static void {\bfseries Apply\+Torque} (bt\+Rigid\+Body $\ast$body, float magnitude, const glm\+::vec3 \&direction)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}\label{classTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}} 
-static void {\bfseries Set\+Velocity} (bt\+Rigid\+Body $\ast$body, const glm\+::vec3 \&velocity)
-\item 
+static void \hyperlink{classTarbora_1_1PhysicsEngine_aecd7f940778147cff721cf877fefe046}{Update} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em Update the Physics Engine. \end{DoxyCompactList}\item 
+static bt\+Rigid\+Body $\ast$ \hyperlink{classTarbora_1_1PhysicsEngine_ab20c015fd1b1aa9d8dd8e0c10a9ef249}{Add\+Sphere} (unsigned int id, float radius, float mass, float friction, float restitution, glm\+::mat4 \&transform)
+\begin{DoxyCompactList}\small\item\em Register an sphere shaped rigid body. \end{DoxyCompactList}\item 
+static bt\+Rigid\+Body $\ast$ \hyperlink{classTarbora_1_1PhysicsEngine_a4ec40e1a3ab05c7fe1e0216534484750}{Add\+Box} (unsigned int id, glm\+::vec3 \&dimensions, float mass, float friction, float restitution, glm\+::mat4 \&transform)
+\begin{DoxyCompactList}\small\item\em Register a cube shaped rigid body. \end{DoxyCompactList}\item 
+static void \hyperlink{classTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}{Remove\+Object} (bt\+Collision\+Object $\ast$object)
+\begin{DoxyCompactList}\small\item\em Destroy and unregister a rigid body. \end{DoxyCompactList}\item 
+static void \hyperlink{classTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}{Apply\+Force} (bt\+Rigid\+Body $\ast$body, float newtons, const glm\+::vec3 \&direction)
+\begin{DoxyCompactList}\small\item\em Apply a force on the center of the object. \end{DoxyCompactList}\item 
+static void \hyperlink{classTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}{Apply\+Torque} (bt\+Rigid\+Body $\ast$body, float magnitude, const glm\+::vec3 \&direction)
+\begin{DoxyCompactList}\small\item\em Apply a torque to the object. A force that will make the object rotate. \end{DoxyCompactList}\item 
+static void \hyperlink{classTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}{Set\+Velocity} (bt\+Rigid\+Body $\ast$body, const glm\+::vec3 \&velocity)
+\begin{DoxyCompactList}\small\item\em Set a constant velocity to the object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_aca13d6e0e807662cd096fe899c5b8776}\label{classTarbora_1_1PhysicsEngine_aca13d6e0e807662cd096fe899c5b8776}} 
-static void {\bfseries Stop} (bt\+Rigid\+Body $\ast$body)
-\end{DoxyCompactItemize}
+static void \hyperlink{classTarbora_1_1PhysicsEngine_aca13d6e0e807662cd096fe899c5b8776}{Stop} (bt\+Rigid\+Body $\ast$body)
+\begin{DoxyCompactList}\small\item\em Set the object velocity to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The system that manages the movement and the collisions of all the actors. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classTarbora_1_1RigidBody}{Rigid\+Body} 
+
+\hyperlink{classTarbora_1_1ActorMotionState}{Actor\+Motion\+State} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a4ec40e1a3ab05c7fe1e0216534484750}\label{classTarbora_1_1PhysicsEngine_a4ec40e1a3ab05c7fe1e0216534484750}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Add\+Box@{Add\+Box}}
+\index{Add\+Box@{Add\+Box}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Add\+Box()}{AddBox()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body $\ast$ Tarbora\+::\+Physics\+Engine\+::\+Add\+Box (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{glm\+::vec3 \&}]{dimensions,  }\item[{float}]{mass,  }\item[{float}]{friction,  }\item[{float}]{restitution,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Register a cube shaped rigid body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the actor that owns that rigid body. \\
+\hline
+{\em dimensions} & A vector representing the dimensions of that box, used to calculate the volume and the mass. \\
+\hline
+{\em mass} & The mass (\char`\"{}weight\char`\"{}) of the box. \\
+\hline
+{\em friction} & See \hyperlink{classTarbora_1_1RigidBody}{Rigid\+Body} Set\+Friction \\
+\hline
+{\em restitution} & See \hyperlink{classTarbora_1_1RigidBody}{Rigid\+Body} Set\+Restitution \\
+\hline
+{\em transform} & The transform matrix of the actor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Bullet3\textquotesingle{}s rigid body. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_ab20c015fd1b1aa9d8dd8e0c10a9ef249}\label{classTarbora_1_1PhysicsEngine_ab20c015fd1b1aa9d8dd8e0c10a9ef249}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Add\+Sphere@{Add\+Sphere}}
+\index{Add\+Sphere@{Add\+Sphere}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Add\+Sphere()}{AddSphere()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body $\ast$ Tarbora\+::\+Physics\+Engine\+::\+Add\+Sphere (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{float}]{radius,  }\item[{float}]{mass,  }\item[{float}]{friction,  }\item[{float}]{restitution,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Register an sphere shaped rigid body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the actor that owns that rigid body. \\
+\hline
+{\em radius} & The radius of the sphere. \\
+\hline
+{\em mass} & The mass (\char`\"{}weight\char`\"{}) of the sphere. \\
+\hline
+{\em friction} & See \hyperlink{classTarbora_1_1RigidBody}{Rigid\+Body} Set\+Friction \\
+\hline
+{\em restitution} & See \hyperlink{classTarbora_1_1RigidBody}{Rigid\+Body} Set\+Restitution \\
+\hline
+{\em transform} & The transform matrix of the actor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Bullet3\textquotesingle{}s rigid body. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}\label{classTarbora_1_1PhysicsEngine_a83b98f62953485af3b5e04d6bf4adba9}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Apply\+Force@{Apply\+Force}}
+\index{Apply\+Force@{Apply\+Force}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Apply\+Force()}{ApplyForce()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Apply\+Force (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body $\ast$}]{body,  }\item[{float}]{newtons,  }\item[{const glm\+::vec3 \&}]{direction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Apply a force on the center of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newtons} & The strenght of that force. \\
+\hline
+{\em direction} & A normalized vector representing the direction of the force. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}\label{classTarbora_1_1PhysicsEngine_a7bfaabd962f0825536195708d4442a3d}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Apply\+Torque@{Apply\+Torque}}
+\index{Apply\+Torque@{Apply\+Torque}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Apply\+Torque()}{ApplyTorque()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Apply\+Torque (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body $\ast$}]{body,  }\item[{float}]{magnitude,  }\item[{const glm\+::vec3 \&}]{direction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Apply a torque to the object. A force that will make the object rotate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em magnitude} & The strenght of that force. \\
+\hline
+{\em direction} & A normalized vector representing the direction of the force. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}\label{classTarbora_1_1PhysicsEngine_a7ec00bd287d1366ce059f2821b023634}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Init@{Init}}
+\index{Init@{Init}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily bool Tarbora\+::\+Physics\+Engine\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Start the Physics Engine. 
+
+It must be called on startup. \mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}\label{classTarbora_1_1PhysicsEngine_a4debfab1c812e22ccd4f65b0b7e9cea7}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Remove\+Object@{Remove\+Object}}
+\index{Remove\+Object@{Remove\+Object}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Remove\+Object()}{RemoveObject()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Remove\+Object (\begin{DoxyParamCaption}\item[{bt\+Collision\+Object $\ast$}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Destroy and unregister a rigid body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & A pointer to the object to destroy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}\label{classTarbora_1_1PhysicsEngine_a1c4650ee51cd6094b6faa141206a6403}} 
+\index{Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}!Set\+Velocity@{Set\+Velocity}}
+\index{Set\+Velocity@{Set\+Velocity}!Tarbora\+::\+Physics\+Engine@{Tarbora\+::\+Physics\+Engine}}
+\subsubsection{\texorpdfstring{Set\+Velocity()}{SetVelocity()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Physics\+Engine\+::\+Set\+Velocity (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body $\ast$}]{body,  }\item[{const glm\+::vec3 \&}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Set a constant velocity to the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & A vector representing the speed in each of the directions (x, y and z). \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

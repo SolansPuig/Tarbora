@@ -88,9 +88,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:abb526de5b2ecd2bda6ec4883de07bec8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#abb526de5b2ecd2bda6ec4883de07bec8">Init</a> (FILE *stream)</td></tr>
 <tr class="memdesc:abb526de5b2ecd2bda6ec4883de07bec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the logger to an open stream.  <a href="#abb526de5b2ecd2bda6ec4883de07bec8">More...</a><br /></td></tr>
 <tr class="separator:abb526de5b2ecd2bda6ec4883de07bec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a625b88289ed91c3059320a9573e16103"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#a625b88289ed91c3059320a9573e16103">Init</a> (std::string file_path)</td></tr>
-<tr class="memdesc:a625b88289ed91c3059320a9573e16103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the logger to a file.  <a href="#a625b88289ed91c3059320a9573e16103">More...</a><br /></td></tr>
-<tr class="separator:a625b88289ed91c3059320a9573e16103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cc85fb1b154e17f6c7be073399160ac"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#a7cc85fb1b154e17f6c7be073399160ac">Init</a> (std::string stream)</td></tr>
+<tr class="separator:a7cc85fb1b154e17f6c7be073399160ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add4c310a2ab7b0daa730e477853d6c8f"><td class="memItemLeft" align="right" valign="top"><a id="add4c310a2ab7b0daa730e477853d6c8f"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#add4c310a2ab7b0daa730e477853d6c8f">Close</a> ()</td></tr>
 <tr class="memdesc:add4c310a2ab7b0daa730e477853d6c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the logger. <br /></td></tr>
@@ -130,15 +129,15 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <p>Initialize the logger to an open stream. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stream</td><td>The stream (file or console) where the logger will print. </td></tr>
+    <tr><td class="paramname">stream</td><td>The stream (file or console) where the logger will print. Either an opened stream like stdout or a file name. It must be called on startup, the first thing. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a625b88289ed91c3059320a9573e16103"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a625b88289ed91c3059320a9573e16103">&#9670;&nbsp;</a></span>Init() <span class="overload">[2/2]</span></h2>
+<a id="a7cc85fb1b154e17f6c7be073399160ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cc85fb1b154e17f6c7be073399160ac">&#9670;&nbsp;</a></span>Init() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,7 +149,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
           <td class="memname">bool Tarbora::Logger::Init </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>file_path</em></td><td>)</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -160,14 +159,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Initialize the logger to a file. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">file_path</td><td>The name of the file where the logger will print. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
 
 </div>
 </div>

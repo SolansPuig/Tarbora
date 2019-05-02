@@ -10,9 +10,9 @@ namespace Tarbora {
         return true;
     }
 
-    bool Logger::Init(std::string file_path)
+    bool Logger::Init(std::string stream)
     {
-        m_LogStream = fopen (file_path.c_str(), "w");
+        m_LogStream = fopen (stream.c_str(), "w");
         m_IsFile = true;
         return m_LogStream != NULL;
     }
