@@ -7,7 +7,7 @@ namespace Tarbora {
     class Application
     {
     public:
-        Application();
+        Application(std::string logFile="");
         ~Application();
 
         void Run();

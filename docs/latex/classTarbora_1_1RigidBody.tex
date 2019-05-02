@@ -2,6 +2,15 @@
 \label{classTarbora_1_1RigidBody}\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
 
 
+An abstract physics rigid body.  
+
+
+
+
+{\ttfamily \#include $<$Rigid\+Body.\+hpp$>$}
+
+
+
 Inheritance diagram for Tarbora\+:\+:Rigid\+Body\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -12,66 +21,54 @@ Inheritance diagram for Tarbora\+:\+:Rigid\+Body\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a556015b764b083c39f1841e5914a8143}\label{classTarbora_1_1RigidBody_a556015b764b083c39f1841e5914a8143}} 
-virtual Shape {\bfseries Get\+Type} ()=0
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a0ec675847bf2c6e5f34002eab0c29ef0}\label{classTarbora_1_1RigidBody_a0ec675847bf2c6e5f34002eab0c29ef0}} 
-void {\bfseries Set\+Properties} (float friction, float density, float resitution)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}\label{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}} 
-virtual void {\bfseries Register} (unsigned int id, glm\+::mat4 \&transform)=0
-\item 
+virtual void \hyperlink{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}{Register} (unsigned int id, glm\+::mat4 \&transform)=0
+\begin{DoxyCompactList}\small\item\em Register the rigid body to the Physics Engine. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1RigidBody_a1ef83d0b9b2c9901807d584aa563dafb}\label{classTarbora_1_1RigidBody_a1ef83d0b9b2c9901807d584aa563dafb}} 
-virtual void {\bfseries Unregister} ()=0
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a00257ff89337c1c4046c6ba1d1c72256}\label{classTarbora_1_1RigidBody_a00257ff89337c1c4046c6ba1d1c72256}} 
-bt\+Rigid\+Body $\ast$ {\bfseries Get} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a9408bdeb536881e29f3706bb061220d2}\label{classTarbora_1_1RigidBody_a9408bdeb536881e29f3706bb061220d2}} 
-void {\bfseries Set\+Friction} (float friction)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a154ac3b0b5f1e6da32ee6e02b65822d8}\label{classTarbora_1_1RigidBody_a154ac3b0b5f1e6da32ee6e02b65822d8}} 
-void {\bfseries Set\+Density} (float density)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a60ba7ea96ffada37237ce4345b58eb23}\label{classTarbora_1_1RigidBody_a60ba7ea96ffada37237ce4345b58eb23}} 
-void {\bfseries Set\+Restitution} (float restitution)
-\item 
+virtual void \hyperlink{classTarbora_1_1RigidBody_a1ef83d0b9b2c9901807d584aa563dafb}{Unregister} ()=0
+\begin{DoxyCompactList}\small\item\em Remove the rigid body from the Physics Engine. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_a84abb7801200d1c3aecbabb1ae6fff8f}\label{classTarbora_1_1RigidBody_a84abb7801200d1c3aecbabb1ae6fff8f}} 
+bt\+Rigid\+Body $\ast$ \hyperlink{classTarbora_1_1RigidBody_a84abb7801200d1c3aecbabb1ae6fff8f}{Get\+Body} ()
+\begin{DoxyCompactList}\small\item\em Get the Bullet3\textquotesingle{}s rigid body. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1RigidBody_a0ec675847bf2c6e5f34002eab0c29ef0}{Set\+Properties} (float friction, float density, float resitution)
+\begin{DoxyCompactList}\small\item\em Set all the properties that define a physics object. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1RigidBody_a9408bdeb536881e29f3706bb061220d2}{Set\+Friction} (float friction)
+\begin{DoxyCompactList}\small\item\em Set the friction property. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1RigidBody_a154ac3b0b5f1e6da32ee6e02b65822d8}{Set\+Density} (float density)
+\begin{DoxyCompactList}\small\item\em Set the density property. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1RigidBody_a60ba7ea96ffada37237ce4345b58eb23}{Set\+Restitution} (float restitution)
+\begin{DoxyCompactList}\small\item\em Set the resitution property. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1RigidBody_aaafbb1c80dc9c4dc13e1dc3e3db08f6e}\label{classTarbora_1_1RigidBody_aaafbb1c80dc9c4dc13e1dc3e3db08f6e}} 
-float {\bfseries Get\+Friction} ()
-\item 
+float \hyperlink{classTarbora_1_1RigidBody_aaafbb1c80dc9c4dc13e1dc3e3db08f6e}{Get\+Friction} ()
+\begin{DoxyCompactList}\small\item\em Get the friction property. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1RigidBody_a8bf56fa1c8bc30bd8e7950f879e5b441}\label{classTarbora_1_1RigidBody_a8bf56fa1c8bc30bd8e7950f879e5b441}} 
-float {\bfseries Get\+Density} ()
-\item 
+float \hyperlink{classTarbora_1_1RigidBody_a8bf56fa1c8bc30bd8e7950f879e5b441}{Get\+Density} ()
+\begin{DoxyCompactList}\small\item\em Get the density property. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1RigidBody_ae48e75c37f24d9bc8023c68fc8b93fc9}\label{classTarbora_1_1RigidBody_ae48e75c37f24d9bc8023c68fc8b93fc9}} 
-float {\bfseries Get\+Restitution} ()
+float \hyperlink{classTarbora_1_1RigidBody_ae48e75c37f24d9bc8023c68fc8b93fc9}{Get\+Restitution} ()
+\begin{DoxyCompactList}\small\item\em Get the resitution property. \end{DoxyCompactList}\item 
+float \hyperlink{classTarbora_1_1RigidBody_a04d55e1752e8b1c31a08b460d971ec09}{Get\+Volume} ()
+\begin{DoxyCompactList}\small\item\em Get the volume of the physics object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_ad3bd01b11639862744797e2bb9c3fca0}\label{classTarbora_1_1RigidBody_ad3bd01b11639862744797e2bb9c3fca0}} 
+float \hyperlink{classTarbora_1_1RigidBody_ad3bd01b11639862744797e2bb9c3fca0}{Get\+Mass} ()
+\begin{DoxyCompactList}\small\item\em Get the mass of the object. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1RigidBody_ae60a0e3d1f035698dfc11a117c28999b}{Apply\+Force} (float newtons, const glm\+::vec3 \&direction)
+\begin{DoxyCompactList}\small\item\em Apply a force on the center of the object. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1RigidBody_a025666d2545230e12b546b68d955871c}{Apply\+Torque} (float magnitude, const glm\+::vec3 \&direction)
+\begin{DoxyCompactList}\small\item\em Apply a torque to the object. A force that will make the object rotate. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1RigidBody_adeeb63271e410f12a8ccc3b7d9cb95fb}{Set\+Velocity} (const glm\+::vec3 \&velocity)
+\begin{DoxyCompactList}\small\item\em Set a constant velocity to the object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_a9e1f015de3b1ad6ad54b93d365b6981f}\label{classTarbora_1_1RigidBody_a9e1f015de3b1ad6ad54b93d365b6981f}} 
+void \hyperlink{classTarbora_1_1RigidBody_a9e1f015de3b1ad6ad54b93d365b6981f}{Stop} ()
+\begin{DoxyCompactList}\small\item\em Set the object velocity to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classTarbora_1_1RigidBody_a5f3f505d69241d5dbac5fc3c94b07df0}\label{classTarbora_1_1RigidBody_a5f3f505d69241d5dbac5fc3c94b07df0}} 
-virtual void {\bfseries Calc\+Volume} ()=0
-\item 
+virtual void \hyperlink{classTarbora_1_1RigidBody_a5f3f505d69241d5dbac5fc3c94b07df0}{Calc\+Volume} ()=0
+\begin{DoxyCompactList}\small\item\em Calculate the volume when the shape or the size changes. Automatically called by the functions that change those. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1RigidBody_ad78189036d2270c9157fca92b741a0d8}\label{classTarbora_1_1RigidBody_ad78189036d2270c9157fca92b741a0d8}} 
-void {\bfseries Calc\+Mass} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a04d55e1752e8b1c31a08b460d971ec09}\label{classTarbora_1_1RigidBody_a04d55e1752e8b1c31a08b460d971ec09}} 
-float {\bfseries Get\+Volume} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_ad3bd01b11639862744797e2bb9c3fca0}\label{classTarbora_1_1RigidBody_ad3bd01b11639862744797e2bb9c3fca0}} 
-float {\bfseries Get\+Mass} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_ae60a0e3d1f035698dfc11a117c28999b}\label{classTarbora_1_1RigidBody_ae60a0e3d1f035698dfc11a117c28999b}} 
-void {\bfseries Apply\+Force} (float newtons, const glm\+::vec3 \&direction)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a025666d2545230e12b546b68d955871c}\label{classTarbora_1_1RigidBody_a025666d2545230e12b546b68d955871c}} 
-void {\bfseries Apply\+Torque} (float magnitude, const glm\+::vec3 \&direction)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_adeeb63271e410f12a8ccc3b7d9cb95fb}\label{classTarbora_1_1RigidBody_adeeb63271e410f12a8ccc3b7d9cb95fb}} 
-void {\bfseries Set\+Velocity} (const glm\+::vec3 \&velocity)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a9e1f015de3b1ad6ad54b93d365b6981f}\label{classTarbora_1_1RigidBody_a9e1f015de3b1ad6ad54b93d365b6981f}} 
-void {\bfseries Stop} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1RigidBody_a1b246fc689503d9f5eb5d718aea6dca0}\label{classTarbora_1_1RigidBody_a1b246fc689503d9f5eb5d718aea6dca0}} 
-void {\bfseries Calc} ()
-\end{DoxyCompactItemize}
+void \hyperlink{classTarbora_1_1RigidBody_ad78189036d2270c9157fca92b741a0d8}{Calc\+Mass} ()
+\begin{DoxyCompactList}\small\item\em Calculate the mass when the volume changes. Automatically called by Calc\+Volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -93,6 +90,156 @@ float {\bfseries m\+\_\+\+Mass}
 \mbox{\Hypertarget{classTarbora_1_1RigidBody_abe5878296d0cfc6796ff6383db14d062}\label{classTarbora_1_1RigidBody_abe5878296d0cfc6796ff6383db14d062}} 
 bt\+Rigid\+Body $\ast$ {\bfseries m\+\_\+\+Body}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract physics rigid body. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_ae60a0e3d1f035698dfc11a117c28999b}\label{classTarbora_1_1RigidBody_ae60a0e3d1f035698dfc11a117c28999b}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Apply\+Force@{Apply\+Force}}
+\index{Apply\+Force@{Apply\+Force}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Apply\+Force()}{ApplyForce()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Rigid\+Body\+::\+Apply\+Force (\begin{DoxyParamCaption}\item[{float}]{newtons,  }\item[{const glm\+::vec3 \&}]{direction }\end{DoxyParamCaption})}
+
+
+
+Apply a force on the center of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newtons} & The strenght of that force. \\
+\hline
+{\em direction} & A normalized vector representing the direction of the force. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_a025666d2545230e12b546b68d955871c}\label{classTarbora_1_1RigidBody_a025666d2545230e12b546b68d955871c}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Apply\+Torque@{Apply\+Torque}}
+\index{Apply\+Torque@{Apply\+Torque}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Apply\+Torque()}{ApplyTorque()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Rigid\+Body\+::\+Apply\+Torque (\begin{DoxyParamCaption}\item[{float}]{magnitude,  }\item[{const glm\+::vec3 \&}]{direction }\end{DoxyParamCaption})}
+
+
+
+Apply a torque to the object. A force that will make the object rotate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em magnitude} & The strenght of that force. \\
+\hline
+{\em direction} & A normalized vector representing the direction of the force. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_a04d55e1752e8b1c31a08b460d971ec09}\label{classTarbora_1_1RigidBody_a04d55e1752e8b1c31a08b460d971ec09}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Get\+Volume@{Get\+Volume}}
+\index{Get\+Volume@{Get\+Volume}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Get\+Volume()}{GetVolume()}}
+{\footnotesize\ttfamily float Tarbora\+::\+Rigid\+Body\+::\+Get\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the volume of the physics object. 
+
+This may be a bit different (usually smaller) than the size of the rendered model. \mbox{\Hypertarget{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}\label{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Register@{Register}}
+\index{Register@{Register}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Register()}{Register()}}
+{\footnotesize\ttfamily virtual void Tarbora\+::\+Rigid\+Body\+::\+Register (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Register the rigid body to the Physics Engine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the actor that owns that rigid body. \\
+\hline
+{\em transform} & The transform matrix of that actor. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classTarbora_1_1BoxBody_a9030e38449087fdf091d9daea5e6efbe}{Tarbora\+::\+Box\+Body}, and \hyperlink{classTarbora_1_1SphereBody_aa4c177c62075afa568b73ec019201dd7}{Tarbora\+::\+Sphere\+Body}.
+
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_a154ac3b0b5f1e6da32ee6e02b65822d8}\label{classTarbora_1_1RigidBody_a154ac3b0b5f1e6da32ee6e02b65822d8}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Set\+Density@{Set\+Density}}
+\index{Set\+Density@{Set\+Density}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Set\+Density()}{SetDensity()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Rigid\+Body\+::\+Set\+Density (\begin{DoxyParamCaption}\item[{float}]{density }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the density property. 
+
+Used to calculate the mass (\char`\"{}weight\char`\"{}) of the object, based on its volume (\char`\"{}size and shape\char`\"{}). \mbox{\Hypertarget{classTarbora_1_1RigidBody_a9408bdeb536881e29f3706bb061220d2}\label{classTarbora_1_1RigidBody_a9408bdeb536881e29f3706bb061220d2}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Set\+Friction@{Set\+Friction}}
+\index{Set\+Friction@{Set\+Friction}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Set\+Friction()}{SetFriction()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Rigid\+Body\+::\+Set\+Friction (\begin{DoxyParamCaption}\item[{float}]{friction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the friction property. 
+
+This is a per object coeficient. Usually from 0 (like ice) to 1 (like rubber), but can be more. \mbox{\Hypertarget{classTarbora_1_1RigidBody_a0ec675847bf2c6e5f34002eab0c29ef0}\label{classTarbora_1_1RigidBody_a0ec675847bf2c6e5f34002eab0c29ef0}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Set\+Properties@{Set\+Properties}}
+\index{Set\+Properties@{Set\+Properties}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Set\+Properties()}{SetProperties()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Rigid\+Body\+::\+Set\+Properties (\begin{DoxyParamCaption}\item[{float}]{friction,  }\item[{float}]{density,  }\item[{float}]{resitution }\end{DoxyParamCaption})}
+
+
+
+Set all the properties that define a physics object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em friction} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classTarbora_1_1RigidBody_a9408bdeb536881e29f3706bb061220d2}{Set\+Friction}. 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em density} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classTarbora_1_1RigidBody_a154ac3b0b5f1e6da32ee6e02b65822d8}{Set\+Density}. 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em resitution} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classTarbora_1_1RigidBody_a60ba7ea96ffada37237ce4345b58eb23}{Set\+Restitution}. 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classTarbora_1_1RigidBody_a60ba7ea96ffada37237ce4345b58eb23}\label{classTarbora_1_1RigidBody_a60ba7ea96ffada37237ce4345b58eb23}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Set\+Restitution@{Set\+Restitution}}
+\index{Set\+Restitution@{Set\+Restitution}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Set\+Restitution()}{SetRestitution()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Rigid\+Body\+::\+Set\+Restitution (\begin{DoxyParamCaption}\item[{float}]{restitution }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the resitution property. 
+
+This is a per object coeficient that determines the \char`\"{}bounciness\char`\"{} of the object. Usually from 0 (like play dough) to 1 (like a bouncing ball), but can be more. \mbox{\Hypertarget{classTarbora_1_1RigidBody_adeeb63271e410f12a8ccc3b7d9cb95fb}\label{classTarbora_1_1RigidBody_adeeb63271e410f12a8ccc3b7d9cb95fb}} 
+\index{Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}!Set\+Velocity@{Set\+Velocity}}
+\index{Set\+Velocity@{Set\+Velocity}!Tarbora\+::\+Rigid\+Body@{Tarbora\+::\+Rigid\+Body}}
+\subsubsection{\texorpdfstring{Set\+Velocity()}{SetVelocity()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Rigid\+Body\+::\+Set\+Velocity (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{velocity }\end{DoxyParamCaption})}
+
+
+
+Set a constant velocity to the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & A vector representing the speed in each of the directions (x, y and z). \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

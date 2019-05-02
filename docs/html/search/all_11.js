@@ -1,10 +1,4 @@
 var searchData=
 [
-  ['window',['Window',['../classTarbora_1_1Window.html',1,'Tarbora']]],
-  ['windowcloseevent',['WindowCloseEvent',['../structTarbora_1_1WindowCloseEvent.html',1,'Tarbora']]],
-  ['windowfocusevent',['WindowFocusEvent',['../structTarbora_1_1WindowFocusEvent.html',1,'Tarbora']]],
-  ['windowiconifyevent',['WindowIconifyEvent',['../structTarbora_1_1WindowIconifyEvent.html',1,'Tarbora']]],
-  ['windowmoveevent',['WindowMoveEvent',['../structTarbora_1_1WindowMoveEvent.html',1,'Tarbora']]],
-  ['windowprops',['WindowProps',['../structTarbora_1_1WindowProps.html',1,'Tarbora']]],
-  ['windowresizeevent',['WindowResizeEvent',['../structTarbora_1_1WindowResizeEvent.html',1,'Tarbora']]]
+  ['unregister',['Unregister',['../classTarbora_1_1RigidBody.html#a1ef83d0b9b2c9901807d584aa563dafb',1,'Tarbora::RigidBody::Unregister()'],['../classTarbora_1_1SphereBody.html#abb1c800fda3cfab36f60a64fb8c77cae',1,'Tarbora::SphereBody::Unregister()'],['../classTarbora_1_1BoxBody.html#a57a94943897a3b90f774935bef82c47c',1,'Tarbora::BoxBody::Unregister()']]]
 ];

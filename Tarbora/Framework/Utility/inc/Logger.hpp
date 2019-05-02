@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include <string>
 
 namespace Tarbora {
     class Logger {
@@ -10,13 +11,13 @@ namespace Tarbora {
         /*!
             \param stream The stream (file or console) where the logger will print.
         */
-        static void Init(FILE *stream);
+        static bool Init(FILE *stream);
 
         //! Initialize the logger to a file.
         /*!
             \param file_path The name of the file where the logger will print.
         */
-        static void Init(const char *file_path);
+        static bool Init(std::string file_path);
 
         //! Close the logger.
         static void Close();

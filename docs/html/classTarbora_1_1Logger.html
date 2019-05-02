@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -85,12 +85,12 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a55be0d3eeea01a9fbb0a26e029451411"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#a55be0d3eeea01a9fbb0a26e029451411">Init</a> (FILE *stream)</td></tr>
-<tr class="memdesc:a55be0d3eeea01a9fbb0a26e029451411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the logger to an open stream.  <a href="#a55be0d3eeea01a9fbb0a26e029451411">More...</a><br /></td></tr>
-<tr class="separator:a55be0d3eeea01a9fbb0a26e029451411"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5cc4f3b068f2bde26943da40e1d6e91"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#af5cc4f3b068f2bde26943da40e1d6e91">Init</a> (const char *file_path)</td></tr>
-<tr class="memdesc:af5cc4f3b068f2bde26943da40e1d6e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the logger to a file.  <a href="#af5cc4f3b068f2bde26943da40e1d6e91">More...</a><br /></td></tr>
-<tr class="separator:af5cc4f3b068f2bde26943da40e1d6e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb526de5b2ecd2bda6ec4883de07bec8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#abb526de5b2ecd2bda6ec4883de07bec8">Init</a> (FILE *stream)</td></tr>
+<tr class="memdesc:abb526de5b2ecd2bda6ec4883de07bec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the logger to an open stream.  <a href="#abb526de5b2ecd2bda6ec4883de07bec8">More...</a><br /></td></tr>
+<tr class="separator:abb526de5b2ecd2bda6ec4883de07bec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a625b88289ed91c3059320a9573e16103"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#a625b88289ed91c3059320a9573e16103">Init</a> (std::string file_path)</td></tr>
+<tr class="memdesc:a625b88289ed91c3059320a9573e16103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the logger to a file.  <a href="#a625b88289ed91c3059320a9573e16103">More...</a><br /></td></tr>
+<tr class="separator:a625b88289ed91c3059320a9573e16103"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add4c310a2ab7b0daa730e477853d6c8f"><td class="memItemLeft" align="right" valign="top"><a id="add4c310a2ab7b0daa730e477853d6c8f"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#add4c310a2ab7b0daa730e477853d6c8f">Close</a> ()</td></tr>
 <tr class="memdesc:add4c310a2ab7b0daa730e477853d6c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the logger. <br /></td></tr>
@@ -103,8 +103,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="separator:aa32641fca455178d88f3b1c8b2f552ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a55be0d3eeea01a9fbb0a26e029451411"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55be0d3eeea01a9fbb0a26e029451411">&#9670;&nbsp;</a></span>Init() <span class="overload">[1/2]</span></h2>
+<a id="abb526de5b2ecd2bda6ec4883de07bec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb526de5b2ecd2bda6ec4883de07bec8">&#9670;&nbsp;</a></span>Init() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -113,7 +113,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tarbora::Logger::Init </td>
+          <td class="memname">bool Tarbora::Logger::Init </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>
@@ -137,8 +137,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 
 </div>
 </div>
-<a id="af5cc4f3b068f2bde26943da40e1d6e91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5cc4f3b068f2bde26943da40e1d6e91">&#9670;&nbsp;</a></span>Init() <span class="overload">[2/2]</span></h2>
+<a id="a625b88289ed91c3059320a9573e16103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a625b88289ed91c3059320a9573e16103">&#9670;&nbsp;</a></span>Init() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,9 +147,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tarbora::Logger::Init </td>
+          <td class="memname">bool Tarbora::Logger::Init </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>file_path</em></td><td>)</td>
           <td></td>
         </tr>

@@ -2,6 +2,15 @@
 \label{classTarbora_1_1BoxBody}\index{Tarbora\+::\+Box\+Body@{Tarbora\+::\+Box\+Body}}
 
 
+A physics rigid body representing a cube.  
+
+
+
+
+{\ttfamily \#include $<$Rigid\+Body.\+hpp$>$}
+
+
+
 Inheritance diagram for Tarbora\+:\+:Box\+Body\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,33 +30,92 @@ Collaboration diagram for Tarbora\+:\+:Box\+Body\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1BoxBody_a4588faa74c221c9f484432bc3b7a0674}\label{classTarbora_1_1BoxBody_a4588faa74c221c9f484432bc3b7a0674}} 
-{\bfseries Box\+Body} (glm\+::vec3 \&dimensions)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1BoxBody_a5358c8bed677baabbba31f136d3df05d}\label{classTarbora_1_1BoxBody_a5358c8bed677baabbba31f136d3df05d}} 
-virtual Shape {\bfseries Get\+Type} () override
-\item 
-\mbox{\Hypertarget{classTarbora_1_1BoxBody_a9030e38449087fdf091d9daea5e6efbe}\label{classTarbora_1_1BoxBody_a9030e38449087fdf091d9daea5e6efbe}} 
-virtual void {\bfseries Register} (unsigned int id, glm\+::mat4 \&transform) override
-\item 
+\hyperlink{classTarbora_1_1BoxBody_a4588faa74c221c9f484432bc3b7a0674}{Box\+Body} (glm\+::vec3 \&dimensions)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classTarbora_1_1BoxBody}{Box\+Body}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1BoxBody_adb0e7074d88a5e14ae8c9abca875ac52}\label{classTarbora_1_1BoxBody_adb0e7074d88a5e14ae8c9abca875ac52}} 
+\hyperlink{classTarbora_1_1BoxBody_adb0e7074d88a5e14ae8c9abca875ac52}{$\sim$\+Box\+Body} ()
+\begin{DoxyCompactList}\small\item\em Destroys and unregisters this body. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classTarbora_1_1BoxBody_a9030e38449087fdf091d9daea5e6efbe}{Register} (unsigned int id, glm\+::mat4 \&transform) override
+\begin{DoxyCompactList}\small\item\em Register the rigid body to the Physics Engine. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1BoxBody_a57a94943897a3b90f774935bef82c47c}\label{classTarbora_1_1BoxBody_a57a94943897a3b90f774935bef82c47c}} 
-virtual void {\bfseries Unregister} () override
-\item 
+virtual void \hyperlink{classTarbora_1_1BoxBody_a57a94943897a3b90f774935bef82c47c}{Unregister} () override
+\begin{DoxyCompactList}\small\item\em Remove the rigid body from the Physics Engine. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTarbora_1_1BoxBody_ab5632e04e516e518297a4826c6dd27cb}\label{classTarbora_1_1BoxBody_ab5632e04e516e518297a4826c6dd27cb}} 
-virtual void {\bfseries Calc\+Volume} () override
-\item 
+virtual void \hyperlink{classTarbora_1_1BoxBody_ab5632e04e516e518297a4826c6dd27cb}{Calc\+Volume} () override
+\begin{DoxyCompactList}\small\item\em Calculate the volume when the shape or the size changes. Automatically called by the functions that change those. \end{DoxyCompactList}\item 
+void \hyperlink{classTarbora_1_1BoxBody_ae4b822b4acb781e9fdec907e8a92b27b}{Set\+Dimensions} (glm\+::vec3 \&dimensions)
+\begin{DoxyCompactList}\small\item\em Set the dimensions of that box, used to calculate the volume and the mass. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1BoxBody_a2c833613435aa7244e39f14460a792c6}\label{classTarbora_1_1BoxBody_a2c833613435aa7244e39f14460a792c6}} 
+glm\+::vec3 \& \hyperlink{classTarbora_1_1BoxBody_a2c833613435aa7244e39f14460a792c6}{Get\+Dimensions} ()
+\begin{DoxyCompactList}\small\item\em Get the dimensions of that box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A physics rigid body representing a cube. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classTarbora_1_1RigidBody}{Rigid\+Body} 
+
+\hyperlink{classTarbora_1_1SphereBody}{Sphere\+Body} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTarbora_1_1BoxBody_a4588faa74c221c9f484432bc3b7a0674}\label{classTarbora_1_1BoxBody_a4588faa74c221c9f484432bc3b7a0674}} 
+\index{Tarbora\+::\+Box\+Body@{Tarbora\+::\+Box\+Body}!Box\+Body@{Box\+Body}}
+\index{Box\+Body@{Box\+Body}!Tarbora\+::\+Box\+Body@{Tarbora\+::\+Box\+Body}}
+\subsubsection{\texorpdfstring{Box\+Body()}{BoxBody()}}
+{\footnotesize\ttfamily Tarbora\+::\+Box\+Body\+::\+Box\+Body (\begin{DoxyParamCaption}\item[{glm\+::vec3 \&}]{dimensions }\end{DoxyParamCaption})}
+
+
+
+Creates a \hyperlink{classTarbora_1_1BoxBody}{Box\+Body}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dimensions} & A vector representing the dimensions of that box, used to calculate the volume and the mass. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTarbora_1_1BoxBody_a9030e38449087fdf091d9daea5e6efbe}\label{classTarbora_1_1BoxBody_a9030e38449087fdf091d9daea5e6efbe}} 
+\index{Tarbora\+::\+Box\+Body@{Tarbora\+::\+Box\+Body}!Register@{Register}}
+\index{Register@{Register}!Tarbora\+::\+Box\+Body@{Tarbora\+::\+Box\+Body}}
+\subsubsection{\texorpdfstring{Register()}{Register()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Box\+Body\+::\+Register (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Register the rigid body to the Physics Engine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the actor that owns that rigid body. \\
+\hline
+{\em transform} & The transform matrix of that actor. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}{Tarbora\+::\+Rigid\+Body}.
+
 \mbox{\Hypertarget{classTarbora_1_1BoxBody_ae4b822b4acb781e9fdec907e8a92b27b}\label{classTarbora_1_1BoxBody_ae4b822b4acb781e9fdec907e8a92b27b}} 
-void {\bfseries Set\+Dimensions} (glm\+::vec3 \&dimensions)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1BoxBody_afb67f2281aea7590c2ec72a379c954f0}\label{classTarbora_1_1BoxBody_afb67f2281aea7590c2ec72a379c954f0}} 
-glm\+::vec3 \& {\bfseries Get\+Radius} ()
-\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classTarbora_1_1BoxBody_aa027039b221f15f71cf01743d7fb739c}\label{classTarbora_1_1BoxBody_aa027039b221f15f71cf01743d7fb739c}} 
-glm\+::vec3 {\bfseries m\+\_\+\+Dimensions}
-\end{DoxyCompactItemize}
+\index{Tarbora\+::\+Box\+Body@{Tarbora\+::\+Box\+Body}!Set\+Dimensions@{Set\+Dimensions}}
+\index{Set\+Dimensions@{Set\+Dimensions}!Tarbora\+::\+Box\+Body@{Tarbora\+::\+Box\+Body}}
+\subsubsection{\texorpdfstring{Set\+Dimensions()}{SetDimensions()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Box\+Body\+::\+Set\+Dimensions (\begin{DoxyParamCaption}\item[{glm\+::vec3 \&}]{dimensions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the dimensions of that box, used to calculate the volume and the mass. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dimensions} & A vector representing the dimensions of that box. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

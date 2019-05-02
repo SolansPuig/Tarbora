@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['close',['Close',['../classTarbora_1_1Logger.html#add4c310a2ab7b0daa730e477853d6c8f',1,'Tarbora::Logger']]]
+  ['applyforce',['ApplyForce',['../classTarbora_1_1RigidBody.html#ae60a0e3d1f035698dfc11a117c28999b',1,'Tarbora::RigidBody']]],
+  ['applytorque',['ApplyTorque',['../classTarbora_1_1RigidBody.html#a025666d2545230e12b546b68d955871c',1,'Tarbora::RigidBody']]]
 ];

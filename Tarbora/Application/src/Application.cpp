@@ -1,9 +1,12 @@
 #include "../inc/Application.hpp"
 
 namespace Tarbora {
-    Application::Application() : m_run(true), m_time(0.0f)
+    Application::Application(std::string logFile) : m_run(true), m_time(0.0f)
     {
-        Logger::Init(stdout);
+        if (logFile != "" || !Logger::Init(logFile))
+        {
+            Logger::Init(stdout);
+        }
         LOG_LEVEL(Tarbora::Logger::LogLevel::INFO);
         LOG_INFO("Application: Creating application...");
 

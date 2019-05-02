@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['keypressevent',['KeyPressEvent',['../structTarbora_1_1KeyPressEvent.html#ab444edd82e06dca233362152b495a516',1,'Tarbora::KeyPressEvent']]],
-  ['keyreleaseevent',['KeyReleaseEvent',['../structTarbora_1_1KeyReleaseEvent.html#a6d49ddbadb39c4dc746a2c1643304fad',1,'Tarbora::KeyReleaseEvent']]]
+  ['unregister',['Unregister',['../classTarbora_1_1RigidBody.html#a1ef83d0b9b2c9901807d584aa563dafb',1,'Tarbora::RigidBody::Unregister()'],['../classTarbora_1_1SphereBody.html#abb1c800fda3cfab36f60a64fb8c77cae',1,'Tarbora::SphereBody::Unregister()'],['../classTarbora_1_1BoxBody.html#a57a94943897a3b90f774935bef82c47c',1,'Tarbora::BoxBody::Unregister()']]]
 ];

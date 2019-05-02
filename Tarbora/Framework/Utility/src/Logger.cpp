@@ -3,16 +3,18 @@
 #include <ctime>
 
 namespace Tarbora {
-    void Logger::Init(FILE *stream)
+    bool Logger::Init(FILE *stream)
     {
         m_LogStream = stream;
         m_IsFile = false;
+        return true;
     }
 
-    void Logger::Init(const char *file_path)
+    bool Logger::Init(std::string file_path)
     {
-        m_LogStream = fopen (file_path, "w");
+        m_LogStream = fopen (file_path.c_str(), "w");
         m_IsFile = true;
+        return m_LogStream != NULL;
     }
 
     void Logger::Close()

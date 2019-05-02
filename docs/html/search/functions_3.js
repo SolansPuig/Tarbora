@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['init',['Init',['../classTarbora_1_1ResourceManager.html#a1db550759320be50e86b316275da889c',1,'Tarbora::ResourceManager::Init()'],['../classTarbora_1_1Logger.html#a55be0d3eeea01a9fbb0a26e029451411',1,'Tarbora::Logger::Init(FILE *stream)'],['../classTarbora_1_1Logger.html#af5cc4f3b068f2bde26943da40e1d6e91',1,'Tarbora::Logger::Init(const char *file_path)']]]
+  ['flush',['Flush',['../classTarbora_1_1ResourceManager.html#aaef7ce514df5baa069b870aa69d9626e',1,'Tarbora::ResourceManager']]],
+  ['freeresource',['FreeResource',['../classTarbora_1_1ResourceManager.html#a7267c1da4dc124b41f34b6c870fdb10e',1,'Tarbora::ResourceManager']]]
 ];

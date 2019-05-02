@@ -87,8 +87,9 @@ namespace Tarbora {
 
     void PhysicsComponent::Update(float deltaTime)
     {
+        (void)(deltaTime);
         ActorId id = m_Owner->GetId();
-        ActorMotionState *motionState = static_cast<ActorMotionState*>(m_Body->Get()->getMotionState());
+        ActorMotionState *motionState = static_cast<ActorMotionState*>(m_Body->GetBody()->getMotionState());
 
         std::shared_ptr<TransformComponent> transform = std::static_pointer_cast<TransformComponent>(m_Owner->GetComponent(TransformId));
 
