@@ -11,6 +11,8 @@
 #include <map>
 #include <vector>
 #include <set>
+#include <csignal>
+#include <optional>
 
 #define INVALID_ID 0
 #define SKY_ID 10

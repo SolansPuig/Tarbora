@@ -4,7 +4,7 @@
     "texture_size": 64,
     "root": {
         "name": "body",
-        "shape": "meshes/cube.mesh",
+        "shape": "cube.mesh",
         "origin": [0, 0, 0],
         "position": [0, 0, 0],
         "rotation": [0, 0, 0],

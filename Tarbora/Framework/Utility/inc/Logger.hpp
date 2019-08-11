@@ -9,7 +9,7 @@ namespace Tarbora {
 
         //! Initialize the logger to an open stream.
         /*!
-            \param stream The stream (file or console) where the logger will print. Either an opened stream like stdout or a file name. 
+            \param stream The stream (file or console) where the logger will print. Either an opened stream like stdout or a file name.
             It must be called on startup, the first thing.
         */
         static bool Init(FILE *stream);

@@ -347,7 +347,7 @@ namespace Tarbora {
         std::string GetStringArray(raw_json j, const char * key, int i, JsonOptions options={});
 
     private:
-        Json(std::string name, raw_json j) : Resource(name), m_JSON(j), m_ErrName("") {}
+        Json(ClientApplication *app, std::string name, raw_json j) : Resource(app, name), m_JSON(j), m_ErrName("") {}
 
         raw_json m_JSON;
         std::string m_ErrName;

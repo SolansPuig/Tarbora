@@ -3,14 +3,17 @@
         "type": ["human"],
         "model": {
             "renderPass": 1,
-            "model": "models/human.json",
-            "texture": "textures/male.png",
-            "shader": "shaders/model.shader.json"
+            "model": "human.json",
+            "texture": "human.png",
+            "shader": "model.shader.json"
+        },
+        "animations": {
+            "file": "human.json"
         },
         "physics": {
             "shape": "sphere",
             "radius": 0.8,
-            "density": 1,
+            "density": 0,
             "friction": 0.1,
             "restitution": 0.9
         }

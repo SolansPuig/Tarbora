@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package tbMath;
+
+message Vec3Message {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message Vec4Message {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float w = 4;
+}
+
+message Mat3Message {
+    Vec3Message x = 1;
+    Vec3Message y = 2;
+    Vec3Message z = 3;
+}
+
+message Mat4Message {
+    Vec4Message x = 1;
+    Vec4Message y = 2;
+    Vec4Message z = 3;
+    Vec4Message w = 4;
+}

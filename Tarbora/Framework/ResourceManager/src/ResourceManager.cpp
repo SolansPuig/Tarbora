@@ -4,8 +4,9 @@
 #include <fnmatch.h>
 
 namespace Tarbora {
-    void ResourceManager::Init(std::string resourceFolderPath)
+    void ResourceManager::Init(ClientApplication *app, const std::string resourceFolderPath)
     {
+        m_app = app;
         m_ResourceFolderPath = resourceFolderPath;
 
         // Register the default loaders.
@@ -14,8 +15,14 @@ namespace Tarbora {
         RegisterLoader(LoaderPtr(new JsonResourceLoader()));
     }
 
+    void ResourceManager::Close()
+    {
+
+    }
+
     void ResourceManager::RegisterLoader(LoaderPtr loader)
     {
+        loader->app = m_app;
         m_ResourceLoaders.push_front(loader);
     }
 
@@ -69,7 +76,7 @@ namespace Tarbora {
 
     ResourcePtr ResourceManager::FindResource(const std::string resource)
     {
-        auto itr = m_Resources.find(resource);
+        auto itr = m_Resources.find(m_ResourceFolderPath + resource);
         if (itr == m_Resources.end())
             return ResourcePtr();
         return itr->second;

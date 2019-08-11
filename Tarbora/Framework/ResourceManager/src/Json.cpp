@@ -1,5 +1,6 @@
 #include "../inc/Json.hpp"
-#include "../../EventManager/inc/EventManager.hpp"
+#include "../../MessageManager/inc/MessageManager.hpp"
+#include "../../ClientApplication.hpp"
 
 namespace Tarbora {
     void Json::PushErrName(std::string name)
@@ -60,8 +61,7 @@ namespace Tarbora {
             else
             {
                 LOG_ERR("Json: Could not find key \"%s%s\" in file \"%s\".", m_ErrName.c_str(), key, m_Name.c_str());
-                WindowCloseEvent ev;
-                EventManager::Trigger(EventType::WindowClose, &ev);
+                app->Close();
             }
         }
         else
@@ -91,8 +91,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be boolean but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -124,8 +123,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be an integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -152,8 +150,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be a float but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -190,8 +187,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be an unsigned integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -218,8 +214,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be a string but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -243,8 +238,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Could not find key \"%s%s\" in file \"%s\".", m_ErrName.c_str(), key, m_Name.c_str());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -258,8 +252,7 @@ namespace Tarbora {
             else
             {
                 LOG_ERR("Json: Key \"%s.%d\" in file \"%s\" should be an array but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), j.type_name());
-                WindowCloseEvent ev;
-                EventManager::Trigger(EventType::WindowClose, &ev);
+                app->Close();
             }
         }
 
@@ -275,8 +268,7 @@ namespace Tarbora {
             else
             {
                 LOG_ERR("Json: Could not find key \"%s%d\" in file \"%s\".", m_ErrName.c_str(), key, m_Name.c_str());
-                WindowCloseEvent ev;
-                EventManager::Trigger(EventType::WindowClose, &ev);
+                app->Close();
             }
         }
         else
@@ -306,8 +298,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be boolean but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -339,8 +330,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be an integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -367,8 +357,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be a float but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -405,8 +394,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be an unsigned integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -433,8 +421,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be a string but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -493,8 +480,7 @@ namespace Tarbora {
                     else
                     {
                         LOG_ERR("Json: Array \"%s%s\" in file \"%s\" has no index \"%d\".", m_ErrName.c_str(), key, m_Name.c_str(), i);
-                        WindowCloseEvent ev;
-                        EventManager::Trigger(EventType::WindowClose, &ev);
+                        app->Close();
                     }
                 }
             }
@@ -508,8 +494,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be an array but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -536,8 +521,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be boolean but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -569,8 +553,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be an integer but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -597,8 +580,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be a float but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -635,8 +617,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be an unsigned integer but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -663,8 +644,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be a string but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    WindowCloseEvent ev;
-                    EventManager::Trigger(EventType::WindowClose, &ev);
+                    app->Close();
                 }
             }
         }
@@ -904,7 +884,7 @@ namespace Tarbora {
         }
 
         // Crate the Resource.
-        ResourcePtr r = ResourcePtr(new Json(path, data));
+        ResourcePtr r = ResourcePtr(new Json(app, path, data));
         file.close(); // Close the file.
         return r;
     }

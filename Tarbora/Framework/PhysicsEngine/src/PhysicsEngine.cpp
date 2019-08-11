@@ -45,7 +45,13 @@ namespace Tarbora {
 
     void PhysicsEngine::Update(float deltaTime)
     {
-        m_DynamicsWorld->stepSimulation(deltaTime, 4);
+        static float timestep = 0;
+        if (timestep >= 1./120)
+        {
+            m_DynamicsWorld->stepSimulation(timestep, 0);
+            timestep = 0;
+        }
+        timestep += deltaTime;
     }
 
     btRigidBody *PhysicsEngine::AddSphere(unsigned int id, float radius, float mass, float friction, float restitution, glm::mat4 &transform)

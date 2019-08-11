@@ -83,7 +83,9 @@ namespace Tarbora {
         std::string GetName() const { return m_Name; }
 
     protected:
-        Resource(const std::string name) : m_Name(name) {}
+        Resource(ClientApplication *app, const std::string name) : app(app), m_Name(name) {}
+
+        ClientApplication *app;
 
         //! The filename of the resource.
         std::string m_Name;
@@ -95,6 +97,10 @@ namespace Tarbora {
     class ResourceLoader
     {
         friend class ResourceManager;
+
+    protected:
+        ClientApplication *app;
+
     private:
         virtual const std::string GetPattern() = 0;
         virtual ResourcePtr Load(std::string path) = 0;
@@ -121,7 +127,7 @@ namespace Tarbora {
         //! Returns an string containing all the content of the file.
         const std::string GetText() const { return m_Text; }
     private:
-        Text(std::string name, std::string text) : Resource(name), m_Text(text) {}
+        Text(ClientApplication *app, std::string name, std::string text) : Resource(app, name), m_Text(text) {}
 
         std::string m_Text;
     };

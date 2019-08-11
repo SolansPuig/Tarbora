@@ -1,0 +1,21 @@
+Tarbora: The Game Engine for Makers
+* Todos
+** General
+TODO Mirar la llibreria de físiques d'Nvidia
+TODO Mirar la llibreria de Raytracing d'Nvidia
+** Before v0.1
+TODO Mirar les X.
+TODO Mirar com implementar un buffer.
+*** Events
+TODO Separar els events.
+TODO Crear funcions per cridar-los directament
+TODO Fer que els events es registrin per obtenir una ID
+*** Components
+TODO Fer que els components es registrin per obtenir una ID
+*** Recursos 
+TODO Permetre refrescar els recursos
+*** Layers
+TODO Que certes layers no capturin el ratolí
+TODO Menú de pausa
+* Ideas
+Separar completament un front-end d'un backend. Mirar les X per això.

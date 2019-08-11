@@ -3,9 +3,9 @@
         "type": ["ground"],
         "model": {
             "renderPass": 1,
-            "model": "models/cube.json",
-            "texture": "textures/minecraft.png",
-            "shader": "shaders/model.shader.json"
+            "model": "cube.json",
+            "texture": "crate.png",
+            "shader": "model.shader.json"
         },
         "physics": {
             "shape": "box",

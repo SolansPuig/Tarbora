@@ -11,7 +11,7 @@ namespace Tarbora {
 
         // Parse the contents to a string.
         std::string s = std::string(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
-        ResourcePtr r = ResourcePtr(new Text(path, s)); // Create the Resource.
+        ResourcePtr r = ResourcePtr(new Text(app, path, s)); // Create the Resource.
         file.close(); // Remember to close the file!
         return r;
     }
