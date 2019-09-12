@@ -7,19 +7,6 @@ namespace Tarbora {
     public:
         enum LogLevel { DEBUG=0, INFO, WARN, ERR };
 
-        //! Initialize the logger to an open stream.
-        /*!
-            \param stream The stream (file or console) where the logger will print. Either an opened stream like stdout or a file name.
-            It must be called on startup, the first thing.
-        */
-        static bool Init(FILE *stream);
-
-        //! \overload
-        static bool Init(std::string stream);
-
-        //! Close the logger.
-        static void Close();
-
         //! Set the log level.
         /*!
             \param level Levels lower than that will be ignored.
@@ -29,7 +16,7 @@ namespace Tarbora {
                 LOG_LEVEL(LEVEL)
             \endcode
         */
-        static void SetLevel(LogLevel level);
+        static void SetLevel(LogLevel level) { s_LogLevel = level; }
 
         //! Log a message.
         /*!
@@ -48,13 +35,11 @@ namespace Tarbora {
         static void Log(LogLevel level, const char *text, ...);
 
     private:
-        inline static LogLevel m_LogLevel; // The current log level.
-        inline static FILE *m_LogStream; // The stream where to log.
-        inline static bool m_IsFile; // Whether the stream is a file that needs to be closed.
+        inline static LogLevel s_LogLevel; // The current log level.
     };
 }
 
-#define LOG_LEVEL(LEVEL) ::Tarbora::Logger::SetLevel(LEVEL)
+#define LOG_LEVEL(LEVEL) ::Tarbora::Logger::SetLevel(::Tarbora::Logger::LogLevel::LEVEL)
 #define LOG_DEBUG(...) ::Tarbora::Logger::Log(::Tarbora::Logger::LogLevel::DEBUG, __VA_ARGS__)
 #define LOG_INFO(...) ::Tarbora::Logger::Log(::Tarbora::Logger::LogLevel::INFO, __VA_ARGS__)
 #define LOG_WARN(...) ::Tarbora::Logger::Log(::Tarbora::Logger::LogLevel::WARN, __VA_ARGS__)

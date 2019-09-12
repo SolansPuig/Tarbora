@@ -60,6 +60,12 @@ namespace Tarbora {
         return AddShape(id, shape, mass, friction, restitution, transform);
     }
 
+    btRigidBody *PhysicsEngine::AddCapsule(unsigned int id, float radius, float height, float mass, float friction, float restitution, glm::mat4 &transform)
+    {
+        btCapsuleShape *const shape = new btCapsuleShape(radius, height);
+        return AddShape(id, shape, mass, friction, restitution, transform);
+    }
+
     btRigidBody *PhysicsEngine::AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btBoxShape *const shape = new btBoxShape(btVector3(dimensions.x/2, dimensions.y/2, dimensions.z/2));
@@ -118,10 +124,22 @@ namespace Tarbora {
         delete object;
     }
 
+    void PhysicsEngine::RestrictRotation(btRigidBody *body, float x, float y, float z)
+    {
+        body->setAngularFactor(btVector3(x, y, z));
+    }
+
+    void PhysicsEngine::ApplyImpulse(btRigidBody *body, float newtons, const glm::vec3 &direction)
+    {
+        btVector3 const impulse(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+        body->applyCentralImpulse(impulse);
+        body->activate();
+    }
+
     void PhysicsEngine::ApplyForce(btRigidBody *body, float newtons, const glm::vec3 &direction)
     {
         btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
-        body->applyCentralImpulse(force);
+        body->applyCentralForce(force);
         body->activate();
     }
 
@@ -134,7 +152,7 @@ namespace Tarbora {
 
     void PhysicsEngine::SetVelocity(btRigidBody *body, const glm::vec3 &velocity)
     {
-        btVector3 const vel(velocity.x, velocity.y, velocity.z);
+        btVector3 const vel(velocity.x, body->getLinearVelocity().y(), velocity.z);
         body->setLinearVelocity(vel);
         body->activate();
     }
@@ -142,6 +160,37 @@ namespace Tarbora {
     void PhysicsEngine::Stop(btRigidBody *body)
     {
         SetVelocity(body, glm::vec3(0.0f, 0.0f, 0.0f));
+    }
+
+    std::shared_ptr<RayCastResult> PhysicsEngine::RayCast(glm::vec3 &origin, glm::vec3 &end)
+    {
+        btVector3 bOrigin = btVector3(origin.x, origin.y, origin.z);
+        btVector3 bEnd = btVector3(end.x, end.y, end.z);
+
+        btCollisionWorld::ClosestRayResultCallback rayCallback(bOrigin, bEnd);
+        m_DynamicsWorld->rayTest(bOrigin, bEnd, rayCallback);
+
+        if (rayCallback.hasHit()) {
+            btVector3 bHitPosition = rayCallback.m_hitPointWorld;
+            btVector3 bHitNormal = rayCallback.m_hitNormalWorld;
+
+            glm::vec3 hitPosition = glm::vec3(bHitPosition.x(), bHitPosition.y(), bHitPosition.z());
+
+            // LOG_DEBUG("Id: %u", *((unsigned int*)rayCallback.m_collisionObject->getUserPointer()));
+
+            std::shared_ptr<RayCastResult> result(new RayCastResult(
+                1,
+                hitPosition,
+                glm::vec3(bHitNormal.x(), bHitNormal.y(), bHitNormal.z()),
+                glm::distance(origin, hitPosition)
+            ));
+
+            return result;
+        }
+        else
+        {
+            return std::shared_ptr<RayCastResult>();
+        }
     }
 
     void PhysicsEngine::BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep)

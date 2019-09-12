@@ -10,7 +10,9 @@ namespace Tarbora {
         {
             resource->PushErrName("root");
             m_PixelDensity = resource->GetFloat("pixel_density");
+            float scale = resource->GetFloat("scale");
             std::shared_ptr<MeshNode> mesh = CreateNode(id, resource, resource->GetJson("root"), m_PixelDensity, resource->GetFloat("texture_size"));
+            mesh->SetGlobalScale(glm::vec3(scale, scale, scale));
             resource->PopErrName();
 
             AddChild(mesh);
@@ -73,6 +75,50 @@ namespace Tarbora {
         }
         resource->PopErrName();
 
+        // Create the child cameras, if any
+        raw_json cameras;
+        resource->Get(j, "cameras", &cameras, {true, true});
+        resource->PushErrName("cameras");
+        for (unsigned int i = 0; i < cameras.size(); i++) {
+            resource->PushErrName(std::to_string(i).c_str());
+            std::shared_ptr<Camera> newCamera = CreateCamera(id, resource, resource->GetJson(cameras, i));
+            resource->PopErrName();
+            node->AddChild(newCamera);
+        }
+        resource->PopErrName();
+
+        m_Nodes[name] = node;
+
+        return node;
+    }
+
+    std::shared_ptr<Camera> ActorModel::CreateCamera(ActorId id, JsonPtr resource, raw_json j)
+    {
+        // Read all the parameters for the node
+        std::string name = resource->GetString(j, "name");
+
+        glm::vec3 origin = glm::vec3(
+            resource->GetFloatArray(j, "origin", 0),
+            resource->GetFloatArray(j, "origin", 1),
+            resource->GetFloatArray(j, "origin", 2)
+        );
+        glm::vec3 position = glm::vec3(
+            resource->GetFloatArray(j, "position", 0),
+            resource->GetFloatArray(j, "position", 1),
+            resource->GetFloatArray(j, "position", 2)
+        );
+        glm::vec3 rotation = glm::vec3(
+            resource->GetFloatArray(j, "rotation", 0),
+            resource->GetFloatArray(j, "rotation", 1),
+            resource->GetFloatArray(j, "rotation", 2)
+        );
+
+        // Create the node
+        std::shared_ptr<Camera> node = std::shared_ptr<Camera>(new Camera(id, name));
+        node->SetOrigin(origin);
+        node->SetPosition(position);
+        node->SetRotation(rotation);
+
         m_Nodes[name] = node;
 
         return node;
@@ -86,6 +132,16 @@ namespace Tarbora {
         }
 
         MaterialNode::Update(scene, deltaTime);
+    }
+
+    SceneNodePtr ActorModel::GetChild(std::string name)
+    {
+        auto itr = m_Nodes.find(name);
+        if (itr != m_Nodes.end())
+        {
+            return itr->second;
+        }
+        return SceneNodePtr();
     }
 
     void ActorModel::Animate(std::string animation_name, std::string animations_file)

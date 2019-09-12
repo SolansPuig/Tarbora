@@ -101,6 +101,19 @@ namespace Tarbora {
         std::static_pointer_cast<ActorModel>(child)->Animate(animation);
     }
 
+    void Scene::SetCamera(ActorId id, std::string nodeName)
+    {
+        SceneNodePtr actor = GetChild(id);
+        if (actor)
+        {
+            SceneNodePtr camera = actor->GetChild(nodeName);
+            if (camera)
+            {
+                m_Camera = std::static_pointer_cast<Camera>(camera);
+            }
+        }
+    }
+
     void Scene::AddChild(SceneNodePtr child, RenderPass renderPass)
     {
         ActorId id = child->GetActorId();

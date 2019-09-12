@@ -10,6 +10,7 @@ namespace Tarbora {
         Static = Zero,
         Actor,
         Sky,
+        Transparent,
         NotRendered,
         Last
     };
@@ -27,7 +28,7 @@ namespace Tarbora {
 
         virtual void Update(Scene *scene, float deltaTime);
         virtual void Draw(Scene *scene, glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
-        virtual void DrawChildren(Scene *scene, glm::mat4 &parentTransform);
+        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform);
 
         virtual bool AddChild(SceneNodePtr child);
         virtual SceneNodePtr GetChild(ActorId id);
@@ -57,6 +58,7 @@ namespace Tarbora {
         void SetRotationMatrix(const glm::mat3 &rotation);
 
         void SetScale(const glm::vec3 &scale);
+        void SetGlobalScale(const glm::vec3 &scale);
         void Scale(const glm::vec3 &scale);
         void ScaleTo(const glm::vec3 &scale, float timeToComplete);
         glm::vec3 const &GetScale() { return m_Scale; }
@@ -110,7 +112,7 @@ namespace Tarbora {
         RootNode();
         virtual bool AddChild(SceneNodePtr child, RenderPass renderPass);
         virtual bool RemoveChild(ActorId id) override;
-        virtual void DrawChildren(Scene *scene, glm::mat4 &parentTransform) override;
+        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform) override;
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
     };
 
@@ -133,11 +135,6 @@ namespace Tarbora {
     protected:
         std::shared_ptr<Texture> m_Texture;
         std::shared_ptr<Shader> m_Shader;
-
-        glm::vec3 m_InterpolatedPosition;
-        glm::vec3 m_InterpolatedRotation;
-        float m_InterpolatedScale;
-        float m_NextAnimationFrame;
     };
 
     class MeshNode : public SceneNode

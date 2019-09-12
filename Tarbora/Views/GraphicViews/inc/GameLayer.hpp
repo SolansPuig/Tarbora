@@ -27,6 +27,6 @@ namespace Tarbora {
         bool m_Jump;
         float m_JumpImpulse, m_DirectionImpulse, m_TorqueImpulse;
 
-        EventId m_CreateActor, m_MoveActor, m_DeleteActor, m_ActorAnimation;
+        EventId m_CreateActor, m_SetCamera, m_MoveActor, m_DeleteActor, m_ActorAnimation;
     };
 }

@@ -42,7 +42,7 @@ struct TableStruct_basic_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[5]
+  static const ::google::protobuf::internal::ParseTable schema[6]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -65,6 +65,9 @@ extern DeleteActorMessageDefaultTypeInternal _DeleteActorMessage_default_instanc
 class MoveActorMessage;
 class MoveActorMessageDefaultTypeInternal;
 extern MoveActorMessageDefaultTypeInternal _MoveActorMessage_default_instance_;
+class SetCameraMessage;
+class SetCameraMessageDefaultTypeInternal;
+extern SetCameraMessageDefaultTypeInternal _SetCameraMessage_default_instance_;
 }  // namespace tbBasics
 namespace google {
 namespace protobuf {
@@ -73,6 +76,7 @@ template<> ::tbBasics::ApplyForceMessage* Arena::CreateMaybeMessage<::tbBasics::
 template<> ::tbBasics::CreateActorMessage* Arena::CreateMaybeMessage<::tbBasics::CreateActorMessage>(Arena*);
 template<> ::tbBasics::DeleteActorMessage* Arena::CreateMaybeMessage<::tbBasics::DeleteActorMessage>(Arena*);
 template<> ::tbBasics::MoveActorMessage* Arena::CreateMaybeMessage<::tbBasics::MoveActorMessage>(Arena*);
+template<> ::tbBasics::SetCameraMessage* Arena::CreateMaybeMessage<::tbBasics::SetCameraMessage>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace tbBasics {
@@ -353,6 +357,133 @@ class DeleteActorMessage final :
 };
 // -------------------------------------------------------------------
 
+class SetCameraMessage final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.SetCameraMessage) */ {
+ public:
+  SetCameraMessage();
+  virtual ~SetCameraMessage();
+
+  SetCameraMessage(const SetCameraMessage& from);
+
+  inline SetCameraMessage& operator=(const SetCameraMessage& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SetCameraMessage(SetCameraMessage&& from) noexcept
+    : SetCameraMessage() {
+    *this = ::std::move(from);
+  }
+
+  inline SetCameraMessage& operator=(SetCameraMessage&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const SetCameraMessage& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SetCameraMessage* internal_default_instance() {
+    return reinterpret_cast<const SetCameraMessage*>(
+               &_SetCameraMessage_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  void Swap(SetCameraMessage* other);
+  friend void swap(SetCameraMessage& a, SetCameraMessage& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SetCameraMessage* New() const final {
+    return CreateMaybeMessage<SetCameraMessage>(nullptr);
+  }
+
+  SetCameraMessage* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SetCameraMessage>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const SetCameraMessage& from);
+  void MergeFrom(const SetCameraMessage& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SetCameraMessage* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string name = 2;
+  void clear_name();
+  static const int kNameFieldNumber = 2;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // uint32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:tbBasics.SetCameraMessage)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint32 id_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_basic_2eproto;
+};
+// -------------------------------------------------------------------
+
 class MoveActorMessage final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.MoveActorMessage) */ {
  public:
@@ -391,7 +522,7 @@ class MoveActorMessage final :
                &_MoveActorMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   void Swap(MoveActorMessage* other);
   friend void swap(MoveActorMessage& a, MoveActorMessage& b) {
@@ -523,7 +654,7 @@ class AnimateActorMessage final :
                &_AnimateActorMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(AnimateActorMessage* other);
   friend void swap(AnimateActorMessage& a, AnimateActorMessage& b) {
@@ -650,7 +781,7 @@ class ApplyForceMessage final :
                &_ApplyForceMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   void Swap(ApplyForceMessage* other);
   friend void swap(ApplyForceMessage& a, ApplyForceMessage& b) {
@@ -980,6 +1111,77 @@ inline void DeleteActorMessage::set_id(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// SetCameraMessage
+
+// uint32 id = 1;
+inline void SetCameraMessage::clear_id() {
+  id_ = 0u;
+}
+inline ::google::protobuf::uint32 SetCameraMessage::id() const {
+  // @@protoc_insertion_point(field_get:tbBasics.SetCameraMessage.id)
+  return id_;
+}
+inline void SetCameraMessage::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:tbBasics.SetCameraMessage.id)
+}
+
+// string name = 2;
+inline void SetCameraMessage::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SetCameraMessage::name() const {
+  // @@protoc_insertion_point(field_get:tbBasics.SetCameraMessage.name)
+  return name_.GetNoArena();
+}
+inline void SetCameraMessage::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:tbBasics.SetCameraMessage.name)
+}
+#if LANG_CXX11
+inline void SetCameraMessage::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.SetCameraMessage.name)
+}
+#endif
+inline void SetCameraMessage::set_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.SetCameraMessage.name)
+}
+inline void SetCameraMessage::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.SetCameraMessage.name)
+}
+inline ::std::string* SetCameraMessage::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.SetCameraMessage.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SetCameraMessage::release_name() {
+  // @@protoc_insertion_point(field_release:tbBasics.SetCameraMessage.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SetCameraMessage::set_allocated_name(::std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.SetCameraMessage.name)
+}
+
+// -------------------------------------------------------------------
+
 // MoveActorMessage
 
 // uint32 id = 1;
@@ -1237,6 +1439,8 @@ inline void ApplyForceMessage::set_allocated_direction(::tbMath::Vec3Message* di
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

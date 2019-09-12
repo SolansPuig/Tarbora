@@ -55,7 +55,7 @@ namespace Tarbora {
             (*itr).second->Update(scene, deltaTime);
     }
 
-    void SceneNode::DrawChildren(Scene *scene, glm::mat4 &parentTransform)
+    void SceneNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
     {
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
         {
@@ -263,6 +263,15 @@ namespace Tarbora {
         Scale(glm::vec3(scale.x / m_Scale.x, scale.y / m_Scale.y, scale.z / m_Scale.z));
     }
 
+    void SceneNode::SetGlobalScale(const glm::vec3 &scale)
+    {
+        m_LocalMatrix = glm::scale(m_LocalMatrix, scale);
+
+        m_Origin.x *= scale.x;
+        m_Origin.y *= scale.y;
+        m_Origin.z *= scale.z;
+    }
+
     void SceneNode::Scale(const glm::vec3 &scale)
     {
         m_Scale *= scale;
@@ -326,14 +335,18 @@ namespace Tarbora {
         m_Children.emplace("actorGroup", actorGroup);
         SceneNodePtr skyGroup(new SceneNode(INVALID_ID, "SkyGroup"));
         m_Children.emplace("skyGroup", skyGroup);
+        SceneNodePtr transparentGroup(new SceneNode(INVALID_ID, "TransparentGroup"));
+        m_Children.emplace("transparentGroup", transparentGroup);
         SceneNodePtr invisibleGroup(new SceneNode(INVALID_ID, "InvisibleGroup"));
         m_Children.emplace("invisibleGroup", invisibleGroup);
     }
 
-    void RootNode::DrawChildren(Scene *scene, glm::mat4 &parentTransform)
+    void RootNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
     {
         glm::mat4 view = scene->GetCamera()->GetView();
         glm::mat4 newMat = parentTransform * view;
+        glm::mat4 skyView = scene->GetCamera()->GetViewAngle();
+        glm::mat4 skyMat = parentTransform * skyView;
         for (int pass = RenderPass::Zero; pass < RenderPass::Last; pass++)
         {
             switch (pass)
@@ -345,11 +358,12 @@ namespace Tarbora {
                     m_Children["actorGroup"]->DrawChildren(scene, newMat);
                     break;
                 case RenderPass::Sky:
-                    view = scene->GetCamera()->GetViewAngle();
-                    newMat = parentTransform * view;
                     scene->GraphicsEngine()->BeforeDrawSky();
-                    m_Children["skyGroup"]->DrawChildren(scene, newMat);
+                    m_Children["skyGroup"]->DrawChildren(scene, skyMat);
                     scene->GraphicsEngine()->AfterDrawSky();
+                    break;
+                case RenderPass::Transparent:
+                    m_Children["transparentGroup"]->DrawChildren(scene, newMat);
                     break;
             }
         }
@@ -365,6 +379,8 @@ namespace Tarbora {
                 return m_Children["actorGroup"]->AddChild(child);
             case RenderPass::Sky:
                 return m_Children["skyGroup"]->AddChild(child);
+            case RenderPass::Transparent:
+                return m_Children["transparentGroup"]->AddChild(child);
             default:
                 return m_Children["invisibleGroup"]->AddChild(child);
         }
@@ -375,6 +391,7 @@ namespace Tarbora {
         if (m_Children["staticGroup"]->RemoveChild(id)) return true;
         if (m_Children["actorGroup"]->RemoveChild(id)) return true;
         if (m_Children["skyGroup"]->RemoveChild(id)) return true;
+        if (m_Children["transparentGroup"]->RemoveChild(id)) return true;
         if (m_Children["invisibleGroup"]->RemoveChild(id)) return true;
         return false;
     }
@@ -427,11 +444,7 @@ namespace Tarbora {
         (void)(scene);
         if (m_Mesh != nullptr && scene->GraphicsEngine()->ShaderAvailable())
         {
-            glm::mat4 scale = glm::mat4(1.0f);
-
-            scale = glm::scale(scale, m_Scale);
-
-            glm::mat4 newMat = parentTransform * m_LocalMatrix * scale;
+            glm::mat4 newMat = parentTransform * glm::scale(m_LocalMatrix, m_Scale);
             scene->GraphicsEngine()->GetShader()->Set("transform", newMat);
             scene->GraphicsEngine()->GetShader()->Set("uv", m_Uv);
             scene->GraphicsEngine()->GetShader()->Set("size", m_TexSize);

@@ -89,7 +89,7 @@ namespace Tarbora {
         {
             resource->PushErrName(nodeName.key());
 
-            std::shared_ptr<MeshNode> node = m_ActorModel->m_Nodes[nodeName.key()];
+            std::shared_ptr<SceneNode> node = m_ActorModel->m_Nodes[nodeName.key()];
             float pixelDensity = m_ActorModel->m_PixelDensity;
 
             for (auto &transform : nodeName.value().items())

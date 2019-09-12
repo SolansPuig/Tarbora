@@ -59,6 +59,21 @@ namespace Tarbora {
         app->MessageManager()->Trigger("delete_actor", str);
     }
 
+    void SetCamera(ClientApplication *app, unsigned int actorId, std::string name)
+    {
+        LOG_DEBUG("hi");
+        std::string str;
+
+        SetCameraMessage m;
+        m.set_id(actorId);
+        m.set_name(name);
+
+        m.SerializeToString(&str);
+
+        app->MessageManager()->Trigger("set_camera", str);
+        LOG_DEBUG("send");
+    }
+
     void MoveActor(ClientApplication *app, unsigned int id, glm::vec3 position, glm::mat3 rotation)
     {
         std::string str;

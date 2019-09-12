@@ -16,6 +16,11 @@ message DeleteActorMessage {
     uint32 id = 1;
 }
 
+message SetCameraMessage {
+    uint32 id = 1;
+    string name = 2;
+}
+
 message MoveActorMessage {
     uint32 id = 1;
     tbMath.Vec3Message position = 2;

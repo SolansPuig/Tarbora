@@ -11,7 +11,7 @@
             "shape": "box",
             "size": [100, 1, 100],
             "density": 0,
-            "friction": 2,
+            "friction": 1,
             "restitution": 0.3
         }
     }

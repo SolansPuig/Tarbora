@@ -10,12 +10,12 @@
         "animations": {
             "file": "human.json"
         },
-        "physics": {
-            "shape": "sphere",
-            "radius": 0.8,
-            "density": 0,
-            "friction": 0.1,
-            "restitution": 0.9
+        "character_controller": {
+            "shape": "capsule",
+            "height": 1.5,
+            "radius": 0.4,
+            "stepHeight": 0.1,
+            "density": 2
         }
     }
 }

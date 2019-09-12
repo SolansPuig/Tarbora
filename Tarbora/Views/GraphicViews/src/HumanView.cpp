@@ -9,7 +9,7 @@ namespace Tarbora {
         LOG_DEBUG("Creating human game view...");
 
         m_GameLayer = std::make_shared<GameLayerImpl>(this, true);
-        m_GameLayer->SetTargetId(2);
+        m_GameLayer->SetTargetId(5);
         PushLayer(m_GameLayer);
 
         std::shared_ptr<MetricsGui> metrics(new MetricsGui(this, false));

@@ -2,6 +2,7 @@
 #include "../inc/Components.hpp"
 #include "../inc/TransformComponent.hpp"
 #include "../inc/PhysicsComponent.hpp"
+#include "../inc/CharacterControllerComponent.hpp"
 
 namespace Tarbora {
     Actors::Actors(std::string server_address, ActorId maxNumber) :
@@ -23,6 +24,7 @@ namespace Tarbora {
         AddComponentCreator("model", ModelComponent::Creator);
         AddComponentCreator("transform", TransformComponent::Creator);
         AddComponentCreator("physics", PhysicsComponent::Creator);
+        AddComponentCreator("character_controller", CharacterControllerComponent::Creator);
 
         MessageManager()->Subscribe("create_actor", [this](std::string subject, std::string body)
         {

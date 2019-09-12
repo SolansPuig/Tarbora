@@ -29,6 +29,7 @@ namespace Tarbora {
         bool RemoveChild(ActorId id);
 
         void SetCamera(CameraPtr camera) { m_Camera = camera; }
+        void SetCamera(ActorId id, std::string nodeName);
         const CameraPtr GetCamera() const { return m_Camera; }
 
         std::shared_ptr<GraphicsEngineImpl> GraphicsEngine() { return app->GraphicsEngine(); }

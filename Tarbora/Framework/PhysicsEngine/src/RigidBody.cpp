@@ -9,6 +9,11 @@ namespace Tarbora {
         CalcVolume();
     }
 
+    void RigidBody::ApplyImpulse(float newtons, const glm::vec3 &direction)
+    {
+        PhysicsEngine::ApplyImpulse(m_Body, newtons, direction);
+    }
+
     void RigidBody::ApplyForce(float newtons, const glm::vec3 &direction)
     {
         PhysicsEngine::ApplyForce(m_Body, newtons, direction);
@@ -27,6 +32,28 @@ namespace Tarbora {
     void RigidBody::Stop()
     {
         PhysicsEngine::Stop(m_Body);
+    }
+
+    void RigidBody::RestrictRotation(float x, float y, float z)
+    {
+        PhysicsEngine::RestrictRotation(m_Body, x, y, z);
+    }
+
+    void RigidBody::SetLinearDamping(float damping)
+    {
+        m_Body->setDamping(damping, 0.0f);
+    }
+
+    std::shared_ptr<RayCastResult> RigidBody::RayCast(glm::vec3 origin, glm::vec3 direction, float distance)
+    {
+        ActorMotionState * motionState = static_cast<ActorMotionState*>(m_Body->getMotionState());
+        glm::vec3 position = motionState->getPosition();
+        glm::mat3 rotation = motionState->getRotation();
+        glm::vec3 rayOrigin = origin + position;
+        glm::vec3 rayDirection = glm::normalize(rotation * direction);
+        glm::vec3 rayEnd = rayOrigin + rayDirection * distance;
+        std::shared_ptr<RayCastResult> result = PhysicsEngine::RayCast(rayOrigin, rayEnd);
+        return result;
     }
 
 
@@ -52,6 +79,32 @@ namespace Tarbora {
 
     void SphereBody::CalcVolume() {
         m_Volume = (4.f/3.f) * M_PI * m_Radius * m_Radius * m_Radius;
+        CalcMass();
+    }
+
+    CapsuleBody::CapsuleBody(float radius, float height)
+    {
+        m_Radius = radius;
+        m_Height = height;
+    }
+
+    CapsuleBody::~CapsuleBody()
+    {
+        Unregister();
+    }
+
+    void CapsuleBody::Register(unsigned int id, glm::mat4 &transform)
+    {
+        m_Body = PhysicsEngine::AddCapsule(id, m_Radius, m_Height, m_Mass, m_Friction, m_Restitution, transform);
+    }
+
+    void CapsuleBody::Unregister()
+    {
+        PhysicsEngine::RemoveObject(m_Body);
+    }
+
+    void CapsuleBody::CalcVolume() {
+        m_Volume = ((4.f/3.f) * m_Radius + m_Height) * M_PI * m_Radius * m_Radius;
         CalcMass();
     }
 

@@ -1,10 +1,23 @@
 #pragma once
 #include "Actor.hpp"
 
+#define EmptyId 0
 #define TypeId 1
 #define RenderId 2
 
 namespace Tarbora {
+    class EmptyComponent : public ActorComponent
+    {
+    public:
+        EmptyComponent() {}
+        ~EmptyComponent() {}
+
+        bool Init(JsonPtr resource, raw_json data) { return true; }
+        ComponentId GetId() const { return EmptyId; }
+
+        static ActorComponentPtr Creator() { return ActorComponentPtr(new EmptyComponent()); }
+    };
+
     class TypeComponent : public ActorComponent
     {
     public:

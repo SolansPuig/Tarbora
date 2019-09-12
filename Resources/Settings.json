@@ -4,8 +4,8 @@
         "size": [1280, 720]
     },
     "controls": {
-        "jump_impulse": 300,
-        "direction_impulse": 10,
+        "jump_impulse": 30,
+        "direction_impulse": 5,
         "torque_impulse": 10
     }
 }

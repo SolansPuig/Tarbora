@@ -15,6 +15,8 @@ namespace Tarbora {
 
     void DeleteActor(ClientApplication *app, unsigned int id);
 
+    void SetCamera(ClientApplication *app, unsigned int actorId, std::string name);
+
     void MoveActor(ClientApplication *app, unsigned int id, std::string position, std::string rotation);
     void MoveActor(ClientApplication *app, unsigned int id, glm::vec3 position, glm::mat3 rotation);
 

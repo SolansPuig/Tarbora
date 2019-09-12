@@ -27,7 +27,21 @@
                         "position": [0, 12.5, 0],
                         "rotation": [0, 0, 0],
                         "size": [22, 22, 22],
-                        "uv": [0, 0]
+                        "uv": [0, 0],
+                        "cameras": [
+                            {
+                                "name": "3rd_person",
+                                "origin": [0, -1.2, 8],
+                                "position": [0, 1.2, -8],
+                                "rotation": [10, 0, 0]
+                            },
+                            {
+                                "name": "1st_person",
+                                "origin": [0, 0, 0],
+                                "position": [0, 0, 0],
+                                "rotation": [0, 0, 0]
+                            }
+                        ]
                     }
                 ]
             },

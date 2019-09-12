@@ -8,6 +8,17 @@
 #pragma GCC diagnostic pop
 
 namespace Tarbora {
+    struct RayCastResult {
+        RayCastResult(unsigned int hit_id, glm::vec3 hit_position, glm::vec3 hit_normal, float distance) :
+            m_HitId(hit_id), m_HitPosition(hit_position), m_HitNormal(hit_normal), m_Distance(distance)
+        {}
+
+        unsigned int m_HitId;
+        glm::vec3 m_HitPosition;
+        glm::vec3 m_HitNormal;
+        float m_Distance;
+    };
+
     //! The system that manages the movement and the collisions of all the actors.
     /*!
         \see RigidBody
@@ -39,6 +50,19 @@ namespace Tarbora {
         */
         static btRigidBody *AddSphere(unsigned int id, float radius, float mass, float friction, float restitution, glm::mat4 &transform);
 
+        //! Register an capsule shaped rigid body.
+        /*!
+            \param id The id of the actor that owns that rigid body.
+            \param radius The radius of the capsule.
+            \param height The height of the capsule.
+            \param mass The mass ("weight") of the capsule.
+            \param friction See \ref RigidBody SetFriction
+            \param restitution See \ref RigidBody SetRestitution
+            \param transform The transform matrix of the actor.
+            \returns A Bullet3's rigid body.
+        */
+        static btRigidBody *AddCapsule(unsigned int id, float radius, float height, float mass, float friction, float restitution, glm::mat4 &transform);
+
         //! Register a cube shaped rigid body.
         /*!
             \param id The id of the actor that owns that rigid body.
@@ -58,6 +82,21 @@ namespace Tarbora {
         static void RemoveObject(btCollisionObject *object);
 
         // void CreateTrigger(ActorPtr actor, const glm::vec3 &position, const glm::vec3 &dimensions);
+
+        //! Restrict the rotation of the body on certain planes.
+        /*!
+            \param x The multiplier to the x plane.
+            \param y The multiplier to the y plane.
+            \param z The multiplier to the z plane.
+        */
+        static void RestrictRotation(btRigidBody *body, float x, float y, float z);
+
+        //! Apply an impulse on the center of the object.
+        /*!
+            \param newtons The strenght of that impulse.
+            \param direction A normalized vector representing the direction of the impulse.
+        */
+        static void ApplyImpulse(btRigidBody *body, float newtons, const glm::vec3 &direction);
 
         //! Apply a force on the center of the object.
         /*!
@@ -83,6 +122,14 @@ namespace Tarbora {
         static void Stop(btRigidBody *body);
 
         // bool KinematicMove(ActorId id, const glm::mat4 &matrix);
+
+        //! Perform a raycast test.
+        /*!
+            \param origin The origin point of the ray.
+            \param end The maximum end point of the ray.
+            \returns See \ref RayCastResult.
+        */
+        static std::shared_ptr<RayCastResult> RayCast(glm::vec3 &origin, glm::vec3 &end);
 
         // void RenderDiagnostics();
 

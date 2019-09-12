@@ -27,6 +27,7 @@ namespace Tarbora {
 
         m_CreateActor = app->MessageManager()->Subscribe("create_actor_model", [this](std::string subject, std::string body)
         {
+            LOG_DEBUG("create_actor_model");
             CreateActorMessage m;
             m.ParseFromString(body);
             if (m_Scene->GetChild(m.id()) != nullptr)
@@ -34,6 +35,14 @@ namespace Tarbora {
                 m_Scene->RemoveChild(m.id());
             }
             m_Scene->CreateActorModel(m.id(), m.entity(), m.variant());
+        });
+
+        m_SetCamera = app->MessageManager()->Subscribe("set_camera", [this](std::string subject, std::string body)
+        {
+            LOG_DEBUG("set_camera");
+            SetCameraMessage m;
+            m.ParseFromString(body);
+            m_Scene->SetCamera(m.id(), m.name());
         });
 
         m_MoveActor = app->MessageManager()->Subscribe("move_actor", [this](std::string subject, std::string body)
@@ -63,6 +72,7 @@ namespace Tarbora {
     GameLayerImpl::~GameLayerImpl()
     {
         app->MessageManager()->Desubscribe("create_actor_model", m_CreateActor);
+        app->MessageManager()->Desubscribe("set_camera", m_SetCamera);
         app->MessageManager()->Desubscribe("move_actor", m_MoveActor);
         app->MessageManager()->Desubscribe("delete_actor", m_DeleteActor);
         app->MessageManager()->Desubscribe("animate_actor", m_ActorAnimation);
@@ -80,35 +90,35 @@ namespace Tarbora {
 
         if (app->Input()->GetKeyDown(KEY_W))
         {
-            movement.z -= 1;
+            movement.z += 1;
         }
         if (app->Input()->GetKeyUp(KEY_W))
         {
-            movement.z += 1;
+            movement.z -= 1;
         }
         if (app->Input()->GetKeyDown(KEY_S))
         {
-            movement.z += 1;
+            movement.z -= 1;
         }
         if (app->Input()->GetKeyUp(KEY_S))
         {
-            movement.z -= 1;
+            movement.z += 1;
         }
         if (app->Input()->GetKeyDown(KEY_A))
         {
-            movement.x -= 1;
+            movement.x += 1;
         }
         if (app->Input()->GetKeyUp(KEY_A))
         {
-            movement.x += 1;
+            movement.x -= 1;
         }
         if (app->Input()->GetKeyDown(KEY_D))
         {
-            movement.x += 1;
+            movement.x -= 1;
         }
         if (app->Input()->GetKeyUp(KEY_D))
         {
-            movement.x -= 1;
+            movement.x += 1;
         }
         if (app->Input()->GetKeyDown(KEY_SPACE))
         {
@@ -118,11 +128,21 @@ namespace Tarbora {
         {
             CreateActor(app, "cube.json", "", glm::vec3(0.f,5.f,-5.f));
         }
+        if (app->Input()->GetKeyDown(KEY_Y))
+        {
+            static bool thirdPerson = false;
+            LOG_DEBUG("Third person %d", thirdPerson);
+            if (thirdPerson) m_Scene->SetCamera(5, "1st_person");
+            else m_Scene->SetCamera(5, "3rd_person");
 
-        ApplyForce(app, m_TargetId, 10, glm::normalize(movement));
+            thirdPerson = !thirdPerson;
+        }
+
+
+        SetVelocity(app, m_TargetId, m_DirectionImpulse * glm::normalize(movement));
         if (jump)
         {
-            ApplyForce(app, m_TargetId, 500, glm::vec3(0.f, 1.f, 0.f));
+            ApplyForce(app, m_TargetId, m_JumpImpulse, glm::vec3(0.f, 1.f, 0.f));
             jump = false;
         }
     }

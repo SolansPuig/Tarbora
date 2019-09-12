@@ -2,7 +2,7 @@
 #include "PhysicsEngine.hpp"
 
 namespace Tarbora {
-    typedef enum { Sphere, Box } Shape;
+    typedef enum { Sphere, Capsule, Box } Shape;
 
     //! An abstract physics rigid body
     /*!
@@ -71,6 +71,13 @@ namespace Tarbora {
         //! Get the mass of the object.
         float GetMass() { return m_Mass; }
 
+        //! Apply an impulse on the center of the object.
+        /*!
+            \param newtons The strenght of that impulse.
+            \param direction A normalized vector representing the direction of the impulse.
+        */
+        void ApplyImpulse(float newtons, const glm::vec3 &direction);
+
         //! Apply a force on the center of the object.
         /*!
             \param newtons The strenght of that force.
@@ -87,12 +94,35 @@ namespace Tarbora {
 
         //! Set a constant velocity to the object.
         /*!
-            \param velocity A vector representing the speed in each of the directions (x, y and z).
+            \param velocity A vector representing the speed in each of the axis (x, y and z).
         */
         void SetVelocity(const glm::vec3 &velocity);
 
         //! Set the object velocity to zero.
         void Stop();
+
+        //! Restrict the rotation of the body in each axis.
+        /*!
+            \param x The multiplier to the rotation in the x axis. Set to 0 to forbid the rotation in x, set to 1 to leave it untouched.
+            \param y The multiplier to the rotation in the y axis. Set to 0 to forbid the rotation in y, set to 1 to leave it untouched.
+            \param z The multiplier to the rotation in the z axis. Set to 0 to forbid the rotation in z, set to 1 to leave it untouched.
+        */
+        void RestrictRotation(float x, float y, float z);
+
+        //! Set the linear damping of the body.
+        /*!
+            \param damping The ammount of damping.
+        */
+        void SetLinearDamping(float damping);
+
+        //! Perform a Raycast from the body.
+        /*!
+            \param origin The relative position from the center of the body from where the raycast is shoot.
+            \param direction The relative direction of the raycast.
+            \param distance The maximum distance of the raycast.
+            \returns See \ref RayCastResult.
+        */
+        std::shared_ptr<RayCastResult> RayCast(glm::vec3 origin, glm::vec3 direction, float distance);
 
     protected:
         //! Calculate the volume when the shape or the size changes. Automatically called by the functions that change those.
@@ -140,6 +170,52 @@ namespace Tarbora {
 
     private:
         float m_Radius;
+    };
+
+    //! A physics rigid body representing an capsule shape.
+    /*!
+        \see PhysicsEngine
+        \see RigidBody
+        \see SphereBody
+    */
+    class CapsuleBody : public RigidBody
+    {
+    public:
+        //! Creates an CapsuleBody.
+        /*!
+            \param radius The radius of that capsule, used to calculate the volume and the mass.
+            \param height The height of that capsule, used to calculate the volume and the mass.
+        */
+        CapsuleBody(float radius, float height);
+
+        //! Destroys and unregisters this body.
+        ~CapsuleBody();
+
+        virtual void Register(unsigned int id, glm::mat4 &transform) override;
+        virtual void Unregister() override;
+        virtual void CalcVolume() override;
+
+        //! Set the radius of that capsule.
+        /*!
+            \param radius The radius of that capsule, used to calculate the volume and the mass.
+        */
+        void SetRadius(float radius) { m_Radius = radius; CalcVolume(); }
+
+        //! Get the radius of that sphere.
+        float GetRadius() { return m_Radius; }
+
+        //! Set the height of that capsule.
+        /*!
+            \param height The height of that capsule, used to calculate the volume and the mass.
+        */
+        void SetHeight(float height) { m_Height = height; CalcVolume(); }
+
+        //! Get the height of that sphere.
+        float GetHeight() { return m_Height; }
+
+    private:
+        float m_Radius;
+        float m_Height;
     };
 
     //! A physics rigid body representing a cube.
