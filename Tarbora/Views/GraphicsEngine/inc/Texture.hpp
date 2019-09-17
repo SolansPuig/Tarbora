@@ -11,8 +11,8 @@ namespace Tarbora {
         int GetWidth() const { return m_Width; }
         int GetHeight() const { return m_Height; }
     private:
-        Texture(ClientApplication *app, std::string name, unsigned int id, int width, int height)
-            : Resource(app, name), m_Id(id), m_Width(width), m_Height(height) {}
+        Texture(Module *m, std::string name, unsigned int id, int width, int height)
+            : Resource(m, name), m_Id(id), m_Width(width), m_Height(height) {}
 
         unsigned int m_Id;
         int m_Width, m_Height;

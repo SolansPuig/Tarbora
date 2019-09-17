@@ -10,7 +10,7 @@ namespace Tarbora {
         unsigned int GetId() const { return m_Id; }
         int GetVertices() const { return m_Vertices; }
     private:
-        Mesh(ClientApplication *app, std::string name, unsigned int id, int vertices) : Resource(app, name), m_Id(id), m_Vertices(vertices) {}
+        Mesh(Module *m, std::string name, unsigned int id, int vertices) : Resource(m, name), m_Id(id), m_Vertices(vertices) {}
         unsigned int m_Id;
         int m_Vertices;
     };

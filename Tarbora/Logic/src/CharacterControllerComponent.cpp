@@ -1,6 +1,6 @@
 #include "../inc/CharacterControllerComponent.hpp"
 #include "../inc/TransformComponent.hpp"
-#include "../inc/Actors.hpp"
+#include "../inc/World.hpp"
 
 namespace Tarbora {
     bool CharacterControllerComponent::Init(JsonPtr resource, raw_json data)
@@ -64,7 +64,7 @@ namespace Tarbora {
             m_Body->RestrictRotation(0.0f, 0.0f, 0.0f);
         }
 
-        app->MessageManager()->Subscribe("apply_force", [this](std::string subject, std::string body)
+        m_World->GetMessageManager()->Subscribe("apply_force", [this](std::string subject, std::string body)
         {
             ApplyForceMessage m;
             m.ParseFromString(body);
@@ -75,7 +75,7 @@ namespace Tarbora {
             }
         });
 
-        app->MessageManager()->Subscribe("apply_torque", [this](std::string subject, std::string body)
+        m_World->GetMessageManager()->Subscribe("apply_torque", [this](std::string subject, std::string body)
         {
             ApplyForceMessage m;
             m.ParseFromString(body);
@@ -86,7 +86,7 @@ namespace Tarbora {
             }
         });
 
-        app->MessageManager()->Subscribe("set_velocity", [this](std::string subject, std::string body)
+        m_World->GetMessageManager()->Subscribe("set_velocity", [this](std::string subject, std::string body)
         {
             ApplyForceMessage m;
             m.ParseFromString(body);
@@ -95,7 +95,7 @@ namespace Tarbora {
                 m_Movement = Vec3toGLM(m.direction());
         });
 
-        app->MessageManager()->Subscribe("stop", [this](std::string subject, std::string body)
+        m_World->GetMessageManager()->Subscribe("stop", [this](std::string subject, std::string body)
         {
             ApplyForceMessage m;
             m.ParseFromString(body);
@@ -175,7 +175,7 @@ namespace Tarbora {
                 if (transform->GetTransform() != motionState->m_Transform)
                 {
                     transform->SetTransform(motionState->m_Transform);
-                    MoveActor(app, id, motionState->getPosition(), motionState->getRotation());
+                    MoveActor(m_World, id, motionState->getPosition(), motionState->getRotation());
                 }
             }
         }

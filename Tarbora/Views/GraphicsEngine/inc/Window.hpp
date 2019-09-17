@@ -13,16 +13,16 @@ namespace Tarbora {
         int width;
         int height;
         float ratio;
-        GraphicView *app;
+        GraphicView *view;
 
-        WindowProps(const char *title, int width, int height, GraphicView *app) :
-            title(title), width(width), height(height), ratio((float)width/(float)height), app(app) {};
+        WindowProps(const char *title, int width, int height, GraphicView *view) :
+            title(title), width(width), height(height), ratio((float)width/(float)height), view(view) {};
     };
 
     class Window
     {
     public:
-        Window(const char* title, int width, int height, GraphicView *app);
+        Window(const char* title, int width, int height, GraphicView *view);
         ~Window();
 
         void SetTitle(const char* title);
@@ -35,7 +35,7 @@ namespace Tarbora {
         int GetHeight() { return m_Props.height; }
         float GetRatio() { return m_Props.ratio; }
 
-        GLFWwindow* GetWindow() { return m_Window; }
+        GLFWwindow* GetRawWindow() { return m_Window; }
     private:
         GLFWwindow* m_Window;
         WindowProps m_Props;

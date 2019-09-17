@@ -2,7 +2,8 @@
 #include <mutex>
 
 #include "../../Global.hpp"
-#include "../../Application.hpp"
+#include "../../AbstractModule.hpp"
+#include "../../Logger.hpp"
 
 #include <grpc/grpc.h>
 #include <grpcpp/server.h>
@@ -46,18 +47,18 @@ namespace Tarbora {
         std::mutex m_subscriptions_mutex;
     };
 
-    class NetworkServer : public Application
+    class MessageServer
     {
     public:
-        NetworkServer(std::string server_address);
-        ~NetworkServer();
+        MessageServer(const std::string serverAddress);
+        ~MessageServer();
 
-        virtual void Run() override;
+        void Run();
 
     private:
         ServerImpl m_Service;
         ServerBuilder m_Builder;
-        std::string m_address;
+        const std::string m_Address;
         std::unique_ptr<Server> m_Server;
     };
 }

@@ -15,7 +15,7 @@ namespace Tarbora {
             Console()->Log(input);
         });
 
-        m_All = MessageManager()->Subscribe("all", [this](std::string subject, std::string body)
+        m_All = GetMessageManager()->Subscribe("all", [this](std::string subject, std::string body)
         {
             m_Console->Log(subject);
         });
@@ -25,7 +25,7 @@ namespace Tarbora {
     {
         LOG_DEBUG("Destroying console game view...");
 
-        MessageManager()->Desubscribe("all", m_All);
+        GetMessageManager()->Desubscribe("all", m_All);
     }
 
     void ConsoleView::GetInput()

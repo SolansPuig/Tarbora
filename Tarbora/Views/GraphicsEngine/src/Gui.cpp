@@ -4,8 +4,8 @@
 #include "../../GraphicViews/inc/GraphicView.hpp"
 
 namespace Tarbora {
-    Gui::Gui(GraphicView *app) :
-        app(app)
+    Gui::Gui(GraphicView *view) :
+        m_View(view)
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
@@ -22,7 +22,7 @@ namespace Tarbora {
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
 
-        ImGui_ImplGlfw_InitForOpenGL(app->GraphicsEngine()->GetWindow()->GetWindow(), true);
+        ImGui_ImplGlfw_InitForOpenGL(m_View->GraphicsEngine()->GetWindow()->GetRawWindow(), true);
         ImGui_ImplOpenGL3_Init("#version 410");
     }
 

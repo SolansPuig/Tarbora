@@ -5,7 +5,7 @@ namespace Tarbora {
     class Layer
     {
     public:
-        Layer(GraphicView *app, bool start_active = true) : app(app), m_active(start_active) {}
+        Layer(GraphicView *view, bool start_active = true) : m_View(view), m_active(start_active) {}
         virtual ~Layer() {}
 
         virtual void OnActivate() {}
@@ -30,8 +30,8 @@ namespace Tarbora {
         }
 
     protected:
-        GraphicView *app;
-        
+        GraphicView *m_View;
+
         bool m_active;
         bool m_event_blocking;
     };

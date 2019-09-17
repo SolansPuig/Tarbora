@@ -2,12 +2,12 @@
 #include "../../GraphicViews/inc/GraphicView.hpp"
 
 namespace Tarbora {
-    InputImpl::InputImpl(GraphicView *app) :
-        app(app),
+    InputImpl::InputImpl(GraphicView *view) :
+        m_View(view),
         m_key_state(KEY_LAST, State::UNCHANGED),
         m_button_state(MOUSE_BUTTON_LAST, State::UNCHANGED)
     {
-        m_window = app->GraphicsEngine()->GetWindow()->GetWindow();
+        m_window = m_View->GraphicsEngine()->GetWindow()->GetRawWindow();
 
         glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
         {
@@ -15,10 +15,10 @@ namespace Tarbora {
 
             switch (action) {
                 case GLFW_RELEASE:
-                    data.app->Input()->SetKeyState(key, State::UP);
+                    data.view->Input()->SetKeyState(key, State::UP);
                     break;
                 case GLFW_PRESS:
-                    data.app->Input()->SetKeyState(key, State::DOWN);
+                    data.view->Input()->SetKeyState(key, State::DOWN);
                     break;
             }
         });
@@ -29,10 +29,10 @@ namespace Tarbora {
 
             switch (action) {
                 case GLFW_RELEASE:
-                    data.app->Input()->SetButtonState(button, InputImpl::State::UP);
+                    data.view->Input()->SetButtonState(button, InputImpl::State::UP);
                     break;
                 case GLFW_PRESS:
-                    data.app->Input()->SetButtonState(button, InputImpl::State::DOWN);
+                    data.view->Input()->SetButtonState(button, InputImpl::State::DOWN);
                     break;
             }
         });

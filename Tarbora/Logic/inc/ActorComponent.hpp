@@ -1,10 +1,10 @@
 #pragma once
-#include "../../Framework/ClientApplication.hpp"
+#include "../../Framework/Module.hpp"
 
 namespace Tarbora {
     class ActorFactory;
     class ActorTest;
-    class Actors;
+    class World;
 
     class ActorComponent
     {
@@ -23,7 +23,7 @@ namespace Tarbora {
         void SetOwner(ActorTest * owner) { m_Owner = owner; }
 
         ActorTest * m_Owner;
-        Actors *app;
+        World *m_World;
     };
 
     typedef std::shared_ptr<ActorComponent> ActorComponentPtr;

@@ -1,18 +1,18 @@
-#include "Tarbora/Framework/MessageManager/inc/NetworkServer.hpp"
+#include "Tarbora/Framework/MessageBus.hpp"
 #include "Tarbora/Views/GraphicViews/inc/HumanView.hpp"
 #include "Tarbora/Views/HardwareViews/inc/ArduinoView.hpp"
-#include "Tarbora/Logic/inc/Actors.hpp"
+#include "Tarbora/Logic/inc/World.hpp"
 
 using namespace Tarbora;
 
 int main() {
     LOG_LEVEL(DEBUG);
 
-    std::shared_ptr<NetworkServer> server(new NetworkServer("0.0.0.0:50051"));
+    std::shared_ptr<MessageBus> server(new MessageBus("0.0.0.0:50051"));
     server->RunThread();
 
-    std::shared_ptr<Actors> actors(new Actors("localhost:50051", 1000));
-    actors->RunThread();
+    std::shared_ptr<World> world(new World("localhost:50051", 1000));
+    world->RunThread();
 
     // std::shared_ptr<ArduinoView> arduino(new ArduinoView("localhost:50051"));
     // arduino->RunThread();

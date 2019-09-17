@@ -9,8 +9,11 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     set (CMAKE_CXX_STANDARD_LIBRARIES "-lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW")
 endif (CMAKE_COMPILER_IS_GNUCXX)
 
+set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include(cotire)
 
 include_directories(Tarbora/Framework/PhysicsEngine/bullet3/src)
 include_directories(Tarbora/Views/GraphicsEngine/imgui)
@@ -22,13 +25,12 @@ add_executable (tarbora main.cpp)
 target_link_libraries (tarbora
     GraphicViews
     HardwareViews
-    Application
+    TarboraCore
     Logic
     PhysicsEngine
     GraphicsEngine
     ResourceManager
     MessageManager
-    Logger
     glfw
     imgui
     glm
@@ -40,46 +42,22 @@ target_link_libraries (tarbora
     LinearMath
 )
 
-add_executable (tarbora_client main_client.cpp)
-target_link_libraries (tarbora_client
-    GraphicViews
-    Application
-    GraphicsEngine
-    ResourceManager
-    MessageManager
-    Logger
-    glfw
-    imgui
-    glm
-    grpc
-    grpc++
-    grpc++_reflection
-)
+cotire(tarbora)
 
-add_executable (tarbora_console console_client.cpp)
-target_link_libraries (tarbora_console
-    GraphicViews
-    Application
-    GraphicsEngine
-    ResourceManager
-    MessageManager
-    Logger
-    glfw
-    imgui
-    grpc
-    grpc++
-    grpc++_reflection
-)
-
-add_executable (tarbora_server server.cpp)
-target_link_libraries (tarbora_server
-    MessageManager
-    Logger
-    grpc
-    grpc++
-    grpc++_reflection
-)
-
+# add_executable (tarbora_client main_client.cpp)
+# target_link_libraries (tarbora_client
+#     GraphicViews
+#     TarboraCore
+#     GraphicsEngine
+#     ResourceManager
+#     MessageManager
+#     glfw
+#     imgui
+#     glm
+#     grpc
+#     grpc++
+#     grpc++_reflection
+# )
 
 # add_executable (tarbora_logic main_logic.cpp)
 # target_link_libraries (tarbora_logic GameLogic)

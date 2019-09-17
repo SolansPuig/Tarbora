@@ -2,12 +2,12 @@
 #include "ActorComponent.hpp"
 
 namespace Tarbora {
-    class Actors;
+    class World;
 
     class ActorTest
     {
         friend class ActorFactory;
-        friend class Actors;
+        friend class World;
         typedef std::map<ComponentId, ActorComponentPtr> ActorComponents;
     public:
         ActorTest(ActorId id);

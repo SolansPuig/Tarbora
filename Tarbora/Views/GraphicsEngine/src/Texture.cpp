@@ -1,14 +1,14 @@
 #include "../inc/GraphicsEngine.hpp"
 #define STB_IMAGE_IMPLEMENTATION
-#include "../../../Framework/Utility/inc/stb_image.h"
+#include "../../../Framework/External/stb_image.h"
 #include "../../GraphicViews/inc/GraphicView.hpp"
 
-#define GAMEVIEW(APP) static_cast<GraphicView*>(APP)
+#define GAMEVIEW(MODULE) static_cast<GraphicView*>(MODULE)
 
 namespace Tarbora {
     Texture::~Texture()
     {
-        GAMEVIEW(app)->GraphicsEngine()->DeleteTexture(m_Id);
+        GAMEVIEW(m_Module)->GraphicsEngine()->DeleteTexture(m_Id);
     }
 
     ResourcePtr TextureResourceLoader::Load(std::string path)
@@ -25,16 +25,12 @@ namespace Tarbora {
                 LOG_ERR("TextureLoader: The image textures/missing.png failed to load due to: %s", stbi_failure_reason());
         }
 
-        GraphicView *lapp = GAMEVIEW(app);
-        app->MessageManager();
-        std::shared_ptr<GraphicsEngineImpl> g = lapp->GraphicsEngine();
-        unsigned int id = g->LoadTexture(data, width, height, nrComponents);
-        // unsigned int id = GAMEVIEW(app)->GraphicsEngine()->LoadTexture(data, width, height, nrComponents);
+        unsigned int id = GAMEVIEW(m_Module)->GraphicsEngine()->LoadTexture(data, width, height, nrComponents);
 
         // Delete the image, as it is already on the GPU
         stbi_image_free(data);
 
-        ResourcePtr r = ResourcePtr(new Texture(app, path, id, width, height));
+        ResourcePtr r = ResourcePtr(new Texture(m_Module, path, id, width, height));
         return r;
     }
 }

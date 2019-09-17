@@ -1,25 +1,25 @@
 #include "../inc/MessageManager.hpp"
 
 namespace Tarbora {
-    MessageManagerImpl::MessageManagerImpl(ClientApplication *app, int client_id, std::string server_address) :
-        app(app)
+    MessageManager::MessageManager(Module *m, ClientId id, std::string serverAddress) :
+        m_Module(m)
     {
-        m_network_client = std::unique_ptr<NetworkClient>(new NetworkClient(client_id, server_address));
-        m_network_client->Connect();
+        m_NetworkClient = std::unique_ptr<NetworkClient>(new NetworkClient(id, serverAddress));
+        m_NetworkClient->Connect();
     }
 
-    MessageManagerImpl::~MessageManagerImpl()
+    MessageManager::~MessageManager()
     {
-        m_network_client->Disconnect();
+        m_NetworkClient->Disconnect();
     }
 
-    void MessageManagerImpl::ReadMessages()
+    void MessageManager::ReadMessages()
     {
         Message m;
-        while (m_network_client->GetMessage(&m))
+        while (m_NetworkClient->GetMessage(&m))
         {
-            auto all = m_listeners.find("all");
-            if (all != m_listeners.end())
+            auto all = m_Listeners.find("all");
+            if (all != m_Listeners.end())
             {
                 for (auto listener : all->second)
                 {
@@ -27,8 +27,8 @@ namespace Tarbora {
                 }
             }
 
-            auto type = m_listeners.find(m.subject());
-            if (type != m_listeners.end())
+            auto type = m_Listeners.find(m.subject());
+            if (type != m_Listeners.end())
             {
                 for (auto listener : type->second)
                 {
@@ -38,45 +38,45 @@ namespace Tarbora {
         }
     }
 
-    EventId MessageManagerImpl::Subscribe(std::string type, EventFn func)
+    EventId MessageManager::Subscribe(std::string type, EventFn func)
     {
-        auto type_listeners = m_listeners.find(type);
-        if (type_listeners == m_listeners.end())
+        auto typeListeners = m_Listeners.find(type);
+        if (typeListeners == m_Listeners.end())
         {
-            m_network_client->Subscribe(type);
+            m_NetworkClient->Subscribe(type);
         }
 
-        m_listeners[type].push_back(func);
-        return m_listeners[type].size() - 1;
+        m_Listeners[type].push_back(func);
+        return m_Listeners[type].size() - 1;
     }
 
-    void MessageManagerImpl::Desubscribe(std::string type, EventId id)
+    void MessageManager::Desubscribe(std::string type, EventId id)
     {
-        m_listeners[type].erase(m_listeners[type].begin() + id);
-        if (m_listeners[type].size() == 0)
+        m_Listeners[type].erase(m_Listeners[type].begin() + id);
+        if (m_Listeners[type].size() == 0)
         {
-            m_network_client->Desubscribe(type);
+            m_NetworkClient->Desubscribe(type);
         }
     }
 
-    void MessageManagerImpl::Trigger(std::string type, std::string event)
+    void MessageManager::Trigger(std::string type, MessageBody body)
     {
         Message message;
         message.set_type(MessageType::EVENT);
         message.set_subject(type);
-        message.set_body(event);
+        message.set_body(body);
 
-        m_network_client->Send(message);
+        m_NetworkClient->Send(message);
     }
 
-     void MessageManagerImpl::Send(unsigned int to, std::string type, std::string command)
+     void MessageManager::Send(ClientId to, std::string type, MessageBody body)
     {
         Message message;
         message.set_type(MessageType::COMMAND);
         message.set_to(to);
         message.set_subject(type);
-        message.set_body(command);
+        message.set_body(body);
 
-        m_network_client->Send(message);
+        m_NetworkClient->Send(message);
     }
 }

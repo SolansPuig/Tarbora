@@ -1,9 +1,9 @@
 #include "../inc/BasicMessages.hpp"
 #include "../inc/MessageManager.hpp"
-#include "../../ClientApplication.hpp"
+#include "../../Module.hpp"
 
 namespace Tarbora {
-    void CreateActor(ClientApplication *app, std::string entity, std::string variant, std::string position, std::string rotation)
+    void CreateActor(Module *app, std::string entity, std::string variant, std::string position, std::string rotation)
     {
         std::string str;
 
@@ -15,10 +15,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Send(1, "create_actor", str);
+        app->GetMessageManager()->Send(1, "create_actor", str);
     }
 
-    void CreateActor(ClientApplication *app, std::string entity, std::string variant, glm::vec3 position, glm::vec3 rotation)
+    void CreateActor(Module *app, std::string entity, std::string variant, glm::vec3 position, glm::vec3 rotation)
     {
         std::string str;
 
@@ -30,10 +30,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Send(1, "create_actor", str);
+        app->GetMessageManager()->Send(1, "create_actor", str);
     }
 
-    void CreateActorModel(ClientApplication *app, unsigned int id, std::string entity, std::string variant)
+    void CreateActorModel(Module *app, unsigned int id, std::string entity, std::string variant)
     {
         std::string str;
 
@@ -44,10 +44,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("create_actor_model", str);
+        app->GetMessageManager()->Trigger("create_actor_model", str);
     }
 
-    void DeleteActor(ClientApplication *app, unsigned int id)
+    void DeleteActor(Module *app, unsigned int id)
     {
         std::string str;
 
@@ -56,10 +56,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("delete_actor", str);
+        app->GetMessageManager()->Trigger("delete_actor", str);
     }
 
-    void SetCamera(ClientApplication *app, unsigned int actorId, std::string name)
+    void SetCamera(Module *app, unsigned int actorId, std::string name)
     {
         LOG_DEBUG("hi");
         std::string str;
@@ -70,11 +70,11 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("set_camera", str);
+        app->GetMessageManager()->Trigger("set_camera", str);
         LOG_DEBUG("send");
     }
 
-    void MoveActor(ClientApplication *app, unsigned int id, glm::vec3 position, glm::mat3 rotation)
+    void MoveActor(Module *app, unsigned int id, glm::vec3 position, glm::mat3 rotation)
     {
         std::string str;
 
@@ -85,10 +85,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("move_actor", str);
+        app->GetMessageManager()->Trigger("move_actor", str);
     }
 
-    void MoveActor(ClientApplication *app, unsigned int id, std::string position, std::string rotation)
+    void MoveActor(Module *app, unsigned int id, std::string position, std::string rotation)
     {
         std::string str;
 
@@ -99,10 +99,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("move_actor", str);
+        app->GetMessageManager()->Trigger("move_actor", str);
     }
 
-    void AnimateActor(ClientApplication *app, unsigned int id, std::string animation)
+    void AnimateActor(Module *app, unsigned int id, std::string animation)
     {
         std::string str;
 
@@ -112,10 +112,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("animate_actor", str);
+        app->GetMessageManager()->Trigger("animate_actor", str);
     }
 
-    void ApplyForce(ClientApplication *app, unsigned int id, float magnitude, std::string direction)
+    void ApplyForce(Module *app, unsigned int id, float magnitude, std::string direction)
     {
         std::string str;
 
@@ -126,10 +126,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("apply_force", str);
+        app->GetMessageManager()->Trigger("apply_force", str);
     }
 
-    void ApplyForce(ClientApplication *app, unsigned int id, float magnitude, glm::vec3 direction)
+    void ApplyForce(Module *app, unsigned int id, float magnitude, glm::vec3 direction)
     {
         std::string str;
 
@@ -140,10 +140,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("apply_force", str);
+        app->GetMessageManager()->Trigger("apply_force", str);
     }
 
-    void ApplyTorque(ClientApplication *app, unsigned int id, float magnitude, std::string direction)
+    void ApplyTorque(Module *app, unsigned int id, float magnitude, std::string direction)
     {
         std::string str;
 
@@ -154,10 +154,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("apply_torque", str);
+        app->GetMessageManager()->Trigger("apply_torque", str);
     }
 
-    void ApplyTorque(ClientApplication *app, unsigned int id, float magnitude, glm::vec3 direction)
+    void ApplyTorque(Module *app, unsigned int id, float magnitude, glm::vec3 direction)
     {
         std::string str;
 
@@ -168,10 +168,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("apply_torque", str);
+        app->GetMessageManager()->Trigger("apply_torque", str);
     }
 
-    void SetVelocity(ClientApplication *app, unsigned int id, std::string direction)
+    void SetVelocity(Module *app, unsigned int id, std::string direction)
     {
         std::string str;
 
@@ -181,10 +181,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("set_velocity", str);
+        app->GetMessageManager()->Trigger("set_velocity", str);
     }
 
-    void SetVelocity(ClientApplication *app, unsigned int id, glm::vec3 direction)
+    void SetVelocity(Module *app, unsigned int id, glm::vec3 direction)
     {
         std::string str;
 
@@ -194,10 +194,10 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("set_velocity", str);
+        app->GetMessageManager()->Trigger("set_velocity", str);
     }
 
-    void Stop(ClientApplication *app, unsigned int id)
+    void Stop(Module *app, unsigned int id)
     {
         std::string str;
 
@@ -206,6 +206,6 @@ namespace Tarbora {
 
         m.SerializeToString(&str);
 
-        app->MessageManager()->Trigger("stop", str);
+        app->GetMessageManager()->Trigger("stop", str);
     }
 }

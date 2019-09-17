@@ -6,30 +6,30 @@
 using namespace tbBasics;
 
 namespace Tarbora {
-    class ClientApplication;
+    class Module;
 
-    void CreateActor(ClientApplication *app, std::string entity, std::string variant, std::string position, std::string rotation="0,0,0");
-    void CreateActor(ClientApplication *app, std::string entity, std::string variant, glm::vec3 position, glm::vec3 rotation=glm::vec3(0.f,0.f,0.f));
+    void CreateActor(Module *app, std::string entity, std::string variant, std::string position, std::string rotation="0,0,0");
+    void CreateActor(Module *app, std::string entity, std::string variant, glm::vec3 position, glm::vec3 rotation=glm::vec3(0.f,0.f,0.f));
 
-    void CreateActorModel(ClientApplication *app, unsigned int id, std::string entity, std::string variant);
+    void CreateActorModel(Module *app, unsigned int id, std::string entity, std::string variant);
 
-    void DeleteActor(ClientApplication *app, unsigned int id);
+    void DeleteActor(Module *app, unsigned int id);
 
-    void SetCamera(ClientApplication *app, unsigned int actorId, std::string name);
+    void SetCamera(Module *app, unsigned int actorId, std::string name);
 
-    void MoveActor(ClientApplication *app, unsigned int id, std::string position, std::string rotation);
-    void MoveActor(ClientApplication *app, unsigned int id, glm::vec3 position, glm::mat3 rotation);
+    void MoveActor(Module *app, unsigned int id, std::string position, std::string rotation);
+    void MoveActor(Module *app, unsigned int id, glm::vec3 position, glm::mat3 rotation);
 
-    void AnimateActor(ClientApplication *app, unsigned int id, std::string animation);
+    void AnimateActor(Module *app, unsigned int id, std::string animation);
 
-    void ApplyForce(ClientApplication *app, unsigned int id, float magnitude, std::string direction);
-    void ApplyForce(ClientApplication *app, unsigned int id, float magnitude, glm::vec3 direction);
+    void ApplyForce(Module *app, unsigned int id, float magnitude, std::string direction);
+    void ApplyForce(Module *app, unsigned int id, float magnitude, glm::vec3 direction);
 
-    void ApplyTorque(ClientApplication *app, unsigned int id, float magnitude, std::string direction);
-    void ApplyTorque(ClientApplication *app, unsigned int id, float magnitude, glm::vec3 direction);
+    void ApplyTorque(Module *app, unsigned int id, float magnitude, std::string direction);
+    void ApplyTorque(Module *app, unsigned int id, float magnitude, glm::vec3 direction);
 
-    void SetVelocity(ClientApplication *app, unsigned int id, std::string direction);
-    void SetVelocity(ClientApplication *app, unsigned int id, glm::vec3 direction);
+    void SetVelocity(Module *app, unsigned int id, std::string direction);
+    void SetVelocity(Module *app, unsigned int id, glm::vec3 direction);
 
-    void Stop(ClientApplication *app, unsigned int id);
+    void Stop(Module *app, unsigned int id);
 }

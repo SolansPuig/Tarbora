@@ -1,4 +1,4 @@
-#include "../inc/NetworkServer.hpp"
+#include "../inc/MessageServer.hpp"
 
 namespace Tarbora {
     ServerImpl::ServerImpl()
@@ -137,22 +137,22 @@ namespace Tarbora {
         return Status::OK;
     }
 
-    NetworkServer::NetworkServer(std::string server_address)
-        : Application(), m_address(server_address)
+    MessageServer::MessageServer(const std::string serverAddress)
+        : m_Address(serverAddress)
     {
-        m_Builder.AddListeningPort(m_address, grpc::InsecureServerCredentials());
+        m_Builder.AddListeningPort(m_Address, grpc::InsecureServerCredentials());
         m_Builder.RegisterService(&m_Service);
         m_Server = std::unique_ptr<Server>(m_Builder.BuildAndStart());
     }
 
-    NetworkServer::~NetworkServer()
+    MessageServer::~MessageServer()
     {
         m_Server->Shutdown();
     }
 
-    void NetworkServer::Run()
+    void MessageServer::Run()
     {
-        LOG_DEBUG("Server listening at %s", m_address.c_str());
+        LOG_DEBUG("Server listening at %s", m_Address.c_str());
         m_Server->Wait();
     }
 }

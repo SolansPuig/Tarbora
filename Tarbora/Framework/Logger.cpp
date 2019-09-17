@@ -1,10 +1,9 @@
-#include "../inc/Logger.hpp"
+#include "Logger.hpp"
 #include <stdarg.h>
 #include <ctime>
 
 namespace Tarbora {
-    void Logger::Log(LogLevel level, const char *text, ...)
-    {
+    void Logger::Log(LogLevel level, const char *text, ...) {
         // Only do something if the level is higher than the current log level.
         if (s_LogLevel <= level) {
             va_list args;

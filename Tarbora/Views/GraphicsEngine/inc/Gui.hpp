@@ -12,13 +12,13 @@ namespace Tarbora {
     class Gui
     {
     public:
-        Gui(GraphicView *app);
+        Gui(GraphicView *m_View);
         ~Gui();
 
         void BeforeDraw();
         void AfterDraw();
 
     private:
-        GraphicView *app;
+        GraphicView *m_View;
     };
 }

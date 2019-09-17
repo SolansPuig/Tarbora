@@ -1,12 +1,12 @@
 #include "../inc/GraphicsEngine.hpp"
 #include <time.h>
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "../../../Framework/Utility/inc/stb_image_write.h"
+#include "../../../Framework/External/stb_image_write.h"
 #include "../../../Framework/ResourceManager/inc/Json.hpp"
 
 namespace Tarbora {
-    GraphicsEngineImpl::GraphicsEngineImpl(GraphicView *app, std::string settings_file) :
-        app(app)
+    GraphicsEngineImpl::GraphicsEngineImpl(GraphicView *view, std::string settings_file) :
+        m_View(view)
     {
         glfwInit();
 
@@ -31,7 +31,7 @@ namespace Tarbora {
             }
         };
 
-        Main_Window = std::unique_ptr<Window>(new Window(window_title.c_str(), window_width, window_height, app));
+        Main_Window = std::unique_ptr<Window>(new Window(window_title.c_str(), window_width, window_height, m_View));
 
         glewExperimental = GL_TRUE;
         if (glewInit() != GLEW_OK) {
@@ -53,7 +53,7 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::InitGui()
     {
-        m_Gui = std::unique_ptr<Gui>(new Gui(app));
+        m_Gui = std::unique_ptr<Gui>(new Gui(m_View));
     }
 
     void GraphicsEngineImpl::BeforeDraw()

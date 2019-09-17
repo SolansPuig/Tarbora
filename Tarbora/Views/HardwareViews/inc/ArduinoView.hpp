@@ -1,8 +1,8 @@
 #pragma once
-#include "../../../Framework/ClientApplication.hpp"
+#include "../../../Framework/Module.hpp"
 
 namespace Tarbora {
-    class ArduinoView : public ClientApplication
+    class ArduinoView : public Module
     {
     public:
         ArduinoView(std::string server_address);

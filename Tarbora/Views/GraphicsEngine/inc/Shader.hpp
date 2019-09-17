@@ -20,7 +20,7 @@ namespace Tarbora {
         void Set(const std::string name, float x, float y, float z, float w);
         void Set(const std::string name, glm::mat4 &value);
     private:
-        Shader(ClientApplication *app, std::string name, unsigned int id) : Resource(app, name), m_Id(id) {}
+        Shader(Module *m, std::string name, unsigned int id) : Resource(m, name), m_Id(id) {}
 
         unsigned int m_Id;
     };

@@ -2,8 +2,8 @@
 #include <utility>
 
 namespace Tarbora {
-    Scene::Scene(GraphicView *app) :
-        app(app)
+    Scene::Scene(GraphicView *view) :
+        m_View(view)
     {
         m_Root = std::shared_ptr<RootNode>(new RootNode());
         m_Camera = std::shared_ptr<Camera>(new Camera(MAIN_CAMERA_ID, "body"));
@@ -11,12 +11,12 @@ namespace Tarbora {
         m_Camera->Rotate(glm::vec3(0.0f, 180.0f, 0.0f));
         m_Camera->Move(glm::vec3(0.0f, 0.0f, -5.0f));
 
-        m_Projection = glm::perspective(glm::radians(45.0f), app->GraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
+        m_Projection = glm::perspective(glm::radians(45.0f), m_View->GraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
 
         // EvtWindowResizeId = EventManager::Subscribe("WindowResize", [this](Event *e)
         // {
         //     (void)(e);
-        //     m_Projection = glm::perspective(glm::radians(45.0f), app->graphicsEngine.window->GetRatio()->GetRatio(), 0.1f, 100.0f);
+        //     m_Projection = glm::perspective(glm::radians(45.0f), m_View->graphicsEngine.window->GetRatio()->GetRatio(), 0.1f, 100.0f);
         // });
     }
 

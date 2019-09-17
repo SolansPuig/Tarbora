@@ -2,7 +2,7 @@
 
 namespace Tarbora {
     ArduinoView::ArduinoView(std::string server_address)
-        : ClientApplication(22, server_address)
+        : Module(22, server_address)
     {
         LOG_INFO("Creating arduino view...");
 

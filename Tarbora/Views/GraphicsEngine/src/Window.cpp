@@ -2,8 +2,8 @@
 #include "../../GraphicViews/inc/GraphicView.hpp"
 
 namespace Tarbora {
-    Window::Window(const char *title, int width, int height, GraphicView *app) :
-        m_Props(WindowProps(title, width, height, app))
+    Window::Window(const char *title, int width, int height, GraphicView *view) :
+        m_Props(WindowProps(title, width, height, view))
     {
         LOG_DEBUG("Creating window with title: %s, width: %d and height: %d", m_Props.title, m_Props.width, m_Props.height);
 
@@ -44,7 +44,7 @@ namespace Tarbora {
         glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 		{
             WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
-            data.app->Close();
+            data.view->Close();
         });
     }
 

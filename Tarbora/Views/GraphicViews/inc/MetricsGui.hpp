@@ -5,13 +5,13 @@ namespace Tarbora {
     class MetricsGui : public Layer
     {
     public:
-        MetricsGui(GraphicView *app, bool start_active)
-            : Layer(app, start_active), m_elapsed_time(0.0f)
+        MetricsGui(GraphicView *view, bool start_active)
+            : Layer(view, start_active), m_elapsed_time(0.0f)
         {}
 
         void GetInput() override
         {
-            if (app->Input()->GetKeyDown(KEY_F3)) {
+            if (m_View->Input()->GetKeyDown(KEY_F3)) {
                 m_active = !m_active;
             }
         }

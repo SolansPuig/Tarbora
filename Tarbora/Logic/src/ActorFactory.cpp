@@ -1,9 +1,9 @@
 #include "../inc/ActorFactory.hpp"
-#include "../inc/Actors.hpp"
+#include "../inc/World.hpp"
 
 namespace Tarbora {
-    ActorFactory::ActorFactory(Actors *app) :
-        app(app)
+    ActorFactory::ActorFactory(World *world) :
+        m_World(world)
     {
     }
 
@@ -64,7 +64,7 @@ namespace Tarbora {
         {
             ActorComponentCreator creator = itr->second;
             component = creator();
-            component->app = app;
+            component->m_World = m_World;
         } else
         {
             LOG_WARN("ActorFactory: Couldn't find ActorComponent named %s.", name.c_str());

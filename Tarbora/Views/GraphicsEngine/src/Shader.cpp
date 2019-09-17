@@ -1,14 +1,14 @@
 #include "../inc/GraphicsEngine.hpp"
-#include "../../../Framework/Utility/inc/json.hpp"
+#include "../../../Framework/External/json.hpp"
 typedef nlohmann::json raw_json;
 #include "../../GraphicViews/inc/GraphicView.hpp"
 
-#define GAMEVIEW(APP) static_cast<GraphicView*>(APP)
+#define GAMEVIEW(MODULE) static_cast<GraphicView*>(MODULE)
 
 namespace Tarbora {
     Shader::~Shader()
     {
-        GAMEVIEW(app)->GraphicsEngine()->DeleteProgram(m_Id);
+        GAMEVIEW(m_Module)->GraphicsEngine()->DeleteProgram(m_Id);
     }
 
     void Shader::Use()
@@ -109,7 +109,7 @@ namespace Tarbora {
         }
 
         // Read each entry and create and compile the shaders
-        std::shared_ptr<GraphicsEngineImpl> graphics_engine = GAMEVIEW(app)->GraphicsEngine();
+        std::shared_ptr<GraphicsEngineImpl> graphics_engine = GAMEVIEW(m_Module)->GraphicsEngine();
         unsigned int ids[6];
         ids[0] = CompileShader(j, "vertex", graphics_engine);
         ids[1] = CompileShader(j, "tes_control", graphics_engine);
@@ -119,8 +119,8 @@ namespace Tarbora {
         ids[5] = CompileShader(j, "compute", graphics_engine);
 
         // Link the program
-        unsigned int program = GAMEVIEW(app)->GraphicsEngine()->LinkProgram(ids);
-        ResourcePtr r = ResourcePtr(new Shader(app, path, program));
+        unsigned int program = GAMEVIEW(m_Module)->GraphicsEngine()->LinkProgram(ids);
+        ResourcePtr r = ResourcePtr(new Shader(m_Module, path, program));
         file.close();
         return r;
     }

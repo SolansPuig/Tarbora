@@ -1,13 +1,13 @@
 #pragma once
-#include "../../../Framework/ClientApplication.hpp"
+#include "../../../Framework/Module.hpp"
 #include "../../GraphicsEngine/inc/GraphicsEngine.hpp"
 
 namespace Tarbora {
-    class GraphicView : public ClientApplication
+    class GraphicView : public Module
     {
     public:
         GraphicView(unsigned int client_id, std::string server_address, std::string settings_file)
-            : ClientApplication(client_id, server_address)
+            : Module(client_id, server_address)
         {
             m_GraphicsEngine = std::make_shared<GraphicsEngineImpl>(this, settings_file);
             m_Input = std::make_shared<InputImpl>(this);

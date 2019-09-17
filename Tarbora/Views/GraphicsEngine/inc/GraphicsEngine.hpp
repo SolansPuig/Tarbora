@@ -10,7 +10,7 @@
 namespace Tarbora {
     class GraphicsEngineImpl {
     public:
-        GraphicsEngineImpl(GraphicView *app, std::string settings_file);
+        GraphicsEngineImpl(GraphicView *view, std::string settings_file);
         ~GraphicsEngineImpl();
 
         void InitGui();
@@ -46,6 +46,6 @@ namespace Tarbora {
         std::unique_ptr<Gui> m_Gui;
         std::weak_ptr<Shader> m_Shader;
 
-        GraphicView *app;
+        GraphicView *m_View;
     };
 }

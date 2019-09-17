@@ -2,7 +2,7 @@
 #include "../../Global.hpp"
 
 namespace Tarbora {
-    class ClientApplication;
+    class Module;
     class Resource;
     class ResourceLoader;
     typedef std::shared_ptr<Resource> ResourcePtr;
@@ -25,7 +25,7 @@ namespace Tarbora {
             \param resourceFolderPath The path to folder where all the resource files are be located at.
             It must be called on startup, before initializing any system that uses resources.
         */
-        static void Init(ClientApplication *app, const std::string resourceFolderPath);
+        static void Init(Module *m, const std::string resourceFolderPath);
 
         static void Close();
 
@@ -64,7 +64,7 @@ namespace Tarbora {
         //! Get the path to folder where all the resource files are be located at.
         static std::string GetResourceFolder() { return m_ResourceFolderPath; }
 
-        inline static ClientApplication *m_app;
+        inline static Module *m_Module;
 
     private:
         //! Find a resource that is already loaded.

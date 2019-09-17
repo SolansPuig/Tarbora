@@ -10,7 +10,7 @@ namespace Tarbora {
     public:
         enum State { UNCHANGED, UP, DOWN};
 
-        InputImpl(GraphicView *app);
+        InputImpl(GraphicView *m_View);
         ~InputImpl();
 
         bool GetKey(int keycode);
@@ -29,7 +29,7 @@ namespace Tarbora {
 
     private:
         GLFWwindow *m_window;
-        GraphicView *app;
+        GraphicView *m_View;
 
         std::vector<State> m_key_state;
         std::vector<State> m_button_state;

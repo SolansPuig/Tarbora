@@ -5,30 +5,32 @@
 #include "NetworkClient.hpp"
 
 namespace Tarbora {
-    class ClientApplication;
+    class Module;
 
     typedef std::function<void(std::string, std::string)> EventFn;
     typedef unsigned int EventId;
 
-    class MessageManagerImpl
+    typedef std::string MessageBody;
+    typedef unsigned int ClientId;
+
+    class MessageManager
     {
     public:
-        MessageManagerImpl(ClientApplication *app, int client_id, std::string server_address);
-        ~MessageManagerImpl();
+        MessageManager(Module *m, ClientId id, std::string serverAddress);
+        ~MessageManager();
 
         void ReadMessages();
 
         EventId Subscribe(std::string type, EventFn func);
         void Desubscribe(std::string type, EventId id);
 
-        void Trigger(std::string type, std::string event);
-        void Send(unsigned int to, std::string type, std::string command);
+        void Trigger(std::string type, MessageBody body);
+        void Send(ClientId to, std::string type, MessageBody body);
 
     private:
-        ClientApplication *app;
+        Module *m_Module;
+        std::unique_ptr<NetworkClient> m_NetworkClient;
 
-        std::unique_ptr<NetworkClient> m_network_client;
-
-        std::map<std::string, std::vector<EventFn>> m_listeners;
+        std::map<std::string, std::vector<EventFn>> m_Listeners;
     };
 }

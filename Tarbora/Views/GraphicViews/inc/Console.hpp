@@ -8,14 +8,14 @@ namespace Tarbora {
         typedef std::function<void(std::string&)> InputCallback;
 
     public:
-        ConsoleImpl(GraphicView *app, bool start_active, bool fullWindow, InputCallback callback)
-            : Layer(app, start_active), m_fullWindow(fullWindow), m_callback(callback)
+        ConsoleImpl(GraphicView *view, bool start_active, bool fullWindow, InputCallback callback)
+            : Layer(view, start_active), m_fullWindow(fullWindow), m_callback(callback)
         {
         }
 
         void GetInput() override
         {
-            if (app->Input()->GetKeyDown(KEY_F4) && !m_fullWindow) {
+            if (m_View->Input()->GetKeyDown(KEY_F4) && !m_fullWindow) {
                 m_active = !m_active;
             }
         }

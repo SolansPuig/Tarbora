@@ -4,9 +4,9 @@
 #include <fnmatch.h>
 
 namespace Tarbora {
-    void ResourceManager::Init(ClientApplication *app, const std::string resourceFolderPath)
+    void ResourceManager::Init(Module *m, const std::string resourceFolderPath)
     {
-        m_app = app;
+        m_Module = m;
         m_ResourceFolderPath = resourceFolderPath;
 
         // Register the default loaders.
@@ -22,7 +22,7 @@ namespace Tarbora {
 
     void ResourceManager::RegisterLoader(LoaderPtr loader)
     {
-        loader->app = m_app;
+        loader->m_Module = m_Module;
         m_ResourceLoaders.push_front(loader);
     }
 

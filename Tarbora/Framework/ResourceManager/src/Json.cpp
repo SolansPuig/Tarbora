@@ -1,6 +1,6 @@
 #include "../inc/Json.hpp"
 #include "../../MessageManager/inc/MessageManager.hpp"
-#include "../../ClientApplication.hpp"
+#include "../../Module.hpp"
 
 namespace Tarbora {
     void Json::PushErrName(std::string name)
@@ -61,7 +61,7 @@ namespace Tarbora {
             else
             {
                 LOG_ERR("Json: Could not find key \"%s%s\" in file \"%s\".", m_ErrName.c_str(), key, m_Name.c_str());
-                app->Close();
+                m_Module->Close();
             }
         }
         else
@@ -91,7 +91,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be boolean but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be an integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be a float but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -187,7 +187,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be an unsigned integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be a string but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -238,7 +238,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Could not find key \"%s%s\" in file \"%s\".", m_ErrName.c_str(), key, m_Name.c_str());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -252,7 +252,7 @@ namespace Tarbora {
             else
             {
                 LOG_ERR("Json: Key \"%s.%d\" in file \"%s\" should be an array but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), j.type_name());
-                app->Close();
+                m_Module->Close();
             }
         }
 
@@ -268,7 +268,7 @@ namespace Tarbora {
             else
             {
                 LOG_ERR("Json: Could not find key \"%s%d\" in file \"%s\".", m_ErrName.c_str(), key, m_Name.c_str());
-                app->Close();
+                m_Module->Close();
             }
         }
         else
@@ -298,7 +298,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be boolean but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -330,7 +330,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be an integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -357,7 +357,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be a float but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -394,7 +394,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be an unsigned integer but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -421,7 +421,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%d\" in file \"%s\" should be a string but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -480,7 +480,7 @@ namespace Tarbora {
                     else
                     {
                         LOG_ERR("Json: Array \"%s%s\" in file \"%s\" has no index \"%d\".", m_ErrName.c_str(), key, m_Name.c_str(), i);
-                        app->Close();
+                        m_Module->Close();
                     }
                 }
             }
@@ -494,7 +494,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Key \"%s%s\" in file \"%s\" should be an array but is \"%s\".", m_ErrName.c_str(), key, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -521,7 +521,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be boolean but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -553,7 +553,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be an integer but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -580,7 +580,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be a float but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -617,7 +617,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be an unsigned integer but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -644,7 +644,7 @@ namespace Tarbora {
                 else
                 {
                     LOG_ERR("Json: Array item \"%s%s.%d\" in file \"%s\" should be a string but is \"%s\".", m_ErrName.c_str(), key, i, m_Name.c_str(), r.type_name());
-                    app->Close();
+                    m_Module->Close();
                 }
             }
         }
@@ -884,7 +884,7 @@ namespace Tarbora {
         }
 
         // Crate the Resource.
-        ResourcePtr r = ResourcePtr(new Json(app, path, data));
+        ResourcePtr r = ResourcePtr(new Json(m_Module, path, data));
         file.close(); // Close the file.
         return r;
     }

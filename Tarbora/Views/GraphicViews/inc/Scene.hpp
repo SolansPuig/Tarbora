@@ -10,7 +10,7 @@ namespace Tarbora {
     class Scene
     {
     public:
-        Scene(GraphicView *app);
+        Scene(GraphicView *view);
         ~Scene();
 
         void Update(float deltaTime);
@@ -32,7 +32,7 @@ namespace Tarbora {
         void SetCamera(ActorId id, std::string nodeName);
         const CameraPtr GetCamera() const { return m_Camera; }
 
-        std::shared_ptr<GraphicsEngineImpl> GraphicsEngine() { return app->GraphicsEngine(); }
+        std::shared_ptr<GraphicsEngineImpl> GraphicsEngine() { return m_View->GraphicsEngine(); }
 
     protected:
         std::shared_ptr<RootNode> m_Root;
@@ -42,6 +42,6 @@ namespace Tarbora {
 
         glm::mat4 m_Projection;
 
-        GraphicView *app;
+        GraphicView *m_View;
     };
 }

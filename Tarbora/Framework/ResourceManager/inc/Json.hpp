@@ -1,6 +1,6 @@
 #pragma once
 #include "Resource.hpp"
-#include "../../Utility/inc/json.hpp"
+#include "../../External/json.hpp"
 typedef nlohmann::json raw_json;
 
 namespace Tarbora {
@@ -347,7 +347,7 @@ namespace Tarbora {
         std::string GetStringArray(raw_json j, const char * key, int i, JsonOptions options={});
 
     private:
-        Json(ClientApplication *app, std::string name, raw_json j) : Resource(app, name), m_JSON(j), m_ErrName("") {}
+        Json(Module *m, std::string name, raw_json j) : Resource(m, name), m_JSON(j), m_ErrName("") {}
 
         raw_json m_JSON;
         std::string m_ErrName;

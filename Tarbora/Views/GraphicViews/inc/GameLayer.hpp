@@ -6,7 +6,7 @@ namespace Tarbora {
     class GameLayerImpl : public Layer
     {
     public:
-        GameLayerImpl(GraphicView *app, bool start_active=true);
+        GameLayerImpl(GraphicView *view, bool start_active=true);
         ~GameLayerImpl();
 
         virtual bool OnMessage(Message *m) override;

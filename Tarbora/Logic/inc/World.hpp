@@ -1,13 +1,13 @@
 #pragma once
 #include "ActorFactory.hpp"
-#include "../../Framework/ClientApplication.hpp"
+#include "../../Framework/Module.hpp"
 
 namespace Tarbora {
-    class Actors : public ClientApplication
+    class World : public Module
     {
         public:
-            Actors(std::string server_address, ActorId maxNumber);
-            ~Actors();
+            World(std::string server_address, ActorId maxNumber);
+            ~World();
 
             ActorId Create(std::string entity, glm::vec3 initialPos, glm::vec3 initalRot);
             void Update(float deltaTime);

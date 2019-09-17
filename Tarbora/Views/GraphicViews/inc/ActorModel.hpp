@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/ClientApplication.hpp"
+#include "../../../Framework/Module.hpp"
 #include "SceneNode.hpp"
 #include "AnimationController.hpp"
 

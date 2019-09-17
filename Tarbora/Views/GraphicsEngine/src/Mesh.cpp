@@ -1,12 +1,12 @@
 #include "../inc/GraphicsEngine.hpp"
 #include "../../GraphicViews/inc/GraphicView.hpp"
 
-#define GAMEVIEW(APP) static_cast<GraphicView*>(APP)
+#define GAMEVIEW(MODULE) static_cast<GraphicView*>(MODULE)
 
 namespace Tarbora {
     Mesh::~Mesh()
     {
-        GAMEVIEW(app)->GraphicsEngine()->DeleteMesh(m_Id);
+        GAMEVIEW(m_Module)->GraphicsEngine()->DeleteMesh(m_Id);
     }
 
     ResourcePtr MeshResourceLoader::Load(std::string path)
@@ -34,9 +34,9 @@ namespace Tarbora {
         }
 
         // Create the Mesh
-        unsigned int id = GAMEVIEW(app)->GraphicsEngine()->LoadMesh(v);
+        unsigned int id = GAMEVIEW(m_Module)->GraphicsEngine()->LoadMesh(v);
 
-        ResourcePtr r = ResourcePtr(new Mesh(app, path, id, vertices));
+        ResourcePtr r = ResourcePtr(new Mesh(m_Module, path, id, vertices));
         return r;
     }
 }
