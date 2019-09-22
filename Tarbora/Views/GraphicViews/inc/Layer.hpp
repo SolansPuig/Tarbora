@@ -1,11 +1,12 @@
 #pragma once
+#include "../../../Framework/ModuleComponent.hpp"
 #include "GraphicView.hpp"
 
 namespace Tarbora {
-    class Layer
+    class Layer : public ModuleComponent
     {
     public:
-        Layer(GraphicView *view, bool start_active = true) : m_View(view), m_active(start_active) {}
+        Layer(GraphicView *view, bool start_active = true) :  ModuleComponent(view), m_active(start_active) {}
         virtual ~Layer() {}
 
         virtual void OnActivate() {}
@@ -15,7 +16,7 @@ namespace Tarbora {
         virtual void Update(float elapsed_time) { (void)(elapsed_time); }
         virtual void Draw() {}
 
-        virtual bool OnMessage(Message *m) { (void)(m); return false; }
+        virtual bool OnMessage(MessageBody *m) { (void)(m); return false; }
 
         void SetActive(bool active)
         {
@@ -30,8 +31,6 @@ namespace Tarbora {
         }
 
     protected:
-        GraphicView *m_View;
-
         bool m_active;
         bool m_event_blocking;
     };

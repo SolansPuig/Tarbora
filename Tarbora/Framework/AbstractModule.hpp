@@ -1,5 +1,7 @@
 #pragma once
-#include <thread>
+
+#include "CommonHeaders.hpp"
+#include "Global.hpp"
 
 namespace Tarbora {
 

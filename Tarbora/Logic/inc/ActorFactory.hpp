@@ -3,10 +3,6 @@
 #include "Actor.hpp"
 
 namespace Tarbora {
-    typedef std::function<ActorComponentPtr(void)> ActorComponentCreator;
-
-    class World;
-
     class ActorFactory {
         typedef std::map<std::string, ActorComponentCreator> ActorComponentCreatorMap;
     public:

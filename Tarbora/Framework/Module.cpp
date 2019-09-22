@@ -1,11 +1,10 @@
 #include "Module.hpp"
-#include <chrono>
 
 namespace Tarbora {
-    Module::Module(unsigned int clientId, const std::string serverAddress) :
+    Module::Module(ClientId id, const std::string serverAddress) :
         AbstractModule()
     {
-        m_MessageManager = std::shared_ptr<MessageManager>(new MessageManager(this, clientId, serverAddress));
+        m_MessageManager = std::shared_ptr<MessageManager>(new MessageManager(this, id, serverAddress));
         ResourceManager::Init(this, "../Resources/");
     }
 
@@ -29,15 +28,5 @@ namespace Tarbora {
             Update(elapsedTime);
             Draw();
         }
-    }
-
-    inline void Module::SendMessage(ClientId to, std::string type, MessageBody body) const
-    {
-        m_MessageManager->Send(to, type, body);
-    }
-
-    inline void Module::BoradcastMessage(std::string type, MessageBody body) const
-    {
-        m_MessageManager->Trigger(type, body);
     }
 }

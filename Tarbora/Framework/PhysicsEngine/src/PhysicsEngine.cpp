@@ -1,5 +1,4 @@
 #include "../inc/PhysicsEngine.hpp"
-#include <algorithm>
 
 namespace Tarbora {
     bool PhysicsEngine::Init()

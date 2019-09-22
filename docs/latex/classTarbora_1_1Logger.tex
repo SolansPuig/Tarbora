@@ -13,42 +13,14 @@ enum {\bfseries Log\+Level} \{ {\bfseries D\+E\+B\+UG} =0,
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static bool \hyperlink{classTarbora_1_1Logger_abb526de5b2ecd2bda6ec4883de07bec8}{Init} (F\+I\+LE $\ast$stream)
-\begin{DoxyCompactList}\small\item\em Initialize the logger to an open stream. \end{DoxyCompactList}\item 
-static bool \hyperlink{classTarbora_1_1Logger_a7cc85fb1b154e17f6c7be073399160ac}{Init} (std\+::string stream)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1Logger_add4c310a2ab7b0daa730e477853d6c8f}\label{classTarbora_1_1Logger_add4c310a2ab7b0daa730e477853d6c8f}} 
-static void \hyperlink{classTarbora_1_1Logger_add4c310a2ab7b0daa730e477853d6c8f}{Close} ()
-\begin{DoxyCompactList}\small\item\em Close the logger. \end{DoxyCompactList}\item 
-static void \hyperlink{classTarbora_1_1Logger_af2a11244236bad59fce9cc6a1360af29}{Set\+Level} (Log\+Level level)
+static void \hyperlink{classTarbora_1_1Logger_a59bc914b6c12023fbce1b230899ac5fa}{Set\+Level} (Log\+Level level)
 \begin{DoxyCompactList}\small\item\em Set the log level. \end{DoxyCompactList}\item 
 static void \hyperlink{classTarbora_1_1Logger_aa32641fca455178d88f3b1c8b2f552ab}{Log} (Log\+Level level, const char $\ast$text,...)
 \begin{DoxyCompactList}\small\item\em Log a message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classTarbora_1_1Logger_abb526de5b2ecd2bda6ec4883de07bec8}\label{classTarbora_1_1Logger_abb526de5b2ecd2bda6ec4883de07bec8}} 
-\index{Tarbora\+::\+Logger@{Tarbora\+::\+Logger}!Init@{Init}}
-\index{Init@{Init}!Tarbora\+::\+Logger@{Tarbora\+::\+Logger}}
-\subsubsection{\texorpdfstring{Init()}{Init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily bool Tarbora\+::\+Logger\+::\+Init (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Initialize the logger to an open stream. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & The stream (file or console) where the logger will print. Either an opened stream like stdout or a file name. It must be called on startup, the first thing. \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classTarbora_1_1Logger_a7cc85fb1b154e17f6c7be073399160ac}\label{classTarbora_1_1Logger_a7cc85fb1b154e17f6c7be073399160ac}} 
-\index{Tarbora\+::\+Logger@{Tarbora\+::\+Logger}!Init@{Init}}
-\index{Init@{Init}!Tarbora\+::\+Logger@{Tarbora\+::\+Logger}}
-\subsubsection{\texorpdfstring{Init()}{Init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily bool Tarbora\+::\+Logger\+::\+Init (\begin{DoxyParamCaption}\item[{std\+::string}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{classTarbora_1_1Logger_aa32641fca455178d88f3b1c8b2f552ab}\label{classTarbora_1_1Logger_aa32641fca455178d88f3b1c8b2f552ab}} 
+\mbox{\Hypertarget{classTarbora_1_1Logger_aa32641fca455178d88f3b1c8b2f552ab}\label{classTarbora_1_1Logger_aa32641fca455178d88f3b1c8b2f552ab}} 
 \index{Tarbora\+::\+Logger@{Tarbora\+::\+Logger}!Log@{Log}}
 \index{Log@{Log}!Tarbora\+::\+Logger@{Tarbora\+::\+Logger}}
 \subsubsection{\texorpdfstring{Log()}{Log()}}
@@ -74,11 +46,11 @@ LOG\_INFO(TEXT, ...)
 LOG\_WARN(TEXT, ...)
 LOG\_ERR(TEXT, ...)
 \end{DoxyCode}
- \mbox{\Hypertarget{classTarbora_1_1Logger_af2a11244236bad59fce9cc6a1360af29}\label{classTarbora_1_1Logger_af2a11244236bad59fce9cc6a1360af29}} 
+ \mbox{\Hypertarget{classTarbora_1_1Logger_a59bc914b6c12023fbce1b230899ac5fa}\label{classTarbora_1_1Logger_a59bc914b6c12023fbce1b230899ac5fa}} 
 \index{Tarbora\+::\+Logger@{Tarbora\+::\+Logger}!Set\+Level@{Set\+Level}}
 \index{Set\+Level@{Set\+Level}!Tarbora\+::\+Logger@{Tarbora\+::\+Logger}}
 \subsubsection{\texorpdfstring{Set\+Level()}{SetLevel()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Logger\+::\+Set\+Level (\begin{DoxyParamCaption}\item[{Log\+Level}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void Tarbora\+::\+Logger\+::\+Set\+Level (\begin{DoxyParamCaption}\item[{Log\+Level}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 
@@ -97,5 +69,5 @@ LOG\_LEVEL(LEVEL)
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Framework/\+Utility/inc/Logger.\+hpp\item 
-Tarbora/\+Framework/\+Utility/src/Logger.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Framework/Logger.\+hpp\item 
+Tarbora/\+Framework/Logger.\+cpp\end{DoxyCompactItemize}

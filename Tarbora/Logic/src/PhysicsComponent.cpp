@@ -1,6 +1,7 @@
 #include "../inc/PhysicsComponent.hpp"
 #include "../inc/TransformComponent.hpp"
 #include "../inc/World.hpp"
+#include "../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
     bool PhysicsComponent::Init(JsonPtr resource, raw_json data)
@@ -58,10 +59,9 @@ namespace Tarbora {
             m_Body->Register(m_Owner->GetId(), transposed);
         }
 
-        m_World->GetMessageManager()->Subscribe("apply_force", [this](std::string subject, std::string body)
+        Subscribe("apply_force", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyForceMessage m;
-            m.ParseFromString(body);
+            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
 
             if (m.id() == m_Owner->GetId())
             {
@@ -69,10 +69,9 @@ namespace Tarbora {
             }
         });
 
-        m_World->GetMessageManager()->Subscribe("apply_torque", [this](std::string subject, std::string body)
+        Subscribe("apply_torque", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyForceMessage m;
-            m.ParseFromString(body);
+            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
 
             if (m.id() == m_Owner->GetId())
             {
@@ -80,19 +79,17 @@ namespace Tarbora {
             }
         });
 
-        m_World->GetMessageManager()->Subscribe("set_velocity", [this](std::string subject, std::string body)
+        Subscribe("set_velocity", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyForceMessage m;
-            m.ParseFromString(body);
+            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
 
             if (m.id() == m_Owner->GetId())
                 m_Body->SetVelocity(Vec3toGLM(m.direction()));
         });
 
-        m_World->GetMessageManager()->Subscribe("stop", [this](std::string subject, std::string body)
+        Subscribe("stop", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyForceMessage m;
-            m.ParseFromString(body);
+            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
 
             if (m.id() == m_Owner->GetId())
                 m_Body->Stop();
@@ -114,7 +111,7 @@ namespace Tarbora {
                 if (transform->GetTransform() != motionState->m_Transform)
                 {
                     transform->SetTransform(motionState->m_Transform);
-                    MoveActor(m_World, id, motionState->getPosition(), motionState->getRotation());
+                    Trigger("move_actor", MoveActor(id, motionState->getPosition(), motionState->getRotation()));
                 }
             }
         }

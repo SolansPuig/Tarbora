@@ -9,19 +9,19 @@ namespace Tarbora {
     class EmptyComponent : public ActorComponent
     {
     public:
-        EmptyComponent() {}
+        EmptyComponent(World *world) : ActorComponent(world) {}
         ~EmptyComponent() {}
 
         bool Init(JsonPtr resource, raw_json data) { return true; }
         ComponentId GetId() const { return EmptyId; }
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new EmptyComponent()); }
+        static ActorComponentPtr Creator(World *world) { return ActorComponentPtr(new EmptyComponent(world)); }
     };
 
     class TypeComponent : public ActorComponent
     {
     public:
-        TypeComponent() {}
+        TypeComponent(World *world) : ActorComponent(world) {}
         ~TypeComponent() {}
 
         bool Init(JsonPtr resource, raw_json data);
@@ -29,7 +29,7 @@ namespace Tarbora {
 
         bool HasType(std::string type) { return count(m_Types.begin(), m_Types.end(), type) > 0; }
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new TypeComponent()); }
+        static ActorComponentPtr Creator(World *world) { return ActorComponentPtr(new TypeComponent(world)); }
     private:
         std::vector<std::string> m_Types;
     };
@@ -37,7 +37,7 @@ namespace Tarbora {
     class ModelComponent : public ActorComponent
     {
     public:
-        ModelComponent() {}
+        ModelComponent(World *world) : ActorComponent(world) {}
         ~ModelComponent() {}
 
         bool Init(JsonPtr resource, raw_json data);
@@ -53,7 +53,7 @@ namespace Tarbora {
         std::string GetTexture() { return m_Texture; }
         std::string GetShader() { return m_Shader; }
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new ModelComponent()); }
+        static ActorComponentPtr Creator(World *world) { return ActorComponentPtr(new ModelComponent(world)); }
     private:
         int m_RenderPass;
         std::string m_Model, m_Texture, m_Shader;

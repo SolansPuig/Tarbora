@@ -1,6 +1,6 @@
 #pragma once
-#include <stdio.h>
-#include <string>
+
+#include "CommonHeaders.hpp"
 
 namespace Tarbora {
     class Logger {

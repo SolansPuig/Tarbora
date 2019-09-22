@@ -8,7 +8,7 @@ namespace Tarbora {
     class CharacterControllerComponent : public ActorComponent
     {
     public:
-        CharacterControllerComponent() {}
+        CharacterControllerComponent(World *world) : ActorComponent(world) {}
         ~CharacterControllerComponent() {}
 
         ComponentId GetId() const { return CharacterControllerId; }
@@ -17,7 +17,7 @@ namespace Tarbora {
         void AfterInit();
         virtual void Update(float deltaTime) override;
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new CharacterControllerComponent()); }
+        static ActorComponentPtr Creator(World *world) { return ActorComponentPtr(new CharacterControllerComponent(world)); }
     private:
         RigidBodyPtr m_Body;
         glm::vec3 m_Movement;

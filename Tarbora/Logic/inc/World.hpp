@@ -1,16 +1,23 @@
 #pragma once
-#include "ActorFactory.hpp"
 #include "../../Framework/Module.hpp"
 
 namespace Tarbora {
+    class World;
+    class ActorFactory;
+    class ActorTest;
+    class ActorComponent;
+    typedef std::shared_ptr<ActorTest> ActorPtr;
+    typedef std::shared_ptr<ActorComponent> ActorComponentPtr;
+    typedef std::function<ActorComponentPtr(World *)> ActorComponentCreator;
+
     class World : public Module
     {
         public:
-            World(std::string server_address, ActorId maxNumber);
+            World(std::string serverAddress, ActorId maxNumber);
             ~World();
 
             ActorId Create(std::string entity, glm::vec3 initialPos, glm::vec3 initalRot);
-            void Update(float deltaTime);
+            virtual void Update(float elapsedTime);
             void Destroy(ActorId id);
 
             ActorPtr Get(ActorId id);

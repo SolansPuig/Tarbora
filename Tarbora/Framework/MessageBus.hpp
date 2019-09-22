@@ -1,6 +1,7 @@
 #pragma once
+
 #include "AbstractModule.hpp"
-#include "MessageManager/inc/MessageServer.hpp"
+#include "MessageServer.hpp"
 
 namespace Tarbora {
 

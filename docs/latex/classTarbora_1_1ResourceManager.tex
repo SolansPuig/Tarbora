@@ -9,11 +9,24 @@ Load resources and make them available to all the systems.
 
 {\ttfamily \#include $<$Resource\+Manager.\+hpp$>$}
 
+
+
+Collaboration diagram for Tarbora\+:\+:Resource\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{classTarbora_1_1ResourceManager__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \hyperlink{classTarbora_1_1ResourceManager_a1db550759320be50e86b316275da889c}{Init} (const std\+::string resource\+Folder\+Path)
+static void \hyperlink{classTarbora_1_1ResourceManager_a92a90cbe0795350a30b45ba1f6e14a7f}{Init} (\hyperlink{classTarbora_1_1Module}{Module} $\ast$m, const std\+::string resource\+Folder\+Path)
 \begin{DoxyCompactList}\small\item\em Start the \hyperlink{classTarbora_1_1ResourceManager}{Resource\+Manager}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1ResourceManager_ad4a1c0a551c5a788aaa18688ca7f7592}\label{classTarbora_1_1ResourceManager_ad4a1c0a551c5a788aaa18688ca7f7592}} 
+static void {\bfseries Close} ()
+\item 
 static void \hyperlink{classTarbora_1_1ResourceManager_a531683525f49833ac4b06916cd8a2bc8}{Register\+Loader} (Loader\+Ptr loader)
 \begin{DoxyCompactList}\small\item\em Register a {\itshape Resource\+Loader}. \end{DoxyCompactList}\item 
 static Resource\+Ptr \hyperlink{classTarbora_1_1ResourceManager_a755c3216ac424ec13d28fa84b0814e0b}{Get\+Resource} (const std\+::string resource)
@@ -26,6 +39,12 @@ static void \hyperlink{classTarbora_1_1ResourceManager_aaef7ce514df5baa069b870aa
 \mbox{\Hypertarget{classTarbora_1_1ResourceManager_a302419fdf0455a322394fcd7fb754593}\label{classTarbora_1_1ResourceManager_a302419fdf0455a322394fcd7fb754593}} 
 static std\+::string \hyperlink{classTarbora_1_1ResourceManager_a302419fdf0455a322394fcd7fb754593}{Get\+Resource\+Folder} ()
 \begin{DoxyCompactList}\small\item\em Get the path to folder where all the resource files are be located at. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ResourceManager_a5c0cc274d57c723fab4621216eb45a84}\label{classTarbora_1_1ResourceManager_a5c0cc274d57c723fab4621216eb45a84}} 
+static \hyperlink{classTarbora_1_1Module}{Module} $\ast$ {\bfseries m\+\_\+\+Module}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -76,11 +95,11 @@ GET\_RESOURCE(TYPE, NAME)
 \end{DoxyCode}
 
 
-If the \hyperlink{classTarbora_1_1Resource}{Resource} isn\textquotesingle{}t loaded yet, \hyperlink{classTarbora_1_1ResourceManager_a755c3216ac424ec13d28fa84b0814e0b}{Get\+Resource} automatically finds the appropiate {\itshape Resource\+Loader} (see \hyperlink{classTarbora_1_1Resource}{Resource}) and loads it. \mbox{\Hypertarget{classTarbora_1_1ResourceManager_a1db550759320be50e86b316275da889c}\label{classTarbora_1_1ResourceManager_a1db550759320be50e86b316275da889c}} 
+If the \hyperlink{classTarbora_1_1Resource}{Resource} isn\textquotesingle{}t loaded yet, \hyperlink{classTarbora_1_1ResourceManager_a755c3216ac424ec13d28fa84b0814e0b}{Get\+Resource} automatically finds the appropiate {\itshape Resource\+Loader} (see \hyperlink{classTarbora_1_1Resource}{Resource}) and loads it. \mbox{\Hypertarget{classTarbora_1_1ResourceManager_a92a90cbe0795350a30b45ba1f6e14a7f}\label{classTarbora_1_1ResourceManager_a92a90cbe0795350a30b45ba1f6e14a7f}} 
 \index{Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}!Init@{Init}}
 \index{Init@{Init}!Tarbora\+::\+Resource\+Manager@{Tarbora\+::\+Resource\+Manager}}
 \subsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Resource\+Manager\+::\+Init (\begin{DoxyParamCaption}\item[{const std\+::string}]{resource\+Folder\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily void Tarbora\+::\+Resource\+Manager\+::\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{classTarbora_1_1Module}{Module} $\ast$}]{m,  }\item[{const std\+::string}]{resource\+Folder\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

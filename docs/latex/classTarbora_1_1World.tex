@@ -1,0 +1,53 @@
+\hypertarget{classTarbora_1_1World}{}\section{Tarbora\+:\+:World Class Reference}
+\label{classTarbora_1_1World}\index{Tarbora\+::\+World@{Tarbora\+::\+World}}
+
+
+Inheritance diagram for Tarbora\+:\+:World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classTarbora_1_1World__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tarbora\+:\+:World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classTarbora_1_1World__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1World_a8917dcf7afdf801269ab5c23f17f0799}\label{classTarbora_1_1World_a8917dcf7afdf801269ab5c23f17f0799}} 
+{\bfseries World} (std\+::string server\+Address, Actor\+Id max\+Number)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1World_a47afd8c733a4d30acb7740ed6973fea7}\label{classTarbora_1_1World_a47afd8c733a4d30acb7740ed6973fea7}} 
+Actor\+Id {\bfseries Create} (std\+::string entity, glm\+::vec3 initial\+Pos, glm\+::vec3 inital\+Rot)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1World_a53c07623e7e5bc394c222e91ed7a9d76}\label{classTarbora_1_1World_a53c07623e7e5bc394c222e91ed7a9d76}} 
+virtual void {\bfseries Update} (float elapsed\+Time)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1World_a35343723f3701595dc0e3afa68afe497}\label{classTarbora_1_1World_a35343723f3701595dc0e3afa68afe497}} 
+void {\bfseries Destroy} (Actor\+Id id)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1World_a640842c503e93b75094c3b52f04b479e}\label{classTarbora_1_1World_a640842c503e93b75094c3b52f04b479e}} 
+Actor\+Ptr {\bfseries Get} (Actor\+Id id)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1World_a0c8419bd81384d4ca1d11b972daa6d88}\label{classTarbora_1_1World_a0c8419bd81384d4ca1d11b972daa6d88}} 
+Actor\+Component\+Ptr {\bfseries Get\+Component} (Actor\+Id id, Component\+Id comp\+Id)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1World_a122424c8577455836f96540d994960f2}\label{classTarbora_1_1World_a122424c8577455836f96540d994960f2}} 
+void {\bfseries Add\+Component\+Creator} (std\+::string name, Actor\+Component\+Creator func)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Logic/inc/World.\+hpp\item 
+Tarbora/\+Logic/src/World.\+cpp\end{DoxyCompactItemize}

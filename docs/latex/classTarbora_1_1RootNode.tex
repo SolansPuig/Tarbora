@@ -24,8 +24,11 @@ Collaboration diagram for Tarbora\+:\+:Root\+Node\+:\nopagebreak
 \mbox{\Hypertarget{classTarbora_1_1RootNode_a95ce817a139455e7a7830bccc3874164}\label{classTarbora_1_1RootNode_a95ce817a139455e7a7830bccc3874164}} 
 virtual bool {\bfseries Add\+Child} (Scene\+Node\+Ptr child, Render\+Pass render\+Pass)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1RootNode_a20d645a7e3db97fc3a332b0dd957982f}\label{classTarbora_1_1RootNode_a20d645a7e3db97fc3a332b0dd957982f}} 
-virtual void {\bfseries Draw\+Children} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, glm\+::mat4 \&parent\+Transform) override
+\mbox{\Hypertarget{classTarbora_1_1RootNode_a62ddf56ce11926d03f83e68cd52dcc19}\label{classTarbora_1_1RootNode_a62ddf56ce11926d03f83e68cd52dcc19}} 
+virtual bool {\bfseries Remove\+Child} (Actor\+Id id) override
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RootNode_a02923a7df28da2b068647e139740d379}\label{classTarbora_1_1RootNode_a02923a7df28da2b068647e139740d379}} 
+virtual void {\bfseries Draw\+Children} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, const glm\+::mat4 \&parent\+Transform) override
 \item 
 \mbox{\Hypertarget{classTarbora_1_1RootNode_a20b9a487a7de21816ca909490d00fcae}\label{classTarbora_1_1RootNode_a20b9a487a7de21816ca909490d00fcae}} 
 virtual bool {\bfseries Is\+Visible} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene) const
@@ -35,5 +38,5 @@ virtual bool {\bfseries Is\+Visible} (\hyperlink{classTarbora_1_1Scene}{Scene} $
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Game\+View/inc/Scene\+Node.\+hpp\item 
-Tarbora/\+Game\+View/src/Scene\+Node.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/inc/Scene\+Node.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/src/Scene\+Node.\+cpp\end{DoxyCompactItemize}

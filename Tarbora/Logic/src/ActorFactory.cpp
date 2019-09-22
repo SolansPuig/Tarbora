@@ -63,8 +63,7 @@ namespace Tarbora {
         if (itr != m_ActorComponentCreators.end())
         {
             ActorComponentCreator creator = itr->second;
-            component = creator();
-            component->m_World = m_World;
+            component = creator(m_World);
         } else
         {
             LOG_WARN("ActorFactory: Couldn't find ActorComponent named %s.", name.c_str());

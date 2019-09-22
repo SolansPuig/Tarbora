@@ -1,15 +1,16 @@
 #pragma once
-#include "../../Framework/Module.hpp"
+#include "../../Framework/ModuleComponent.hpp"
+#include "World.hpp"
 
 namespace Tarbora {
     class ActorFactory;
     class ActorTest;
-    class World;
 
-    class ActorComponent
+    class ActorComponent : public ModuleComponent
     {
         friend class ActorFactory;
     public:
+        ActorComponent(World *world) : ModuleComponent(world) {}
         virtual ~ActorComponent() {}
 
         virtual bool Init(JsonPtr resource, raw_json data) = 0;
@@ -23,7 +24,6 @@ namespace Tarbora {
         void SetOwner(ActorTest * owner) { m_Owner = owner; }
 
         ActorTest * m_Owner;
-        World *m_World;
     };
 
     typedef std::shared_ptr<ActorComponent> ActorComponentPtr;

@@ -2,7 +2,8 @@
 \label{classTarbora_1_1SceneNode}\index{Tarbora\+::\+Scene\+Node@{Tarbora\+::\+Scene\+Node}}
 
 
-Inheritance diagram for Tarbora\+:\+:Scene\+Node\+:\nopagebreak
+Inheritance diagram for Tarbora\+:\+:Scene\+Node\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for Tarbora\+:\+:Scene\+Node\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Tarbora\+:\+:Scene\+Node\+:\nopagebreak
+Collaboration diagram for Tarbora\+:\+:Scene\+Node\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,8 +32,8 @@ virtual void {\bfseries Update} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_aff5dabdf9d6e3a022c44612f24ec9cd4}\label{classTarbora_1_1SceneNode_aff5dabdf9d6e3a022c44612f24ec9cd4}} 
 virtual void {\bfseries Draw} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, glm\+::mat4 \&parent\+Transform)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_a47380e8ad0072db88e097771ee47bd78}\label{classTarbora_1_1SceneNode_a47380e8ad0072db88e097771ee47bd78}} 
-virtual void {\bfseries Draw\+Children} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, glm\+::mat4 \&parent\+Transform)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a83d18f622f63dbb91a676c3c69815942}\label{classTarbora_1_1SceneNode_a83d18f622f63dbb91a676c3c69815942}} 
+virtual void {\bfseries Draw\+Children} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, const glm\+::mat4 \&parent\+Transform)
 \item 
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_a67018d89636c37f1b5eeae83c03176e2}\label{classTarbora_1_1SceneNode_a67018d89636c37f1b5eeae83c03176e2}} 
 virtual bool {\bfseries Add\+Child} (Scene\+Node\+Ptr child)
@@ -48,9 +50,6 @@ virtual bool {\bfseries Remove\+Child} (Actor\+Id id)
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_ad5939b9062f6235530aeb71a4df43300}\label{classTarbora_1_1SceneNode_ad5939b9062f6235530aeb71a4df43300}} 
 virtual bool {\bfseries Remove\+Child} (std\+::string name)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_aae5ec8f2f877f79aeec32264c08acf23}\label{classTarbora_1_1SceneNode_aae5ec8f2f877f79aeec32264c08acf23}} 
-bool {\bfseries On\+Actor\+Event} (\hyperlink{structTarbora_1_1ActorEvent}{Actor\+Event} $\ast$e)
-\item 
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_a02c5943ff54794c5db8ea1f644d3ddc2}\label{classTarbora_1_1SceneNode_a02c5943ff54794c5db8ea1f644d3ddc2}} 
 bool {\bfseries Is\+Visible} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene)
 \item 
@@ -60,47 +59,77 @@ Actor\+Id {\bfseries Get\+Actor\+Id} () const
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_a5f89f19eed21c23d2adf7ccad61fef3b}\label{classTarbora_1_1SceneNode_a5f89f19eed21c23d2adf7ccad61fef3b}} 
 const char $\ast$ {\bfseries Get\+Name} () const
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_afd058c0d9c36ba5aa725c19b98d8d028}\label{classTarbora_1_1SceneNode_afd058c0d9c36ba5aa725c19b98d8d028}} 
-void {\bfseries Set\+Transform} (const glm\+::mat4 $\ast$matrix=nullptr)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a9bb7bb3d0bdca07d9e2e0d2e77607971}\label{classTarbora_1_1SceneNode_a9bb7bb3d0bdca07d9e2e0d2e77607971}} 
+void {\bfseries Set\+Position} (const glm\+::vec3 \&position)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_a2f2e4ae74676c05aceebdd485384470f}\label{classTarbora_1_1SceneNode_a2f2e4ae74676c05aceebdd485384470f}} 
-glm\+::mat4 const {\bfseries Get\+Global\+Matrix} ()
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a31e4d5450df32c9cde88787921e04abc}\label{classTarbora_1_1SceneNode_a31e4d5450df32c9cde88787921e04abc}} 
+void {\bfseries Move} (const glm\+::vec3 \&vector)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_ad1c47c225fa3183c970e0ea1486c0371}\label{classTarbora_1_1SceneNode_ad1c47c225fa3183c970e0ea1486c0371}} 
-glm\+::mat4 const  \& {\bfseries Get\+Local\+Matrix} () const
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a0978f3bb0b9fdf9c7cda4caafc00f8ca}\label{classTarbora_1_1SceneNode_a0978f3bb0b9fdf9c7cda4caafc00f8ca}} 
+void {\bfseries Move\+To} (const glm\+::vec3 \&position, float time\+To\+Complete)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_add1d5ca10356cfd357b913278a30b959}\label{classTarbora_1_1SceneNode_add1d5ca10356cfd357b913278a30b959}} 
-void {\bfseries Set\+Position} (const glm\+::vec3 \&pos)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_afa27e6df0d90e53ebecebda9602033d6}\label{classTarbora_1_1SceneNode_afa27e6df0d90e53ebecebda9602033d6}} 
+glm\+::vec3 const  \& {\bfseries Get\+Position} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_aaa5e7733bdf51cc576c3c5f92ab02ce8}\label{classTarbora_1_1SceneNode_aaa5e7733bdf51cc576c3c5f92ab02ce8}} 
-glm\+::vec3 const {\bfseries Get\+Position} ()
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a43bfc3aacb1b1f52ad2bfeab360c66fd}\label{classTarbora_1_1SceneNode_a43bfc3aacb1b1f52ad2bfeab360c66fd}} 
+void {\bfseries Set\+Rotation} (const glm\+::vec3 \&rotation)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_a797c13e0742b96f7905ee2b3c40e5437}\label{classTarbora_1_1SceneNode_a797c13e0742b96f7905ee2b3c40e5437}} 
-void {\bfseries Set\+Rotation} (const glm\+::mat3 \&rot)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a7a9d38d19a94a9a7e31cf056ddf9cc8c}\label{classTarbora_1_1SceneNode_a7a9d38d19a94a9a7e31cf056ddf9cc8c}} 
+void {\bfseries Rotate} (const glm\+::vec3 \&angles)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_af52694587e7cf5a544e90a030f498566}\label{classTarbora_1_1SceneNode_af52694587e7cf5a544e90a030f498566}} 
-void {\bfseries Set\+Origin} (glm\+::vec3 \&origin)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a2688baa972fb56addfc0b906a45a900c}\label{classTarbora_1_1SceneNode_a2688baa972fb56addfc0b906a45a900c}} 
+void {\bfseries Rotate\+To} (const glm\+::vec3 \&rotation, float time\+To\+Complete)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_aa677ca95c7fe42c62f8e57782972cc4d}\label{classTarbora_1_1SceneNode_aa677ca95c7fe42c62f8e57782972cc4d}} 
-void {\bfseries Rotate\+Global} (glm\+::vec3 \&rotation)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_af2e83d45cbc7dd953a2cdf42b1582348}\label{classTarbora_1_1SceneNode_af2e83d45cbc7dd953a2cdf42b1582348}} 
+glm\+::vec3 const  \& {\bfseries Get\+Rotation} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_a66934f9362b01e2023ebad095b8a60f8}\label{classTarbora_1_1SceneNode_a66934f9362b01e2023ebad095b8a60f8}} 
-void {\bfseries Rotate\+Local} (glm\+::vec3 \&rotation)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_afa97d9c4edb7503c90bbf926b78e3218}\label{classTarbora_1_1SceneNode_afa97d9c4edb7503c90bbf926b78e3218}} 
+void {\bfseries Set\+Rotation\+Matrix} (const glm\+::mat3 \&rotation)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_a955d55ec6eed34541a934862b69b4e33}\label{classTarbora_1_1SceneNode_a955d55ec6eed34541a934862b69b4e33}} 
-void {\bfseries Rotate\+Around} (float angle, glm\+::vec3 \&dir)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a3ef75206863a0e560773fc6a05175584}\label{classTarbora_1_1SceneNode_a3ef75206863a0e560773fc6a05175584}} 
+void {\bfseries Set\+Scale} (const glm\+::vec3 \&scale)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_a73812a5274cef2ba33e5522ab94bd5dd}\label{classTarbora_1_1SceneNode_a73812a5274cef2ba33e5522ab94bd5dd}} 
-void {\bfseries Translate\+Global} (glm\+::vec3 \&movement)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a4dc8d4d2ba0904386d2d96049cd9c528}\label{classTarbora_1_1SceneNode_a4dc8d4d2ba0904386d2d96049cd9c528}} 
+void {\bfseries Set\+Global\+Scale} (const glm\+::vec3 \&scale)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1SceneNode_aa42cceded941e30564d563983d70d6be}\label{classTarbora_1_1SceneNode_aa42cceded941e30564d563983d70d6be}} 
-void {\bfseries Translate\+Local} (glm\+::vec3 \&movement)
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a60b1d4854ef5437bf35e9a8ff53b8fb7}\label{classTarbora_1_1SceneNode_a60b1d4854ef5437bf35e9a8ff53b8fb7}} 
+void {\bfseries Scale} (const glm\+::vec3 \&scale)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a9b740b9b34f19c2599825c2d0faf6100}\label{classTarbora_1_1SceneNode_a9b740b9b34f19c2599825c2d0faf6100}} 
+void {\bfseries Scale\+To} (const glm\+::vec3 \&scale, float time\+To\+Complete)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_ab8cdd38c937c5ee4d9aa7e02f312e9f3}\label{classTarbora_1_1SceneNode_ab8cdd38c937c5ee4d9aa7e02f312e9f3}} 
+glm\+::vec3 const  \& {\bfseries Get\+Scale} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_ab5b881724622b9061eb813dfeb43e55e}\label{classTarbora_1_1SceneNode_ab5b881724622b9061eb813dfeb43e55e}} 
+void {\bfseries Set\+Origin} (const glm\+::vec3 \&origin)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a1823df3fe2d80119d345c402dad8b030}\label{classTarbora_1_1SceneNode_a1823df3fe2d80119d345c402dad8b030}} 
+void {\bfseries Set\+Transform} (glm\+::mat4 $\ast$matrix=nullptr)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a00eee97e11b7cb2797b4aff93c9c2416}\label{classTarbora_1_1SceneNode_a00eee97e11b7cb2797b4aff93c9c2416}} 
+glm\+::mat4 const {\bfseries Get\+Global\+Transform} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a4a02f67eadc615646a500afecdf01f05}\label{classTarbora_1_1SceneNode_a4a02f67eadc615646a500afecdf01f05}} 
+glm\+::mat4 const  \& {\bfseries Get\+Local\+Transform} () const
 \item 
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_adf2d65499fb59d564af1811e391eed1b}\label{classTarbora_1_1SceneNode_adf2d65499fb59d564af1811e391eed1b}} 
 void {\bfseries Set\+Radius} (float radius)
 \item 
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_a8851543d02711dc9e017da711bd57607}\label{classTarbora_1_1SceneNode_a8851543d02711dc9e017da711bd57607}} 
 float {\bfseries Get\+Radius} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a26548c16efbc646bf05be26b5847298a}\label{classTarbora_1_1SceneNode_a26548c16efbc646bf05be26b5847298a}} 
+bool {\bfseries Interpolate\+Position} (float fraction)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_ac2266aace714e0a05116a9d46036b8d1}\label{classTarbora_1_1SceneNode_ac2266aace714e0a05116a9d46036b8d1}} 
+bool {\bfseries Interpolate\+Rotation} (float fraction)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a618ad014ed8c56f14a20cc0b49337859}\label{classTarbora_1_1SceneNode_a618ad014ed8c56f14a20cc0b49337859}} 
+bool {\bfseries Interpolate\+Scale} (float fraction)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -120,6 +149,51 @@ std\+::string {\bfseries m\+\_\+\+Name}
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_af024c7021a33fc7188163ece9c84be83}\label{classTarbora_1_1SceneNode_af024c7021a33fc7188163ece9c84be83}} 
 glm\+::mat4 {\bfseries m\+\_\+\+Local\+Matrix}
 \item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a657958ccbe53b01f3817f3ff8e85c214}\label{classTarbora_1_1SceneNode_a657958ccbe53b01f3817f3ff8e85c214}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Old\+Position}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a8ae14b132aa3b97192d8fcb3ab73a164}\label{classTarbora_1_1SceneNode_a8ae14b132aa3b97192d8fcb3ab73a164}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Position}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_ad12a6aba8211eebf8d30903258168de5}\label{classTarbora_1_1SceneNode_ad12a6aba8211eebf8d30903258168de5}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Target\+Position}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a5dbd4637610898c84ab6bad3abd7370d}\label{classTarbora_1_1SceneNode_a5dbd4637610898c84ab6bad3abd7370d}} 
+float {\bfseries m\+\_\+\+Position\+Counter}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_af54f685417516bb079d3b6d1eb967cec}\label{classTarbora_1_1SceneNode_af54f685417516bb079d3b6d1eb967cec}} 
+float {\bfseries m\+\_\+\+Position\+Time}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a41612ea4cd353eb3a0a3b6b92889d8a7}\label{classTarbora_1_1SceneNode_a41612ea4cd353eb3a0a3b6b92889d8a7}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Rotation}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_ac0af363bb3106b09321ff7aa05c73228}\label{classTarbora_1_1SceneNode_ac0af363bb3106b09321ff7aa05c73228}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Old\+Rotation}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a350d625cf3e8fa23ba03c56f07cea31d}\label{classTarbora_1_1SceneNode_a350d625cf3e8fa23ba03c56f07cea31d}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Target\+Rotation}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a5b63aa879bcf40d9c6af6df64b47c940}\label{classTarbora_1_1SceneNode_a5b63aa879bcf40d9c6af6df64b47c940}} 
+float {\bfseries m\+\_\+\+Rotation\+Counter}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_ac5b68b5b8d6de8bdaacc27f8c16013cb}\label{classTarbora_1_1SceneNode_ac5b68b5b8d6de8bdaacc27f8c16013cb}} 
+float {\bfseries m\+\_\+\+Rotation\+Time}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a6b03724960d67e1aaef16ef59d1b95ac}\label{classTarbora_1_1SceneNode_a6b03724960d67e1aaef16ef59d1b95ac}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Old\+Scale}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a7c8692e4f9200962652baab3d012dd92}\label{classTarbora_1_1SceneNode_a7c8692e4f9200962652baab3d012dd92}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Scale}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a858a78ac62c69015fc20a8cab639d44b}\label{classTarbora_1_1SceneNode_a858a78ac62c69015fc20a8cab639d44b}} 
+glm\+::vec3 {\bfseries m\+\_\+\+Target\+Scale}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a0e3d3c8f04f2d23dc7a648f89f0c83d1}\label{classTarbora_1_1SceneNode_a0e3d3c8f04f2d23dc7a648f89f0c83d1}} 
+float {\bfseries m\+\_\+\+Scale\+Counter}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1SceneNode_a4cd34ef94f2c4942a7e08718778760ff}\label{classTarbora_1_1SceneNode_a4cd34ef94f2c4942a7e08718778760ff}} 
+float {\bfseries m\+\_\+\+Scale\+Time}
+\item 
 \mbox{\Hypertarget{classTarbora_1_1SceneNode_a36c7a867f397f90ebcf8a4fe8ab7e9dd}\label{classTarbora_1_1SceneNode_a36c7a867f397f90ebcf8a4fe8ab7e9dd}} 
 glm\+::vec3 {\bfseries m\+\_\+\+Origin}
 \item 
@@ -136,5 +210,5 @@ class {\bfseries Scene}
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Game\+View/inc/Scene\+Node.\+hpp\item 
-Tarbora/\+Game\+View/src/Scene\+Node.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/inc/Scene\+Node.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/src/Scene\+Node.\+cpp\end{DoxyCompactItemize}

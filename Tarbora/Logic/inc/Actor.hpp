@@ -2,8 +2,6 @@
 #include "ActorComponent.hpp"
 
 namespace Tarbora {
-    class World;
-
     class ActorTest
     {
         friend class ActorFactory;

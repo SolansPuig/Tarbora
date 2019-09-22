@@ -30,7 +30,7 @@ target_link_libraries (tarbora
     PhysicsEngine
     GraphicsEngine
     ResourceManager
-    MessageManager
+    Messages
     glfw
     imgui
     glm
@@ -42,7 +42,7 @@ target_link_libraries (tarbora
     LinearMath
 )
 
-cotire(tarbora)
+# cotire(tarbora)
 
 # add_executable (tarbora_client main_client.cpp)
 # target_link_libraries (tarbora_client

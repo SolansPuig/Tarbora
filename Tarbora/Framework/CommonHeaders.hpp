@@ -1,21 +1,34 @@
 #pragma once
-#include "Logger.hpp"
-#include "External/glm/glm/glm.hpp"
-#include "External/glm/glm/gtx/string_cast.hpp"
-#include "External/glm/glm/gtc/type_ptr.hpp"
+
+// Utilities ------------
+#include <csignal>
+#include <stdio.h>
+#include <stdarg.h>
+#include <functional>
+#include <optional>
 #include <memory>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <ctime>
+
+// Strings ---------------
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <list>
-#include <map>
-#include <vector>
-#include <set>
-#include <csignal>
-#include <optional>
 
-#define INVALID_ID 0
-#define SKY_ID 10
-#define MAIN_CAMERA_ID 15
-typedef unsigned int ComponentId;
-typedef unsigned int ActorId;
+// Containers -------------
+// #include <array>
+#include <vector>
+// #include <deque>
+#include <list>
+// #include <forward_list>
+#include <set>
+#include <map>
+// #include <unordered_set>
+// #include <unordered_map>
+// #include <stack>
+#include <queue>
+
+// Algorithms ------------
+#include <algorithm>

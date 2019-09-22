@@ -1,4 +1,5 @@
 #pragma once
+#include "../../CommonHeaders.hpp"
 #include "../../Global.hpp"
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"

@@ -11,7 +11,7 @@ namespace Tarbora {
 
         void GetInput() override
         {
-            if (m_View->Input()->GetKeyDown(KEY_F3)) {
+            if (static_cast<GraphicView*>(m_Module)->Input()->GetKeyDown(KEY_F3)) {
                 m_active = !m_active;
             }
         }
@@ -25,13 +25,11 @@ namespace Tarbora {
         {
             const float DISTANCE = 10.0f;
 
-            ImGuiViewport* viewport = ImGui::GetMainViewport();
-            ImVec2 window_pos = ImVec2(viewport->Pos.x + DISTANCE, viewport->Pos.y + DISTANCE);
+            ImVec2 window_pos = ImVec2(ImGui::GetWindowPos().x + DISTANCE, ImGui::GetWindowPos().y + DISTANCE);
             ImVec2 window_pos_pivot = ImVec2(0.0f, 0.0f);
             ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
-            ImGui::SetNextWindowViewport(viewport->ID);
             ImGui::SetNextWindowBgAlpha(0.3f);
-            ImGui::Begin("Metrics", &m_active, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
+            ImGui::Begin("Metrics", &m_active, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
             ImGui::Text("FPS: %.0f", 1/m_elapsed_time);
             ImGui::End();
         }

@@ -15,7 +15,7 @@ namespace Tarbora {
 
         void GetInput() override
         {
-            if (m_View->Input()->GetKeyDown(KEY_F4) && !m_fullWindow) {
+            if (static_cast<GraphicView*>(m_Module)->Input()->GetKeyDown(KEY_F4) && !m_fullWindow) {
                 m_active = !m_active;
             }
         }
@@ -35,12 +35,9 @@ namespace Tarbora {
         {
             static std::string input("");
 
-            ImGuiViewport* viewport = ImGui::GetMainViewport();
-            ImGui::SetNextWindowViewport(viewport->ID);
-
             if (m_fullWindow) {
-                ImGui::SetNextWindowPos(viewport->Pos);
-                ImGui::SetNextWindowSize(viewport->Size);
+                ImGui::SetNextWindowPos(ImGui::GetWindowPos());
+                ImGui::SetNextWindowSize(ImGui::GetWindowSize());
             } else {
                 ImGui::SetNextWindowSize(ImVec2(500.0f, 500.0f));
             }

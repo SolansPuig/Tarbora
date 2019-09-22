@@ -12,15 +12,8 @@ namespace Tarbora {
         ImGuiIO& io = ImGui::GetIO();
         io.Fonts->AddFontFromFileTTF("../Resources/fonts/Roboto-Medium.ttf", 16.0f);
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-        io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
         ImGui::StyleColorsDark();
-        ImGuiStyle& style = ImGui::GetStyle();
-        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-        {
-            style.WindowRounding = 0.0f;
-            style.Colors[ImGuiCol_WindowBg].w = 1.0f;
-        }
+        // ImGuiStyle& style = ImGui::GetStyle();
 
         ImGui_ImplGlfw_InitForOpenGL(m_View->GraphicsEngine()->GetWindow()->GetRawWindow(), true);
         ImGui_ImplOpenGL3_Init("#version 410");
@@ -42,15 +35,7 @@ namespace Tarbora {
 
     void Gui::AfterDraw()
     {
-        ImGuiIO& io = ImGui::GetIO();
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-        {
-            GLFWwindow* backup_current_context = glfwGetCurrentContext();
-            ImGui::UpdatePlatformWindows();
-            ImGui::RenderPlatformWindowsDefault();
-            glfwMakeContextCurrent(backup_current_context);
-        }
     }
 }

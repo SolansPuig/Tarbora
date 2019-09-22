@@ -73,15 +73,43 @@ $(function() {
 <div class="title">Tarbora::Scene Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Collaboration diagram for Tarbora::Scene:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTarbora_1_1Scene__coll__graph.png" border="0" usemap="#Tarbora_1_1Scene_coll__map" alt="Collaboration graph"/></div>
+<map name="Tarbora_1_1Scene_coll__map" id="Tarbora_1_1Scene_coll__map">
+<area shape="rect" id="node2" href="classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="14,157,162,184"/>
+<area shape="rect" id="node3" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="30,81,146,108"/>
+<area shape="rect" id="node4" href="classTarbora_1_1AbstractModule.html" title="Each of the parts that compose the Engine. " alt="" coords="5,5,171,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aa9310feeb7a221c6cd0f1e1c71b62195"><td class="memItemLeft" align="right" valign="top"><a id="aa9310feeb7a221c6cd0f1e1c71b62195"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Scene</b> (<a class="el" href="classTarbora_1_1GraphicView.html">GraphicView</a> *view)</td></tr>
+<tr class="separator:aa9310feeb7a221c6cd0f1e1c71b62195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e04a725cf3d429857ac172aaa1b879c"><td class="memItemLeft" align="right" valign="top"><a id="a7e04a725cf3d429857ac172aaa1b879c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> (float deltaTime)</td></tr>
 <tr class="separator:a7e04a725cf3d429857ac172aaa1b879c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29a7a8845364aaa76db679d4e58f70ed"><td class="memItemLeft" align="right" valign="top"><a id="a29a7a8845364aaa76db679d4e58f70ed"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> ()</td></tr>
 <tr class="separator:a29a7a8845364aaa76db679d4e58f70ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfa9073b3555c7f264eb66e5c8c34ca8"><td class="memItemLeft" align="right" valign="top"><a id="acfa9073b3555c7f264eb66e5c8c34ca8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateActorModel</b> (ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture)</td></tr>
+<tr class="separator:acfa9073b3555c7f264eb66e5c8c34ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c0ac47ee6e38af6c7b8003231a3a155"><td class="memItemLeft" align="right" valign="top"><a id="a0c0ac47ee6e38af6c7b8003231a3a155"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateActorModel</b> (ActorId id, std::string entity, std::string variant)</td></tr>
+<tr class="separator:a0c0ac47ee6e38af6c7b8003231a3a155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09ae9361429b5ec7ee3a3ee42b77f510"><td class="memItemLeft" align="right" valign="top"><a id="a09ae9361429b5ec7ee3a3ee42b77f510"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AnimateActor</b> (ActorId id, std::string animation)</td></tr>
+<tr class="separator:a09ae9361429b5ec7ee3a3ee42b77f510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc84125c8b349f85b1e35193ed900000"><td class="memItemLeft" align="right" valign="top"><a id="acc84125c8b349f85b1e35193ed900000"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateSkybox</b> (std::string shader, std::string texture)</td></tr>
+<tr class="separator:acc84125c8b349f85b1e35193ed900000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a764e523b06753d3fdbe6ac642bd2d64b"><td class="memItemLeft" align="right" valign="top"><a id="a764e523b06753d3fdbe6ac642bd2d64b"></a>
+std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Skybox.html">Skybox</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetSkybox</b> ()</td></tr>
+<tr class="separator:a764e523b06753d3fdbe6ac642bd2d64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8335dd180437f99af5fb342bf8c9f6a6"><td class="memItemLeft" align="right" valign="top"><a id="a8335dd180437f99af5fb342bf8c9f6a6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddChild</b> (SceneNodePtr child, RenderPass renderPass)</td></tr>
 <tr class="separator:a8335dd180437f99af5fb342bf8c9f6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -91,24 +119,27 @@ SceneNodePtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetChild</b> 
 <tr class="memitem:ad3967c71f11edcc32bc8d2a7d8abbe62"><td class="memItemLeft" align="right" valign="top"><a id="ad3967c71f11edcc32bc8d2a7d8abbe62"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveChild</b> (ActorId id)</td></tr>
 <tr class="separator:ad3967c71f11edcc32bc8d2a7d8abbe62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08b677a81a817563f7c4116277055d86"><td class="memItemLeft" align="right" valign="top"><a id="a08b677a81a817563f7c4116277055d86"></a>
-MeshNodePtr&#160;</td><td class="memItemRight" valign="bottom"><b>CreateNode</b> (ActorId id, JsonPtr resource, raw_json j, float pixelDensity, float textureSize)</td></tr>
-<tr class="separator:a08b677a81a817563f7c4116277055d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2533d3656c2601dc955e5f54e89b7e38"><td class="memItemLeft" align="right" valign="top"><a id="a2533d3656c2601dc955e5f54e89b7e38"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateActor</b> (ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture)</td></tr>
-<tr class="separator:a2533d3656c2601dc955e5f54e89b7e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf0eb31b7de572adae21cb39d3f58f02"><td class="memItemLeft" align="right" valign="top"><a id="aaf0eb31b7de572adae21cb39d3f58f02"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCamera</b> (CameraPtr camera)</td></tr>
 <tr class="separator:aaf0eb31b7de572adae21cb39d3f58f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e4d814a2fb7422dbdcfeebde985fdf7"><td class="memItemLeft" align="right" valign="top"><a id="a0e4d814a2fb7422dbdcfeebde985fdf7"></a>
-const CameraPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetCamera</b> () const</td></tr>
-<tr class="separator:a0e4d814a2fb7422dbdcfeebde985fdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80c14fb5ac52c7894c24ccfe87bd114d"><td class="memItemLeft" align="right" valign="top"><a id="a80c14fb5ac52c7894c24ccfe87bd114d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCamera</b> (ActorId id, std::string nodeName)</td></tr>
+<tr class="separator:a80c14fb5ac52c7894c24ccfe87bd114d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7056e693fa0d3407401ae8555d42165"><td class="memItemLeft" align="right" valign="top"><a id="aa7056e693fa0d3407401ae8555d42165"></a>
+CameraPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetCamera</b> ()</td></tr>
+<tr class="separator:aa7056e693fa0d3407401ae8555d42165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa21aac20c7f614f7b871a85d3b33b80d"><td class="memItemLeft" align="right" valign="top"><a id="aa21aac20c7f614f7b871a85d3b33b80d"></a>
+std::shared_ptr&lt; <a class="el" href="classTarbora_1_1GraphicsEngineImpl.html">GraphicsEngineImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GraphicsEngine</b> ()</td></tr>
+<tr class="separator:aa21aac20c7f614f7b871a85d3b33b80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aabd1a11a2b8bb7aedc3915e135c19f7a"><td class="memItemLeft" align="right" valign="top"><a id="aabd1a11a2b8bb7aedc3915e135c19f7a"></a>
 std::shared_ptr&lt; <a class="el" href="classTarbora_1_1RootNode.html">RootNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_Root</b></td></tr>
 <tr class="separator:aabd1a11a2b8bb7aedc3915e135c19f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4478ba18d9243358a7449a31b932143"><td class="memItemLeft" align="right" valign="top"><a id="ae4478ba18d9243358a7449a31b932143"></a>
+std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Skybox.html">Skybox</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_Skybox</b></td></tr>
+<tr class="separator:ae4478ba18d9243358a7449a31b932143"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab40b861574f5e22c2af86c83bffff312"><td class="memItemLeft" align="right" valign="top"><a id="ab40b861574f5e22c2af86c83bffff312"></a>
 CameraPtr&#160;</td><td class="memItemRight" valign="bottom"><b>m_Camera</b></td></tr>
 <tr class="separator:ab40b861574f5e22c2af86c83bffff312"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,19 +149,13 @@ SceneActorMap&#160;</td><td class="memItemRight" valign="bottom"><b>m_ActorMap</
 <tr class="memitem:ab62af3e98c2ae7d0d5354de05fbc824e"><td class="memItemLeft" align="right" valign="top"><a id="ab62af3e98c2ae7d0d5354de05fbc824e"></a>
 glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>m_Projection</b></td></tr>
 <tr class="separator:ab62af3e98c2ae7d0d5354de05fbc824e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f18d252caf82e16954b903056e175f2"><td class="memItemLeft" align="right" valign="top"><a id="a6f18d252caf82e16954b903056e175f2"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>EvtWindowResizeId</b></td></tr>
-<tr class="separator:a6f18d252caf82e16954b903056e175f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaedbac4e3c8a1b0e79d6dd742ebe8062"><td class="memItemLeft" align="right" valign="top"><a id="aaedbac4e3c8a1b0e79d6dd742ebe8062"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>EvtActorMoveId</b></td></tr>
-<tr class="separator:aaedbac4e3c8a1b0e79d6dd742ebe8062"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98f043244b083fa70be3bfb1837236b2"><td class="memItemLeft" align="right" valign="top"><a id="a98f043244b083fa70be3bfb1837236b2"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>EvtCreateActorModelId</b></td></tr>
-<tr class="separator:a98f043244b083fa70be3bfb1837236b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33a04f0999fc7585043461fa3effa8e4"><td class="memItemLeft" align="right" valign="top"><a id="a33a04f0999fc7585043461fa3effa8e4"></a>
+<a class="el" href="classTarbora_1_1GraphicView.html">GraphicView</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_View</b></td></tr>
+<tr class="separator:a33a04f0999fc7585043461fa3effa8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/GameView/inc/<a class="el" href="Scene_8hpp_source.html">Scene.hpp</a></li>
-<li>Tarbora/GameView/src/Scene.cpp</li>
+<li>Tarbora/Views/GraphicViews/inc/<a class="el" href="Scene_8hpp_source.html">Scene.hpp</a></li>
+<li>Tarbora/Views/GraphicViews/src/Scene.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

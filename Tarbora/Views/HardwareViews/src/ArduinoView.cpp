@@ -1,4 +1,5 @@
 #include "../inc/ArduinoView.hpp"
+#include "../../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
     ArduinoView::ArduinoView(std::string server_address)
@@ -23,7 +24,7 @@ namespace Tarbora {
         int data = m_Arduino.get() / 5;
         if (data > 0)
         {
-            ApplyForce(this, 3, data, glm::vec3(0.f, 1.f, 0.f));
+            GetMessageManager()->Trigger("apply_force", ApplyPhysics(3, data, glm::vec3(0.f, 1.f, 0.f)));
         }
     }
 }

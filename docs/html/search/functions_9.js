@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['setdensity',['SetDensity',['../classTarbora_1_1RigidBody.html#a154ac3b0b5f1e6da32ee6e02b65822d8',1,'Tarbora::RigidBody']]],
-  ['setdimensions',['SetDimensions',['../classTarbora_1_1BoxBody.html#ae4b822b4acb781e9fdec907e8a92b27b',1,'Tarbora::BoxBody']]],
-  ['setfriction',['SetFriction',['../classTarbora_1_1RigidBody.html#a9408bdeb536881e29f3706bb061220d2',1,'Tarbora::RigidBody']]],
-  ['setlevel',['SetLevel',['../classTarbora_1_1Logger.html#af2a11244236bad59fce9cc6a1360af29',1,'Tarbora::Logger']]],
-  ['setproperties',['SetProperties',['../classTarbora_1_1RigidBody.html#a0ec675847bf2c6e5f34002eab0c29ef0',1,'Tarbora::RigidBody']]],
-  ['setradius',['SetRadius',['../classTarbora_1_1SphereBody.html#a218bff80687143aff24f524cc01f2175',1,'Tarbora::SphereBody']]],
-  ['setrestitution',['SetRestitution',['../classTarbora_1_1RigidBody.html#a60ba7ea96ffada37237ce4345b58eb23',1,'Tarbora::RigidBody']]],
-  ['setvelocity',['SetVelocity',['../classTarbora_1_1PhysicsEngine.html#a1c4650ee51cd6094b6faa141206a6403',1,'Tarbora::PhysicsEngine::SetVelocity()'],['../classTarbora_1_1RigidBody.html#adeeb63271e410f12a8ccc3b7d9cb95fb',1,'Tarbora::RigidBody::SetVelocity()']]],
-  ['spherebody',['SphereBody',['../classTarbora_1_1SphereBody.html#a35e582dfbc4660cb796360ceec62e168',1,'Tarbora::SphereBody']]],
-  ['stop',['Stop',['../classTarbora_1_1PhysicsEngine.html#aca13d6e0e807662cd096fe899c5b8776',1,'Tarbora::PhysicsEngine::Stop()'],['../classTarbora_1_1RigidBody.html#a9e1f015de3b1ad6ad54b93d365b6981f',1,'Tarbora::RigidBody::Stop()']]]
+  ['raycast',['RayCast',['../classTarbora_1_1PhysicsEngine.html#a4650b5c17a52953357ae693f5c07bf68',1,'Tarbora::PhysicsEngine::RayCast()'],['../classTarbora_1_1RigidBody.html#afcb7edde5f51569c31385ccb75728e8a',1,'Tarbora::RigidBody::RayCast()']]],
+  ['register',['Register',['../classTarbora_1_1RigidBody.html#a5f41c214aabe2a7f069a317cb755f0f1',1,'Tarbora::RigidBody::Register()'],['../classTarbora_1_1SphereBody.html#aa4c177c62075afa568b73ec019201dd7',1,'Tarbora::SphereBody::Register()'],['../classTarbora_1_1CapsuleBody.html#a1083e8df5302931850b34a9c9ec764e6',1,'Tarbora::CapsuleBody::Register()'],['../classTarbora_1_1BoxBody.html#a9030e38449087fdf091d9daea5e6efbe',1,'Tarbora::BoxBody::Register()']]],
+  ['registerloader',['RegisterLoader',['../classTarbora_1_1ResourceManager.html#a531683525f49833ac4b06916cd8a2bc8',1,'Tarbora::ResourceManager']]],
+  ['removeobject',['RemoveObject',['../classTarbora_1_1PhysicsEngine.html#a4debfab1c812e22ccd4f65b0b7e9cea7',1,'Tarbora::PhysicsEngine']]],
+  ['restrictrotation',['RestrictRotation',['../classTarbora_1_1PhysicsEngine.html#a57ee013c92f3721beb4efbc2405522dd',1,'Tarbora::PhysicsEngine::RestrictRotation()'],['../classTarbora_1_1RigidBody.html#aaf5efa034c4e9578612751b25d599106',1,'Tarbora::RigidBody::RestrictRotation()']]],
+  ['run',['Run',['../classTarbora_1_1AbstractModule.html#abc4de331276ff78b18efafe14498bf21',1,'Tarbora::AbstractModule::Run()'],['../classTarbora_1_1MessageBus.html#a1de6d06fd522da0c19c4b4889a26e5dd',1,'Tarbora::MessageBus::Run()'],['../classTarbora_1_1Module.html#a62a1e7435f81e085354cbe603a023aee',1,'Tarbora::Module::Run()']]],
+  ['runthread',['RunThread',['../classTarbora_1_1AbstractModule.html#a2d5baaab3f030968e4ed352b43b155e7',1,'Tarbora::AbstractModule']]]
 ];

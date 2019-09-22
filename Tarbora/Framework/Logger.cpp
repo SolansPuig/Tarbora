@@ -1,6 +1,4 @@
 #include "Logger.hpp"
-#include <stdarg.h>
-#include <ctime>
 
 namespace Tarbora {
     void Logger::Log(LogLevel level, const char *text, ...) {

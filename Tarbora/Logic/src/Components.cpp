@@ -1,6 +1,7 @@
 #include "../inc/Components.hpp"
 #include "../inc/TransformComponent.hpp"
 #include "../inc/World.hpp"
+#include "../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
     bool TypeComponent::Init(JsonPtr resource, raw_json data)
@@ -31,12 +32,12 @@ namespace Tarbora {
     void ModelComponent::AfterInit()
     {
         ActorId id = m_Owner->GetId();
-        CreateActorModel(m_World, id, m_Owner->GetEntityName(), "");
+        Trigger("create_actor_model", CreateActor(id, m_Owner->GetEntityName(), ""));
 
         std::shared_ptr<TransformComponent> transform = std::static_pointer_cast<TransformComponent>(m_Owner->GetComponent(TransformId));
         if (transform)
         {
-            MoveActor(m_World, id, transform->GetPosition(), transform->GetRotation());
+            Trigger("move_actor", MoveActor(id, transform->GetPosition(), transform->GetRotation()));
         }
     }
 }

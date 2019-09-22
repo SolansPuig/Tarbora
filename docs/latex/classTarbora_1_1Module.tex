@@ -1,0 +1,66 @@
+\hypertarget{classTarbora_1_1Module}{}\section{Tarbora\+:\+:Module Class Reference}
+\label{classTarbora_1_1Module}\index{Tarbora\+::\+Module@{Tarbora\+::\+Module}}
+
+
+Inheritance diagram for Tarbora\+:\+:Module\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTarbora_1_1Module__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tarbora\+:\+:Module\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classTarbora_1_1Module__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Module_a6d35f53c3259f4a55e1d66d17fc08e3e}\label{classTarbora_1_1Module_a6d35f53c3259f4a55e1d66d17fc08e3e}} 
+{\bfseries Module} (Client\+Id id, const std\+::string server\+Address)
+\item 
+virtual void \hyperlink{classTarbora_1_1Module_a62a1e7435f81e085354cbe603a023aee}{Run} () override
+\begin{DoxyCompactList}\small\item\em Start this module\textquotesingle{}s loop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTarbora_1_1Module_a92c5bea564ff0e9fd6bd6cf8509eb8fc}\label{classTarbora_1_1Module_a92c5bea564ff0e9fd6bd6cf8509eb8fc}} 
+virtual void {\bfseries Get\+Input} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Module_a8097596a5bae0353c9b25dd670bb4d76}\label{classTarbora_1_1Module_a8097596a5bae0353c9b25dd670bb4d76}} 
+virtual void {\bfseries Update} (float elapsed\+Time)=0
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Module_a2ee3849b4577b1ae705f9511d185588f}\label{classTarbora_1_1Module_a2ee3849b4577b1ae705f9511d185588f}} 
+virtual void {\bfseries Draw} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Module_aca2361d57f02594db6c14749ae5af588}\label{classTarbora_1_1Module_aca2361d57f02594db6c14749ae5af588}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1MessageManager}{Message\+Manager} $>$ {\bfseries Get\+Message\+Manager} () const
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTarbora_1_1Module_a62a1e7435f81e085354cbe603a023aee}\label{classTarbora_1_1Module_a62a1e7435f81e085354cbe603a023aee}} 
+\index{Tarbora\+::\+Module@{Tarbora\+::\+Module}!Run@{Run}}
+\index{Run@{Run}!Tarbora\+::\+Module@{Tarbora\+::\+Module}}
+\subsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Module\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Start this module\textquotesingle{}s loop. 
+
+It should stop when Abstract\+Module\+::m\+\_\+\+Run is set to false. 
+
+Implements \hyperlink{classTarbora_1_1AbstractModule_abc4de331276ff78b18efafe14498bf21}{Tarbora\+::\+Abstract\+Module}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Framework/Module.\+hpp\item 
+Tarbora/\+Framework/Module.\+cpp\end{DoxyCompactItemize}

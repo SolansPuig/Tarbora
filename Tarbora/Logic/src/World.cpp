@@ -1,12 +1,14 @@
 #include "../inc/World.hpp"
+#include "../inc/ActorFactory.hpp"
 #include "../inc/Components.hpp"
 #include "../inc/TransformComponent.hpp"
 #include "../inc/PhysicsComponent.hpp"
 #include "../inc/CharacterControllerComponent.hpp"
+#include "../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
-    World::World(std::string server_address, ActorId maxNumber) :
-        Module(1, server_address)
+    World::World(std::string serverAddress, ActorId maxNumber) :
+        Module(1, serverAddress)
     {
         PhysicsEngine::Init();
         m_ActorFactory = std::make_unique<ActorFactory>(this);
@@ -26,11 +28,9 @@ namespace Tarbora {
         AddComponentCreator("physics", PhysicsComponent::Creator);
         AddComponentCreator("character_controller", CharacterControllerComponent::Creator);
 
-        GetMessageManager()->Subscribe("create_actor", [this](std::string subject, std::string body)
+        GetMessageManager()->Subscribe("create_actor", [this](MessageSubject subject, MessageBody *body)
         {
-            CreateActorMessage m;
-            m.ParseFromString(body);
-
+            CreateActorBody m = body->GetContent<CreateActorBody>();
             Create(m.entity(), Vec3toGLM(m.position()), Vec3toGLM(m.rotation()));
         });
     }
@@ -63,14 +63,14 @@ namespace Tarbora {
         return 0;
     }
 
-    void World::Update(float deltaTime)
+    void World::Update(float elapsedTime)
     {
-        PhysicsEngine::Update(deltaTime);
+        PhysicsEngine::Update(elapsedTime);
         for (auto itr = m_ActorList.begin(); itr != m_ActorList.end(); itr++)
         {
             if (itr->GetNext() == nullptr)
             {
-                itr->Update(deltaTime);
+                itr->Update(elapsedTime);
             }
         }
     }

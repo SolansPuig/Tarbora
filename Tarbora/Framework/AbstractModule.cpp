@@ -1,5 +1,4 @@
 #include "AbstractModule.hpp"
-#include "Global.hpp"
 
 namespace Tarbora {
     AbstractModule::~AbstractModule()

@@ -10,7 +10,7 @@ namespace Tarbora {
 
         void GetInput() override
         {
-            if (m_View->Input()->GetKeyDown(KEY_F5)) {
+            if (static_cast<GraphicView*>(m_Module)->Input()->GetKeyDown(KEY_F5)) {
                 m_active = !m_active;
             }
         }

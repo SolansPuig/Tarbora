@@ -94,12 +94,21 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="memitem:ab20c015fd1b1aa9d8dd8e0c10a9ef249"><td class="memItemLeft" align="right" valign="top">static btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#ab20c015fd1b1aa9d8dd8e0c10a9ef249">AddSphere</a> (unsigned int id, float radius, float mass, float friction, float restitution, glm::mat4 &amp;transform)</td></tr>
 <tr class="memdesc:ab20c015fd1b1aa9d8dd8e0c10a9ef249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an sphere shaped rigid body.  <a href="#ab20c015fd1b1aa9d8dd8e0c10a9ef249">More...</a><br /></td></tr>
 <tr class="separator:ab20c015fd1b1aa9d8dd8e0c10a9ef249"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af511b9509696fa6ffcaa2515f3a391aa"><td class="memItemLeft" align="right" valign="top">static btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#af511b9509696fa6ffcaa2515f3a391aa">AddCapsule</a> (unsigned int id, float radius, float height, float mass, float friction, float restitution, glm::mat4 &amp;transform)</td></tr>
+<tr class="memdesc:af511b9509696fa6ffcaa2515f3a391aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an capsule shaped rigid body.  <a href="#af511b9509696fa6ffcaa2515f3a391aa">More...</a><br /></td></tr>
+<tr class="separator:af511b9509696fa6ffcaa2515f3a391aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ec40e1a3ab05c7fe1e0216534484750"><td class="memItemLeft" align="right" valign="top">static btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#a4ec40e1a3ab05c7fe1e0216534484750">AddBox</a> (unsigned int id, glm::vec3 &amp;dimensions, float mass, float friction, float restitution, glm::mat4 &amp;transform)</td></tr>
 <tr class="memdesc:a4ec40e1a3ab05c7fe1e0216534484750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a cube shaped rigid body.  <a href="#a4ec40e1a3ab05c7fe1e0216534484750">More...</a><br /></td></tr>
 <tr class="separator:a4ec40e1a3ab05c7fe1e0216534484750"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4debfab1c812e22ccd4f65b0b7e9cea7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#a4debfab1c812e22ccd4f65b0b7e9cea7">RemoveObject</a> (btCollisionObject *object)</td></tr>
 <tr class="memdesc:a4debfab1c812e22ccd4f65b0b7e9cea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy and unregister a rigid body.  <a href="#a4debfab1c812e22ccd4f65b0b7e9cea7">More...</a><br /></td></tr>
 <tr class="separator:a4debfab1c812e22ccd4f65b0b7e9cea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57ee013c92f3721beb4efbc2405522dd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#a57ee013c92f3721beb4efbc2405522dd">RestrictRotation</a> (btRigidBody *body, float x, float y, float z)</td></tr>
+<tr class="memdesc:a57ee013c92f3721beb4efbc2405522dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restrict the rotation of the body on certain planes.  <a href="#a57ee013c92f3721beb4efbc2405522dd">More...</a><br /></td></tr>
+<tr class="separator:a57ee013c92f3721beb4efbc2405522dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d5343fcdd079664377637ff9188595e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#a3d5343fcdd079664377637ff9188595e">ApplyImpulse</a> (btRigidBody *body, float newtons, const glm::vec3 &amp;direction)</td></tr>
+<tr class="memdesc:a3d5343fcdd079664377637ff9188595e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an impulse on the center of the object.  <a href="#a3d5343fcdd079664377637ff9188595e">More...</a><br /></td></tr>
+<tr class="separator:a3d5343fcdd079664377637ff9188595e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83b98f62953485af3b5e04d6bf4adba9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#a83b98f62953485af3b5e04d6bf4adba9">ApplyForce</a> (btRigidBody *body, float newtons, const glm::vec3 &amp;direction)</td></tr>
 <tr class="memdesc:a83b98f62953485af3b5e04d6bf4adba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a force on the center of the object.  <a href="#a83b98f62953485af3b5e04d6bf4adba9">More...</a><br /></td></tr>
 <tr class="separator:a83b98f62953485af3b5e04d6bf4adba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,6 +122,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#aca13d6e0e807662cd096fe899c5b8776">Stop</a> (btRigidBody *body)</td></tr>
 <tr class="memdesc:aca13d6e0e807662cd096fe899c5b8776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the object velocity to zero. <br /></td></tr>
 <tr class="separator:aca13d6e0e807662cd096fe899c5b8776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4650b5c17a52953357ae693f5c07bf68"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="structTarbora_1_1RayCastResult.html">RayCastResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1PhysicsEngine.html#a4650b5c17a52953357ae693f5c07bf68">RayCast</a> (glm::vec3 &amp;origin, glm::vec3 &amp;end)</td></tr>
+<tr class="memdesc:a4650b5c17a52953357ae693f5c07bf68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a raycast test.  <a href="#a4650b5c17a52953357ae693f5c07bf68">More...</a><br /></td></tr>
+<tr class="separator:a4650b5c17a52953357ae693f5c07bf68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The system that manages the movement and the collisions of all the actors. </p>
@@ -184,6 +196,87 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
     <tr><td class="paramname">id</td><td>The id of the actor that owns that rigid body. </td></tr>
     <tr><td class="paramname">dimensions</td><td>A vector representing the dimensions of that box, used to calculate the volume and the mass. </td></tr>
     <tr><td class="paramname">mass</td><td>The mass ("weight") of the box. </td></tr>
+    <tr><td class="paramname">friction</td><td>See <a class="el" href="classTarbora_1_1RigidBody.html">RigidBody</a> SetFriction </td></tr>
+    <tr><td class="paramname">restitution</td><td>See <a class="el" href="classTarbora_1_1RigidBody.html">RigidBody</a> SetRestitution </td></tr>
+    <tr><td class="paramname">transform</td><td>The transform matrix of the actor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A Bullet3's rigid body. </dd></dl>
+
+</div>
+</div>
+<a id="af511b9509696fa6ffcaa2515f3a391aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af511b9509696fa6ffcaa2515f3a391aa">&#9670;&nbsp;</a></span>AddCapsule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">btRigidBody * Tarbora::PhysicsEngine::AddCapsule </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>friction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>restitution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::mat4 &amp;&#160;</td>
+          <td class="paramname"><em>transform</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register an capsule shaped rigid body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The id of the actor that owns that rigid body. </td></tr>
+    <tr><td class="paramname">radius</td><td>The radius of the capsule. </td></tr>
+    <tr><td class="paramname">height</td><td>The height of the capsule. </td></tr>
+    <tr><td class="paramname">mass</td><td>The mass ("weight") of the capsule. </td></tr>
     <tr><td class="paramname">friction</td><td>See <a class="el" href="classTarbora_1_1RigidBody.html">RigidBody</a> SetFriction </td></tr>
     <tr><td class="paramname">restitution</td><td>See <a class="el" href="classTarbora_1_1RigidBody.html">RigidBody</a> SetRestitution </td></tr>
     <tr><td class="paramname">transform</td><td>The transform matrix of the actor. </td></tr>
@@ -319,6 +412,57 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 
 </div>
 </div>
+<a id="a3d5343fcdd079664377637ff9188595e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d5343fcdd079664377637ff9188595e">&#9670;&nbsp;</a></span>ApplyImpulse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tarbora::PhysicsEngine::ApplyImpulse </td>
+          <td>(</td>
+          <td class="paramtype">btRigidBody *&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>newtons</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Apply an impulse on the center of the object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newtons</td><td>The strenght of that impulse. </td></tr>
+    <tr><td class="paramname">direction</td><td>A normalized vector representing the direction of the impulse. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a7bfaabd962f0825536195708d4442a3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7bfaabd962f0825536195708d4442a3d">&#9670;&nbsp;</a></span>ApplyTorque()</h2>
 
@@ -398,6 +542,52 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 
 </div>
 </div>
+<a id="a4650b5c17a52953357ae693f5c07bf68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4650b5c17a52953357ae693f5c07bf68">&#9670;&nbsp;</a></span>RayCast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structTarbora_1_1RayCastResult.html">RayCastResult</a> &gt; Tarbora::PhysicsEngine::RayCast </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Perform a raycast test. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">origin</td><td>The origin point of the ray. </td></tr>
+    <tr><td class="paramname">end</td><td>The maximum end point of the ray. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>See <a class="el" href="structTarbora_1_1RayCastResult.html">RayCastResult</a>. </dd></dl>
+
+</div>
+</div>
 <a id="a4debfab1c812e22ccd4f65b0b7e9cea7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4debfab1c812e22ccd4f65b0b7e9cea7">&#9670;&nbsp;</a></span>RemoveObject()</h2>
 
@@ -426,6 +616,64 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>A pointer to the object to destroy. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a57ee013c92f3721beb4efbc2405522dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57ee013c92f3721beb4efbc2405522dd">&#9670;&nbsp;</a></span>RestrictRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tarbora::PhysicsEngine::RestrictRotation </td>
+          <td>(</td>
+          <td class="paramtype">btRigidBody *&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Restrict the rotation of the body on certain planes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The multiplier to the x plane. </td></tr>
+    <tr><td class="paramname">y</td><td>The multiplier to the y plane. </td></tr>
+    <tr><td class="paramname">z</td><td>The multiplier to the z plane. </td></tr>
   </table>
   </dd>
 </dl>

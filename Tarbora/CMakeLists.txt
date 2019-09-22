@@ -2,3 +2,4 @@
 add_subdirectory (Framework)
 add_subdirectory (Logic)
 add_subdirectory (Views)
+add_subdirectory (Messages)

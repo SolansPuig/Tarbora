@@ -1,13 +1,41 @@
 \hypertarget{classTarbora_1_1Scene}{}\section{Tarbora\+:\+:Scene Class Reference}
 \label{classTarbora_1_1Scene}\index{Tarbora\+::\+Scene@{Tarbora\+::\+Scene}}
+
+
+Collaboration diagram for Tarbora\+:\+:Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classTarbora_1_1Scene__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_aa9310feeb7a221c6cd0f1e1c71b62195}\label{classTarbora_1_1Scene_aa9310feeb7a221c6cd0f1e1c71b62195}} 
+{\bfseries Scene} (\hyperlink{classTarbora_1_1GraphicView}{Graphic\+View} $\ast$view)
 \item 
 \mbox{\Hypertarget{classTarbora_1_1Scene_a7e04a725cf3d429857ac172aaa1b879c}\label{classTarbora_1_1Scene_a7e04a725cf3d429857ac172aaa1b879c}} 
 void {\bfseries Update} (float delta\+Time)
 \item 
 \mbox{\Hypertarget{classTarbora_1_1Scene_a29a7a8845364aaa76db679d4e58f70ed}\label{classTarbora_1_1Scene_a29a7a8845364aaa76db679d4e58f70ed}} 
 void {\bfseries Draw} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_acfa9073b3555c7f264eb66e5c8c34ca8}\label{classTarbora_1_1Scene_acfa9073b3555c7f264eb66e5c8c34ca8}} 
+void {\bfseries Create\+Actor\+Model} (Actor\+Id id, Render\+Pass render\+Pass, std\+::string model, std\+::string shader, std\+::string texture)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_a0c0ac47ee6e38af6c7b8003231a3a155}\label{classTarbora_1_1Scene_a0c0ac47ee6e38af6c7b8003231a3a155}} 
+void {\bfseries Create\+Actor\+Model} (Actor\+Id id, std\+::string entity, std\+::string variant)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_a09ae9361429b5ec7ee3a3ee42b77f510}\label{classTarbora_1_1Scene_a09ae9361429b5ec7ee3a3ee42b77f510}} 
+void {\bfseries Animate\+Actor} (Actor\+Id id, std\+::string animation)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_acc84125c8b349f85b1e35193ed900000}\label{classTarbora_1_1Scene_acc84125c8b349f85b1e35193ed900000}} 
+void {\bfseries Create\+Skybox} (std\+::string shader, std\+::string texture)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_a764e523b06753d3fdbe6ac642bd2d64b}\label{classTarbora_1_1Scene_a764e523b06753d3fdbe6ac642bd2d64b}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Skybox}{Skybox} $>$ {\bfseries Get\+Skybox} ()
 \item 
 \mbox{\Hypertarget{classTarbora_1_1Scene_a8335dd180437f99af5fb342bf8c9f6a6}\label{classTarbora_1_1Scene_a8335dd180437f99af5fb342bf8c9f6a6}} 
 void {\bfseries Add\+Child} (Scene\+Node\+Ptr child, Render\+Pass render\+Pass)
@@ -18,23 +46,26 @@ Scene\+Node\+Ptr {\bfseries Get\+Child} (Actor\+Id id)
 \mbox{\Hypertarget{classTarbora_1_1Scene_ad3967c71f11edcc32bc8d2a7d8abbe62}\label{classTarbora_1_1Scene_ad3967c71f11edcc32bc8d2a7d8abbe62}} 
 bool {\bfseries Remove\+Child} (Actor\+Id id)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Scene_a08b677a81a817563f7c4116277055d86}\label{classTarbora_1_1Scene_a08b677a81a817563f7c4116277055d86}} 
-Mesh\+Node\+Ptr {\bfseries Create\+Node} (Actor\+Id id, Json\+Ptr resource, raw\+\_\+json j, float pixel\+Density, float texture\+Size)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1Scene_a2533d3656c2601dc955e5f54e89b7e38}\label{classTarbora_1_1Scene_a2533d3656c2601dc955e5f54e89b7e38}} 
-void {\bfseries Create\+Actor} (Actor\+Id id, Render\+Pass render\+Pass, std\+::string model, std\+::string shader, std\+::string texture)
-\item 
 \mbox{\Hypertarget{classTarbora_1_1Scene_aaf0eb31b7de572adae21cb39d3f58f02}\label{classTarbora_1_1Scene_aaf0eb31b7de572adae21cb39d3f58f02}} 
 void {\bfseries Set\+Camera} (Camera\+Ptr camera)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Scene_a0e4d814a2fb7422dbdcfeebde985fdf7}\label{classTarbora_1_1Scene_a0e4d814a2fb7422dbdcfeebde985fdf7}} 
-const Camera\+Ptr {\bfseries Get\+Camera} () const
+\mbox{\Hypertarget{classTarbora_1_1Scene_a80c14fb5ac52c7894c24ccfe87bd114d}\label{classTarbora_1_1Scene_a80c14fb5ac52c7894c24ccfe87bd114d}} 
+void {\bfseries Set\+Camera} (Actor\+Id id, std\+::string node\+Name)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_aa7056e693fa0d3407401ae8555d42165}\label{classTarbora_1_1Scene_aa7056e693fa0d3407401ae8555d42165}} 
+Camera\+Ptr {\bfseries Get\+Camera} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_aa21aac20c7f614f7b871a85d3b33b80d}\label{classTarbora_1_1Scene_aa21aac20c7f614f7b871a85d3b33b80d}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1GraphicsEngineImpl}{Graphics\+Engine\+Impl} $>$ {\bfseries Graphics\+Engine} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classTarbora_1_1Scene_aabd1a11a2b8bb7aedc3915e135c19f7a}\label{classTarbora_1_1Scene_aabd1a11a2b8bb7aedc3915e135c19f7a}} 
 std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1RootNode}{Root\+Node} $>$ {\bfseries m\+\_\+\+Root}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Scene_ae4478ba18d9243358a7449a31b932143}\label{classTarbora_1_1Scene_ae4478ba18d9243358a7449a31b932143}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Skybox}{Skybox} $>$ {\bfseries m\+\_\+\+Skybox}
 \item 
 \mbox{\Hypertarget{classTarbora_1_1Scene_ab40b861574f5e22c2af86c83bffff312}\label{classTarbora_1_1Scene_ab40b861574f5e22c2af86c83bffff312}} 
 Camera\+Ptr {\bfseries m\+\_\+\+Camera}
@@ -45,18 +76,12 @@ Scene\+Actor\+Map {\bfseries m\+\_\+\+Actor\+Map}
 \mbox{\Hypertarget{classTarbora_1_1Scene_ab62af3e98c2ae7d0d5354de05fbc824e}\label{classTarbora_1_1Scene_ab62af3e98c2ae7d0d5354de05fbc824e}} 
 glm\+::mat4 {\bfseries m\+\_\+\+Projection}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Scene_a6f18d252caf82e16954b903056e175f2}\label{classTarbora_1_1Scene_a6f18d252caf82e16954b903056e175f2}} 
-unsigned int {\bfseries Evt\+Window\+Resize\+Id}
-\item 
-\mbox{\Hypertarget{classTarbora_1_1Scene_aaedbac4e3c8a1b0e79d6dd742ebe8062}\label{classTarbora_1_1Scene_aaedbac4e3c8a1b0e79d6dd742ebe8062}} 
-unsigned int {\bfseries Evt\+Actor\+Move\+Id}
-\item 
-\mbox{\Hypertarget{classTarbora_1_1Scene_a98f043244b083fa70be3bfb1837236b2}\label{classTarbora_1_1Scene_a98f043244b083fa70be3bfb1837236b2}} 
-unsigned int {\bfseries Evt\+Create\+Actor\+Model\+Id}
+\mbox{\Hypertarget{classTarbora_1_1Scene_a33a04f0999fc7585043461fa3effa8e4}\label{classTarbora_1_1Scene_a33a04f0999fc7585043461fa3effa8e4}} 
+\hyperlink{classTarbora_1_1GraphicView}{Graphic\+View} $\ast$ {\bfseries m\+\_\+\+View}
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Game\+View/inc/Scene.\+hpp\item 
-Tarbora/\+Game\+View/src/Scene.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/inc/Scene.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/src/Scene.\+cpp\end{DoxyCompactItemize}

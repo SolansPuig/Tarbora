@@ -1,5 +1,4 @@
 #include "../inc/Json.hpp"
-#include "../../MessageManager/inc/MessageManager.hpp"
 #include "../../Module.hpp"
 
 namespace Tarbora {

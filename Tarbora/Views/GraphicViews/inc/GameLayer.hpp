@@ -7,9 +7,9 @@ namespace Tarbora {
     {
     public:
         GameLayerImpl(GraphicView *view, bool start_active=true);
-        ~GameLayerImpl();
+        ~GameLayerImpl() {}
 
-        virtual bool OnMessage(Message *m) override;
+        virtual bool OnMessage(MessageBody *m) override;
 
         virtual void GetInput() override;
         virtual void Update(float deltaTime) override;
@@ -26,7 +26,5 @@ namespace Tarbora {
         glm::vec3 m_Movement;
         bool m_Jump;
         float m_JumpImpulse, m_DirectionImpulse, m_TorqueImpulse;
-
-        EventId m_CreateActor, m_SetCamera, m_MoveActor, m_DeleteActor, m_ActorAnimation;
     };
 }

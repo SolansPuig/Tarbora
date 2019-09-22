@@ -7,7 +7,7 @@ namespace Tarbora {
     class TransformComponent : public ActorComponent
     {
     public:
-        TransformComponent() {}
+        TransformComponent(World *world) : ActorComponent(world) {}
         ~TransformComponent() {}
 
         ComponentId GetId() const { return TransformId; }
@@ -35,7 +35,7 @@ namespace Tarbora {
             return glm::mat3(m_Transform);
         }
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new TransformComponent()); }
+        static ActorComponentPtr Creator(World *world) { return ActorComponentPtr(new TransformComponent(world)); }
     private:
         glm::mat4 m_Transform;
     };

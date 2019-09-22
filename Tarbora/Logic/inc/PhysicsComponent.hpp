@@ -8,7 +8,7 @@ namespace Tarbora {
     class PhysicsComponent : public ActorComponent
     {
     public:
-        PhysicsComponent() {}
+        PhysicsComponent(World *world) : ActorComponent(world) {}
         ~PhysicsComponent() {}
 
         ComponentId GetId() const { return PhysicsId; }
@@ -17,7 +17,7 @@ namespace Tarbora {
         void AfterInit();
         virtual void Update(float deltaTime) override;
 
-        static ActorComponentPtr Creator() { return ActorComponentPtr(new PhysicsComponent()); }
+        static ActorComponentPtr Creator(World *world) { return ActorComponentPtr(new PhysicsComponent(world)); }
     private:
         RigidBodyPtr m_Body;
     };

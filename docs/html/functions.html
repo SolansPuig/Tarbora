@@ -67,12 +67,19 @@ $(function() {
 <li>AddBox()
 : <a class="el" href="classTarbora_1_1PhysicsEngine.html#a4ec40e1a3ab05c7fe1e0216534484750">Tarbora::PhysicsEngine</a>
 </li>
+<li>AddCapsule()
+: <a class="el" href="classTarbora_1_1PhysicsEngine.html#af511b9509696fa6ffcaa2515f3a391aa">Tarbora::PhysicsEngine</a>
+</li>
 <li>AddSphere()
 : <a class="el" href="classTarbora_1_1PhysicsEngine.html#ab20c015fd1b1aa9d8dd8e0c10a9ef249">Tarbora::PhysicsEngine</a>
 </li>
 <li>ApplyForce()
 : <a class="el" href="classTarbora_1_1PhysicsEngine.html#a83b98f62953485af3b5e04d6bf4adba9">Tarbora::PhysicsEngine</a>
 , <a class="el" href="classTarbora_1_1RigidBody.html#ae60a0e3d1f035698dfc11a117c28999b">Tarbora::RigidBody</a>
+</li>
+<li>ApplyImpulse()
+: <a class="el" href="classTarbora_1_1PhysicsEngine.html#a3d5343fcdd079664377637ff9188595e">Tarbora::PhysicsEngine</a>
+, <a class="el" href="classTarbora_1_1RigidBody.html#a55a0003f237d0f1a324350bcf9bbfd28">Tarbora::RigidBody</a>
 </li>
 <li>ApplyTorque()
 : <a class="el" href="classTarbora_1_1PhysicsEngine.html#a7bfaabd962f0825536195708d4442a3d">Tarbora::PhysicsEngine</a>
@@ -94,11 +101,15 @@ $(function() {
 </li>
 <li>CalcVolume()
 : <a class="el" href="classTarbora_1_1BoxBody.html#ab5632e04e516e518297a4826c6dd27cb">Tarbora::BoxBody</a>
+, <a class="el" href="classTarbora_1_1CapsuleBody.html#a5e296d4aab6f3b5b737a43d9e1937c91">Tarbora::CapsuleBody</a>
 , <a class="el" href="classTarbora_1_1RigidBody.html#a5f3f505d69241d5dbac5fc3c94b07df0">Tarbora::RigidBody</a>
 , <a class="el" href="classTarbora_1_1SphereBody.html#a6421e1677d335d10f3f49c68f71613ab">Tarbora::SphereBody</a>
 </li>
+<li>CapsuleBody()
+: <a class="el" href="classTarbora_1_1CapsuleBody.html#ac7427a8fd201d1eb99944d48619e78ed">Tarbora::CapsuleBody</a>
+</li>
 <li>Close()
-: <a class="el" href="classTarbora_1_1Logger.html#add4c310a2ab7b0daa730e477853d6c8f">Tarbora::Logger</a>
+: <a class="el" href="classTarbora_1_1AbstractModule.html#ade3cdb52217ae0fce50b0ed085b7efb7">Tarbora::AbstractModule</a>
 , <a class="el" href="classTarbora_1_1PhysicsEngine.html#ae7c68706207e34b87dabf53fbf6886d1">Tarbora::PhysicsEngine</a>
 </li>
 </ul>
@@ -145,6 +156,9 @@ $(function() {
 <li>GetFriction()
 : <a class="el" href="classTarbora_1_1RigidBody.html#aaafbb1c80dc9c4dc13e1dc3e3db08f6e">Tarbora::RigidBody</a>
 </li>
+<li>GetHeight()
+: <a class="el" href="classTarbora_1_1CapsuleBody.html#ae1da23b6109046079febce5c0e44efcc">Tarbora::CapsuleBody</a>
+</li>
 <li>GetInt()
 : <a class="el" href="classTarbora_1_1Json.html#a345c02e8aebe8402c5cb4590ace0e340">Tarbora::Json</a>
 </li>
@@ -152,7 +166,7 @@ $(function() {
 : <a class="el" href="classTarbora_1_1Json.html#af4da581a98f4b6dffc0a71458d810320">Tarbora::Json</a>
 </li>
 <li>GetJson()
-: <a class="el" href="classTarbora_1_1Json.html#a46aeffce57fb2925471f82c7c4638b12">Tarbora::Json</a>
+: <a class="el" href="classTarbora_1_1Json.html#a30c549b1306baccb78083771f30e5082">Tarbora::Json</a>
 </li>
 <li>GetJsonArray()
 : <a class="el" href="classTarbora_1_1Json.html#ab44082ff293945651c41ae82ee45a995">Tarbora::Json</a>
@@ -164,7 +178,8 @@ $(function() {
 : <a class="el" href="classTarbora_1_1Resource.html#a4483e47dbcd9f291bce9671983437ee3">Tarbora::Resource</a>
 </li>
 <li>GetRadius()
-: <a class="el" href="classTarbora_1_1SphereBody.html#a5554aa58df71f4ada4537d48b5e0b1d3">Tarbora::SphereBody</a>
+: <a class="el" href="classTarbora_1_1CapsuleBody.html#aa4838f288f011f812a3efed5abef24c5">Tarbora::CapsuleBody</a>
+, <a class="el" href="classTarbora_1_1SphereBody.html#a5554aa58df71f4ada4537d48b5e0b1d3">Tarbora::SphereBody</a>
 </li>
 <li>GetResource()
 : <a class="el" href="classTarbora_1_1ResourceManager.html#a755c3216ac424ec13d28fa84b0814e0b">Tarbora::ResourceManager</a>
@@ -176,16 +191,16 @@ $(function() {
 : <a class="el" href="classTarbora_1_1RigidBody.html#ae48e75c37f24d9bc8023c68fc8b93fc9">Tarbora::RigidBody</a>
 </li>
 <li>GetString()
-: <a class="el" href="classTarbora_1_1Json.html#ad8bd8296d4c402db6d6607ade20652c7">Tarbora::Json</a>
+: <a class="el" href="classTarbora_1_1Json.html#a0d99980482afa0e1f51ff5603d626335">Tarbora::Json</a>
 </li>
 <li>GetStringArray()
-: <a class="el" href="classTarbora_1_1Json.html#a14da3578c062f1291d1957146569dabf">Tarbora::Json</a>
+: <a class="el" href="classTarbora_1_1Json.html#a3c9931f8a801c8e3ac93d645f34aed79">Tarbora::Json</a>
 </li>
 <li>GetText()
 : <a class="el" href="classTarbora_1_1Text.html#a196ccb63a134aabf6336c1ae17c3108e">Tarbora::Text</a>
 </li>
 <li>GetUInt()
-: <a class="el" href="classTarbora_1_1Json.html#a7a4f2fd643369df0750e951db42499e3">Tarbora::Json</a>
+: <a class="el" href="classTarbora_1_1Json.html#a3bf386f07b8648fb7d55b22712df5cb3">Tarbora::Json</a>
 </li>
 <li>GetUIntArray()
 : <a class="el" href="classTarbora_1_1Json.html#a1b059c47cbcffaa97e7ce129a05f7682">Tarbora::Json</a>
@@ -198,9 +213,8 @@ $(function() {
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>Init()
-: <a class="el" href="classTarbora_1_1Logger.html#abb526de5b2ecd2bda6ec4883de07bec8">Tarbora::Logger</a>
-, <a class="el" href="classTarbora_1_1PhysicsEngine.html#a7ec00bd287d1366ce059f2821b023634">Tarbora::PhysicsEngine</a>
-, <a class="el" href="classTarbora_1_1ResourceManager.html#a1db550759320be50e86b316275da889c">Tarbora::ResourceManager</a>
+: <a class="el" href="classTarbora_1_1PhysicsEngine.html#a7ec00bd287d1366ce059f2821b023634">Tarbora::PhysicsEngine</a>
+, <a class="el" href="classTarbora_1_1ResourceManager.html#a92a90cbe0795350a30b45ba1f6e14a7f">Tarbora::ResourceManager</a>
 </li>
 </ul>
 
@@ -215,6 +229,9 @@ $(function() {
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>m_Name
 : <a class="el" href="classTarbora_1_1Resource.html#ac66c4d8338373309735cfab7e8f13d97">Tarbora::Resource</a>
+</li>
+<li>MessageBus()
+: <a class="el" href="classTarbora_1_1MessageBus.html#a96c5669eee45b97f3021ef0257b2590f">Tarbora::MessageBus</a>
 </li>
 </ul>
 
@@ -237,8 +254,13 @@ $(function() {
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>RayCast()
+: <a class="el" href="classTarbora_1_1PhysicsEngine.html#a4650b5c17a52953357ae693f5c07bf68">Tarbora::PhysicsEngine</a>
+, <a class="el" href="classTarbora_1_1RigidBody.html#afcb7edde5f51569c31385ccb75728e8a">Tarbora::RigidBody</a>
+</li>
 <li>Register()
 : <a class="el" href="classTarbora_1_1BoxBody.html#a9030e38449087fdf091d9daea5e6efbe">Tarbora::BoxBody</a>
+, <a class="el" href="classTarbora_1_1CapsuleBody.html#a1083e8df5302931850b34a9c9ec764e6">Tarbora::CapsuleBody</a>
 , <a class="el" href="classTarbora_1_1RigidBody.html#a5f41c214aabe2a7f069a317cb755f0f1">Tarbora::RigidBody</a>
 , <a class="el" href="classTarbora_1_1SphereBody.html#aa4c177c62075afa568b73ec019201dd7">Tarbora::SphereBody</a>
 </li>
@@ -247,6 +269,18 @@ $(function() {
 </li>
 <li>RemoveObject()
 : <a class="el" href="classTarbora_1_1PhysicsEngine.html#a4debfab1c812e22ccd4f65b0b7e9cea7">Tarbora::PhysicsEngine</a>
+</li>
+<li>RestrictRotation()
+: <a class="el" href="classTarbora_1_1PhysicsEngine.html#a57ee013c92f3721beb4efbc2405522dd">Tarbora::PhysicsEngine</a>
+, <a class="el" href="classTarbora_1_1RigidBody.html#aaf5efa034c4e9578612751b25d599106">Tarbora::RigidBody</a>
+</li>
+<li>Run()
+: <a class="el" href="classTarbora_1_1AbstractModule.html#abc4de331276ff78b18efafe14498bf21">Tarbora::AbstractModule</a>
+, <a class="el" href="classTarbora_1_1MessageBus.html#a1de6d06fd522da0c19c4b4889a26e5dd">Tarbora::MessageBus</a>
+, <a class="el" href="classTarbora_1_1Module.html#a62a1e7435f81e085354cbe603a023aee">Tarbora::Module</a>
+</li>
+<li>RunThread()
+: <a class="el" href="classTarbora_1_1AbstractModule.html#a2d5baaab3f030968e4ed352b43b155e7">Tarbora::AbstractModule</a>
 </li>
 </ul>
 
@@ -261,14 +295,21 @@ $(function() {
 <li>SetFriction()
 : <a class="el" href="classTarbora_1_1RigidBody.html#a9408bdeb536881e29f3706bb061220d2">Tarbora::RigidBody</a>
 </li>
+<li>SetHeight()
+: <a class="el" href="classTarbora_1_1CapsuleBody.html#a8d9cf25e8ce8cf0d180b67b2063f94f2">Tarbora::CapsuleBody</a>
+</li>
 <li>SetLevel()
-: <a class="el" href="classTarbora_1_1Logger.html#af2a11244236bad59fce9cc6a1360af29">Tarbora::Logger</a>
+: <a class="el" href="classTarbora_1_1Logger.html#a59bc914b6c12023fbce1b230899ac5fa">Tarbora::Logger</a>
+</li>
+<li>SetLinearDamping()
+: <a class="el" href="classTarbora_1_1RigidBody.html#a8140640963647cae49e1b9b78ab00b9b">Tarbora::RigidBody</a>
 </li>
 <li>SetProperties()
 : <a class="el" href="classTarbora_1_1RigidBody.html#a0ec675847bf2c6e5f34002eab0c29ef0">Tarbora::RigidBody</a>
 </li>
 <li>SetRadius()
-: <a class="el" href="classTarbora_1_1SphereBody.html#a218bff80687143aff24f524cc01f2175">Tarbora::SphereBody</a>
+: <a class="el" href="classTarbora_1_1CapsuleBody.html#ace07a924c2dd8830983b056a07813530">Tarbora::CapsuleBody</a>
+, <a class="el" href="classTarbora_1_1SphereBody.html#a218bff80687143aff24f524cc01f2175">Tarbora::SphereBody</a>
 </li>
 <li>SetRestitution()
 : <a class="el" href="classTarbora_1_1RigidBody.html#a60ba7ea96ffada37237ce4345b58eb23">Tarbora::RigidBody</a>
@@ -293,6 +334,7 @@ $(function() {
 <h3><a id="index_u"></a>- u -</h3><ul>
 <li>Unregister()
 : <a class="el" href="classTarbora_1_1BoxBody.html#a57a94943897a3b90f774935bef82c47c">Tarbora::BoxBody</a>
+, <a class="el" href="classTarbora_1_1CapsuleBody.html#a9a6b4cf636ab2535ab45976c793112a0">Tarbora::CapsuleBody</a>
 , <a class="el" href="classTarbora_1_1RigidBody.html#a1ef83d0b9b2c9901807d584aa563dafb">Tarbora::RigidBody</a>
 , <a class="el" href="classTarbora_1_1SphereBody.html#abb1c800fda3cfab36f60a64fb8c77cae">Tarbora::SphereBody</a>
 </li>
@@ -305,6 +347,9 @@ $(function() {
 <h3><a id="index_0x7e"></a>- ~ -</h3><ul>
 <li>~BoxBody()
 : <a class="el" href="classTarbora_1_1BoxBody.html#adb0e7074d88a5e14ae8c9abca875ac52">Tarbora::BoxBody</a>
+</li>
+<li>~CapsuleBody()
+: <a class="el" href="classTarbora_1_1CapsuleBody.html#a70eeff3b16e27269076fef05a42a7de8">Tarbora::CapsuleBody</a>
 </li>
 <li>~SphereBody()
 : <a class="el" href="classTarbora_1_1SphereBody.html#a4592aa7dad4a13f33839f4883f21654b">Tarbora::SphereBody</a>

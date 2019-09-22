@@ -85,7 +85,8 @@ Inheritance diagram for Tarbora::RigidBody:</div>
 <div class="center"><img src="classTarbora_1_1RigidBody__inherit__graph.png" border="0" usemap="#Tarbora_1_1RigidBody_inherit__map" alt="Inheritance graph"/></div>
 <map name="Tarbora_1_1RigidBody_inherit__map" id="Tarbora_1_1RigidBody_inherit__map">
 <area shape="rect" id="node2" href="classTarbora_1_1BoxBody.html" title="A physics rigid body representing a cube. " alt="" coords="5,80,132,107"/>
-<area shape="rect" id="node3" href="classTarbora_1_1SphereBody.html" title="A physics rigid body representing an sphere. " alt="" coords="156,80,301,107"/>
+<area shape="rect" id="node3" href="classTarbora_1_1CapsuleBody.html" title="A physics rigid body representing an capsule shape. " alt="" coords="157,80,309,107"/>
+<area shape="rect" id="node4" href="classTarbora_1_1SphereBody.html" title="A physics rigid body representing an sphere. " alt="" coords="333,80,479,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -133,6 +134,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1RigidBody.html#ad3bd01b11639862744797e2bb9c3fca0">GetMass</a> ()</td></tr>
 <tr class="memdesc:ad3bd01b11639862744797e2bb9c3fca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mass of the object. <br /></td></tr>
 <tr class="separator:ad3bd01b11639862744797e2bb9c3fca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55a0003f237d0f1a324350bcf9bbfd28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1RigidBody.html#a55a0003f237d0f1a324350bcf9bbfd28">ApplyImpulse</a> (float newtons, const glm::vec3 &amp;direction)</td></tr>
+<tr class="memdesc:a55a0003f237d0f1a324350bcf9bbfd28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an impulse on the center of the object.  <a href="#a55a0003f237d0f1a324350bcf9bbfd28">More...</a><br /></td></tr>
+<tr class="separator:a55a0003f237d0f1a324350bcf9bbfd28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae60a0e3d1f035698dfc11a117c28999b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1RigidBody.html#ae60a0e3d1f035698dfc11a117c28999b">ApplyForce</a> (float newtons, const glm::vec3 &amp;direction)</td></tr>
 <tr class="memdesc:ae60a0e3d1f035698dfc11a117c28999b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a force on the center of the object.  <a href="#ae60a0e3d1f035698dfc11a117c28999b">More...</a><br /></td></tr>
 <tr class="separator:ae60a0e3d1f035698dfc11a117c28999b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +150,15 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1RigidBody.html#a9e1f015de3b1ad6ad54b93d365b6981f">Stop</a> ()</td></tr>
 <tr class="memdesc:a9e1f015de3b1ad6ad54b93d365b6981f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the object velocity to zero. <br /></td></tr>
 <tr class="separator:a9e1f015de3b1ad6ad54b93d365b6981f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf5efa034c4e9578612751b25d599106"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1RigidBody.html#aaf5efa034c4e9578612751b25d599106">RestrictRotation</a> (float x, float y, float z)</td></tr>
+<tr class="memdesc:aaf5efa034c4e9578612751b25d599106"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restrict the rotation of the body in each axis.  <a href="#aaf5efa034c4e9578612751b25d599106">More...</a><br /></td></tr>
+<tr class="separator:aaf5efa034c4e9578612751b25d599106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8140640963647cae49e1b9b78ab00b9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1RigidBody.html#a8140640963647cae49e1b9b78ab00b9b">SetLinearDamping</a> (float damping)</td></tr>
+<tr class="memdesc:a8140640963647cae49e1b9b78ab00b9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the linear damping of the body.  <a href="#a8140640963647cae49e1b9b78ab00b9b">More...</a><br /></td></tr>
+<tr class="separator:a8140640963647cae49e1b9b78ab00b9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb7edde5f51569c31385ccb75728e8a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structTarbora_1_1RayCastResult.html">RayCastResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1RigidBody.html#afcb7edde5f51569c31385ccb75728e8a">RayCast</a> (glm::vec3 origin, glm::vec3 direction, float distance)</td></tr>
+<tr class="memdesc:afcb7edde5f51569c31385ccb75728e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a Raycast from the body.  <a href="#afcb7edde5f51569c31385ccb75728e8a">More...</a><br /></td></tr>
+<tr class="separator:afcb7edde5f51569c31385ccb75728e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -220,6 +233,43 @@ btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Body</b></
 
 </div>
 </div>
+<a id="a55a0003f237d0f1a324350bcf9bbfd28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a0003f237d0f1a324350bcf9bbfd28">&#9670;&nbsp;</a></span>ApplyImpulse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tarbora::RigidBody::ApplyImpulse </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>newtons</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply an impulse on the center of the object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newtons</td><td>The strenght of that impulse. </td></tr>
+    <tr><td class="paramname">direction</td><td>A normalized vector representing the direction of the impulse. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a025666d2545230e12b546b68d955871c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a025666d2545230e12b546b68d955871c">&#9670;&nbsp;</a></span>ApplyTorque()</h2>
 
@@ -285,6 +335,51 @@ btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Body</b></
 
 </div>
 </div>
+<a id="afcb7edde5f51569c31385ccb75728e8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb7edde5f51569c31385ccb75728e8a">&#9670;&nbsp;</a></span>RayCast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="structTarbora_1_1RayCastResult.html">RayCastResult</a> &gt; Tarbora::RigidBody::RayCast </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform a Raycast from the body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">origin</td><td>The relative position from the center of the body from where the raycast is shoot. </td></tr>
+    <tr><td class="paramname">direction</td><td>The relative direction of the raycast. </td></tr>
+    <tr><td class="paramname">distance</td><td>The maximum distance of the raycast. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>See <a class="el" href="structTarbora_1_1RayCastResult.html">RayCastResult</a>. </dd></dl>
+
+</div>
+</div>
 <a id="a5f41c214aabe2a7f069a317cb755f0f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f41c214aabe2a7f069a317cb755f0f1">&#9670;&nbsp;</a></span>Register()</h2>
 
@@ -328,7 +423,51 @@ btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Body</b></
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classTarbora_1_1BoxBody.html#a9030e38449087fdf091d9daea5e6efbe">Tarbora::BoxBody</a>, and <a class="el" href="classTarbora_1_1SphereBody.html#aa4c177c62075afa568b73ec019201dd7">Tarbora::SphereBody</a>.</p>
+<p>Implemented in <a class="el" href="classTarbora_1_1BoxBody.html#a9030e38449087fdf091d9daea5e6efbe">Tarbora::BoxBody</a>, <a class="el" href="classTarbora_1_1CapsuleBody.html#a1083e8df5302931850b34a9c9ec764e6">Tarbora::CapsuleBody</a>, and <a class="el" href="classTarbora_1_1SphereBody.html#aa4c177c62075afa568b73ec019201dd7">Tarbora::SphereBody</a>.</p>
+
+</div>
+</div>
+<a id="aaf5efa034c4e9578612751b25d599106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf5efa034c4e9578612751b25d599106">&#9670;&nbsp;</a></span>RestrictRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tarbora::RigidBody::RestrictRotation </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restrict the rotation of the body in each axis. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The multiplier to the rotation in the x axis. Set to 0 to forbid the rotation in x, set to 1 to leave it untouched. </td></tr>
+    <tr><td class="paramname">y</td><td>The multiplier to the rotation in the y axis. Set to 0 to forbid the rotation in y, set to 1 to leave it untouched. </td></tr>
+    <tr><td class="paramname">z</td><td>The multiplier to the rotation in the z axis. Set to 0 to forbid the rotation in z, set to 1 to leave it untouched. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -387,6 +526,32 @@ btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Body</b></
 
 <p>Set the friction property. </p>
 <p>This is a per object coeficient. Usually from 0 (like ice) to 1 (like rubber), but can be more. </p>
+
+</div>
+</div>
+<a id="a8140640963647cae49e1b9b78ab00b9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8140640963647cae49e1b9b78ab00b9b">&#9670;&nbsp;</a></span>SetLinearDamping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tarbora::RigidBody::SetLinearDamping </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>damping</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the linear damping of the body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">damping</td><td>The ammount of damping. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -482,7 +647,7 @@ btRigidBody *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Body</b></
 <p>Set a constant velocity to the object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">velocity</td><td>A vector representing the speed in each of the directions (x, y and z). </td></tr>
+    <tr><td class="paramname">velocity</td><td>A vector representing the speed in each of the axis (x, y and z). </td></tr>
   </table>
   </dd>
 </dl>

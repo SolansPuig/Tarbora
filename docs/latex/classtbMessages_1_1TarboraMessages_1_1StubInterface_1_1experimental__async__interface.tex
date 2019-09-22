@@ -1,0 +1,47 @@
+\hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface}{}\section{tb\+Messages\+:\+:Tarbora\+Messages\+:\+:Stub\+Interface\+:\+:experimental\+\_\+async\+\_\+interface Class Reference}
+\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface}\index{tb\+Messages\+::\+Tarbora\+Messages\+::\+Stub\+Interface\+::experimental\+\_\+async\+\_\+interface@{tb\+Messages\+::\+Tarbora\+Messages\+::\+Stub\+Interface\+::experimental\+\_\+async\+\_\+interface}}
+
+
+Inheritance diagram for tb\+Messages\+:\+:Tarbora\+Messages\+:\+:Stub\+Interface\+:\+:experimental\+\_\+async\+\_\+interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a0238a497c5369e4b9c44d8bd73a2f807}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a0238a497c5369e4b9c44d8bd73a2f807}} 
+virtual void {\bfseries Connect} (\+::grpc\+::\+Client\+Context $\ast$context, \+::grpc\+::experimental\+::\+Client\+Bidi\+Reactor$<$ \+::\hyperlink{classtbMessages_1_1Message}{tb\+Messages\+::\+Message},\+::\hyperlink{classtbMessages_1_1Message}{tb\+Messages\+::\+Message} $>$ $\ast$reactor)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_ac0c8863d1063081ee1f10cded0f70490}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_ac0c8863d1063081ee1f10cded0f70490}} 
+virtual void {\bfseries Subscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::\hyperlink{classtbMessages_1_1EventHeader}{tb\+Messages\+::\+Event\+Header} $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, std\+::function$<$ void(\+::grpc\+::\+Status)$>$)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a1986fe54eda1e0a0c5a94f9cbcb865da}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a1986fe54eda1e0a0c5a94f9cbcb865da}} 
+virtual void {\bfseries Subscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::grpc\+::\+Byte\+Buffer $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, std\+::function$<$ void(\+::grpc\+::\+Status)$>$)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a392d730884aba5d51c4bc61c0e386b43}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a392d730884aba5d51c4bc61c0e386b43}} 
+virtual void {\bfseries Subscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::\hyperlink{classtbMessages_1_1EventHeader}{tb\+Messages\+::\+Event\+Header} $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, \+::grpc\+::experimental\+::\+Client\+Unary\+Reactor $\ast$reactor)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_ad000e7f4af4d7bdc591fb12efe2a4f6a}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_ad000e7f4af4d7bdc591fb12efe2a4f6a}} 
+virtual void {\bfseries Subscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::grpc\+::\+Byte\+Buffer $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, \+::grpc\+::experimental\+::\+Client\+Unary\+Reactor $\ast$reactor)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a65bd355f46f85a8ad505e8e1d9361596}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a65bd355f46f85a8ad505e8e1d9361596}} 
+virtual void {\bfseries Desubscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::\hyperlink{classtbMessages_1_1EventHeader}{tb\+Messages\+::\+Event\+Header} $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, std\+::function$<$ void(\+::grpc\+::\+Status)$>$)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a6063d57e55c61bdaf66959ebcba02ddc}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a6063d57e55c61bdaf66959ebcba02ddc}} 
+virtual void {\bfseries Desubscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::grpc\+::\+Byte\+Buffer $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, std\+::function$<$ void(\+::grpc\+::\+Status)$>$)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_ad459837fd2285354f3713bb5ad647978}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_ad459837fd2285354f3713bb5ad647978}} 
+virtual void {\bfseries Desubscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::\hyperlink{classtbMessages_1_1EventHeader}{tb\+Messages\+::\+Event\+Header} $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, \+::grpc\+::experimental\+::\+Client\+Unary\+Reactor $\ast$reactor)=0
+\item 
+\mbox{\Hypertarget{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a7c039addb9dad0c7302d81347bffc219}\label{classtbMessages_1_1TarboraMessages_1_1StubInterface_1_1experimental__async__interface_a7c039addb9dad0c7302d81347bffc219}} 
+virtual void {\bfseries Desubscribe} (\+::grpc\+::\+Client\+Context $\ast$context, const \+::grpc\+::\+Byte\+Buffer $\ast$request, \+::\hyperlink{classtbMessages_1_1Empty}{tb\+Messages\+::\+Empty} $\ast$response, \+::grpc\+::experimental\+::\+Client\+Unary\+Reactor $\ast$reactor)=0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Framework/\+Protos/messages.\+grpc.\+pb.\+h\end{DoxyCompactItemize}

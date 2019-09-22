@@ -1,0 +1,29 @@
+\hypertarget{classTarbora_1_1MessageManager}{}\section{Tarbora\+:\+:Message\+Manager Class Reference}
+\label{classTarbora_1_1MessageManager}\index{Tarbora\+::\+Message\+Manager@{Tarbora\+::\+Message\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MessageManager_a60882d282e9f0f16bbd8e8f902c75cd7}\label{classTarbora_1_1MessageManager_a60882d282e9f0f16bbd8e8f902c75cd7}} 
+{\bfseries Message\+Manager} (\hyperlink{classTarbora_1_1Module}{Module} $\ast$m, Client\+Id id, std\+::string server\+Address)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MessageManager_a307b77a226b9fb2789c033379f09f552}\label{classTarbora_1_1MessageManager_a307b77a226b9fb2789c033379f09f552}} 
+void {\bfseries Read\+Messages} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MessageManager_ad510bd7abdbf7acd820a97e374427c0e}\label{classTarbora_1_1MessageManager_ad510bd7abdbf7acd820a97e374427c0e}} 
+Subscriptor\+Id {\bfseries Subscribe} (Message\+Subject s, Message\+Fn func)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MessageManager_a1156155d0af199887f0fde14f67b2d65}\label{classTarbora_1_1MessageManager_a1156155d0af199887f0fde14f67b2d65}} 
+void {\bfseries Desubscribe} (Message\+Subject s, Subscriptor\+Id id)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MessageManager_a912ddfffc02c1897f5b5d140001d19bd}\label{classTarbora_1_1MessageManager_a912ddfffc02c1897f5b5d140001d19bd}} 
+void {\bfseries Trigger} (Message\+Subject s, \hyperlink{classTarbora_1_1MessageBody}{Message\+Body} b)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MessageManager_a15c12212b5a1076251fa73dad955be20}\label{classTarbora_1_1MessageManager_a15c12212b5a1076251fa73dad955be20}} 
+void {\bfseries Send} (Client\+Id to, Message\+Subject s, \hyperlink{classTarbora_1_1MessageBody}{Message\+Body} b)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Framework/Message\+Manager.\+hpp\item 
+Tarbora/\+Framework/Message\+Manager.\+cpp\end{DoxyCompactItemize}
