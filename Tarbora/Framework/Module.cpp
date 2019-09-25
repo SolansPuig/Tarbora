@@ -13,20 +13,31 @@ namespace Tarbora {
         ResourceManager::Close();
     }
 
-    void Module::Run()
+    void Module::Run(std::string name)
     {
+        ZoneScoped;
+
+        m_MessageManager->SetDebugName(name + " Message Client");
+
         m_Time = std::chrono::system_clock::now();
         while(AbstractModule::m_Run)
         {
             auto currentTime = std::chrono::system_clock::now();
             std::chrono::duration<float> duration = currentTime - m_Time;
             float elapsedTime = duration.count();
-            m_Time = currentTime;
 
-            m_MessageManager->ReadMessages();
-            GetInput();
-            Update(elapsedTime);
-            Draw();
+            if (elapsedTime >= 1./m_MaxFrameRate)
+            {
+                m_Time = currentTime;
+
+                if (!m_UsingThread) FrameMark;
+                FrameMarkNamed(name.c_str());
+
+                m_MessageManager->ReadMessages();
+                GetInput();
+                Update(elapsedTime);
+                Draw();
+            }
         }
     }
 }

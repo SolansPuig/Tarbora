@@ -41,7 +41,7 @@ struct TableStruct_math_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[4]
+  static const ::google::protobuf::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -55,6 +55,9 @@ extern Mat3MessageDefaultTypeInternal _Mat3Message_default_instance_;
 class Mat4Message;
 class Mat4MessageDefaultTypeInternal;
 extern Mat4MessageDefaultTypeInternal _Mat4Message_default_instance_;
+class Vec2Message;
+class Vec2MessageDefaultTypeInternal;
+extern Vec2MessageDefaultTypeInternal _Vec2Message_default_instance_;
 class Vec3Message;
 class Vec3MessageDefaultTypeInternal;
 extern Vec3MessageDefaultTypeInternal _Vec3Message_default_instance_;
@@ -66,6 +69,7 @@ namespace google {
 namespace protobuf {
 template<> ::tbMath::Mat3Message* Arena::CreateMaybeMessage<::tbMath::Mat3Message>(Arena*);
 template<> ::tbMath::Mat4Message* Arena::CreateMaybeMessage<::tbMath::Mat4Message>(Arena*);
+template<> ::tbMath::Vec2Message* Arena::CreateMaybeMessage<::tbMath::Vec2Message>(Arena*);
 template<> ::tbMath::Vec3Message* Arena::CreateMaybeMessage<::tbMath::Vec3Message>(Arena*);
 template<> ::tbMath::Vec4Message* Arena::CreateMaybeMessage<::tbMath::Vec4Message>(Arena*);
 }  // namespace protobuf
@@ -73,6 +77,125 @@ template<> ::tbMath::Vec4Message* Arena::CreateMaybeMessage<::tbMath::Vec4Messag
 namespace tbMath {
 
 // ===================================================================
+
+class Vec2Message final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbMath.Vec2Message) */ {
+ public:
+  Vec2Message();
+  virtual ~Vec2Message();
+
+  Vec2Message(const Vec2Message& from);
+
+  inline Vec2Message& operator=(const Vec2Message& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Vec2Message(Vec2Message&& from) noexcept
+    : Vec2Message() {
+    *this = ::std::move(from);
+  }
+
+  inline Vec2Message& operator=(Vec2Message&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const Vec2Message& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Vec2Message* internal_default_instance() {
+    return reinterpret_cast<const Vec2Message*>(
+               &_Vec2Message_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  void Swap(Vec2Message* other);
+  friend void swap(Vec2Message& a, Vec2Message& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Vec2Message* New() const final {
+    return CreateMaybeMessage<Vec2Message>(nullptr);
+  }
+
+  Vec2Message* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Vec2Message>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const Vec2Message& from);
+  void MergeFrom(const Vec2Message& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Vec2Message* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // float x = 1;
+  void clear_x();
+  static const int kXFieldNumber = 1;
+  float x() const;
+  void set_x(float value);
+
+  // float y = 2;
+  void clear_y();
+  static const int kYFieldNumber = 2;
+  float y() const;
+  void set_y(float value);
+
+  // @@protoc_insertion_point(class_scope:tbMath.Vec2Message)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  float x_;
+  float y_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_math_2eproto;
+};
+// -------------------------------------------------------------------
 
 class Vec3Message final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbMath.Vec3Message) */ {
@@ -112,7 +235,7 @@ class Vec3Message final :
                &_Vec3Message_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   void Swap(Vec3Message* other);
   friend void swap(Vec3Message& a, Vec3Message& b) {
@@ -238,7 +361,7 @@ class Vec4Message final :
                &_Vec4Message_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   void Swap(Vec4Message* other);
   friend void swap(Vec4Message& a, Vec4Message& b) {
@@ -371,7 +494,7 @@ class Mat3Message final :
                &_Mat3Message_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   void Swap(Mat3Message* other);
   friend void swap(Mat3Message& a, Mat3Message& b) {
@@ -506,7 +629,7 @@ class Mat4Message final :
                &_Mat4Message_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(Mat4Message* other);
   friend void swap(Mat4Message& a, Mat4Message& b) {
@@ -620,6 +743,38 @@ class Mat4Message final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// Vec2Message
+
+// float x = 1;
+inline void Vec2Message::clear_x() {
+  x_ = 0;
+}
+inline float Vec2Message::x() const {
+  // @@protoc_insertion_point(field_get:tbMath.Vec2Message.x)
+  return x_;
+}
+inline void Vec2Message::set_x(float value) {
+  
+  x_ = value;
+  // @@protoc_insertion_point(field_set:tbMath.Vec2Message.x)
+}
+
+// float y = 2;
+inline void Vec2Message::clear_y() {
+  y_ = 0;
+}
+inline float Vec2Message::y() const {
+  // @@protoc_insertion_point(field_get:tbMath.Vec2Message.y)
+  return y_;
+}
+inline void Vec2Message::set_y(float value) {
+  
+  y_ = value;
+  // @@protoc_insertion_point(field_set:tbMath.Vec2Message.y)
+}
+
+// -------------------------------------------------------------------
+
 // Vec3Message
 
 // float x = 1;
@@ -1092,6 +1247,8 @@ inline void Mat4Message::set_allocated_w(::tbMath::Vec4Message* w) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

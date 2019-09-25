@@ -6,6 +6,36 @@ using tbMath::Mat3Message;
 using tbMath::Mat4Message;
 
 namespace Tarbora {
+    Vec2Message Vec2(glm::vec2 data)
+    {
+        Vec2Message vec;
+        vec.set_x(data.x);
+        vec.set_y(data.y);
+
+        return vec;
+    }
+
+    Vec2Message Vec2(std::string data)
+    {
+        std::stringstream buf(data);
+        std::vector<std::string> words;
+        while (buf.good())
+        {
+            std::string word;
+            getline(buf, word, ',');
+            words.push_back(word);
+        }
+
+        Vec2Message vec;
+        vec.set_x(std::stof(words[0]));
+        vec.set_y(std::stof(words[1]));
+        return vec;
+    }
+
+    glm::vec2 Vec2toGLM(Vec2Message data)
+    {
+        return glm::vec2(data.x(), data.y());
+    }
 
     Vec3Message Vec3(glm::vec3 data)
     {

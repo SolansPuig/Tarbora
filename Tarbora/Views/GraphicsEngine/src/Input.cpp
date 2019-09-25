@@ -5,7 +5,8 @@ namespace Tarbora {
     InputImpl::InputImpl(GraphicView *view) :
         m_View(view),
         m_key_state(KEY_LAST, State::UNCHANGED),
-        m_button_state(MOUSE_BUTTON_LAST, State::UNCHANGED)
+        m_button_state(MOUSE_BUTTON_LAST, State::UNCHANGED),
+        m_LastMousePosition(glm::vec2(0.f, 0.f))
     {
         m_window = m_View->GraphicsEngine()->GetWindow()->GetRawWindow();
 
@@ -113,10 +114,18 @@ namespace Tarbora {
         return state;
     }
 
-    std::pair<int, int> InputImpl::GetMousePosition()
+    glm::vec2 InputImpl::GetMouseDelta()
+    {
+        glm::vec2 mousePosition = GetMousePosition();
+        glm::vec2 delta =  m_LastMousePosition - mousePosition;
+        m_LastMousePosition = mousePosition;
+        return delta;
+    }
+
+    glm::vec2 InputImpl::GetMousePosition()
     {
         double xpos, ypos;
         glfwGetCursorPos(m_window, &xpos, &ypos);
-        return { (int)xpos, (int)ypos };
+        return glm::vec2(xpos, ypos);
     }
 }

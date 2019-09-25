@@ -84,44 +84,6 @@ namespace Tarbora {
 
         // void CreateTrigger(ActorPtr actor, const glm::vec3 &position, const glm::vec3 &dimensions);
 
-        //! Restrict the rotation of the body on certain planes.
-        /*!
-            \param x The multiplier to the x plane.
-            \param y The multiplier to the y plane.
-            \param z The multiplier to the z plane.
-        */
-        static void RestrictRotation(btRigidBody *body, float x, float y, float z);
-
-        //! Apply an impulse on the center of the object.
-        /*!
-            \param newtons The strenght of that impulse.
-            \param direction A normalized vector representing the direction of the impulse.
-        */
-        static void ApplyImpulse(btRigidBody *body, float newtons, const glm::vec3 &direction);
-
-        //! Apply a force on the center of the object.
-        /*!
-            \param newtons The strenght of that force.
-            \param direction A normalized vector representing the direction of the force.
-        */
-        static void ApplyForce(btRigidBody *body, float newtons, const glm::vec3 &direction);
-
-        //! Apply a torque to the object. A force that will make the object rotate.
-        /*!
-            \param magnitude The strenght of that force.
-            \param direction A normalized vector representing the direction of the force.
-        */
-        static void ApplyTorque(btRigidBody *body, float magnitude, const glm::vec3 &direction);
-
-        //! Set a constant velocity to the object.
-        /*!
-            \param velocity A vector representing the speed in each of the directions (x, y and z).
-        */
-        static void SetVelocity(btRigidBody *body, const glm::vec3 &velocity);
-
-        //! Set the object velocity to zero.
-        static void Stop(btRigidBody *body);
-
         // bool KinematicMove(ActorId id, const glm::mat4 &matrix);
 
         //! Perform a raycast test.

@@ -4,6 +4,8 @@
 #include "External/glm/glm/glm.hpp"
 #include "External/glm/glm/gtx/string_cast.hpp"
 #include "External/glm/glm/gtc/type_ptr.hpp"
+#include "External/glm/glm/gtc/type_ptr.hpp"
+#include "External/tracy/Tracy.hpp"
 
 #define INVALID_ID 0
 #define SKY_ID 10

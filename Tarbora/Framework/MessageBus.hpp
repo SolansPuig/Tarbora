@@ -20,7 +20,7 @@ namespace Tarbora {
         /*!
             It should stop when AbstractModule::m_Run is set to false.
         */
-        virtual void Run() override { m_Server->Run(); }
+        virtual void Run(std::string name="Unamed Module") override { m_Server->Run(); }
 
     private:
         std::unique_ptr<MessageServer> m_Server;

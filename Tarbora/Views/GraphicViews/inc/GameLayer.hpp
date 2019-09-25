@@ -21,10 +21,8 @@ namespace Tarbora {
         std::unique_ptr<Scene> m_Scene;
 
         ActorId m_TargetId;
-        float m_LastX, m_LastY; // Last mouse position
-        glm::vec3 m_Rotation;
+        glm::vec2 m_LookDirection;
         glm::vec3 m_Movement;
         bool m_Jump;
-        float m_JumpImpulse, m_DirectionImpulse, m_TorqueImpulse;
     };
 }

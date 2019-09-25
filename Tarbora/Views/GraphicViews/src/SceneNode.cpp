@@ -343,6 +343,8 @@ namespace Tarbora {
 
     void RootNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
     {
+        ZoneScoped;
+
         glm::mat4 view = scene->GetCamera()->GetView();
         glm::mat4 newMat = parentTransform * view;
         glm::mat4 skyView = scene->GetCamera()->GetViewAngle();
@@ -352,19 +354,34 @@ namespace Tarbora {
             switch (pass)
             {
                 case RenderPass::Static:
-                    m_Children["staticGroup"]->DrawChildren(scene, newMat);
-                    break;
+                    {
+                        ZoneScopedN("Draw Static");
+                        m_Children["staticGroup"]->DrawChildren(scene, newMat);
+                        break;
+                    }
+
                 case RenderPass::Actor:
-                    m_Children["actorGroup"]->DrawChildren(scene, newMat);
-                    break;
+                    {
+                        ZoneScopedN("Draw Actor");
+                        m_Children["actorGroup"]->DrawChildren(scene, newMat);
+                        break;
+                    }
+
                 case RenderPass::Sky:
-                    scene->GraphicsEngine()->BeforeDrawSky();
-                    m_Children["skyGroup"]->DrawChildren(scene, skyMat);
-                    scene->GraphicsEngine()->AfterDrawSky();
-                    break;
+                    {
+                        ZoneScopedN("Draw Sky");
+                        scene->GraphicsEngine()->BeforeDrawSky();
+                        m_Children["skyGroup"]->DrawChildren(scene, skyMat);
+                        scene->GraphicsEngine()->AfterDrawSky();
+                        break;
+                    }
                 case RenderPass::Transparent:
-                    m_Children["transparentGroup"]->DrawChildren(scene, newMat);
-                    break;
+                    {
+                        ZoneScopedN("Draw Transparent");
+                        m_Children["transparentGroup"]->DrawChildren(scene, newMat);
+                        break;
+                    }
+
             }
         }
     }

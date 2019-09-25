@@ -31,6 +31,8 @@ namespace Tarbora {
         void Update();
         void Clear();
 
+        void CaptureMouse(bool capture);
+
         int GetWidth() { return m_Props.width; }
         int GetHeight() { return m_Props.height; }
         float GetRatio() { return m_Props.ratio; }

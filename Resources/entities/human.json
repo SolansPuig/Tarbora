@@ -4,7 +4,7 @@
         "model": {
             "renderPass": 1,
             "model": "human.json",
-            "texture": "human.png",
+            "texture": "blue.png",
             "shader": "model.shader.json"
         },
         "animations": {
@@ -12,9 +12,10 @@
         },
         "character_controller": {
             "shape": "capsule",
+            "speed": 6.0,
+            "run_speed": 9.0,
             "height": 1.5,
-            "radius": 0.4,
-            "stepHeight": 0.1,
+            "radius": 0.5,
             "density": 2
         }
     }

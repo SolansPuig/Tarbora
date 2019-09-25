@@ -44,13 +44,7 @@ namespace Tarbora {
 
     void PhysicsEngine::Update(float deltaTime)
     {
-        static float timestep = 0;
-        if (timestep >= 1./120)
-        {
-            m_DynamicsWorld->stepSimulation(timestep, 0);
-            timestep = 0;
-        }
-        timestep += deltaTime;
+        m_DynamicsWorld->stepSimulation(deltaTime, 0);
     }
 
     btRigidBody *PhysicsEngine::AddSphere(unsigned int id, float radius, float mass, float friction, float restitution, glm::mat4 &transform)
@@ -123,44 +117,6 @@ namespace Tarbora {
         delete object;
     }
 
-    void PhysicsEngine::RestrictRotation(btRigidBody *body, float x, float y, float z)
-    {
-        body->setAngularFactor(btVector3(x, y, z));
-    }
-
-    void PhysicsEngine::ApplyImpulse(btRigidBody *body, float newtons, const glm::vec3 &direction)
-    {
-        btVector3 const impulse(direction.x * newtons, direction.y * newtons, direction.z * newtons);
-        body->applyCentralImpulse(impulse);
-        body->activate();
-    }
-
-    void PhysicsEngine::ApplyForce(btRigidBody *body, float newtons, const glm::vec3 &direction)
-    {
-        btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
-        body->applyCentralForce(force);
-        body->activate();
-    }
-
-    void PhysicsEngine::ApplyTorque(btRigidBody *body, float magnitude, const glm::vec3 &direction)
-    {
-        btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
-        body->applyTorqueImpulse(torque);
-        body->activate();
-    }
-
-    void PhysicsEngine::SetVelocity(btRigidBody *body, const glm::vec3 &velocity)
-    {
-        btVector3 const vel(velocity.x, body->getLinearVelocity().y(), velocity.z);
-        body->setLinearVelocity(vel);
-        body->activate();
-    }
-
-    void PhysicsEngine::Stop(btRigidBody *body)
-    {
-        SetVelocity(body, glm::vec3(0.0f, 0.0f, 0.0f));
-    }
-
     std::shared_ptr<RayCastResult> PhysicsEngine::RayCast(glm::vec3 &origin, glm::vec3 &end)
     {
         btVector3 bOrigin = btVector3(origin.x, origin.y, origin.z);
@@ -212,7 +168,7 @@ namespace Tarbora {
 
             if (m_PreviousTickCollisionPairs.find(thisPair) == m_PreviousTickCollisionPairs.end())
             {
-                // LOG_DEBUG("Collision between %u and %u!", body0->getUserIndex(), body1->getUserIndex());
+                LOG_DEBUG("Collision between %u and %u!", body0->getUserIndex(), body1->getUserIndex());
                 // CollisionEvent ev(manifold, body0, body1);
                 // EventManager::Trigger(EventType::Collision, &ev);
             }

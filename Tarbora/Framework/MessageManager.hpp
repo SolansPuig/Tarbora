@@ -40,6 +40,11 @@ namespace Tarbora {
         MessageManager(Module *m, ClientId id, std::string serverAddress);
         ~MessageManager();
 
+        inline void SetDebugName(std::string name="Unamed Message Client")
+        {
+            m_MessageClient->SetDebugName(name);
+        }
+
         void ReadMessages();
 
         SubscriptorId Subscribe(MessageSubject s, MessageFn func);

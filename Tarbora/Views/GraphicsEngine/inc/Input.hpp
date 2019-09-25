@@ -27,13 +27,15 @@ namespace Tarbora {
 
         void SetButtonState(int button, State state) { m_button_state[button] = state; }
 
+        glm::vec2 GetMousePosition();
+        glm::vec2 GetMouseDelta();
+
     private:
         GLFWwindow *m_window;
         GraphicView *m_View;
 
         std::vector<State> m_key_state;
         std::vector<State> m_button_state;
-
-        std::pair<int, int> GetMousePosition();
+        glm::vec2 m_LastMousePosition;
     };
 }

@@ -12,4 +12,5 @@ add_library (TarboraCore SHARED
     MessageServer.cpp
     Protos/messages.grpc.pb.cc
     Protos/messages.pb.cc
+    External/tracy/TracyClient.cpp
 )

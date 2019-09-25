@@ -98,16 +98,20 @@ namespace Tarbora {
         */
         void SetVelocity(const glm::vec3 &velocity);
 
+        //! Set a constant angular velocity to the object.
+        /*!
+            \param velocity A vector representing the rotation speed in each of the roation axis (x, y and z).
+        */
+        void SetAngularVelocity(const glm::vec3 &velocity);
+
         //! Set the object velocity to zero.
         void Stop();
 
         //! Restrict the rotation of the body in each axis.
         /*!
-            \param x The multiplier to the rotation in the x axis. Set to 0 to forbid the rotation in x, set to 1 to leave it untouched.
-            \param y The multiplier to the rotation in the y axis. Set to 0 to forbid the rotation in y, set to 1 to leave it untouched.
-            \param z The multiplier to the rotation in the z axis. Set to 0 to forbid the rotation in z, set to 1 to leave it untouched.
+            \param axis The multiplier to the rotation in the each of the axis. Set to 0 to forbid the rotation in that axis, set to 1 to leave it untouched.
         */
-        void RestrictRotation(float x, float y, float z);
+        void RestrictRotation(const glm::vec3 &velocity);
 
         //! Set the linear damping of the body.
         /*!

@@ -11,32 +11,49 @@ namespace Tarbora {
 
     void RigidBody::ApplyImpulse(float newtons, const glm::vec3 &direction)
     {
-        PhysicsEngine::ApplyImpulse(m_Body, newtons, direction);
+        btVector3 const impulse(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+        m_Body->applyCentralImpulse(impulse);
+        m_Body->activate();
     }
 
     void RigidBody::ApplyForce(float newtons, const glm::vec3 &direction)
     {
-        PhysicsEngine::ApplyForce(m_Body, newtons, direction);
+        btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+        m_Body->applyCentralForce(force);
+        m_Body->activate();
     }
 
     void RigidBody::ApplyTorque(float magnitude, const glm::vec3 &direction)
     {
-        PhysicsEngine::ApplyTorque(m_Body, magnitude, direction);
+        btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
+        m_Body->applyTorqueImpulse(torque);
+        m_Body->activate();
     }
 
     void RigidBody::SetVelocity(const glm::vec3 &velocity)
     {
-        PhysicsEngine::SetVelocity(m_Body, velocity);
+        glm::mat3 const rotation = static_cast<ActorMotionState*>(m_Body->getMotionState())->getRotation();
+        glm::vec3 const globalVelocity = rotation * velocity;
+        btVector3 const vel(globalVelocity.x, m_Body->getLinearVelocity().y(), globalVelocity.z);
+        m_Body->setLinearVelocity(vel);
+        m_Body->activate();
+    }
+
+    void RigidBody::SetAngularVelocity(const glm::vec3 &velocity)
+    {
+        btVector3 const vel(velocity.x, velocity.y, velocity.z);
+        m_Body->setAngularVelocity(vel);
+        m_Body->activate();
     }
 
     void RigidBody::Stop()
     {
-        PhysicsEngine::Stop(m_Body);
+        SetVelocity(glm::vec3(0.0f, 0.0f, 0.0f));
     }
 
-    void RigidBody::RestrictRotation(float x, float y, float z)
+    void RigidBody::RestrictRotation(const glm::vec3 &axis)
     {
-        PhysicsEngine::RestrictRotation(m_Body, x, y, z);
+        m_Body->setAngularFactor(btVector3(axis.x, axis.y, axis.z));
     }
 
     void RigidBody::SetLinearDamping(float damping)

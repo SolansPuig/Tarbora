@@ -3,12 +3,13 @@
 #include "../Framework/MessageManager.hpp"
 #include "proto/math.pb.h"
 
-using tbMath::Vec3Message;
-using tbMath::Vec4Message;
-using tbMath::Mat3Message;
-using tbMath::Mat4Message;
+using namespace tbMath;
 
 namespace Tarbora {
+    Vec2Message Vec2(glm::vec2 data);
+    Vec2Message Vec2(std::string data);
+
+    glm::vec2 Vec2toGLM(Vec2Message data);
 
     Vec3Message Vec3(glm::vec3 data);
     Vec3Message Vec3(std::string data);

@@ -8,6 +8,8 @@ namespace Tarbora {
     {
         LOG_DEBUG("Creating human game view...");
 
+        m_MaxFrameRate = 60;
+
         m_GameLayer = std::make_shared<GameLayerImpl>(this, true);
         m_GameLayer->SetTargetId(5);
         PushLayer(m_GameLayer);
@@ -22,6 +24,9 @@ namespace Tarbora {
 
         PushLayer(m_Console);
 
+        GraphicsEngine()->GetWindow()->CaptureMouse(true);
+
+        LOG_DEBUG("Created");
         // std::shared_ptr<DemoWindow> demo_gui(new DemoWindow(this, false));
         // PushLayer(demo_gui);
     }
@@ -33,8 +38,12 @@ namespace Tarbora {
 
     void HumanView::GetInput()
     {
+        ZoneScoped;
+
         if (Input()->GetKeyDown(KEY_ESCAPE)) {
-            Close();
+            static bool capture = true;
+            capture = !capture;
+            GraphicsEngine()->GetWindow()->CaptureMouse(capture);
         }
 
         if (Input()->GetKeyDown(KEY_F2)) {
@@ -53,6 +62,8 @@ namespace Tarbora {
 
     void HumanView::Update(float elapsed_time)
     {
+        ZoneScoped;
+
         for (auto itr = m_Layers.rbegin(); itr != m_Layers.rend(); itr++)
         {
             if ((*itr)->IsActive())
@@ -62,6 +73,8 @@ namespace Tarbora {
 
     void HumanView::Draw()
     {
+        ZoneScoped;
+
         GraphicsEngine()->BeforeDraw();
 
         for (auto &itr : m_Layers)

@@ -37,3 +37,22 @@ message ApplyPhysicsBody {
     float magnitude = 2;
     tbMath.Vec3Message direction = 3;
 }
+
+message LookDirectionBody {
+    uint32 id = 1;
+    tbMath.Vec2Message direction = 2;
+}
+
+message LookAtBody {
+    uint32 id = 1;
+    uint32 target = 2;
+    float distance = 3;
+    tbMath.Vec3Message rotation = 4;
+}
+
+message MoveNodeBody {
+    uint32 id = 1;
+    string node = 2;
+    tbMath.Vec3Message position = 3;
+    tbMath.Vec3Message rotation = 4;
+}

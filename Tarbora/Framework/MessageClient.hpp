@@ -22,6 +22,11 @@ public:
     void Connect();
     void Disconnect();
 
+    inline void SetDebugName(std::string name)
+    {
+        tracy::SetThreadName(m_Thread, name.c_str());
+    }
+
     bool GetMessage(tbMessages::Message *message);
     void Send(tbMessages::Message &message);
 
@@ -43,5 +48,5 @@ private:
 
     // Entry message queue
     std::queue<tbMessages::Message> m_Messages;
-    std::mutex m_MessagesMutex;
+    TracyLockable(std::mutex, m_MessagesMutex);
 };

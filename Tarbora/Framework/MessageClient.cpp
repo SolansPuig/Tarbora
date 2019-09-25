@@ -40,6 +40,7 @@ void MessageClient::Disconnect()
 
 bool MessageClient::GetMessage(Message *message)
 {
+    ZoneScoped;
     m_MessagesMutex.lock();
     if (m_Messages.empty())
     {

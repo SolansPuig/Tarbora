@@ -121,6 +121,8 @@ namespace Tarbora {
 
     void MessageServer::Run()
     {
+        ZoneScoped;
+        
         LOG_DEBUG("Server listening at %s", m_Address.c_str());
         m_Server->Wait();
     }

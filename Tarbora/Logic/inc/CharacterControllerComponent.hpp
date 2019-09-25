@@ -21,10 +21,17 @@ namespace Tarbora {
     private:
         RigidBodyPtr m_Body;
         glm::vec3 m_Movement;
+        glm::vec3 m_Rotation;
+        glm::vec3 m_LookRotation;
         bool m_OnGround;
         bool m_Flying;
         float m_Height;
         float m_Width;
-        float m_StepHeight;
+        float m_Speed;
+        float m_RunSpeed;
+
+        void CheckLineOfSight();
+        void CheckGround();
+        void UpdateTransformAndView();
     };
 }
