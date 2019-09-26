@@ -5,15 +5,15 @@
 #include "../../../Framework/ResourceManager/inc/Json.hpp"
 
 namespace Tarbora {
-    GraphicsEngineImpl::GraphicsEngineImpl(GraphicView *view, std::string settings_file) :
+    GraphicsEngineImpl::GraphicsEngineImpl(GraphicView *view, std::string settingsFile) :
         m_View(view)
     {
         glfwInit();
 
-        std::string window_title = "Tarbora Game Engine";
-        int window_width = 1280, window_height = 720;
+        std::string windowTitle = "Tarbora Game Engine";
+        int windowWidth = 1280, windowHeight = 720;
 
-        JsonPtr settings = GET_RESOURCE(Json, settings_file);
+        JsonPtr settings = GET_RESOURCE(Json, settingsFile);
         if (settings)
         {
             raw_json window;
@@ -22,16 +22,22 @@ namespace Tarbora {
             {
                 settings->PushErrName("window");
 
-                settings->Get(window, "title", &window_title, {true});
+                settings->Get(window, "title", &windowTitle, {true});
 
-                settings->GetArray(window, "size", 0, &window_width, {true});
-                settings->GetArray(window, "size", 1, &window_height, {true});
+                settings->GetArray(window, "size", 0, &windowWidth, {true});
+                settings->GetArray(window, "size", 1, &windowHeight, {true});
 
                 settings->PopErrName();
             }
         };
 
-        Main_Window = std::unique_ptr<Window>(new Window(window_title.c_str(), window_width, window_height, m_View));
+        m_Window = std::unique_ptr<Window>(new Window(windowTitle.c_str(), windowWidth, windowHeight, m_View));
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_CULL_FACE);
+
+        glViewport(0, 0, windowWidth, windowHeight);
 
         glewExperimental = GL_TRUE;
         if (glewInit() != GLEW_OK) {
@@ -44,10 +50,13 @@ namespace Tarbora {
         ResourceManager::RegisterLoader(LoaderPtr(new ShaderResourceLoader()));
         ResourceManager::RegisterLoader(LoaderPtr(new TextureResourceLoader()));
         ResourceManager::RegisterLoader(LoaderPtr(new MeshResourceLoader()));
+
+        GenerateFramebuffer(windowWidth, windowHeight);
     }
 
     GraphicsEngineImpl::~GraphicsEngineImpl()
     {
+        LOG_DEBUG("Destroying Graphics Engine");
         glfwTerminate();
     }
 
@@ -58,7 +67,12 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::BeforeDraw()
     {
-        Main_Window->Clear();
+        // Bind and clear the post processing buffer
+        glBindFramebuffer(GL_FRAMEBUFFER, m_Framebuffer);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glEnable(GL_DEPTH_TEST);
+
         m_Gui->BeforeDraw();
     }
 
@@ -70,8 +84,18 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::AfterDraw()
     {
+        // Bind the rendering framebuffer
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glDisable(GL_DEPTH_TEST);
+
+        if (!m_ScreenShader.expired() && !m_QuadMesh.expired())
+        m_ScreenShader.lock()->Use();
+        glBindTexture(GL_TEXTURE_2D, m_TextureColorbuffer);
+        glBindVertexArray(m_QuadMesh.lock()->GetId());
+        glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
+
         m_Gui->AfterDraw();
-        Main_Window->Update();
+        m_Window->Update();
     }
 
     void GraphicsEngineImpl::BeforeDrawSky()
@@ -88,7 +112,7 @@ namespace Tarbora {
 
     WindowPtr GraphicsEngineImpl::GetWindow()
     {
-        return Main_Window;
+        return m_Window;
     }
 
     unsigned int GraphicsEngineImpl::CompileShader(std::string type, const char *code)
@@ -229,11 +253,39 @@ namespace Tarbora {
         return !m_Shader.expired();
     }
 
+    void GraphicsEngineImpl::GenerateFramebuffer(int width, int height)
+    {
+        glGenFramebuffers(1, &m_Framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_Framebuffer);
+
+        glGenTextures(1, &m_TextureColorbuffer);
+        glBindTexture(GL_TEXTURE_2D, m_TextureColorbuffer);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glBindTexture(GL_TEXTURE_2D, 0);
+
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_TextureColorbuffer, 0);
+
+        unsigned int rbo;
+        glGenRenderbuffers(1, &rbo);
+        glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        m_QuadMesh = GET_RESOURCE(Mesh, "meshes/plane.mesh");
+        m_ScreenShader = GET_RESOURCE(Shader, "shaders/screen.shader.json");
+    }
+
     int GraphicsEngineImpl::TakeScreenshot(const std::string &filename)
     {
         // Get the window width and height and reserve memory
-        int width = Main_Window->GetWidth();
-        int height = Main_Window->GetHeight();
+        int width = m_Window->GetWidth();
+        int height = m_Window->GetHeight();
         char *data = (char*) malloc((size_t) (width * height * 3));
 
         // Configure the format for storing the pixels and read them

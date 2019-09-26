@@ -4,7 +4,7 @@
         "model": {
             "renderPass": 1,
             "model": "ground.json",
-            "texture": "grey.png",
+            "texture": "dirt.png",
             "shader": "model.shader.json"
         },
         "physics": {

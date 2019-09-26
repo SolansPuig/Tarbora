@@ -29,7 +29,6 @@ namespace Tarbora {
 
         void Close();
         void Update();
-        void Clear();
 
         void CaptureMouse(bool capture);
 

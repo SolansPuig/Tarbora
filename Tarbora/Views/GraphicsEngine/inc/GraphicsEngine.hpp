@@ -10,7 +10,7 @@
 namespace Tarbora {
     class GraphicsEngineImpl {
     public:
-        GraphicsEngineImpl(GraphicView *view, std::string settings_file);
+        GraphicsEngineImpl(GraphicView *view, std::string settingsFile);
         ~GraphicsEngineImpl();
 
         void InitGui();
@@ -39,13 +39,18 @@ namespace Tarbora {
         std::shared_ptr<Shader> GetShader();
         bool ShaderAvailable();
 
+        void GenerateFramebuffer(int width, int height);
+
         int TakeScreenshot(const std::string &filename);
 
     private:
-        std::shared_ptr<Window> Main_Window;
+        std::shared_ptr<Window> m_Window;
         std::unique_ptr<Gui> m_Gui;
         std::weak_ptr<Shader> m_Shader;
-
+        unsigned int m_Framebuffer;
+        unsigned int m_TextureColorbuffer;
+        std::weak_ptr<Mesh> m_QuadMesh;
+        std::weak_ptr<Shader> m_ScreenShader;
         GraphicView *m_View;
     };
 }

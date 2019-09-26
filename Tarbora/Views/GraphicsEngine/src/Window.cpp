@@ -20,13 +20,6 @@ namespace Tarbora {
 
         glfwMakeContextCurrent(m_Window);
 
-        glEnable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_CULL_FACE);
-
-        glViewport(0, 0, m_Props.width, m_Props.height);
-
         glfwSetWindowUserPointer(m_Window, &m_Props);
 
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
@@ -64,12 +57,6 @@ namespace Tarbora {
     {
         glfwPollEvents();
         glfwSwapBuffers(m_Window);
-    }
-
-    void Window::Clear()
-    {
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     void Window::CaptureMouse(bool capture)
