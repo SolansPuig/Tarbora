@@ -2,14 +2,14 @@
     "components": {
         "type": ["ground"],
         "model": {
-            "renderPass": 1,
+            "renderPass": 3,
             "model": "cube.json",
-            "texture": "crate.png",
+            "texture": "glass.png",
             "shader": "model.shader.json"
         },
         "physics": {
             "shape": "box",
-            "size": [1, 1, 1],
+            "size": [1.01, 1.01, 1.01],
             "density": 90,
             "friction": 0.3,
             "restitution": 0.2

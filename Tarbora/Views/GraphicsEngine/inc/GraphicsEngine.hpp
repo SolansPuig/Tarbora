@@ -47,8 +47,10 @@ namespace Tarbora {
         std::shared_ptr<Window> m_Window;
         std::unique_ptr<Gui> m_Gui;
         std::weak_ptr<Shader> m_Shader;
-        unsigned int m_Framebuffer;
-        unsigned int m_TextureColorbuffer;
+        unsigned int m_MultisampledFBO;
+        unsigned int m_TextureMultisampled;
+        unsigned int m_PostProcessFBO;
+        unsigned int m_TexturePostProcess;
         std::weak_ptr<Mesh> m_QuadMesh;
         std::weak_ptr<Shader> m_ScreenShader;
         GraphicView *m_View;

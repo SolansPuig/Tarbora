@@ -35,7 +35,6 @@ namespace Tarbora {
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_CULL_FACE);
 
         glViewport(0, 0, windowWidth, windowHeight);
 
@@ -67,11 +66,12 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::BeforeDraw()
     {
-        // Bind and clear the post processing buffer
-        glBindFramebuffer(GL_FRAMEBUFFER, m_Framebuffer);
+        // Bind and clear the multisampling buffer
+        glBindFramebuffer(GL_FRAMEBUFFER, m_MultisampledFBO);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
+        glEnable(GL_CULL_FACE);
 
         m_Gui->BeforeDraw();
     }
@@ -84,13 +84,20 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::AfterDraw()
     {
-        // Bind the rendering framebuffer
+        int width = m_Window->GetWidth();
+        int height = m_Window->GetHeight();
+
+        // Get the multisampling to the post processing buffer
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, m_MultisampledFBO);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_PostProcessFBO);
+        glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+
+        // Apply post-processing
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glDisable(GL_DEPTH_TEST);
-
         if (!m_ScreenShader.expired() && !m_QuadMesh.expired())
         m_ScreenShader.lock()->Use();
-        glBindTexture(GL_TEXTURE_2D, m_TextureColorbuffer);
+        glBindTexture(GL_TEXTURE_2D, m_TexturePostProcess);
         glBindVertexArray(m_QuadMesh.lock()->GetId());
         glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
 
@@ -107,7 +114,6 @@ namespace Tarbora {
     void GraphicsEngineImpl::AfterDrawSky()
     {
         glDepthFunc(GL_LESS);
-        glEnable(GL_CULL_FACE);
     }
 
     WindowPtr GraphicsEngineImpl::GetWindow()
@@ -221,12 +227,14 @@ namespace Tarbora {
         glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), &vertices[0], GL_STATIC_DRAW);
 
         glBindVertexArray(VAO);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(6 * sizeof(float)));
+        glEnableVertexAttribArray(3);
+        glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(8 * sizeof(float)));
 
         // glDeleteBuffers(1, &VBO);
         return VAO;
@@ -255,25 +263,33 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::GenerateFramebuffer(int width, int height)
     {
-        glGenFramebuffers(1, &m_Framebuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, m_Framebuffer);
+        // Generate the multisampling buffer
+        glGenFramebuffers(1, &m_MultisampledFBO);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_MultisampledFBO);
+        glGenTextures(1, &m_TextureMultisampled);
+        glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, m_TextureMultisampled);
+        glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, width, height, GL_TRUE);
+        glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, m_TextureMultisampled, 0);
+        unsigned int rbo;
+        glGenRenderbuffers(1, &rbo);
+        glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+        glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_DEPTH24_STENCIL8, width, height);
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
 
-        glGenTextures(1, &m_TextureColorbuffer);
-        glBindTexture(GL_TEXTURE_2D, m_TextureColorbuffer);
+        // Generate the post processing buffer
+        glGenFramebuffers(1, &m_PostProcessFBO);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_PostProcessFBO);
+
+        glGenTextures(1, &m_TexturePostProcess);
+        glBindTexture(GL_TEXTURE_2D, m_TexturePostProcess);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glBindTexture(GL_TEXTURE_2D, 0);
 
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_TextureColorbuffer, 0);
-
-        unsigned int rbo;
-        glGenRenderbuffers(1, &rbo);
-        glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
-        glBindRenderbuffer(GL_RENDERBUFFER, 0);
-
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_TexturePostProcess, 0);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
