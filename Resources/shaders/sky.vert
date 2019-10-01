@@ -4,15 +4,19 @@ layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoord;
 layout (location = 3) in float aFace;
 
+uniform mat4 projection;
 uniform mat4 transform;
 uniform sampler2D myTexture;
 
 out vec2 TexCoord;
+out vec3 FragPos;
+out vec3 Normal;
 
 void main()
 {
-    vec4 pos = transform * vec4(aPos, 1.0f);
-    gl_Position = pos.xyww;
+    gl_Position = (projection * transform * vec4(aPos, 1.0f)).xyww;
+    FragPos = vec3(0.0f, 0.0f, 0.f);
+    Normal = glm::vec3(1.0f, 1.0f, 1.f);
 
     ivec2 texSize = textureSize(myTexture, 0);
     float xoffset = 0.5 / texSize.x;

@@ -4,20 +4,27 @@ layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoord;
 layout (location = 3) in float aFace;
 
+uniform mat4 projection;
+uniform mat4 view;
 uniform mat4 transform;
 uniform vec2 uv;
 uniform vec3 size;
 uniform sampler2D myTexture;
 
 out vec2 TexCoord;
+out vec3 FragPos;
+out vec3 Normal;
 
 void main()
 {
+    vec4 viewPos = transform * vec4(aPos, 1.0f);
+    FragPos = viewPos.xyz;
+    Normal = transpose(inverse(mat3(transform))) * aNormal;
+    gl_Position = projection * view * viewPos;
+
     ivec2 texSize = textureSize(myTexture, 0);
     float xoffset = 0.5 / texSize.x;
     float yoffset = 0.5 / texSize.y;
-
-    gl_Position = transform * vec4(aPos, 1.0f);
 
     if (aTexCoord.x == 0)
     {

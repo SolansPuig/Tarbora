@@ -27,8 +27,8 @@ namespace Tarbora {
         virtual ~SceneNode() {}
 
         virtual void Update(Scene *scene, float deltaTime);
-        virtual void Draw(Scene *scene, glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
-        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform);
+        virtual void Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform) { (void)(scene); (void)(projection); (void)(view); (void)(parentTransform); }
+        virtual void DrawChildren(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, const glm::mat4 &parentTransform);
 
         virtual bool AddChild(SceneNodePtr child);
         virtual SceneNodePtr GetChild(ActorId id);
@@ -48,12 +48,12 @@ namespace Tarbora {
         void SetPosition(const glm::vec3 &position);
         void Move(const glm::vec3 &vector);
         void MoveTo(const glm::vec3 &position, float timeToComplete);
-        glm::vec3 const &GetPosition() { return m_Position; }
+        const glm::vec3 &GetPosition() { return m_Position; }
 
         void SetRotation(const glm::vec3 &rotation);
         void Rotate(const glm::vec3 &angles);
         void RotateTo(const glm::vec3 &rotation, float timeToComplete);
-        glm::vec3 const &GetRotation() { return m_Rotation; }
+        const glm::vec3 &GetRotation() { return m_Rotation; }
 
         void SetRotationMatrix(const glm::mat3 &rotation);
 
@@ -61,13 +61,13 @@ namespace Tarbora {
         void SetGlobalScale(const glm::vec3 &scale);
         void Scale(const glm::vec3 &scale);
         void ScaleTo(const glm::vec3 &scale, float timeToComplete);
-        glm::vec3 const &GetScale() { return m_Scale; }
+        const glm::vec3 &GetScale() { return m_Scale; }
 
         void SetOrigin(const glm::vec3 &origin);
 
         void SetTransform(glm::mat4 *matrix=nullptr);
-        glm::mat4 const GetGlobalTransform();
-        glm::mat4 const &GetLocalTransform() const { return m_LocalMatrix; }
+        const glm::mat4 GetGlobalTransform();
+        const glm::mat4 &GetLocalTransform() const { return m_LocalMatrix; }
 
         void SetRadius(float radius) { m_Radius = radius; }
         float GetRadius() const { return m_Radius; }
@@ -112,7 +112,7 @@ namespace Tarbora {
         RootNode();
         virtual bool AddChild(SceneNodePtr child, RenderPass renderPass);
         virtual bool RemoveChild(ActorId id) override;
-        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform) override;
+        virtual void DrawChildren(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, const glm::mat4 &parentTransform) override;
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
     };
 
@@ -122,6 +122,7 @@ namespace Tarbora {
         Camera(ActorId actorId, std::string name);
         const glm::mat4 GetView();
         const glm::mat4 GetViewAngle();
+        const glm::vec3 GetViewPosition();
     private:
         glm::mat4 m_View;
     };
@@ -131,7 +132,7 @@ namespace Tarbora {
     {
     public:
         MaterialNode(ActorId actorId, std::string name, std::string shader, std::string texture="");
-        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
+        virtual void Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform);
     protected:
         std::shared_ptr<Texture> m_Texture;
         std::shared_ptr<Shader> m_Shader;
@@ -141,7 +142,7 @@ namespace Tarbora {
     {
     public:
         MeshNode(ActorId actorId, std::string name, std::string mesh);
-        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
+        virtual void Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform);
         void SetUV(glm::vec3 &size, glm::vec2 &uv);
 
     protected:

@@ -3,38 +3,44 @@ out vec4 FragColor;
 
 in vec2 TexCoords;
 
-uniform sampler2D screenTexture;
+uniform sampler2D gPosition;
+uniform sampler2D gNormal;
+uniform sampler2D gColorSpec;
+uniform sampler2D ssao;
 
-const float offset = 1.0 / 300.0;
+uniform vec3 viewPos;
+
+struct DirectionalLight {
+    vec3 direction;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
 
 void main()
 {
-    vec2 offsets[9] = vec2[](
-        vec2(-offset,  offset), // top-left
-        vec2( 0.0f,    offset), // top-center
-        vec2( offset,  offset), // top-right
-        vec2(-offset,  0.0f),   // center-left
-        vec2( 0.0f,    0.0f),   // center-center
-        vec2( offset,  0.0f),   // center-right
-        vec2(-offset, -offset), // bottom-left
-        vec2( 0.0f,   -offset), // bottom-center
-        vec2( offset, -offset)  // bottom-right
+    const DirectionalLight light = DirectionalLight(
+        vec3(1.2f, -1.0f, 1.3f),
+        vec3(0.7f, 0.7f, 0.7f),
+        vec3(0.4f, 0.4f, 0.4f),
+        vec3(1.0f, 1.0f, 1.0f)
     );
+    vec3 FragPos = texture(gPosition, TexCoords).rgb;
+    vec3 Normal = texture(gNormal, TexCoords).rgb;
+    vec3 Albedo = texture(gColorSpec, TexCoords).rgb;
+    float Specular = texture(gNormal, TexCoords).a;
+    float AmbientOcclusion = texture(ssao, TexCoords).r;
 
-    float kernel[9] = float[](
-        0, 0, 0,
-        0, 1, 0,
-        0, 0, 0
-    );
+    vec3 lightDir = normalize(-light.direction);
+    vec3 viewDir = normalize(viewPos - FragPos);
 
-    vec3 sampleTex[9];
-    for(int i = 0; i < 9; i++)
-    {
-        sampleTex[i] = vec3(texture(screenTexture, TexCoords.st + offsets[i]));
-    }
-    vec3 col = vec3(0.0);
-    for(int i = 0; i < 9; i++)
-        col += sampleTex[i] * kernel[i];
+    vec3 ambient = light.ambient * AmbientOcclusion;
+    float diff = max(dot(Normal, lightDir), 0.0);
+    vec3 diffuse = diff * light.diffuse;
+    vec3 reflectDir = reflect(-lightDir, Normal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+    vec3 specular = light.specular * spec;
+    vec3 lighting = Albedo * (ambient + diffuse + specular);
 
-    FragColor = vec4(col, 1.0);
+    FragColor = vec4(vec3(lighting), 1.0);
 }

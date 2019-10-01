@@ -26,7 +26,7 @@ namespace Tarbora {
         glUniform1f(glGetUniformLocation(m_Id, name.c_str()), value);
     }
 
-    void Shader::Set(const std::string name, glm::vec2 &value)
+    void Shader::Set(const std::string name, const glm::vec2 &value)
     {
         glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
     }
@@ -36,7 +36,7 @@ namespace Tarbora {
         glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec2(x, y)));
     }
 
-    void Shader::Set(const std::string name, glm::vec3 &value)
+    void Shader::Set(const std::string name, const glm::vec3 &value)
     {
         glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
     }
@@ -46,7 +46,7 @@ namespace Tarbora {
         glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec3(x, y, z)));
     }
 
-    void Shader::Set(const std::string name, glm::vec4 &value)
+    void Shader::Set(const std::string name, const glm::vec4 &value)
     {
         glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
     }
@@ -56,7 +56,7 @@ namespace Tarbora {
         glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec4(x, y, z, w)));
     }
 
-    void Shader::Set(const std::string name, glm::mat4 &value)
+    void Shader::Set(const std::string name, const glm::mat4 &value)
     {
         glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
     }

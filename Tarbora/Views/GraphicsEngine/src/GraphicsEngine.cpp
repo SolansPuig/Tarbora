@@ -3,6 +3,9 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "../../../Framework/External/stb_image_write.h"
 #include "../../../Framework/ResourceManager/inc/Json.hpp"
+#include <random>
+
+#define KERNEL_SIZE 16
 
 namespace Tarbora {
     GraphicsEngineImpl::GraphicsEngineImpl(GraphicView *view, std::string settingsFile) :
@@ -33,9 +36,6 @@ namespace Tarbora {
 
         m_Window = std::unique_ptr<Window>(new Window(windowTitle.c_str(), windowWidth, windowHeight, m_View));
 
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
         glViewport(0, 0, windowWidth, windowHeight);
 
         glewExperimental = GL_TRUE;
@@ -50,7 +50,8 @@ namespace Tarbora {
         ResourceManager::RegisterLoader(LoaderPtr(new TextureResourceLoader()));
         ResourceManager::RegisterLoader(LoaderPtr(new MeshResourceLoader()));
 
-        GenerateFramebuffer(windowWidth, windowHeight);
+        GenerateDefferredFramebuffer(windowWidth, windowHeight);
+        GenerateOcclusionFramebuffer(windowWidth, windowHeight);
     }
 
     GraphicsEngineImpl::~GraphicsEngineImpl()
@@ -66,9 +67,11 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::BeforeDraw()
     {
-        // Bind and clear the multisampling buffer
-        glBindFramebuffer(GL_FRAMEBUFFER, m_MultisampledFBO);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        // Geometry pass
+        glBindFramebuffer(GL_FRAMEBUFFER, m_gBuffer);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_CULL_FACE);
@@ -84,22 +87,55 @@ namespace Tarbora {
 
     void GraphicsEngineImpl::AfterDraw()
     {
-        int width = m_Window->GetWidth();
-        int height = m_Window->GetHeight();
+        // Occlusion
+        glBindFramebuffer(GL_FRAMEBUFFER, m_ssaoBuffer);
+        glClear(GL_COLOR_BUFFER_BIT);
+        if (!m_OcclusionShader.expired() && !m_QuadMesh.expired())
+        {
+            m_OcclusionShader.lock()->Use();
+            m_OcclusionShader.lock()->Set("projection", m_ProjectionMatrix);
+            m_OcclusionShader.lock()->Set("view", m_ViewMatrix);
 
-        // Get the multisampling to the post processing buffer
-        glBindFramebuffer(GL_READ_FRAMEBUFFER, m_MultisampledFBO);
-        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_PostProcessFBO);
-        glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, m_gPosition);
+            glActiveTexture(GL_TEXTURE1);
+            glBindTexture(GL_TEXTURE_2D, m_gNormal);
+            glActiveTexture(GL_TEXTURE2);
+            glBindTexture(GL_TEXTURE_2D, m_NoiseTexture);
+            glActiveTexture(GL_TEXTURE0);
+            glBindVertexArray(m_QuadMesh.lock()->GetId());
+            glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
+        }
 
-        // Apply post-processing
+        glBindFramebuffer(GL_FRAMEBUFFER, m_ssaoBlurBuffer);
+        glClear(GL_COLOR_BUFFER_BIT);
+        if (!m_OcclusionBlurShader.expired() && !m_QuadMesh.expired())
+        {
+            m_OcclusionBlurShader.lock()->Use();
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, m_ssaoColorBuffer);
+            glBindVertexArray(m_QuadMesh.lock()->GetId());
+            glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
+        }
+
+        // Lighting pass
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        glDisable(GL_DEPTH_TEST);
         if (!m_ScreenShader.expired() && !m_QuadMesh.expired())
-        m_ScreenShader.lock()->Use();
-        glBindTexture(GL_TEXTURE_2D, m_TexturePostProcess);
-        glBindVertexArray(m_QuadMesh.lock()->GetId());
-        glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
+        {
+            m_ScreenShader.lock()->Use();
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, m_gPosition);
+            glActiveTexture(GL_TEXTURE1);
+            glBindTexture(GL_TEXTURE_2D, m_gNormal);
+            glActiveTexture(GL_TEXTURE2);
+            glBindTexture(GL_TEXTURE_2D, m_gColorSpec);
+            glActiveTexture(GL_TEXTURE3);
+            glBindTexture(GL_TEXTURE_2D, m_ssaoBlurColorBuffer);
+            glActiveTexture(GL_TEXTURE0);
+            m_ScreenShader.lock()->Set("viewPos", m_CameraPosition);
+            glBindVertexArray(m_QuadMesh.lock()->GetId());
+            glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
+        }
 
         m_Gui->AfterDraw();
         m_Window->Update();
@@ -261,40 +297,150 @@ namespace Tarbora {
         return !m_Shader.expired();
     }
 
-    void GraphicsEngineImpl::GenerateFramebuffer(int width, int height)
+    void GraphicsEngineImpl::SetCamera(const glm::vec3 &position, const glm::mat4 &view)
     {
-        // Generate the multisampling buffer
-        glGenFramebuffers(1, &m_MultisampledFBO);
-        glBindFramebuffer(GL_FRAMEBUFFER, m_MultisampledFBO);
-        glGenTextures(1, &m_TextureMultisampled);
-        glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, m_TextureMultisampled);
-        glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, width, height, GL_TRUE);
-        glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, m_TextureMultisampled, 0);
+        m_CameraPosition = position;
+        m_ViewMatrix = view;
+    }
+
+    void GraphicsEngineImpl::SetProjectionMatrix(const glm::mat4 &projection)
+    {
+        m_ProjectionMatrix = projection;
+    }
+
+    void GraphicsEngineImpl::GenerateDefferredFramebuffer(int width, int height)
+    {
+        // Generate the g buffer
+        glGenFramebuffers(1, &m_gBuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_gBuffer);
+
+        // Position color buffer
+        glGenTextures(1, &m_gPosition);
+        glBindTexture(GL_TEXTURE_2D, m_gPosition);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_gPosition, 0);
+
+        // Normal color buffer
+        glGenTextures(1, &m_gNormal);
+        glBindTexture(GL_TEXTURE_2D, m_gNormal);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, m_gNormal, 0);
+
+        // Color + Specular color buffer
+        glGenTextures(1, &m_gColorSpec);
+        glBindTexture(GL_TEXTURE_2D, m_gColorSpec);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT2, GL_TEXTURE_2D, m_gColorSpec, 0);
+
+        unsigned int attachments[3] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
+        glDrawBuffers(3, attachments);
+
         unsigned int rbo;
         glGenRenderbuffers(1, &rbo);
         glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-        glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_DEPTH24_STENCIL8, width, height);
-        glBindRenderbuffer(GL_RENDERBUFFER, 0);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
-
-        // Generate the post processing buffer
-        glGenFramebuffers(1, &m_PostProcessFBO);
-        glBindFramebuffer(GL_FRAMEBUFFER, m_PostProcessFBO);
-
-        glGenTextures(1, &m_TexturePostProcess);
-        glBindTexture(GL_TEXTURE_2D, m_TexturePostProcess);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glBindTexture(GL_TEXTURE_2D, 0);
-
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_TexturePostProcess, 0);
-
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo);
+        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+            LOG_ERR("Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         m_QuadMesh = GET_RESOURCE(Mesh, "meshes/plane.mesh");
         m_ScreenShader = GET_RESOURCE(Shader, "shaders/screen.shader.json");
+
+        m_ScreenShader.lock()->Use();
+        m_ScreenShader.lock()->Set("gPosition", 0);
+        m_ScreenShader.lock()->Set("gNormal", 1);
+        m_ScreenShader.lock()->Set("gColorSpec", 2);
+        m_ScreenShader.lock()->Set("ssao", 3);
+    }
+
+
+    float lerp(float a, float b, float f)
+    {
+        return a + f * (b - a);
+    }
+
+    void GraphicsEngineImpl::GenerateOcclusionFramebuffer(int width, int height)
+    {
+        // Generate the SSAO Buffer
+        glGenFramebuffers(1, &m_ssaoBuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_ssaoBuffer);
+
+        // Color buffer
+        glGenTextures(1, &m_ssaoColorBuffer);
+        glBindTexture(GL_TEXTURE_2D, m_ssaoColorBuffer);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RGB, GL_FLOAT, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ssaoColorBuffer, 0);
+        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+            LOG_ERR("Framebuffer not complete!");
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        // Generate the sample kernel
+        std::uniform_real_distribution<GLfloat> randomFloats(0.0, 1.0); // generates random floats between 0.0 and 1.0
+        std::default_random_engine generator;
+        std::vector<glm::vec3> ssaoKernel;
+        for (unsigned int i = 0; i < KERNEL_SIZE; ++i)
+        {
+            glm::vec3 sample(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, randomFloats(generator));
+            sample = glm::normalize(sample);
+            // sample *= randomFloats(generator);
+            float scale = float(i) / KERNEL_SIZE;
+
+            // scale samples s.t. they're more aligned to center of kernel
+            scale = lerp(0.1f, 1.0f, scale * scale);
+            sample *= scale;
+            ssaoKernel.push_back(sample);
+        }
+
+        // Generate the noise texture
+        std::vector<glm::vec3> ssaoNoise;
+        for (unsigned int i = 0; i < KERNEL_SIZE; i++)
+        {
+            glm::vec3 noise(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, 0.0f);
+            ssaoNoise.push_back(noise);
+        }
+        glGenTextures(1, &m_NoiseTexture);
+        glBindTexture(GL_TEXTURE_2D, m_NoiseTexture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB32F, 4, 4, 0, GL_RGB, GL_FLOAT, &ssaoNoise[0]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+        m_OcclusionShader = GET_RESOURCE(Shader, "shaders/occlusion.shader.json");
+        m_OcclusionShader.lock()->Use();
+        m_OcclusionShader.lock()->Set("gPosition", 0);
+        m_OcclusionShader.lock()->Set("gNormal", 1);
+        m_OcclusionShader.lock()->Set("texNoise", 2);
+        m_OcclusionShader.lock()->Set("screenSize", glm::vec2(width, height));
+        for (unsigned int i = 0; i < KERNEL_SIZE; ++i)
+            m_OcclusionShader.lock()->Set("samples[" + std::to_string(i) + "]", ssaoKernel[i]);
+
+        glGenFramebuffers(1, &m_ssaoBlurBuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_ssaoBlurBuffer);
+        glGenTextures(1, &m_ssaoBlurColorBuffer);
+        glBindTexture(GL_TEXTURE_2D, m_ssaoBlurColorBuffer);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RGB, GL_FLOAT, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ssaoBlurColorBuffer, 0);
+        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+            LOG_ERR("Framebuffer not complete!");
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        m_OcclusionBlurShader = GET_RESOURCE(Shader, "shaders/occlusion_blur.shader.json");
+        m_OcclusionBlurShader.lock()->Use();
+        m_OcclusionBlurShader.lock()->Set("ssaoInput", 0);
     }
 
     int GraphicsEngineImpl::TakeScreenshot(const std::string &filename)

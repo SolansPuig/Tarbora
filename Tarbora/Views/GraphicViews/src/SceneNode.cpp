@@ -55,7 +55,7 @@ namespace Tarbora {
             (*itr).second->Update(scene, deltaTime);
     }
 
-    void SceneNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
+    void SceneNode::DrawChildren(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, const glm::mat4 &parentTransform)
     {
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
         {
@@ -63,8 +63,8 @@ namespace Tarbora {
             if (itr->second->IsVisible(scene))
             {
                 // TODO: Check alpha
-                itr->second->Draw(scene, newTransform);
-                itr->second->DrawChildren(scene, newTransform);
+                itr->second->Draw(scene, projection, view, newTransform);
+                itr->second->DrawChildren(scene, projection, view,newTransform);
             }
         }
     }
@@ -341,14 +341,15 @@ namespace Tarbora {
         m_Children.emplace("invisibleGroup", invisibleGroup);
     }
 
-    void RootNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
+    void RootNode::DrawChildren(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, const glm::mat4 &parentTransform)
     {
         ZoneScoped;
 
-        glm::mat4 view = scene->GetCamera()->GetView();
-        glm::mat4 newMat = parentTransform * view;
+        glm::mat4 newView = scene->GetCamera()->GetView();
+        glm::vec3 position = scene->GetCamera()->GetViewPosition();
+        scene->GraphicsEngine()->SetCamera(position, newView);
         glm::mat4 skyView = scene->GetCamera()->GetViewAngle();
-        glm::mat4 skyMat = parentTransform * skyView;
+
         for (int pass = RenderPass::Zero; pass < RenderPass::Last; pass++)
         {
             switch (pass)
@@ -356,29 +357,29 @@ namespace Tarbora {
                 case RenderPass::Static:
                     {
                         ZoneScopedN("Draw Static");
-                        m_Children["staticGroup"]->DrawChildren(scene, newMat);
+                        m_Children["staticGroup"]->DrawChildren(scene, projection, newView, parentTransform);
                         break;
                     }
 
                 case RenderPass::Actor:
                     {
                         ZoneScopedN("Draw Actor");
-                        m_Children["actorGroup"]->DrawChildren(scene, newMat);
+                        m_Children["actorGroup"]->DrawChildren(scene, projection, newView, parentTransform);
                         break;
                     }
 
                 case RenderPass::Sky:
                     {
-                        ZoneScopedN("Draw Sky");
-                        scene->GraphicsEngine()->BeforeDrawSky();
-                        m_Children["skyGroup"]->DrawChildren(scene, skyMat);
-                        scene->GraphicsEngine()->AfterDrawSky();
+                        // ZoneScopedN("Draw Sky");
+                        // scene->GraphicsEngine()->BeforeDrawSky();
+                        // m_Children["skyGroup"]->DrawChildren(scene, projection, skyView, parentTransform);
+                        // scene->GraphicsEngine()->AfterDrawSky();
                         break;
                     }
                 case RenderPass::Transparent:
                     {
                         ZoneScopedN("Draw Transparent");
-                        m_Children["transparentGroup"]->DrawChildren(scene, newMat);
+                        m_Children["transparentGroup"]->DrawChildren(scene, projection, newView, parentTransform);
                         break;
                     }
 
@@ -432,6 +433,13 @@ namespace Tarbora {
         return view;
     }
 
+    const glm::vec3 Camera::GetViewPosition()
+    {
+        glm::mat4 matrix = GetGlobalTransform();
+        glm::vec3 position = glm::vec3(matrix[3]);
+        return position;
+    }
+
     MaterialNode::MaterialNode(ActorId actorId, std::string name, std::string shader, std::string texture) :
         SceneNode(actorId, name)
     {
@@ -440,10 +448,12 @@ namespace Tarbora {
         m_Shader = GET_RESOURCE(Shader, "shaders/" + shader);
     }
 
-    void MaterialNode::Draw(Scene *scene, glm::mat4 &parentTransform)
+    void MaterialNode::Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform)
     {
-        (void)(scene); (void)(parentTransform);
+        (void)(parentTransform);
         if (m_Shader != nullptr) scene->GraphicsEngine()->UseShader(m_Shader);
+        scene->GraphicsEngine()->GetShader()->Set("projection", projection);
+        scene->GraphicsEngine()->GetShader()->Set("view", view);
         scene->GraphicsEngine()->BindTexture(m_Texture->GetId());
     }
 
@@ -456,9 +466,10 @@ namespace Tarbora {
         m_TexSize = glm::vec3(0.0f, 0.0f, 0.0f);
     }
 
-    void MeshNode::Draw(Scene *scene, glm::mat4 &parentTransform)
+    void MeshNode::Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform)
     {
         (void)(scene);
+        (void)(projection);
         if (m_Mesh != nullptr && scene->GraphicsEngine()->ShaderAvailable())
         {
             glm::mat4 newMat = parentTransform * glm::scale(m_LocalMatrix, m_Scale);

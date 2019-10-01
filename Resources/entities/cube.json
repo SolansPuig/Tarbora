@@ -2,9 +2,9 @@
     "components": {
         "type": ["ground"],
         "model": {
-            "renderPass": 3,
+            "renderPass": 1,
             "model": "cube.json",
-            "texture": "glass.png",
+            "texture": "red.png",
             "shader": "model.shader.json"
         },
         "physics": {

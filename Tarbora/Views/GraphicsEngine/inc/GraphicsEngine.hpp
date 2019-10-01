@@ -39,20 +39,39 @@ namespace Tarbora {
         std::shared_ptr<Shader> GetShader();
         bool ShaderAvailable();
 
-        void GenerateFramebuffer(int width, int height);
+        void SetCamera(const glm::vec3 &position, const glm::mat4 &view);
+        void SetProjectionMatrix(const glm::mat4 &projection);
 
         int TakeScreenshot(const std::string &filename);
 
     private:
+        void GenerateDefferredFramebuffer(int width, int height);
+        void GenerateOcclusionFramebuffer(int width, int height);
+
+        GraphicView *m_View;
         std::shared_ptr<Window> m_Window;
         std::unique_ptr<Gui> m_Gui;
         std::weak_ptr<Shader> m_Shader;
-        unsigned int m_MultisampledFBO;
-        unsigned int m_TextureMultisampled;
-        unsigned int m_PostProcessFBO;
-        unsigned int m_TexturePostProcess;
+
+        unsigned int m_gBuffer;
+        unsigned int m_gPosition;
+        unsigned int m_gNormal;
+        unsigned int m_gColorSpec;
+
+        unsigned int m_ssaoBuffer;
+        unsigned int m_ssaoColorBuffer;
+        unsigned int m_NoiseTexture;
+        std::weak_ptr<Shader> m_OcclusionShader;
+
+        unsigned int m_ssaoBlurBuffer;
+        unsigned int m_ssaoBlurColorBuffer;
+        std::weak_ptr<Shader> m_OcclusionBlurShader;
+
         std::weak_ptr<Mesh> m_QuadMesh;
         std::weak_ptr<Shader> m_ScreenShader;
-        GraphicView *m_View;
+
+        glm::vec3 m_CameraPosition;
+        glm::mat4 m_ViewMatrix;
+        glm::mat4 m_ProjectionMatrix;
     };
 }

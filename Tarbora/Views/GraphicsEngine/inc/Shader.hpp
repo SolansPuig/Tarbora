@@ -12,13 +12,13 @@ namespace Tarbora {
         void Set(const std::string name, bool value);
         void Set(const std::string name, int value);
         void Set(const std::string name, float value);
-        void Set(const std::string name, glm::vec2 &value);
+        void Set(const std::string name, const glm::vec2 &value);
         void Set(const std::string name, float x, float y);
-        void Set(const std::string name, glm::vec3 &value);
+        void Set(const std::string name, const glm::vec3 &value);
         void Set(const std::string name, float x, float y, float z);
-        void Set(const std::string name, glm::vec4 &value);
+        void Set(const std::string name, const glm::vec4 &value);
         void Set(const std::string name, float x, float y, float z, float w);
-        void Set(const std::string name, glm::mat4 &value);
+        void Set(const std::string name, const glm::mat4 &value);
     private:
         Shader(Module *m, std::string name, unsigned int id) : Resource(m, name), m_Id(id) {}
 

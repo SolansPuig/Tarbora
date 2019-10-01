@@ -1,5 +1,7 @@
 # Tarbora, The Game Engine for Makers
 
+![Screen capture during the development of lighting and SSAO](lighting_example.png)
+
 Check out the docs at https://solanspuig.github.io/Tarbora/html/index.html
 
 Check out my Patreon at https://www.patreon.com/tarbora

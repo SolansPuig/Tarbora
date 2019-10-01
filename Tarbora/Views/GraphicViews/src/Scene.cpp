@@ -12,6 +12,7 @@ namespace Tarbora {
         m_Camera->Move(glm::vec3(0.0f, 0.0f, -5.0f));
 
         m_Projection = glm::perspective(glm::radians(45.0f), m_View->GraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
+        GraphicsEngine()->SetProjectionMatrix(m_Projection);
 
         // EvtWindowResizeId = EventManager::Subscribe("WindowResize", [this](Event *e)
         // {
@@ -36,7 +37,7 @@ namespace Tarbora {
     {
         if (m_Root)
         {
-            m_Root->DrawChildren(this, m_Projection);
+            m_Root->DrawChildren(this, m_Projection, glm::mat4(1.0f), glm::mat4(1.0f));
         }
     }
 
