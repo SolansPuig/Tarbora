@@ -1,7 +1,5 @@
 # Tarbora, The Game Engine for Makers
 
-![Screen capture during the development of lighting and SSAO](lighting_example.png)
-
 Check out the docs at https://solanspuig.github.io/Tarbora/html/index.html
 
 Check out my Patreon at https://www.patreon.com/tarbora
@@ -43,3 +41,10 @@ At the moment, I'm a solo developer building that engine, but you can help me. Y
 friends. You can try to build a simple game with the tools that are already there (although you might have a hard time as
 the documentation is not finished and things are prone to change...). And you can donate to help
 me be able to spend more hours working in that project and maybe hire someone to help me.
+
+
+## Gallery
+
+Early stages of development:
+
+![Screen capture during the development of lighting and SSAO](lighting_example.png)
