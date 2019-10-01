@@ -45,7 +45,7 @@ me be able to spend more hours working in that project and maybe hire someone to
 
 ## Gallery
 
-Early stages of development:
+### Early stages of development:
 
 ![Screen capture during the development of lighting and SSAO](lighting_example.png)
 *Screen capture during the development of lighting and SSAO*
