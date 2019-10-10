@@ -47,11 +47,12 @@ namespace Tarbora {
 
         void ReadMessages();
 
-        SubscriptorId Subscribe(MessageSubject s, MessageFn func);
+        SubscriptorId Subscribe(MessageSubject s, MessageFn func, bool local=false);
         void Desubscribe(MessageSubject s, SubscriptorId id);
 
         void Trigger(MessageSubject s, MessageBody b);
         void Send(ClientId to, MessageSubject s, MessageBody b);
+        void TriggerLocal(MessageSubject s, MessageBody b);
 
     private:
         Module *m_Module;

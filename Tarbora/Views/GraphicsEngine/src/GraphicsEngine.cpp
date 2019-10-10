@@ -49,6 +49,7 @@ namespace Tarbora {
         ResourceManager::RegisterLoader(LoaderPtr(new ShaderResourceLoader()));
         ResourceManager::RegisterLoader(LoaderPtr(new TextureResourceLoader()));
         ResourceManager::RegisterLoader(LoaderPtr(new MeshResourceLoader()));
+        ResourceManager::RegisterLoader(LoaderPtr(new MaterialResourceLoader()));
 
         GenerateDefferredFramebuffer(windowWidth, windowHeight);
         GenerateOcclusionFramebuffer(windowWidth, windowHeight);
@@ -93,16 +94,9 @@ namespace Tarbora {
         if (!m_OcclusionShader.expired() && !m_QuadMesh.expired())
         {
             m_OcclusionShader.lock()->Use();
-            m_OcclusionShader.lock()->Set("projection", m_ProjectionMatrix);
-            m_OcclusionShader.lock()->Set("view", m_ViewMatrix);
-
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, m_gPosition);
-            glActiveTexture(GL_TEXTURE1);
-            glBindTexture(GL_TEXTURE_2D, m_gNormal);
-            glActiveTexture(GL_TEXTURE2);
-            glBindTexture(GL_TEXTURE_2D, m_NoiseTexture);
-            glActiveTexture(GL_TEXTURE0);
+            m_gPosition->Bind(0);
+            m_gNormal->Bind(1);
+            m_NoiseTexture->Bind(2);
             glBindVertexArray(m_QuadMesh.lock()->GetId());
             glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
         }
@@ -112,8 +106,7 @@ namespace Tarbora {
         if (!m_OcclusionBlurShader.expired() && !m_QuadMesh.expired())
         {
             m_OcclusionBlurShader.lock()->Use();
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, m_ssaoColorBuffer);
+            m_ssaoColor->Bind();
             glBindVertexArray(m_QuadMesh.lock()->GetId());
             glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
         }
@@ -123,16 +116,10 @@ namespace Tarbora {
         if (!m_ScreenShader.expired() && !m_QuadMesh.expired())
         {
             m_ScreenShader.lock()->Use();
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, m_gPosition);
-            glActiveTexture(GL_TEXTURE1);
-            glBindTexture(GL_TEXTURE_2D, m_gNormal);
-            glActiveTexture(GL_TEXTURE2);
-            glBindTexture(GL_TEXTURE_2D, m_gColorSpec);
-            glActiveTexture(GL_TEXTURE3);
-            glBindTexture(GL_TEXTURE_2D, m_ssaoBlurColorBuffer);
-            glActiveTexture(GL_TEXTURE0);
-            m_ScreenShader.lock()->Set("viewPos", m_CameraPosition);
+            m_gPosition->Bind(0);
+            m_gNormal->Bind(1);
+            m_gColorSpec->Bind(2);
+            m_ssaoBlurColor->Bind(3);
             glBindVertexArray(m_QuadMesh.lock()->GetId());
             glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh.lock()->GetVertices());
         }
@@ -157,103 +144,6 @@ namespace Tarbora {
         return m_Window;
     }
 
-    unsigned int GraphicsEngineImpl::CompileShader(std::string type, const char *code)
-    {
-        // Create and compile the shader
-        unsigned int id = 0;
-        if (type == std::string("vertex")) id = glCreateShader(GL_VERTEX_SHADER);
-        else if (type == std::string("tes_control")) id = glCreateShader(GL_TESS_CONTROL_SHADER);
-        else if (type == std::string("tes_eval")) id = glCreateShader(GL_TESS_EVALUATION_SHADER);
-        else if (type == std::string("geometry")) id = glCreateShader(GL_GEOMETRY_SHADER);
-        else if (type == std::string("fragment")) id = glCreateShader(GL_FRAGMENT_SHADER);
-        else if (type == std::string("compute")) id = glCreateShader(GL_COMPUTE_SHADER);
-        else LOG_ERR("ShaderCompiler: Shader type %s not recognized", type.c_str());
-        glShaderSource(id, 1, &code, NULL);
-        glCompileShader(id);
-        // Check for errors
-        GLint success;
-        GLchar infoLog[512];
-        glGetShaderiv(id, GL_COMPILE_STATUS, &success);
-        if (!success) {
-            glGetShaderInfoLog(id, 512, NULL, infoLog);
-            LOG_ERR("ShaderCompiler: Error while compiling %s shader. \n %s", type.c_str(), infoLog);
-        }
-
-        return id;
-    }
-
-    unsigned int GraphicsEngineImpl::LinkProgram(unsigned int *ids)
-    {
-        // Attach all the shaders if they are valid and link the program
-        unsigned int id = glCreateProgram();
-        for (int i = 0; i < 6; i++)
-            if (ids[i] != 0)
-                glAttachShader(id, ids[i]);
-        glLinkProgram(id);
-
-        // Check for errors
-        GLint success;
-        GLchar infoLog[512];
-        glGetProgramiv(id, GL_LINK_STATUS, &success);
-        if (!success) {
-            glGetProgramInfoLog(id, 512, NULL, infoLog);
-            LOG_ERR("ShaderCompiler: Error while linking program. \n %s", infoLog);
-        }
-
-        // Delete all the shaders, as they are linked to the program and no longer needed
-        for (int i = 0; i < 6; i++)
-            glDeleteShader(ids[i]);
-
-        return id;
-    }
-
-    void GraphicsEngineImpl::DeleteProgram(unsigned int id)
-    {
-        glDeleteProgram(id);
-    }
-
-    // Shader *GetShader()
-    // {
-    //     return &m_Shader;
-    // }
-
-    unsigned int GraphicsEngineImpl::LoadTexture(unsigned char *data, int width, int height, int nrComponents)
-    {
-        // Detect the format
-        GLenum format;
-        if (nrComponents == 1)
-            format = GL_RED;
-        else if (nrComponents == 3)
-            format = GL_RGB;
-        else
-            format = GL_RGBA;
-
-        // Create the texture
-        unsigned int id = 0;
-        glGenTextures(1, &id);
-        glBindTexture(GL_TEXTURE_2D, id);
-        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-
-        // Configure the texture
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-        return id;
-    }
-
-    void GraphicsEngineImpl::BindTexture(unsigned int id)
-    {
-        glBindTexture(GL_TEXTURE_2D, id);
-    }
-
-    void GraphicsEngineImpl::DeleteTexture(unsigned int id)
-    {
-        glDeleteTextures(1, &id);
-    }
-
     unsigned int GraphicsEngineImpl::LoadMesh(std::vector<float> vertices)
     {
         unsigned int VBO, VAO;
@@ -272,7 +162,6 @@ namespace Tarbora {
         glEnableVertexAttribArray(3);
         glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(8 * sizeof(float)));
 
-        // glDeleteBuffers(1, &VBO);
         return VAO;
     }
 
@@ -297,17 +186,6 @@ namespace Tarbora {
         return !m_Shader.expired();
     }
 
-    void GraphicsEngineImpl::SetCamera(const glm::vec3 &position, const glm::mat4 &view)
-    {
-        m_CameraPosition = position;
-        m_ViewMatrix = view;
-    }
-
-    void GraphicsEngineImpl::SetProjectionMatrix(const glm::mat4 &projection)
-    {
-        m_ProjectionMatrix = projection;
-    }
-
     void GraphicsEngineImpl::GenerateDefferredFramebuffer(int width, int height)
     {
         // Generate the g buffer
@@ -315,30 +193,19 @@ namespace Tarbora {
         glBindFramebuffer(GL_FRAMEBUFFER, m_gBuffer);
 
         // Position color buffer
-        glGenTextures(1, &m_gPosition);
-        glBindTexture(GL_TEXTURE_2D, m_gPosition);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_gPosition, 0);
+        m_gPosition = std::unique_ptr<TextureInternal>(new TextureInternal(width, height, GL_RGB16F, GL_FLOAT, GL_RGB));
+        m_gPosition->Configure(GL_LINEAR, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_gPosition->GetId(), 0);
 
         // Normal color buffer
-        glGenTextures(1, &m_gNormal);
-        glBindTexture(GL_TEXTURE_2D, m_gNormal);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, m_gNormal, 0);
+        m_gNormal = std::unique_ptr<TextureInternal>(new TextureInternal(width, height, GL_RGB16F, GL_FLOAT, GL_RGB));
+        m_gNormal->Configure(GL_LINEAR, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, m_gNormal->GetId(), 0);
 
         // Color + Specular color buffer
-        glGenTextures(1, &m_gColorSpec);
-        glBindTexture(GL_TEXTURE_2D, m_gColorSpec);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT2, GL_TEXTURE_2D, m_gColorSpec, 0);
+        m_gColorSpec = std::unique_ptr<TextureInternal>(new TextureInternal(width, height, GL_RGBA));
+        m_gColorSpec->Configure(GL_LINEAR, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT2, GL_TEXTURE_2D, m_gColorSpec->GetId(), 0);
 
         unsigned int attachments[3] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
         glDrawBuffers(3, attachments);
@@ -349,7 +216,7 @@ namespace Tarbora {
         glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo);
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-            LOG_ERR("Framebuffer not complete!");
+            LOG_ERR("G Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         m_QuadMesh = GET_RESOURCE(Mesh, "meshes/plane.mesh");
@@ -375,14 +242,11 @@ namespace Tarbora {
         glBindFramebuffer(GL_FRAMEBUFFER, m_ssaoBuffer);
 
         // Color buffer
-        glGenTextures(1, &m_ssaoColorBuffer);
-        glBindTexture(GL_TEXTURE_2D, m_ssaoColorBuffer);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RGB, GL_FLOAT, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ssaoColorBuffer, 0);
+        m_ssaoColor = std::unique_ptr<TextureInternal>(new TextureInternal(width, height, GL_RED, GL_FLOAT, GL_RGB));
+        m_ssaoColor->Configure(GL_NEAREST, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ssaoColor->GetId(), 0);
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-            LOG_ERR("Framebuffer not complete!");
+            LOG_ERR("Occlusion Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         // Generate the sample kernel
@@ -409,13 +273,8 @@ namespace Tarbora {
             glm::vec3 noise(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, 0.0f);
             ssaoNoise.push_back(noise);
         }
-        glGenTextures(1, &m_NoiseTexture);
-        glBindTexture(GL_TEXTURE_2D, m_NoiseTexture);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB32F, 4, 4, 0, GL_RGB, GL_FLOAT, &ssaoNoise[0]);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        m_NoiseTexture = std::unique_ptr<TextureInternal>(new TextureInternal(4, 4, GL_RGB32F, GL_FLOAT, GL_RGB, &ssaoNoise[0]));
+        m_NoiseTexture->Configure(GL_NEAREST, GL_NEAREST, GL_REPEAT, GL_REPEAT);
 
         m_OcclusionShader = GET_RESOURCE(Shader, "shaders/occlusion.shader.json");
         m_OcclusionShader.lock()->Use();
@@ -428,14 +287,12 @@ namespace Tarbora {
 
         glGenFramebuffers(1, &m_ssaoBlurBuffer);
         glBindFramebuffer(GL_FRAMEBUFFER, m_ssaoBlurBuffer);
-        glGenTextures(1, &m_ssaoBlurColorBuffer);
-        glBindTexture(GL_TEXTURE_2D, m_ssaoBlurColorBuffer);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RGB, GL_FLOAT, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ssaoBlurColorBuffer, 0);
+
+        m_ssaoBlurColor = std::unique_ptr<TextureInternal>(new TextureInternal(width, height, GL_RED, GL_FLOAT, GL_RGB));
+        m_ssaoBlurColor->Configure(GL_NEAREST, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ssaoBlurColor->GetId(), 0);
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-            LOG_ERR("Framebuffer not complete!");
+            LOG_ERR("Occlusion blur Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         m_OcclusionBlurShader = GET_RESOURCE(Shader, "shaders/occlusion_blur.shader.json");

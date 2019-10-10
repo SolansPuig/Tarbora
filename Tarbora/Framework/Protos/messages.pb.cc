@@ -129,20 +129,20 @@ const char descriptor_table_protodef_messages_2eproto[] =
   "%\n\004type\030\001 \001(\0162\027.tbMessages.MessageType\022\014"
   "\n\004from\030\002 \001(\005\022\n\n\002to\030\003 \001(\005\022\017\n\007subject\030\004 \001("
   "\t\022\014\n\004body\030\005 \001(\014\",\n\013EventHeader\022\014\n\004from\030\001"
-  " \001(\005\022\017\n\007subject\030\002 \001(\t\"\007\n\005Empty*R\n\013Messag"
-  "eType\022\013\n\007COMMAND\020\000\022\t\n\005EVENT\020\001\022\024\n\020START_C"
-  "ONNECTION\020\002\022\025\n\021FINISH_CONNECTION\020\0032\304\001\n\017T"
-  "arboraMessages\0229\n\007Connect\022\023.tbMessages.M"
-  "essage\032\023.tbMessages.Message\"\000(\0010\001\0229\n\tSub"
-  "scribe\022\027.tbMessages.EventHeader\032\021.tbMess"
-  "ages.Empty\"\000\022;\n\013Desubscribe\022\027.tbMessages"
-  ".EventHeader\032\021.tbMessages.Empty\"\000b\006proto"
-  "3"
+  " \001(\005\022\017\n\007subject\030\002 \001(\t\"\007\n\005Empty*]\n\013Messag"
+  "eType\022\013\n\007COMMAND\020\000\022\t\n\005EVENT\020\001\022\t\n\005LOCAL\020\002"
+  "\022\024\n\020START_CONNECTION\020\003\022\025\n\021FINISH_CONNECT"
+  "ION\020\0042\304\001\n\017TarboraMessages\0229\n\007Connect\022\023.t"
+  "bMessages.Message\032\023.tbMessages.Message\"\000"
+  "(\0010\001\0229\n\tSubscribe\022\027.tbMessages.EventHead"
+  "er\032\021.tbMessages.Empty\"\000\022;\n\013Desubscribe\022\027"
+  ".tbMessages.EventHeader\032\021.tbMessages.Emp"
+  "ty\"\000b\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_messages_2eproto = {
   false, InitDefaults_messages_2eproto, 
   descriptor_table_protodef_messages_2eproto,
-  "messages.proto", &assign_descriptors_table_messages_2eproto, 481,
+  "messages.proto", &assign_descriptors_table_messages_2eproto, 492,
 };
 
 void AddDescriptors_messages_2eproto() {
@@ -165,6 +165,7 @@ bool MessageType_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+    case 4:
       return true;
     default:
       return false;

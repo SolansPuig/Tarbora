@@ -8,7 +8,7 @@ namespace Tarbora {
     {
         friend class AnimationController;
     public:
-        ActorModel(ActorId id, std::string model, std::string shader, std::string texture);
+        ActorModel(ActorId id, std::string model, std::string material);
 
         virtual void Update(Scene *scene, float deltaTime) override;
 

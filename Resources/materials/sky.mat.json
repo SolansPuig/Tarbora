@@ -1,0 +1,4 @@
+{
+    "shader": "sky.shader.json",
+    "texture": "sky.png"
+}

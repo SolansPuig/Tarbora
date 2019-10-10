@@ -40,10 +40,10 @@ namespace Tarbora {
         }
     }
 
-    SubscriptorId MessageManager::Subscribe(MessageSubject s, MessageFn func)
+    SubscriptorId MessageManager::Subscribe(MessageSubject s, MessageFn func, bool local)
     {
         auto subjectListeners = m_Listeners.find(s);
-        if (subjectListeners == m_Listeners.end())
+        if (!local && subjectListeners == m_Listeners.end())
         {
             m_MessageClient->Subscribe(s);
         }
@@ -71,7 +71,7 @@ namespace Tarbora {
         m_MessageClient->Send(message);
     }
 
-     void MessageManager::Send(ClientId to, MessageSubject s, MessageBody b)
+    void MessageManager::Send(ClientId to, MessageSubject s, MessageBody b)
     {
         tbMessages::Message message;
         message.set_type(tbMessages::MessageType::COMMAND);
@@ -80,5 +80,15 @@ namespace Tarbora {
         message.set_body(b.GetContentStr());
 
         m_MessageClient->Send(message);
+    }
+
+    void MessageManager::TriggerLocal(MessageSubject s, MessageBody b)
+    {
+        tbMessages::Message message;
+        message.set_type(tbMessages::MessageType::LOCAL);
+        message.set_subject(s);
+        message.set_body(b.GetContentStr());
+
+        m_MessageClient->AddMessage(message);
     }
 }

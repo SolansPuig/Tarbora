@@ -46,16 +46,14 @@ namespace Tarbora {
 
         void SetRenderPass(int renderPass) { m_RenderPass = renderPass; }
         void SetModel(std::string model) { m_Model = model; }
-        void SetTexture(std::string texture) { m_Texture = texture; }
-        void SetShader(std::string shader) { m_Shader = shader; }
+        void SetMaterial(std::string material) { m_Material = material; }
         int GetRenderPass() { return m_RenderPass; }
         std::string GetModel() { return m_Model; }
-        std::string GetTexture() { return m_Texture; }
-        std::string GetShader() { return m_Shader; }
+        std::string GetMaterial() { return m_Material; }
 
         static ActorComponentPtr Creator(World *world) { return ActorComponentPtr(new ModelComponent(world)); }
     private:
         int m_RenderPass;
-        std::string m_Model, m_Texture, m_Shader;
+        std::string m_Model, m_Material;
     };
 }

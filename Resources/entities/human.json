@@ -4,8 +4,7 @@
         "model": {
             "renderPass": 1,
             "model": "human.json",
-            "texture": "human.png",
-            "shader": "model.shader.json"
+            "material": "human.mat.json"
         },
         "animations": {
             "file": "human.json"

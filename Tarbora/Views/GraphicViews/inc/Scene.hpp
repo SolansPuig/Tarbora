@@ -16,12 +16,12 @@ namespace Tarbora {
         void Update(float deltaTime);
         void Draw();
 
-        void CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture);
+        void CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material);
         void CreateActorModel(ActorId id, std::string entity, std::string variant);
 
         void AnimateActor(ActorId id, std::string animation);
 
-        void CreateSkybox(std::string shader, std::string texture);
+        void CreateSkybox(std::string material);
         std::shared_ptr<Skybox> GetSkybox() { return m_Skybox; }
 
         void AddChild(SceneNodePtr child, RenderPass renderPass);
@@ -32,7 +32,8 @@ namespace Tarbora {
         void SetCamera(ActorId id, std::string nodeName);
         CameraPtr GetCamera() { return m_Camera; }
 
-        std::shared_ptr<GraphicsEngineImpl> GraphicsEngine() { return m_View->GraphicsEngine(); }
+        inline std::shared_ptr<GraphicsEngineImpl> GraphicsEngine() { return m_View->GraphicsEngine(); }
+        inline std::shared_ptr<MessageManager> GetMessageManager() { return m_View->GetMessageManager(); }
 
     protected:
         std::shared_ptr<RootNode> m_Root;

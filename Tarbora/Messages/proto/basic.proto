@@ -56,3 +56,7 @@ message MoveNodeBody {
     tbMath.Vec3Message position = 3;
     tbMath.Vec3Message rotation = 4;
 }
+
+message MatrixBody {
+    tbMath.Mat4Message matrix = 1;
+}

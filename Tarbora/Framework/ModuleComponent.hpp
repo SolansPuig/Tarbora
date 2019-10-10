@@ -25,6 +25,11 @@ namespace Tarbora {
             m_Module->GetMessageManager()->Trigger(s, b);
         }
 
+        inline void TriggerLocal(MessageSubject s, MessageBody b) const
+        {
+            m_Module->GetMessageManager()->TriggerLocal(s, b);
+        }
+
     protected:
         Module *m_Module;
 

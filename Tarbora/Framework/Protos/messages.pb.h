@@ -72,8 +72,9 @@ namespace tbMessages {
 enum MessageType {
   COMMAND = 0,
   EVENT = 1,
-  START_CONNECTION = 2,
-  FINISH_CONNECTION = 3,
+  LOCAL = 2,
+  START_CONNECTION = 3,
+  FINISH_CONNECTION = 4,
   MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
   MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
 };

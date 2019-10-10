@@ -27,8 +27,8 @@ namespace Tarbora {
         virtual ~SceneNode() {}
 
         virtual void Update(Scene *scene, float deltaTime);
-        virtual void Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform) { (void)(scene); (void)(projection); (void)(view); (void)(parentTransform); }
-        virtual void DrawChildren(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, const glm::mat4 &parentTransform);
+        virtual void Draw(Scene *scene, glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
+        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform);
 
         virtual bool AddChild(SceneNodePtr child);
         virtual SceneNodePtr GetChild(ActorId id);
@@ -112,7 +112,7 @@ namespace Tarbora {
         RootNode();
         virtual bool AddChild(SceneNodePtr child, RenderPass renderPass);
         virtual bool RemoveChild(ActorId id) override;
-        virtual void DrawChildren(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, const glm::mat4 &parentTransform) override;
+        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform) override;
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
     };
 
@@ -131,18 +131,17 @@ namespace Tarbora {
     class MaterialNode : public SceneNode
     {
     public:
-        MaterialNode(ActorId actorId, std::string name, std::string shader, std::string texture="");
-        virtual void Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform);
+        MaterialNode(ActorId actorId, std::string name, std::string material);
+        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
     protected:
-        std::shared_ptr<Texture> m_Texture;
-        std::shared_ptr<Shader> m_Shader;
+        std::shared_ptr<Material> m_Material;
     };
 
     class MeshNode : public SceneNode
     {
     public:
         MeshNode(ActorId actorId, std::string name, std::string mesh);
-        virtual void Draw(Scene *scene, const glm::mat4 &projection, const glm::mat4 &view, glm::mat4 &parentTransform);
+        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
         void SetUV(glm::vec3 &size, glm::vec2 &uv);
 
     protected:

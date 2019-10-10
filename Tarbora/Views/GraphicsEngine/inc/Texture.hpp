@@ -1,21 +1,15 @@
 #pragma once
 #include "../../../Framework/ResourceManager/inc/Resource.hpp"
+#include "TextureInternal.hpp"
 
 namespace Tarbora {
-    class Texture : public Resource
+    class Texture : public Resource, public TextureInternal
     {
         friend class TextureResourceLoader;
-    public:
-        ~Texture();
-        unsigned int GetId() const { return m_Id; }
-        int GetWidth() const { return m_Width; }
-        int GetHeight() const { return m_Height; }
-    private:
-        Texture(Module *m, std::string name, unsigned int id, int width, int height)
-            : Resource(m, name), m_Id(id), m_Width(width), m_Height(height) {}
 
-        unsigned int m_Id;
-        int m_Width, m_Height;
+    private:
+        Texture(Module *m, std::string name)
+            : Resource(m, name), TextureInternal(name) {}
     };
 
     //! \cond HIDDEN_SYMBOLS

@@ -3,12 +3,12 @@
         "type": ["ground"],
         "model": {
             "renderPass": 1,
-            "model": "ground.json",
-            "material": "green.mat.json"
+            "model": "double_platform.json",
+            "material": "brown.mat.json"
         },
         "physics": {
             "shape": "box",
-            "size": [100, 1, 100],
+            "size": [2, 4, 4],
             "density": 0,
             "friction": 1,
             "restitution": 0.3

@@ -27,6 +27,7 @@ public:
         tracy::SetThreadName(m_Thread, name.c_str());
     }
 
+    void AddMessage(tbMessages::Message &message);
     bool GetMessage(tbMessages::Message *message);
     void Send(tbMessages::Message &message);
 

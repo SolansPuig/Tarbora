@@ -1,5 +1,8 @@
 #pragma once
+#include "../../../Framework/Global.hpp"
 #include "../../../Framework/ResourceManager/inc/Resource.hpp"
+#include "../../../Framework/External/json.hpp"
+typedef nlohmann::json raw_json;
 
 namespace Tarbora {
     class Shader : public Resource
@@ -7,8 +10,10 @@ namespace Tarbora {
         friend class ShaderResourceLoader;
     public:
         ~Shader();
+
         void Use();
         unsigned int GetId() const { return m_Id; }
+
         void Set(const std::string name, bool value);
         void Set(const std::string name, int value);
         void Set(const std::string name, float value);
@@ -20,7 +25,13 @@ namespace Tarbora {
         void Set(const std::string name, float x, float y, float z, float w);
         void Set(const std::string name, const glm::mat4 &value);
     private:
-        Shader(Module *m, std::string name, unsigned int id) : Resource(m, name), m_Id(id) {}
+        Shader(Module *m, std::string name);
+        void Delete();
+
+        unsigned int CompileShader(raw_json j, const char* type);
+        unsigned int CompileShaderFile(std::string type, const char *code);
+        void LinkProgram(unsigned int *ids);
+        void DeleteProgram();
 
         unsigned int m_Id;
     };

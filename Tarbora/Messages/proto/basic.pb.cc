@@ -19,6 +19,7 @@
 extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Vec2Message_math_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Vec3Message_math_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Mat3Message_math_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Mat4Message_math_2eproto;
 namespace tbBasics {
 class CreateActorBodyDefaultTypeInternal {
  public:
@@ -56,6 +57,10 @@ class MoveNodeBodyDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<MoveNodeBody> _instance;
 } _MoveNodeBody_default_instance_;
+class MatrixBodyDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<MatrixBody> _instance;
+} _MatrixBody_default_instance_;
 }  // namespace tbBasics
 static void InitDefaultsCreateActorBody_basic_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -190,6 +195,21 @@ static void InitDefaultsMoveNodeBody_basic_2eproto() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMoveNodeBody_basic_2eproto}, {
       &scc_info_Vec3Message_math_2eproto.base,}};
 
+static void InitDefaultsMatrixBody_basic_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::tbBasics::_MatrixBody_default_instance_;
+    new (ptr) ::tbBasics::MatrixBody();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::tbBasics::MatrixBody::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<1> scc_info_MatrixBody_basic_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMatrixBody_basic_2eproto}, {
+      &scc_info_Mat4Message_math_2eproto.base,}};
+
 void InitDefaults_basic_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_CreateActorBody_basic_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_DeleteActorBody_basic_2eproto.base);
@@ -200,9 +220,10 @@ void InitDefaults_basic_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_LookDirectionBody_basic_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_LookAtBody_basic_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MoveNodeBody_basic_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MatrixBody_basic_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata_basic_2eproto[9];
+::google::protobuf::Metadata file_level_metadata_basic_2eproto[10];
 constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_basic_2eproto = nullptr;
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_basic_2eproto = nullptr;
 
@@ -278,6 +299,12 @@ const ::google::protobuf::uint32 TableStruct_basic_2eproto::offsets[] PROTOBUF_S
   PROTOBUF_FIELD_OFFSET(::tbBasics::MoveNodeBody, node_),
   PROTOBUF_FIELD_OFFSET(::tbBasics::MoveNodeBody, position_),
   PROTOBUF_FIELD_OFFSET(::tbBasics::MoveNodeBody, rotation_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::tbBasics::MatrixBody, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::tbBasics::MatrixBody, matrix_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::tbBasics::CreateActorBody)},
@@ -289,6 +316,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 46, -1, sizeof(::tbBasics::LookDirectionBody)},
   { 53, -1, sizeof(::tbBasics::LookAtBody)},
   { 62, -1, sizeof(::tbBasics::MoveNodeBody)},
+  { 71, -1, sizeof(::tbBasics::MatrixBody)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -301,12 +329,13 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::tbBasics::_LookDirectionBody_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::tbBasics::_LookAtBody_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::tbBasics::_MoveNodeBody_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::tbBasics::_MatrixBody_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_basic_2eproto = {
   {}, AddDescriptors_basic_2eproto, "basic.proto", schemas,
   file_default_instances, TableStruct_basic_2eproto::offsets,
-  file_level_metadata_basic_2eproto, 9, file_level_enum_descriptors_basic_2eproto, file_level_service_descriptors_basic_2eproto,
+  file_level_metadata_basic_2eproto, 10, file_level_enum_descriptors_basic_2eproto, file_level_service_descriptors_basic_2eproto,
 };
 
 const char descriptor_table_protodef_basic_2eproto[] =
@@ -329,13 +358,14 @@ const char descriptor_table_protodef_basic_2eproto[] =
   "%\n\010rotation\030\004 \001(\0132\023.tbMath.Vec3Message\"v"
   "\n\014MoveNodeBody\022\n\n\002id\030\001 \001(\r\022\014\n\004node\030\002 \001(\t"
   "\022%\n\010position\030\003 \001(\0132\023.tbMath.Vec3Message\022"
-  "%\n\010rotation\030\004 \001(\0132\023.tbMath.Vec3Messageb\006"
-  "proto3"
+  "%\n\010rotation\030\004 \001(\0132\023.tbMath.Vec3Message\"1"
+  "\n\nMatrixBody\022#\n\006matrix\030\001 \001(\0132\023.tbMath.Ma"
+  "t4Messageb\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_basic_2eproto = {
   false, InitDefaults_basic_2eproto, 
   descriptor_table_protodef_basic_2eproto,
-  "basic.proto", &assign_descriptors_table_basic_2eproto, 806,
+  "basic.proto", &assign_descriptors_table_basic_2eproto, 857,
 };
 
 void AddDescriptors_basic_2eproto() {
@@ -3901,6 +3931,299 @@ void MoveNodeBody::InternalSwap(MoveNodeBody* other) {
 }
 
 
+// ===================================================================
+
+void MatrixBody::InitAsDefaultInstance() {
+  ::tbBasics::_MatrixBody_default_instance_._instance.get_mutable()->matrix_ = const_cast< ::tbMath::Mat4Message*>(
+      ::tbMath::Mat4Message::internal_default_instance());
+}
+class MatrixBody::HasBitSetters {
+ public:
+  static const ::tbMath::Mat4Message& matrix(const MatrixBody* msg);
+};
+
+const ::tbMath::Mat4Message&
+MatrixBody::HasBitSetters::matrix(const MatrixBody* msg) {
+  return *msg->matrix_;
+}
+void MatrixBody::clear_matrix() {
+  if (GetArenaNoVirtual() == nullptr && matrix_ != nullptr) {
+    delete matrix_;
+  }
+  matrix_ = nullptr;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MatrixBody::kMatrixFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MatrixBody::MatrixBody()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:tbBasics.MatrixBody)
+}
+MatrixBody::MatrixBody(const MatrixBody& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_matrix()) {
+    matrix_ = new ::tbMath::Mat4Message(*from.matrix_);
+  } else {
+    matrix_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:tbBasics.MatrixBody)
+}
+
+void MatrixBody::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_MatrixBody_basic_2eproto.base);
+  matrix_ = nullptr;
+}
+
+MatrixBody::~MatrixBody() {
+  // @@protoc_insertion_point(destructor:tbBasics.MatrixBody)
+  SharedDtor();
+}
+
+void MatrixBody::SharedDtor() {
+  if (this != internal_default_instance()) delete matrix_;
+}
+
+void MatrixBody::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const MatrixBody& MatrixBody::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_MatrixBody_basic_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void MatrixBody::Clear() {
+// @@protoc_insertion_point(message_clear_start:tbBasics.MatrixBody)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaNoVirtual() == nullptr && matrix_ != nullptr) {
+    delete matrix_;
+  }
+  matrix_ = nullptr;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* MatrixBody::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<MatrixBody*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // .tbMath.Mat4Message matrix = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        parser_till_end = ::tbMath::Mat4Message::_InternalParse;
+        object = msg->mutable_matrix();
+        if (size > end - ptr) goto len_delim_till_end;
+        ptr += size;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+            {parser_till_end, object}, ptr - size, ptr));
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool MatrixBody::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:tbBasics.MatrixBody)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .tbMath.Mat4Message matrix = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_matrix()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:tbBasics.MatrixBody)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:tbBasics.MatrixBody)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void MatrixBody::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:tbBasics.MatrixBody)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .tbMath.Mat4Message matrix = 1;
+  if (this->has_matrix()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, HasBitSetters::matrix(this), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:tbBasics.MatrixBody)
+}
+
+::google::protobuf::uint8* MatrixBody::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:tbBasics.MatrixBody)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .tbMath.Mat4Message matrix = 1;
+  if (this->has_matrix()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, HasBitSetters::matrix(this), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:tbBasics.MatrixBody)
+  return target;
+}
+
+size_t MatrixBody::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:tbBasics.MatrixBody)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .tbMath.Mat4Message matrix = 1;
+  if (this->has_matrix()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *matrix_);
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void MatrixBody::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:tbBasics.MatrixBody)
+  GOOGLE_DCHECK_NE(&from, this);
+  const MatrixBody* source =
+      ::google::protobuf::DynamicCastToGenerated<MatrixBody>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:tbBasics.MatrixBody)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:tbBasics.MatrixBody)
+    MergeFrom(*source);
+  }
+}
+
+void MatrixBody::MergeFrom(const MatrixBody& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:tbBasics.MatrixBody)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_matrix()) {
+    mutable_matrix()->::tbMath::Mat4Message::MergeFrom(from.matrix());
+  }
+}
+
+void MatrixBody::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:tbBasics.MatrixBody)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MatrixBody::CopyFrom(const MatrixBody& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:tbBasics.MatrixBody)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MatrixBody::IsInitialized() const {
+  return true;
+}
+
+void MatrixBody::Swap(MatrixBody* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MatrixBody::InternalSwap(MatrixBody* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(matrix_, other->matrix_);
+}
+
+::google::protobuf::Metadata MatrixBody::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_basic_2eproto);
+  return ::file_level_metadata_basic_2eproto[kIndexInFileMessages];
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace tbBasics
 namespace google {
@@ -3931,6 +4254,9 @@ template<> PROTOBUF_NOINLINE ::tbBasics::LookAtBody* Arena::CreateMaybeMessage< 
 }
 template<> PROTOBUF_NOINLINE ::tbBasics::MoveNodeBody* Arena::CreateMaybeMessage< ::tbBasics::MoveNodeBody >(Arena* arena) {
   return Arena::CreateInternal< ::tbBasics::MoveNodeBody >(arena);
+}
+template<> PROTOBUF_NOINLINE ::tbBasics::MatrixBody* Arena::CreateMaybeMessage< ::tbBasics::MatrixBody >(Arena* arena) {
+  return Arena::CreateInternal< ::tbBasics::MatrixBody >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

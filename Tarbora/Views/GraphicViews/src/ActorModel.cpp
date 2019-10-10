@@ -2,8 +2,8 @@
 #include "../inc/Scene.hpp"
 
 namespace Tarbora {
-    ActorModel::ActorModel(ActorId id, std::string model, std::string shader, std::string texture)
-        : MaterialNode(id, std::to_string(id), shader, texture)
+    ActorModel::ActorModel(ActorId id, std::string model, std::string material)
+        : MaterialNode(id, std::to_string(id), material)
     {
         JsonPtr resource = GET_RESOURCE(Json, "models/" + model);
         if (resource != NULL)

@@ -82,8 +82,13 @@ void MessageClient::MessageHandler()
     Message message;
     while(m_Stream->Read(&message))
     {
-        m_MessagesMutex.lock();
-        m_Messages.push(message);
-        m_MessagesMutex.unlock();
+        AddMessage(message);
     }
+}
+
+void MessageClient::AddMessage(Message &message)
+{
+    m_MessagesMutex.lock();
+    m_Messages.push(message);
+    m_MessagesMutex.unlock();
 }

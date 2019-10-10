@@ -1,5 +1,6 @@
 #include "../inc/Scene.hpp"
 #include <utility>
+#include "../../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
     Scene::Scene(GraphicView *view) :
@@ -12,7 +13,6 @@ namespace Tarbora {
         m_Camera->Move(glm::vec3(0.0f, 0.0f, -5.0f));
 
         m_Projection = glm::perspective(glm::radians(45.0f), m_View->GraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
-        GraphicsEngine()->SetProjectionMatrix(m_Projection);
 
         // EvtWindowResizeId = EventManager::Subscribe("WindowResize", [this](Event *e)
         // {
@@ -35,21 +35,24 @@ namespace Tarbora {
 
     void Scene::Draw()
     {
+        GetMessageManager()->TriggerLocal("update_projection", Matrix(m_Projection));
+        GetMessageManager()->TriggerLocal("update_view", Matrix(GetCamera()->GetView()));
+
         if (m_Root)
         {
-            m_Root->DrawChildren(this, m_Projection, glm::mat4(1.0f), glm::mat4(1.0f));
+            m_Root->DrawChildren(this, glm::mat4(1.0f));
         }
     }
 
-    void Scene::CreateSkybox(std::string shader, std::string texture)
+    void Scene::CreateSkybox(std::string material)
     {
-        m_Skybox = std::shared_ptr<Skybox>(new Skybox(shader, texture));
+        m_Skybox = std::shared_ptr<Skybox>(new Skybox(material));
         AddChild(m_Skybox, RenderPass::Sky);
     }
 
-    void Scene::CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string shader, std::string texture)
+    void Scene::CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material)
     {
-        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, model, shader, texture));
+        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, model, material));
         AddChild(actor, renderPass);
     }
 
@@ -67,17 +70,15 @@ namespace Tarbora {
 
         int renderPass = 1;
         std::string model = entity + ".json";
-        std::string texture = entity + ".png";
-        std::string shader = "model.shader.json";
+        std::string material = entity + ".png";
 
         resource->Get(modelJson, "renderPass", &renderPass, {true});
         resource->Get(modelJson, "model", &model, {true});
-        resource->Get(modelJson, "texture", &texture, {true, true});
-        resource->Get(modelJson, "shader", &shader, {true});
+        resource->Get(modelJson, "material", &material, {true});
 
         resource->PopErrName();
 
-        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, model, shader, texture));
+        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, model, material));
 
         raw_json animationsJson;
         resource->Get(components, "animations", &animationsJson, {true, true});

@@ -11,8 +11,9 @@ service TarboraMessages {
 enum MessageType {
     COMMAND = 0;
     EVENT = 1;
-    START_CONNECTION = 2;
-    FINISH_CONNECTION = 3;
+    LOCAL = 2;
+    START_CONNECTION = 3;
+    FINISH_CONNECTION = 4;
 }
 
 message Message {

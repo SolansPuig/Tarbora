@@ -121,4 +121,15 @@ namespace Tarbora {
             m.SerializeToString(&m_Body);
         }
     };
+
+    class Matrix : public MessageBody
+    {
+    public:
+        Matrix(glm::mat4 matrix)
+        {
+            MatrixBody m;
+            (*m.mutable_matrix()) = Mat4(matrix);
+            m.SerializeToString(&m_Body);
+        }
+    };
 }

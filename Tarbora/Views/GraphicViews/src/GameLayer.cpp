@@ -13,7 +13,7 @@ namespace Tarbora {
         m_LookDirection = glm::vec2(0.0f, 0.0f);
         m_Jump = false;
 
-        m_Scene->CreateSkybox("sky.shader.json", "sky.png");
+        m_Scene->CreateSkybox("sky.mat.json");
 
         Subscribe("create_actor_model", [this](MessageSubject subject, MessageBody * body)
         {
@@ -59,7 +59,7 @@ namespace Tarbora {
             m_Scene->AnimateActor(m.id(), m.animation());
         });
 
-        m_Scene->SetCamera(5, "1st_person");
+        m_Scene->SetCamera(m_TargetId, "1st_person");
     }
 
     bool GameLayerImpl::OnMessage(MessageBody *e)
@@ -101,7 +101,7 @@ namespace Tarbora {
             std::string cameraMode = (thirdPerson ? "3rd_person" : "1st_person");
 
             LOG_DEBUG("Set camera %s", cameraMode.c_str());
-            m_Scene->SetCamera(5, cameraMode);
+            m_Scene->SetCamera(m_TargetId, cameraMode);
         }
 
         glm::vec2 lastLookDirection = m_LookDirection;

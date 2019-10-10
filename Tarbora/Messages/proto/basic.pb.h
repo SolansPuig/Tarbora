@@ -42,7 +42,7 @@ struct TableStruct_basic_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[9]
+  static const ::google::protobuf::internal::ParseTable schema[10]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -65,6 +65,9 @@ extern LookAtBodyDefaultTypeInternal _LookAtBody_default_instance_;
 class LookDirectionBody;
 class LookDirectionBodyDefaultTypeInternal;
 extern LookDirectionBodyDefaultTypeInternal _LookDirectionBody_default_instance_;
+class MatrixBody;
+class MatrixBodyDefaultTypeInternal;
+extern MatrixBodyDefaultTypeInternal _MatrixBody_default_instance_;
 class MoveActorBody;
 class MoveActorBodyDefaultTypeInternal;
 extern MoveActorBodyDefaultTypeInternal _MoveActorBody_default_instance_;
@@ -85,6 +88,7 @@ template<> ::tbBasics::CreateActorBody* Arena::CreateMaybeMessage<::tbBasics::Cr
 template<> ::tbBasics::DeleteActorBody* Arena::CreateMaybeMessage<::tbBasics::DeleteActorBody>(Arena*);
 template<> ::tbBasics::LookAtBody* Arena::CreateMaybeMessage<::tbBasics::LookAtBody>(Arena*);
 template<> ::tbBasics::LookDirectionBody* Arena::CreateMaybeMessage<::tbBasics::LookDirectionBody>(Arena*);
+template<> ::tbBasics::MatrixBody* Arena::CreateMaybeMessage<::tbBasics::MatrixBody>(Arena*);
 template<> ::tbBasics::MoveActorBody* Arena::CreateMaybeMessage<::tbBasics::MoveActorBody>(Arena*);
 template<> ::tbBasics::MoveNodeBody* Arena::CreateMaybeMessage<::tbBasics::MoveNodeBody>(Arena*);
 template<> ::tbBasics::SetActorAnimationBody* Arena::CreateMaybeMessage<::tbBasics::SetActorAnimationBody>(Arena*);
@@ -1287,6 +1291,121 @@ class MoveNodeBody final :
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
+// -------------------------------------------------------------------
+
+class MatrixBody final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.MatrixBody) */ {
+ public:
+  MatrixBody();
+  virtual ~MatrixBody();
+
+  MatrixBody(const MatrixBody& from);
+
+  inline MatrixBody& operator=(const MatrixBody& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  MatrixBody(MatrixBody&& from) noexcept
+    : MatrixBody() {
+    *this = ::std::move(from);
+  }
+
+  inline MatrixBody& operator=(MatrixBody&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const MatrixBody& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const MatrixBody* internal_default_instance() {
+    return reinterpret_cast<const MatrixBody*>(
+               &_MatrixBody_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  void Swap(MatrixBody* other);
+  friend void swap(MatrixBody& a, MatrixBody& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline MatrixBody* New() const final {
+    return CreateMaybeMessage<MatrixBody>(nullptr);
+  }
+
+  MatrixBody* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MatrixBody>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const MatrixBody& from);
+  void MergeFrom(const MatrixBody& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MatrixBody* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .tbMath.Mat4Message matrix = 1;
+  bool has_matrix() const;
+  void clear_matrix();
+  static const int kMatrixFieldNumber = 1;
+  const ::tbMath::Mat4Message& matrix() const;
+  ::tbMath::Mat4Message* release_matrix();
+  ::tbMath::Mat4Message* mutable_matrix();
+  void set_allocated_matrix(::tbMath::Mat4Message* matrix);
+
+  // @@protoc_insertion_point(class_scope:tbBasics.MatrixBody)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::tbMath::Mat4Message* matrix_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_basic_2eproto;
+};
 // ===================================================================
 
 
@@ -2168,9 +2287,60 @@ inline void MoveNodeBody::set_allocated_rotation(::tbMath::Vec3Message* rotation
   // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveNodeBody.rotation)
 }
 
+// -------------------------------------------------------------------
+
+// MatrixBody
+
+// .tbMath.Mat4Message matrix = 1;
+inline bool MatrixBody::has_matrix() const {
+  return this != internal_default_instance() && matrix_ != nullptr;
+}
+inline const ::tbMath::Mat4Message& MatrixBody::matrix() const {
+  const ::tbMath::Mat4Message* p = matrix_;
+  // @@protoc_insertion_point(field_get:tbBasics.MatrixBody.matrix)
+  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Mat4Message*>(
+      &::tbMath::_Mat4Message_default_instance_);
+}
+inline ::tbMath::Mat4Message* MatrixBody::release_matrix() {
+  // @@protoc_insertion_point(field_release:tbBasics.MatrixBody.matrix)
+  
+  ::tbMath::Mat4Message* temp = matrix_;
+  matrix_ = nullptr;
+  return temp;
+}
+inline ::tbMath::Mat4Message* MatrixBody::mutable_matrix() {
+  
+  if (matrix_ == nullptr) {
+    auto* p = CreateMaybeMessage<::tbMath::Mat4Message>(GetArenaNoVirtual());
+    matrix_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:tbBasics.MatrixBody.matrix)
+  return matrix_;
+}
+inline void MatrixBody::set_allocated_matrix(::tbMath::Mat4Message* matrix) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(matrix_);
+  }
+  if (matrix) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      matrix = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, matrix, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  matrix_ = matrix;
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.MatrixBody.matrix)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

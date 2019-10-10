@@ -4,12 +4,11 @@
         "model": {
             "renderPass": 1,
             "model": "cube.json",
-            "texture": "red.png",
-            "shader": "model.shader.json"
+            "material": "red.mat.json"
         },
         "physics": {
             "shape": "box",
-            "size": [1.01, 1.01, 1.01],
+            "size": [1, 1, 1],
             "density": 90,
             "friction": 0.3,
             "restitution": 0.2

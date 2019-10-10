@@ -18,13 +18,11 @@ namespace Tarbora {
     {
         m_RenderPass = 1;
         m_Model = "cube";
-        m_Texture = "white";
-        m_Shader = "model";
+        m_Material = "white";
 
         resource->Get(data, "renderPass", &m_RenderPass, {true});
         resource->Get(data, "model", &m_Model, {true});
-        resource->Get(data, "texture", &m_Texture, {true, true});
-        resource->Get(data, "shader", &m_Shader, {true});
+        resource->Get(data, "material", &m_Material, {true, true});
 
         return true;
     }

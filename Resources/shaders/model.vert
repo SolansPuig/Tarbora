@@ -17,10 +17,10 @@ out vec3 Normal;
 
 void main()
 {
-    vec4 viewPos = transform * vec4(aPos, 1.0f);
+    vec4 viewPos = view * transform * vec4(aPos, 1.0f);
     FragPos = viewPos.xyz;
-    Normal = transpose(inverse(mat3(transform))) * aNormal;
-    gl_Position = projection * view * viewPos;
+    Normal = transpose(inverse(mat3(view * transform))) * aNormal;
+    gl_Position = projection * viewPos;
 
     ivec2 texSize = textureSize(myTexture, 0);
     float xoffset = 0.5 / texSize.x;
