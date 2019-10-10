@@ -50,5 +50,5 @@ me be able to spend more hours working in that project and maybe hire someone to
 ![Screenshot during the development of lighting and SSAO](lighting_example.png)
 *Screenshot during the development of lighting and SSAO*
 
-![Another screenshot during the development of lighting and SSAO 2](lighting_example2.png)
+![Another screenshot during the development of lighting and SSAO 2](lighting_example3.png)
 *Another screenshot during the development of lighting and SSAO*
