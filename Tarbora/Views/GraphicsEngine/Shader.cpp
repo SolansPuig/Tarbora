@@ -1,6 +1,6 @@
-#include "../inc/GraphicsEngine.hpp"
-#include "../../GraphicViews/inc/GraphicView.hpp"
-#include "../../../Messages/BasicMessages.hpp"
+#include "GraphicsEngine.hpp"
+#include "../GraphicViews/inc/GraphicView.hpp"
+#include "../../Messages/BasicMessages.hpp"
 
 #define GAMEVIEW(MODULE) static_cast<GraphicView*>(MODULE)
 
@@ -159,13 +159,14 @@ namespace Tarbora {
         glDeleteProgram(m_Id);
     }
 
-    ResourcePtr ShaderResourceLoader::Load(std::string path)
+    std::shared_ptr<Resource> ShaderResourceLoader::Load(std::string path)
     {
+        LOG_DEBUG("Loading Shader %s", path.c_str());
         // Open the Json containing all the different shaders for that program
         std::ifstream file;
         file.open(path.c_str());
         if (file.fail())
-            return ResourcePtr();
+            return std::shared_ptr<Resource>();
 
         raw_json j;
         try
@@ -176,7 +177,7 @@ namespace Tarbora {
         {
             LOG_ERR("JsonResourceLoader: Trying to parse file \"%s\" found exception: \n \"%s\"", path.c_str(), e.what());
             file.close();
-            return ResourcePtr();
+            return std::shared_ptr<Resource>();
         }
 
         // Create the shader resource

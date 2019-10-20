@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/ResourceManager/inc/Resource.hpp"
+#include "../../Framework/ResourceManager/inc/Resource.hpp"
 #include "TextureInternal.hpp"
 
 namespace Tarbora {
@@ -8,8 +8,8 @@ namespace Tarbora {
         friend class TextureResourceLoader;
 
     private:
-        Texture(Module *m, std::string name)
-            : Resource(m, name), TextureInternal(name) {}
+        Texture(Module *m, std::string name, int width, int height, int nrComponents, void *data)
+            : Resource(m, name), TextureInternal(width, height, nrComponents, data) {}
     };
 
     //! \cond HIDDEN_SYMBOLS
@@ -18,7 +18,7 @@ namespace Tarbora {
         friend class ResourceManager;
     private:
         virtual const std::string GetPattern() override { return "*.png"; };
-        virtual ResourcePtr Load(std::string path) override;
+        virtual std::shared_ptr<Resource> Load(std::string path) override;
     };
     //! \endcond
 }

@@ -17,6 +17,8 @@ namespace Tarbora {
 
         void SetTargetId(ActorId id) { m_TargetId = id; }
         ActorId GetTargetId() const { return m_TargetId; }
+
+        void FreezeMouse(bool freeze) {m_FreezeMouse = freeze; }
     private:
         std::unique_ptr<Scene> m_Scene;
 
@@ -24,5 +26,6 @@ namespace Tarbora {
         glm::vec2 m_LookDirection;
         glm::vec3 m_Movement;
         bool m_Jump;
+        bool m_FreezeMouse;
     };
 }

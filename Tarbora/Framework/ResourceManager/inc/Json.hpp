@@ -359,7 +359,7 @@ namespace Tarbora {
         friend class ResourceManager;
     private:
         virtual const std::string GetPattern() override { return "*.json"; };
-        virtual ResourcePtr Load(std::string path) override;
+        virtual std::shared_ptr<Resource> Load(std::string path) override;
     };
 
     typedef std::shared_ptr<Json> JsonPtr;

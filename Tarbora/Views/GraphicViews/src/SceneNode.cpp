@@ -58,14 +58,15 @@ namespace Tarbora {
 
     void SceneNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
     {
+        glm::mat4 transform = parentTransform * m_LocalMatrix;
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
         {
-            glm::mat4 newTransform = parentTransform * m_LocalMatrix;
             if (itr->second->IsVisible(scene))
             {
                 // TODO: Check alpha
-                itr->second->Draw(scene, newTransform);
-                itr->second->DrawChildren(scene, newTransform);
+                itr->second->Draw(scene, transform);
+                itr->second->DrawChildren(scene, transform);
+                itr->second->AfterDraw(scene);
             }
         }
     }
@@ -328,87 +329,7 @@ namespace Tarbora {
         m_Origin = origin;
     }
 
-    RootNode::RootNode() : SceneNode(INVALID_ID, "Root")
-    {
-        SceneNodePtr staticGroup(new SceneNode(INVALID_ID, "StaticGroup"));
-        m_Children.emplace("staticGroup", staticGroup);
-        SceneNodePtr actorGroup(new SceneNode(INVALID_ID, "ActorGroup"));
-        m_Children.emplace("actorGroup", actorGroup);
-        SceneNodePtr skyGroup(new SceneNode(INVALID_ID, "SkyGroup"));
-        m_Children.emplace("skyGroup", skyGroup);
-        SceneNodePtr transparentGroup(new SceneNode(INVALID_ID, "TransparentGroup"));
-        m_Children.emplace("transparentGroup", transparentGroup);
-        SceneNodePtr invisibleGroup(new SceneNode(INVALID_ID, "InvisibleGroup"));
-        m_Children.emplace("invisibleGroup", invisibleGroup);
-    }
-
-    void RootNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
-    {
-        ZoneScoped;
-
-        for (int pass = RenderPass::Zero; pass < RenderPass::Last; pass++)
-        {
-            switch (pass)
-            {
-                case RenderPass::Static:
-                    {
-                        ZoneScopedN("Draw Static");
-                        m_Children["staticGroup"]->DrawChildren(scene, parentTransform);
-                        break;
-                    }
-
-                case RenderPass::Actor:
-                    {
-                        ZoneScopedN("Draw Actor");
-                        m_Children["actorGroup"]->DrawChildren(scene, parentTransform);
-                        break;
-                    }
-
-                case RenderPass::Sky:
-                    {
-                        ZoneScopedN("Draw Sky");
-                        scene->GraphicsEngine()->BeforeDrawSky();
-                        m_Children["skyGroup"]->DrawChildren(scene, parentTransform);
-                        scene->GraphicsEngine()->AfterDrawSky();
-                        break;
-                    }
-                case RenderPass::Transparent:
-                    {
-                        ZoneScopedN("Draw Transparent");
-                        m_Children["transparentGroup"]->DrawChildren(scene, parentTransform);
-                        break;
-                    }
-
-            }
-        }
-    }
-
-    bool RootNode::AddChild(SceneNodePtr child, RenderPass renderPass)
-    {
-        switch (renderPass)
-        {
-            case RenderPass::Static:
-                return m_Children["staticGroup"]->AddChild(child);
-            case RenderPass::Actor:
-                return m_Children["actorGroup"]->AddChild(child);
-            case RenderPass::Sky:
-                return m_Children["skyGroup"]->AddChild(child);
-            case RenderPass::Transparent:
-                return m_Children["transparentGroup"]->AddChild(child);
-            default:
-                return m_Children["invisibleGroup"]->AddChild(child);
-        }
-    }
-
-    bool RootNode::RemoveChild(ActorId id)
-    {
-        if (m_Children["staticGroup"]->RemoveChild(id)) return true;
-        if (m_Children["actorGroup"]->RemoveChild(id)) return true;
-        if (m_Children["skyGroup"]->RemoveChild(id)) return true;
-        if (m_Children["transparentGroup"]->RemoveChild(id)) return true;
-        if (m_Children["invisibleGroup"]->RemoveChild(id)) return true;
-        return false;
-    }
+    RootNode::RootNode() : SceneNode(INVALID_ID, "Root") {}
 
     Camera::Camera(ActorId actorId, std::string name) : SceneNode(actorId, name) {}
 
@@ -439,40 +360,40 @@ namespace Tarbora {
     MaterialNode::MaterialNode(ActorId actorId, std::string name, std::string material) :
         SceneNode(actorId, name)
     {
-        m_Material = GET_RESOURCE(Material, "materials/" + material);
+        m_Material = ResourcePtr<Material>("materials/" + material);
     }
 
     void MaterialNode::Draw(Scene *scene, glm::mat4 &parentTransform)
     {
         (void)(parentTransform);
-        if (m_Material->GetShader() != nullptr) scene->GraphicsEngine()->UseShader(m_Material->GetShader());
-        m_Material->GetTexture()->Bind();
+        scene->GetRenderQueue()->PushMaterial(m_Material);
     }
 
-    MeshNode::MeshNode(ActorId actorId, std::string name, std::string mesh) :
-        SceneNode(actorId, name)
+    void MaterialNode::AfterDraw(Scene *scene)
     {
-        m_Mesh = GET_RESOURCE(Mesh, "meshes/" + mesh);
-        if (m_Mesh == nullptr) m_Mesh = GET_RESOURCE(Mesh, "meshes/cube.mesh");
+        scene->GetRenderQueue()->PopMaterial();
+    }
+
+    MeshNode::MeshNode(ActorId actorId, std::string name, RenderPass renderPass, std::string mesh) :
+        SceneNode(actorId, name), m_RenderPass(renderPass)
+    {
+        m_Mesh = ResourcePtr<Mesh>("meshes/" + mesh);
+        if (m_Mesh == nullptr) m_Mesh = ResourcePtr<Mesh>("meshes/cube.mesh");
         m_Uv = glm::vec2(0.0f, 0.0f);
-        m_TexSize = glm::vec3(0.0f, 0.0f, 0.0f);
+        m_TextureSize = glm::vec3(0.0f, 0.0f, 0.0f);
     }
 
     void MeshNode::Draw(Scene *scene, glm::mat4 &parentTransform)
     {
-        (void)(scene);
-        if (m_Mesh != nullptr && scene->GraphicsEngine()->ShaderAvailable())
+        if (m_Mesh != nullptr)
         {
-            glm::mat4 newMat = parentTransform * glm::scale(m_LocalMatrix, m_Scale);
-            scene->GraphicsEngine()->GetShader()->Set("transform", newMat);
-            scene->GraphicsEngine()->GetShader()->Set("uv", m_Uv);
-            scene->GraphicsEngine()->GetShader()->Set("size", m_TexSize);
-            scene->GraphicsEngine()->DrawMesh(m_Mesh);
+            glm::mat4 transform = parentTransform * glm::scale(m_LocalMatrix, m_Scale);
+            scene->GetRenderQueue()->DrawMesh(m_RenderPass, m_Mesh, transform, m_Uv, m_TextureSize);
         }
     }
 
     void MeshNode::SetUV(glm::vec3 &size, glm::vec2 &uv) {
-        m_TexSize = size;
+        m_TextureSize = size;
         m_Uv = uv;
     }
 }

@@ -1,7 +1,7 @@
 #pragma once
-#include "../../../Framework/Global.hpp"
-#include "../../../Framework/ResourceManager/inc/Resource.hpp"
-#include "../../../Framework/External/json.hpp"
+#include "../../Framework/Global.hpp"
+#include "../../Framework/ResourceManager/inc/Resource.hpp"
+#include "../../Framework/External/json.hpp"
 typedef nlohmann::json raw_json;
 
 namespace Tarbora {
@@ -42,7 +42,7 @@ namespace Tarbora {
         friend class ResourceManager;
     private:
         virtual const std::string GetPattern() override { return "*.shader.json"; };
-        virtual ResourcePtr Load(std::string path) override;
+        virtual std::shared_ptr<Resource> Load(std::string path) override;
     };
     //! \endcond
 }

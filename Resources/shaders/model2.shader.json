@@ -1,5 +1,5 @@
 {
-    "vertex": "shaders/sky.vert",
+    "vertex": "shaders/model2.vert",
     "tes_control": "",
     "tes_eval": "",
     "geometry": "",

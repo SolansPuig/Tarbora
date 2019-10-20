@@ -12,7 +12,7 @@ namespace Tarbora {
     World::World(std::string serverAddress, ActorId maxNumber) :
         Module(1, serverAddress)
     {
-        m_MaxFrameRate = 120;
+        m_MaxFrameRate = 240;
 
         PhysicsEngine::Init();
         m_ActorFactory = std::make_unique<ActorFactory>(this);

@@ -12,6 +12,7 @@ namespace Tarbora {
         m_Movement = glm::vec3(0.0f, 0.0f, 0.0f);
         m_LookDirection = glm::vec2(0.0f, 0.0f);
         m_Jump = false;
+        m_FreezeMouse = false;
 
         m_Scene->CreateSkybox("sky.mat.json");
 
@@ -71,30 +72,30 @@ namespace Tarbora {
     {
         glm::vec3 lastMovement = m_Movement;
 
-        if (GAMEVIEW(m_Module)->Input()->GetKeyDown(KEY_W))
+        if (GetInputManager()->GetKeyDown(KEY_W))
             m_Movement.z += 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyUp(KEY_W))
+        if (GetInputManager()->GetKeyUp(KEY_W))
             m_Movement.z -= 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyDown(KEY_S))
+        if (GetInputManager()->GetKeyDown(KEY_S))
             m_Movement.z -= 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyUp(KEY_S))
+        if (GetInputManager()->GetKeyUp(KEY_S))
             m_Movement.z += 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyDown(KEY_A))
+        if (GetInputManager()->GetKeyDown(KEY_A))
             m_Movement.x += 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyUp(KEY_A))
+        if (GetInputManager()->GetKeyUp(KEY_A))
             m_Movement.x -= 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyDown(KEY_D))
+        if (GetInputManager()->GetKeyDown(KEY_D))
             m_Movement.x -= 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyUp(KEY_D))
+        if (GetInputManager()->GetKeyUp(KEY_D))
             m_Movement.x += 1;
-        if (GAMEVIEW(m_Module)->Input()->GetKeyDown(KEY_SPACE))
+        if (GetInputManager()->GetKeyDown(KEY_SPACE))
             if (!m_Jump) m_Jump = true;
 
-        if (GAMEVIEW(m_Module)->Input()->GetKeyDown(KEY_X))
+        if (GetInputManager()->GetKeyDown(KEY_X))
         {
             Send(1, "create_actor", CreateActor(0, "cube.json", "", glm::vec3(0.f,5.f,-5.f)));
         }
-        if (GAMEVIEW(m_Module)->Input()->GetKeyDown(KEY_Y))
+        if (GetInputManager()->GetKeyDown(KEY_Y))
         {
             static bool thirdPerson = true;
             thirdPerson = !thirdPerson;
@@ -106,7 +107,9 @@ namespace Tarbora {
 
         glm::vec2 lastLookDirection = m_LookDirection;
         float sensibility = 0.04; // TODO: Change this to a config file
-        m_LookDirection = sensibility * GAMEVIEW(m_Module)->Input()->GetMouseDelta();
+
+        if (!m_FreezeMouse)
+            m_LookDirection = sensibility * GetInputManager()->GetMouseDelta();
 
         if (m_Movement != lastMovement)
             Send(1, "set_movement", ApplyPhysics(m_TargetId, 1, glm::normalize(m_Movement)));

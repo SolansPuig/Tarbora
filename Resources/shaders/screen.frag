@@ -19,17 +19,21 @@ struct DirectionalLight {
 
 void main()
 {
+    float gamma = 2.2;
+
     const DirectionalLight light = DirectionalLight(
-        vec3(5.2f, -1.0f, 1.3f),
+        vec3(1.2f, -1.0f, 1.3f),
         vec3(0.5f, 0.5f, 0.5f),
         vec3(0.4f, 0.4f, 0.4f),
         vec3(0.8f, 0.8f, 0.8f)
     );
     vec3 FragPos = texture(gPosition, TexCoords).rgb;
     vec3 Normal = texture(gNormal, TexCoords).rgb;
-    vec3 Albedo = texture(gColorSpec, TexCoords).rgb;
-    float Specular = texture(gNormal, TexCoords).a;
-    float AmbientOcclusion = texture(ssao, TexCoords).r;
+    vec3 Albedo = pow(texture(gColorSpec, TexCoords).rgb, vec3(gamma));
+    float Specular = texture(gColorSpec, TexCoords).a;
+    float AmbientOcclusion = pow(texture(ssao, TexCoords).r, gamma);
+
+    if (Albedo == vec3(0.0f)) discard;
 
     vec3 lightDir = (view * vec4(normalize(-light.direction), 0.0f)).xyz;
     vec3 viewDir = normalize(-FragPos);
@@ -37,8 +41,8 @@ void main()
     vec3 ambient = light.ambient * AmbientOcclusion;
     vec3 diffuse = max(dot(Normal, lightDir), 0.0) * light.diffuse;
     vec3 halfwayDir = reflect(-lightDir, Normal);
-    vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 32) * light.specular;
+    vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) * light.specular * Specular;
     vec3 lighting = Albedo * (ambient + diffuse + specular);
 
-    FragColor = vec4(vec3(lighting), 1.0);
+    FragColor = vec4(vec3(pow(lighting, vec3(1.0/gamma))), 1.0);
 }

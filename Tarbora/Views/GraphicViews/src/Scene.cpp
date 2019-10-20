@@ -8,11 +8,11 @@ namespace Tarbora {
     {
         m_Root = std::shared_ptr<RootNode>(new RootNode());
         m_Camera = std::shared_ptr<Camera>(new Camera(MAIN_CAMERA_ID, "body"));
-        AddChild(m_Camera, RenderPass::Actor);
+        AddChild(m_Camera);
         m_Camera->Rotate(glm::vec3(0.0f, 180.0f, 0.0f));
         m_Camera->Move(glm::vec3(0.0f, 0.0f, -5.0f));
 
-        m_Projection = glm::perspective(glm::radians(45.0f), m_View->GraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
+        m_Projection = glm::perspective(glm::radians(45.0f), m_View->GetGraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
 
         // EvtWindowResizeId = EventManager::Subscribe("WindowResize", [this](Event *e)
         // {
@@ -41,19 +41,20 @@ namespace Tarbora {
         if (m_Root)
         {
             m_Root->DrawChildren(this, glm::mat4(1.0f));
+            m_View->GetGraphicsEngine()->GetRenderQueue()->Draw();
         }
     }
 
     void Scene::CreateSkybox(std::string material)
     {
         m_Skybox = std::shared_ptr<Skybox>(new Skybox(material));
-        AddChild(m_Skybox, RenderPass::Sky);
+        AddChild(m_Skybox);
     }
 
     void Scene::CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material)
     {
-        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, model, material));
-        AddChild(actor, renderPass);
+        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, renderPass, model, material));
+        AddChild(actor);
     }
 
     void Scene::CreateActorModel(ActorId id, std::string entity, std::string variant)
@@ -78,7 +79,7 @@ namespace Tarbora {
 
         resource->PopErrName();
 
-        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, model, material));
+        std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, (RenderPass)renderPass, model, material));
 
         raw_json animationsJson;
         resource->Get(components, "animations", &animationsJson, {true, true});
@@ -94,7 +95,7 @@ namespace Tarbora {
         resource->PopErrName();
         resource->PopErrName();
 
-        AddChild(actor, (RenderPass)renderPass);
+        AddChild(actor);
     }
 
     void Scene::AnimateActor(ActorId id, std::string animation)
@@ -116,12 +117,12 @@ namespace Tarbora {
         }
     }
 
-    void Scene::AddChild(SceneNodePtr child, RenderPass renderPass)
+    void Scene::AddChild(SceneNodePtr child)
     {
         ActorId id = child->GetActorId();
         if (id != INVALID_ID)
             m_ActorMap[id] = child;
-        m_Root->AddChild(child, renderPass);
+        m_Root->AddChild(child);
     }
 
     SceneNodePtr Scene::GetChild(ActorId id)

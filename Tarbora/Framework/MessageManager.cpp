@@ -13,30 +13,35 @@ namespace Tarbora {
         m_MessageClient->Disconnect();
     }
 
+    void MessageManager::ReadMessage(tbMessages::Message &m)
+    {
+        MessageBody b(m.body());
+
+        auto allListeners = m_Listeners.find("all");
+        if (allListeners != m_Listeners.end())
+        {
+            for (auto listener : allListeners->second)
+            {
+                listener(m.subject(), &b);
+            }
+        }
+
+        auto subjectListeners = m_Listeners.find(m.subject());
+        if (subjectListeners != m_Listeners.end())
+        {
+            for (auto listener : subjectListeners->second)
+            {
+                listener(m.subject(), &b);
+            }
+        }
+    }
+
     void MessageManager::ReadMessages()
     {
         tbMessages::Message m;
         while (m_MessageClient->GetMessage(&m))
         {
-            MessageBody b(m.body());
-
-            auto allListeners = m_Listeners.find("all");
-            if (allListeners != m_Listeners.end())
-            {
-                for (auto listener : allListeners->second)
-                {
-                    listener(m.subject(), &b);
-                }
-            }
-
-            auto subjectListeners = m_Listeners.find(m.subject());
-            if (subjectListeners != m_Listeners.end())
-            {
-                for (auto listener : subjectListeners->second)
-                {
-                    listener(m.subject(), &b);
-                }
-            }
+            ReadMessage(m);
         }
     }
 
@@ -89,6 +94,6 @@ namespace Tarbora {
         message.set_subject(s);
         message.set_body(b.GetContentStr());
 
-        m_MessageClient->AddMessage(message);
+        ReadMessage(message);
     }
 }

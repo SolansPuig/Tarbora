@@ -1,6 +1,6 @@
 #pragma once
 #include "../../../Framework/Module.hpp"
-#include "../../GraphicsEngine/inc/GraphicsEngine.hpp"
+#include "../../GraphicsEngine/GraphicsEngine.hpp"
 
 namespace Tarbora {
     class GraphicView : public Module
@@ -9,9 +9,7 @@ namespace Tarbora {
         GraphicView(unsigned int client_id, std::string server_address, std::string settings_file)
             : Module(client_id, server_address)
         {
-            m_GraphicsEngine = std::make_shared<GraphicsEngineImpl>(this, settings_file);
-            m_Input = std::make_shared<InputImpl>(this);
-            m_GraphicsEngine->InitGui();
+            m_GraphicsEngine = std::make_shared<GraphicsEngine>(this, settings_file);
         }
 
         ~GraphicView()
@@ -19,11 +17,9 @@ namespace Tarbora {
             ResourceManager::Flush();
         }
 
-        std::shared_ptr<GraphicsEngineImpl> GraphicsEngine() { return m_GraphicsEngine; }
-        std::shared_ptr<InputImpl> Input() { return m_Input; }
+        std::shared_ptr<GraphicsEngine> GetGraphicsEngine() { return m_GraphicsEngine; }
 
     private:
-        std::shared_ptr<GraphicsEngineImpl> m_GraphicsEngine;
-        std::shared_ptr<InputImpl> m_Input;
+        std::shared_ptr<GraphicsEngine> m_GraphicsEngine;
     };
 }

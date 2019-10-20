@@ -1,22 +1,28 @@
 #pragma once
-#include "../../../Framework/ResourceManager/inc/Resource.hpp"
 #include "Texture.hpp"
 #include "Shader.hpp"
 
 namespace Tarbora {
+    typedef std::string MaterialId;
+
     class Material : public Resource
     {
         friend class MaterialResourceLoader;
     public:
-        std::shared_ptr<Texture> GetTexture() { return m_Texture; }
-        std::shared_ptr<Shader> GetShader() { return m_Shader; }
+        void Bind();
+
+        ResourcePtr<Texture> GetAlbedo() { return m_Albedo; }
+        ResourcePtr<Texture> GetSpecular() { return m_Specular; }
+        ResourcePtr<Shader> GetShader() { return m_Shader; }
+        MaterialId GetId() { return m_Name; }
 
     private:
         Material(Module *m, std::string name)
             : Resource(m, name) {}
 
-        std::shared_ptr<Texture> m_Texture;
-        std::shared_ptr<Shader> m_Shader;
+        ResourcePtr<Texture> m_Albedo;
+        ResourcePtr<Texture> m_Specular;
+        ResourcePtr<Shader> m_Shader;
     };
 
     //! \cond HIDDEN_SYMBOLS
@@ -25,7 +31,7 @@ namespace Tarbora {
         friend class ResourceManager;
     private:
         virtual const std::string GetPattern() override { return "*.mat.json"; };
-        virtual ResourcePtr Load(std::string path) override;
+        virtual std::shared_ptr<Resource> Load(std::string path) override;
     };
     //! \endcond
 }

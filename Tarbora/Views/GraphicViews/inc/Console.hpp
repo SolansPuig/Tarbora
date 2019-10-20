@@ -15,7 +15,7 @@ namespace Tarbora {
 
         void GetInput() override
         {
-            if (static_cast<GraphicView*>(m_Module)->Input()->GetKeyDown(KEY_F4) && !m_fullWindow) {
+            if (GetInputManager()->GetKeyDown(KEY_F4) && !m_fullWindow) {
                 m_active = !m_active;
             }
         }

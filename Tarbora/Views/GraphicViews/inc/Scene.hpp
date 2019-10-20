@@ -3,6 +3,7 @@
 #include "ActorModel.hpp"
 #include "Skybox.hpp"
 #include "GraphicView.hpp"
+#include "../../GraphicsEngine/GraphicsEngine.hpp"
 
 namespace Tarbora {
     typedef std::map<ActorId, SceneNodePtr> SceneActorMap;
@@ -24,7 +25,7 @@ namespace Tarbora {
         void CreateSkybox(std::string material);
         std::shared_ptr<Skybox> GetSkybox() { return m_Skybox; }
 
-        void AddChild(SceneNodePtr child, RenderPass renderPass);
+        void AddChild(SceneNodePtr child);
         SceneNodePtr GetChild(ActorId id);
         bool RemoveChild(ActorId id);
 
@@ -32,8 +33,9 @@ namespace Tarbora {
         void SetCamera(ActorId id, std::string nodeName);
         CameraPtr GetCamera() { return m_Camera; }
 
-        inline std::shared_ptr<GraphicsEngineImpl> GraphicsEngine() { return m_View->GraphicsEngine(); }
+        inline std::shared_ptr<GraphicsEngine> GetGraphicsEngine() { return m_View->GetGraphicsEngine(); }
         inline std::shared_ptr<MessageManager> GetMessageManager() { return m_View->GetMessageManager(); }
+        inline std::shared_ptr<RenderQueue> GetRenderQueue() { return m_View->GetGraphicsEngine()->GetRenderQueue(); }
 
     protected:
         std::shared_ptr<RootNode> m_Root;
@@ -44,5 +46,6 @@ namespace Tarbora {
         glm::mat4 m_Projection;
 
         GraphicView *m_View;
+
     };
 }

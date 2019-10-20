@@ -2,7 +2,7 @@
     "components": {
         "type": ["ground"],
         "model": {
-            "renderPass": 1,
+            "renderPass": 0,
             "model": "ground.json",
             "material": "green.mat.json"
         },

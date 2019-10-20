@@ -7,18 +7,18 @@
 #pragma GCC diagnostic pop
 
 namespace Tarbora {
-    class GraphicView;
+    class GraphicsEngine;
 
     class Gui
     {
     public:
-        Gui(GraphicView *m_View);
+        Gui(GraphicsEngine *graphicsEngine);
         ~Gui();
 
         void BeforeDraw();
         void AfterDraw();
 
     private:
-        GraphicView *m_View;
+        GraphicsEngine *m_GraphicsEngine;
     };
 }

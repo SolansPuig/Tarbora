@@ -2,7 +2,7 @@
 #include "../inc/Scene.hpp"
 
 namespace Tarbora {
-    ActorModel::ActorModel(ActorId id, std::string model, std::string material)
+    ActorModel::ActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material)
         : MaterialNode(id, std::to_string(id), material)
     {
         JsonPtr resource = GET_RESOURCE(Json, "models/" + model);
@@ -11,7 +11,7 @@ namespace Tarbora {
             resource->PushErrName("root");
             m_PixelDensity = resource->GetFloat("pixel_density");
             float scale = resource->GetFloat("scale");
-            std::shared_ptr<MeshNode> mesh = CreateNode(id, resource, resource->GetJson("root"), m_PixelDensity, resource->GetFloat("texture_size"));
+            std::shared_ptr<MeshNode> mesh = CreateNode(id, renderPass, resource, resource->GetJson("root"), m_PixelDensity, resource->GetFloat("texture_size"));
             mesh->SetGlobalScale(glm::vec3(scale, scale, scale));
             resource->PopErrName();
 
@@ -19,7 +19,7 @@ namespace Tarbora {
         }
     }
 
-    std::shared_ptr<MeshNode> ActorModel::CreateNode(ActorId id, JsonPtr resource, raw_json j, float pixelDensity, float textureSize)
+    std::shared_ptr<MeshNode> ActorModel::CreateNode(ActorId id, RenderPass renderPass, JsonPtr resource, raw_json j, float pixelDensity, float textureSize)
     {
         // Read all the parameters for the node
         std::string name = resource->GetString(j, "name");
@@ -56,7 +56,7 @@ namespace Tarbora {
         );
 
         // Create the node
-        std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, shape));
+        std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, renderPass, shape));
         node->SetUV(texSize, uv);
         node->SetOrigin(origin);
         node->SetPosition(position);
@@ -69,7 +69,7 @@ namespace Tarbora {
         resource->PushErrName("nodes");
         for (unsigned int i = 0; i < nodes.size(); i++) {
             resource->PushErrName(std::to_string(i).c_str());
-            std::shared_ptr<MeshNode> new_node = CreateNode(id, resource, resource->GetJson(nodes, i), pixelDensity, textureSize);
+            std::shared_ptr<MeshNode> new_node = CreateNode(id, renderPass, resource, resource->GetJson(nodes, i), pixelDensity, textureSize);
             resource->PopErrName();
             node->AddChild(new_node);
         }

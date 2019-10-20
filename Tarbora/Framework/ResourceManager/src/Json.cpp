@@ -859,14 +859,14 @@ namespace Tarbora {
         return r;
     }
 
-    ResourcePtr JsonResourceLoader::Load(std::string path)
+    std::shared_ptr<Resource> JsonResourceLoader::Load(std::string path)
     {
         // Try to open the file.
         std::ifstream file;
         file.open(path.c_str());
         if (file.fail())
         {
-            return ResourcePtr();
+            return std::shared_ptr<Resource>();
         }
 
         // Try to parse the file.
@@ -879,11 +879,11 @@ namespace Tarbora {
         {
             LOG_ERR("JsonResourceLoader: Trying to parse file \"%s\" found exception: \n \"%s\"", path.c_str(), e.what());
             file.close();
-            return ResourcePtr();
+            return std::shared_ptr<Resource>();
         }
 
         // Crate the Resource.
-        ResourcePtr r = ResourcePtr(new Json(m_Module, path, data));
+        std::shared_ptr<Resource> r = std::shared_ptr<Resource>(new Json(m_Module, path, data));
         file.close(); // Close the file.
         return r;
     }

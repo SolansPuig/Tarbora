@@ -1,11 +1,10 @@
-#include "../inc/GraphicsEngine.hpp"
-#include "../imgui/examples/imgui_impl_glfw.h"
-#include "../imgui/examples/imgui_impl_opengl3.h"
-#include "../../GraphicViews/inc/GraphicView.hpp"
+#include "GraphicsEngine.hpp"
+#include "imgui/examples/imgui_impl_glfw.h"
+#include "imgui/examples/imgui_impl_opengl3.h"
 
 namespace Tarbora {
-    Gui::Gui(GraphicView *view) :
-        m_View(view)
+    Gui::Gui(GraphicsEngine *graphicsEngine) :
+        m_GraphicsEngine(graphicsEngine)
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
@@ -15,7 +14,7 @@ namespace Tarbora {
         ImGui::StyleColorsDark();
         // ImGuiStyle& style = ImGui::GetStyle();
 
-        ImGui_ImplGlfw_InitForOpenGL(m_View->GraphicsEngine()->GetWindow()->GetRawWindow(), true);
+        ImGui_ImplGlfw_InitForOpenGL(graphicsEngine->GetWindow()->GetRawWindow(), true);
         ImGui_ImplOpenGL3_Init("#version 410");
     }
 

@@ -1,4 +1,5 @@
 {
     "shader": "sky.shader.json",
-    "texture": "sky.png"
+    "albedo": "sky.png",
+    "specular": ""
 }

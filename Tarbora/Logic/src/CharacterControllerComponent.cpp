@@ -109,7 +109,7 @@ namespace Tarbora {
         {
             if (!m_OnGround)
             {
-                LOG_DEBUG("Just hit the ground");
+                // LOG_DEBUG("Just hit the ground");
             }
             m_Body->SetLinearDamping(0.9999999f);
             m_OnGround = true;

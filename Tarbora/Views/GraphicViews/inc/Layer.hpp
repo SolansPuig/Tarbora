@@ -30,6 +30,11 @@ namespace Tarbora {
             return m_active;
         }
 
+        std::shared_ptr<Input> GetInputManager()
+        {
+            return static_cast<GraphicView*>(m_Module)->GetGraphicsEngine()->GetInputManager();
+        }
+
     protected:
         bool m_active;
         bool m_event_blocking;

@@ -24,7 +24,7 @@ namespace Tarbora {
 
         PushLayer(m_Console);
 
-        GraphicsEngine()->GetWindow()->CaptureMouse(true);
+        GetGraphicsEngine()->GetWindow()->CaptureMouse(true);
 
         LOG_DEBUG("Created");
         // std::shared_ptr<DemoWindow> demo_gui(new DemoWindow(this, false));
@@ -40,17 +40,19 @@ namespace Tarbora {
     {
         ZoneScoped;
 
-        if (Input()->GetKeyDown(KEY_ESCAPE)) {
+        if (GetGraphicsEngine()->GetInputManager()->GetKeyDown(KEY_ESCAPE)) {
             static bool capture = true;
             capture = !capture;
-            GraphicsEngine()->GetWindow()->CaptureMouse(capture);
+            GetGraphicsEngine()->GetWindow()->CaptureMouse(capture);
+            m_GameLayer->FreezeMouse(!capture);
+
         }
 
-        if (Input()->GetKeyDown(KEY_F2)) {
-            GraphicsEngine()->TakeScreenshot("/home/roger/Imatges/test");
+        if (GetGraphicsEngine()->GetInputManager()->GetKeyDown(KEY_F2)) {
+            GetGraphicsEngine()->GetWindow()->TakeScreenshot("/home/roger/Imatges/test");
         }
 
-        if (Input()->GetKeyDown(KEY_F5)) {
+        if (GetGraphicsEngine()->GetInputManager()->GetKeyDown(KEY_F5)) {
             ResourceManager::Flush();
         }
 
@@ -75,7 +77,7 @@ namespace Tarbora {
     {
         ZoneScoped;
 
-        GraphicsEngine()->BeforeDraw();
+        GetGraphicsEngine()->BeforeDraw();
 
         for (auto &itr : m_Layers)
         {
@@ -83,7 +85,7 @@ namespace Tarbora {
                 itr->Draw();
         }
 
-        GraphicsEngine()->AfterDraw();
+        GetGraphicsEngine()->AfterDraw();
     }
 
     void HumanView::PushLayer(std::shared_ptr<Layer> layer)

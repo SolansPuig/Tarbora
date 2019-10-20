@@ -8,7 +8,7 @@ namespace Tarbora {
     {
         friend class AnimationController;
     public:
-        ActorModel(ActorId id, std::string model, std::string material);
+        ActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material);
 
         virtual void Update(Scene *scene, float deltaTime) override;
 
@@ -17,7 +17,7 @@ namespace Tarbora {
         void Animate(std::string animation, std::string animations_file="");
 
     private:
-        std::shared_ptr<MeshNode> CreateNode(ActorId id, JsonPtr resource, raw_json j, float pixelDensity, float textureSize);
+        std::shared_ptr<MeshNode> CreateNode(ActorId id, RenderPass renderPass, JsonPtr resource, raw_json j, float pixelDensity, float textureSize);
         std::shared_ptr<Camera> CreateCamera(ActorId id, JsonPtr resource, raw_json j);
 
         std::map<std::string, std::shared_ptr<SceneNode>> m_Nodes;

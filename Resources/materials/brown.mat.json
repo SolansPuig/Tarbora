@@ -1,4 +1,5 @@
 {
     "shader": "model.shader.json",
-    "texture": "brown.png"
+    "albedo": "brown.png",
+    "specular": "white.png"
 }

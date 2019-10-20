@@ -7,55 +7,55 @@ layout (location = 3) in float aFace;
 uniform mat4 projection;
 uniform mat4 view;
 uniform mat4 transform;
-uniform sampler2D myTexture;
+uniform vec2 uv;
+uniform vec3 size;
+uniform sampler2D albedo;
 
 out vec2 TexCoord;
 
 void main()
 {
-    mat4 skyView = view;
-    skyView[3] = vec4(0.f);
-    gl_Position = (projection * skyView * transform * vec4(aPos, 1.0f)).xyww;
+    gl_Position = projection * view * transform * vec4(aPos, 1.0f);
 
-    ivec2 texSize = textureSize(myTexture, 0);
+    ivec2 texSize = textureSize(albedo, 0);
     float xoffset = 0.5 / texSize.x;
     float yoffset = 0.5 / texSize.y;
 
     if (aTexCoord.x == 0)
     {
-        TexCoord.x = xoffset;
+        TexCoord.x = xoffset + uv.x;
     }
     else if (aTexCoord.x == 1)
     {
         if (aFace == 1 || aFace == 3) xoffset *= -1;
-        TexCoord.x = 0.25 + xoffset;
+        TexCoord.x = size.z + uv.x + xoffset;
     }
     else if (aTexCoord.x == 2)
     {
         if (aFace == 4 || aFace == 0) xoffset *= -1;
-        TexCoord.x = 0.5 + xoffset;
+        TexCoord.x = size.z + size.x + uv.x + xoffset;
     }
     else if (aTexCoord.x == 3)
     {
         if (aFace == 5 || aFace == 2) xoffset *= -1;
-        TexCoord.x = 0.75 + xoffset;
+        TexCoord.x = size.z + 2*size.x + uv.x + xoffset;
     }
     else
     {
-        TexCoord.x = 1 - xoffset;
+        TexCoord.x = 2*size.z + 2*size.x + uv.x - xoffset ;
     }
 
     if (aTexCoord.y == 0)
     {
-        TexCoord.y = yoffset;
+        TexCoord.y = uv.y + yoffset;
     }
     else if (aTexCoord.y == 1)
     {
         if (aFace == 4 || aFace == 5) yoffset *= -1;
-        TexCoord.y = 0.5 + yoffset;
+        TexCoord.y = size.z + uv.y + yoffset;
     }
     else
     {
-        TexCoord.y = 1 - yoffset;
+        TexCoord.y = size.z + size.y + uv.y - yoffset;
     }
 }

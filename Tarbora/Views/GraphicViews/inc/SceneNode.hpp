@@ -1,19 +1,8 @@
 #pragma once
-#include "../../GraphicsEngine/inc/GraphicsEngine.hpp"
+#include "../../GraphicsEngine/GraphicsEngine.hpp"
 
 namespace Tarbora {
     class Scene;
-
-    enum RenderPass
-    {
-        Zero,
-        Static = Zero,
-        Actor,
-        Sky,
-        Transparent,
-        NotRendered,
-        Last
-    };
 
     class SceneNode;
     typedef std::shared_ptr<SceneNode> SceneNodePtr;
@@ -29,6 +18,7 @@ namespace Tarbora {
         virtual void Update(Scene *scene, float deltaTime);
         virtual void Draw(Scene *scene, glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
         virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform);
+        virtual void AfterDraw(Scene *scene) { (void)(scene); }
 
         virtual bool AddChild(SceneNodePtr child);
         virtual SceneNodePtr GetChild(ActorId id);
@@ -110,9 +100,6 @@ namespace Tarbora {
     {
     public:
         RootNode();
-        virtual bool AddChild(SceneNodePtr child, RenderPass renderPass);
-        virtual bool RemoveChild(ActorId id) override;
-        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform) override;
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
     };
 
@@ -133,20 +120,22 @@ namespace Tarbora {
     public:
         MaterialNode(ActorId actorId, std::string name, std::string material);
         virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
+        virtual void AfterDraw(Scene *scene);
     protected:
-        std::shared_ptr<Material> m_Material;
+        ResourcePtr<Material> m_Material;
     };
 
     class MeshNode : public SceneNode
     {
     public:
-        MeshNode(ActorId actorId, std::string name, std::string mesh);
+        MeshNode(ActorId actorId, std::string name, RenderPass renderPass, std::string mesh);
         virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
         void SetUV(glm::vec3 &size, glm::vec2 &uv);
 
     protected:
-        std::shared_ptr<Mesh> m_Mesh;
+        RenderPass m_RenderPass;
+        ResourcePtr<Mesh> m_Mesh;
         glm::vec2 m_Uv;
-        glm::vec3 m_TexSize;
+        glm::vec3 m_TextureSize;
     };
 }

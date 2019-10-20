@@ -1,13 +1,10 @@
-#include "../inc/TextureInternal.hpp"
-#define STB_IMAGE_IMPLEMENTATION
-#include "../../../Framework/External/stb_image.h"
+#include "TextureInternal.hpp"
 
 namespace Tarbora {
-    TextureInternal::TextureInternal(std::string name)
+    TextureInternal::TextureInternal(int width, int height, int nrComponents, void *data)
     {
-        // Read the image file
-        int nrComponents;
-        void *data = LoadFromFile(name, &nrComponents);
+        m_Width = width;
+        m_Height = height;
 
         // Detect the format
         GLenum format;
@@ -20,9 +17,6 @@ namespace Tarbora {
 
         // Build the texture
         Build(data, format, GL_UNSIGNED_BYTE);
-
-        // Delete the image
-        stbi_image_free(data);
     }
 
     TextureInternal::TextureInternal(int width, int height, unsigned int format, unsigned int type, void *data)
@@ -65,21 +59,6 @@ namespace Tarbora {
     {
         glActiveTexture(GL_TEXTURE0 + channel);
         glBindTexture(GL_TEXTURE_2D, m_Id);
-    }
-
-    void *TextureInternal::LoadFromFile(std::string path, int *nrComponents)
-    {
-        // Load the raw image
-        void *data = stbi_load(path.c_str(), &m_Width, &m_Height, nrComponents, 0);
-        if (data == nullptr)
-        {
-            LOG_ERR("TextureLoader: The image %s failed to load due to: %s", path.c_str(), stbi_failure_reason());
-            data = stbi_load("../Resources/textures/missing.png", &m_Width, &m_Height, nrComponents, 0);
-            if (data == nullptr)
-                LOG_ERR("TextureLoader: The image textures/missing.png failed to load due to: %s", stbi_failure_reason());
-        }
-
-        return data;
     }
 
     void TextureInternal::Build(void *data, unsigned int format, unsigned int type)

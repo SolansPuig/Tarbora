@@ -6,11 +6,10 @@ namespace Tarbora {
     class Module;
     class Resource;
     class ResourceLoader;
-    typedef std::shared_ptr<Resource> ResourcePtr;
     typedef std::shared_ptr<ResourceLoader> LoaderPtr;
 
-    typedef std::list<ResourcePtr> ResourceList;
-    typedef std::map<std::string, ResourcePtr> ResourceMap;
+    typedef std::list<std::shared_ptr<Resource>> ResourceList;
+    typedef std::map<std::string, std::shared_ptr<Resource>> ResourceMap;
     typedef std::list<LoaderPtr> ResourceLoaders;
 
     //! Load resources and make them available to all the systems.
@@ -50,14 +49,14 @@ namespace Tarbora {
             If the \ref Resource isn't loaded yet, \ref GetResource automatically finds the
             appropiate \a ResourceLoader (see \ref Resource) and loads it.
         */
-        static ResourcePtr GetResource(const std::string resource);
+        static std::shared_ptr<Resource> GetResource(const std::string resource, bool *justLoaded=nullptr);
         // TODO: int Preload(const std::string pattern);
 
         //! Destroy a \ref Resource.
         /*!
             \param resource The file name of the resource to destroy.
         */
-        static void FreeResource(ResourcePtr resource);
+        static void FreeResource(std::shared_ptr<Resource> resource);
 
         //! Destroy all the \ref Resources.
         static void Flush(void);
@@ -73,17 +72,17 @@ namespace Tarbora {
             \param resource The file name of the resource to find.
             \return A pointer to the \ref Resource or nullptr if not found.
         */
-        static ResourcePtr FindResource(const std::string resource);
+        static std::shared_ptr<Resource> FindResource(const std::string resource);
 
         //! Load a resource from a file.
         /*!
             \param resource The file name of the resource to load.
             \return A pointer to the \ref Resource or nullptr if can't load.
         */
-        static ResourcePtr LoadResource(const std::string resource);
+        static std::shared_ptr<Resource> LoadResource(const std::string resource);
 
-        inline static std::list<ResourcePtr> m_List; // List of all the loaded resources.
-        inline static std::map<std::string, ResourcePtr> m_Resources; // Map from file name to resource pointer.
+        inline static std::list<std::shared_ptr<Resource>> m_List; // List of all the loaded resources.
+        inline static std::map<std::string, std::shared_ptr<Resource>> m_Resources; // Map from file name to resource pointer.
         inline static std::list<LoaderPtr> m_ResourceLoaders; // List of all the registered Resource Loaders, sorted by the most specidic first.
         inline static std::string m_ResourceFolderPath; // The path to folder where all the resource files are be located at.
     };

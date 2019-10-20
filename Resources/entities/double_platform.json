@@ -2,7 +2,7 @@
     "components": {
         "type": ["ground"],
         "model": {
-            "renderPass": 1,
+            "renderPass": 0,
             "model": "double_platform.json",
             "material": "brown.mat.json"
         },

@@ -1,9 +1,12 @@
-#include "../inc/GraphicsEngine.hpp"
-#include "../../GraphicViews/inc/GraphicView.hpp"
+#include "GraphicsEngine.hpp"
+#include "../../Framework/Module.hpp"
+#include <time.h>
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "../../Framework/External/stb_image_write.h"
 
 namespace Tarbora {
-    Window::Window(const char *title, int width, int height, GraphicView *view) :
-        m_Props(WindowProps(title, width, height, view))
+    Window::Window(const char *title, int width, int height, GraphicsEngine *graphicsEngine) :
+        m_Props(WindowProps(title, width, height, graphicsEngine))
     {
         LOG_DEBUG("Creating window with title: %s, width: %d and height: %d", m_Props.title, m_Props.width, m_Props.height);
 
@@ -35,8 +38,10 @@ namespace Tarbora {
         glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 		{
             WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
-            data.view->Close();
+            data.graphicsEngine->GetModule()->Close();
         });
+
+        stbi_flip_vertically_on_write(1);
     }
 
     Window::~Window()
@@ -67,5 +72,29 @@ namespace Tarbora {
     void Window::SetTitle(const char* title)
     {
         glfwSetWindowTitle(m_Window, title);
+    }
+
+    int Window::TakeScreenshot(const std::string &filename)
+    {
+        // Get the window width and height and reserve memory
+        int width = m_Props.width;
+        int height = m_Props.height;
+        char *data = (char*) malloc((size_t) (width * height * 3));
+
+        // Configure the format for storing the pixels and read them
+        glPixelStorei(GL_PACK_ALIGNMENT, 1);
+        glReadPixels(0, 0, width, height,  GL_RGB, GL_UNSIGNED_BYTE, data);
+
+        // Generate the timestamp for the name
+        time_t t = time(NULL);
+        char buffer[30];
+        strftime(buffer, 30, "_%Y%m%d_%H%M%S.png", localtime(&t));
+
+        // Store the screnshoot and free the reserved memory
+        int saved = stbi_write_png((filename + buffer).c_str(), width, height, 3, data, 0);
+        free(data);
+
+        LOG_INFO("Window: Saved screenshot %s", (filename + buffer).c_str());
+        return saved;
     }
 }

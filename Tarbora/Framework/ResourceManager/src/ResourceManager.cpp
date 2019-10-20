@@ -26,16 +26,23 @@ namespace Tarbora {
         m_ResourceLoaders.push_front(loader);
     }
 
-    ResourcePtr ResourceManager::GetResource(const std::string resource)
+    std::shared_ptr<Resource> ResourceManager::GetResource(const std::string resource, bool *justLoaded)
     {
         // Try to find the resource, if not found, load it.
-        ResourcePtr r(FindResource(resource));
+        std::shared_ptr<Resource> r(FindResource(resource));
         if (!r)
+        {
             r = LoadResource(resource);
+            if (justLoaded != nullptr)
+            {
+                *justLoaded = true;
+            }
+        }
+
         return r;
     }
 
-    ResourcePtr ResourceManager::LoadResource(const std::string resource)
+    std::shared_ptr<Resource> ResourceManager::LoadResource(const std::string resource)
     {
         // Find a loader that matches the resource's file name.
         LoaderPtr loader;
@@ -55,11 +62,11 @@ namespace Tarbora {
         if (!loader)
         {
             LOG_ERR("ResourceManager: Default resource loader not found.");
-            return ResourcePtr();
+            return std::shared_ptr<Resource>();
         }
 
         // Use the loader to load the resource.
-        ResourcePtr r = loader->Load(m_ResourceFolderPath + resource);
+        std::shared_ptr<Resource> r = loader->Load(m_ResourceFolderPath + resource);
 
         // If the resource gets loaded, store it. Else throw an error.
         if (r)
@@ -74,15 +81,15 @@ namespace Tarbora {
         return r;
     }
 
-    ResourcePtr ResourceManager::FindResource(const std::string resource)
+    std::shared_ptr<Resource> ResourceManager::FindResource(const std::string resource)
     {
         auto itr = m_Resources.find(m_ResourceFolderPath + resource);
         if (itr == m_Resources.end())
-            return ResourcePtr();
+            return std::shared_ptr<Resource>();
         return itr->second;
     }
 
-    void ResourceManager::FreeResource(ResourcePtr r)
+    void ResourceManager::FreeResource(std::shared_ptr<Resource> r)
     {
         // Remove the resource from the list and the map. Don't destroy it as some
         // system may be still using it. As it's a shared pointer, it will eventually
@@ -99,7 +106,7 @@ namespace Tarbora {
             auto gonner = m_List.end();
             gonner--;
 
-            ResourcePtr r = *gonner;
+            std::shared_ptr<Resource> r = *gonner;
     		FreeResource(r);
     	}
     }

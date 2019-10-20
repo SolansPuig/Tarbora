@@ -21,7 +21,7 @@ namespace Tarbora {
 
         \code{.cpp}
             virtual const std::string GetPattern();
-            virtual ResourcePtr Load(std::string path);
+            virtual std::shared_ptr<Resource> Load(std::string path);
         \endcode
 
         \a GetPattern returns a regex, the files that match it will be loaded with that loader.
@@ -54,17 +54,17 @@ namespace Tarbora {
                 friend class ResourceManager;
             private:
                 virtual const std::string GetPattern() override { return "*.txt"; }
-                virtual ResourcePtr Load(std::string path) override
+                virtual std::shared_ptr<Resource> Load(std::string path) override
                 {
                     // Try to open the file.
                     std::ifstream file;
                     file.open(path.c_str());
                     if (file.fail())
-                        return ResourcePtr();
+                        return std::shared_ptr<Resource>();
 
                     // Parse the contents to a string.
                     std::string s = std::string(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
-                    ResourcePtr r = ResourcePtr(new Text(path, s)); // Create the Resource.
+                    std::shared_ptr<Resource> r = std::shared_ptr<Resource>(new Text(path, s)); // Create the Resource.
                     file.close(); // Remember to close the file!
                     return r;
                 }
@@ -91,8 +91,6 @@ namespace Tarbora {
         std::string m_Name;
     };
 
-    typedef std::shared_ptr<Resource> ResourcePtr;
-
     //! \cond HIDDEN_SYMBOLS
     class ResourceLoader
     {
@@ -103,7 +101,7 @@ namespace Tarbora {
 
     private:
         virtual const std::string GetPattern() = 0;
-        virtual ResourcePtr Load(std::string path) = 0;
+        virtual std::shared_ptr<Resource> Load(std::string path) = 0;
     };
     //! \endcond
 
@@ -115,7 +113,7 @@ namespace Tarbora {
         friend class ResourceManager;
     private:
         virtual const std::string GetPattern() override { return "*"; }
-        virtual ResourcePtr Load(std::string path) override { (void)(path); return ResourcePtr(); }
+        virtual std::shared_ptr<Resource> Load(std::string path) override { (void)(path); return std::shared_ptr<Resource>(); }
     };
     //! \endcond
 
@@ -138,7 +136,72 @@ namespace Tarbora {
         friend class ResourceManager;
     private:
         virtual const std::string GetPattern() override { return "*.txt"; }
-        virtual ResourcePtr Load(std::string path) override;
+        virtual std::shared_ptr<Resource> Load(std::string path) override;
     };
     //! \endcond
+
+    template <class T>
+    class ResourcePtr
+    {
+    public:
+        ResourcePtr() : m_InitialConfigFn(nullptr) {}
+        ResourcePtr(std::string name)
+            : m_Name(name), m_InitialConfigFn(nullptr) {}
+
+        void SetInitialConfig(std::function<void(std::shared_ptr<T>)> fn)
+        {
+            m_InitialConfigFn = fn;
+        }
+
+        bool operator==(std::nullptr_t null)
+        {
+            return ResourceManager::GetResource(m_Name) == nullptr;
+        }
+
+        bool operator!=(std::nullptr_t null)
+        {
+            return !(this == nullptr);
+        }
+
+        bool operator==(const ResourcePtr<T> &resource)
+        {
+            return m_Name == resource.m_Name;
+        }
+
+        bool operator!=(const ResourcePtr<T> &resource)
+        {
+            return !(*this == resource);
+        }
+
+        bool operator>(const ResourcePtr<T> &resource)
+        {
+            return m_Name > resource.m_Name;
+        }
+
+        ResourcePtr<T>& operator=(const ResourcePtr<T> &resource)
+        {
+            if (this != &resource) // Avoid self assignment
+            {
+                m_Name = resource.m_Name;
+                m_InitialConfigFn = resource.m_InitialConfigFn;
+            }
+            return *this;
+        }
+
+        std::shared_ptr<T> operator->()
+        {
+            bool justLoaded = false;
+            std::shared_ptr<T> resource = std::static_pointer_cast<T>(ResourceManager::GetResource(m_Name, &justLoaded));
+            if (justLoaded && m_InitialConfigFn != nullptr) m_InitialConfigFn(resource);
+            return resource;
+        }
+
+        T& operator*()
+        {
+            return *(std::static_pointer_cast<T>(ResourceManager::GetResource(m_Name)));
+        }
+    private:
+        std::string m_Name;
+        std::function<void(std::shared_ptr<T>)> m_InitialConfigFn;
+    };
 }

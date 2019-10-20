@@ -7,16 +7,18 @@ in vec2 TexCoord;
 in vec3 FragPos;
 in vec3 Normal;
 
-uniform sampler2D myTexture;
+uniform sampler2D albedo;
+uniform sampler2D specular;
 
 void main()
 {
     gPosition = FragPos;
     gNormal = normalize(Normal);
-    vec4 fragTexture = texture(myTexture, TexCoord);
+    vec4 fragTexture = texture(albedo, TexCoord);
+    vec4 specularTexture = texture(specular, TexCoord);
     if (fragTexture.a == 0.0){
         discard;
     }
     gColorSpec.rgb = fragTexture.rgb;
-    gColorSpec.a = 1.0f;
+    gColorSpec.a = specularTexture.r;
 }

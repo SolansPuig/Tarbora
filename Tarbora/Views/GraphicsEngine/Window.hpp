@@ -1,28 +1,28 @@
 #pragma once
-#include "../../../Framework/Global.hpp"
+#include "../../Framework/Global.hpp"
 #define GLEW_STATIC
 #include <GL/glew.h>
-#include "../glfw/include/GLFW/glfw3.h"
+#include "glfw/include/GLFW/glfw3.h"
 #define GLM_FORCE_CXX98
 
 namespace Tarbora {
-    class GraphicView;
+    class GraphicsEngine;
 
     struct WindowProps {
         const char* title;
         int width;
         int height;
         float ratio;
-        GraphicView *view;
+        GraphicsEngine *graphicsEngine;
 
-        WindowProps(const char *title, int width, int height, GraphicView *view) :
-            title(title), width(width), height(height), ratio((float)width/(float)height), view(view) {};
+        WindowProps(const char *title, int width, int height, GraphicsEngine *graphicsEngine) :
+            title(title), width(width), height(height), ratio((float)width/(float)height), graphicsEngine(graphicsEngine) {};
     };
 
     class Window
     {
     public:
-        Window(const char* title, int width, int height, GraphicView *view);
+        Window(const char* title, int width, int height, GraphicsEngine *graphicsEngine);
         ~Window();
 
         void SetTitle(const char* title);
@@ -37,10 +37,10 @@ namespace Tarbora {
         float GetRatio() { return m_Props.ratio; }
 
         GLFWwindow* GetRawWindow() { return m_Window; }
+
+        int TakeScreenshot(const std::string &filename);
     private:
         GLFWwindow* m_Window;
         WindowProps m_Props;
     };
-
-    typedef std::shared_ptr<Window> WindowPtr;
 }

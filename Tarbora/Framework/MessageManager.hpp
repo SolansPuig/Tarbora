@@ -55,6 +55,8 @@ namespace Tarbora {
         void TriggerLocal(MessageSubject s, MessageBody b);
 
     private:
+        void ReadMessage(tbMessages::Message &m);
+        
         Module *m_Module;
         std::unique_ptr<MessageClient> m_MessageClient;
 
