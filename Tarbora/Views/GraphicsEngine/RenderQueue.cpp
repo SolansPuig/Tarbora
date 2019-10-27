@@ -44,7 +44,7 @@ namespace Tarbora {
                 switch (pass)
                 {
                     case Static:
-                        m_Renderer->SetupGeometryPass();
+                        m_Renderer->GeometryPass();
                         m_Renderer->SetFaceCulling(true);
                         break;
                     case Actor:
@@ -53,9 +53,10 @@ namespace Tarbora {
                         m_Renderer->SetFaceCulling(false);
                         break;
                     case Sky:
-                        m_Renderer->SetupOcclusionPass();
-                        m_Renderer->SetupLightingPass();
-                        m_Renderer->SetupSky();
+                        m_Renderer->OcclusionPass();
+                        m_Renderer->LightingPass();
+                        m_Renderer->ScenePass();
+                        m_Renderer->Sky();
                         break;
                     case Transparent:
                         m_Renderer->CleanSky();

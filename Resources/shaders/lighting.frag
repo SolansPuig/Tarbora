@@ -23,7 +23,7 @@ void main()
 
     const DirectionalLight light = DirectionalLight(
         vec3(1.2f, -1.0f, 1.3f),
-        vec3(0.5f, 0.5f, 0.5f),
+        vec3(0.7f, 0.7f, 0.7f),
         vec3(0.4f, 0.4f, 0.4f),
         vec3(0.8f, 0.8f, 0.8f)
     );
@@ -44,5 +44,6 @@ void main()
     vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) * light.specular * Specular;
     vec3 lighting = Albedo * (ambient + diffuse + specular);
 
-    FragColor = vec4(vec3(pow(lighting, vec3(1.0/gamma))), 1.0);
+    FragColor = vec4(pow(vec3(Albedo * (ambient + diffuse + specular)), vec3(1.0/gamma)), 1.0);
+    // FragColor = vec4(vec3(AmbientOcclusion), 1.0);
 }

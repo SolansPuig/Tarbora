@@ -3,6 +3,6 @@
     "tes_control": "",
     "tes_eval": "",
     "geometry": "",
-    "fragment": "shaders/occlusion_blur.frag",
+    "fragment": "shaders/postprocess.frag",
     "compute": ""
 }

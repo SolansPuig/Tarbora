@@ -1,8 +1,8 @@
 {
-    "vertex": "shaders/model2.vert",
+    "vertex": "shaders/empty.vert",
     "tes_control": "",
     "tes_eval": "",
     "geometry": "",
-    "fragment": "shaders/sky.frag",
+    "fragment": "shaders/scene.frag",
     "compute": ""
 }

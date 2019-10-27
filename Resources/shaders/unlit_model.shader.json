@@ -1,8 +1,8 @@
 {
-    "vertex": "shaders/empty.vert",
+    "vertex": "shaders/unlit_model.vert",
     "tes_control": "",
     "tes_eval": "",
     "geometry": "",
-    "fragment": "shaders/occlusion_blur.frag",
+    "fragment": "shaders/empty.frag",
     "compute": ""
 }

@@ -16,18 +16,23 @@ namespace Tarbora {
 
         void Init(int widht, int height);
 
-        void SetupGeometryPass();
-        void SetupOcclusionPass();
-        void SetupLightingPass();
+        void GeometryPass();
+        void OcclusionPass();
+        void LightingPass();
+        void ScenePass();
+        void Postprocess();
 
-        void SetupSky();
+        void Sky();
         void CleanSky();
 
         void SetFaceCulling(bool value);
 
     private:
-        void GenerateDefferredFramebuffer();
-        void GenerateOcclusionFramebuffer();
+        void SetupGeometryPass();
+        void SetupOcclusionPass();
+        void SetupLightingPass();
+        void SetupScenePass();
+        void SetupPostprocess();
 
         int m_Width, m_Height;
 
@@ -45,7 +50,15 @@ namespace Tarbora {
         std::unique_ptr<TextureInternal> m_ssaoBlurColor;
         ResourcePtr<Shader> m_OcclusionBlurShader;
 
+        unsigned int m_LightingBuffer;
+        std::unique_ptr<TextureInternal> m_LightingColor;
+        ResourcePtr<Shader> m_LightingShader;
+
+        unsigned int m_SceneBuffer;
+        std::unique_ptr<TextureInternal> m_SceneColor;
+        ResourcePtr<Shader> m_SceneShader;
+
         ResourcePtr<Mesh> m_QuadMesh;
-        ResourcePtr<Shader> m_ScreenShader;
+        ResourcePtr<Shader> m_PostprocessShader;
     };
 }

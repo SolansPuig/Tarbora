@@ -18,5 +18,6 @@ void main()
         }
     }
 
+    // FragColor = texture(ssaoInput, TexCoords).r;
     FragColor = result / (4.0 * 4.0);
 }

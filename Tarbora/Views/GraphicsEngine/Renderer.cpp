@@ -4,7 +4,7 @@
 #include "Texture.hpp"
 #include <random>
 
-#define KERNEL_SIZE 16
+#define KERNEL_SIZE 32
 
 namespace Tarbora {
     Renderer::Renderer()
@@ -25,10 +25,14 @@ namespace Tarbora {
         }
 
         glEnable(GL_DEPTH_TEST);
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(0.f, 0.f, 0.f, 0.f);
 
-        GenerateDefferredFramebuffer();
-        GenerateOcclusionFramebuffer();
+        m_QuadMesh = ResourcePtr<Mesh>("meshes/plane.mesh");
+        SetupGeometryPass();
+        SetupOcclusionPass();
+        SetupLightingPass();
+        SetupScenePass();
+        SetupPostprocess();
     }
 
     Renderer::~Renderer()
@@ -36,13 +40,13 @@ namespace Tarbora {
         glfwTerminate();
     }
 
-    void Renderer::SetupGeometryPass()
+    void Renderer::GeometryPass()
     {
         glBindFramebuffer(GL_FRAMEBUFFER, m_gBuffer);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
-    void Renderer::SetupOcclusionPass()
+    void Renderer::OcclusionPass()
     {
         glBindFramebuffer(GL_FRAMEBUFFER, m_ssaoBuffer);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -61,25 +65,30 @@ namespace Tarbora {
         glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh->GetVertices());
     }
 
-    void Renderer::SetupLightingPass()
+    void Renderer::LightingPass()
     {
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_LightingBuffer);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        m_ScreenShader->Use();
+        m_LightingShader->Use();
         m_gPosition->Bind(0);
         m_gNormal->Bind(1);
         m_gColorSpec->Bind(2);
         m_ssaoBlurColor->Bind(3);
         glBindVertexArray(m_QuadMesh->GetId());
         glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh->GetVertices());
-
-        glBindFramebuffer(GL_READ_FRAMEBUFFER, m_gBuffer);
-        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
-        glBlitFramebuffer(0, 0, m_Width, m_Height, 0, 0, m_Width, m_Height, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
 
-    void Renderer::SetupSky()
+    void Renderer::ScenePass()
+    {
+        glBindFramebuffer(GL_FRAMEBUFFER, m_SceneBuffer);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        m_SceneShader->Use();
+        m_LightingColor->Bind();
+        glBindVertexArray(m_QuadMesh->GetId());
+        glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh->GetVertices());
+    }
+
+    void Renderer::Sky()
     {
         glDepthFunc(GL_LEQUAL);
     }
@@ -101,7 +110,17 @@ namespace Tarbora {
         }
     }
 
-    void Renderer::GenerateDefferredFramebuffer()
+    void Renderer::Postprocess()
+    {
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        m_PostprocessShader->Use();
+        m_SceneColor->Bind();
+        glBindVertexArray(m_QuadMesh->GetId());
+        glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh->GetVertices());
+    }
+
+    void Renderer::SetupGeometryPass()
     {
         // Generate the g buffer
         glGenFramebuffers(1, &m_gBuffer);
@@ -133,16 +152,6 @@ namespace Tarbora {
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             LOG_ERR("G Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-        m_QuadMesh = ResourcePtr<Mesh>("meshes/plane.mesh");
-        m_ScreenShader = ResourcePtr<Shader>("shaders/screen.shader.json");
-        m_ScreenShader.SetInitialConfig([](auto shader){
-            shader->Use();
-            shader->Set("gPosition", 0);
-            shader->Set("gNormal", 1);
-            shader->Set("gColorSpec", 2);
-            shader->Set("ssao", 3);
-        });
     }
 
 
@@ -151,7 +160,7 @@ namespace Tarbora {
         return a + f * (b - a);
     }
 
-    void Renderer::GenerateOcclusionFramebuffer()
+    void Renderer::SetupOcclusionPass()
     {
         // Generate the SSAO Buffer
         glGenFramebuffers(1, &m_ssaoBuffer);
@@ -173,7 +182,7 @@ namespace Tarbora {
         {
             glm::vec3 sample(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, randomFloats(generator));
             sample = glm::normalize(sample);
-            // sample *= randomFloats(generator);
+            sample *= randomFloats(generator);
             float scale = float(i) / KERNEL_SIZE;
 
             // scale samples s.t. they're more aligned to center of kernel
@@ -184,7 +193,7 @@ namespace Tarbora {
 
         // Generate the noise texture
         std::vector<glm::vec3> ssaoNoise;
-        for (unsigned int i = 0; i < KERNEL_SIZE; i++)
+        for (unsigned int i = 0; i < 16; i++)
         {
             glm::vec3 noise(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, 0.0f);
             ssaoNoise.push_back(noise);
@@ -218,6 +227,67 @@ namespace Tarbora {
         m_OcclusionBlurShader.SetInitialConfig([](auto shader){
             shader->Use();
             shader->Set("ssaoInput", 0);
+        });
+    }
+
+    void Renderer::SetupLightingPass()
+    {
+        // Generate the lighting buffer
+        glGenFramebuffers(1, &m_LightingBuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_LightingBuffer);
+
+        // Color buffer
+        m_LightingColor = std::unique_ptr<TextureInternal>(new TextureInternal(m_Width, m_Height, GL_RGBA));
+        m_LightingColor->Configure(GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_LightingColor->GetId(), 0);
+        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+            LOG_ERR("Lighting Framebuffer not complete!");
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        m_LightingShader = ResourcePtr<Shader>("shaders/lighting.shader.json");
+        m_LightingShader.SetInitialConfig([](auto shader){
+            shader->Use();
+            shader->Set("gPosition", 0);
+            shader->Set("gNormal", 1);
+            shader->Set("gColorSpec", 2);
+            shader->Set("ssao", 3);
+        });
+    }
+
+    void Renderer::SetupScenePass()
+    {
+        // Generate the scene buffer
+        glGenFramebuffers(1, &m_SceneBuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_SceneBuffer);
+
+        // Color buffer
+        m_SceneColor = std::unique_ptr<TextureInternal>(new TextureInternal(m_Width, m_Height, GL_RGBA));
+        m_SceneColor->Configure(GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_SceneColor->GetId(), 0);
+
+        // Render buffer
+        unsigned int rbo;
+        glGenRenderbuffers(1, &rbo);
+        glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, m_Width, m_Height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo);
+        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+            LOG_ERR("Scene Framebuffer not complete!");
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        m_SceneShader = ResourcePtr<Shader>("shaders/scene.shader.json");
+        m_SceneShader.SetInitialConfig([](auto shader){
+            shader->Use();
+            shader->Set("tex", 0);
+        });
+    }
+
+    void Renderer::SetupPostprocess()
+    {
+        m_PostprocessShader = ResourcePtr<Shader>("shaders/postprocess.shader.json");
+        m_PostprocessShader.SetInitialConfig([](auto shader){
+            shader->Use();
+            shader->Set("scene", 0);
         });
     }
 }

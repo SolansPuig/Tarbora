@@ -1,5 +1,5 @@
 {
-    "vertex": "shaders/screen.vert",
+    "vertex": "shaders/empty.vert",
     "tes_control": "",
     "tes_eval": "",
     "geometry": "",

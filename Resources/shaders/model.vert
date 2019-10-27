@@ -23,8 +23,10 @@ void main()
     gl_Position = projection * viewPos;
 
     ivec2 texSize = textureSize(myTexture, 0);
-    float xoffset = 0.5 / texSize.x;
-    float yoffset = 0.5 / texSize.y;
+    // float xoffset = 0.5 / texSize.x;
+    // float yoffset = 0.5 / texSize.y;
+    float xoffset = 0;
+    float yoffset = 0;
 
     if (aTexCoord.x == 0)
     {

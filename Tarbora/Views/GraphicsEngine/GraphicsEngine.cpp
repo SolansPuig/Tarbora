@@ -53,6 +53,7 @@ namespace Tarbora {
 
     void GraphicsEngine::AfterDraw()
     {
+        m_Renderer->Postprocess();
         m_Gui->AfterDraw();
         m_Window->Update();
     }

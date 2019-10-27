@@ -3,6 +3,6 @@
     "tes_control": "",
     "tes_eval": "",
     "geometry": "",
-    "fragment": "shaders/sky.frag",
+    "fragment": "shaders/empty.frag",
     "compute": ""
 }
