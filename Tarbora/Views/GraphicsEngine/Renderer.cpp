@@ -284,7 +284,7 @@ namespace Tarbora {
 
     void Renderer::SetupPostprocess()
     {
-        m_PostprocessShader = ResourcePtr<Shader>("shaders/postprocess.shader.json");
+        m_PostprocessShader = ResourcePtr<Shader>(m_PostprocessShaderName);
         m_PostprocessShader.SetInitialConfig([](auto shader){
             shader->Use();
             shader->Set("scene", 0);

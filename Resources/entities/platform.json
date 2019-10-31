@@ -3,7 +3,7 @@
         "type": ["ground"],
         "model": {
             "renderPass": 0,
-            "model": "platform.json",
+            "model": "platform.lua",
             "material": "brown.mat.json"
         },
         "physics": {

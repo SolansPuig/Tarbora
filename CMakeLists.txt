@@ -18,6 +18,9 @@ include(cotire)
 include_directories(Tarbora/Framework/PhysicsEngine/bullet3/src)
 include_directories(Tarbora/Views/GraphicsEngine/imgui)
 include_directories(Tarbora/Views/GraphicsEngine/glfw/include)
+include_directories(Tarbora/Framework/External/sol2/include)
+include_directories(Tarbora/Framework/External/lua)
+
 
 add_subdirectory (Tarbora)
 
@@ -40,6 +43,7 @@ target_link_libraries (tarbora
     BulletDynamics
     BulletCollision
     LinearMath
+    lua
 )
 
 # cotire(tarbora)

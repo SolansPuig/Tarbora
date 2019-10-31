@@ -26,6 +26,7 @@ namespace Tarbora {
         void CleanSky();
 
         void SetFaceCulling(bool value);
+        void SetPostprocessShader(const std::string &shader) { m_PostprocessShaderName = shader; }
 
     private:
         void SetupGeometryPass();
@@ -59,6 +60,7 @@ namespace Tarbora {
         ResourcePtr<Shader> m_SceneShader;
 
         ResourcePtr<Mesh> m_QuadMesh;
+        std::string m_PostprocessShaderName;
         ResourcePtr<Shader> m_PostprocessShader;
     };
 }

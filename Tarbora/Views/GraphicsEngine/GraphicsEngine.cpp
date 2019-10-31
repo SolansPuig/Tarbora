@@ -1,5 +1,5 @@
 #include "GraphicsEngine.hpp"
-#include "../../Framework/ResourceManager/inc/Json.hpp"
+#include "../../Framework/ResourceManager/inc/Lua.hpp"
 
 namespace Tarbora {
     GraphicsEngine::GraphicsEngine(Module *module, std::string settingsFile) :
@@ -9,24 +9,15 @@ namespace Tarbora {
 
         std::string windowTitle = "Tarbora Game Engine";
         int windowWidth = 1280, windowHeight = 720;
+        std::string postprocessShader = "shaders/postprocess.shader.json";
 
-        JsonPtr settings = GET_RESOURCE(Json, settingsFile);
-        if (settings)
-        {
-            raw_json window;
-            settings->Get("window", &window, {true});
-            if (!window.empty())
-            {
-                settings->PushErrName("window");
+        ResourcePtr<LuaScript> settings(settingsFile);
 
-                settings->Get(window, "title", &windowTitle, {true});
-
-                settings->GetArray(window, "size", 0, &windowWidth, {true});
-                settings->GetArray(window, "size", 1, &windowHeight, {true});
-
-                settings->PopErrName();
-            }
-        };
+        LuaTable window = settings->Get("window");
+        windowTitle = window.Get<std::string>("title", windowTitle);
+        windowWidth = window.Get("size").Get<int>(1, windowWidth);
+        windowHeight = window.Get("size").Get<int>(2, windowHeight);
+        m_Renderer->SetPostprocessShader(window.Get<std::string>("postprocessShader", postprocessShader));
 
         m_Window = std::unique_ptr<Window>(new Window(windowTitle.c_str(), windowWidth, windowHeight, this));
 

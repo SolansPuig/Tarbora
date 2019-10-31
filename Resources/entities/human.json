@@ -3,7 +3,7 @@
         "type": ["human"],
         "model": {
             "renderPass": 1,
-            "model": "human.json",
+            "model": "human.lua",
             "material": "human.mat.json"
         },
         "animations": {

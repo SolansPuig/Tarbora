@@ -161,7 +161,6 @@ namespace Tarbora {
 
     std::shared_ptr<Resource> ShaderResourceLoader::Load(std::string path)
     {
-        LOG_DEBUG("Loading Shader %s", path.c_str());
         // Open the Json containing all the different shaders for that program
         std::ifstream file;
         file.open(path.c_str());

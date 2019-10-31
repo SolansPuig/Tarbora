@@ -5,54 +5,54 @@ namespace Tarbora {
     ActorModel::ActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material)
         : MaterialNode(id, std::to_string(id), material)
     {
-        JsonPtr resource = GET_RESOURCE(Json, "models/" + model);
-        if (resource != NULL)
+        ResourcePtr<LuaScript> resource("models/" + model);
+        LOG_WARN("%s", model.c_str());
+
+        if (resource != nullptr)
         {
-            resource->PushErrName("root");
-            m_PixelDensity = resource->GetFloat("pixel_density");
-            float scale = resource->GetFloat("scale");
-            std::shared_ptr<MeshNode> mesh = CreateNode(id, renderPass, resource, resource->GetJson("root"), m_PixelDensity, resource->GetFloat("texture_size"));
+            m_PixelDensity = resource->Get<float>("pixel_density");
+            float scale = resource->Get<float>("scale");
+            std::shared_ptr<MeshNode> mesh = CreateNode(id, renderPass, resource->Get("root"), m_PixelDensity, resource->Get<float>("texture_size"));
             mesh->SetGlobalScale(glm::vec3(scale, scale, scale));
-            resource->PopErrName();
 
             AddChild(mesh);
         }
     }
 
-    std::shared_ptr<MeshNode> ActorModel::CreateNode(ActorId id, RenderPass renderPass, JsonPtr resource, raw_json j, float pixelDensity, float textureSize)
+    std::shared_ptr<MeshNode> ActorModel::CreateNode(ActorId id, RenderPass renderPass, LuaTable table, float pixelDensity, float textureSize)
     {
         // Read all the parameters for the node
-        std::string name = resource->GetString(j, "name");
-        std::string shape = resource->GetString(j, "shape");
+        std::string name = table.Get<std::string>("name");
+        std::string shape = table.Get<std::string>("shape");
 
         glm::vec3 origin = glm::vec3(
-            resource->GetFloatArray(j, "origin", 0),
-            resource->GetFloatArray(j, "origin", 1),
-            resource->GetFloatArray(j, "origin", 2)
+            table.Get("origin").Get<float>(1),
+            table.Get("origin").Get<float>(2),
+            table.Get("origin").Get<float>(3)
         );
         glm::vec3 position = glm::vec3(
-            resource->GetFloatArray(j, "position", 0)/pixelDensity,
-            resource->GetFloatArray(j, "position", 1)/pixelDensity,
-            resource->GetFloatArray(j, "position", 2)/pixelDensity
+            table.Get("position").Get<float>(1)/pixelDensity,
+            table.Get("position").Get<float>(2)/pixelDensity,
+            table.Get("position").Get<float>(3)/pixelDensity
         );
         glm::vec3 rotation = glm::vec3(
-            resource->GetFloatArray(j, "rotation", 0),
-            resource->GetFloatArray(j, "rotation", 1),
-            resource->GetFloatArray(j, "rotation", 2)
+            table.Get("rotation").Get<float>(1),
+            table.Get("rotation").Get<float>(2),
+            table.Get("rotation").Get<float>(3)
         );
         glm::vec3 size = glm::vec3(
-            resource->GetFloatArray(j, "size", 0)/pixelDensity,
-            resource->GetFloatArray(j, "size", 1)/pixelDensity,
-            resource->GetFloatArray(j, "size", 2)/pixelDensity
+            table.Get("size").Get<float>(1)/pixelDensity,
+            table.Get("size").Get<float>(2)/pixelDensity,
+            table.Get("size").Get<float>(3)/pixelDensity
         );
         glm::vec3 texSize = glm::vec3(
-            resource->GetFloatArray(j, "size", 0)/textureSize,
-            resource->GetFloatArray(j, "size", 1)/textureSize,
-            resource->GetFloatArray(j, "size", 2)/textureSize
+            table.Get("size").Get<float>(1)/textureSize,
+            table.Get("size").Get<float>(2)/textureSize,
+            table.Get("size").Get<float>(3)/textureSize
         );
         glm::vec2 uv = glm::vec2(
-            resource->GetFloatArray(j, "uv", 0)/textureSize,
-            resource->GetFloatArray(j, "uv", 1)/textureSize
+            table.Get("uv").Get<float>(1)/textureSize,
+            table.Get("uv").Get<float>(2)/textureSize
         );
 
         // Create the node
@@ -64,53 +64,45 @@ namespace Tarbora {
         node->SetRotation(rotation);
 
         // Create all its child nodes and add them as children to this
-        raw_json nodes;
-        resource->Get(j, "nodes", &nodes, {true, true});
-        resource->PushErrName("nodes");
-        for (unsigned int i = 0; i < nodes.size(); i++) {
-            resource->PushErrName(std::to_string(i).c_str());
-            std::shared_ptr<MeshNode> new_node = CreateNode(id, renderPass, resource, resource->GetJson(nodes, i), pixelDensity, textureSize);
-            resource->PopErrName();
+        std::vector<LuaTable> nodes = table.Get<std::vector<LuaTable>>("nodes", true);
+        for (auto n : nodes)
+        {
+            std::shared_ptr<MeshNode> new_node = CreateNode(id, renderPass, n, pixelDensity, textureSize);
             node->AddChild(new_node);
         }
-        resource->PopErrName();
 
         // Create the child cameras, if any
-        raw_json cameras;
-        resource->Get(j, "cameras", &cameras, {true, true});
-        resource->PushErrName("cameras");
-        for (unsigned int i = 0; i < cameras.size(); i++) {
-            resource->PushErrName(std::to_string(i).c_str());
-            std::shared_ptr<Camera> newCamera = CreateCamera(id, resource, resource->GetJson(cameras, i));
-            resource->PopErrName();
+        std::vector<LuaTable> cameras = table.Get<std::vector<LuaTable>>("cameras", true);
+        for (auto camera : cameras)
+        {
+            std::shared_ptr<Camera> newCamera = CreateCamera(id, camera);
             node->AddChild(newCamera);
         }
-        resource->PopErrName();
 
         m_Nodes[name] = node;
 
         return node;
     }
 
-    std::shared_ptr<Camera> ActorModel::CreateCamera(ActorId id, JsonPtr resource, raw_json j)
+    std::shared_ptr<Camera> ActorModel::CreateCamera(ActorId id, LuaTable table)
     {
         // Read all the parameters for the node
-        std::string name = resource->GetString(j, "name");
+        std::string name = table.Get<std::string>("name");
 
         glm::vec3 origin = glm::vec3(
-            resource->GetFloatArray(j, "origin", 0),
-            resource->GetFloatArray(j, "origin", 1),
-            resource->GetFloatArray(j, "origin", 2)
+            table.Get("origin").Get<float>(1),
+            table.Get("origin").Get<float>(2),
+            table.Get("origin").Get<float>(3)
         );
         glm::vec3 position = glm::vec3(
-            resource->GetFloatArray(j, "position", 0),
-            resource->GetFloatArray(j, "position", 1),
-            resource->GetFloatArray(j, "position", 2)
+            table.Get("position").Get<float>(1),
+            table.Get("position").Get<float>(2),
+            table.Get("position").Get<float>(3)
         );
         glm::vec3 rotation = glm::vec3(
-            resource->GetFloatArray(j, "rotation", 0),
-            resource->GetFloatArray(j, "rotation", 1),
-            resource->GetFloatArray(j, "rotation", 2)
+            table.Get("rotation").Get<float>(1),
+            table.Get("rotation").Get<float>(2),
+            table.Get("rotation").Get<float>(3)
         );
 
         // Create the node

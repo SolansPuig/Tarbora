@@ -10,7 +10,6 @@ namespace Tarbora {
 
     std::shared_ptr<Resource> MaterialResourceLoader::Load(std::string path)
     {
-        LOG_DEBUG("Loading Material %s", path.c_str());
         // Open the Json containing all the info for that material
         std::ifstream file;
         file.open(path.c_str());

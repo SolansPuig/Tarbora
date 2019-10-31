@@ -1,6 +1,7 @@
 #include "../inc/ResourceManager.hpp"
 #include "../inc/Resource.hpp"
 #include "../inc/Json.hpp"
+#include "../inc/Lua.hpp"
 #include <fnmatch.h>
 
 namespace Tarbora {
@@ -13,6 +14,7 @@ namespace Tarbora {
         RegisterLoader(LoaderPtr(new DefaultResourceLoader()));
         RegisterLoader(LoaderPtr(new TextResourceLoader()));
         RegisterLoader(LoaderPtr(new JsonResourceLoader()));
+        RegisterLoader(LoaderPtr(new LuaLoader()));
     }
 
     void ResourceManager::Close()

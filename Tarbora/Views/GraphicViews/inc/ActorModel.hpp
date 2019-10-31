@@ -17,8 +17,8 @@ namespace Tarbora {
         void Animate(std::string animation, std::string animations_file="");
 
     private:
-        std::shared_ptr<MeshNode> CreateNode(ActorId id, RenderPass renderPass, JsonPtr resource, raw_json j, float pixelDensity, float textureSize);
-        std::shared_ptr<Camera> CreateCamera(ActorId id, JsonPtr resource, raw_json j);
+        std::shared_ptr<MeshNode> CreateNode(ActorId id, RenderPass renderPass, LuaTable table, float pixelDensity, float textureSize);
+        std::shared_ptr<Camera> CreateCamera(ActorId id, LuaTable table);
 
         std::map<std::string, std::shared_ptr<SceneNode>> m_Nodes;
 

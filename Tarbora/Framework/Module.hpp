@@ -4,6 +4,7 @@
 #include "MessageManager.hpp"
 #include "ResourceManager/inc/Resource.hpp"
 #include "ResourceManager/inc/Json.hpp"
+#include "ResourceManager/inc/Lua.hpp"
 
 namespace Tarbora {
     class Module : public AbstractModule

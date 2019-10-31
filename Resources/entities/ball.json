@@ -3,7 +3,7 @@
         "type": ["ground"],
         "model": {
             "renderPass": 1,
-            "model": "cube_compound.json",
+            "model": "cube_compound.lua",
             "texture": "crate2.png",
             "shader": "model.shader.json"
         },

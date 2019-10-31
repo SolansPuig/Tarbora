@@ -6,7 +6,6 @@
 namespace Tarbora {
     std::shared_ptr<Resource> TextureResourceLoader::Load(std::string path)
     {
-        LOG_DEBUG("Loading Texture %s", path.c_str());
         // Load the raw image
         int nrComponents, width, height;
         void *data = stbi_load(path.c_str(), &width, &height, &nrComponents, 0);
