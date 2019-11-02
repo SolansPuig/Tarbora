@@ -14,7 +14,7 @@ namespace Tarbora {
         m_Jump = false;
         m_FreezeMouse = false;
 
-        m_Scene->CreateSkybox("sky.mat.json");
+        m_Scene->CreateSkybox("sky.mat.lua");
 
         Subscribe("create_actor_model", [this](MessageSubject subject, MessageBody * body)
         {

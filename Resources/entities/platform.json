@@ -4,7 +4,7 @@
         "model": {
             "renderPass": 0,
             "model": "platform.lua",
-            "material": "brown.mat.json"
+            "material": "brown.mat.lua"
         },
         "physics": {
             "shape": "box",

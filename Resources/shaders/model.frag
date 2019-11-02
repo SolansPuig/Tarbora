@@ -9,6 +9,12 @@ in vec3 Normal;
 
 uniform sampler2D albedo;
 uniform sampler2D specular;
+uniform sampler2D colorTint;
+
+uniform vec3 colorPrimary;
+uniform vec3 colorSecondary;
+uniform vec3 colorDetail;
+uniform vec3 colorDetail2;
 
 void main()
 {
@@ -16,9 +22,17 @@ void main()
     gNormal = normalize(Normal);
     vec4 fragTexture = texture(albedo, TexCoord);
     vec4 specularTexture = texture(specular, TexCoord);
+    vec4 colorTintTexture = texture(colorTint, TexCoord);
     if (fragTexture.a == 0.0){
         discard;
     }
-    gColorSpec.rgb = fragTexture.rgb;
+
+    vec3 primary = colorPrimary * colorTintTexture.r + (1. - colorTintTexture.r);
+    vec3 secondary = colorSecondary * colorTintTexture.g + (1. - colorTintTexture.g);
+    vec3 detail = colorDetail * colorTintTexture.b + (1. - colorTintTexture.b);
+    vec3 detail2 = colorDetail2 * colorTintTexture.a + (1. - colorTintTexture.a);
+
+    gColorSpec.rgb = clamp(fragTexture.rgb * primary * secondary * detail * detail2, 0.0, 1.0);
+    // gColorSpec.rgb = colorTintTexture.rgb;
     gColorSpec.a = specularTexture.r;
 }

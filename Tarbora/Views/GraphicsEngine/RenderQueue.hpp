@@ -28,6 +28,10 @@ namespace Tarbora {
         glm::vec2 uvMap;
         glm::vec3 textureSize;
         RenderPass renderPass;
+        glm::vec3 colorPrimary;
+        glm::vec3 colorSecondary;
+        glm::vec3 colorDetail;
+        glm::vec3 colorDetail2;
     };
 
     class RenderQueue
@@ -36,7 +40,7 @@ namespace Tarbora {
         RenderQueue(std::shared_ptr<Renderer> renderer) :
             m_Renderer(renderer) {}
 
-        void DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 textureSize);
+        void DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 textureSize, glm::vec3 primary, glm::vec3 secondary, glm::vec3 detail, glm::vec3 detail2);
 
         void Draw();
 

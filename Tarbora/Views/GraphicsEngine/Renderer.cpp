@@ -86,6 +86,10 @@ namespace Tarbora {
         m_LightingColor->Bind();
         glBindVertexArray(m_QuadMesh->GetId());
         glDrawArrays(GL_TRIANGLES, 0, m_QuadMesh->GetVertices());
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, m_gBuffer);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_SceneBuffer); // write to default framebuffer
+        glBlitFramebuffer(0, 0, m_Width, m_Height, 0, 0, m_Width, m_Height, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_SceneBuffer);
     }
 
     void Renderer::Sky()

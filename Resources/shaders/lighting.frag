@@ -33,7 +33,7 @@ void main()
     float Specular = texture(gColorSpec, TexCoords).a;
     float AmbientOcclusion = pow(texture(ssao, TexCoords).r, gamma);
 
-    if (Albedo == vec3(0.0f)) discard;
+    // if (Albedo == vec3(0.0f)) discard;
 
     vec3 lightDir = (view * vec4(normalize(-light.direction), 0.0f)).xyz;
     vec3 viewDir = normalize(-FragPos);
@@ -44,6 +44,7 @@ void main()
     vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) * light.specular * Specular;
     vec3 lighting = Albedo * (ambient + diffuse + specular);
 
+    // FragColor = vec4(pow(vec3(Albedo * (light.ambient + diffuse + specular)), vec3(1.0/gamma)), 1.0);
     FragColor = vec4(pow(vec3(Albedo * (ambient + diffuse + specular)), vec3(1.0/gamma)), 1.0);
     // FragColor = vec4(vec3(AmbientOcclusion), 1.0);
 }

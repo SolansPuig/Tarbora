@@ -20,7 +20,7 @@ namespace Tarbora {
     class LuaFunction {
     public:
         LuaFunction() {}
-        LuaFunction(sol::state *state, sol::protected_function function, const std::string &name)
+        LuaFunction(sol::state *state, sol::protected_function function, const std::string &name, bool silent)
             : m_Lua(state), m_Function(function), m_Name(name == "" ? "" : name + ".")
         {
             m_Function.error_handler = (*m_Lua)["error_handler"];
@@ -38,6 +38,7 @@ namespace Tarbora {
         sol::state *m_Lua;
         sol::protected_function m_Function;
         const std::string m_Name;
+        bool m_Silent;
 
         void PrintError(const std::string &name, const std::string &reason)
         {
@@ -99,6 +100,13 @@ namespace Tarbora {
     class LuaScript : public Resource {
         friend class LuaLoader;
     public:
+        LuaScript(Module *m, const std::string &file)
+            : Resource(m, file)
+        {
+            m_Lua.script_file(file);
+            m_Lua.open_libraries(sol::lib::base, sol::lib::math);
+        }
+
         template <class T>
         void Set(const std::string &name, T value)
         {
@@ -131,13 +139,6 @@ namespace Tarbora {
             return LuaTable(&m_Lua, (sol::table)m_Lua.globals(), "").Get<T>(index, silent);
         }
     private:
-        LuaScript(Module *m, const std::string &file)
-            : Resource(m, file)
-        {
-            m_Lua.script_file(file);
-            m_Lua.open_libraries(sol::lib::base, sol::lib::math);
-        }
-
         sol::state m_Lua;
     };
 
@@ -167,7 +168,7 @@ namespace Tarbora {
             if (!execution.valid())
             {
                 sol::error err = execution;
-                PrintError(m_Name, err.what());
+                if (!m_Silent) PrintError(m_Name, err.what());
             }
         }
     }
@@ -185,10 +186,10 @@ namespace Tarbora {
                 if (value)
                     return value.value();
                 else
-                    PrintError(m_Name, "Not a bool");
+                    if (!m_Silent) PrintError(m_Name, "Not a bool");
             }
             sol::error err = execution;
-            PrintError(m_Name, err.what());
+            if (!m_Silent) PrintError(m_Name, err.what());
         }
         return false;
     }
@@ -206,10 +207,10 @@ namespace Tarbora {
                 if (value)
                     return value.value();
                 else
-                    PrintError(m_Name, "Not an int");
+                    if (!m_Silent) PrintError(m_Name, "Not an int");
             }
             sol::error err = execution;
-            PrintError(m_Name, err.what());
+            if (!m_Silent) PrintError(m_Name, err.what());
         }
         return 0;
     }
@@ -227,10 +228,10 @@ namespace Tarbora {
                 if (value)
                     return value.value();
                 else
-                    PrintError(m_Name, "Not a float");
+                    if (!m_Silent) PrintError(m_Name, "Not a float");
             }
             sol::error err = execution;
-            PrintError(m_Name, err.what());
+            if (!m_Silent) PrintError(m_Name, err.what());
         }
         return 0;
     }
@@ -248,10 +249,10 @@ namespace Tarbora {
                 if (value)
                     return value.value();
                 else
-                    PrintError(m_Name, "Not a string");
+                    if (!m_Silent) PrintError(m_Name, "Not a string");
             }
             sol::error err = execution;
-            PrintError(m_Name, err.what());
+            if (!m_Silent) PrintError(m_Name, err.what());
         }
         return "";
     }
@@ -269,10 +270,10 @@ namespace Tarbora {
                 if (value)
                     return LuaTable(m_Lua, value.value(), m_Name);
                 else
-                    PrintError(m_Name, "Not a table");
+                    if (!m_Silent) PrintError(m_Name, "Not a table");
             }
             sol::error err = execution;
-            PrintError(m_Name, err.what());
+            if (!m_Silent) PrintError(m_Name, err.what());
         }
         return LuaTable();
     }
@@ -281,7 +282,7 @@ namespace Tarbora {
     class LuaFunction<std::vector<T>> {
     public:
         LuaFunction() {}
-        LuaFunction(sol::state *state, sol::protected_function function, const std::string &name)
+        LuaFunction(sol::state *state, sol::protected_function function, const std::string &name, bool m_Silent)
             : m_Lua(state), m_Function(function), m_Name(name == "" ? "" : name + ".")
         {
             m_Function.error_handler = (*m_Lua)["error_handler"];
@@ -306,16 +307,16 @@ namespace Tarbora {
                             std::vector<T> vec;
                             for (unsigned int i = 1; i <= table.Size(); i++)
                             {
-                                vec.push_back(table.Get<T>(i));
+                                vec.push_back(table.Get<T>(i, m_Silent));
                             }
                             return vec;
                         }
                     }
                     else
-                        PrintError(m_Name, "Not a list");
+                        if (!m_Silent) PrintError(m_Name, "Not a list");
                 }
                 sol::error err = execution;
-                PrintError(m_Name, err.what());
+                if (!m_Silent) PrintError(m_Name, err.what());
             }
             return std::vector<T>();
         }
@@ -324,6 +325,7 @@ namespace Tarbora {
         sol::state *m_Lua;
         sol::protected_function m_Function;
         const std::string m_Name;
+        bool m_Silent;
 
         void PrintError(const std::string &name, const std::string &reason)
         {
@@ -350,7 +352,7 @@ namespace Tarbora {
             {
                 sol::optional<sol::protected_function> value = table->m_Table[name];
                 if (value)
-                    return LuaFunction<T>(table->m_Lua, value.value(), table->m_Name + name);
+                    return LuaFunction<T>(table->m_Lua, value.value(), table->m_Name + name, silent);
                 if (!silent) table->PrintError(name, GetErrorName());
             }
             return LuaFunction<T>();
@@ -362,7 +364,7 @@ namespace Tarbora {
             {
                 sol::optional<sol::protected_function> value = table->m_Table[index];
                 if (value)
-                    return LuaFunction<T>(table->m_Lua, value.value(), table->m_Name + std::to_string(index));
+                    return LuaFunction<T>(table->m_Lua, value.value(), table->m_Name + std::to_string(index), silent);
                 if (!silent) table->PrintError(index, GetErrorName());
             }
             return LuaFunction<T>();
@@ -377,8 +379,9 @@ namespace Tarbora {
             sol::optional<T> value = table->m_Table[name];
             if (value)
                 return value.value();
+
             // If its not the expected type, maybe is a function
-            LuaFunction<T> function = table->Get<LuaFunction<T>>(name, true);
+            LuaFunction<T> function = table->Get<LuaFunction<T>>(name, silent);
             if (function.Valid())
                 return function();
             if (!silent) table->PrintError(name, GetErrorName());
@@ -395,7 +398,7 @@ namespace Tarbora {
             if (value)
                 return value.value();
             // If its not the expected type, maybe is a function
-            LuaFunction<T> function = table->Get<LuaFunction<T>>(index, true);
+            LuaFunction<T> function = table->Get<LuaFunction<T>>(index, silent);
             if (function.Valid())
                 return function();
             if (!silent) table->PrintError(index, GetErrorName());
@@ -429,7 +432,7 @@ namespace Tarbora {
                 if (value)
                     return LuaTable(table->m_Lua, value.value(), table->m_Name + name);
                 // If its not the expected type, maybe is a function
-                LuaFunction<LuaTable> function = table->Get<LuaFunction<LuaTable>>(name, true);
+                LuaFunction<LuaTable> function = table->Get<LuaFunction<LuaTable>>(name, silent);
                 if (function.Valid())
                     return function();
                 if (!silent) table->PrintError(name, GetErrorName());
@@ -445,7 +448,7 @@ namespace Tarbora {
                 if (value)
                     return LuaTable(table->m_Lua, value.value(), table->m_Name + std::to_string(index));
                 // If its not the expected type, maybe is a function
-                LuaFunction<LuaTable> function = table->Get<LuaFunction<LuaTable>>(index, true);
+                LuaFunction<LuaTable> function = table->Get<LuaFunction<LuaTable>>(index, silent);
                 if (function.Valid())
                     return function();
                 if (!silent) table->PrintError(index, GetErrorName());
@@ -465,13 +468,13 @@ namespace Tarbora {
         {
             if (table->m_Table)
             {
-                LuaTable table2 = table->Get<LuaTable>(name);
+                LuaTable table2 = table->Get<LuaTable>(name, silent);
                 if (table2.m_Table)
                 {
                     std::vector<T> vec;
                     for (unsigned int i = 1; i <= table2.Size(); i++)
                     {
-                        vec.push_back(table2.Get<T>(i));
+                        vec.push_back(table2.Get<T>(i, silent));
                     }
                     return vec;
                 }
@@ -483,13 +486,13 @@ namespace Tarbora {
         {
             if (table->m_Table)
             {
-                LuaTable table2 = table->Get<LuaTable>(index);
+                LuaTable table2 = table->Get<LuaTable>(index, silent);
                 if (table2.m_Table)
                 {
                     std::vector<T> vec;
                     for (unsigned int i = 1; i <= table2.Size(); i++)
                     {
-                        vec.push_back(table2.Get<T>(i));
+                        vec.push_back(table2.Get<T>(i, silent));
                     }
                     return vec;
                 }

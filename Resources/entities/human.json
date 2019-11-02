@@ -4,7 +4,7 @@
         "model": {
             "renderPass": 1,
             "model": "human.lua",
-            "material": "human.mat.json"
+            "material": "human.mat.lua"
         },
         "animations": {
             "file": "human.json"

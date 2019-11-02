@@ -6,7 +6,6 @@ namespace Tarbora {
         : MaterialNode(id, std::to_string(id), material)
     {
         ResourcePtr<LuaScript> resource("models/" + model);
-        LOG_WARN("%s", model.c_str());
 
         if (resource != nullptr)
         {
@@ -45,6 +44,16 @@ namespace Tarbora {
             table.Get("size").Get<float>(2)/pixelDensity,
             table.Get("size").Get<float>(3)/pixelDensity
         );
+        glm::vec3 shearA = glm::vec3(
+            table.Get("shear", true).Get<float>(1, true)/pixelDensity,
+            table.Get("shear", true).Get<float>(2, true)/pixelDensity,
+            table.Get("shear", true).Get<float>(3, true)/pixelDensity
+        );
+        glm::vec3 shearB = glm::vec3(
+            table.Get("shear", true).Get<float>(4, true)/pixelDensity,
+            table.Get("shear", true).Get<float>(5, true)/pixelDensity,
+            table.Get("shear", true).Get<float>(6, true)/pixelDensity
+        );
         glm::vec3 texSize = glm::vec3(
             table.Get("size").Get<float>(1)/textureSize,
             table.Get("size").Get<float>(2)/textureSize,
@@ -54,6 +63,26 @@ namespace Tarbora {
             table.Get("uv").Get<float>(1)/textureSize,
             table.Get("uv").Get<float>(2)/textureSize
         );
+        glm::vec3 colorPrimary = glm::vec3(
+            table.Get("color_primary", true).Get<float>(1, 255, true)/255.0,
+            table.Get("color_primary", true).Get<float>(2, 255, true)/255.0,
+            table.Get("color_primary", true).Get<float>(3, 255, true)/255.0
+        );
+        glm::vec3 colorSecondary = glm::vec3(
+            table.Get("color_secondary", true).Get<float>(1, 255, true)/255.0,
+            table.Get("color_secondary", true).Get<float>(2, 255, true)/255.0,
+            table.Get("color_secondary", true).Get<float>(3, 255, true)/255.0
+        );
+        glm::vec3 colorDetail = glm::vec3(
+            table.Get("color_detail", true).Get<float>(1, 255, true)/255.0,
+            table.Get("color_detail", true).Get<float>(2, 255, true)/255.0,
+            table.Get("color_detail", true).Get<float>(3, 255, true)/255.0
+        );
+        glm::vec3 colorDetail2 = glm::vec3(
+            table.Get("color_detail2", true).Get<float>(1, 255, true)/255.0,
+            table.Get("color_detail2", true).Get<float>(2, 255, true)/255.0,
+            table.Get("color_detail2", true).Get<float>(3, 255, true)/255.0
+        );
 
         // Create the node
         std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, renderPass, shape));
@@ -62,6 +91,11 @@ namespace Tarbora {
         node->SetPosition(position);
         node->SetScale(size);
         node->SetRotation(rotation);
+        node->SetShear(shearA, shearB);
+        node->SetColorPrimary(colorPrimary);
+        node->SetColorSecondary(colorSecondary);
+        node->SetColorDetail(colorDetail);
+        node->SetColorDetail2(colorDetail2);
 
         // Create all its child nodes and add them as children to this
         std::vector<LuaTable> nodes = table.Get<std::vector<LuaTable>>("nodes", true);

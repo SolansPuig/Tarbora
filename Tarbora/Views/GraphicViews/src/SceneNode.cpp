@@ -10,6 +10,7 @@ namespace Tarbora {
         m_Origin = glm::vec3(0.0f, 0.0f, 0.0f);
         SetTransform(nullptr);
         SetRadius(0);
+        m_DeformationMatrix = glm::mat4(1.0f);
 
         m_OldPosition = glm::vec3(0.0f, 0.0f, 0.0f);
         m_Position = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -24,6 +25,8 @@ namespace Tarbora {
         m_OldScale = glm::vec3(1.0f, 1.0f, 1.0f);
         m_Scale = glm::vec3(1.0f, 1.0f, 1.0f);
         m_TargetScale = glm::vec3(1.0f, 1.0f, 1.0f);
+        m_ShearA = glm::vec3(1.0f, 1.0f, 1.0f);
+        m_ShearB = glm::vec3(1.0f, 1.0f, 1.0f);
         m_ScaleCounter = 0.0f;
         m_ScaleTime = 0.0f;
     }
@@ -276,6 +279,8 @@ namespace Tarbora {
 
     void SceneNode::Scale(const glm::vec3 &scale)
     {
+        m_DeformationMatrix = glm::scale(m_DeformationMatrix, scale);
+
         m_Scale *= scale;
         m_OldScale = m_Scale;
         m_TargetScale = m_Scale;
@@ -309,6 +314,24 @@ namespace Tarbora {
         m_Origin.z *= m_Scale.z;
 
         return false;
+    }
+
+    void SceneNode::SetShear(const glm::vec3 &shearA, const glm::vec3 &shearB)
+    {
+        Shear(
+            glm::vec3(shearA.x / m_ShearA.x, shearA.y / m_ShearA.y, shearA.z / m_ShearA.z),
+            glm::vec3(shearB.x / m_ShearB.x, shearB.y / m_ShearB.y, shearB.z / m_ShearB.z)
+        );
+    }
+
+    void SceneNode::Shear(const glm::vec3 &shearA, const glm::vec3 &shearB)
+    {
+        m_DeformationMatrix = glm::shearX3D(m_DeformationMatrix, shearA.x, shearB.x);
+        m_DeformationMatrix = glm::shearY3D(m_DeformationMatrix, shearA.y, shearB.y);
+        m_DeformationMatrix = glm::shearZ3D(m_DeformationMatrix, shearA.z, shearB.z);
+
+        m_ShearA *= shearA;
+        m_ShearB *= shearB;
     }
 
     void SceneNode::SetTransform(glm::mat4 *matrix)
@@ -387,8 +410,18 @@ namespace Tarbora {
     {
         if (m_Mesh != nullptr)
         {
-            glm::mat4 transform = parentTransform * glm::scale(m_LocalMatrix, m_Scale);
-            scene->GetRenderQueue()->DrawMesh(m_RenderPass, m_Mesh, transform, m_Uv, m_TextureSize);
+            glm::mat4 transform = parentTransform * m_LocalMatrix * m_DeformationMatrix;
+            scene->GetRenderQueue()->DrawMesh(
+                m_RenderPass,
+                m_Mesh,
+                transform,
+                m_Uv,
+                m_TextureSize,
+                m_ColorPrimary,
+                m_ColorSecondary,
+                m_ColorDetail,
+                m_ColorDetail2
+            );
         }
     }
 

@@ -53,6 +53,9 @@ namespace Tarbora {
         void ScaleTo(const glm::vec3 &scale, float timeToComplete);
         const glm::vec3 &GetScale() { return m_Scale; }
 
+        void SetShear(const glm::vec3 &shearA, const glm::vec3 &shearB);
+        void Shear(const glm::vec3 &shearA, const glm::vec3 &shearB);
+
         void SetOrigin(const glm::vec3 &origin);
 
         void SetTransform(glm::mat4 *matrix=nullptr);
@@ -61,6 +64,11 @@ namespace Tarbora {
 
         void SetRadius(float radius) { m_Radius = radius; }
         float GetRadius() const { return m_Radius; }
+
+        void SetColorPrimary(glm::vec3 color) { m_ColorPrimary = color; }
+        void SetColorSecondary(glm::vec3 color) { m_ColorSecondary = color; }
+        void SetColorDetail(glm::vec3 color) { m_ColorDetail = color; }
+        void SetColorDetail2(glm::vec3 color) { m_ColorDetail2 = color; }
 
     protected:
         bool InterpolatePosition(float fraction);
@@ -74,6 +82,7 @@ namespace Tarbora {
         std::string m_Name;
 
         glm::mat4 m_LocalMatrix;
+        glm::mat4 m_DeformationMatrix;
 
         glm::vec3 m_OldPosition;
         glm::vec3 m_Position;
@@ -88,8 +97,15 @@ namespace Tarbora {
         glm::vec3 m_OldScale;
         glm::vec3 m_Scale;
         glm::vec3 m_TargetScale;
+        glm::vec3 m_ShearA;
+        glm::vec3 m_ShearB;
         float m_ScaleCounter;
         float m_ScaleTime;
+
+        glm::vec3 m_ColorPrimary;
+        glm::vec3 m_ColorSecondary;
+        glm::vec3 m_ColorDetail;
+        glm::vec3 m_ColorDetail2;
 
         glm::vec3 m_Origin;
 

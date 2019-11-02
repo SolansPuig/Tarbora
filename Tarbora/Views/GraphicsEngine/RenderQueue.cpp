@@ -1,7 +1,7 @@
 #include "RenderQueue.hpp"
 
 namespace Tarbora {
-    void RenderQueue::DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 textureSize)
+    void RenderQueue::DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 textureSize, glm::vec3 primary, glm::vec3 secondary, glm::vec3 detail, glm::vec3 detail2)
     {
         ResourcePtr<Material> material = m_MaterialStack.top();
 
@@ -13,11 +13,19 @@ namespace Tarbora {
             element.uvMap = uv;
             element.textureSize = textureSize;
             element.renderPass = renderPass;
+            element.colorPrimary = primary;
+            element.colorSecondary = secondary;
+            element.colorDetail = detail;
+            element.colorDetail2 = detail2;
             m_RenderElements.push_back(element);
         #else
             material->GetShader()->Set("transform", transform);
             material->GetShader()->Set("uv", uv);
             material->GetShader()->Set("size", textureSize);
+            material->GetShader()->Set("colorPrimary", primary);
+            material->GetShader()->Set("colorSecondary", secondary);
+            material->GetShader()->Set("colorDetail", detail);
+            material->GetShader()->Set("colorDetail2", detail2);
             mesh->Draw();
         #endif
     }
@@ -81,6 +89,10 @@ namespace Tarbora {
                     currentMaterial->GetShader()->Set("transform", element->transform);
                     currentMaterial->GetShader()->Set("uv", element->uvMap);
                     currentMaterial->GetShader()->Set("size", element->textureSize);
+                    currentMaterial->GetShader()->Set("colorPrimary", element->colorPrimary);
+                    currentMaterial->GetShader()->Set("colorSecondary", element->colorSecondary);
+                    currentMaterial->GetShader()->Set("colorDetail", element->colorDetail);
+                    currentMaterial->GetShader()->Set("colorDetail2", element->colorDetail2);
                     currentMesh->Draw();
 
                     element++;

@@ -13,6 +13,7 @@ namespace Tarbora {
 
         ResourcePtr<Texture> GetAlbedo() { return m_Albedo; }
         ResourcePtr<Texture> GetSpecular() { return m_Specular; }
+        ResourcePtr<Texture> GetColorTint() { return m_ColorTint; }
         ResourcePtr<Shader> GetShader() { return m_Shader; }
         MaterialId GetId() { return m_Name; }
 
@@ -22,6 +23,7 @@ namespace Tarbora {
 
         ResourcePtr<Texture> m_Albedo;
         ResourcePtr<Texture> m_Specular;
+        ResourcePtr<Texture> m_ColorTint;
         ResourcePtr<Shader> m_Shader;
     };
 
@@ -30,7 +32,7 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string GetPattern() override { return "*.mat.json"; };
+        virtual const std::string GetPattern() override { return "*.mat.lua"; };
         virtual std::shared_ptr<Resource> Load(std::string path) override;
     };
     //! \endcond

@@ -4,8 +4,7 @@
         "model": {
             "renderPass": 1,
             "model": "cube_compound.lua",
-            "texture": "crate2.png",
-            "shader": "model.shader.json"
+            "material": "container.mat.lua"
         },
         "physics": {
             "shape": "sphere",
