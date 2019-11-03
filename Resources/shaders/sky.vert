@@ -3,10 +3,10 @@ layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoord;
 layout (location = 3) in float aFace;
+layout (location = 4) in mat4 aTransform;
 
 uniform mat4 projection;
 uniform mat4 view;
-uniform mat4 transform;
 uniform sampler2D myTexture;
 
 out vec2 TexCoord;
@@ -15,7 +15,7 @@ void main()
 {
     mat4 skyView = view;
     skyView[3] = vec4(0.f);
-    gl_Position = (projection * skyView * transform * vec4(aPos, 1.0f)).xyww;
+    gl_Position = (projection * skyView * aTransform * vec4(aPos, 1.0f)).xyww;
 
     ivec2 texSize = textureSize(myTexture, 0);
     float xoffset = 0.5 / texSize.x;

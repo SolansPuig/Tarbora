@@ -6,15 +6,15 @@ layout (location = 2) out vec4 gColorSpec;
 in vec2 TexCoord;
 in vec3 FragPos;
 in vec3 Normal;
+in vec3 colorPrimary;
+in vec3 colorSecondary;
+in vec3 colorDetail;
+in vec3 colorDetail2;
 
 uniform sampler2D albedo;
 uniform sampler2D specular;
 uniform sampler2D colorTint;
 
-uniform vec3 colorPrimary;
-uniform vec3 colorSecondary;
-uniform vec3 colorDetail;
-uniform vec3 colorDetail2;
 
 void main()
 {

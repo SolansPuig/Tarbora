@@ -24,14 +24,8 @@ namespace Tarbora {
     {
         ResourcePtr<Material> material;
         ResourcePtr<Mesh> mesh;
-        glm::mat4 transform;
-        glm::vec2 uvMap;
-        glm::vec3 textureSize;
         RenderPass renderPass;
-        glm::vec3 colorPrimary;
-        glm::vec3 colorSecondary;
-        glm::vec3 colorDetail;
-        glm::vec3 colorDetail2;
+        RenderElementData data;
     };
 
     class RenderQueue

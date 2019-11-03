@@ -9,14 +9,14 @@ namespace Tarbora {
             RenderElement element;
             element.material = material;
             element.mesh = mesh;
-            element.transform = transform;
-            element.uvMap = uv;
-            element.textureSize = textureSize;
             element.renderPass = renderPass;
-            element.colorPrimary = primary;
-            element.colorSecondary = secondary;
-            element.colorDetail = detail;
-            element.colorDetail2 = detail2;
+            element.data.transform = transform;
+            element.data.uvMap = uv;
+            element.data.textureSize = textureSize;
+            element.data.colorPrimary = primary;
+            element.data.colorSecondary = secondary;
+            element.data.colorDetail = detail;
+            element.data.colorDetail2 = detail2;
             m_RenderElements.push_back(element);
         #else
             material->GetShader()->Set("transform", transform);
@@ -75,28 +75,27 @@ namespace Tarbora {
 
                 while (element->renderPass == pass)
                 {
-                    if (element->mesh != currentMesh)
-                    {
-                        currentMesh = element->mesh;
-                        currentMesh->Bind();
-                    }
                     if (element->material != currentMaterial)
                     {
+                        if (currentMesh.GetName() != "")
+                            currentMesh->DrawInstanced();
                         currentMaterial = element->material;
                         currentMaterial->Bind();
                     }
+                    if (element->mesh != currentMesh)
+                    {
+                        if (currentMesh.GetName() != "")
+                            currentMesh->DrawInstanced();
+                        currentMesh = element->mesh;
+                        currentMesh->Bind();
+                    }
 
-                    currentMaterial->GetShader()->Set("transform", element->transform);
-                    currentMaterial->GetShader()->Set("uv", element->uvMap);
-                    currentMaterial->GetShader()->Set("size", element->textureSize);
-                    currentMaterial->GetShader()->Set("colorPrimary", element->colorPrimary);
-                    currentMaterial->GetShader()->Set("colorSecondary", element->colorSecondary);
-                    currentMaterial->GetShader()->Set("colorDetail", element->colorDetail);
-                    currentMaterial->GetShader()->Set("colorDetail2", element->colorDetail2);
-                    currentMesh->Draw();
+                    currentMesh->AddInstance(element->data);
 
                     element++;
                 }
+                if (currentMesh.GetName() != "")
+                    currentMesh->DrawInstanced();
             }
 
             m_RenderElements.clear();

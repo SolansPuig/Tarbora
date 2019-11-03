@@ -148,6 +148,8 @@ namespace Tarbora {
         ResourcePtr(std::string name)
             : m_Name(name), m_InitialConfigFn(nullptr) {}
 
+        std::string GetName() { return m_Name; }
+
         void SetInitialConfig(std::function<void(std::shared_ptr<T>)> fn)
         {
             m_InitialConfigFn = fn;
@@ -155,7 +157,7 @@ namespace Tarbora {
 
         bool operator==(std::nullptr_t null)
         {
-            return ResourceManager::GetResource(m_Name) == nullptr;
+            return (m_Name == "") || ResourceManager::GetResource(m_Name) == nullptr;
         }
 
         bool operator!=(std::nullptr_t null)
