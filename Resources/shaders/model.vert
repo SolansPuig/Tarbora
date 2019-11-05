@@ -30,10 +30,10 @@ void main()
     colorDetail = aDetail;
     colorDetail2 = aDetail2;
 
-    vec4 viewPos = view * aTransform * vec4(aPos, 1.0f);
-    FragPos = viewPos.xyz;
-    Normal = transpose(inverse(mat3(view * aTransform))) * aNormal;
-    gl_Position = projection * viewPos;
+    vec4 pos = view * aTransform * vec4(aPos, 1.0f);
+    FragPos = pos.xyz;
+    Normal = vec3(transpose(inverse(view * aTransform)) * vec4(aNormal, 0.0));
+    gl_Position = projection * pos;
 
     ivec2 texSize = textureSize(myTexture, 0);
     // float xoffset = 0.5 / texSize.x;

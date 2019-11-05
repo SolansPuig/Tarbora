@@ -75,17 +75,22 @@ namespace Tarbora {
 
     void HumanView::Draw()
     {
-        ZoneScoped;
-
-        GetGraphicsEngine()->BeforeDraw();
-
-        for (auto &itr : m_Layers)
         {
-            if (itr->IsActive())
-                itr->Draw();
+            ZoneScopedN("Before Draw");
+            GetGraphicsEngine()->BeforeDraw();
         }
-
-        GetGraphicsEngine()->AfterDraw();
+        {
+            ZoneScopedN("Draw");
+            for (auto &itr : m_Layers)
+            {
+                if (itr->IsActive())
+                    itr->Draw();
+            }
+        }
+        {
+            ZoneScopedN("After Draw");
+            GetGraphicsEngine()->AfterDraw();
+        }
     }
 
     void HumanView::PushLayer(std::shared_ptr<Layer> layer)

@@ -4,7 +4,7 @@
 #include "Texture.hpp"
 #include <random>
 
-#define KERNEL_SIZE 32
+#define KERNEL_SIZE 8
 
 namespace Tarbora {
     Renderer::Renderer()
@@ -184,14 +184,22 @@ namespace Tarbora {
         std::vector<glm::vec3> ssaoKernel;
         for (unsigned int i = 0; i < KERNEL_SIZE; ++i)
         {
-            glm::vec3 sample(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, randomFloats(generator));
-            sample = glm::normalize(sample);
-            sample *= randomFloats(generator);
-            float scale = float(i) / KERNEL_SIZE;
+            glm::vec3 normal(0.0, 0.0, 1.0);
+            glm::vec3 sample;
+            float angle = 90;
+            while (angle > 85) // Vectors that are too near the plane produce depth resolution artifacts, so we don't want them
+            {
+                sample = glm::vec3(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, randomFloats(generator));
+                sample = glm::normalize(sample);
+                // sample *= randomFloats(generator);
+                float scale = float(i) / KERNEL_SIZE;
 
-            // scale samples s.t. they're more aligned to center of kernel
-            scale = lerp(0.1f, 1.0f, scale * scale);
-            sample *= scale;
+                // scale samples s.t. they're more aligned to center of kernel
+                scale = lerp(0.1f, 1.0f, scale * scale);
+                sample *= scale;
+                angle = glm::degrees(glm::acos(glm::dot(normal, sample)));
+            }
+
             ssaoKernel.push_back(sample);
         }
 

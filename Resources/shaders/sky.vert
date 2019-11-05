@@ -10,12 +10,14 @@ uniform mat4 view;
 uniform sampler2D myTexture;
 
 out vec2 TexCoord;
+out vec3 pos;
 
 void main()
 {
     mat4 skyView = view;
     skyView[3] = vec4(0.f);
     gl_Position = (projection * skyView * aTransform * vec4(aPos, 1.0f)).xyww;
+    pos = aPos;
 
     ivec2 texSize = textureSize(myTexture, 0);
     float xoffset = 0.5 / texSize.x;
@@ -47,15 +49,14 @@ void main()
 
     if (aTexCoord.y == 0)
     {
-        TexCoord.y = yoffset;
+        TexCoord.y = 0;
     }
     else if (aTexCoord.y == 1)
     {
-        if (aFace == 4 || aFace == 5) yoffset *= -1;
-        TexCoord.y = 0.5 + yoffset;
+        TexCoord.y = 0.5;
     }
     else
     {
-        TexCoord.y = 1 - yoffset;
+        TexCoord.y = 1;
     }
 }

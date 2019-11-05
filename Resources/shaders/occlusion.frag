@@ -7,14 +7,16 @@ uniform sampler2D gPosition;
 uniform sampler2D gNormal;
 uniform sampler2D texNoise;
 
-const int kernelSize = 32;
+const int kernelSize = 8;
 uniform vec3 samples[kernelSize];
 
 uniform vec2 screenSize;
 uniform mat4 projection;
+uniform mat4 view;
 
 const float radius = 0.25;
-const float bias = 0.025;
+const float bias = 0.015;
+const float rayThreshold = 0.15;
 
 void main()
 {
@@ -25,6 +27,7 @@ void main()
     vec3 normal = normalize(texture(gNormal, TexCoords).rgb);
     if (normal == vec3(0.0f)) discard;
     vec3 randomVec = normalize(texture(texNoise, TexCoords * noiseScale).xyz);
+
     // create TBN change-of-basis matrix: from tangent-space to view-space
     vec3 tangent = normalize(randomVec - normal * dot(randomVec, normal));
     vec3 bitangent = cross(normal, tangent);
@@ -34,11 +37,10 @@ void main()
     for(int i = 0; i < kernelSize; ++i)
     {
         // get sample position
-        vec3 Sample = TBN * samples[i]; // from tangent to view-space
-        Sample = fragPos + Sample * radius;
-
+        vec3 ray = TBN * samples[i]; // from tangent to view-space
+        ray = fragPos + ray * radius;
         // project sample position (to sample texture) (to get position on screen/texture)
-        vec4 offset = vec4(Sample, 1.0);
+        vec4 offset = vec4(ray, 1.0);
         offset = projection * offset; // from view to clip-space
         offset.xyz /= offset.w; // perspective divide
         offset.xyz = offset.xyz * 0.5 + 0.5; // transform to range 0.0 - 1.0
@@ -48,7 +50,7 @@ void main()
 
         // range check & accumulate
         float rangeCheck = smoothstep(0.0, 1.0, radius / abs(fragPos.z - sampleDepth));
-        occlusion += (sampleDepth >= Sample.z + bias ? 1.0 : 0.0) * rangeCheck;
+        occlusion += (sampleDepth >= ray.z + bias ? 1.0 : 0.0) * rangeCheck;
     }
     occlusion = 1.0 - (occlusion / kernelSize);
 

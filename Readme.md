@@ -52,3 +52,6 @@ me be able to spend more hours working in that project and maybe hire someone to
 
 ![Another screenshot during the development of lighting and SSAO 2](lighting_example3.png)
 *Another screenshot during the development of lighting and SSAO*
+
+![Screenshot after implementing custom colors](custom_color_example.png)
+*Screenshot after implementing custom colors*

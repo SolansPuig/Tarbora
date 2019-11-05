@@ -33,6 +33,5 @@ void main()
     vec3 detail2 = colorDetail2 * colorTintTexture.a + (1. - colorTintTexture.a);
 
     gColorSpec.rgb = clamp(fragTexture.rgb * primary * secondary * detail * detail2, 0.0, 1.0);
-    // gColorSpec.rgb = colorTintTexture.rgb;
     gColorSpec.a = specularTexture.r;
 }
