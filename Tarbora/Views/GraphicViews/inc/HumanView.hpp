@@ -8,7 +8,7 @@ namespace Tarbora {
     class HumanView : public GraphicView
     {
     public:
-        HumanView(std::string server_address);
+        HumanView();
         ~HumanView();
 
         virtual void GetInput() override;

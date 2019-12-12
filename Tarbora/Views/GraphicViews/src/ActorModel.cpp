@@ -30,9 +30,9 @@ namespace Tarbora {
             table.Get("origin").Get<float>(3)
         );
         glm::vec3 position = glm::vec3(
-            table.Get("position").Get<float>(1)/pixelDensity,
-            table.Get("position").Get<float>(2)/pixelDensity,
-            table.Get("position").Get<float>(3)/pixelDensity
+            table.Get("position").Get<float>(1)/100,
+            table.Get("position").Get<float>(2)/100,
+            table.Get("position").Get<float>(3)/100
         );
         glm::vec3 rotation = glm::vec3(
             table.Get("rotation").Get<float>(1),
@@ -40,25 +40,26 @@ namespace Tarbora {
             table.Get("rotation").Get<float>(3)
         );
         glm::vec3 size = glm::vec3(
-            table.Get("size").Get<float>(1)/pixelDensity,
-            table.Get("size").Get<float>(2)/pixelDensity,
-            table.Get("size").Get<float>(3)/pixelDensity
+            table.Get("size").Get<float>(1)/100,
+            table.Get("size").Get<float>(2)/100,
+            table.Get("size").Get<float>(3)/100
         );
         glm::vec3 shearA = glm::vec3(
-            table.Get("shear", true).Get<float>(1, true)/pixelDensity,
-            table.Get("shear", true).Get<float>(2, true)/pixelDensity,
-            table.Get("shear", true).Get<float>(3, true)/pixelDensity
+            table.Get("shear", true).Get<float>(1, true)/100,
+            table.Get("shear", true).Get<float>(2, true)/100,
+            table.Get("shear", true).Get<float>(3, true)/100
         );
         glm::vec3 shearB = glm::vec3(
-            table.Get("shear", true).Get<float>(4, true)/pixelDensity,
-            table.Get("shear", true).Get<float>(5, true)/pixelDensity,
-            table.Get("shear", true).Get<float>(6, true)/pixelDensity
+            table.Get("shear", true).Get<float>(4, true)/100,
+            table.Get("shear", true).Get<float>(5, true)/100,
+            table.Get("shear", true).Get<float>(6, true)/100
         );
         glm::vec3 texSize = glm::vec3(
-            table.Get("size").Get<float>(1)/textureSize,
-            table.Get("size").Get<float>(2)/textureSize,
-            table.Get("size").Get<float>(3)/textureSize
+            table.Get("texture_size", true).Get<float>(1, 0, true)/100*pixelDensity/textureSize,
+            table.Get("texture_size", true).Get<float>(2, 0, true)/100*pixelDensity/textureSize,
+            table.Get("texture_size", true).Get<float>(3, 0, true)/100*pixelDensity/textureSize
         );
+        if (texSize == glm::vec3(0.0f)) texSize = size*pixelDensity/textureSize;
         glm::vec2 uv = glm::vec2(
             table.Get("uv").Get<float>(1)/textureSize,
             table.Get("uv").Get<float>(2)/textureSize

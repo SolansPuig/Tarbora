@@ -18,6 +18,7 @@ namespace Tarbora {
 
         Subscribe("create_actor_model", [this](MessageSubject subject, MessageBody * body)
         {
+            LOG_DEBUG("Create actor model");
             CreateActorBody m = body->GetContent<CreateActorBody>();
             if (m_Scene->GetChild(m.id()) != nullptr)
             {

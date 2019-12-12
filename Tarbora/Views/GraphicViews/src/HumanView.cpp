@@ -3,8 +3,8 @@
 #include "../inc/MetricsGui.hpp"
 
 namespace Tarbora {
-    HumanView::HumanView(std::string server_address) :
-        GraphicView(20, server_address, "Settings.lua")
+    HumanView::HumanView() :
+        GraphicView(20, "Settings.lua")
     {
         LOG_DEBUG("Creating human game view...");
 

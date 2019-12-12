@@ -127,9 +127,9 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 const char descriptor_table_protodef_messages_2eproto[] =
   "\n\016messages.proto\022\ntbMessages\"i\n\007Message\022"
   "%\n\004type\030\001 \001(\0162\027.tbMessages.MessageType\022\014"
-  "\n\004from\030\002 \001(\005\022\n\n\002to\030\003 \001(\005\022\017\n\007subject\030\004 \001("
+  "\n\004from\030\002 \001(\r\022\n\n\002to\030\003 \001(\r\022\017\n\007subject\030\004 \001("
   "\t\022\014\n\004body\030\005 \001(\014\",\n\013EventHeader\022\014\n\004from\030\001"
-  " \001(\005\022\017\n\007subject\030\002 \001(\t\"\007\n\005Empty*]\n\013Messag"
+  " \001(\r\022\017\n\007subject\030\002 \001(\t\"\007\n\005Empty*]\n\013Messag"
   "eType\022\013\n\007COMMAND\020\000\022\t\n\005EVENT\020\001\022\t\n\005LOCAL\020\002"
   "\022\024\n\020START_CONNECTION\020\003\022\025\n\021FINISH_CONNECT"
   "ION\020\0042\304\001\n\017TarboraMessages\0229\n\007Connect\022\023.t"
@@ -276,14 +276,14 @@ const char* Message::_InternalParse(const char* begin, const char* end, void* ob
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // int32 from = 2;
+      // uint32 from = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         msg->set_from(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // int32 to = 3;
+      // uint32 to = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
         msg->set_to(::google::protobuf::internal::ReadVarint(&ptr));
@@ -369,12 +369,12 @@ bool Message::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 from = 2;
+      // uint32 from = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &from_)));
         } else {
           goto handle_unusual;
@@ -382,12 +382,12 @@ bool Message::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 to = 3;
+      // uint32 to = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &to_)));
         } else {
           goto handle_unusual;
@@ -454,14 +454,14 @@ void Message::SerializeWithCachedSizes(
       1, this->type(), output);
   }
 
-  // int32 from = 2;
+  // uint32 from = 2;
   if (this->from() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->from(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->from(), output);
   }
 
-  // int32 to = 3;
+  // uint32 to = 3;
   if (this->to() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->to(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->to(), output);
   }
 
   // string subject = 4;
@@ -499,14 +499,14 @@ void Message::SerializeWithCachedSizes(
       1, this->type(), target);
   }
 
-  // int32 from = 2;
+  // uint32 from = 2;
   if (this->from() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->from(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->from(), target);
   }
 
-  // int32 to = 3;
+  // uint32 to = 3;
   if (this->to() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->to(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->to(), target);
   }
 
   // string subject = 4;
@@ -568,17 +568,17 @@ size_t Message::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
-  // int32 from = 2;
+  // uint32 from = 2;
   if (this->from() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->from());
   }
 
-  // int32 to = 3;
+  // uint32 to = 3;
   if (this->to() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->to());
   }
 
@@ -702,7 +702,7 @@ void EventHeader::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_EventHeader_messages_2eproto.base);
   subject_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  from_ = 0;
+  from_ = 0u;
 }
 
 EventHeader::~EventHeader() {
@@ -730,7 +730,7 @@ void EventHeader::Clear() {
   (void) cached_has_bits;
 
   subject_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  from_ = 0;
+  from_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -747,7 +747,7 @@ const char* EventHeader::_InternalParse(const char* begin, const char* end, void
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // int32 from = 1;
+      // uint32 from = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
         msg->set_from(::google::protobuf::internal::ReadVarint(&ptr));
@@ -804,12 +804,12 @@ bool EventHeader::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 from = 1;
+      // uint32 from = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &from_)));
         } else {
           goto handle_unusual;
@@ -859,9 +859,9 @@ void EventHeader::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 from = 1;
+  // uint32 from = 1;
   if (this->from() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->from(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->from(), output);
   }
 
   // string subject = 2;
@@ -887,9 +887,9 @@ void EventHeader::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 from = 1;
+  // uint32 from = 1;
   if (this->from() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->from(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->from(), target);
   }
 
   // string subject = 2;
@@ -931,10 +931,10 @@ size_t EventHeader::ByteSizeLong() const {
         this->subject());
   }
 
-  // int32 from = 1;
+  // uint32 from = 1;
   if (this->from() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->from());
   }
 

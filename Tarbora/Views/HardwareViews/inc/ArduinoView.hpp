@@ -5,7 +5,7 @@ namespace Tarbora {
     class ArduinoView : public Module
     {
     public:
-        ArduinoView(std::string server_address);
+        ArduinoView();
         ~ArduinoView();
 
         virtual void Update(float elapsed_time) override;

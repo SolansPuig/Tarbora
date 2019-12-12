@@ -37,7 +37,7 @@ namespace Tarbora {
     class MessageManager
     {
     public:
-        MessageManager(Module *m, ClientId id, std::string serverAddress);
+        MessageManager(Module *m, ClientId id);
         ~MessageManager();
 
         inline void SetDebugName(std::string name="Unamed Message Client")
@@ -56,7 +56,7 @@ namespace Tarbora {
 
     private:
         void ReadMessage(tbMessages::Message &m);
-        
+
         Module *m_Module;
         std::unique_ptr<MessageClient> m_MessageClient;
 

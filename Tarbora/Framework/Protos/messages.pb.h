@@ -224,17 +224,17 @@ class Message final :
   ::tbMessages::MessageType type() const;
   void set_type(::tbMessages::MessageType value);
 
-  // int32 from = 2;
+  // uint32 from = 2;
   void clear_from();
   static const int kFromFieldNumber = 2;
-  ::google::protobuf::int32 from() const;
-  void set_from(::google::protobuf::int32 value);
+  ::google::protobuf::uint32 from() const;
+  void set_from(::google::protobuf::uint32 value);
 
-  // int32 to = 3;
+  // uint32 to = 3;
   void clear_to();
   static const int kToFieldNumber = 3;
-  ::google::protobuf::int32 to() const;
-  void set_to(::google::protobuf::int32 value);
+  ::google::protobuf::uint32 to() const;
+  void set_to(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:tbMessages.Message)
  private:
@@ -244,8 +244,8 @@ class Message final :
   ::google::protobuf::internal::ArenaStringPtr subject_;
   ::google::protobuf::internal::ArenaStringPtr body_;
   int type_;
-  ::google::protobuf::int32 from_;
-  ::google::protobuf::int32 to_;
+  ::google::protobuf::uint32 from_;
+  ::google::protobuf::uint32 to_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_messages_2eproto;
 };
@@ -360,11 +360,11 @@ class EventHeader final :
   ::std::string* release_subject();
   void set_allocated_subject(::std::string* subject);
 
-  // int32 from = 1;
+  // uint32 from = 1;
   void clear_from();
   static const int kFromFieldNumber = 1;
-  ::google::protobuf::int32 from() const;
-  void set_from(::google::protobuf::int32 value);
+  ::google::protobuf::uint32 from() const;
+  void set_from(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:tbMessages.EventHeader)
  private:
@@ -372,7 +372,7 @@ class EventHeader final :
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr subject_;
-  ::google::protobuf::int32 from_;
+  ::google::protobuf::uint32 from_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_messages_2eproto;
 };
@@ -506,29 +506,29 @@ inline void Message::set_type(::tbMessages::MessageType value) {
   // @@protoc_insertion_point(field_set:tbMessages.Message.type)
 }
 
-// int32 from = 2;
+// uint32 from = 2;
 inline void Message::clear_from() {
-  from_ = 0;
+  from_ = 0u;
 }
-inline ::google::protobuf::int32 Message::from() const {
+inline ::google::protobuf::uint32 Message::from() const {
   // @@protoc_insertion_point(field_get:tbMessages.Message.from)
   return from_;
 }
-inline void Message::set_from(::google::protobuf::int32 value) {
+inline void Message::set_from(::google::protobuf::uint32 value) {
   
   from_ = value;
   // @@protoc_insertion_point(field_set:tbMessages.Message.from)
 }
 
-// int32 to = 3;
+// uint32 to = 3;
 inline void Message::clear_to() {
-  to_ = 0;
+  to_ = 0u;
 }
-inline ::google::protobuf::int32 Message::to() const {
+inline ::google::protobuf::uint32 Message::to() const {
   // @@protoc_insertion_point(field_get:tbMessages.Message.to)
   return to_;
 }
-inline void Message::set_to(::google::protobuf::int32 value) {
+inline void Message::set_to(::google::protobuf::uint32 value) {
   
   to_ = value;
   // @@protoc_insertion_point(field_set:tbMessages.Message.to)
@@ -644,15 +644,15 @@ inline void Message::set_allocated_body(::std::string* body) {
 
 // EventHeader
 
-// int32 from = 1;
+// uint32 from = 1;
 inline void EventHeader::clear_from() {
-  from_ = 0;
+  from_ = 0u;
 }
-inline ::google::protobuf::int32 EventHeader::from() const {
+inline ::google::protobuf::uint32 EventHeader::from() const {
   // @@protoc_insertion_point(field_get:tbMessages.EventHeader.from)
   return from_;
 }
-inline void EventHeader::set_from(::google::protobuf::int32 value) {
+inline void EventHeader::set_from(::google::protobuf::uint32 value) {
   
   from_ = value;
   // @@protoc_insertion_point(field_set:tbMessages.EventHeader.from)

@@ -2,8 +2,8 @@
 #include "../../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
-    ArduinoView::ArduinoView(std::string server_address)
-        : Module(22, server_address)
+    ArduinoView::ArduinoView()
+        : Module(22)
     {
         LOG_INFO("Creating arduino view...");
 

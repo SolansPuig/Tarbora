@@ -10,7 +10,7 @@ namespace Tarbora {
     class Module : public AbstractModule
     {
     public:
-        Module(ClientId id, const std::string serverAddress);
+        Module(ClientId id);
         ~Module();
 
         virtual void Run(std::string name="Unamed Module") override;

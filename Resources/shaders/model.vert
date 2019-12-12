@@ -36,46 +36,38 @@ void main()
     gl_Position = projection * pos;
 
     ivec2 texSize = textureSize(myTexture, 0);
-    // float xoffset = 0.5 / texSize.x;
-    // float yoffset = 0.5 / texSize.y;
-    float xoffset = 0;
-    float yoffset = 0;
 
     if (aTexCoord.x == 0)
     {
-        TexCoord.x = xoffset + aUv.x;
+        TexCoord.x = aUv.x;
     }
     else if (aTexCoord.x == 1)
     {
-        if (aFace == 1 || aFace == 3) xoffset *= -1;
-        TexCoord.x = aSize.z + aUv.x + xoffset;
+        TexCoord.x = aSize.z + aUv.x;
     }
     else if (aTexCoord.x == 2)
     {
-        if (aFace == 4 || aFace == 0) xoffset *= -1;
-        TexCoord.x = aSize.z + aSize.x + aUv.x + xoffset;
+        TexCoord.x = aSize.z + aSize.x + aUv.x;
     }
     else if (aTexCoord.x == 3)
     {
-        if (aFace == 5 || aFace == 2) xoffset *= -1;
-        TexCoord.x = aSize.z + 2*aSize.x + aUv.x + xoffset;
+        TexCoord.x = aSize.z + 2*aSize.x + aUv.x;
     }
     else
     {
-        TexCoord.x = 2*aSize.z + 2*aSize.x + aUv.x - xoffset ;
+        TexCoord.x = 2*aSize.z + 2*aSize.x + aUv.x ;
     }
 
     if (aTexCoord.y == 0)
     {
-        TexCoord.y = aUv.y + yoffset;
+        TexCoord.y = aUv.y;
     }
     else if (aTexCoord.y == 1)
     {
-        if (aFace == 4 || aFace == 5) yoffset *= -1;
-        TexCoord.y = aSize.z + aUv.y + yoffset;
+        TexCoord.y = aSize.z + aUv.y;
     }
     else
     {
-        TexCoord.y = aSize.z + aSize.y + aUv.y - yoffset;
+        TexCoord.y = aSize.z + aSize.y + aUv.y;
     }
 }

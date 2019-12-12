@@ -13,7 +13,7 @@ namespace Tarbora {
     class World : public Module
     {
         public:
-            World(std::string serverAddress, ActorId maxNumber);
+            World(ActorId maxNumber);
             ~World();
 
             ActorId Create(std::string entity, glm::vec3 initialPos, glm::vec3 initalRot);

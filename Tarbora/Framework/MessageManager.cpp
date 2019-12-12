@@ -1,10 +1,10 @@
 #include "MessageManager.hpp"
 
 namespace Tarbora {
-    MessageManager::MessageManager(Module *m, ClientId id, std::string serverAddress) :
+    MessageManager::MessageManager(Module *m, ClientId id) :
         m_Module(m)
     {
-        m_MessageClient = std::unique_ptr<MessageClient>(new MessageClient(id, serverAddress));
+        m_MessageClient = std::unique_ptr<MessageClient>(new MessageClient(id));
         m_MessageClient->Connect();
     }
 

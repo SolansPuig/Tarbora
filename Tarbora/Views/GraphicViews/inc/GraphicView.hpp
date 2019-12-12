@@ -6,8 +6,8 @@ namespace Tarbora {
     class GraphicView : public Module
     {
     public:
-        GraphicView(unsigned int client_id, std::string server_address, std::string settings_file)
-            : Module(client_id, server_address)
+        GraphicView(unsigned int client_id, std::string settings_file)
+            : Module(client_id)
         {
             m_GraphicsEngine = std::make_shared<GraphicsEngine>(this, settings_file);
         }

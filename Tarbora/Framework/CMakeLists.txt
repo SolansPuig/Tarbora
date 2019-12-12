@@ -9,7 +9,7 @@ add_library (TarboraCore SHARED
     Logger.cpp
     MessageManager.cpp
     MessageClient.cpp
-    MessageServer.cpp
+    MessageHub.cpp
     Protos/messages.grpc.pb.cc
     Protos/messages.pb.cc
     External/tracy/TracyClient.cpp

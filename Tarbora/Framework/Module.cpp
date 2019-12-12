@@ -1,10 +1,10 @@
 #include "Module.hpp"
 
 namespace Tarbora {
-    Module::Module(ClientId id, const std::string serverAddress) :
+    Module::Module(ClientId id) :
         AbstractModule()
     {
-        m_MessageManager = std::shared_ptr<MessageManager>(new MessageManager(this, id, serverAddress));
+        m_MessageManager = std::shared_ptr<MessageManager>(new MessageManager(this, id));
         ResourceManager::Init(this, "../Resources/");
     }
 

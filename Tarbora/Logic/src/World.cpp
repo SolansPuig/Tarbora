@@ -6,13 +6,11 @@
 #include "../inc/CharacterControllerComponent.hpp"
 #include "../../Messages/BasicMessages.hpp"
 
-#define MIN_TIME (0.0083)
-
 namespace Tarbora {
-    World::World(std::string serverAddress, ActorId maxNumber) :
-        Module(1, serverAddress)
+    World::World(ActorId maxNumber) :
+        Module(1)
     {
-        m_MaxFrameRate = 240;
+        m_MaxFrameRate = 120;
 
         PhysicsEngine::Init();
         m_ActorFactory = std::make_unique<ActorFactory>(this);

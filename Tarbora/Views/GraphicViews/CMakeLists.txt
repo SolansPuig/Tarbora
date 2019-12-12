@@ -5,4 +5,5 @@ add_library (GraphicViews SHARED
     src/GameLayer.cpp
     src/ActorModel.cpp
     src/AnimationController.cpp
+    src/Transform.cpp
 )
