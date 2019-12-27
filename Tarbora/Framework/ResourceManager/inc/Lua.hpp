@@ -149,6 +149,11 @@ namespace Tarbora {
         virtual const std::string GetPattern() override { return "*.lua"; };
         virtual std::shared_ptr<Resource> Load(std::string path) override
         {
+            {
+                std::ifstream file(path);
+                if (!file) return std::shared_ptr<Resource>();
+            }
+
             return std::shared_ptr<Resource>(new LuaScript(m_Module, path));
         }
     };

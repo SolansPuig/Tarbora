@@ -383,7 +383,7 @@ namespace Tarbora {
     MaterialNode::MaterialNode(ActorId actorId, std::string name, std::string material) :
         SceneNode(actorId, name)
     {
-        m_Material = ResourcePtr<Material>("materials/" + material);
+        m_Material = ResourcePtr<Material>("materials/" + material, "materials/missing.mat.lua");
     }
 
     void MaterialNode::Draw(Scene *scene, glm::mat4 &parentTransform)

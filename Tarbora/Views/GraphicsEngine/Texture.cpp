@@ -24,7 +24,7 @@ namespace Tarbora {
         stbi_image_free(data);
 
         // Configure the texture
-        std::static_pointer_cast<Texture>(r)->Configure(GL_LINEAR, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
+        std::static_pointer_cast<Texture>(r)->Configure(GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
         return r;
     }
 }

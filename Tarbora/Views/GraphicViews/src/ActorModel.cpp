@@ -5,17 +5,13 @@ namespace Tarbora {
     ActorModel::ActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material)
         : MaterialNode(id, std::to_string(id), material)
     {
-        ResourcePtr<LuaScript> resource("models/" + model);
+        ResourcePtr<LuaScript> resource("models/" + model, "models/cube.lua");
+        m_PixelDensity = resource->Get<float>("pixel_density");
+        float scale = resource->Get<float>("scale");
+        std::shared_ptr<MeshNode> mesh = CreateNode(id, renderPass, resource->Get("root"), m_PixelDensity, resource->Get<float>("texture_size"));
+        mesh->SetGlobalScale(glm::vec3(scale, scale, scale));
 
-        if (resource != nullptr)
-        {
-            m_PixelDensity = resource->Get<float>("pixel_density");
-            float scale = resource->Get<float>("scale");
-            std::shared_ptr<MeshNode> mesh = CreateNode(id, renderPass, resource->Get("root"), m_PixelDensity, resource->Get<float>("texture_size"));
-            mesh->SetGlobalScale(glm::vec3(scale, scale, scale));
-
-            AddChild(mesh);
-        }
+        AddChild(mesh);
     }
 
     std::shared_ptr<MeshNode> ActorModel::CreateNode(ActorId id, RenderPass renderPass, LuaTable table, float pixelDensity, float textureSize)

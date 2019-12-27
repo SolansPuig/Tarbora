@@ -145,8 +145,8 @@ namespace Tarbora {
     {
     public:
         ResourcePtr() : m_InitialConfigFn(nullptr) {}
-        ResourcePtr(std::string name)
-            : m_Name(name), m_InitialConfigFn(nullptr) {}
+        ResourcePtr(std::string name, std::string fallbackName="")
+            : m_Name(name), m_FallbackName(fallbackName), m_InitialConfigFn(nullptr) {}
 
         std::string GetName() { return m_Name; }
 
@@ -162,7 +162,7 @@ namespace Tarbora {
 
         bool operator!=(std::nullptr_t null)
         {
-            return !(this == nullptr);
+            return !((m_Name == "") || ResourceManager::GetResource(m_Name) == nullptr);
         }
 
         bool operator==(const ResourcePtr<T> &resource)
@@ -185,6 +185,7 @@ namespace Tarbora {
             if (this != &resource) // Avoid self assignment
             {
                 m_Name = resource.m_Name;
+                m_FallbackName = resource.m_FallbackName;
                 m_InitialConfigFn = resource.m_InitialConfigFn;
             }
             return *this;
@@ -194,16 +195,24 @@ namespace Tarbora {
         {
             bool justLoaded = false;
             std::shared_ptr<T> resource = std::static_pointer_cast<T>(ResourceManager::GetResource(m_Name, &justLoaded));
+            if (resource == nullptr && m_FallbackName != "")
+                resource = std::static_pointer_cast<T>(ResourceManager::GetResource(m_FallbackName, &justLoaded));
             if (justLoaded && m_InitialConfigFn != nullptr) m_InitialConfigFn(resource);
             return resource;
         }
 
         T& operator*()
         {
-            return *(std::static_pointer_cast<T>(ResourceManager::GetResource(m_Name)));
+            bool justLoaded = false;
+            std::shared_ptr<T> resource = std::static_pointer_cast<T>(ResourceManager::GetResource(m_Name, &justLoaded));
+            if (resource == nullptr && m_FallbackName != "")
+                resource = std::static_pointer_cast<T>(ResourceManager::GetResource(m_FallbackName, &justLoaded));
+            if (justLoaded && m_InitialConfigFn != nullptr) m_InitialConfigFn(resource);
+            return *resource;
         }
     private:
         std::string m_Name;
+        std::string m_FallbackName;
         std::function<void(std::shared_ptr<T>)> m_InitialConfigFn;
     };
 }
