@@ -10,7 +10,7 @@ namespace MessageHub {
     void Connect(ClientId id, MessageClient *client);
     void Disconnect(ClientId id);
 
-    void Send(tbMessages::Message &message);
+    void Send(tbMessages::Message &m);
 
     void Subscribe(ClientId id, MessageSubject &s);
     void Desubscribe(ClientId id, MessageSubject &s);

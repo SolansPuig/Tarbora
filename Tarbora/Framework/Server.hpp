@@ -18,9 +18,9 @@ using tbMessages::Empty;
 typedef grpc::ServerReaderWriter<Message, Message> StreamServer;
 
 namespace Tarbora {
-    class Server final : public TarboraMessages::Service {
+    class MessageServer final : public TarboraMessages::Service {
     public:
-        Server() {}
+        MessageServer() {}
 
         grpc::Status Connect(grpc::ServerContext *context, StreamServer *stream) override;
 
@@ -29,24 +29,25 @@ namespace Tarbora {
         grpc::Status Desubscribe(grpc::ServerContext *context, const EventHeader *event, Empty *response);
 
     private:
-        void Send(StreamServer *stream, MessageSubject s, Message m);
+        void SendCommand(Message m);
+        void SendEvent(MessageSubject s, Message m);
 
         std::map<ClientId, StreamServer*> m_Clients;
-        std::multimap<MessageSubject, StreamServer*> m_Subscriptions;
-        std::mutex m_ClientsMutex;
-        std::mutex m_SubscriptionsMutex;
+        std::multimap<MessageSubject, std::pair<ClientId, StreamServer*>> m_Subscriptions;
+        std::shared_mutex m_ClientsMutex;
+        std::shared_mutex m_SubscriptionsMutex;
     };
 
-    class MessageServer
+    class Server : public AbstractModule
     {
     public:
-        MessageServer(const std::string serverAddress);
-        ~MessageServer();
+        Server(const std::string serverAddress);
+        ~Server();
 
-        void Run();
+        void Run(std::string name="Unamed Module");
 
     private:
-        Server m_Service;
+        MessageServer m_Service;
         grpc::ServerBuilder m_Builder;
         const std::string m_Address;
         std::unique_ptr<grpc::Server> m_Server;

@@ -1,7 +1,30 @@
-#include "MessageServer.hpp"
+#include "Server.hpp"
 
 namespace Tarbora {
-    grpc::Status Server::Connect(grpc::ServerContext *context, StreamServer *stream)
+    void MessageServer::SendCommand(Message m)
+    {
+        m_ClientsMutex.lock_shared();
+        auto client = m_Clients.find(message.to());
+        if (client != m_Clients.end())
+        {
+            client->second->Write(message);
+        }
+        m_ClientsMutex.unlock_shared();
+    }
+
+    void MessageServer::SendEvent(MessageSubject s, Message m)
+    {
+        m_SubscriptionsMutex.lock_shared();
+        auto subscriptors = m_Subscriptions.equal_range(s);
+
+        std::for_each(subscriptors.first, subscriptors.second, [&m](auto & subscriptor)
+        {
+            if (subscriptor.second.first != message.from()) subscriptor.second.second->Write(m);
+        });
+        m_SubscriptionsMutex.unlock_shared();
+    }
+
+    grpc::Status MessageServer::Connect(grpc::ServerContext *context, StreamServer *stream)
     {
         // Read the start connection message. If there's none, ignore it
         Message message;
@@ -20,20 +43,14 @@ namespace Tarbora {
             {
                 if (message.type() == MessageType::COMMAND)
                 {
-                    // Pass the message to its receiver
-                    m_ClientsMutex.lock();
-                    auto client = m_Clients.find(message.to());
-                    if (client != m_Clients.end())
-                    {
-                        client->second->Write(message);
-                    }
-                    m_ClientsMutex.unlock();
+                    SendCommand(message);
+
                 }
                 else if (message.type() == MessageType::EVENT)
                 {
                     // Pass the message to all the subscriptors
-                    Send(stream, "all", message);
-                    Send(stream, message.subject(), message);
+                    SendEvent("all", message);
+                    SendEvent(message.subject(), message);
                 }
                 else
                 {
@@ -42,8 +59,6 @@ namespace Tarbora {
                     auto client = m_Clients.find(message.from());
                     if (client != m_Clients.end())
                     {
-                        // Probably todo: Desubscribe from everywhere
-
                         m_Clients.erase(client);
                     }
                     m_ClientsMutex.unlock();
@@ -56,14 +71,14 @@ namespace Tarbora {
         return grpc::Status::OK;
     }
 
-    grpc::Status Server::Subscribe(grpc::ServerContext *context, const EventHeader *event, Empty *response)
+    grpc::Status MessageServer::Subscribe(grpc::ServerContext *context, const EventHeader *event, Empty *response)
     {
         m_ClientsMutex.lock();
         auto client = m_Clients.find(event->from());
         if (client != m_Clients.end())
         {
             m_SubscriptionsMutex.lock();
-            m_Subscriptions.insert(std::make_pair(event->subject(), client->second));
+            m_Subscriptions.insert(std::make_pair(event->subject(), std::make_pair(event->from(), client->second)));
             m_SubscriptionsMutex.unlock();
         }
         m_ClientsMutex.unlock();
@@ -71,42 +86,24 @@ namespace Tarbora {
         return grpc::Status::OK;
     }
 
-    grpc::Status Server::Desubscribe(grpc::ServerContext *context, const EventHeader *event, Empty *response)
-    {
-        m_ClientsMutex.lock();
-        auto client = m_Clients.find(event->from());
-        if (client != m_Clients.end())
-        {
-            m_SubscriptionsMutex.lock();
-            auto subscriptors = m_Subscriptions.equal_range(event->subject());
-            for (auto it = subscriptors.first; it != subscriptors.second; it++)
-            {
-                if (it->second == client->second)
-                {
-                    m_Subscriptions.erase(it);
-                    break;
-                }
-            }
-            m_SubscriptionsMutex.unlock();
-        }
-        m_ClientsMutex.unlock();
-
-        return grpc::Status::OK;
-    }
-
-    void Server::Send(StreamServer *stream, MessageSubject s, Message m)
+    grpc::Status MessageServer::Desubscribe(grpc::ServerContext *context, const EventHeader *event, Empty *response)
     {
         m_SubscriptionsMutex.lock();
-        auto subscriptors = m_Subscriptions.equal_range(s);
-        std::for_each(subscriptors.first, subscriptors.second, [&stream, &m](auto & subscriptorEntry)
+        auto subscriptors = m_Subscriptions.equal_range(event->subject());
+        for (auto it = subscriptors.first; it != subscriptors.second; it++)
         {
-            auto & subscriptor = subscriptorEntry.second;
-            if (subscriptor != stream) subscriptor->Write(m);
-        });
+            if (it->second.first == event->from())
+            {
+                m_Subscriptions.erase(it);
+                break;
+            }
+        }
         m_SubscriptionsMutex.unlock();
+
+        return grpc::Status::OK;
     }
 
-    MessageServer::MessageServer(const std::string serverAddress)
+    Server::Server(const std::string serverAddress)
         : m_Address(serverAddress)
     {
         m_Builder.AddListeningPort(m_Address, grpc::InsecureServerCredentials());
@@ -114,15 +111,15 @@ namespace Tarbora {
         m_Server = std::unique_ptr<grpc::Server>(m_Builder.BuildAndStart());
     }
 
-    MessageServer::~MessageServer()
+    Server::~Server()
     {
         m_Server->Shutdown();
     }
 
-    void MessageServer::Run()
+    void Server::Run(std::string name="Unamed Module")
     {
         ZoneScoped;
-        
+
         LOG_DEBUG("Server listening at %s", m_Address.c_str());
         m_Server->Wait();
     }

@@ -7,9 +7,9 @@ using tbMessages::EventHeader;
 using tbMessages::Empty;
 
 std::map<ClientId, MessageClient*> m_Clients;
-std::mutex m_ClientsMutex;
+std::shared_mutex m_ClientsMutex;
 std::multimap<MessageSubject, std::pair<ClientId, MessageClient*>> m_Subscriptions;
-std::mutex m_SubscriptionsMutex;
+std::shared_mutex m_SubscriptionsMutex;
 
 void MessageHub::Connect(ClientId id, MessageClient *client)
 {
@@ -23,38 +23,38 @@ void MessageHub::Disconnect(ClientId id)
 
 }
 
-void SendCommand(Message &message)
+void SendCommand(Message &m)
 {
-    m_ClientsMutex.lock();
-    auto client = m_Clients.find(message.to());
+    m_ClientsMutex.lock_shared();
+    auto client = m_Clients.find(m.to());
     if (client != m_Clients.end())
     {
-        client->second->Receive(message);
+        client->second->Receive(m);
     }
-    m_ClientsMutex.unlock();
+    m_ClientsMutex.unlock_shared();
 }
 
-void SendEvent(MessageSubject s, Message &message)
+void SendEvent(MessageSubject s, Message &m)
 {
-    m_SubscriptionsMutex.lock();
+    m_SubscriptionsMutex.lock_shared();
     auto subscriptors = m_Subscriptions.equal_range(s);
 
-    std::for_each(subscriptors.first, subscriptors.second, [&message](auto & subscriptor)
+    std::for_each(subscriptors.first, subscriptors.second, [&m](auto & subscriptor)
     {
-        if (subscriptor.second.first != message.from()) subscriptor.second.second->Receive(message);
+        if (subscriptor.second.first != m.from()) subscriptor.second.second->Receive(m);
     });
-    m_SubscriptionsMutex.unlock();
+    m_SubscriptionsMutex.unlock_shared();
 }
 
-void MessageHub::Send(Message &message)
+void MessageHub::Send(Message &m)
 {
-    switch(message.type()) {
+    switch(m.type()) {
         case MessageType::COMMAND:
-            SendCommand(message);
+            SendCommand(m);
             break;
         case MessageType::EVENT:
-            SendEvent("all", message);
-            SendEvent(message.subject(), message);
+            SendEvent("all", m);
+            SendEvent(m.subject(), m);
             break;
         default:
             break;
