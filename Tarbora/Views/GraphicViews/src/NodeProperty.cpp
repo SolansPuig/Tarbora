@@ -17,7 +17,7 @@ namespace Tarbora {
     }
 
     void AnimatedNodeProperty::Update(float deltaTime) {
-        if (m_ElapsedTime < m_TargetTime)
+        if (m_TargetTime > 0.0f)
         {
             m_ElapsedTime += deltaTime;
             Interpolate(m_ElapsedTime/m_TargetTime);
@@ -41,6 +41,7 @@ namespace Tarbora {
         if (fraction >= 1.0f)
         {
             Set(m_TargetValue);
+            m_TargetTime = 0.0f;
         }
         else
         {
@@ -83,9 +84,7 @@ namespace Tarbora {
     void Scale::Add(const glm::vec3 &newValue)
     {
         *m_Transformation = glm::scale(*m_Transformation, newValue);
-
         m_Value *= newValue;
-
         (*m_Origin) *= newValue;
     }
 }

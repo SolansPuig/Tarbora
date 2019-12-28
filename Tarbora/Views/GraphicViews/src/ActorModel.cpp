@@ -26,9 +26,9 @@ namespace Tarbora {
             table.Get("origin").Get<float>(3)
         );
         glm::vec3 position = glm::vec3(
-            table.Get("position").Get<float>(1),
-            table.Get("position").Get<float>(2),
-            table.Get("position").Get<float>(3)
+            table.Get("position").Get<float>(1)/100.0f,
+            table.Get("position").Get<float>(2)/100.0f,
+            table.Get("position").Get<float>(3)/100.0f
         );
         glm::vec3 rotation = glm::vec3(
             table.Get("rotation").Get<float>(1),
@@ -36,9 +36,9 @@ namespace Tarbora {
             table.Get("rotation").Get<float>(3)
         );
         glm::vec3 size = glm::vec3(
-            table.Get("size").Get<float>(1),
-            table.Get("size").Get<float>(2),
-            table.Get("size").Get<float>(3)
+            table.Get("size").Get<float>(1)/100.0f,
+            table.Get("size").Get<float>(2)/100.0f,
+            table.Get("size").Get<float>(3)/100.0f
         );
         glm::vec3 shearA = glm::vec3(
             table.Get("shear", true).Get<float>(1, true),
@@ -51,9 +51,9 @@ namespace Tarbora {
             table.Get("shear", true).Get<float>(6, true)
         );
         glm::vec3 texSize = glm::vec3(
-            table.Get("texture_size", true).Get<float>(1, 0, true)*pixelDensity/textureSize,
-            table.Get("texture_size", true).Get<float>(2, 0, true)*pixelDensity/textureSize,
-            table.Get("texture_size", true).Get<float>(3, 0, true)*pixelDensity/textureSize
+            table.Get("texture_size", true).Get<float>(1, 0, true)*pixelDensity/100.0f/textureSize,
+            table.Get("texture_size", true).Get<float>(2, 0, true)*pixelDensity/100.0f/textureSize,
+            table.Get("texture_size", true).Get<float>(3, 0, true)*pixelDensity/100.0f/textureSize
         );
         if (texSize == glm::vec3(0.0f)) texSize = size*pixelDensity/textureSize;
         glm::vec2 uv = glm::vec2(
@@ -126,9 +126,9 @@ namespace Tarbora {
             table.Get("origin").Get<float>(3)
         );
         glm::vec3 position = glm::vec3(
-            table.Get("position").Get<float>(1),
-            table.Get("position").Get<float>(2),
-            table.Get("position").Get<float>(3)
+            table.Get("position").Get<float>(1)/100.0f,
+            table.Get("position").Get<float>(2)/100.0f,
+            table.Get("position").Get<float>(3)/100.0f
         );
         glm::vec3 rotation = glm::vec3(
             table.Get("rotation").Get<float>(1),

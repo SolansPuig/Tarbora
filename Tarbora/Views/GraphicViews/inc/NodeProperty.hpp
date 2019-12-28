@@ -22,7 +22,7 @@ namespace Tarbora {
     class AnimatedNodeProperty : public NodeProperty {
     public:
         AnimatedNodeProperty(const glm::vec3 &value)
-            : NodeProperty(value), m_OldValue(value), m_TargetValue(value) {}
+            : NodeProperty(value), m_TargetTime(0.0f), m_OldValue(value), m_TargetValue(value) {}
 
         virtual void Update(float deltaTime);
         virtual void InterpolateTo(const glm::vec3 &targetValue, float timeToComplete);

@@ -7,7 +7,7 @@ root = {
     origin = {0, 0, 0},
     position = {0, 0, 0},
     rotation = {0, 0, 0},
-    size = {1, 1, 1},
+    size = {100, 100, 100},
     color_primary = {
         function() return math.random(0, 255) end,
         function() return math.random(0, 255) end,

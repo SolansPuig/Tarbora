@@ -7,6 +7,6 @@ root = {
     origin = {0, 0, 0},
     position = {0, 0, 0},
     rotation = {0, 0, 0},
-    size = {2, 2, 2},
+    size = {200, 200, 200},
     uv = {0, 0}
 }

@@ -58,10 +58,10 @@ namespace Tarbora {
         resource->PopErrName();
     }
 
-    inline float ParseAnimationValue(raw_json newValue, float currentValue)
+    inline float ParseAnimationValue(raw_json newValue, float currentValue, float modifier)
     {
         if (newValue.is_number())
-            return newValue;
+            return (float)newValue/modifier;
         else if(newValue.is_string())
         {
             std::string value = newValue;
@@ -70,7 +70,7 @@ namespace Tarbora {
                 if (value == "~")
                     return currentValue;
                 else
-                    return currentValue + stof(value.erase(0, 1));
+                    return currentValue + stof(value.erase(0, 1))/modifier;
             }
         }
 
@@ -94,15 +94,25 @@ namespace Tarbora {
             for (auto &transform : nodeName.value().items())
             {
                 std::string propertyName = transform.key();
-
                 resource->PushErrName(propertyName);
+
+                float modifier = 1.0f;
+                if (propertyName == "position" || propertyName == "scale")
+                {
+                    modifier = 100.0f;
+                }
+                else if (propertyName == "color_primary" || propertyName == "color_secondary"
+                    || propertyName == "color_detail1" || propertyName == "color_detail2")
+                {
+                    modifier = 255.0f;
+                }
 
                 if (transform.value().is_array() && frame < 0.0f)
                 {
                     glm::vec3 value;
-                    value.x = ParseAnimationValue(transform.value()[0], node->Get(propertyName).x);
-                    value.y = ParseAnimationValue(transform.value()[1], node->Get(propertyName).y);
-                    value.z = ParseAnimationValue(transform.value()[2], node->Get(propertyName).z);
+                    value.x = ParseAnimationValue(transform.value()[0], node->Get(propertyName).x, modifier);
+                    value.y = ParseAnimationValue(transform.value()[1], node->Get(propertyName).y, modifier);
+                    value.z = ParseAnimationValue(transform.value()[2], node->Get(propertyName).z, modifier);
                     node->InterpolateTo(propertyName, value, m_BlendTime);
                 }
                 else if (transform.value().is_object())
@@ -115,9 +125,9 @@ namespace Tarbora {
                         stepTime = stof(step.key());
                         if (stepTime > frame)
                         {
-                            value.x = ParseAnimationValue(step.value()[0], node->Get(propertyName).x);
-                            value.y = ParseAnimationValue(step.value()[1], node->Get(propertyName).y);
-                            value.z = ParseAnimationValue(step.value()[2], node->Get(propertyName).z);
+                            value.x = ParseAnimationValue(step.value()[0], node->Get(propertyName).x, modifier);
+                            value.y = ParseAnimationValue(step.value()[1], node->Get(propertyName).y, modifier);
+                            value.z = ParseAnimationValue(step.value()[2], node->Get(propertyName).z, modifier);
 
                             if (m_NextAnimationFrame == 0.0f || stepTime < m_NextAnimationFrame)
                                 m_NextAnimationFrame = stepTime;
@@ -126,9 +136,9 @@ namespace Tarbora {
                         }
                         else if (stepTime == 0.0f)
                         {
-                            value.x = ParseAnimationValue(step.value()[0], node->Get(propertyName).x);
-                            value.y = ParseAnimationValue(step.value()[1], node->Get(propertyName).y);
-                            value.z = ParseAnimationValue(step.value()[2], node->Get(propertyName).z);
+                            value.x = ParseAnimationValue(step.value()[0], node->Get(propertyName).x, modifier);
+                            value.y = ParseAnimationValue(step.value()[1], node->Get(propertyName).y, modifier);
+                            value.z = ParseAnimationValue(step.value()[2], node->Get(propertyName).z, modifier);
                         }
                         else
                         {
