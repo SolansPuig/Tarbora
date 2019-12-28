@@ -45,8 +45,8 @@ namespace Tarbora {
         {
             MoveNodeBody m = body->GetContent<MoveNodeBody>();
             std::shared_ptr<SceneNode> node = m_Scene->GetChild(m.id())->GetChild(m.node());
-            node->Move(Vec3toGLM(m.position()));
-            node->SetRotation(Vec3toGLM(m.rotation()));
+            // node->Set("position", Vec3toGLM(m.position()));
+            node->Set("rotation", Vec3toGLM(m.rotation()));
         });
 
         Subscribe("delete_actor", [this](MessageSubject subject, MessageBody *body)

@@ -9,8 +9,8 @@ namespace Tarbora {
         m_Root = std::shared_ptr<RootNode>(new RootNode());
         m_Camera = std::shared_ptr<Camera>(new Camera(MAIN_CAMERA_ID, "body"));
         AddChild(m_Camera);
-        m_Camera->Rotate(glm::vec3(0.0f, 180.0f, 0.0f));
-        m_Camera->Move(glm::vec3(0.0f, 0.0f, -5.0f));
+        m_Camera->Set("rotation", glm::vec3(0.0f, 180.0f, 0.0f));
+        m_Camera->Set("position", glm::vec3(0.0f, 0.0f, -5.0f));
 
         m_Projection = glm::perspective(glm::radians(45.0f), m_View->GetGraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
 

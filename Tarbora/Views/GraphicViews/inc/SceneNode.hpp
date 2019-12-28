@@ -1,5 +1,6 @@
 #pragma once
 #include "../../GraphicsEngine/GraphicsEngine.hpp"
+#include "NodeProperty.hpp"
 
 namespace Tarbora {
     class Scene;
@@ -11,101 +12,55 @@ namespace Tarbora {
     {
         friend class Scene;
         typedef std::map<std::string, SceneNodePtr> SceneNodeMap;
+        typedef std::unordered_map<std::string, PropertyPtr> PropertyMap;
     public:
-        SceneNode(ActorId actorId, std::string name);
+        SceneNode(ActorId actorId, const std::string &name);
         virtual ~SceneNode() {}
 
         virtual void Update(Scene *scene, float deltaTime);
-        virtual void Draw(Scene *scene, glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
+        virtual void Draw(Scene *scene, const glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
         virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform);
         virtual void AfterDraw(Scene *scene) { (void)(scene); }
 
         virtual bool AddChild(SceneNodePtr child);
         virtual SceneNodePtr GetChild(ActorId id);
-        virtual SceneNodePtr GetChild(std::string name);
+        virtual SceneNodePtr GetChild(const std::string &name);
         virtual bool RemoveChild(ActorId id);
-        virtual bool RemoveChild(std::string name);
-
-        // bool OnActorEvent(ActorEvent *e);
+        virtual bool RemoveChild(const std::string &name);
 
         bool IsVisible(Scene *scene);
-
-        // TODO: GetDirection
 
         ActorId GetActorId() const { return m_ActorId; }
         const char *GetName() const { return m_Name.c_str(); }
 
         void SetPosition(const glm::vec3 &position);
-        void Move(const glm::vec3 &vector);
-        void MoveTo(const glm::vec3 &position, float timeToComplete);
-        const glm::vec3 &GetPosition() { return m_Position; }
-
-        void SetRotation(const glm::vec3 &rotation);
-        void Rotate(const glm::vec3 &angles);
-        void RotateTo(const glm::vec3 &rotation, float timeToComplete);
-        const glm::vec3 &GetRotation() { return m_Rotation; }
-
         void SetRotationMatrix(const glm::mat3 &rotation);
 
-        void SetScale(const glm::vec3 &scale);
-        void SetGlobalScale(const glm::vec3 &scale);
-        void Scale(const glm::vec3 &scale);
-        void ScaleTo(const glm::vec3 &scale, float timeToComplete);
-        const glm::vec3 &GetScale() { return m_Scale; }
-
-        void SetShear(const glm::vec3 &shearA, const glm::vec3 &shearB);
-        void Shear(const glm::vec3 &shearA, const glm::vec3 &shearB);
-
-        void SetOrigin(const glm::vec3 &origin);
-
-        void SetTransform(glm::mat4 *matrix=nullptr);
+        void SetTransform(const glm::mat4 &matrix);
         const glm::mat4 GetGlobalTransform();
-        const glm::mat4 &GetLocalTransform() const { return m_LocalMatrix; }
+        const glm::mat4 &GetLocalTransform() const { return m_Transformation; }
+
+        void Set(const std::string &name, const glm::vec3 &value);
+        void Add(const std::string &name, const glm::vec3 &value);
+        void InterpolateTo(const std::string &name, const glm::vec3 &value, float timeToComplete);
+        const glm::vec3 &Get(const std::string &name);
+
+        void SetOrigin(const glm::vec3 &origin) { m_Origin = origin; }
 
         void SetRadius(float radius) { m_Radius = radius; }
         float GetRadius() const { return m_Radius; }
 
-        void SetColorPrimary(glm::vec3 color) { m_ColorPrimary = color; }
-        void SetColorSecondary(glm::vec3 color) { m_ColorSecondary = color; }
-        void SetColorDetail(glm::vec3 color) { m_ColorDetail = color; }
-        void SetColorDetail2(glm::vec3 color) { m_ColorDetail2 = color; }
-
     protected:
-        bool InterpolatePosition(float fraction);
-        bool InterpolateRotation(float fraction);
-        bool InterpolateScale(float fraction);
-
         SceneNodeMap m_Children;
         SceneNode *m_Parent;
+
+        PropertyMap m_Properties;
 
         ActorId m_ActorId;
         std::string m_Name;
 
-        glm::mat4 m_LocalMatrix;
-        glm::mat4 m_DeformationMatrix;
-
-        glm::vec3 m_OldPosition;
-        glm::vec3 m_Position;
-        glm::vec3 m_TargetPosition;
-        float m_PositionCounter;
-        float m_PositionTime;
-        glm::vec3 m_Rotation;
-        glm::vec3 m_OldRotation;
-        glm::vec3 m_TargetRotation;
-        float m_RotationCounter;
-        float m_RotationTime;
-        glm::vec3 m_OldScale;
-        glm::vec3 m_Scale;
-        glm::vec3 m_TargetScale;
-        glm::vec3 m_ShearA;
-        glm::vec3 m_ShearB;
-        float m_ScaleCounter;
-        float m_ScaleTime;
-
-        glm::vec3 m_ColorPrimary;
-        glm::vec3 m_ColorSecondary;
-        glm::vec3 m_ColorDetail;
-        glm::vec3 m_ColorDetail2;
+        glm::mat4 m_Transformation;
+        glm::mat4 m_Deformation;
 
         glm::vec3 m_Origin;
 
@@ -115,14 +70,16 @@ namespace Tarbora {
     class RootNode : public SceneNode
     {
     public:
-        RootNode();
+        RootNode()
+            : SceneNode(INVALID_ID, "Root") {}
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
     };
 
     class Camera : public SceneNode
     {
     public:
-        Camera(ActorId actorId, std::string name);
+        Camera(ActorId actorId, const std::string &name)
+            : SceneNode(actorId, name) {}
         const glm::mat4 GetView();
         const glm::mat4 GetViewAngle();
         const glm::vec3 GetViewPosition();
@@ -134,8 +91,8 @@ namespace Tarbora {
     class MaterialNode : public SceneNode
     {
     public:
-        MaterialNode(ActorId actorId, std::string name, std::string material);
-        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
+        MaterialNode(ActorId actorId, const std::string &name, const std::string &material);
+        virtual void Draw(Scene *scene, const glm::mat4 &parentTransform);
         virtual void AfterDraw(Scene *scene);
     protected:
         ResourcePtr<Material> m_Material;
@@ -144,13 +101,15 @@ namespace Tarbora {
     class MeshNode : public SceneNode
     {
     public:
-        MeshNode(ActorId actorId, std::string name, RenderPass renderPass, std::string mesh);
-        virtual void Draw(Scene *scene, glm::mat4 &parentTransform);
-        void SetUV(glm::vec3 &size, glm::vec2 &uv);
+        MeshNode(ActorId actorId, const std::string &name, RenderPass renderPass, const std::string &mesh);
+        virtual void Draw(Scene *scene, const glm::mat4 &parentTransform);
+
+        void SetUV(const glm::vec3 &size, const glm::vec2 &uv);
 
     protected:
         RenderPass m_RenderPass;
         ResourcePtr<Mesh> m_Mesh;
+
         glm::vec2 m_Uv;
         glm::vec3 m_TextureSize;
     };

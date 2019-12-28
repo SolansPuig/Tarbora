@@ -58,10 +58,10 @@ namespace Tarbora {
         resource->PopErrName();
     }
 
-    inline float ParseAnimationValue(raw_json newValue, float currentValue, float modifier=1.0f)
+    inline float ParseAnimationValue(raw_json newValue, float currentValue)
     {
         if (newValue.is_number())
-            return (float)(newValue)/modifier;
+            return newValue;
         else if(newValue.is_string())
         {
             std::string value = newValue;
@@ -70,7 +70,7 @@ namespace Tarbora {
                 if (value == "~")
                     return currentValue;
                 else
-                    return currentValue + stof(value.erase(0, 1))/modifier;
+                    return currentValue + stof(value.erase(0, 1));
             }
         }
 
@@ -90,114 +90,54 @@ namespace Tarbora {
             resource->PushErrName(nodeName.key());
 
             std::shared_ptr<SceneNode> node = m_ActorModel->m_Nodes[nodeName.key()];
-            float pixelDensity = m_ActorModel->m_PixelDensity;
 
             for (auto &transform : nodeName.value().items())
             {
-                resource->PushErrName(transform.key());
+                std::string propertyName = transform.key();
 
-                if (transform.key() == "rotation")
+                resource->PushErrName(propertyName);
+
+                if (transform.value().is_array() && frame < 0.0f)
                 {
-                    if (transform.value().is_array() && frame < 0.0f)
-                    {
-                        glm::vec3 rotation;
-                        rotation.x = ParseAnimationValue(transform.value()[0], node->GetRotation().x);
-                        rotation.y = ParseAnimationValue(transform.value()[1], node->GetRotation().y);
-                        rotation.z = ParseAnimationValue(transform.value()[2], node->GetRotation().z);
-                        node->RotateTo(rotation, m_BlendTime);
-                    }
-                    else if (transform.value().is_object())
-                    {
-                        glm::vec3 nextRotation;
-                        float stepTime = 0.0f;
-                        for (auto &step : transform.value().items())
-                        {
-                            resource->PushErrName(step.key());
-                            stepTime = stof(step.key());
-                            if (stepTime > frame)
-                            {
-                                nextRotation.x = ParseAnimationValue(step.value()[0], node->GetRotation().x);
-                                nextRotation.y = ParseAnimationValue(step.value()[1], node->GetRotation().y);
-                                nextRotation.z = ParseAnimationValue(step.value()[2], node->GetRotation().z);
-
-                                if (m_NextAnimationFrame == 0.0f || stepTime < m_NextAnimationFrame)
-                                    m_NextAnimationFrame = stepTime;
-
-                                break;
-                            }
-                            else if (stepTime == 0.0f)
-                            {
-                                nextRotation.x = ParseAnimationValue(step.value()[0], node->GetRotation().x);
-                                nextRotation.y = ParseAnimationValue(step.value()[1], node->GetRotation().y);
-                                nextRotation.z = ParseAnimationValue(step.value()[2], node->GetRotation().z);
-                            }
-                            else
-                            {
-                                stepTime = 0.0f;
-                            }
-                        }
-                        float timeToAnimate = ((stepTime > 0.0f) ? (stepTime - frame) : (m_AnimationDuration - frame));
-                        node->RotateTo(nextRotation, ((frame >= 0.0f) ? timeToAnimate : m_BlendTime));
-                    }
+                    glm::vec3 value;
+                    value.x = ParseAnimationValue(transform.value()[0], node->Get(propertyName).x);
+                    value.y = ParseAnimationValue(transform.value()[1], node->Get(propertyName).y);
+                    value.z = ParseAnimationValue(transform.value()[2], node->Get(propertyName).z);
+                    node->InterpolateTo(propertyName, value, m_BlendTime);
                 }
-                else if (transform.key() == "position")
-                    {
-                        if (transform.value().is_array() && frame < 0.0f)
-                        {
-                            glm::vec3 position;
-                            position.x = ParseAnimationValue(transform.value()[0], node->GetPosition().x, pixelDensity);
-                            position.y = ParseAnimationValue(transform.value()[1], node->GetPosition().y, pixelDensity);
-                            position.z = ParseAnimationValue(transform.value()[2], node->GetPosition().z, pixelDensity);
-                            node->SetPosition(position);
-                        }
-                        else if (transform.value().is_object())
-                        {
-                            glm::vec3 nextPosition;
-                            float stepTime = 0.0f;
-                            for (auto &step : transform.value().items())
-                            {
-                                resource->PushErrName(step.key());
-                                stepTime = stof(step.key());
-                                if (stepTime > frame)
-                                {
-                                    nextPosition.x = ParseAnimationValue(step.value()[0], node->GetPosition().x, pixelDensity);
-                                    nextPosition.y = ParseAnimationValue(step.value()[1], node->GetPosition().y, pixelDensity);
-                                    nextPosition.z = ParseAnimationValue(step.value()[2], node->GetPosition().z, pixelDensity);
-
-                                    if (m_NextAnimationFrame == 0.0f || stepTime < m_NextAnimationFrame)
-                                        m_NextAnimationFrame = stepTime;
-
-                                    break;
-                                }
-                                else if (stepTime == 0.0f)
-                                {
-                                    nextPosition.x = ParseAnimationValue(step.value()[0], node->GetPosition().x, pixelDensity);
-                                    nextPosition.y = ParseAnimationValue(step.value()[1], node->GetPosition().y, pixelDensity);
-                                    nextPosition.z = ParseAnimationValue(step.value()[2], node->GetPosition().z, pixelDensity);
-                                }
-                                else
-                                {
-                                    stepTime = 0.0f;
-                                }
-                            }
-                            float timeToAnimate = ((stepTime > 0.0f) ? (stepTime - frame) : (m_AnimationDuration - frame));
-                            node->MoveTo(nextPosition, ((frame >= 0.0f) ? timeToAnimate : m_BlendTime));
-                        }
-                    }
-                else if (transform.key() == "scale")
+                else if (transform.value().is_object())
                 {
-                    if (transform.value().is_array() && frame < 0.0f)
+                    glm::vec3 value;
+                    float stepTime = 0.0f;
+                    for (auto &step : transform.value().items())
                     {
-                        glm::vec3 scale;
-                        scale.x = ParseAnimationValue(transform.value()[0], node->GetScale().x, pixelDensity);
-                        scale.y = ParseAnimationValue(transform.value()[1], node->GetScale().y, pixelDensity);
-                        scale.z = ParseAnimationValue(transform.value()[2], node->GetScale().z, pixelDensity);
-                        node->SetScale(scale);
-                        // else if (transform.value().is_object())
-                        // {
-                        //
-                        // }
+                        resource->PushErrName(step.key());
+                        stepTime = stof(step.key());
+                        if (stepTime > frame)
+                        {
+                            value.x = ParseAnimationValue(step.value()[0], node->Get(propertyName).x);
+                            value.y = ParseAnimationValue(step.value()[1], node->Get(propertyName).y);
+                            value.z = ParseAnimationValue(step.value()[2], node->Get(propertyName).z);
+
+                            if (m_NextAnimationFrame == 0.0f || stepTime < m_NextAnimationFrame)
+                                m_NextAnimationFrame = stepTime;
+
+                            break;
+                        }
+                        else if (stepTime == 0.0f)
+                        {
+                            value.x = ParseAnimationValue(step.value()[0], node->Get(propertyName).x);
+                            value.y = ParseAnimationValue(step.value()[1], node->Get(propertyName).y);
+                            value.z = ParseAnimationValue(step.value()[2], node->Get(propertyName).z);
+                        }
+                        else
+                        {
+                            stepTime = 0.0f;
+                        }
+                        resource->PopErrName();
                     }
+                    float timeToAnimate = ((stepTime > 0.0f) ? (stepTime - frame) : (m_AnimationDuration - frame));
+                    node->InterpolateTo(propertyName, value, ((frame >= 0.0f) ? timeToAnimate : m_BlendTime));
                 }
                 resource->PopErrName();
             }

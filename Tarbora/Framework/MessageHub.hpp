@@ -6,12 +6,14 @@
 #include "Global.hpp"
 #include "MessageClient.hpp"
 
-namespace MessageHub {
-    void Connect(ClientId id, MessageClient *client);
-    void Disconnect(ClientId id);
+namespace Tarbora {
+    namespace MessageHub {
+        void Connect(ClientId id, MessageClient *client);
+        void Disconnect(ClientId id);
 
-    void Send(tbMessages::Message &m);
+        void Send(tbMessages::Message &m);
 
-    void Subscribe(ClientId id, MessageSubject &s);
-    void Desubscribe(ClientId id, MessageSubject &s);
+        void Subscribe(ClientId id, MessageSubject &s);
+        void Desubscribe(ClientId id, MessageSubject &s);
+    }
 }

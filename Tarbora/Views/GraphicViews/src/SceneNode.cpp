@@ -2,66 +2,32 @@
 #include "../../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
-    SceneNode::SceneNode(ActorId actorId, std::string name)
+    SceneNode::SceneNode(ActorId actorId, const std::string &name)
     {
         m_Parent = nullptr;
         m_ActorId = actorId;
         m_Name = name;
         m_Origin = glm::vec3(0.0f, 0.0f, 0.0f);
-        SetTransform(nullptr);
-        SetRadius(0);
-        m_DeformationMatrix = glm::mat4(1.0f);
+        m_Radius = 0.0f;
+        m_Transformation = glm::mat4(1.0f);
+        m_Deformation = glm::mat4(1.0f);
 
-        m_OldPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_Position = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_TargetPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_PositionCounter = 0.0f;
-        m_PositionTime = 0.0f;
-        m_Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_OldRotation = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_TargetRotation = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_RotationCounter = 0.0f;
-        m_RotationTime = 0.0f;
-        m_OldScale = glm::vec3(1.0f, 1.0f, 1.0f);
-        m_Scale = glm::vec3(1.0f, 1.0f, 1.0f);
-        m_TargetScale = glm::vec3(1.0f, 1.0f, 1.0f);
-        m_ShearA = glm::vec3(1.0f, 1.0f, 1.0f);
-        m_ShearB = glm::vec3(1.0f, 1.0f, 1.0f);
-        m_ScaleCounter = 0.0f;
-        m_ScaleTime = 0.0f;
+        m_Properties["position"] = PropertyPtr(new Position(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation));
+        m_Properties["rotation"] = PropertyPtr(new Rotation(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation, &m_Origin));
+        m_Properties["scale"] = PropertyPtr(new Scale(glm::vec3(1.0f, 1.0f, 1.0f), &m_Deformation, &m_Origin));
     }
 
     void SceneNode::Update(Scene *scene, float deltaTime)
     {
-        if (m_Scale != m_TargetScale)
-        {
-            m_ScaleCounter += deltaTime;
-            if (InterpolateScale(m_ScaleCounter/m_ScaleTime))
-            {
-                m_ScaleCounter = 0.0f;
-            }
-        }
-
-        if (m_Rotation != m_TargetRotation)
-        {
-            m_RotationCounter += deltaTime;
-            InterpolateRotation(m_RotationCounter/m_RotationTime);
-        }
-
-
-        if (m_Position != m_TargetPosition)
-        {
-            m_PositionCounter += deltaTime;
-            InterpolatePosition(m_PositionCounter/m_PositionTime);
-        }
-
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
             (*itr).second->Update(scene, deltaTime);
+        for (auto itr = m_Properties.begin(); itr != m_Properties.end(); itr++)
+            (*itr).second->Update(deltaTime);
     }
 
     void SceneNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
     {
-        glm::mat4 transform = parentTransform * m_LocalMatrix;
+        glm::mat4 transform = parentTransform * m_Transformation;
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
         {
             if (itr->second->IsVisible(scene))
@@ -78,7 +44,7 @@ namespace Tarbora {
     {
         m_Children[child->GetName()] = child;
         child->m_Parent = this;
-        float new_radius = child->GetPosition().length() + child->GetRadius();
+        float new_radius = child->Get("position").length() + child->GetRadius();
         if (new_radius > m_Radius)
             m_Radius = new_radius;
         return true;
@@ -95,7 +61,7 @@ namespace Tarbora {
         return SceneNodePtr();
     }
 
-    SceneNodePtr SceneNode::GetChild(std::string name)
+    SceneNodePtr SceneNode::GetChild(const std::string &name)
     {
         auto itr = m_Children.find(name);
         if (itr != m_Children.end())
@@ -117,7 +83,7 @@ namespace Tarbora {
         return false;
     }
 
-    bool SceneNode::RemoveChild(std::string name)
+    bool SceneNode::RemoveChild(const std::string &name)
     {
         auto itr = m_Children.find(name);
         if (itr != m_Children.end())
@@ -136,225 +102,49 @@ namespace Tarbora {
 
     void SceneNode::SetPosition(const glm::vec3 &position)
     {
-        m_LocalMatrix[3] = glm::vec4(position.x, position.y, position.z, 1.0f);
-        m_Position = position;
-        m_OldPosition = m_Position;
-        m_TargetPosition = m_Position;
-    }
-
-    void SceneNode::Move(const glm::vec3 &vector)
-    {
-        m_LocalMatrix = glm::translate(m_LocalMatrix, vector);
-        m_Position += vector;
-        m_OldPosition = m_Position;
-        m_TargetPosition = m_Position;
-    }
-
-    void SceneNode::MoveTo(const glm::vec3 &position, float timeToComplete)
-    {
-        if (timeToComplete > 0.0f)
-        {
-            m_PositionCounter = 0.0f;
-            m_OldPosition = m_Position;
-            m_TargetPosition = position;
-            m_PositionTime = timeToComplete;
-        }
-        else
-        {
-            SetPosition(position);
-        }
-    }
-
-    bool SceneNode::InterpolatePosition(float fraction)
-    {
-        if (fraction >= 1.0f)
-        {
-            SetPosition(m_TargetPosition);
-            return true;
-        }
-
-        glm::vec3 position = m_OldPosition + fraction*(m_TargetPosition - m_OldPosition);
-        m_LocalMatrix = glm::translate(m_LocalMatrix, (position - m_Position));
-        m_Position = position;
-
-        return false;
-    }
-
-    void SceneNode::SetRotation(const glm::vec3 &rotation)
-    {
-        Rotate(glm::vec3(rotation.x - m_Rotation.x, rotation.y - m_Rotation.y, rotation.z - m_Rotation.z));
-    }
-
-    void SceneNode::Rotate(const glm::vec3 &angles)
-    {
-        m_LocalMatrix = glm::translate(m_LocalMatrix, m_Origin);
-        if (angles.x)
-        {
-            m_LocalMatrix = glm::rotate(m_LocalMatrix, glm::radians(angles.x), glm::vec3(1.0f, 0.0f, 0.0f));
-        }
-        if (angles.y)
-        {
-            m_LocalMatrix = glm::rotate(m_LocalMatrix, glm::radians(angles.y), glm::vec3(0.0f, 1.0f, 0.0f));
-        }
-        if (angles.z)
-        {
-            m_LocalMatrix = glm::rotate(m_LocalMatrix, glm::radians(angles.z), glm::vec3(0.0f, 0.0f, 1.0f));
-        }
-        m_LocalMatrix = glm::translate(m_LocalMatrix, -m_Origin);
-
-        m_Rotation += angles;
-        m_OldRotation = m_Rotation;
-        m_TargetRotation = m_Rotation;
-    }
-
-    void SceneNode::RotateTo(const glm::vec3 &targetRotation, float timeToComplete)
-    {
-        if (timeToComplete > 0.0f)
-        {
-            m_RotationCounter = 0.0f;
-            m_OldRotation = m_Rotation;
-            m_TargetRotation = targetRotation;
-            m_RotationTime = timeToComplete;
-
-            for (int i = 0; i < 3; i++)
-            {
-                m_TargetRotation[i] = (((((int)m_TargetRotation[i] - (int)m_OldRotation[i]) % 360) + 540) % 360) - 180;
-            }
-        }
-        else
-        {
-            SetRotation(targetRotation);
-        }
-    }
-
-    bool SceneNode::InterpolateRotation(float fraction)
-    {
-        if (fraction >= 1.0f)
-        {
-            m_OldRotation = m_Rotation;
-            return true;
-        }
-        m_LocalMatrix = glm::translate(m_LocalMatrix, m_Origin);
-
-        glm::vec3 rotation = m_OldRotation + fraction*(m_TargetRotation);
-        if (rotation.x)
-        {
-            m_LocalMatrix = glm::rotate(m_LocalMatrix, glm::radians(rotation.x - m_Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-        }
-        if (rotation.y)
-        {
-            m_LocalMatrix = glm::rotate(m_LocalMatrix, glm::radians(rotation.y - m_Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-        }
-        if (rotation.z)
-        {
-            m_LocalMatrix = glm::rotate(m_LocalMatrix, glm::radians(rotation.z - m_Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-        }
-        m_Rotation = rotation;
-        m_LocalMatrix = glm::translate(m_LocalMatrix, -m_Origin);
-
-        return false;
+        m_Transformation[3] = glm::vec4(position.x, position.y, position.z, 1.0f);
     }
 
     void SceneNode::SetRotationMatrix(const glm::mat3 &rotation)
     {
         glm::mat3 newrot = glm::transpose(rotation);
-        m_LocalMatrix[0] = glm::vec4(newrot[0][0], newrot[1][0], newrot[2][0], m_LocalMatrix[0][3]);
-        m_LocalMatrix[1] = glm::vec4(newrot[0][1], newrot[1][1], newrot[2][1], m_LocalMatrix[1][3]);
-        m_LocalMatrix[2] = glm::vec4(newrot[0][2], newrot[1][2], newrot[2][2], m_LocalMatrix[2][3]);
+        m_Transformation[0] = glm::vec4(newrot[0][0], newrot[1][0], newrot[2][0], m_Transformation[0][3]);
+        m_Transformation[1] = glm::vec4(newrot[0][1], newrot[1][1], newrot[2][1], m_Transformation[1][3]);
+        m_Transformation[2] = glm::vec4(newrot[0][2], newrot[1][2], newrot[2][2], m_Transformation[2][3]);
     }
 
-    void SceneNode::SetScale(const glm::vec3 &scale)
+    void SceneNode::SetTransform(const glm::mat4 &matrix)
     {
-        Scale(glm::vec3(scale.x / m_Scale.x, scale.y / m_Scale.y, scale.z / m_Scale.z));
-    }
-
-    void SceneNode::SetGlobalScale(const glm::vec3 &scale)
-    {
-        m_LocalMatrix = glm::scale(m_LocalMatrix, scale);
-
-        m_Origin.x *= scale.x;
-        m_Origin.y *= scale.y;
-        m_Origin.z *= scale.z;
-    }
-
-    void SceneNode::Scale(const glm::vec3 &scale)
-    {
-        m_DeformationMatrix = glm::scale(m_DeformationMatrix, scale);
-
-        m_Scale *= scale;
-        m_OldScale = m_Scale;
-        m_TargetScale = m_Scale;
-
-        m_Origin.x *= scale.x;
-        m_Origin.y *= scale.y;
-        m_Origin.z *= scale.z;
-    }
-
-    void SceneNode::ScaleTo(const glm::vec3 &scale, float timeToComplete)
-    {
-        m_TargetScale = scale;
-        m_ScaleTime = timeToComplete;
-    }
-
-    bool SceneNode::InterpolateScale(float fraction)
-    {
-        if (fraction >= 1.0f)
-        {
-            SetScale(m_TargetScale);
-            return true;
-        }
-        m_Scale = m_OldScale + fraction*(m_TargetScale - m_OldScale);
-
-        m_Origin.x /= m_OldScale.x;
-        m_Origin.y /= m_OldScale.y;
-        m_Origin.z /= m_OldScale.z;
-
-        m_Origin.x *= m_Scale.x;
-        m_Origin.y *= m_Scale.y;
-        m_Origin.z *= m_Scale.z;
-
-        return false;
-    }
-
-    void SceneNode::SetShear(const glm::vec3 &shearA, const glm::vec3 &shearB)
-    {
-        Shear(
-            glm::vec3(shearA.x / m_ShearA.x, shearA.y / m_ShearA.y, shearA.z / m_ShearA.z),
-            glm::vec3(shearB.x / m_ShearB.x, shearB.y / m_ShearB.y, shearB.z / m_ShearB.z)
-        );
-    }
-
-    void SceneNode::Shear(const glm::vec3 &shearA, const glm::vec3 &shearB)
-    {
-        m_DeformationMatrix = glm::shearX3D(m_DeformationMatrix, shearA.x, shearB.x);
-        m_DeformationMatrix = glm::shearY3D(m_DeformationMatrix, shearA.y, shearB.y);
-        m_DeformationMatrix = glm::shearZ3D(m_DeformationMatrix, shearA.z, shearB.z);
-
-        m_ShearA *= shearA;
-        m_ShearB *= shearB;
-    }
-
-    void SceneNode::SetTransform(glm::mat4 *matrix)
-    {
-        if (!matrix) m_LocalMatrix = glm::mat4(1.0f);
-        else m_LocalMatrix = *matrix;
+        m_Transformation = matrix;
     }
 
     const glm::mat4 SceneNode::GetGlobalTransform()
     {
         if (m_Parent)
-            return m_Parent->GetGlobalTransform() * m_LocalMatrix;
+            return m_Parent->GetGlobalTransform() * m_Transformation;
         else
-            return m_LocalMatrix;
+            return m_Transformation;
     }
 
-    void SceneNode::SetOrigin(const glm::vec3 &origin) {
-        m_Origin = origin;
+    void SceneNode::Set(const std::string &name, const glm::vec3 &value)
+    {
+        m_Properties[name]->Set(value);
     }
 
-    RootNode::RootNode() : SceneNode(INVALID_ID, "Root") {}
+    void SceneNode::Add(const std::string &name, const glm::vec3 &value)
+    {
+        m_Properties[name]->Add(value);
+    }
 
-    Camera::Camera(ActorId actorId, std::string name) : SceneNode(actorId, name) {}
+    void SceneNode::InterpolateTo(const std::string &name, const glm::vec3 &value, float timeToComplete)
+    {
+        m_Properties[name]->InterpolateTo(value, timeToComplete);
+    }
+
+    const glm::vec3 &SceneNode::Get(const std::string &name)
+    {
+        return m_Properties[name]->Get();
+    }
 
     const glm::mat4 Camera::GetView()
     {
@@ -380,13 +170,13 @@ namespace Tarbora {
         return position;
     }
 
-    MaterialNode::MaterialNode(ActorId actorId, std::string name, std::string material) :
+    MaterialNode::MaterialNode(ActorId actorId, const std::string &name, const std::string &material) :
         SceneNode(actorId, name)
     {
         m_Material = ResourcePtr<Material>("materials/" + material, "materials/missing.mat.lua");
     }
 
-    void MaterialNode::Draw(Scene *scene, glm::mat4 &parentTransform)
+    void MaterialNode::Draw(Scene *scene, const glm::mat4 &parentTransform)
     {
         (void)(parentTransform);
         scene->GetRenderQueue()->PushMaterial(m_Material);
@@ -397,36 +187,59 @@ namespace Tarbora {
         scene->GetRenderQueue()->PopMaterial();
     }
 
-    MeshNode::MeshNode(ActorId actorId, std::string name, RenderPass renderPass, std::string mesh) :
+    MeshNode::MeshNode(ActorId actorId, const std::string &name, RenderPass renderPass, const std::string &mesh) :
         SceneNode(actorId, name), m_RenderPass(renderPass)
     {
-        m_Mesh = ResourcePtr<Mesh>("meshes/" + mesh);
-        if (m_Mesh == nullptr) m_Mesh = ResourcePtr<Mesh>("meshes/cube.mesh");
+        m_Mesh = ResourcePtr<Mesh>("meshes/" + mesh, "meshes/cube.mesh");
+
         m_Uv = glm::vec2(0.0f, 0.0f);
         m_TextureSize = glm::vec3(0.0f, 0.0f, 0.0f);
+
+        m_Properties["color_primary"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["color_secondary"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["color_detail1"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["color_detail2"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
     }
 
-    void MeshNode::Draw(Scene *scene, glm::mat4 &parentTransform)
+    void MeshNode::Draw(Scene *scene, const glm::mat4 &parentTransform)
     {
         if (m_Mesh != nullptr)
         {
-            glm::mat4 transform = parentTransform * m_LocalMatrix * m_DeformationMatrix;
+            glm::mat4 transform = parentTransform * m_Transformation * m_Deformation;
             scene->GetRenderQueue()->DrawMesh(
                 m_RenderPass,
                 m_Mesh,
                 transform,
                 m_Uv,
                 m_TextureSize,
-                m_ColorPrimary,
-                m_ColorSecondary,
-                m_ColorDetail,
-                m_ColorDetail2
+                m_Properties["color_primary"]->Get(),
+                m_Properties["color_secondary"]->Get(),
+                m_Properties["color_detail1"]->Get(),
+                m_Properties["color_detail2"]->Get()
             );
         }
     }
 
-    void MeshNode::SetUV(glm::vec3 &size, glm::vec2 &uv) {
+    void MeshNode::SetUV(const glm::vec3 &size, const glm::vec2 &uv) {
         m_TextureSize = size;
         m_Uv = uv;
     }
+
+    // void MeshNode::SetShear(const glm::vec3 &shearA, const glm::vec3 &shearB)
+    // {
+    //     Shear(
+    //         glm::vec3(shearA.x / m_ShearA.x, shearA.y / m_ShearA.y, shearA.z / m_ShearA.z),
+    //         glm::vec3(shearB.x / m_ShearB.x, shearB.y / m_ShearB.y, shearB.z / m_ShearB.z)
+    //     );
+    // }
+
+    // void MeshNode::Shear(const glm::vec3 &shearA, const glm::vec3 &shearB)
+    // {
+    //     m_DeformationMatrix = glm::shearX3D(m_DeformationMatrix, shearA.x, shearB.x);
+    //     m_DeformationMatrix = glm::shearY3D(m_DeformationMatrix, shearA.y, shearB.y);
+    //     m_DeformationMatrix = glm::shearZ3D(m_DeformationMatrix, shearA.z, shearB.z);
+    //
+    //     m_ShearA *= shearA;
+    //     m_ShearB *= shearB;
+    // }
 }

@@ -7,7 +7,7 @@ root = {
     origin = {0, 0, 0},
     position = {0, 0, 0},
     rotation = {0, 0, 0},
-    size = {16, 16, 16},
+    size = {0.16, 0.16, 0.16},
     uv = {0, 0},
     nodes = {
         {
@@ -16,7 +16,7 @@ root = {
             origin = {0, 0, 0},
             position = {0, 0, 0},
             rotation = {45, 45, 45},
-            size = {16, 16, 16},
+            size = {0.16, 0.16, 0.16},
             uv = {0, 32}
         }
     }
