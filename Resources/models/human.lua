@@ -27,6 +27,7 @@ root = {
                     rotation = {0, 0, 0},
                     size = {55, 55, 55},
                     uv = {0, 0},
+                    color_primary = {255, 0, 0},
                     cameras = {
                         {
                             name = "3rd_person",

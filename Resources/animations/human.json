@@ -1,9 +1,15 @@
 {
     "idle": {
         "blendTime": 0.0,
-        "duration": 4.0,
+        "duration": 10.0,
         "loop": true,
         "nodes": {
+            "head": {
+                "color_primary": {
+                    "0.0": [255, 0, 0],
+                    "5.0": [0, 255, 0]
+                }
+            },
             "arm_r": {
                 "position": ["~-2", "~5", "~"],
                 "rotation": {

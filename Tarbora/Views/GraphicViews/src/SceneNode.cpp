@@ -138,7 +138,12 @@ namespace Tarbora {
 
     void SceneNode::InterpolateTo(const std::string &name, const glm::vec3 &value, float timeToComplete)
     {
-        m_Properties[name]->InterpolateTo(value, timeToComplete);
+        PropertyPtr property = m_Properties[name];
+        if (!property->IsAnimatable()) {
+            property = property->MakeAnimatable();
+            m_Properties[name] = property;
+        }
+        property->InterpolateTo(value, timeToComplete);
     }
 
     const glm::vec3 &SceneNode::Get(const std::string &name)
@@ -195,10 +200,10 @@ namespace Tarbora {
         m_Uv = glm::vec2(0.0f, 0.0f);
         m_TextureSize = glm::vec3(0.0f, 0.0f, 0.0f);
 
-        m_Properties["color_primary"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["color_secondary"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["color_detail1"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["color_detail2"] = PropertyPtr(new AnimatedNodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["color_primary"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["color_secondary"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["color_detail1"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["color_detail2"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
     }
 
     void MeshNode::Draw(Scene *scene, const glm::mat4 &parentTransform)
