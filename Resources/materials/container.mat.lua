@@ -1,5 +1,5 @@
 shader = "model.shader.lua"
-albedo = "terrain.png"
-specular = "white.png"
-colorTint = "black.png"
-pixel_density = 256
+albedo = "container.png"
+specular = "container_specular.png"
+colorTint = "container_tint.png"
+pixel_density = 500

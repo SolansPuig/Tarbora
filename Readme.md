@@ -55,3 +55,6 @@ me be able to spend more hours working in that project and maybe hire someone to
 
 ![Screenshot after implementing custom colors](custom_color_example.png)
 *Screenshot after implementing custom colors*
+
+![The new texture parsing allows atlas tiling and triplanar mapping](improved_textures.png)
+*The new texture parsing allows atlas tiling and triplanar mapping*

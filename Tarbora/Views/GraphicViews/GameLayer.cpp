@@ -15,7 +15,7 @@ namespace Tarbora {
         m_FreezeMouse = false;
 
         std::shared_ptr<Camera> camera = m_Scene->CreateCamera(MAIN_CAMERA_ID);
-        camera->Set("rotation", glm::vec3(-1.0f, 190.0f, 0.0f));
+        camera->Set("rotation", glm::vec3(-1.0f, 220.0f, 0.0f));
         camera->Set("position", glm::vec3(-3.0f, -1.5f, -4.0f));
         m_Scene->SetCamera(camera);
 
