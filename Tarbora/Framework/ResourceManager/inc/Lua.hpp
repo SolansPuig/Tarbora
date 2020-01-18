@@ -217,6 +217,11 @@ namespace Tarbora {
     inline LuaObject LuaType<LuaObject>::GetDefault() { return LuaObject(); }
     template <>
     inline std::string LuaType<LuaObject>::GetErrorName() { return "Not an object"; }
+    template <>
+    inline glm::vec3 LuaType<glm::vec3>::GetDefault() { return glm::vec3(0.0f); }
+    template <>
+    inline std::string LuaType<glm::vec3>::GetErrorName() { return "Not a vec3"; }
+
 
     template <class T>
     template <class... Args>
@@ -386,6 +391,19 @@ namespace Tarbora {
 
         if (!silent) LuaPrintError(name, GetErrorName());
         return def;
+    }
+
+    template <>
+    inline bool LuaType<glm::vec3>::Is(const sol_object &object) { return object.is<sol::table>(); }
+
+    template <>
+    inline glm::vec3 LuaType<glm::vec3>::As(sol::state *state, const sol_object &object, const std::string &name, glm::vec3 def, bool silent)
+    {
+        LuaTable table = LuaType<LuaTable>::As(state, object, name, LuaTable(), silent);
+        glm::vec3 vec;
+        for (int i = 0; i < 3; i++)
+            vec[i] = table.Get<float>(i+1, def[i], silent);
+        return vec;
     }
 
     template <>

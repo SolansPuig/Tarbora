@@ -13,14 +13,6 @@ namespace Tarbora {
         AddChild(mesh);
     }
 
-    glm::vec3 ReadValue(LuaTable &table, const std::string &name, float scale=1.f, glm::vec3 def=glm::vec3(0.f))
-    {
-        glm::vec3 vec;
-        for (int i = 0; i < 3; i++)
-            vec[i] = table.Get(name, true).Get<float>(i+1, def[i], true)/scale;
-        return vec;
-    }
-
     std::shared_ptr<MeshNode> ActorModel::CreateNode(ActorId id, RenderPass renderPass, LuaTable table)
     {
         // Read all the parameters for the node
@@ -29,34 +21,32 @@ namespace Tarbora {
 
         // Create the node
         std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, renderPass, shape));
-        node->SetOrigin(ReadValue(table, "origin"));
-        node->Set("position", ReadValue(table, "position", 100.f));
-        node->Set("rotation", ReadValue(table, "rotation"));
-        node->Set("uv_map", ReadValue(table, "uv_map"));
-        node->Set("color_primary", ReadValue(table, "color_primary", 255.f, glm::vec3(255.f)));
-        node->Set("color_secondary", ReadValue(table, "color_secondary", 255.f, glm::vec3(255.f)));
-        node->Set("color_detail1", ReadValue(table, "color_detail1", 255.f, glm::vec3(255.f)));
-        node->Set("color_detail2", ReadValue(table, "color_detail2", 255.f, glm::vec3(255.f)));
-        glm::vec3 scale = ReadValue(table, "size", 100.f);
+        node->SetOrigin(table.Get<glm::vec3>("origin", true));
+        node->Set("position", table.Get<glm::vec3>("position", true)/100.f);
+        node->Set("rotation", table.Get<glm::vec3>("rotation", true));
+        node->Set("uv_map", table.Get<glm::vec3>("uv_map", true));
+        node->Set("color_primary", table.Get<glm::vec3>("color_primary", glm::vec3(255.f), true)/255.f);
+        node->Set("color_secondary", table.Get<glm::vec3>("color_secondary", glm::vec3(255.f), true)/255.f);
+        node->Set("color_detail1", table.Get<glm::vec3>("color_detail1", glm::vec3(255.f), true)/255.f);
+        node->Set("color_detail2", table.Get<glm::vec3>("color_detail2", glm::vec3(255.f), true)/255.f);
+        glm::vec3 scale = table.Get<glm::vec3>("size", true)/100.f;
         node->Set("scale", scale);
         node->Set("mesh_size", scale);
-        glm::vec3 textureSize = ReadValue(table, "texture_size", 100.f);
+        glm::vec3 textureSize = table.Get<glm::vec3>("texture_size", true)/100.f;
         if (textureSize == glm::vec3(0.0f)) textureSize = scale;
         node->Set("texture_size", textureSize);
 
         // Create all its child nodes and add them as children to this
-        std::vector<LuaTable> nodes = table.Get<std::vector<LuaTable>>("nodes", true);
-        for (auto n : nodes)
+        for (auto n : table.Get("nodes", true))
         {
-            std::shared_ptr<MeshNode> new_node = CreateNode(id, renderPass, n);
+            std::shared_ptr<MeshNode> new_node = CreateNode(id, renderPass, n.second.GetAs<LuaTable>());
             node->AddChild(new_node);
         }
 
         // Create the child cameras, if any
-        std::vector<LuaTable> cameras = table.Get<std::vector<LuaTable>>("cameras", true);
-        for (auto camera : cameras)
+        for (auto c : table.Get("cameras", true))
         {
-            std::shared_ptr<Camera> newCamera = CreateCamera(id, camera);
+            std::shared_ptr<Camera> newCamera = CreateCamera(id, c.second.GetAs<LuaTable>());
             node->AddChild(newCamera);
         }
 
@@ -72,9 +62,9 @@ namespace Tarbora {
 
         // Create the node
         std::shared_ptr<Camera> node = std::shared_ptr<Camera>(new Camera(id, name));
-        node->SetOrigin(ReadValue(table, "origin"));
-        node->Set("position", ReadValue(table, "position", 100.f));
-        node->Set("rotation", ReadValue(table, "rotation"));
+        node->SetOrigin(table.Get<glm::vec3>("origin", true));
+        node->Set("position", table.Get<glm::vec3>("position", true)/100.f);
+        node->Set("rotation", table.Get<glm::vec3>("rotation", true));
 
         m_Nodes[name] = node;
 

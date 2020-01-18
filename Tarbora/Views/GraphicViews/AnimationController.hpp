@@ -15,8 +15,6 @@ namespace Tarbora {
 
     private:
         void UpdateAnimation();
-        glm::vec3 ReadValueWithScale(LuaTable &p, LuaTable &value, const glm::vec3 &currentValue, float scale);
-        glm::vec3 ReadValue(LuaTable &p, const std::string &name, LuaTable &value, const glm::vec3 &currentValue);
 
         ActorModel *m_ActorModel;
         std::string m_AnimationsFile;
