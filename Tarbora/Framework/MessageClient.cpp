@@ -29,6 +29,7 @@ namespace Tarbora {
         {
             return false;
         }
+        // LOG_DEBUG("%s", m_Messages.front().subject().c_str());
         *message = m_Messages.front();
         m_Messages.pop();
         return true;

@@ -1,0 +1,6 @@
+vertex = "shaders/sky.vert"
+tes_control = ""
+tes_eval = ""
+geometry = ""
+fragment = "shaders/sky.frag"
+compute = ""

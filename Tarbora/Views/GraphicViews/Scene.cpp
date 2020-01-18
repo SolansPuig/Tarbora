@@ -1,28 +1,13 @@
-#include "../inc/Scene.hpp"
+#include "Scene.hpp"
 #include <utility>
-#include "../../../Messages/BasicMessages.hpp"
+#include "../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
     Scene::Scene(GraphicView *view) :
         m_View(view)
     {
         m_Root = std::shared_ptr<RootNode>(new RootNode());
-        m_Camera = std::shared_ptr<Camera>(new Camera(MAIN_CAMERA_ID, "body"));
-        AddChild(m_Camera);
-        m_Camera->Set("rotation", glm::vec3(0.0f, 180.0f, 0.0f));
-        m_Camera->Set("position", glm::vec3(0.0f, 0.0f, -5.0f));
-
         m_Projection = glm::perspective(glm::radians(45.0f), m_View->GetGraphicsEngine()->GetWindow()->GetRatio(), 0.1f, 100.0f);
-
-        // EvtWindowResizeId = EventManager::Subscribe("WindowResize", [this](Event *e)
-        // {
-        //     (void)(e);
-        //     m_Projection = glm::perspective(glm::radians(45.0f), m_View->graphicsEngine.window->GetRatio()->GetRatio(), 0.1f, 100.0f);
-        // });
-    }
-
-    Scene::~Scene()
-    {
     }
 
     void Scene::Update(float deltaTime)
@@ -45,19 +30,21 @@ namespace Tarbora {
         }
     }
 
-    void Scene::CreateSkybox(std::string material)
+    std::shared_ptr<Skybox> Scene::CreateSkybox(std::string material)
     {
         m_Skybox = std::shared_ptr<Skybox>(new Skybox(material));
         AddChild(m_Skybox);
+        return m_Skybox;
     }
 
-    void Scene::CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material)
+    std::shared_ptr<ActorModel> Scene::CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material)
     {
         std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, renderPass, model, material));
         AddChild(actor);
+        return actor;
     }
 
-    void Scene::CreateActorModel(ActorId id, std::string entity, std::string variant)
+    std::shared_ptr<ActorModel> Scene::CreateActorModel(ActorId id, std::string entity, std::string variant)
     {
         JsonPtr resource = GET_RESOURCE(Json, "entities/" + entity);
 
@@ -96,20 +83,28 @@ namespace Tarbora {
         resource->PopErrName();
 
         AddChild(actor);
+        return actor;
     }
 
     void Scene::AnimateActor(ActorId id, std::string animation)
     {
-        SceneNodePtr child = GetChild(id);
+        std::shared_ptr<SceneNode> child = GetChild(id);
         std::static_pointer_cast<ActorModel>(child)->Animate(animation);
+    }
+
+    std::shared_ptr<Camera> Scene::CreateCamera(ActorId id)
+    {
+        std::shared_ptr<Camera> camera = std::shared_ptr<Camera>(new Camera(id, "body"));
+        AddChild(camera);
+        return camera;
     }
 
     void Scene::SetCamera(ActorId id, std::string nodeName)
     {
-        SceneNodePtr actor = GetChild(id);
+        std::shared_ptr<SceneNode> actor = GetChild(id);
         if (actor)
         {
-            SceneNodePtr camera = actor->GetChild(nodeName);
+            std::shared_ptr<SceneNode> camera = actor->GetChild(nodeName);
             if (camera)
             {
                 m_Camera = std::static_pointer_cast<Camera>(camera);
@@ -117,20 +112,22 @@ namespace Tarbora {
         }
     }
 
-    void Scene::AddChild(SceneNodePtr child)
+    void Scene::AddChild(std::shared_ptr<SceneNode> child)
     {
         ActorId id = child->GetActorId();
         if (id != INVALID_ID)
+        {
             m_ActorMap[id] = child;
+        }
         m_Root->AddChild(child);
     }
 
-    SceneNodePtr Scene::GetChild(ActorId id)
+    std::shared_ptr<SceneNode> Scene::GetChild(ActorId id)
     {
         auto itr = m_ActorMap.find(id);
         if (itr == m_ActorMap.end())
         {
-            return SceneNodePtr();
+            return std::shared_ptr<SceneNode>();
         }
         return itr->second;
     }
@@ -138,8 +135,10 @@ namespace Tarbora {
     bool Scene::RemoveChild(ActorId id)
     {
         if (id == INVALID_ID)
+        {
             return false;
-        SceneNodePtr child = GetChild(id);
+        }
+        std::shared_ptr<SceneNode> child = GetChild(id);
         m_ActorMap.erase(id);
         return m_Root->RemoveChild(id);
     }

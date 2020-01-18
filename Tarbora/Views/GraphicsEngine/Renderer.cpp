@@ -3,6 +3,7 @@
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include <random>
+#include "../../Framework/External/tracy/TracyOpenGL.hpp"
 
 #define KERNEL_SIZE 8
 
@@ -213,7 +214,7 @@ namespace Tarbora {
         m_NoiseTexture = std::unique_ptr<TextureInternal>(new TextureInternal(4, 4, GL_RGB32F, GL_FLOAT, GL_RGB, &ssaoNoise[0]));
         m_NoiseTexture->Configure(GL_NEAREST, GL_NEAREST, GL_REPEAT, GL_REPEAT);
 
-        m_OcclusionShader = ResourcePtr<Shader>("shaders/occlusion.shader.json");
+        m_OcclusionShader = ResourcePtr<Shader>("shaders/occlusion.shader.lua");
         m_OcclusionShader.SetInitialConfig([&, ssaoKernel](auto shader){
             LOG_DEBUG("Initializing occlusion shader %d %d", m_Width, m_Height);
             shader->Use();
@@ -235,7 +236,7 @@ namespace Tarbora {
             LOG_ERR("Occlusion blur Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-        m_OcclusionBlurShader = ResourcePtr<Shader>("shaders/occlusion_blur.shader.json");
+        m_OcclusionBlurShader = ResourcePtr<Shader>("shaders/occlusion_blur.shader.lua");
         m_OcclusionBlurShader.SetInitialConfig([](auto shader){
             shader->Use();
             shader->Set("ssaoInput", 0);
@@ -256,7 +257,7 @@ namespace Tarbora {
             LOG_ERR("Lighting Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-        m_LightingShader = ResourcePtr<Shader>("shaders/lighting.shader.json");
+        m_LightingShader = ResourcePtr<Shader>("shaders/lighting.shader.lua");
         m_LightingShader.SetInitialConfig([](auto shader){
             shader->Use();
             shader->Set("gPosition", 0);
@@ -287,7 +288,7 @@ namespace Tarbora {
             LOG_ERR("Scene Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-        m_SceneShader = ResourcePtr<Shader>("shaders/scene.shader.json");
+        m_SceneShader = ResourcePtr<Shader>("shaders/scene.shader.lua");
         m_SceneShader.SetInitialConfig([](auto shader){
             shader->Use();
             shader->Set("tex", 0);

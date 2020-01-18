@@ -1,17 +1,14 @@
 #pragma once
-#include "../../GraphicsEngine/GraphicsEngine.hpp"
+#include "../GraphicsEngine/GraphicsEngine.hpp"
 #include "NodeProperty.hpp"
 
 namespace Tarbora {
     class Scene;
 
-    class SceneNode;
-    typedef std::shared_ptr<SceneNode> SceneNodePtr;
-
     class SceneNode
     {
         friend class Scene;
-        typedef std::map<std::string, SceneNodePtr> SceneNodeMap;
+        typedef std::map<std::string, std::shared_ptr<SceneNode>> SceneNodeMap;
         typedef std::unordered_map<std::string, PropertyPtr> PropertyMap;
     public:
         SceneNode(ActorId actorId, const std::string &name);
@@ -22,9 +19,9 @@ namespace Tarbora {
         virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform);
         virtual void AfterDraw(Scene *scene) { (void)(scene); }
 
-        virtual bool AddChild(SceneNodePtr child);
-        virtual SceneNodePtr GetChild(ActorId id);
-        virtual SceneNodePtr GetChild(const std::string &name);
+        virtual bool AddChild(std::shared_ptr<SceneNode> child);
+        virtual std::shared_ptr<SceneNode> GetChild(ActorId id);
+        virtual std::shared_ptr<SceneNode> GetChild(const std::string &name);
         virtual bool RemoveChild(ActorId id);
         virtual bool RemoveChild(const std::string &name);
 
@@ -86,7 +83,6 @@ namespace Tarbora {
     private:
         glm::mat4 m_View;
     };
-    typedef std::shared_ptr<Camera> CameraPtr;
 
     class MaterialNode : public SceneNode
     {
@@ -104,13 +100,8 @@ namespace Tarbora {
         MeshNode(ActorId actorId, const std::string &name, RenderPass renderPass, const std::string &mesh);
         virtual void Draw(Scene *scene, const glm::mat4 &parentTransform);
 
-        void SetUV(const glm::vec3 &size, const glm::vec2 &uv);
-
     protected:
         RenderPass m_RenderPass;
         ResourcePtr<Mesh> m_Mesh;
-
-        glm::vec2 m_Uv;
-        glm::vec3 m_TextureSize;
     };
 }

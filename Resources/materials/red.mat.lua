@@ -1,2 +1,2 @@
-shader = "model.shader.json"
+shader = "model.shader.lua"
 albedo = "red.png"

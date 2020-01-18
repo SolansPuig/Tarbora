@@ -22,10 +22,10 @@ void main()
     float gamma = 2.2;
 
     const DirectionalLight light = DirectionalLight(
-        vec3(1.2f, -1.0f, 1.3f),
-        vec3(0.7f, 0.7f, 0.7f),
+        vec3(-1.0f, -4.0f, 6.0f),
+        vec3(0.6f, 0.5f, 0.5f),
         vec3(0.4f, 0.4f, 0.4f),
-        vec3(5.0f, 1.0f, 0.8f)
+        vec3(2.0f, 1.0f, 0.8f)
     );
     vec3 FragPos = texture(gPosition, TexCoords).rgb;
     vec3 Normal = texture(gNormal, TexCoords).rgb;

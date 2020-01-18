@@ -1,6 +1,6 @@
-#include "../inc/HumanView.hpp"
-#include "../inc/DemoWindow.hpp"
-#include "../inc/MetricsGui.hpp"
+#include "HumanView.hpp"
+#include "DemoWindow.hpp"
+#include "MetricsGui.hpp"
 
 namespace Tarbora {
     HumanView::HumanView() :
@@ -45,7 +45,6 @@ namespace Tarbora {
             capture = !capture;
             GetGraphicsEngine()->GetWindow()->CaptureMouse(capture);
             m_GameLayer->FreezeMouse(!capture);
-
         }
 
         if (GetGraphicsEngine()->GetInputManager()->GetKeyDown(KEY_F2)) {

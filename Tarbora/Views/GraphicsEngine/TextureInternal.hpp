@@ -14,11 +14,11 @@ namespace Tarbora {
         void Configure(unsigned int minFilter, unsigned int magFilter);
         void Configure(unsigned int minFilter, unsigned int magFilter, unsigned int wrapS, unsigned int wrapT);
 
-        void Bind(unsigned int channel=0);
+        void Bind(unsigned int channel=0) const;
 
-        unsigned int GetId() { return m_Id; }
-        int GetWidth() { return m_Width; }
-        int GetHeight() { return m_Height; }
+        unsigned int GetId() const { return m_Id; }
+        int GetWidth() const { return m_Width; }
+        int GetHeight() const { return m_Height; }
 
     private:
         void Build(void *data, unsigned int format, unsigned int type);

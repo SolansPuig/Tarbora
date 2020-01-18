@@ -20,13 +20,10 @@ namespace Tarbora {
         Last
     };
 
-    struct RenderElement
-    {
-        ResourcePtr<Material> material;
-        ResourcePtr<Mesh> mesh;
-        RenderPass renderPass;
-        RenderElementData data;
-    };
+    typedef std::vector<RenderElementData> InstanceList;
+    typedef std::unordered_map<ResourcePtr<Mesh>, InstanceList, ResourcePtrHash> MeshList;
+    typedef std::unordered_map<ResourcePtr<Material>, MeshList, ResourcePtrHash> MaterialList;
+    typedef std::map<unsigned int, MaterialList> RenderList;
 
     class RenderQueue
     {
@@ -34,7 +31,7 @@ namespace Tarbora {
         RenderQueue(std::shared_ptr<Renderer> renderer) :
             m_Renderer(renderer) {}
 
-        void DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 textureSize, glm::vec3 primary, glm::vec3 secondary, glm::vec3 detail, glm::vec3 detail2);
+        void DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 meshSize, glm::vec3 textureSize, glm::vec3 primary, glm::vec3 secondary, glm::vec3 detail, glm::vec3 detail2);
 
         void Draw();
 
@@ -43,7 +40,7 @@ namespace Tarbora {
         void PopMaterial();
 
     private:
-        std::vector<RenderElement> m_RenderElements;
+        RenderList m_RenderList;
         std::stack<ResourcePtr<Material>> m_MaterialStack;
 
         std::shared_ptr<Renderer> m_Renderer;

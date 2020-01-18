@@ -8,6 +8,7 @@ namespace Tarbora {
     {
         glm::mat4 transform;
         glm::vec2 uvMap;
+        glm::vec3 meshSize;
         glm::vec3 textureSize;
         glm::vec3 colorPrimary;
         glm::vec3 colorSecondary;

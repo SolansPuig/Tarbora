@@ -1,4 +1,5 @@
-shader = "model.shader.json"
-albedo = "container.png"
-specular = "container_specular.png"
-colorTint = "container_tint.png"
+shader = "model.shader.lua"
+albedo = "terrain.png"
+specular = "white.png"
+colorTint = "black.png"
+pixel_density = 256

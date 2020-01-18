@@ -1,4 +1,4 @@
-#include "../inc/NodeProperty.hpp"
+#include "NodeProperty.hpp"
 
 namespace Tarbora {
     void NodeProperty::Set(const glm::vec3 &newValue)
@@ -74,22 +74,13 @@ namespace Tarbora {
 
     void Rotation::Add(const glm::vec3 &newValue)
     {
+        glm::quat addValue(glm::radians(newValue));
+
         *m_Transformation = glm::translate(*m_Transformation, *m_Origin);
-        if (newValue.x)
-        {
-            *m_Transformation = glm::rotate(*m_Transformation, glm::radians(newValue.x), glm::vec3(1.0f, 0.0f, 0.0f));
-        }
-        if (newValue.y)
-        {
-            *m_Transformation = glm::rotate(*m_Transformation, glm::radians(newValue.y), glm::vec3(0.0f, 1.0f, 0.0f));
-        }
-        if (newValue.z)
-        {
-            *m_Transformation = glm::rotate(*m_Transformation, glm::radians(newValue.z), glm::vec3(0.0f, 0.0f, 1.0f));
-        }
+        *m_Transformation = *m_Transformation * glm::mat4_cast(addValue);
         *m_Transformation = glm::translate(*m_Transformation, -(*m_Origin));
 
-        m_Value += newValue;
+        m_Value = glm::degrees(glm::eulerAngles(glm::quat_cast(*m_Transformation)));
     }
 
     PropertyPtr Rotation::MakeAnimatable()
@@ -99,22 +90,29 @@ namespace Tarbora {
 
     void AnimatedRotation::Add(const glm::vec3 &newValue)
     {
+        glm::quat addValue(glm::radians(newValue));
+
         *m_Transformation = glm::translate(*m_Transformation, *m_Origin);
-        if (newValue.x)
-        {
-            *m_Transformation = glm::rotate(*m_Transformation, glm::radians(newValue.x), glm::vec3(1.0f, 0.0f, 0.0f));
-        }
-        if (newValue.y)
-        {
-            *m_Transformation = glm::rotate(*m_Transformation, glm::radians(newValue.y), glm::vec3(0.0f, 1.0f, 0.0f));
-        }
-        if (newValue.z)
-        {
-            *m_Transformation = glm::rotate(*m_Transformation, glm::radians(newValue.z), glm::vec3(0.0f, 0.0f, 1.0f));
-        }
+        *m_Transformation = *m_Transformation * glm::mat4_cast(addValue);
         *m_Transformation = glm::translate(*m_Transformation, -(*m_Origin));
 
-        m_Value += newValue;
+        m_Value = glm::degrees(glm::eulerAngles(glm::quat_cast(*m_Transformation)));
+    }
+
+    void AnimatedRotation::Interpolate(float fraction)
+    {
+        if (fraction >= 1.0f)
+        {
+            Set(m_TargetValue);
+            m_TargetTime = 0.0f;
+        }
+        else
+        {
+            glm::quat old(glm::radians(m_OldValue));
+            glm::quat target(glm::radians(m_TargetValue));
+
+            Set(glm::degrees(glm::eulerAngles(mix(old, target, fraction))));
+        }
     }
 
     void Scale::Set(const glm::vec3 &newValue)

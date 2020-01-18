@@ -1,3 +1,4 @@
 shader = "model.shader.lua"
-albedo = "brown.png"
+albedo = "terrain.png"
 specular = "white.png"
+pixel_density = 256

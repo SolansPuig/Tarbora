@@ -1,5 +1,5 @@
 #include "GraphicsEngine.hpp"
-#include "../GraphicViews/inc/GraphicView.hpp"
+#include "../../Framework/Module.hpp"
 
 namespace Tarbora {
     std::shared_ptr<Resource> MeshResourceLoader::Load(std::string path)

@@ -55,7 +55,7 @@ namespace Tarbora {
     }
 
 
-    void TextureInternal::Bind(unsigned int channel)
+    void TextureInternal::Bind(unsigned int channel) const
     {
         glActiveTexture(GL_TEXTURE0 + channel);
         glBindTexture(GL_TEXTURE_2D, m_Id);

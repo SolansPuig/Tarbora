@@ -3,7 +3,9 @@ layout (location = 0) out vec3 gPosition;
 layout (location = 1) out vec3 gNormal;
 layout (location = 2) out vec4 gColorSpec;
 
-in vec2 TexCoord;
+in vec2 TexPos;
+in vec2 TexSize;
+in vec2 TexCoords;
 in vec3 FragPos;
 in vec3 Normal;
 in vec3 colorPrimary;
@@ -18,11 +20,13 @@ uniform sampler2D colorTint;
 
 void main()
 {
+    vec2 texCoord = TexPos + mod(TexCoords, TexSize);
+    // vec2 texCoord = vec2(1, 1);
     gPosition = FragPos;
     gNormal = normalize(Normal);
-    vec4 fragTexture = texture(albedo, TexCoord);
-    vec4 specularTexture = texture(specular, TexCoord);
-    vec4 colorTintTexture = texture(colorTint, TexCoord);
+    vec4 fragTexture = texture(albedo, texCoord);
+    vec4 specularTexture = texture(specular, texCoord);
+    vec4 colorTintTexture = texture(colorTint, texCoord);
     if (fragTexture.a == 0.0){
         discard;
     }

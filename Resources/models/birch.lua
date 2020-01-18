@@ -1,6 +1,4 @@
 scale = 1
-pixel_density = 100
-texture_size = 300
 root = {
     name = "body",
     shape = "cube.mesh",
@@ -9,7 +7,7 @@ root = {
     rotation = {0, 0, 0},
     size = {33, 225, 33},
     texture_size = {75, 225, 75},
-    uv = {0, 0},
+    uv_map = {0, 0},
     nodes = {
         {
             name = "trunk2",
@@ -19,7 +17,7 @@ root = {
             rotation = {0, 0, 0},
             size = {33, 225, 33},
             texture_size = {75, 225, 75},
-            uv = {0, 0},
+            uv_map = {0, 0},
             nodes = {
                 {
                     name = "trunk3",
@@ -29,7 +27,7 @@ root = {
                     rotation = {0, 0, 0},
                     size = {33, 225, 33},
                     texture_size = {75, 225, 75},
-                    uv = {0, 0},
+                    uv_map = {0, 0},
                     nodes = {
                         {
                             name = "trunk4",
@@ -39,7 +37,7 @@ root = {
                             rotation = {0, 0, 0},
                             size = {29, 225, 29},
                             texture_size = {75, 225, 75},
-                            uv = {0, 0},
+                            uv_map = {0, 0},
                             nodes = {
                                 {
                                     name = "trunk4",
@@ -49,7 +47,7 @@ root = {
                                     rotation = {0, 0, 0},
                                     size = {29, 225, 29},
                                     texture_size = {75, 225, 75},
-                                    uv = {0, 0}
+                                    uv_map = {0, 0}
                                 }
                             }
                         }

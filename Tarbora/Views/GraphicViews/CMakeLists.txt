@@ -1,9 +1,9 @@
 add_library (GraphicViews SHARED
-    src/HumanView.cpp
-    src/Scene.cpp
-    src/SceneNode.cpp
-    src/GameLayer.cpp
-    src/ActorModel.cpp
-    src/AnimationController.cpp
-    src/NodeProperty.cpp
+    HumanView.cpp
+    Scene.cpp
+    SceneNode.cpp
+    GameLayer.cpp
+    ActorModel.cpp
+    AnimationController.cpp
+    NodeProperty.cpp
 )

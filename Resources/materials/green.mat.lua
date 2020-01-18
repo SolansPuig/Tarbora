@@ -1,3 +1,3 @@
-shader = "model.shader.json"
+shader = "model.shader.lua"
 albedo = "green.png"
 specular = "white.png"

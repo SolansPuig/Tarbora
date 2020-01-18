@@ -9,7 +9,7 @@ namespace Tarbora {
 
         std::string windowTitle = "Tarbora Game Engine";
         int windowWidth = 1280, windowHeight = 720;
-        std::string postprocessShader = "shaders/postprocess.shader.json";
+        std::string postprocessShader = "shaders/postprocess.shader.lua";
 
         ResourcePtr<LuaScript> settings(settingsFile);
 

@@ -59,26 +59,28 @@ namespace Tarbora {
 
         glGenBuffers(1, &m_DataBuffer);
         glBindBuffer(GL_ARRAY_BUFFER, m_DataBuffer);
-        glEnableVertexAttribArray(4);
-        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(5);
-        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(4 * sizeof(float)));
-        glEnableVertexAttribArray(6);
-        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(8 * sizeof(float)));
-        glEnableVertexAttribArray(7);
-        glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(12 * sizeof(float)));
-        glEnableVertexAttribArray(8);
-        glVertexAttribPointer(8, 2, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(16 * sizeof(float)));
-        glEnableVertexAttribArray(9);
-        glVertexAttribPointer(9, 3, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(18 * sizeof(float)));
-        glEnableVertexAttribArray(10);
-        glVertexAttribPointer(10, 3, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(21 * sizeof(float)));
-        glEnableVertexAttribArray(11);
-        glVertexAttribPointer(11, 3, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(24 * sizeof(float)));
-        glEnableVertexAttribArray(12);
-        glVertexAttribPointer(12, 3, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(27 * sizeof(float)));
-        glEnableVertexAttribArray(13);
-        glVertexAttribPointer(13, 3, GL_FLOAT, GL_FALSE, 33 * sizeof(float), (void*)(30 * sizeof(float)));
+        glEnableVertexAttribArray(4); // transform[0]
+        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(5); // transform[1]
+        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(4 * sizeof(float)));
+        glEnableVertexAttribArray(6); // transform[2]
+        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(8 * sizeof(float)));
+        glEnableVertexAttribArray(7); // transform[3]
+        glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(12 * sizeof(float)));
+        glEnableVertexAttribArray(8); // UV Map
+        glVertexAttribPointer(8, 2, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(16 * sizeof(float)));
+        glEnableVertexAttribArray(9); // Mesh size
+        glVertexAttribPointer(9, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(18 * sizeof(float)));
+        glEnableVertexAttribArray(10); // Texture size
+        glVertexAttribPointer(10, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(21 * sizeof(float)));
+        glEnableVertexAttribArray(11); // Color primary
+        glVertexAttribPointer(11, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(24 * sizeof(float)));
+        glEnableVertexAttribArray(12); // Color secondary
+        glVertexAttribPointer(12, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(27 * sizeof(float)));
+        glEnableVertexAttribArray(13); // Color detail 1
+        glVertexAttribPointer(13, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(30 * sizeof(float)));
+        glEnableVertexAttribArray(14); // Color detail 2
+        glVertexAttribPointer(14, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(33 * sizeof(float)));
 
         glVertexAttribDivisor(4, 1);
         glVertexAttribDivisor(5, 1);
@@ -90,6 +92,7 @@ namespace Tarbora {
         glVertexAttribDivisor(11, 1);
         glVertexAttribDivisor(12, 1);
         glVertexAttribDivisor(13, 1);
+        glVertexAttribDivisor(14, 1);
     }
 
     void MeshInternal::Delete()

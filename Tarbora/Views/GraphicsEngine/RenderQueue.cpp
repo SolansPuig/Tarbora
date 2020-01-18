@@ -1,27 +1,28 @@
 #include "RenderQueue.hpp"
 
 namespace Tarbora {
-    void RenderQueue::DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 textureSize, glm::vec3 primary, glm::vec3 secondary, glm::vec3 detail, glm::vec3 detail2)
+    void RenderQueue::DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 meshSize, glm::vec3 textureSize, glm::vec3 primary, glm::vec3 secondary, glm::vec3 detail, glm::vec3 detail2)
     {
         ResourcePtr<Material> material = m_MaterialStack.top();
 
         #ifndef NO_INSTANCED
-            RenderElement element;
-            element.material = material;
-            element.mesh = mesh;
-            element.renderPass = renderPass;
-            element.data.transform = transform;
-            element.data.uvMap = uv;
-            element.data.textureSize = textureSize;
-            element.data.colorPrimary = primary;
-            element.data.colorSecondary = secondary;
-            element.data.colorDetail = detail;
-            element.data.colorDetail2 = detail2;
-            m_RenderElements.push_back(element);
+            RenderElementData data;
+            data.transform = transform;
+            data.uvMap = uv;
+            data.meshSize = meshSize;
+            data.textureSize = textureSize;
+            data.colorPrimary = primary;
+            data.colorSecondary = secondary;
+            data.colorDetail = detail;
+            data.colorDetail2 = detail2;
+
+            m_RenderList[renderPass][material][mesh].emplace_back(data);
+
         #else
             material->GetShader()->Set("transform", transform);
             material->GetShader()->Set("uv", uv);
-            material->GetShader()->Set("size", textureSize);
+            material->GetShader()->Set("meshSize", meshSize);
+            material->GetShader()->Set("textureSize", textureSize);
             material->GetShader()->Set("colorPrimary", primary);
             material->GetShader()->Set("colorSecondary", secondary);
             material->GetShader()->Set("colorDetail", detail);
@@ -30,25 +31,11 @@ namespace Tarbora {
         #endif
     }
 
-    bool sortElements(RenderElement e1, RenderElement e2)
-    {
-        if (e1.renderPass != e2.renderPass)
-            return e1.renderPass < e2.renderPass;
-        if (e1.material != e2.material)
-            return e1.material > e2.material;
-        return e1.mesh > e2.mesh;
-    }
-
     void RenderQueue::Draw()
     {
         #ifndef NO_INSTANCED
-            std::sort(m_RenderElements.begin(), m_RenderElements.end(), sortElements);
-            auto element = m_RenderElements.begin();
-            for (unsigned int pass = RenderPass::Zero; pass < RenderPass::Last; pass++)
+            for (unsigned int pass = RenderPass::Zero; pass < RenderPass::Last; ++pass)
             {
-                ResourcePtr<Material> currentMaterial;
-                ResourcePtr<Mesh> currentMesh;
-
                 switch (pass)
                 {
                     case Static:
@@ -73,32 +60,21 @@ namespace Tarbora {
                         break;
                 }
 
-                while (element->renderPass == pass)
+                for (auto material : m_RenderList[pass])
                 {
-                    if (element->material != currentMaterial)
+                    material.first->Bind();
+                    for (auto mesh : material.second)
                     {
-                        if (currentMesh.GetName() != "")
-                            currentMesh->DrawInstanced();
-                        currentMaterial = element->material;
-                        currentMaterial->Bind();
+                        mesh.first->Bind();
+                        for (auto instance : mesh.second)
+                        {
+                            mesh.first->AddInstance(instance);
+                        }
+                        mesh.first->DrawInstanced();
                     }
-                    if (element->mesh != currentMesh)
-                    {
-                        if (currentMesh.GetName() != "")
-                            currentMesh->DrawInstanced();
-                        currentMesh = element->mesh;
-                        currentMesh->Bind();
-                    }
-
-                    currentMesh->AddInstance(element->data);
-
-                    element++;
                 }
-                if (currentMesh.GetName() != "")
-                    currentMesh->DrawInstanced();
             }
-
-            m_RenderElements.clear();
+            m_RenderList.clear();
         #endif
     }
 

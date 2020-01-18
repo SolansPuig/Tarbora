@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/ModuleComponent.hpp"
+#include "../../Framework/ModuleComponent.hpp"
 #include "GraphicView.hpp"
 
 namespace Tarbora {

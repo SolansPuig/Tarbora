@@ -1,0 +1,6 @@
+vertex = "shaders/world.vert"
+tes_control = ""
+tes_eval = ""
+geometry = ""
+fragment = "shaders/world.frag"
+compute = ""

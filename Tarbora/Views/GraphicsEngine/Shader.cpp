@@ -1,5 +1,5 @@
 #include "GraphicsEngine.hpp"
-#include "../GraphicViews/inc/GraphicView.hpp"
+#include "../../Framework/Module.hpp"
 #include "../../Messages/BasicMessages.hpp"
 
 #define GAMEVIEW(MODULE) static_cast<GraphicView*>(MODULE)
@@ -27,7 +27,7 @@ namespace Tarbora {
         Delete();
     }
 
-    void Shader::Use()
+    void Shader::Use() const
     {
         glUseProgram(m_Id);
     }
@@ -77,45 +77,41 @@ namespace Tarbora {
         glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
     }
 
-    unsigned int Shader::CompileShader(raw_json j, const char* type)
+    unsigned int Shader::CompileShader(const std::string &path, const std::string &type)
     {
-        unsigned int id;
-
-        if (j[type].is_string() && j[type] != "")
+        if (path != "")
         {
-            // Read the shader file
-            std::ifstream file;
-            std::string path = j[type];
-            file.open(ResourceManager::GetResourceFolder() + path.c_str());
-            if (file.fail()) {
-                LOG_ERR("ShaderCompiler: Failed to load file %s for shader type %s.", path.c_str(), type);
-                return 0;
+            std::ifstream file(ResourceManager::GetResourceFolder() + path.c_str());
+            if (file)
+            {
+                std::string code = std::string(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
+                file.close();
+                return CompileShaderFile(type, code);
             }
-            std::string s = std::string (std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
-            file.close();
-            const char *code = s.c_str();
-            // Compile it
-            id = CompileShaderFile(type, code);
-        } else {
-            if (type == std::string("vertex") || type == std::string("fragment"))
-                LOG_ERR("ShaderCompiler: Shader type %s is required.", type);
-            return 0;
+            LOG_ERR("ShaderCompiler: Failed to load file %s for shader type %s.", path.c_str(), type.c_str());
         }
-        return id;
+        else
+        {
+            if (type == "vertex" || type == "fragment")
+                LOG_ERR("ShaderCompiler: Shader type %s is required.", type.c_str());
+        }
+
+        return 0;
     }
 
-    unsigned int Shader::CompileShaderFile(std::string type, const char *code)
+    unsigned int Shader::CompileShaderFile(const std::string &type, const std::string &code)
     {
         // Create and compile the shader
         unsigned int id = 0;
-        if (type == std::string("vertex")) id = glCreateShader(GL_VERTEX_SHADER);
-        else if (type == std::string("tes_control")) id = glCreateShader(GL_TESS_CONTROL_SHADER);
-        else if (type == std::string("tes_eval")) id = glCreateShader(GL_TESS_EVALUATION_SHADER);
-        else if (type == std::string("geometry")) id = glCreateShader(GL_GEOMETRY_SHADER);
-        else if (type == std::string("fragment")) id = glCreateShader(GL_FRAGMENT_SHADER);
-        else if (type == std::string("compute")) id = glCreateShader(GL_COMPUTE_SHADER);
+        if (type == "vertex") id = glCreateShader(GL_VERTEX_SHADER);
+        else if (type == "tes_control") id = glCreateShader(GL_TESS_CONTROL_SHADER);
+        else if (type == "tes_eval") id = glCreateShader(GL_TESS_EVALUATION_SHADER);
+        else if (type == "geometry") id = glCreateShader(GL_GEOMETRY_SHADER);
+        else if (type == "fragment") id = glCreateShader(GL_FRAGMENT_SHADER);
+        else if (type == "compute") id = glCreateShader(GL_COMPUTE_SHADER);
         else LOG_ERR("ShaderCompiler: Shader type %s not recognized", type.c_str());
-        glShaderSource(id, 1, &code, NULL);
+        const char *c = code.c_str();
+        glShaderSource(id, 1, &c, NULL);
         glCompileShader(id);
         // Check for errors
         GLint success;
@@ -161,22 +157,24 @@ namespace Tarbora {
 
     std::shared_ptr<Resource> ShaderResourceLoader::Load(std::string path)
     {
-        // Open the Json containing all the different shaders for that program
-        std::ifstream file;
-        file.open(path.c_str());
-        if (file.fail())
-            return std::shared_ptr<Resource>();
+        std::string vertex = "empty.vert";
+        std::string tesControl = "";
+        std::string tesEval = "";
+        std::string geometry = "";
+        std::string fragment = "empty.frag";
+        std::string compute = "";
 
-        raw_json j;
-        try
         {
-            j = raw_json::parse(file);
-        }
-        catch (raw_json::parse_error& e)
-        {
-            LOG_ERR("JsonResourceLoader: Trying to parse file \"%s\" found exception: \n \"%s\"", path.c_str(), e.what());
-            file.close();
-            return std::shared_ptr<Resource>();
+            std::ifstream file(path);
+            if (file) {
+                LuaScript resource(m_Module, path);
+                vertex = resource.Get<std::string>("vertex");
+                tesControl = resource.Get<std::string>("tes_control", tesControl, true);
+                tesEval = resource.Get<std::string>("tes_eval", tesEval, true);
+                geometry = resource.Get<std::string>("geometry", geometry, true);
+                fragment = resource.Get<std::string>("fragment");
+                compute = resource.Get<std::string>("compute", compute, true);
+            }
         }
 
         // Create the shader resource
@@ -184,17 +182,16 @@ namespace Tarbora {
 
         // Read each entry and create and compile the shaders
         unsigned int ids[6];
-        ids[0] = shader->CompileShader(j, "vertex");
-        ids[1] = shader->CompileShader(j, "tes_control");
-        ids[2] = shader->CompileShader(j, "tes_eval");
-        ids[3] = shader->CompileShader(j, "geometry");
-        ids[4] = shader->CompileShader(j, "fragment");
-        ids[5] = shader->CompileShader(j, "compute");
+        ids[0] = shader->CompileShader(vertex, "vertex");
+        ids[1] = shader->CompileShader(tesControl, "tes_control");
+        ids[2] = shader->CompileShader(tesEval, "tes_eval");
+        ids[3] = shader->CompileShader(geometry, "geometry");
+        ids[4] = shader->CompileShader(fragment, "fragment");
+        ids[5] = shader->CompileShader(compute, "compute");
 
         // Link the program
         shader->LinkProgram(ids);
 
-        file.close();
         return shader;
     }
 }

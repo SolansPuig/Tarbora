@@ -1,6 +1,4 @@
 scale = 0.75
-pixel_density = 16
-texture_size = 64
 root = {
     name = "body",
     shape = "cube.mesh",
@@ -8,7 +6,7 @@ root = {
     position = {0, 0, 0},
     rotation = {0, 0, 0},
     size = {16, 16, 16},
-    uv = {0, 0},
+    uv_map = {0, 0},
     nodes = {
         {
             name = "secondary",
@@ -17,7 +15,7 @@ root = {
             position = {0, 0, 0},
             rotation = {45, 45, 45},
             size = {16, 16, 16},
-            uv = {0, 32}
+            uv_map = {0, 32}
         }
     }
 }

@@ -89,9 +89,16 @@ namespace Tarbora {
                 glm::vec2 lookDirection = Vec2toGLM(m.direction());
                 m_Rotation.y = lookDirection.x;
                 m_LookRotation.x -= lookDirection.y;
-                if (m_LookRotation.x >= 89.f) m_LookRotation.x = 89.f;
-                else if (m_LookRotation.x <= -89.f) m_LookRotation.x = -89.f;
-                Trigger("move_node", MoveNode(m_Owner->GetId(), "head", glm::vec3(0.f, 0.f, 0.f), m_LookRotation));
+                glm::vec3 lookRotation(-lookDirection.y, 0.f, 0.f);
+                if (m_LookRotation.x >= 89.f) {
+                    m_LookRotation.x = 89.f;
+                    lookRotation.x = 0.0f;
+                }
+                else if (m_LookRotation.x <= -89.f) {
+                    m_LookRotation.x = -89.f;
+                    lookRotation.x = 0.0f;
+                }
+                Trigger("move_node", MoveNode(m_Owner->GetId(), "head", glm::vec3(0.f, 0.f, 0.f), lookRotation));
             }
         });
     }

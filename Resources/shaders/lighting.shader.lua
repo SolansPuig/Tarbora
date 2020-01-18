@@ -1,0 +1,6 @@
+vertex = "shaders/empty.vert"
+tes_control = ""
+tes_eval = ""
+geometry = ""
+fragment = "shaders/lighting.frag"
+compute = ""

@@ -1,3 +1,4 @@
 shader = "model.shader.lua"
-albedo = "brown.png"
+albedo = "crate.png"
 specular = "white.png"
+pixel_density = 16

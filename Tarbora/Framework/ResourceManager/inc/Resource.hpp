@@ -148,34 +148,34 @@ namespace Tarbora {
         ResourcePtr(std::string name, std::string fallbackName="")
             : m_Name(name), m_FallbackName(fallbackName), m_InitialConfigFn(nullptr) {}
 
-        std::string GetName() { return m_Name; }
+        std::string GetName() const { return m_Name; }
 
         void SetInitialConfig(std::function<void(std::shared_ptr<T>)> fn)
         {
             m_InitialConfigFn = fn;
         }
 
-        bool operator==(std::nullptr_t null)
+        bool operator==(std::nullptr_t null) const
         {
             return (m_Name == "") || ResourceManager::GetResource(m_Name) == nullptr;
         }
 
-        bool operator!=(std::nullptr_t null)
+        bool operator!=(std::nullptr_t null) const
         {
             return !((m_Name == "") || ResourceManager::GetResource(m_Name) == nullptr);
         }
 
-        bool operator==(const ResourcePtr<T> &resource)
+        bool operator==(const ResourcePtr<T> &resource) const
         {
             return m_Name == resource.m_Name;
         }
 
-        bool operator!=(const ResourcePtr<T> &resource)
+        bool operator!=(const ResourcePtr<T> &resource) const
         {
             return !(*this == resource);
         }
 
-        bool operator>(const ResourcePtr<T> &resource)
+        bool operator>(const ResourcePtr<T> &resource) const
         {
             return m_Name > resource.m_Name;
         }
@@ -191,7 +191,7 @@ namespace Tarbora {
             return *this;
         }
 
-        std::shared_ptr<T> operator->()
+        std::shared_ptr<T> operator->() const
         {
             bool justLoaded = false;
             std::shared_ptr<T> resource = std::static_pointer_cast<T>(ResourceManager::GetResource(m_Name, &justLoaded));
@@ -201,7 +201,7 @@ namespace Tarbora {
             return resource;
         }
 
-        T& operator*()
+        T& operator*() const
         {
             bool justLoaded = false;
             std::shared_ptr<T> resource = std::static_pointer_cast<T>(ResourceManager::GetResource(m_Name, &justLoaded));
@@ -214,5 +214,15 @@ namespace Tarbora {
         std::string m_Name;
         std::string m_FallbackName;
         std::function<void(std::shared_ptr<T>)> m_InitialConfigFn;
+    };
+
+    class ResourcePtrHash
+    {
+    public:
+        template <class T>
+        std::size_t operator()(const ResourcePtr<T>& p) const
+        {
+            return std::hash<std::string>()(p->GetName());
+        }
     };
 }

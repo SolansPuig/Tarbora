@@ -1,6 +1,4 @@
 scale = 1
-pixel_density = 16
-texture_size = 64
 root = {
     name = "body",
     shape = "cube.mesh",
@@ -23,5 +21,5 @@ root = {
         function() return math.random(0, 255) end,
         function() return math.random(0, 255) end
     },
-    uv = {0, 0}
+    uv_map = {0, 0}
 }

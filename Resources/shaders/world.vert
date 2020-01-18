@@ -19,7 +19,10 @@ uniform int pixelDensity;
 
 out vec2 TexPos;
 out vec2 TexSize;
-out vec2 TexCoords;
+out vec2 TexCoordXY;
+out vec2 TexCoordXZ;
+out vec2 TexCoordYZ;
+out vec3 TexNormal;
 out vec3 FragPos;
 out vec3 Normal;
 out vec3 colorPrimary;
@@ -39,9 +42,19 @@ void main()
     Normal = vec3(transpose(inverse(view * aTransform)) * vec4(aNormal, 0.0));
     gl_Position = projection * pos;
 
-    vec3 meshSize = aMeshSize * pixelDensity;
     vec3 texSize = aTexSize * pixelDensity;
     vec2 uv = aUv;
+
+    vec3 TexCoords = vec3(aTransform * vec4(aPos, 1.0f)).xyz * pixelDensity;
+    TexNormal =  vec3(transpose(inverse(aTransform)) * vec4(aNormal, 0.0));
+    TexCoordXY = TexCoords.xy / textureSize(myTexture, 0);
+    TexCoordXZ = TexCoords.xz / textureSize(myTexture, 0);
+    TexCoordYZ = TexCoords.zy / textureSize(myTexture, 0);
+    TexCoordXY.x *= sign(TexNormal.z);
+    TexCoordXY.y *= -1;
+    TexCoordYZ.x *= -sign(TexNormal.x);
+    TexCoordYZ.y *= -1;
+    TexCoordXZ.x *= sign(TexNormal.y);
 
     switch (int(aFace)) {
         case 0:
@@ -49,52 +62,39 @@ void main()
             TexPos.y = uv.y + texSize.z;
             TexSize.x = texSize.x;
             TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 1) ? 0 : meshSize.x;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
             break;
         case 1:
             TexPos.x = uv.x + texSize.z + 2*texSize.x;
             TexPos.y = uv.y + texSize.z;
             TexSize.x = texSize.z;
             TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 3) ? 0 : meshSize.z;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
             break;
         case 2:
             TexPos.x = uv.x + texSize.z + texSize.x;
             TexPos.y = uv.y + texSize.z;
             TexSize.x = texSize.x;
             TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 2) ? meshSize.x : 0;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
             break;
         case 3:
             TexPos.x = uv.x;
             TexPos.y = uv.y + texSize.z;
             TexSize.x = texSize.z;
             TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 0) ? 0 : meshSize.z;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
             break;
         case 4:
             TexPos.x = uv.x + texSize.z;
             TexPos.y = uv.y;
             TexSize.x = texSize.x;
             TexSize.y = texSize.z;
-            TexCoords.x = (aTexCoord.x == 1) ? 0 : meshSize.x;
-            TexCoords.y = (aTexCoord.y == 0) ? 0 : meshSize.z;
             break;
         case 5:
             TexPos.x = uv.x + texSize.z + texSize.x;
             TexPos.y = uv.y;
             TexSize.x = texSize.x;
             TexSize.y = texSize.z;
-            TexCoords.x = (aTexCoord.x == 2) ? 0 : meshSize.x;
-            TexCoords.y = (aTexCoord.y == 0) ? 0 : meshSize.z;
             break;
     }
 
     TexPos /= textureSize(myTexture, 0);
     TexSize /= textureSize(myTexture, 0);
-    TexCoords /= textureSize(myTexture, 0);
 }

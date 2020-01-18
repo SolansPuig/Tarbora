@@ -2,8 +2,8 @@ phrases = { "Tarbora Game Engine", "What a beautiful day to play Tarbora!", "Tar
 
 window = {
     title = function() return phrases[math.random(#phrases)] end,
-    size = { 1280, 720},
-    postprocessShader = "shaders/postprocess.shader.json"
+    size = { 1600, 900 },
+    postprocessShader = "shaders/postprocess.shader.lua"
 }
 
 controls = {

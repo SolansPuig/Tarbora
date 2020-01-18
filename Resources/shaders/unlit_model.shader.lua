@@ -1,0 +1,6 @@
+vertex = "shaders/unlit_model.vert"
+tes_control = ""
+tes_eval = ""
+geometry = ""
+fragment = "shaders/empty.frag"
+compute = ""

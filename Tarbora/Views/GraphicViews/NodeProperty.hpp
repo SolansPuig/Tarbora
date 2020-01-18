@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/Global.hpp"
+#include "../../Framework/Global.hpp"
 
 namespace Tarbora {
     class NodeProperty;
@@ -37,7 +37,7 @@ namespace Tarbora {
         AnimatedNodeProperty(const glm::vec3 &value)
             : NodeProperty(value), m_TargetTime(0.0f), m_OldValue(value), m_TargetValue(value) {}
 
-        void Interpolate(float fraction);
+        virtual void Interpolate(float fraction);
 
         float m_ElapsedTime;
         float m_TargetTime;
@@ -92,6 +92,8 @@ namespace Tarbora {
     protected:
         AnimatedRotation(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
             : AnimatedNodeProperty(value), m_Transformation(transformation), m_Origin(origin) {}
+
+        virtual void Interpolate(float fraction);
 
         glm::mat4 *m_Transformation;
         glm::vec3 *m_Origin;

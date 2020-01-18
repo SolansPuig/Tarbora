@@ -4,7 +4,7 @@
         "model": {
             "renderPass": 0,
             "model": "double_platform.lua",
-            "material": "brown.mat.lua"
+            "material": "terrain2.mat.lua"
         },
         "physics": {
             "shape": "box",

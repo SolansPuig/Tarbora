@@ -6,14 +6,25 @@
 namespace Tarbora {
     class LuaTable;
 
+    typedef const sol::basic_object<sol::basic_reference<false>> sol_object;
+    typedef sol::basic_table_core<false, sol::basic_reference<false> >::iterator sol_iterator;
+
+    inline void LuaPrintError(const std::string &name, const std::string &reason)
+    {
+        LOG_WARN("Error: Could not get [%s]. %s", name.c_str(), reason.c_str());
+    }
+
     template <class T>
     class LuaType {
     public:
         static T GetDefault() { return 0; }
         static std::string GetErrorName() { return "Invalid type"; }
 
-        static T Get(LuaTable *table, const std::string &name, T def, bool silent);
-        static T Get(LuaTable *table, unsigned int index, T def, bool silent);
+        static T Get(const LuaTable *table, const std::string &name, T def, bool silent);
+        static T Get(const LuaTable *table, unsigned int index, T def, bool silent);
+
+        static bool Is(const sol_object &object) { return object.is<T>(); }
+        static T As(sol::state *state, const sol_object &object, const std::string &name, T def, bool silent);
     };
 
     template <class T>
@@ -21,35 +32,62 @@ namespace Tarbora {
     public:
         LuaFunction() {}
         LuaFunction(sol::state *state, sol::protected_function function, const std::string &name, bool silent)
-            : m_Lua(state), m_Function(function), m_Name(name == "" ? "" : name + ".")
+            : m_Lua(state), m_Function(function), m_Name(name), m_Silent(silent)
         {
             m_Function.error_handler = (*m_Lua)["error_handler"];
         }
 
-        bool Valid() { return !(!m_Function); }
+        bool Valid() const { return !(!m_Function); }
 
         template <class... Args>
-        T operator()(Args&&... args)
-        {
-            return 0;
-        }
+        T operator()(Args&&... args);
 
     private:
         sol::state *m_Lua;
         sol::protected_function m_Function;
-        const std::string m_Name;
+        std::string m_Name;
         bool m_Silent;
+    };
 
-        void PrintError(const std::string &name, const std::string &reason)
+    class LuaObject {
+    public:
+        LuaObject() {}
+        LuaObject(sol::state *state, sol_object &obj, const std::string &name)
+            : m_Lua(state), m_Object(obj), m_Name(name) {}
+        template <class T>
+        T GetAs(T def, bool silent=false);
+        template <class T>
+        T GetAs(bool silent=false) { return GetAs(LuaType<T>::GetDefault(), silent); }
+        template <class T>
+        bool Is() const { return LuaType<T>::Is(m_Object) || LuaType<LuaFunction<T>>::Is(m_Object); }
+
+        bool Valid() const { return !(!m_Object); }
+
+    private:
+        sol::state *m_Lua;
+        sol_object m_Object;
+        std::string m_Name;
+    };
+
+    class LuaIterator {
+    public:
+        // This is bad... But given the implementation of sol::table_iterator, I can't find a better way.
+        LuaIterator(const LuaTable *table, const sol::table *t, bool end=false);
+
+        std::pair<LuaObject, LuaObject> operator*();
+
+        bool operator==(const LuaIterator &other) const { return m_Iter == other.m_Iter; }
+        bool operator!=(const LuaIterator &other) const { return m_Iter != other.m_Iter; }
+
+        LuaIterator &operator++()
         {
-            std::string path = m_Name + name;
-            LOG_ERR("Lua: Could not get [%s]. %s", path.c_str(), reason.c_str());
+            ++m_Iter;
+            return *this;
         }
 
-        void PrintError(unsigned int index, const std::string &reason)
-        {
-            PrintError(std::to_string(index), reason);
-        }
+    private:
+        sol_iterator m_Iter;
+        const LuaTable *m_Table;
     };
 
     class LuaTable {
@@ -70,31 +108,24 @@ namespace Tarbora {
         }
 
         template <class T=LuaTable>
-        T Get(const std::string &name, T def, bool silent=false) { return LuaType<T>::Get(this, name, def, silent); }
+        T Get(const std::string &name, T def, bool silent=false) const { return LuaType<T>::Get(this, name, def, silent); }
         template <class T=LuaTable>
-        T Get(const std::string &name, bool silent=false) { return Get<T>(name, LuaType<T>::GetDefault(), silent); }
+        T Get(const std::string &name, bool silent=false) const { return Get<T>(name, LuaType<T>::GetDefault(), silent); }
         template <class T=LuaTable>
-        T Get(unsigned int index, T def, bool silent=false) { return LuaType<T>::Get(this, index, def, silent); }
+        T Get(unsigned int index, T def, bool silent=false) const { return LuaType<T>::Get(this, index, def, silent); }
         template <class T=LuaTable>
-        T Get(unsigned int index, bool silent=false) { return Get<T>(index, LuaType<T>::GetDefault(), silent); }
+        T Get(unsigned int index, bool silent=false) const { return Get<T>(index, LuaType<T>::GetDefault(), silent); }
 
-        bool Valid() { return !(!m_Table); }
-        unsigned int Size() {return Valid() ? m_Table.size() : 0; }
+        // This is bad... But given the implementation of sol::table_iterator, I can't find a better way.
+        LuaIterator begin() const { return LuaIterator(this, &m_Table); }
+        LuaIterator end() const { return LuaIterator(this, &m_Table, true); }
 
-        void PrintError(const std::string &name, const std::string &reason)
-        {
-            std::string path = m_Name + name;
-            LOG_ERR("Lua: Could not get [%s]. %s", path.c_str(), reason.c_str());
-        }
-
-        void PrintError(unsigned int index, const std::string &reason)
-        {
-            PrintError(std::to_string(index), reason);
-        }
+        bool Valid() const { return !(!m_Table); }
+        unsigned int Size() const {return Valid() ? m_Table.size() : 0; }
 
         sol::state *m_Lua;
         sol::table m_Table;
-        const std::string m_Name;
+        std::string m_Name;
     };
 
     class LuaScript : public Resource {
@@ -103,7 +134,12 @@ namespace Tarbora {
         LuaScript(Module *m, const std::string &file)
             : Resource(m, file)
         {
-            m_Lua.script_file(file);
+            m_Lua.require_file("p", "../Resources/LuaParameters.lua");
+            m_Lua.safe_script_file(file, [](lua_State*, sol::protected_function_result pfr) {
+                sol::error err = pfr;
+                LOG_ERR("Error: In file %s", err.what());
+                return pfr;
+            });
             m_Lua.open_libraries(sol::lib::base, sol::lib::math);
         }
 
@@ -164,6 +200,42 @@ namespace Tarbora {
     // -----------------------------------------------------------------------------
 
     template <>
+    inline std::string LuaType<bool>::GetErrorName() { return "Not a bool"; }
+    template <>
+    inline std::string LuaType<int>::GetErrorName() { return "Not an int"; }
+    template <>
+    inline std::string LuaType<float>::GetErrorName() { return "Not a float"; }
+    template <>
+    inline std::string LuaType<std::string>::GetDefault() { return ""; }
+    template <>
+    inline std::string LuaType<std::string>::GetErrorName() { return "Not a string"; }
+    template <>
+    inline LuaTable LuaType<LuaTable>::GetDefault() { return LuaTable(); }
+    template <>
+    inline std::string LuaType<LuaTable>::GetErrorName() { return "Not a table"; }
+    template <>
+    inline LuaObject LuaType<LuaObject>::GetDefault() { return LuaObject(); }
+    template <>
+    inline std::string LuaType<LuaObject>::GetErrorName() { return "Not an object"; }
+
+    template <class T>
+    template <class... Args>
+    T LuaFunction<T>::operator()(Args&&... args)
+    {
+        if (m_Function)
+        {
+            auto execution = m_Function(std::forward<Args>(args)...);
+            if (execution.valid())
+            {
+                return LuaType<T>::As(m_Lua, execution, m_Name, LuaType<T>::GetDefault(), m_Silent);
+            }
+            sol::error err = execution;
+            LuaPrintError(m_Name, err.what());
+        }
+        return LuaType<T>::GetDefault();
+    }
+
+    template <>
     template <class... Args>
     void LuaFunction<void>::operator()(Args&&... args)
     {
@@ -173,127 +245,22 @@ namespace Tarbora {
             if (!execution.valid())
             {
                 sol::error err = execution;
-                if (!m_Silent) PrintError(m_Name, err.what());
+                LuaPrintError(m_Name, err.what());
             }
         }
-    }
-
-    template <>
-    template <class... Args>
-    bool LuaFunction<bool>::operator()(Args&&... args)
-    {
-        if (m_Function)
-        {
-            auto execution = m_Function(std::forward<Args>(args)...);
-            if (execution.valid())
-            {
-                sol::optional<bool> value = execution;
-                if (value)
-                    return value.value();
-                else
-                    if (!m_Silent) PrintError(m_Name, "Not a bool");
-            }
-            sol::error err = execution;
-            if (!m_Silent) PrintError(m_Name, err.what());
-        }
-        return false;
-    }
-
-    template <>
-    template <class... Args>
-    int LuaFunction<int>::operator()(Args&&... args)
-    {
-        if (m_Function)
-        {
-            auto execution = m_Function(std::forward<Args>(args)...);
-            if (execution.valid())
-            {
-                sol::optional<int> value = execution;
-                if (value)
-                    return value.value();
-                else
-                    if (!m_Silent) PrintError(m_Name, "Not an int");
-            }
-            sol::error err = execution;
-            if (!m_Silent) PrintError(m_Name, err.what());
-        }
-        return 0;
-    }
-
-    template <>
-    template <class... Args>
-    float LuaFunction<float>::operator()(Args&&... args)
-    {
-        if (m_Function)
-        {
-            auto execution = m_Function(std::forward<Args>(args)...);
-            if (execution.valid())
-            {
-                sol::optional<float> value = execution;
-                if (value)
-                    return value.value();
-                else
-                    if (!m_Silent) PrintError(m_Name, "Not a float");
-            }
-            sol::error err = execution;
-            if (!m_Silent) PrintError(m_Name, err.what());
-        }
-        return 0;
-    }
-
-    template <>
-    template <class... Args>
-    std::string LuaFunction<std::string>::operator()(Args&&... args)
-    {
-        if (m_Function)
-        {
-            auto execution = m_Function(std::forward<Args>(args)...);
-            if (execution.valid())
-            {
-                sol::optional<std::string> value = execution;
-                if (value)
-                    return value.value();
-                else
-                    if (!m_Silent) PrintError(m_Name, "Not a string");
-            }
-            sol::error err = execution;
-            if (!m_Silent) PrintError(m_Name, err.what());
-        }
-        return "";
-    }
-
-    template <>
-    template <class... Args>
-    LuaTable LuaFunction<LuaTable>::operator()(Args&&... args)
-    {
-        if (m_Function)
-        {
-            auto execution = m_Function(std::forward<Args>(args)...);
-            if (execution.valid())
-            {
-                sol::optional<sol::table> value = execution;
-                if (value)
-                    return LuaTable(m_Lua, value.value(), m_Name);
-                else
-                    if (!m_Silent) PrintError(m_Name, "Not a table");
-            }
-            sol::error err = execution;
-            if (!m_Silent) PrintError(m_Name, err.what());
-        }
-        return LuaTable();
     }
 
     template <class T>
     class LuaFunction<std::vector<T>> {
     public:
         LuaFunction() {}
-        LuaFunction(sol::state *state, sol::protected_function function, const std::string &name, bool m_Silent)
-            : m_Lua(state), m_Function(function), m_Name(name == "" ? "" : name + ".")
+        LuaFunction(sol::state *state, sol::protected_function function, const std::string &name, bool silent)
+            : m_Lua(state), m_Function(function), m_Name(name)
         {
             m_Function.error_handler = (*m_Lua)["error_handler"];
         }
 
-        bool Valid() { return !(!m_Function); }
+        bool Valid() const { return !(!m_Function); }
 
         template <class... Args>
         std::vector<T> operator()(Args&&... args)
@@ -312,16 +279,16 @@ namespace Tarbora {
                             std::vector<T> vec;
                             for (unsigned int i = 1; i <= table.Size(); i++)
                             {
-                                vec.push_back(table.Get<T>(i, m_Silent));
+                                vec.push_back(table.Get<T>(i));
                             }
                             return vec;
                         }
                     }
                     else
-                        if (!m_Silent) PrintError(m_Name, "Not a list");
+                        LuaPrintError(m_Name, "Not a list");
                 }
                 sol::error err = execution;
-                if (!m_Silent) PrintError(m_Name, err.what());
+                LuaPrintError(m_Name, err.what());
             }
             return std::vector<T>();
         }
@@ -329,19 +296,8 @@ namespace Tarbora {
     private:
         sol::state *m_Lua;
         sol::protected_function m_Function;
-        const std::string m_Name;
+        std::string m_Name;
         bool m_Silent;
-
-        void PrintError(const std::string &name, const std::string &reason)
-        {
-            std::string path = m_Name + name;
-            LOG_ERR("Lua: Could not get [%s]. %s", path.c_str(), reason.c_str());
-        }
-
-        void PrintError(unsigned int index, const std::string &reason)
-        {
-            PrintError(std::to_string(index), reason);
-        }
     };
 
     template <class T>
@@ -351,116 +307,92 @@ namespace Tarbora {
         static LuaFunction<T> GetDefault() { return LuaFunction<T>(); }
         static std::string GetErrorName() { return "Not a function"; }
 
-        static LuaFunction<T> Get(LuaTable *table, const std::string &name, LuaFunction<T> def, bool silent)
+        static LuaFunction<T> Get(const LuaTable *table, const std::string &name, LuaFunction<T> def, bool silent)
         {
             if (table->m_Table)
-            {
-                sol::optional<sol::protected_function> value = table->m_Table[name];
-                if (value)
-                    return LuaFunction<T>(table->m_Lua, value.value(), table->m_Name + name, silent);
-                if (!silent) table->PrintError(name, GetErrorName());
-            }
-            return LuaFunction<T>();
+                return As(table->m_Lua, table->m_Table[name], table->m_Name + name, def, silent);
+            return def;
         }
 
-        static LuaFunction<T> Get(LuaTable *table, unsigned int index, LuaFunction<T> def, bool silent)
+        static LuaFunction<T> Get(const LuaTable *table, unsigned int index, LuaFunction<T> def, bool silent)
         {
             if (table->m_Table)
-            {
-                sol::optional<sol::protected_function> value = table->m_Table[index];
-                if (value)
-                    return LuaFunction<T>(table->m_Lua, value.value(), table->m_Name + std::to_string(index), silent);
-                if (!silent) table->PrintError(index, GetErrorName());
-            }
-            return LuaFunction<T>();
+                return As(table->m_Lua, table->m_Table[index], table->m_Name + std::to_string(index), def, silent);
+            return def;
+        }
+
+        static bool Is(const sol_object &object) { return object.is<sol::protected_function>(); }
+
+        static LuaFunction<T> As(sol::state *state, const sol_object &object, const std::string &name, LuaFunction<T> def, bool silent)
+        {
+            if (object.is<sol::protected_function>())
+                return LuaFunction<T>(state, object.as<sol::protected_function>(), name, silent);
+
+            if (!silent) LuaPrintError(name, GetErrorName());
+            return def;
         }
     };
 
     template <class T>
-    T LuaType<T>::Get(LuaTable *table, const std::string &name, T def, bool silent)
+    T LuaType<T>::Get(const LuaTable *table, const std::string &name, T def, bool silent)
     {
         if (table->m_Table)
-        {
-            sol::optional<T> value = table->m_Table[name];
-            if (value)
-                return value.value();
-
-            // If its not the expected type, maybe is a function
-            LuaFunction<T> function = table->Get<LuaFunction<T>>(name, silent);
-            if (function.Valid())
-                return function();
-            if (!silent) table->PrintError(name, GetErrorName());
-        }
+            return As(table->m_Lua, table->m_Table[name], table->m_Name + name, def, silent);
         return def;
     }
 
     template <class T>
-    T LuaType<T>::Get(LuaTable *table, unsigned int index, T def, bool silent)
+    T LuaType<T>::Get(const LuaTable *table, unsigned int index, T def, bool silent)
     {
         if (table->m_Table)
+            return As(table->m_Lua, table->m_Table[index], table->m_Name + std::to_string(index), def, silent);
+        return def;
+    }
+
+    template <class T>
+    T LuaType<T>::As(sol::state *state, const sol_object &object, const std::string &name, T def, bool silent)
+    {
+        if (object.is<T>())
+            return object.as<T>();
+
+        // If its not the expected type, maybe is a function
+        if (object.is<sol::protected_function>())
         {
-            sol::optional<T> value = table->m_Table[index];
-            if (value)
-                return value.value();
-            // If its not the expected type, maybe is a function
-            LuaFunction<T> function = table->Get<LuaFunction<T>>(index, silent);
+            LuaFunction<T> function(state, object.as<sol::protected_function>(), name, silent);
             if (function.Valid())
-                return function();
-            if (!silent) table->PrintError(index, GetErrorName());
+                 return function();
         }
+
+        if (!silent) LuaPrintError(name, LuaType<T>::GetErrorName());
         return def;
     }
 
     template <>
-    inline std::string LuaType<bool>::GetErrorName() { return "Not a bool"; }
-    template <>
-    inline std::string LuaType<int>::GetErrorName() { return "Not an int"; }
-    template <>
-    inline std::string LuaType<float>::GetErrorName() { return "Not a float"; }
-    template <>
-    inline std::string LuaType<std::string>::GetDefault() { return ""; }
-    template <>
-    inline std::string LuaType<std::string>::GetErrorName() { return "Not a string"; }
+    inline bool LuaType<LuaTable>::Is(const sol_object &object) { return object.is<sol::table>(); }
 
     template <>
-    class LuaType<LuaTable>
+    inline LuaTable LuaType<LuaTable>::As(sol::state *state, const sol_object &object, const std::string &name, LuaTable def, bool silent)
     {
-    public:
-        static LuaTable GetDefault() { return LuaTable(); }
-        static std::string GetErrorName() { return "Not a table"; }
+        if (object.is<sol::table>())
+            return LuaTable(state, object.as<sol::table>(), name);
 
-        static LuaTable Get(LuaTable *table, const std::string &name, LuaTable def, bool silent)
+        // If its not the expected type, maybe is a function
+        if (object.is<sol::protected_function>())
         {
-            if (table->m_Table)
-            {
-                sol::optional<sol::table> value = table->m_Table[name];
-                if (value)
-                    return LuaTable(table->m_Lua, value.value(), table->m_Name + name);
-                // If its not the expected type, maybe is a function
-                LuaFunction<LuaTable> function = table->Get<LuaFunction<LuaTable>>(name, silent);
-                if (function.Valid())
-                    return function();
-                if (!silent) table->PrintError(name, GetErrorName());
-            }
-            return def;
+            LuaFunction<LuaTable> function(state, object.as<sol::protected_function>(), name, silent);
+            if (function.Valid())
+                 return function();
         }
 
-        static LuaTable Get(LuaTable *table, unsigned int index, LuaTable def, bool silent)
-        {
-            if (table->m_Table)
-            {
-                sol::optional<sol::table> value = table->m_Table[index];
-                if (value)
-                    return LuaTable(table->m_Lua, value.value(), table->m_Name + std::to_string(index));
-                // If its not the expected type, maybe is a function
-                LuaFunction<LuaTable> function = table->Get<LuaFunction<LuaTable>>(index, silent);
-                if (function.Valid())
-                    return function();
-                if (!silent) table->PrintError(index, GetErrorName());
-            }
-            return def;
-        }
-    };
+        if (!silent) LuaPrintError(name, GetErrorName());
+        return def;
+    }
+
+    template <>
+    inline LuaObject LuaType<LuaObject>::As(sol::state *state, const sol_object &object, const std::string &name, LuaObject def, bool silent)
+    {
+        return LuaObject(state, object, name);
+    }
 
     template <class T>
     class LuaType<std::vector<T>>
@@ -469,40 +401,58 @@ namespace Tarbora {
         static std::vector<T> GetDefault() { return std::vector<T>(); }
         static std::string GetErrorName() { return "Not a list"; }
 
-        static std::vector<T> Get(LuaTable *table, const std::string &name, std::vector<T> def, bool silent)
+        static std::vector<T> Get(const LuaTable *table, const std::string &name, std::vector<T> def, bool silent)
         {
             if (table->m_Table)
             {
-                LuaTable table2 = table->Get<LuaTable>(name, silent);
-                if (table2.m_Table)
-                {
-                    std::vector<T> vec;
-                    for (unsigned int i = 1; i <= table2.Size(); i++)
-                    {
-                        vec.push_back(table2.Get<T>(i, silent));
-                    }
-                    return vec;
-                }
+                return As(table->m_Lua, table->m_Table[name], table->m_Name + name, def, silent);
             }
             return def;
         }
 
-        static std::vector<T> Get(LuaTable *table, unsigned int index, std::vector<T> def, bool silent)
+        static std::vector<T> Get(const LuaTable *table, unsigned int index, std::vector<T> def, bool silent)
         {
             if (table->m_Table)
             {
-                LuaTable table2 = table->Get<LuaTable>(index, silent);
-                if (table2.m_Table)
+                return As(table->m_Lua, table->m_Table[index], table->m_Name + std::to_string(index), def, silent);
+            }
+            return def;
+        }
+
+        static bool Is(const sol_object &object) { return LuaType<LuaTable>::Is(object); }
+
+        static std::vector<T> As(sol::state *state, const sol_object &object, const std::string &name, std::vector<T> def, bool silent)
+        {
+            LuaTable table2 = LuaType<LuaTable>::As(state, object, name, LuaTable(), silent);
+            if (table2.m_Table)
+            {
+                std::vector<T> vec;
+                for (unsigned int i = 1; i <= table2.Size(); i++)
                 {
-                    std::vector<T> vec;
-                    for (unsigned int i = 1; i <= table2.Size(); i++)
-                    {
-                        vec.push_back(table2.Get<T>(i, silent));
-                    }
-                    return vec;
+                    vec.push_back(table2.Get<T>(i));
                 }
+                return vec;
             }
             return def;
         }
     };
+
+    inline LuaIterator::LuaIterator(const LuaTable *table, const sol::table *t, bool end)
+        : m_Iter(table->Valid() ? end ? t->end() : t->begin() : sol_iterator()), m_Table(table) {}
+
+    template <class T>
+    T LuaObject::GetAs(T def, bool silent)
+    {
+        if (Valid())
+            return LuaType<T>::As(m_Lua, m_Object, m_Name, def, silent);
+        return def;
+    }
+
+    inline std::pair<LuaObject, LuaObject> LuaIterator::operator*()
+    {
+        return std::pair<LuaObject, LuaObject>(
+            LuaObject(m_Table->m_Lua, (*m_Iter).first, m_Table->m_Name + "iterable"),
+            LuaObject(m_Table->m_Lua, (*m_Iter).second, m_Table->m_Name + "iterable")
+        );
+    }
 }

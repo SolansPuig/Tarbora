@@ -1,8 +1,6 @@
 #pragma once
 #include "../../Framework/Global.hpp"
 #include "../../Framework/ResourceManager/inc/Resource.hpp"
-#include "../../Framework/External/json.hpp"
-typedef nlohmann::json raw_json;
 
 namespace Tarbora {
     class Shader : public Resource
@@ -11,7 +9,7 @@ namespace Tarbora {
     public:
         ~Shader();
 
-        void Use();
+        void Use() const;
         unsigned int GetId() const { return m_Id; }
 
         void Set(const std::string name, bool value);
@@ -28,8 +26,8 @@ namespace Tarbora {
         Shader(Module *m, std::string name);
         void Delete();
 
-        unsigned int CompileShader(raw_json j, const char* type);
-        unsigned int CompileShaderFile(std::string type, const char *code);
+        unsigned int CompileShader(const std::string &path, const std::string &type);
+        unsigned int CompileShaderFile(const std::string &type, const std::string &code);
         void LinkProgram(unsigned int *ids);
         void DeleteProgram();
 
@@ -41,7 +39,7 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string GetPattern() override { return "*.shader.json"; };
+        virtual const std::string GetPattern() override { return "*.shader.lua"; };
         virtual std::shared_ptr<Resource> Load(std::string path) override;
     };
     //! \endcond

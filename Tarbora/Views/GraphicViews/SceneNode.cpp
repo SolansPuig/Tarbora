@@ -1,17 +1,11 @@
-#include "../inc/Scene.hpp"
-#include "../../../Messages/BasicMessages.hpp"
+#include "Scene.hpp"
+#include "../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
     SceneNode::SceneNode(ActorId actorId, const std::string &name)
+        : m_Parent(nullptr), m_ActorId(actorId), m_Name(name), m_Transformation(1.0f),
+        m_Deformation(1.0f), m_Origin(0.0f, 0.0f, 0.0f), m_Radius(0)
     {
-        m_Parent = nullptr;
-        m_ActorId = actorId;
-        m_Name = name;
-        m_Origin = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_Radius = 0.0f;
-        m_Transformation = glm::mat4(1.0f);
-        m_Deformation = glm::mat4(1.0f);
-
         m_Properties["position"] = PropertyPtr(new Position(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation));
         m_Properties["rotation"] = PropertyPtr(new Rotation(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation, &m_Origin));
         m_Properties["scale"] = PropertyPtr(new Scale(glm::vec3(1.0f, 1.0f, 1.0f), &m_Deformation, &m_Origin));
@@ -20,9 +14,13 @@ namespace Tarbora {
     void SceneNode::Update(Scene *scene, float deltaTime)
     {
         for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
+        {
             (*itr).second->Update(scene, deltaTime);
+        }
         for (auto itr = m_Properties.begin(); itr != m_Properties.end(); itr++)
+        {
             (*itr).second->Update(deltaTime);
+        }
     }
 
     void SceneNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
@@ -32,7 +30,6 @@ namespace Tarbora {
         {
             if (itr->second->IsVisible(scene))
             {
-                // TODO: Check alpha
                 itr->second->Draw(scene, transform);
                 itr->second->DrawChildren(scene, transform);
                 itr->second->AfterDraw(scene);
@@ -40,17 +37,19 @@ namespace Tarbora {
         }
     }
 
-    bool SceneNode::AddChild(SceneNodePtr child)
+    bool SceneNode::AddChild(std::shared_ptr<SceneNode> child)
     {
         m_Children[child->GetName()] = child;
         child->m_Parent = this;
         float new_radius = child->Get("position").length() + child->GetRadius();
         if (new_radius > m_Radius)
+        {
             m_Radius = new_radius;
+        }
         return true;
     }
 
-    SceneNodePtr SceneNode::GetChild(ActorId id)
+    std::shared_ptr<SceneNode> SceneNode::GetChild(ActorId id)
     {
         std::string name = std::to_string(id);
         auto itr = m_Children.find(name);
@@ -58,17 +57,17 @@ namespace Tarbora {
         {
             return itr->second;
         }
-        return SceneNodePtr();
+        return std::shared_ptr<SceneNode>();
     }
 
-    SceneNodePtr SceneNode::GetChild(const std::string &name)
+    std::shared_ptr<SceneNode> SceneNode::GetChild(const std::string &name)
     {
         auto itr = m_Children.find(name);
         if (itr != m_Children.end())
         {
             return itr->second;
         }
-        return SceneNodePtr();
+        return std::shared_ptr<SceneNode>();
     }
 
     bool SceneNode::RemoveChild(ActorId id)
@@ -121,9 +120,13 @@ namespace Tarbora {
     const glm::mat4 SceneNode::GetGlobalTransform()
     {
         if (m_Parent)
+        {
             return m_Parent->GetGlobalTransform() * m_Transformation;
+        }
         else
+        {
             return m_Transformation;
+        }
     }
 
     void SceneNode::Set(const std::string &name, const glm::vec3 &value)
@@ -139,7 +142,8 @@ namespace Tarbora {
     void SceneNode::InterpolateTo(const std::string &name, const glm::vec3 &value, float timeToComplete)
     {
         PropertyPtr property = m_Properties[name];
-        if (!property->IsAnimatable()) {
+        if (!property->IsAnimatable())
+        {
             property = property->MakeAnimatable();
             m_Properties[name] = property;
         }
@@ -197,8 +201,9 @@ namespace Tarbora {
     {
         m_Mesh = ResourcePtr<Mesh>("meshes/" + mesh, "meshes/cube.mesh");
 
-        m_Uv = glm::vec2(0.0f, 0.0f);
-        m_TextureSize = glm::vec3(0.0f, 0.0f, 0.0f);
+        m_Properties["uv_map"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["mesh_size"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        m_Properties["texture_size"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
 
         m_Properties["color_primary"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
         m_Properties["color_secondary"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
@@ -215,19 +220,15 @@ namespace Tarbora {
                 m_RenderPass,
                 m_Mesh,
                 transform,
-                m_Uv,
-                m_TextureSize,
+                m_Properties["uv_map"]->Get(),
+                m_Properties["mesh_size"]->Get(),
+                m_Properties["texture_size"]->Get(),
                 m_Properties["color_primary"]->Get(),
                 m_Properties["color_secondary"]->Get(),
                 m_Properties["color_detail1"]->Get(),
                 m_Properties["color_detail2"]->Get()
             );
         }
-    }
-
-    void MeshNode::SetUV(const glm::vec3 &size, const glm::vec2 &uv) {
-        m_TextureSize = size;
-        m_Uv = uv;
     }
 
     // void MeshNode::SetShear(const glm::vec3 &shearA, const glm::vec3 &shearB)

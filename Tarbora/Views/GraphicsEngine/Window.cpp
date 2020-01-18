@@ -3,6 +3,7 @@
 #include <time.h>
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "../../Framework/External/stb_image_write.h"
+#include "../../Framework/External/tracy/TracyOpenGL.hpp"
 
 namespace Tarbora {
     Window::Window(const char *title, int width, int height, GraphicsEngine *graphicsEngine) :

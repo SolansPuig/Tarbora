@@ -24,7 +24,7 @@ namespace Tarbora {
                     fprintf(stdout, " \033[1;93mWARN:\033[0m  ");
                     break;
                 case LogLevel::ERR:
-                    fprintf(stdout, " \033[1;31mERR:\033[0m   ");
+                    fprintf(stdout, " \033[1;31mERROR:\033[0m   ");
                     break;
             }
 

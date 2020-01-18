@@ -7,7 +7,7 @@
             "material": "human.mat.lua"
         },
         "animations": {
-            "file": "human.json"
+            "file": "human.lua"
         },
         "character_controller": {
             "shape": "capsule",

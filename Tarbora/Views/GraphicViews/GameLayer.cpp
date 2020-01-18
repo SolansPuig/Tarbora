@@ -1,5 +1,5 @@
-#include "../inc/GameLayer.hpp"
-#include "../../../Messages/BasicMessages.hpp"
+#include "GameLayer.hpp"
+#include "../../Messages/BasicMessages.hpp"
 
 #define GAMEVIEW(MODULE) static_cast<GraphicView*>(MODULE)
 
@@ -14,11 +14,15 @@ namespace Tarbora {
         m_Jump = false;
         m_FreezeMouse = false;
 
+        std::shared_ptr<Camera> camera = m_Scene->CreateCamera(MAIN_CAMERA_ID);
+        camera->Set("rotation", glm::vec3(-1.0f, 190.0f, 0.0f));
+        camera->Set("position", glm::vec3(-3.0f, -1.5f, -4.0f));
+        m_Scene->SetCamera(camera);
+
         m_Scene->CreateSkybox("sky.mat.lua");
 
         Subscribe("create_actor_model", [this](MessageSubject subject, MessageBody * body)
         {
-            LOG_DEBUG("Create actor model");
             CreateActorBody m = body->GetContent<CreateActorBody>();
             if (m_Scene->GetChild(m.id()) != nullptr)
             {
@@ -45,8 +49,8 @@ namespace Tarbora {
         {
             MoveNodeBody m = body->GetContent<MoveNodeBody>();
             std::shared_ptr<SceneNode> node = m_Scene->GetChild(m.id())->GetChild(m.node());
-            // node->Set("position", Vec3toGLM(m.position()));
-            node->Set("rotation", Vec3toGLM(m.rotation()));
+            node->Add("position", Vec3toGLM(m.position()));
+            node->Add("rotation", Vec3toGLM(m.rotation()));
         });
 
         Subscribe("delete_actor", [this](MessageSubject subject, MessageBody *body)
@@ -110,14 +114,17 @@ namespace Tarbora {
         float sensibility = 0.04; // TODO: Change this to a config file
 
         if (!m_FreezeMouse)
+        {
             m_LookDirection = sensibility * GetInputManager()->GetMouseDelta();
-
+        }
         if (m_Movement != lastMovement)
+        {
             Send(1, "set_movement", ApplyPhysics(m_TargetId, 1, glm::normalize(m_Movement)));
-
+        }
         if (m_LookDirection != lastLookDirection)
+        {
             Send(1, "look_direction", LookDirection(m_TargetId, m_LookDirection));
-
+        }
         if (m_Jump)
         {
             Send(1, "apply_force", ApplyPhysics(m_TargetId, 1, glm::vec3(0.f, 1.f, 0.f)));
