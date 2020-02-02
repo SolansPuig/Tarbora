@@ -1,12 +1,15 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
-layout (location = 2) in vec2 aTexCoord;
-layout (location = 3) in float aFace;
-layout (location = 4) in mat4 aTransform;
-layout (location = 8) in vec2 aUv;
-layout (location = 9) in vec3 aMeshSize;
-layout (location = 10) in vec3 aTextureSize;
+layout (location = 2) in float aVertex;
+layout (location = 3) in mat4 aTransform;
+layout (location = 7) in vec2 aUv;
+layout (location = 8) in vec3 aMeshSize;
+layout (location = 9) in vec3 aTexSize;
+layout (location = 10) in vec3 aPrimary;
+layout (location = 11) in vec3 aSecondary;
+layout (location = 12) in vec3 aDetail;
+layout (location = 13) in vec3 aDetail2;
 
 uniform mat4 projection;
 uniform mat4 view;

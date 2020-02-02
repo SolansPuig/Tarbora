@@ -5,9 +5,9 @@ layout (location = 2) out vec4 gColorSpec;
 
 in vec2 TexPos;
 in vec2 TexSize;
-in vec2 TexCoordXY;
-in vec2 TexCoordXZ;
-in vec2 TexCoordYZ;
+in vec2 TexCoordX;
+in vec2 TexCoordY;
+in vec2 TexCoordZ;
 in vec3 TexNormal;
 in vec3 FragPos;
 in vec3 Normal;
@@ -22,9 +22,9 @@ uniform sampler2D colorTint;
 
 void main()
 {
-    vec2 texCoordXY = TexPos + mod(TexCoordXY, TexSize);
-    vec2 texCoordXZ = TexPos + mod(TexCoordXZ, TexSize);
-    vec2 texCoordYZ = TexPos + mod(TexCoordYZ, TexSize);
+    vec2 texCoordZ = TexPos + mod(TexCoordZ, TexSize);
+    vec2 texCoordY = TexPos + mod(TexCoordY, TexSize);
+    vec2 texCoordX = TexPos + mod(TexCoordX, TexSize);
     vec3 blend = vec3(0);
 
     // Asymetric triplanar blend
@@ -39,23 +39,22 @@ void main()
     blend.x = pow(abs(TexNormal.x), 16);
     blend.y = pow(abs(TexNormal.y), 16);
     blend.z = pow(abs(TexNormal.z), 16);
-    float total = blend.x + blend.y + blend.z;
-    blend /= total;
+    blend /= blend.x + blend.y + blend.z;
 
     gPosition = FragPos;
     gNormal = normalize(Normal);
     vec4 fragTexture =
-        texture(albedo, texCoordXY) * blend.z +
-        texture(albedo, texCoordXZ) * blend.y +
-        texture(albedo, texCoordYZ) * blend.x;
+        texture(albedo, texCoordZ) * blend.z +
+        texture(albedo, texCoordY) * blend.y +
+        texture(albedo, texCoordX) * blend.x;
     vec4 specularTexture =
-        texture(specular, texCoordXY) * blend.z +
-        texture(specular, texCoordXZ) * blend.y +
-        texture(specular, texCoordYZ) * blend.x;
+        texture(specular, texCoordZ) * blend.z +
+        texture(specular, texCoordY) * blend.y +
+        texture(specular, texCoordX) * blend.x;
     vec4 colorTintTexture =
-        texture(colorTint, texCoordXY) * blend.z +
-        texture(colorTint, texCoordXZ) * blend.y +
-        texture(colorTint, texCoordYZ) * blend.x;
+        texture(colorTint, texCoordZ) * blend.z +
+        texture(colorTint, texCoordY) * blend.y +
+        texture(colorTint, texCoordX) * blend.x;
     if (fragTexture.a == 0.0){
         discard;
     }

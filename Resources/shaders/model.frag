@@ -21,7 +21,6 @@ uniform sampler2D colorTint;
 void main()
 {
     vec2 texCoord = TexPos + mod(TexCoords, TexSize);
-    // vec2 texCoord = vec2(1, 1);
     gPosition = FragPos;
     gNormal = normalize(Normal);
     vec4 fragTexture = texture(albedo, texCoord);

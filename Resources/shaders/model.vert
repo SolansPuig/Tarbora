@@ -1,16 +1,15 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
-layout (location = 2) in vec2 aTexCoord;
-layout (location = 3) in float aFace;
-layout (location = 4) in mat4 aTransform;
-layout (location = 8) in vec2 aUv;
-layout (location = 9) in vec3 aMeshSize;
-layout (location = 10) in vec3 aTexSize;
-layout (location = 11) in vec3 aPrimary;
-layout (location = 12) in vec3 aSecondary;
-layout (location = 13) in vec3 aDetail;
-layout (location = 14) in vec3 aDetail2;
+layout (location = 2) in float aVertex;
+layout (location = 3) in mat4 aTransform;
+layout (location = 7) in vec2 aUv;
+layout (location = 8) in vec3 aMeshSize;
+layout (location = 9) in vec3 aTexSize;
+layout (location = 10) in vec3 aPrimary;
+layout (location = 11) in vec3 aSecondary;
+layout (location = 12) in vec3 aDetail;
+layout (location = 13) in vec3 aDetail2;
 
 uniform mat4 projection;
 uniform mat4 view;
@@ -42,55 +41,52 @@ void main()
     vec3 meshSize = aMeshSize * pixelDensity;
     vec3 texSize = aTexSize * pixelDensity;
     vec2 uv = aUv;
+    float face = floor(aVertex / 4);
+    float vertex = int(aVertex) % 4;
+    bool vertexX = (vertex == 0 || vertex == 3) ? true : false; // The vertex is on the left side?
+    bool vertexY = (vertex == 0 || vertex == 1) ? true : false; // The vertex is on the up side?
 
-    switch (int(aFace)) {
+    switch (int(face)) {
         case 0:
-            TexPos.x = uv.x + texSize.z;
-            TexPos.y = uv.y + texSize.z;
-            TexSize.x = texSize.x;
-            TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 1) ? 0 : meshSize.x;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
+            TexPos.xy = uv.xy + texSize.z;
+            TexSize.xy = texSize.xy;
+            TexCoords.x = vertexX ? 0 : meshSize.x;
+            TexCoords.y = vertexY ? 0 : meshSize.y;
             break;
         case 1:
             TexPos.x = uv.x + texSize.z + 2*texSize.x;
             TexPos.y = uv.y + texSize.z;
-            TexSize.x = texSize.z;
-            TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 3) ? 0 : meshSize.z;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
+            TexSize.xy = texSize.zy;
+            TexCoords.x = vertexX ? 0 : meshSize.z;
+            TexCoords.y = vertexY ? 0 : meshSize.y;
             break;
         case 2:
             TexPos.x = uv.x + texSize.z + texSize.x;
             TexPos.y = uv.y + texSize.z;
-            TexSize.x = texSize.x;
-            TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 2) ? meshSize.x : 0;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
+            TexSize.xy = texSize.xy;
+            TexCoords.x = vertexX ? meshSize.x : 0;
+            TexCoords.y = vertexY ? 0 : meshSize.y;
             break;
         case 3:
             TexPos.x = uv.x;
             TexPos.y = uv.y + texSize.z;
-            TexSize.x = texSize.z;
-            TexSize.y = texSize.y;
-            TexCoords.x = (aTexCoord.x == 0) ? 0 : meshSize.z;
-            TexCoords.y = (aTexCoord.y == 1) ? 0 : meshSize.y;
+            TexSize.xy = texSize.zy;
+            TexCoords.x = vertexX ? 0 : meshSize.z;
+            TexCoords.y = vertexY ? 0 : meshSize.y;
             break;
         case 4:
             TexPos.x = uv.x + texSize.z;
             TexPos.y = uv.y;
-            TexSize.x = texSize.x;
-            TexSize.y = texSize.z;
-            TexCoords.x = (aTexCoord.x == 1) ? 0 : meshSize.x;
-            TexCoords.y = (aTexCoord.y == 0) ? 0 : meshSize.z;
+            TexSize.xy = texSize.xz;
+            TexCoords.x = vertexX ? 0 : meshSize.x;
+            TexCoords.y = vertexY ? 0 : meshSize.z;
             break;
         case 5:
             TexPos.x = uv.x + texSize.z + texSize.x;
             TexPos.y = uv.y;
-            TexSize.x = texSize.x;
-            TexSize.y = texSize.z;
-            TexCoords.x = (aTexCoord.x == 2) ? 0 : meshSize.x;
-            TexCoords.y = (aTexCoord.y == 0) ? 0 : meshSize.z;
+            TexSize.xy = texSize.xz;
+            TexCoords.x = vertexX ? 0 : meshSize.x;
+            TexCoords.y = vertexY ? 0 : meshSize.z;
             break;
     }
 

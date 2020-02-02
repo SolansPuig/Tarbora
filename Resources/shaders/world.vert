@@ -1,16 +1,15 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
-layout (location = 2) in vec2 aTexCoord;
-layout (location = 3) in float aFace;
-layout (location = 4) in mat4 aTransform;
-layout (location = 8) in vec2 aUv;
-layout (location = 9) in vec3 aMeshSize;
-layout (location = 10) in vec3 aTexSize;
-layout (location = 11) in vec3 aPrimary;
-layout (location = 12) in vec3 aSecondary;
-layout (location = 13) in vec3 aDetail;
-layout (location = 14) in vec3 aDetail2;
+layout (location = 2) in float aVertex;
+layout (location = 3) in mat4 aTransform;
+layout (location = 7) in vec2 aUv;
+layout (location = 8) in vec3 aMeshSize;
+layout (location = 9) in vec3 aTexSize;
+layout (location = 10) in vec3 aPrimary;
+layout (location = 11) in vec3 aSecondary;
+layout (location = 12) in vec3 aDetail;
+layout (location = 13) in vec3 aDetail2;
 
 uniform mat4 projection;
 uniform mat4 view;
@@ -19,9 +18,9 @@ uniform int pixelDensity;
 
 out vec2 TexPos;
 out vec2 TexSize;
-out vec2 TexCoordXY;
-out vec2 TexCoordXZ;
-out vec2 TexCoordYZ;
+out vec2 TexCoordX;
+out vec2 TexCoordY;
+out vec2 TexCoordZ;
 out vec3 TexNormal;
 out vec3 FragPos;
 out vec3 Normal;
@@ -47,16 +46,19 @@ void main()
 
     vec3 TexCoords = vec3(aTransform * vec4(aPos, 1.0f)).xyz * pixelDensity;
     TexNormal =  vec3(transpose(inverse(aTransform)) * vec4(aNormal, 0.0));
-    TexCoordXY = TexCoords.xy / textureSize(myTexture, 0);
-    TexCoordXZ = TexCoords.xz / textureSize(myTexture, 0);
-    TexCoordYZ = TexCoords.zy / textureSize(myTexture, 0);
-    TexCoordXY.x *= sign(TexNormal.z);
-    TexCoordXY.y *= -1;
-    TexCoordYZ.x *= -sign(TexNormal.x);
-    TexCoordYZ.y *= -1;
-    TexCoordXZ.x *= sign(TexNormal.y);
+    TexCoordZ = TexCoords.xy / textureSize(myTexture, 0);
+    TexCoordY = TexCoords.xz / textureSize(myTexture, 0);
+    TexCoordX = TexCoords.zy / textureSize(myTexture, 0);
+    TexCoordZ.x *= sign(TexNormal.z);
+    TexCoordZ.y *= -1;
+    TexCoordX.x *= -sign(TexNormal.x);
+    TexCoordX.y *= -1;
+    TexCoordY.x *= sign(TexNormal.y);
 
-    switch (int(aFace)) {
+    float face = floor(aVertex / 4);
+    float v = int(aVertex) % 4;
+
+    switch (int(face)) {
         case 0:
             TexPos.x = uv.x + texSize.z;
             TexPos.y = uv.y + texSize.z;

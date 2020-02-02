@@ -26,7 +26,7 @@ namespace Tarbora {
         }
 
         glEnable(GL_DEPTH_TEST);
-        glClearColor(0.f, 0.f, 0.f, 0.f);
+        glClearColor(1.f, 0.f, 0.f, 0.f);
 
         m_QuadMesh = ResourcePtr<Mesh>("meshes/plane.mesh");
         SetupGeometryPass();

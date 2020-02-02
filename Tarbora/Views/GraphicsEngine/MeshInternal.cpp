@@ -49,39 +49,38 @@ namespace Tarbora {
 
         glBindVertexArray(m_Vao);
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(2);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(6 * sizeof(float)));
-        glEnableVertexAttribArray(3);
-        glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(8 * sizeof(float)));
+        glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(6 * sizeof(float)));
 
         glGenBuffers(1, &m_DataBuffer);
         glBindBuffer(GL_ARRAY_BUFFER, m_DataBuffer);
-        glEnableVertexAttribArray(4); // transform[0]
-        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(5); // transform[1]
-        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(4 * sizeof(float)));
-        glEnableVertexAttribArray(6); // transform[2]
-        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(8 * sizeof(float)));
-        glEnableVertexAttribArray(7); // transform[3]
-        glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(12 * sizeof(float)));
-        glEnableVertexAttribArray(8); // UV Map
-        glVertexAttribPointer(8, 2, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(16 * sizeof(float)));
-        glEnableVertexAttribArray(9); // Mesh size
-        glVertexAttribPointer(9, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(18 * sizeof(float)));
-        glEnableVertexAttribArray(10); // Texture size
-        glVertexAttribPointer(10, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(21 * sizeof(float)));
-        glEnableVertexAttribArray(11); // Color primary
-        glVertexAttribPointer(11, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(24 * sizeof(float)));
-        glEnableVertexAttribArray(12); // Color secondary
-        glVertexAttribPointer(12, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(27 * sizeof(float)));
-        glEnableVertexAttribArray(13); // Color detail 1
-        glVertexAttribPointer(13, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(30 * sizeof(float)));
-        glEnableVertexAttribArray(14); // Color detail 2
-        glVertexAttribPointer(14, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(33 * sizeof(float)));
+        glEnableVertexAttribArray(3); // transform[0]
+        glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(4); // transform[1]
+        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(4 * sizeof(float)));
+        glEnableVertexAttribArray(5); // transform[2]
+        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(8 * sizeof(float)));
+        glEnableVertexAttribArray(6); // transform[3]
+        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(12 * sizeof(float)));
+        glEnableVertexAttribArray(7); // UV Map
+        glVertexAttribPointer(7, 2, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(16 * sizeof(float)));
+        glEnableVertexAttribArray(8); // Mesh size
+        glVertexAttribPointer(8, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(18 * sizeof(float)));
+        glEnableVertexAttribArray(9); // Texture size
+        glVertexAttribPointer(9, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(21 * sizeof(float)));
+        glEnableVertexAttribArray(10); // Color primary
+        glVertexAttribPointer(10, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(24 * sizeof(float)));
+        glEnableVertexAttribArray(11); // Color secondary
+        glVertexAttribPointer(11, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(27 * sizeof(float)));
+        glEnableVertexAttribArray(12); // Color detail 1
+        glVertexAttribPointer(12, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(30 * sizeof(float)));
+        glEnableVertexAttribArray(13); // Color detail 2
+        glVertexAttribPointer(13, 3, GL_FLOAT, GL_FALSE, 36 * sizeof(float), (void*)(33 * sizeof(float)));
 
+        glVertexAttribDivisor(3, 1);
         glVertexAttribDivisor(4, 1);
         glVertexAttribDivisor(5, 1);
         glVertexAttribDivisor(6, 1);
@@ -92,7 +91,6 @@ namespace Tarbora {
         glVertexAttribDivisor(11, 1);
         glVertexAttribDivisor(12, 1);
         glVertexAttribDivisor(13, 1);
-        glVertexAttribDivisor(14, 1);
     }
 
     void MeshInternal::Delete()
