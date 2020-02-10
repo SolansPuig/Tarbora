@@ -43,7 +43,7 @@ namespace Tarbora {
             for (auto property : nodeLua)
             {
                 std::string name = property.first.GetAs<std::string>();
-                auto value = property.second;
+                glm::vec3 value = property.second.GetAs<glm::vec3>();
 
                 glm::vec3 currentValue = node->Get(name);
 
@@ -55,7 +55,7 @@ namespace Tarbora {
                 query.Set("currentY", currentValue.y * scale);
                 query.Set("currentZ", currentValue.z * scale);
 
-                node->InterpolateTo(name, value.GetAs<glm::vec3>()/scale, m_Counter);
+                node->InterpolateTo(name, value/scale, m_Counter);
             }
         }
     }

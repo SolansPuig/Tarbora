@@ -9,41 +9,76 @@ namespace Tarbora {
         CalcVolume();
     }
 
+    void RigidBody::SetTransform(const glm::mat4 &transform)
+    {
+        if (m_Body)
+        {
+            btMatrix3x3 rotation;
+            btVector3 position;
+            for (int i = 0; i < 3; i++)
+            {
+                position[i] = transform[3][i];
+                for (int j = 0; j < 3; j++)
+                {
+                    rotation[i][j] = transform[j][i];
+                }
+            }
+
+            m_Body->setWorldTransform(btTransform(rotation, position));
+            // m_Body->activate();
+        }
+    }
+
     void RigidBody::ApplyImpulse(float newtons, const glm::vec3 &direction)
     {
-        btVector3 const impulse(direction.x * newtons, direction.y * newtons, direction.z * newtons);
-        m_Body->applyCentralImpulse(impulse);
-        m_Body->activate();
+        if (m_Body)
+        {
+            btVector3 const impulse(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+            m_Body->applyCentralImpulse(impulse);
+            m_Body->activate();
+        }
     }
 
     void RigidBody::ApplyForce(float newtons, const glm::vec3 &direction)
     {
-        btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
-        m_Body->applyCentralForce(force);
-        m_Body->activate();
+        if (m_Body)
+        {
+            btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+            m_Body->applyCentralForce(force);
+            m_Body->activate();
+        }
     }
 
     void RigidBody::ApplyTorque(float magnitude, const glm::vec3 &direction)
     {
-        btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
-        m_Body->applyTorqueImpulse(torque);
-        m_Body->activate();
+        if (m_Body)
+        {
+            btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
+            m_Body->applyTorqueImpulse(torque);
+            m_Body->activate();
+        }
     }
 
     void RigidBody::SetVelocity(const glm::vec3 &velocity)
     {
-        glm::mat3 const rotation = static_cast<ActorMotionState*>(m_Body->getMotionState())->getRotation();
-        glm::vec3 const globalVelocity = rotation * velocity;
-        btVector3 const vel(globalVelocity.x, m_Body->getLinearVelocity().y(), globalVelocity.z);
-        m_Body->setLinearVelocity(vel);
-        m_Body->activate();
+        if (m_Body)
+        {
+            glm::mat3 const rotation = static_cast<ActorMotionState*>(m_Body->getMotionState())->getRotation();
+            glm::vec3 const globalVelocity = rotation * velocity;
+            btVector3 const vel(globalVelocity.x, m_Body->getLinearVelocity().y(), globalVelocity.z);
+            m_Body->setLinearVelocity(vel);
+            m_Body->activate();
+        }
     }
 
     void RigidBody::SetAngularVelocity(const glm::vec3 &velocity)
     {
-        btVector3 const vel(velocity.x, velocity.y, velocity.z);
-        m_Body->setAngularVelocity(vel);
-        m_Body->activate();
+        if (m_Body)
+        {
+            btVector3 const vel(velocity.x, velocity.y, velocity.z);
+            m_Body->setAngularVelocity(vel);
+            m_Body->activate();
+        }
     }
 
     void RigidBody::Stop()
@@ -53,24 +88,30 @@ namespace Tarbora {
 
     void RigidBody::RestrictRotation(const glm::vec3 &axis)
     {
-        m_Body->setAngularFactor(btVector3(axis.x, axis.y, axis.z));
+        if (m_Body)
+            m_Body->setAngularFactor(btVector3(axis.x, axis.y, axis.z));
     }
 
     void RigidBody::SetLinearDamping(float damping)
     {
-        m_Body->setDamping(damping, 0.0f);
+        if (m_Body)
+            m_Body->setDamping(damping, 0.0f);
     }
 
     std::shared_ptr<RayCastResult> RigidBody::RayCast(glm::vec3 origin, glm::vec3 direction, float distance)
     {
-        ActorMotionState * motionState = static_cast<ActorMotionState*>(m_Body->getMotionState());
-        glm::vec3 position = motionState->getPosition();
-        glm::mat3 rotation = motionState->getRotation();
-        glm::vec3 rayOrigin = origin + position;
-        glm::vec3 rayDirection = glm::normalize(rotation * direction);
-        glm::vec3 rayEnd = rayOrigin + rayDirection * distance;
-        std::shared_ptr<RayCastResult> result = PhysicsEngine::RayCast(rayOrigin, rayEnd);
-        return result;
+        if (m_Body)
+        {
+            ActorMotionState * motionState = static_cast<ActorMotionState*>(m_Body->getMotionState());
+            glm::vec3 position = motionState->getPosition();
+            glm::mat3 rotation = motionState->getRotation();
+            glm::vec3 rayOrigin = origin + position;
+            glm::vec3 rayDirection = glm::normalize(rotation * direction);
+            glm::vec3 rayEnd = rayOrigin + rayDirection * distance;
+            std::shared_ptr<RayCastResult> result = PhysicsEngine::RayCast(rayOrigin, rayEnd);
+            return result;
+        }
+        return std::shared_ptr<RayCastResult>();
     }
 
 
@@ -84,7 +125,7 @@ namespace Tarbora {
         Unregister();
     }
 
-    void SphereBody::Register(unsigned int id, glm::mat4 &transform)
+    void SphereBody::Register(ActorId &id, glm::mat4 &transform)
     {
         m_Body = PhysicsEngine::AddSphere(id, m_Radius, m_Mass, m_Friction, m_Restitution, transform);
     }
@@ -110,14 +151,15 @@ namespace Tarbora {
         Unregister();
     }
 
-    void CapsuleBody::Register(unsigned int id, glm::mat4 &transform)
+    void CapsuleBody::Register(ActorId &id, glm::mat4 &transform)
     {
         m_Body = PhysicsEngine::AddCapsule(id, m_Radius, m_Height, m_Mass, m_Friction, m_Restitution, transform);
     }
 
     void CapsuleBody::Unregister()
     {
-        PhysicsEngine::RemoveObject(m_Body);
+        if (m_Body)
+            PhysicsEngine::RemoveObject(m_Body);
     }
 
     void CapsuleBody::CalcVolume() {
@@ -135,14 +177,15 @@ namespace Tarbora {
         Unregister();
     }
 
-    void BoxBody::Register(unsigned int id, glm::mat4 &transform)
+    void BoxBody::Register(ActorId &id, glm::mat4 &transform)
     {
         m_Body = PhysicsEngine::AddBox(id, m_Dimensions, m_Mass, m_Friction, m_Restitution, transform);
     }
 
     void BoxBody::Unregister()
     {
-        PhysicsEngine::RemoveObject(m_Body);
+        if (m_Body)
+            PhysicsEngine::RemoveObject(m_Body);
     }
 
     void BoxBody::CalcVolume() {

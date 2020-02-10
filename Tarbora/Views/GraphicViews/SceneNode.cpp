@@ -1,5 +1,4 @@
 #include "Scene.hpp"
-#include "../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
     SceneNode::SceneNode(ActorId actorId, const std::string &name)
@@ -49,17 +48,6 @@ namespace Tarbora {
         return true;
     }
 
-    std::shared_ptr<SceneNode> SceneNode::GetChild(ActorId id)
-    {
-        std::string name = std::to_string(id);
-        auto itr = m_Children.find(name);
-        if (itr != m_Children.end())
-        {
-            return itr->second;
-        }
-        return std::shared_ptr<SceneNode>();
-    }
-
     std::shared_ptr<SceneNode> SceneNode::GetChild(const std::string &name)
     {
         auto itr = m_Children.find(name);
@@ -68,18 +56,6 @@ namespace Tarbora {
             return itr->second;
         }
         return std::shared_ptr<SceneNode>();
-    }
-
-    bool SceneNode::RemoveChild(ActorId id)
-    {
-        std::string name = std::to_string(id);
-        auto itr = m_Children.find(name);
-        if (itr != m_Children.end())
-        {
-            m_Children.erase(itr);
-            return true;
-        }
-        return false;
     }
 
     bool SceneNode::RemoveChild(const std::string &name)

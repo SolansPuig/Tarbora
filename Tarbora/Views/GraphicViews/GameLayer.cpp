@@ -14,7 +14,7 @@ namespace Tarbora {
         m_Jump = false;
         m_FreezeMouse = false;
 
-        std::shared_ptr<Camera> camera = m_Scene->CreateCamera(MAIN_CAMERA_ID);
+        std::shared_ptr<Camera> camera = m_Scene->CreateCamera("main_camera");
         camera->Set("rotation", glm::vec3(-1.0f, 220.0f, 0.0f));
         camera->Set("position", glm::vec3(-3.0f, -1.5f, -4.0f));
         m_Scene->SetCamera(camera);
@@ -24,9 +24,9 @@ namespace Tarbora {
         Subscribe("create_actor_model", [this](MessageSubject subject, MessageBody * body)
         {
             CreateActorBody m = body->GetContent<CreateActorBody>();
-            if (m_Scene->GetChild(m.id()) != nullptr)
+            if (m_Scene->GetActor(m.id()) != nullptr)
             {
-                m_Scene->RemoveChild(m.id());
+                m_Scene->RemoveActor(m.id());
             }
             m_Scene->CreateActorModel(m.id(), m.entity(), m.variant());
         });
@@ -40,7 +40,7 @@ namespace Tarbora {
         Subscribe("move_actor", [this](MessageSubject subject, MessageBody *body)
         {
             MoveActorBody m = body->GetContent<MoveActorBody>();
-            std::shared_ptr<SceneNode> actor = m_Scene->GetChild(m.id());
+            std::shared_ptr<SceneNode> actor = m_Scene->GetActor(m.id());
             actor->SetPosition(Vec3toGLM(m.position()));
             actor->SetRotationMatrix(Mat3toGLM(m.rotation()));
         });
@@ -48,7 +48,7 @@ namespace Tarbora {
         Subscribe("move_node", [this](MessageSubject subject, MessageBody *body)
         {
             MoveNodeBody m = body->GetContent<MoveNodeBody>();
-            std::shared_ptr<SceneNode> node = m_Scene->GetChild(m.id())->GetChild(m.node());
+            std::shared_ptr<SceneNode> node = m_Scene->GetActor(m.id())->GetChild(m.node());
             node->Add("position", Vec3toGLM(m.position()));
             node->Add("rotation", Vec3toGLM(m.rotation()));
         });
@@ -56,7 +56,7 @@ namespace Tarbora {
         Subscribe("delete_actor", [this](MessageSubject subject, MessageBody *body)
         {
             DeleteActorBody m = body->GetContent<DeleteActorBody>();
-            m_Scene->RemoveChild(m.id());
+            m_Scene->RemoveActor(m.id());
         });
 
         Subscribe("set_actor_animation", [this](MessageSubject subject, MessageBody *body)
@@ -98,7 +98,7 @@ namespace Tarbora {
 
         if (GetInputManager()->GetKeyDown(KEY_X))
         {
-            Send(1, "create_actor", CreateActor(0, "cube.json", "", glm::vec3(0.f,5.f,-5.f)));
+            Send(1, "create_actor", CreateActor("", "cube.lua", "", glm::vec3(0.f,1.f,-5.f)));
         }
         if (GetInputManager()->GetKeyDown(KEY_Y))
         {

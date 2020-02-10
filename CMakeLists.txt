@@ -16,8 +16,8 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 include(cotire)
 
 include_directories(Tarbora/Framework/PhysicsEngine/bullet3/src)
-include_directories(Tarbora/Views/GraphicsEngine/imgui)
-include_directories(Tarbora/Views/GraphicsEngine/glfw/include)
+include_directories(Tarbora/Views/GraphicViews/GraphicsEngine/imgui)
+include_directories(Tarbora/Views/GraphicViews/GraphicsEngine/glfw/include)
 include_directories(Tarbora/Framework/External/sol2/include)
 include_directories(Tarbora/Framework/External/lua)
 
@@ -28,11 +28,11 @@ add_executable (tarbora main.cpp)
 target_link_libraries (tarbora
     GraphicViews
     HardwareViews
+    SceneManager
     TarboraCore
     Logic
     PhysicsEngine
     GraphicsEngine
-    ResourceManager
     Messages
     glfw
     imgui

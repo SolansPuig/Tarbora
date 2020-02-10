@@ -10,11 +10,11 @@
 
 namespace Tarbora {
     struct RayCastResult {
-        RayCastResult(unsigned int hit_id, glm::vec3 hit_position, glm::vec3 hit_normal, float distance) :
+        RayCastResult(const ActorId &hit_id, glm::vec3 hit_position, glm::vec3 hit_normal, float distance) :
             m_HitId(hit_id), m_HitPosition(hit_position), m_HitNormal(hit_normal), m_Distance(distance)
         {}
 
-        unsigned int m_HitId;
+        ActorId m_HitId;
         glm::vec3 m_HitPosition;
         glm::vec3 m_HitNormal;
         float m_Distance;
@@ -49,7 +49,7 @@ namespace Tarbora {
             \param transform The transform matrix of the actor.
             \returns A Bullet3's rigid body.
         */
-        static btRigidBody *AddSphere(unsigned int id, float radius, float mass, float friction, float restitution, glm::mat4 &transform);
+        static btRigidBody *AddSphere(ActorId &id, float radius, float mass, float friction, float restitution, glm::mat4 &transform);
 
         //! Register an capsule shaped rigid body.
         /*!
@@ -62,7 +62,7 @@ namespace Tarbora {
             \param transform The transform matrix of the actor.
             \returns A Bullet3's rigid body.
         */
-        static btRigidBody *AddCapsule(unsigned int id, float radius, float height, float mass, float friction, float restitution, glm::mat4 &transform);
+        static btRigidBody *AddCapsule(ActorId &id, float radius, float height, float mass, float friction, float restitution, glm::mat4 &transform);
 
         //! Register a cube shaped rigid body.
         /*!
@@ -74,7 +74,7 @@ namespace Tarbora {
             \param transform The transform matrix of the actor.
             \returns A Bullet3's rigid body.
         */
-        static btRigidBody *AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float restitution, glm::mat4 &transform);
+        static btRigidBody *AddBox(ActorId &id, glm::vec3 &dimensions, float mass, float friction, float restitution, glm::mat4 &transform);
 
         //! Destroy and unregister a rigid body.
         /*!
@@ -101,7 +101,7 @@ namespace Tarbora {
         static void BulletInternalTickCallback(btDynamicsWorld * const world, btScalar const timeStep);
 
         //! Register a rigid body
-        static btRigidBody *AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float restitution, glm::mat4 &transform);
+        static btRigidBody *AddShape(ActorId &id, btCollisionShape *shape, float mass, float friction, float restitution, glm::mat4 &transform);
 
         // Bullet3 variables
         inline static btDynamicsWorld *m_DynamicsWorld;

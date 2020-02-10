@@ -6,9 +6,9 @@ namespace Tarbora {
     {
     public:
         Skybox(std::string material)
-            : MaterialNode(SKY_ID, "sky", material)
+            : MaterialNode("sky", "sky", material)
         {
-            std::shared_ptr<MeshNode> mesh = std::shared_ptr<MeshNode>(new MeshNode(SKY_ID, "sky_root", RenderPass::Sky, "cube.mesh"));
+            std::shared_ptr<MeshNode> mesh = std::shared_ptr<MeshNode>(new MeshNode("sky", "sky_root", RenderPass::Sky, "cube.mesh"));
             AddChild(mesh);
         }
     };

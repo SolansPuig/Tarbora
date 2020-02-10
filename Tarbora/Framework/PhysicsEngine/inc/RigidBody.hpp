@@ -19,7 +19,7 @@ namespace Tarbora {
             \param id The id of the actor that owns that rigid body.
             \param transform The transform matrix of that actor.
         */
-        virtual void Register(unsigned int id, glm::mat4 &transform) = 0;
+        virtual void Register(ActorId &id, glm::mat4 &transform) = 0;
 
         //! Remove the rigid body from the Physics Engine.
         virtual void Unregister() = 0;
@@ -70,6 +70,8 @@ namespace Tarbora {
 
         //! Get the mass of the object.
         float GetMass() { return m_Mass; }
+
+        void SetTransform(const glm::mat4 &transform);
 
         //! Apply an impulse on the center of the object.
         /*!
@@ -159,7 +161,7 @@ namespace Tarbora {
         //! Destroys and unregisters this body.
         ~SphereBody();
 
-        virtual void Register(unsigned int id, glm::mat4 &transform) override;
+        virtual void Register(ActorId &id, glm::mat4 &transform) override;
         virtual void Unregister() override;
         virtual void CalcVolume() override;
 
@@ -195,7 +197,7 @@ namespace Tarbora {
         //! Destroys and unregisters this body.
         ~CapsuleBody();
 
-        virtual void Register(unsigned int id, glm::mat4 &transform) override;
+        virtual void Register(ActorId &id, glm::mat4 &transform) override;
         virtual void Unregister() override;
         virtual void CalcVolume() override;
 
@@ -240,7 +242,7 @@ namespace Tarbora {
         //! Destroys and unregisters this body.
         ~BoxBody();
 
-        virtual void Register(unsigned int id, glm::mat4 &transform) override;
+        virtual void Register(ActorId &id, glm::mat4 &transform) override;
         virtual void Unregister() override;
         virtual void CalcVolume() override;
 

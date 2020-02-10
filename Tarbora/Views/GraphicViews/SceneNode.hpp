@@ -1,5 +1,5 @@
 #pragma once
-#include "../GraphicsEngine/GraphicsEngine.hpp"
+#include "GraphicView.hpp"
 #include "NodeProperty.hpp"
 
 namespace Tarbora {
@@ -20,9 +20,7 @@ namespace Tarbora {
         virtual void AfterDraw(Scene *scene) { (void)(scene); }
 
         virtual bool AddChild(std::shared_ptr<SceneNode> child);
-        virtual std::shared_ptr<SceneNode> GetChild(ActorId id);
         virtual std::shared_ptr<SceneNode> GetChild(const std::string &name);
-        virtual bool RemoveChild(ActorId id);
         virtual bool RemoveChild(const std::string &name);
 
         bool IsVisible(Scene *scene);
@@ -68,7 +66,7 @@ namespace Tarbora {
     {
     public:
         RootNode()
-            : SceneNode(INVALID_ID, "Root") {}
+            : SceneNode("", "Root") {}
         virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
     };
 

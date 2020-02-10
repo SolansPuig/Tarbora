@@ -1,0 +1,9 @@
+actors = {
+    { name = "ground.lua", position = {0, -4.5, -5} },
+    { name = "platform.lua", position = {-3, -3, -7} },
+    { name = "platform.lua", position = {-5, -3, -7} },
+    { name = "platform.lua", position = {-5, -3, -5} },
+    { name = "double_platform.lua", position = {-5, -3.5 - 1.34, -4}, rotation = {45, 0, 0} },
+    { id = "player", name = "human.lua", position = {0, -3, -3}, rotation = {0, 0, 0} },
+    { name = "birch.lua", position = {2, -3, -2} }
+}

@@ -1,6 +1,6 @@
 #pragma once
 #include "../../Framework/Module.hpp"
-#include "../GraphicsEngine/GraphicsEngine.hpp"
+#include "GraphicsEngine/GraphicsEngine.hpp"
 
 namespace Tarbora {
     class GraphicView : public Module

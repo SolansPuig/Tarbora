@@ -340,23 +340,23 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 
 const char descriptor_table_protodef_basic_2eproto[] =
   "\n\013basic.proto\022\010tbBasics\032\nmath.proto\"\214\001\n\017"
-  "CreateActorBody\022\n\n\002id\030\001 \001(\r\022\016\n\006entity\030\002 "
+  "CreateActorBody\022\n\n\002id\030\001 \001(\t\022\016\n\006entity\030\002 "
   "\001(\t\022\017\n\007variant\030\003 \001(\t\022%\n\010position\030\004 \001(\0132\023"
   ".tbMath.Vec3Message\022%\n\010rotation\030\005 \001(\0132\023."
   "tbMath.Vec3Message\"\035\n\017DeleteActorBody\022\n\n"
-  "\002id\030\001 \001(\r\")\n\rSetCameraBody\022\n\n\002id\030\001 \001(\r\022\014"
+  "\002id\030\001 \001(\t\")\n\rSetCameraBody\022\n\n\002id\030\001 \001(\t\022\014"
   "\n\004name\030\002 \001(\t\"i\n\rMoveActorBody\022\n\n\002id\030\001 \001("
-  "\r\022%\n\010position\030\002 \001(\0132\023.tbMath.Vec3Message"
+  "\t\022%\n\010position\030\002 \001(\0132\023.tbMath.Vec3Message"
   "\022%\n\010rotation\030\003 \001(\0132\023.tbMath.Mat3Message\""
-  "6\n\025SetActorAnimationBody\022\n\n\002id\030\001 \001(\r\022\021\n\t"
+  "6\n\025SetActorAnimationBody\022\n\n\002id\030\001 \001(\t\022\021\n\t"
   "animation\030\002 \001(\t\"Y\n\020ApplyPhysicsBody\022\n\n\002i"
-  "d\030\001 \001(\r\022\021\n\tmagnitude\030\002 \001(\002\022&\n\tdirection\030"
+  "d\030\001 \001(\t\022\021\n\tmagnitude\030\002 \001(\002\022&\n\tdirection\030"
   "\003 \001(\0132\023.tbMath.Vec3Message\"G\n\021LookDirect"
-  "ionBody\022\n\n\002id\030\001 \001(\r\022&\n\tdirection\030\002 \001(\0132\023"
+  "ionBody\022\n\n\002id\030\001 \001(\t\022&\n\tdirection\030\002 \001(\0132\023"
   ".tbMath.Vec2Message\"a\n\nLookAtBody\022\n\n\002id\030"
-  "\001 \001(\r\022\016\n\006target\030\002 \001(\r\022\020\n\010distance\030\003 \001(\002\022"
+  "\001 \001(\t\022\016\n\006target\030\002 \001(\t\022\020\n\010distance\030\003 \001(\002\022"
   "%\n\010rotation\030\004 \001(\0132\023.tbMath.Vec3Message\"v"
-  "\n\014MoveNodeBody\022\n\n\002id\030\001 \001(\r\022\014\n\004node\030\002 \001(\t"
+  "\n\014MoveNodeBody\022\n\n\002id\030\001 \001(\t\022\014\n\004node\030\002 \001(\t"
   "\022%\n\010position\030\003 \001(\0132\023.tbMath.Vec3Message\022"
   "%\n\010rotation\030\004 \001(\0132\023.tbMath.Vec3Message\"1"
   "\n\nMatrixBody\022#\n\006matrix\030\001 \001(\0132\023.tbMath.Ma"
@@ -431,6 +431,10 @@ CreateActorBody::CreateActorBody(const CreateActorBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   entity_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.entity().size() > 0) {
     entity_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entity_);
@@ -449,18 +453,18 @@ CreateActorBody::CreateActorBody(const CreateActorBody& from)
   } else {
     rotation_ = nullptr;
   }
-  id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.CreateActorBody)
 }
 
 void CreateActorBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_CreateActorBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   entity_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   variant_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&position_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&position_)) + sizeof(id_));
+      reinterpret_cast<char*>(&rotation_) -
+      reinterpret_cast<char*>(&position_)) + sizeof(rotation_));
 }
 
 CreateActorBody::~CreateActorBody() {
@@ -469,6 +473,7 @@ CreateActorBody::~CreateActorBody() {
 }
 
 void CreateActorBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   entity_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   variant_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete position_;
@@ -490,6 +495,7 @@ void CreateActorBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   entity_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   variant_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
@@ -500,7 +506,6 @@ void CreateActorBody::Clear() {
     delete rotation_;
   }
   rotation_ = nullptr;
-  id_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -517,11 +522,20 @@ const char* CreateActorBody::_InternalParse(const char* begin, const char* end, 
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.CreateActorBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // string entity = 2;
@@ -616,13 +630,15 @@ bool CreateActorBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.CreateActorBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -708,9 +724,14 @@ void CreateActorBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.CreateActorBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   // string entity = 2;
@@ -758,9 +779,15 @@ void CreateActorBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.CreateActorBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   // string entity = 2;
@@ -820,6 +847,13 @@ size_t CreateActorBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
   // string entity = 2;
   if (this->entity().size() > 0) {
     total_size += 1 +
@@ -846,13 +880,6 @@ size_t CreateActorBody::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *rotation_);
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -882,6 +909,10 @@ void CreateActorBody::MergeFrom(const CreateActorBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.entity().size() > 0) {
 
     entity_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entity_);
@@ -895,9 +926,6 @@ void CreateActorBody::MergeFrom(const CreateActorBody& from) {
   }
   if (from.has_rotation()) {
     mutable_rotation()->::tbMath::Vec3Message::MergeFrom(from.rotation());
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
   }
 }
 
@@ -926,13 +954,14 @@ void CreateActorBody::Swap(CreateActorBody* other) {
 void CreateActorBody::InternalSwap(CreateActorBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   entity_.Swap(&other->entity_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   variant_.Swap(&other->variant_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(position_, other->position_);
   swap(rotation_, other->rotation_);
-  swap(id_, other->id_);
 }
 
 ::google::protobuf::Metadata CreateActorBody::GetMetadata() const {
@@ -962,12 +991,17 @@ DeleteActorBody::DeleteActorBody(const DeleteActorBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_ = from.id_;
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   // @@protoc_insertion_point(copy_constructor:tbBasics.DeleteActorBody)
 }
 
 void DeleteActorBody::SharedCtor() {
-  id_ = 0u;
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_DeleteActorBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 DeleteActorBody::~DeleteActorBody() {
@@ -976,6 +1010,7 @@ DeleteActorBody::~DeleteActorBody() {
 }
 
 void DeleteActorBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void DeleteActorBody::SetCachedSize(int size) const {
@@ -993,7 +1028,7 @@ void DeleteActorBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -1010,11 +1045,20 @@ const char* DeleteActorBody::_InternalParse(const char* begin, const char* end, 
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.DeleteActorBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       default: {
@@ -1032,6 +1076,13 @@ const char* DeleteActorBody::_InternalParse(const char* begin, const char* end, 
     }  // switch
   }  // while
   return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool DeleteActorBody::MergePartialFromCodedStream(
@@ -1044,13 +1095,15 @@ bool DeleteActorBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.DeleteActorBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -1084,9 +1137,14 @@ void DeleteActorBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.DeleteActorBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1102,9 +1160,15 @@ void DeleteActorBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.DeleteActorBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1128,10 +1192,10 @@ size_t DeleteActorBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
+  // string id = 1;
+  if (this->id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::StringSize(
         this->id());
   }
 
@@ -1162,8 +1226,9 @@ void DeleteActorBody::MergeFrom(const DeleteActorBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.id() != 0) {
-    set_id(from.id());
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
 }
 
@@ -1192,7 +1257,8 @@ void DeleteActorBody::Swap(DeleteActorBody* other) {
 void DeleteActorBody::InternalSwap(DeleteActorBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(id_, other->id_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
 }
 
 ::google::protobuf::Metadata DeleteActorBody::GetMetadata() const {
@@ -1223,19 +1289,22 @@ SetCameraBody::SetCameraBody(const SetCameraBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.SetCameraBody)
 }
 
 void SetCameraBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_SetCameraBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  id_ = 0u;
 }
 
 SetCameraBody::~SetCameraBody() {
@@ -1244,6 +1313,7 @@ SetCameraBody::~SetCameraBody() {
 }
 
 void SetCameraBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -1262,8 +1332,8 @@ void SetCameraBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  id_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -1280,11 +1350,20 @@ const char* SetCameraBody::_InternalParse(const char* begin, const char* end, vo
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.SetCameraBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // string name = 2;
@@ -1337,13 +1416,15 @@ bool SetCameraBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.SetCameraBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -1392,9 +1473,14 @@ void SetCameraBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.SetCameraBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   // string name = 2;
@@ -1420,9 +1506,15 @@ void SetCameraBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.SetCameraBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   // string name = 2;
@@ -1457,18 +1549,18 @@ size_t SetCameraBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
   // string name = 2;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1498,12 +1590,13 @@ void SetCameraBody::MergeFrom(const SetCameraBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.name().size() > 0) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
   }
 }
 
@@ -1532,9 +1625,10 @@ void SetCameraBody::Swap(SetCameraBody* other) {
 void SetCameraBody::InternalSwap(SetCameraBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(id_, other->id_);
 }
 
 ::google::protobuf::Metadata SetCameraBody::GetMetadata() const {
@@ -1592,6 +1686,10 @@ MoveActorBody::MoveActorBody(const MoveActorBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.has_position()) {
     position_ = new ::tbMath::Vec3Message(*from.position_);
   } else {
@@ -1602,16 +1700,16 @@ MoveActorBody::MoveActorBody(const MoveActorBody& from)
   } else {
     rotation_ = nullptr;
   }
-  id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.MoveActorBody)
 }
 
 void MoveActorBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_MoveActorBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&position_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&position_)) + sizeof(id_));
+      reinterpret_cast<char*>(&rotation_) -
+      reinterpret_cast<char*>(&position_)) + sizeof(rotation_));
 }
 
 MoveActorBody::~MoveActorBody() {
@@ -1620,6 +1718,7 @@ MoveActorBody::~MoveActorBody() {
 }
 
 void MoveActorBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete position_;
   if (this != internal_default_instance()) delete rotation_;
 }
@@ -1639,6 +1738,7 @@ void MoveActorBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
     delete position_;
   }
@@ -1647,7 +1747,6 @@ void MoveActorBody::Clear() {
     delete rotation_;
   }
   rotation_ = nullptr;
-  id_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -1664,11 +1763,20 @@ const char* MoveActorBody::_InternalParse(const char* begin, const char* end, vo
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.MoveActorBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // .tbMath.Vec3Message position = 2;
@@ -1712,6 +1820,10 @@ const char* MoveActorBody::_InternalParse(const char* begin, const char* end, vo
     }  // switch
   }  // while
   return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
 len_delim_till_end:
   return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
                                {parser_till_end, object}, size);
@@ -1727,13 +1839,15 @@ bool MoveActorBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.MoveActorBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -1789,9 +1903,14 @@ void MoveActorBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.MoveActorBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   // .tbMath.Vec3Message position = 2;
@@ -1819,9 +1938,15 @@ void MoveActorBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.MoveActorBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   // .tbMath.Vec3Message position = 2;
@@ -1859,6 +1984,13 @@ size_t MoveActorBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
   // .tbMath.Vec3Message position = 2;
   if (this->has_position()) {
     total_size += 1 +
@@ -1871,13 +2003,6 @@ size_t MoveActorBody::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *rotation_);
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1907,14 +2032,15 @@ void MoveActorBody::MergeFrom(const MoveActorBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.has_position()) {
     mutable_position()->::tbMath::Vec3Message::MergeFrom(from.position());
   }
   if (from.has_rotation()) {
     mutable_rotation()->::tbMath::Mat3Message::MergeFrom(from.rotation());
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
   }
 }
 
@@ -1943,9 +2069,10 @@ void MoveActorBody::Swap(MoveActorBody* other) {
 void MoveActorBody::InternalSwap(MoveActorBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(position_, other->position_);
   swap(rotation_, other->rotation_);
-  swap(id_, other->id_);
 }
 
 ::google::protobuf::Metadata MoveActorBody::GetMetadata() const {
@@ -1976,19 +2103,22 @@ SetActorAnimationBody::SetActorAnimationBody(const SetActorAnimationBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   animation_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.animation().size() > 0) {
     animation_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.animation_);
   }
-  id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.SetActorAnimationBody)
 }
 
 void SetActorAnimationBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_SetActorAnimationBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   animation_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  id_ = 0u;
 }
 
 SetActorAnimationBody::~SetActorAnimationBody() {
@@ -1997,6 +2127,7 @@ SetActorAnimationBody::~SetActorAnimationBody() {
 }
 
 void SetActorAnimationBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   animation_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -2015,8 +2146,8 @@ void SetActorAnimationBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   animation_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  id_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -2033,11 +2164,20 @@ const char* SetActorAnimationBody::_InternalParse(const char* begin, const char*
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.SetActorAnimationBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // string animation = 2;
@@ -2090,13 +2230,15 @@ bool SetActorAnimationBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.SetActorAnimationBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -2145,9 +2287,14 @@ void SetActorAnimationBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.SetActorAnimationBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   // string animation = 2;
@@ -2173,9 +2320,15 @@ void SetActorAnimationBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.SetActorAnimationBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   // string animation = 2;
@@ -2210,18 +2363,18 @@ size_t SetActorAnimationBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
   // string animation = 2;
   if (this->animation().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->animation());
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -2251,12 +2404,13 @@ void SetActorAnimationBody::MergeFrom(const SetActorAnimationBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.animation().size() > 0) {
 
     animation_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.animation_);
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
   }
 }
 
@@ -2285,9 +2439,10 @@ void SetActorAnimationBody::Swap(SetActorAnimationBody* other) {
 void SetActorAnimationBody::InternalSwap(SetActorAnimationBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   animation_.Swap(&other->animation_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(id_, other->id_);
 }
 
 ::google::protobuf::Metadata SetActorAnimationBody::GetMetadata() const {
@@ -2332,20 +2487,23 @@ ApplyPhysicsBody::ApplyPhysicsBody(const ApplyPhysicsBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.has_direction()) {
     direction_ = new ::tbMath::Vec3Message(*from.direction_);
   } else {
     direction_ = nullptr;
   }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&magnitude_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(magnitude_));
+  magnitude_ = from.magnitude_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.ApplyPhysicsBody)
 }
 
 void ApplyPhysicsBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_ApplyPhysicsBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&direction_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&magnitude_) -
       reinterpret_cast<char*>(&direction_)) + sizeof(magnitude_));
@@ -2357,6 +2515,7 @@ ApplyPhysicsBody::~ApplyPhysicsBody() {
 }
 
 void ApplyPhysicsBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete direction_;
 }
 
@@ -2375,13 +2534,12 @@ void ApplyPhysicsBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && direction_ != nullptr) {
     delete direction_;
   }
   direction_ = nullptr;
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&magnitude_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(magnitude_));
+  magnitude_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -2398,11 +2556,20 @@ const char* ApplyPhysicsBody::_InternalParse(const char* begin, const char* end,
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.ApplyPhysicsBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // float magnitude = 2;
@@ -2440,6 +2607,10 @@ const char* ApplyPhysicsBody::_InternalParse(const char* begin, const char* end,
     }  // switch
   }  // while
   return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
 len_delim_till_end:
   return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
                                {parser_till_end, object}, size);
@@ -2455,13 +2626,15 @@ bool ApplyPhysicsBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.ApplyPhysicsBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -2519,9 +2692,14 @@ void ApplyPhysicsBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.ApplyPhysicsBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   // float magnitude = 2;
@@ -2548,9 +2726,15 @@ void ApplyPhysicsBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.ApplyPhysicsBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   // float magnitude = 2;
@@ -2586,18 +2770,18 @@ size_t ApplyPhysicsBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
   // .tbMath.Vec3Message direction = 3;
   if (this->has_direction()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *direction_);
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
   }
 
   // float magnitude = 2;
@@ -2632,11 +2816,12 @@ void ApplyPhysicsBody::MergeFrom(const ApplyPhysicsBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.has_direction()) {
     mutable_direction()->::tbMath::Vec3Message::MergeFrom(from.direction());
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
   }
   if (from.magnitude() != 0) {
     set_magnitude(from.magnitude());
@@ -2668,8 +2853,9 @@ void ApplyPhysicsBody::Swap(ApplyPhysicsBody* other) {
 void ApplyPhysicsBody::InternalSwap(ApplyPhysicsBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(direction_, other->direction_);
-  swap(id_, other->id_);
   swap(magnitude_, other->magnitude_);
 }
 
@@ -2714,21 +2900,23 @@ LookDirectionBody::LookDirectionBody(const LookDirectionBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.has_direction()) {
     direction_ = new ::tbMath::Vec2Message(*from.direction_);
   } else {
     direction_ = nullptr;
   }
-  id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.LookDirectionBody)
 }
 
 void LookDirectionBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_LookDirectionBody_basic_2eproto.base);
-  ::memset(&direction_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&direction_)) + sizeof(id_));
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  direction_ = nullptr;
 }
 
 LookDirectionBody::~LookDirectionBody() {
@@ -2737,6 +2925,7 @@ LookDirectionBody::~LookDirectionBody() {
 }
 
 void LookDirectionBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete direction_;
 }
 
@@ -2755,11 +2944,11 @@ void LookDirectionBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && direction_ != nullptr) {
     delete direction_;
   }
   direction_ = nullptr;
-  id_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -2776,11 +2965,20 @@ const char* LookDirectionBody::_InternalParse(const char* begin, const char* end
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.LookDirectionBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // .tbMath.Vec2Message direction = 2;
@@ -2811,6 +3009,10 @@ const char* LookDirectionBody::_InternalParse(const char* begin, const char* end
     }  // switch
   }  // while
   return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
 len_delim_till_end:
   return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
                                {parser_till_end, object}, size);
@@ -2826,13 +3028,15 @@ bool LookDirectionBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.LookDirectionBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -2877,9 +3081,14 @@ void LookDirectionBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.LookDirectionBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   // .tbMath.Vec2Message direction = 2;
@@ -2901,9 +3110,15 @@ void LookDirectionBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.LookDirectionBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   // .tbMath.Vec2Message direction = 2;
@@ -2934,18 +3149,18 @@ size_t LookDirectionBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
   // .tbMath.Vec2Message direction = 2;
   if (this->has_direction()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *direction_);
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -2975,11 +3190,12 @@ void LookDirectionBody::MergeFrom(const LookDirectionBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.has_direction()) {
     mutable_direction()->::tbMath::Vec2Message::MergeFrom(from.direction());
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
   }
 }
 
@@ -3008,8 +3224,9 @@ void LookDirectionBody::Swap(LookDirectionBody* other) {
 void LookDirectionBody::InternalSwap(LookDirectionBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(direction_, other->direction_);
-  swap(id_, other->id_);
 }
 
 ::google::protobuf::Metadata LookDirectionBody::GetMetadata() const {
@@ -3055,20 +3272,28 @@ LookAtBody::LookAtBody(const LookAtBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  target_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.target().size() > 0) {
+    target_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_);
+  }
   if (from.has_rotation()) {
     rotation_ = new ::tbMath::Vec3Message(*from.rotation_);
   } else {
     rotation_ = nullptr;
   }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&distance_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(distance_));
+  distance_ = from.distance_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.LookAtBody)
 }
 
 void LookAtBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_LookAtBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&rotation_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&distance_) -
       reinterpret_cast<char*>(&rotation_)) + sizeof(distance_));
@@ -3080,6 +3305,8 @@ LookAtBody::~LookAtBody() {
 }
 
 void LookAtBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete rotation_;
 }
 
@@ -3098,13 +3325,13 @@ void LookAtBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && rotation_ != nullptr) {
     delete rotation_;
   }
   rotation_ = nullptr;
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&distance_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(distance_));
+  distance_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -3121,18 +3348,36 @@ const char* LookAtBody::_InternalParse(const char* begin, const char* end, void*
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.LookAtBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
-      // uint32 target = 2;
+      // string target = 2;
       case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        msg->set_target(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.LookAtBody.target");
+        object = msg->mutable_target();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // float distance = 3;
@@ -3170,6 +3415,10 @@ const char* LookAtBody::_InternalParse(const char* begin, const char* end, void*
     }  // switch
   }  // while
   return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
 len_delim_till_end:
   return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
                                {parser_till_end, object}, size);
@@ -3185,26 +3434,30 @@ bool LookAtBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.LookAtBody.id"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint32 target = 2;
+      // string target = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &target_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_target()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->target().data(), static_cast<int>(this->target().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.LookAtBody.target"));
         } else {
           goto handle_unusual;
         }
@@ -3262,14 +3515,24 @@ void LookAtBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.LookAtBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
-  // uint32 target = 2;
-  if (this->target() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->target(), output);
+  // string target = 2;
+  if (this->target().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->target().data(), static_cast<int>(this->target().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.LookAtBody.target");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->target(), output);
   }
 
   // float distance = 3;
@@ -3296,14 +3559,26 @@ void LookAtBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.LookAtBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
-  // uint32 target = 2;
-  if (this->target() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->target(), target);
+  // string target = 2;
+  if (this->target().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->target().data(), static_cast<int>(this->target().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.LookAtBody.target");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->target(), target);
   }
 
   // float distance = 3;
@@ -3339,25 +3614,25 @@ size_t LookAtBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
+  // string target = 2;
+  if (this->target().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->target());
+  }
+
   // .tbMath.Vec3Message rotation = 4;
   if (this->has_rotation()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *rotation_);
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
-  }
-
-  // uint32 target = 2;
-  if (this->target() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->target());
   }
 
   // float distance = 3;
@@ -3392,14 +3667,16 @@ void LookAtBody::MergeFrom(const LookAtBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  if (from.target().size() > 0) {
+
+    target_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_);
+  }
   if (from.has_rotation()) {
     mutable_rotation()->::tbMath::Vec3Message::MergeFrom(from.rotation());
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
-  }
-  if (from.target() != 0) {
-    set_target(from.target());
   }
   if (from.distance() != 0) {
     set_distance(from.distance());
@@ -3431,9 +3708,11 @@ void LookAtBody::Swap(LookAtBody* other) {
 void LookAtBody::InternalSwap(LookAtBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  target_.Swap(&other->target_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(rotation_, other->rotation_);
-  swap(id_, other->id_);
-  swap(target_, other->target_);
   swap(distance_, other->distance_);
 }
 
@@ -3493,6 +3772,10 @@ MoveNodeBody::MoveNodeBody(const MoveNodeBody& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   node_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.node().size() > 0) {
     node_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.node_);
@@ -3507,17 +3790,17 @@ MoveNodeBody::MoveNodeBody(const MoveNodeBody& from)
   } else {
     rotation_ = nullptr;
   }
-  id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:tbBasics.MoveNodeBody)
 }
 
 void MoveNodeBody::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_MoveNodeBody_basic_2eproto.base);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   node_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&position_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&position_)) + sizeof(id_));
+      reinterpret_cast<char*>(&rotation_) -
+      reinterpret_cast<char*>(&position_)) + sizeof(rotation_));
 }
 
 MoveNodeBody::~MoveNodeBody() {
@@ -3526,6 +3809,7 @@ MoveNodeBody::~MoveNodeBody() {
 }
 
 void MoveNodeBody::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   node_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete position_;
   if (this != internal_default_instance()) delete rotation_;
@@ -3546,6 +3830,7 @@ void MoveNodeBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   node_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
     delete position_;
@@ -3555,7 +3840,6 @@ void MoveNodeBody::Clear() {
     delete rotation_;
   }
   rotation_ = nullptr;
-  id_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -3572,11 +3856,20 @@ const char* MoveNodeBody::_InternalParse(const char* begin, const char* end, voi
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("tbBasics.MoveNodeBody.id");
+        object = msg->mutable_id();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
         break;
       }
       // string node = 2;
@@ -3655,13 +3948,15 @@ bool MoveNodeBody::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "tbBasics.MoveNodeBody.id"));
         } else {
           goto handle_unusual;
         }
@@ -3732,9 +4027,14 @@ void MoveNodeBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.MoveNodeBody.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
   }
 
   // string node = 2;
@@ -3772,9 +4072,15 @@ void MoveNodeBody::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "tbBasics.MoveNodeBody.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
   }
 
   // string node = 2;
@@ -3823,6 +4129,13 @@ size_t MoveNodeBody::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
   // string node = 2;
   if (this->node().size() > 0) {
     total_size += 1 +
@@ -3842,13 +4155,6 @@ size_t MoveNodeBody::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *rotation_);
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -3878,6 +4184,10 @@ void MoveNodeBody::MergeFrom(const MoveNodeBody& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   if (from.node().size() > 0) {
 
     node_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.node_);
@@ -3887,9 +4197,6 @@ void MoveNodeBody::MergeFrom(const MoveNodeBody& from) {
   }
   if (from.has_rotation()) {
     mutable_rotation()->::tbMath::Vec3Message::MergeFrom(from.rotation());
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
   }
 }
 
@@ -3918,11 +4225,12 @@ void MoveNodeBody::Swap(MoveNodeBody* other) {
 void MoveNodeBody::InternalSwap(MoveNodeBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   node_.Swap(&other->node_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(position_, other->position_);
   swap(rotation_, other->rotation_);
-  swap(id_, other->id_);
 }
 
 ::google::protobuf::Metadata MoveNodeBody::GetMetadata() const {

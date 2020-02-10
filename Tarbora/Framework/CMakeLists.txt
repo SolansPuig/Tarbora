@@ -1,4 +1,3 @@
-add_subdirectory (ResourceManager)
 add_subdirectory (PhysicsEngine)
 add_subdirectory (External)
 
@@ -13,4 +12,7 @@ add_library (TarboraCore SHARED
     Protos/messages.grpc.pb.cc
     Protos/messages.pb.cc
     External/tracy/TracyClient.cpp
+    ResourceManager/src/ResourceManager.cpp
+    ResourceManager/src/Resource.cpp
+    ResourceManager/src/Json.cpp
 )

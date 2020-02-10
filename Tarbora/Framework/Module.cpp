@@ -4,14 +4,10 @@ namespace Tarbora {
     Module::Module(ClientId id) :
         AbstractModule()
     {
-        m_MessageManager = std::shared_ptr<MessageManager>(new MessageManager(this, id));
-        ResourceManager::Init(this, "../Resources/");
+        m_MessageManager = std::shared_ptr<MessageManager>(new MessageManager(id));
     }
 
-    Module::~Module()
-    {
-        ResourceManager::Close();
-    }
+    Module::~Module() {}
 
     void Module::Run(std::string name)
     {

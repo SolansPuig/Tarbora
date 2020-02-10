@@ -47,25 +47,25 @@ namespace Tarbora {
         m_DynamicsWorld->stepSimulation(deltaTime, 0);
     }
 
-    btRigidBody *PhysicsEngine::AddSphere(unsigned int id, float radius, float mass, float friction, float restitution, glm::mat4 &transform)
+    btRigidBody *PhysicsEngine::AddSphere(ActorId &id, float radius, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btSphereShape *const shape = new btSphereShape(radius);
         return AddShape(id, shape, mass, friction, restitution, transform);
     }
 
-    btRigidBody *PhysicsEngine::AddCapsule(unsigned int id, float radius, float height, float mass, float friction, float restitution, glm::mat4 &transform)
+    btRigidBody *PhysicsEngine::AddCapsule(ActorId &id, float radius, float height, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btCapsuleShape *const shape = new btCapsuleShape(radius, height);
         return AddShape(id, shape, mass, friction, restitution, transform);
     }
 
-    btRigidBody *PhysicsEngine::AddBox(unsigned int id, glm::vec3 &dimensions, float mass, float friction, float restitution, glm::mat4 &transform)
+    btRigidBody *PhysicsEngine::AddBox(ActorId &id, glm::vec3 &dimensions, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btBoxShape *const shape = new btBoxShape(btVector3(dimensions.x/2, dimensions.y/2, dimensions.z/2));
         return AddShape(id, shape, mass, friction, restitution, transform);
     }
 
-    btRigidBody *PhysicsEngine::AddShape(unsigned int id, btCollisionShape *shape, float mass, float friction, float restitution, glm::mat4 &transform)
+    btRigidBody *PhysicsEngine::AddShape(ActorId &id, btCollisionShape *shape, float mass, float friction, float restitution, glm::mat4 &transform)
     {
         btVector3 localInertia(0.f, 0.f, 0.f);
         if (mass > 0.f) shape->calculateLocalInertia(mass, localInertia);
@@ -76,7 +76,7 @@ namespace Tarbora {
         rbInfo.m_friction = friction;
 
         btRigidBody *const body = new btRigidBody(rbInfo);
-        body->setUserIndex(id);
+        body->setUserPointer(&id);
         m_DynamicsWorld->addRigidBody(body);
 
         return body;
@@ -104,7 +104,6 @@ namespace Tarbora {
         {
             delete body->getMotionState();
             delete body->getCollisionShape();
-            delete body->getUserPointer();
 
             for (int i = body->getNumConstraintRefs()-1; i >= 0; i--)
             {
@@ -130,11 +129,10 @@ namespace Tarbora {
             btVector3 bHitNormal = rayCallback.m_hitNormalWorld;
 
             glm::vec3 hitPosition = glm::vec3(bHitPosition.x(), bHitPosition.y(), bHitPosition.z());
-
-            // LOG_DEBUG("Id: %u", *((unsigned int*)rayCallback.m_collisionObject->getUserPointer()));
+            ActorId id = *(ActorId*)rayCallback.m_collisionObject->getUserPointer();
 
             std::shared_ptr<RayCastResult> result(new RayCastResult(
-                1,
+                id,
                 hitPosition,
                 glm::vec3(bHitNormal.x(), bHitNormal.y(), bHitNormal.z()),
                 glm::distance(origin, hitPosition)
@@ -187,34 +185,76 @@ namespace Tarbora {
         m_PreviousTickCollisionPairs = currentTickPairs;
     }
 
-    void ActorMotionState::getWorldTransform(btTransform &transform) const
+    glm::vec3 bulletToGlm(const btVector3& v)
     {
-        btMatrix3x3 rotation;
-        btVector3 position;
-        for (int i = 0; i < 3; i++)
+        return glm::vec3(v.getX(), v.getY(), v.getZ());
+    }
+
+    btVector3 glmToBullet(const glm::vec3& v)
+    {
+        return btVector3(v.x, v.y, v.z);
+    }
+
+    glm::quat bulletToGlm(const btQuaternion& q)
+    {
+        return glm::quat(q.getW(), q.getX(), q.getY(), q.getZ());
+    }
+
+    btQuaternion glmToBullet(const glm::quat& q)
+    {
+        return btQuaternion(q.x, q.y, q.z, q.w);
+    }
+
+    btMatrix3x3 glmToBullet(const glm::mat3& m)
+    {
+        return btMatrix3x3(m[0][0], m[1][0], m[2][0],
+            m[0][1], m[1][1], m[2][1],
+            m[0][2], m[1][2], m[2][2]
+        );
+    }
+
+    // btTransform does not contain a full 4x4 matrix, so this transform is lossy.
+    // Affine transformations are OK but perspective transformations are not.
+    btTransform glmToBullet(const glm::mat4& m)
+    {
+        glm::mat3 m3(m);
+        return btTransform(glmToBullet(m3),
+            glmToBullet(glm::vec3(m[3][0], m[3][1], m[3][2])));
+    }
+
+    glm::mat4 bulletToGlm(const btTransform& t)
+    {
+        glm::mat4 m(0.f);
+        const btMatrix3x3& basis = t.getBasis();
+        // rotation
+        for (int r = 0; r < 3; r++)
         {
-            position[i] = m_Transform[3][i];
-            for (int j = 0; j < 3; j++)
+            for (int c = 0; c < 3; c++)
             {
-                rotation[i][j] = m_Transform[j][i];
+                m[c][r] = basis[r][c];
             }
         }
+        // traslation
+        btVector3 origin = t.getOrigin();
+        m[3][0] = origin.getX();
+        m[3][1] = origin.getY();
+        m[3][2] = origin.getZ();
+        // unit scale
+        m[0][3] = 0.0f;
+        m[1][3] = 0.0f;
+        m[2][3] = 0.0f;
+        m[3][3] = 1.0f;
+        return m;
+    }
 
-        transform = btTransform(rotation, position);
+    void ActorMotionState::getWorldTransform(btTransform &transform) const
+    {
+        transform = glmToBullet(m_Transform);
     }
 
     void ActorMotionState::setWorldTransform(const btTransform &transform)
     {
-        btMatrix3x3 const &rotation = transform.getBasis();
-        btVector3 const &position = transform.getOrigin();
-        for (int i = 0; i < 4; i++)
-        {
-            m_Transform[3][i] = position[i];
-            for (int j = 0; j < 4; j++)
-            {
-                m_Transform[i][j] = rotation[j][i];
-            }
-        }
+        m_Transform = bulletToGlm(transform);
     }
 
     void ActorMotionState::getWorldTransform(glm::mat4 &transform) const
@@ -229,7 +269,7 @@ namespace Tarbora {
 
     glm::vec3 ActorMotionState::getPosition()
     {
-        return glm::vec3(m_Transform[0][3], m_Transform[1][3], m_Transform[2][3]);
+        return glm::vec3(m_Transform[3][0], m_Transform[3][1], m_Transform[3][2]);
     }
 
     glm::mat3 ActorMotionState::getRotation()

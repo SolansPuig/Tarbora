@@ -3,7 +3,7 @@
 
 namespace Tarbora {
     ActorModel::ActorModel(ActorId id, RenderPass renderPass, const std::string &model, const std::string &material)
-        : MaterialNode(id, std::to_string(id), material)
+        : MaterialNode(id, id, material)
     {
         ResourcePtr<LuaScript> resource("models/" + model, "models/cube.lua");
         // float scale = resource->Get<float>("scale");
@@ -25,10 +25,10 @@ namespace Tarbora {
         node->Set("position", table.Get<glm::vec3>("position", true)/100.f);
         node->Set("rotation", table.Get<glm::vec3>("rotation", true));
         node->Set("uv_map", table.Get<glm::vec3>("uv_map", true));
-        node->Set("color_primary", table.Get<glm::vec3>("color_primary", glm::vec3(255.f), true)/255.f);
-        node->Set("color_secondary", table.Get<glm::vec3>("color_secondary", glm::vec3(255.f), true)/255.f);
-        node->Set("color_detail1", table.Get<glm::vec3>("color_detail1", glm::vec3(255.f), true)/255.f);
-        node->Set("color_detail2", table.Get<glm::vec3>("color_detail2", glm::vec3(255.f), true)/255.f);
+        node->Set("color_primary", table.Get<glm::vec3>("color_primary", glm::vec3(255.f), true));
+        node->Set("color_secondary", table.Get<glm::vec3>("color_secondary", glm::vec3(255.f), true));
+        node->Set("color_detail1", table.Get<glm::vec3>("color_detail1", glm::vec3(255.f), true));
+        node->Set("color_detail2", table.Get<glm::vec3>("color_detail2", glm::vec3(255.f), true));
         glm::vec3 scale = table.Get<glm::vec3>("size", true)/100.f;
         node->Set("scale", scale);
         node->Set("mesh_size", scale);

@@ -1,3 +1,5 @@
+add_subdirectory (GraphicsEngine)
+
 add_library (GraphicViews SHARED
     HumanView.cpp
     Scene.cpp

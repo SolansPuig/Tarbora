@@ -3,8 +3,6 @@
 #include "MessageClient.hpp"
 
 namespace Tarbora {
-    class Module;
-
     typedef unsigned int SubscriptorId;
 
     class MessageBody
@@ -37,7 +35,7 @@ namespace Tarbora {
     class MessageManager
     {
     public:
-        MessageManager(Module *m, ClientId id);
+        MessageManager(ClientId id);
         ~MessageManager();
 
         inline void SetDebugName(std::string name="Unamed Message Client")
@@ -57,7 +55,6 @@ namespace Tarbora {
     private:
         void ReadMessage(tbMessages::Message &m);
 
-        Module *m_Module;
         std::unique_ptr<MessageClient> m_MessageClient;
 
         std::map<std::string, std::vector<MessageFn>> m_Listeners;

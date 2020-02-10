@@ -12,7 +12,7 @@
 #define INVALID_ID 0
 #define SKY_ID 10
 #define MAIN_CAMERA_ID 15
-typedef unsigned int ComponentId;
-typedef unsigned int ActorId;
+typedef std::string ComponentId;
+typedef std::string ActorId;
 typedef unsigned int ClientId;
 typedef std::string MessageSubject;

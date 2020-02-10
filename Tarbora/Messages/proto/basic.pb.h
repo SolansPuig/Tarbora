@@ -194,6 +194,20 @@ class CreateActorBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   // string entity = 2;
   void clear_entity();
   static const int kEntityFieldNumber = 2;
@@ -240,22 +254,16 @@ class CreateActorBody final :
   ::tbMath::Vec3Message* mutable_rotation();
   void set_allocated_rotation(::tbMath::Vec3Message* rotation);
 
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:tbBasics.CreateActorBody)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr entity_;
   ::google::protobuf::internal::ArenaStringPtr variant_;
   ::tbMath::Vec3Message* position_;
   ::tbMath::Vec3Message* rotation_;
-  ::google::protobuf::uint32 id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -356,18 +364,26 @@ class DeleteActorBody final :
 
   // accessors -------------------------------------------------------
 
-  // uint32 id = 1;
+  // string id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
 
   // @@protoc_insertion_point(class_scope:tbBasics.DeleteActorBody)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 id_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -468,6 +484,20 @@ class SetCameraBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   // string name = 2;
   void clear_name();
   static const int kNameFieldNumber = 2;
@@ -482,19 +512,13 @@ class SetCameraBody final :
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:tbBasics.SetCameraBody)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::uint32 id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -595,6 +619,20 @@ class MoveActorBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   // .tbMath.Vec3Message position = 2;
   bool has_position() const;
   void clear_position();
@@ -613,20 +651,14 @@ class MoveActorBody final :
   ::tbMath::Mat3Message* mutable_rotation();
   void set_allocated_rotation(::tbMath::Mat3Message* rotation);
 
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:tbBasics.MoveActorBody)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   ::tbMath::Vec3Message* position_;
   ::tbMath::Mat3Message* rotation_;
-  ::google::protobuf::uint32 id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -727,6 +759,20 @@ class SetActorAnimationBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   // string animation = 2;
   void clear_animation();
   static const int kAnimationFieldNumber = 2;
@@ -741,19 +787,13 @@ class SetActorAnimationBody final :
   ::std::string* release_animation();
   void set_allocated_animation(::std::string* animation);
 
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:tbBasics.SetActorAnimationBody)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr animation_;
-  ::google::protobuf::uint32 id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -854,6 +894,20 @@ class ApplyPhysicsBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   // .tbMath.Vec3Message direction = 3;
   bool has_direction() const;
   void clear_direction();
@@ -862,12 +916,6 @@ class ApplyPhysicsBody final :
   ::tbMath::Vec3Message* release_direction();
   ::tbMath::Vec3Message* mutable_direction();
   void set_allocated_direction(::tbMath::Vec3Message* direction);
-
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
 
   // float magnitude = 2;
   void clear_magnitude();
@@ -880,8 +928,8 @@ class ApplyPhysicsBody final :
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   ::tbMath::Vec3Message* direction_;
-  ::google::protobuf::uint32 id_;
   float magnitude_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
@@ -983,6 +1031,20 @@ class LookDirectionBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   // .tbMath.Vec2Message direction = 2;
   bool has_direction() const;
   void clear_direction();
@@ -992,19 +1054,13 @@ class LookDirectionBody final :
   ::tbMath::Vec2Message* mutable_direction();
   void set_allocated_direction(::tbMath::Vec2Message* direction);
 
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:tbBasics.LookDirectionBody)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   ::tbMath::Vec2Message* direction_;
-  ::google::protobuf::uint32 id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -1105,6 +1161,34 @@ class LookAtBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
+  // string target = 2;
+  void clear_target();
+  static const int kTargetFieldNumber = 2;
+  const ::std::string& target() const;
+  void set_target(const ::std::string& value);
+  #if LANG_CXX11
+  void set_target(::std::string&& value);
+  #endif
+  void set_target(const char* value);
+  void set_target(const char* value, size_t size);
+  ::std::string* mutable_target();
+  ::std::string* release_target();
+  void set_allocated_target(::std::string* target);
+
   // .tbMath.Vec3Message rotation = 4;
   bool has_rotation() const;
   void clear_rotation();
@@ -1113,18 +1197,6 @@ class LookAtBody final :
   ::tbMath::Vec3Message* release_rotation();
   ::tbMath::Vec3Message* mutable_rotation();
   void set_allocated_rotation(::tbMath::Vec3Message* rotation);
-
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
-
-  // uint32 target = 2;
-  void clear_target();
-  static const int kTargetFieldNumber = 2;
-  ::google::protobuf::uint32 target() const;
-  void set_target(::google::protobuf::uint32 value);
 
   // float distance = 3;
   void clear_distance();
@@ -1137,9 +1209,9 @@ class LookAtBody final :
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
+  ::google::protobuf::internal::ArenaStringPtr target_;
   ::tbMath::Vec3Message* rotation_;
-  ::google::protobuf::uint32 id_;
-  ::google::protobuf::uint32 target_;
   float distance_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
@@ -1241,6 +1313,20 @@ class MoveNodeBody final :
 
   // accessors -------------------------------------------------------
 
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
   // string node = 2;
   void clear_node();
   static const int kNodeFieldNumber = 2;
@@ -1273,21 +1359,15 @@ class MoveNodeBody final :
   ::tbMath::Vec3Message* mutable_rotation();
   void set_allocated_rotation(::tbMath::Vec3Message* rotation);
 
-  // uint32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:tbBasics.MoveNodeBody)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr node_;
   ::tbMath::Vec3Message* position_;
   ::tbMath::Vec3Message* rotation_;
-  ::google::protobuf::uint32 id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -1417,18 +1497,57 @@ class MatrixBody final :
 #endif  // __GNUC__
 // CreateActorBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void CreateActorBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 CreateActorBody::id() const {
+inline const ::std::string& CreateActorBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.CreateActorBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void CreateActorBody::set_id(::google::protobuf::uint32 value) {
+inline void CreateActorBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.CreateActorBody.id)
+}
+#if LANG_CXX11
+inline void CreateActorBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.CreateActorBody.id)
+}
+#endif
+inline void CreateActorBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.CreateActorBody.id)
+}
+inline void CreateActorBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.CreateActorBody.id)
+}
+inline ::std::string* CreateActorBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.CreateActorBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CreateActorBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.CreateActorBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CreateActorBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.CreateActorBody.id)
 }
 
 // string entity = 2;
@@ -1631,36 +1750,114 @@ inline void CreateActorBody::set_allocated_rotation(::tbMath::Vec3Message* rotat
 
 // DeleteActorBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void DeleteActorBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 DeleteActorBody::id() const {
+inline const ::std::string& DeleteActorBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.DeleteActorBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void DeleteActorBody::set_id(::google::protobuf::uint32 value) {
+inline void DeleteActorBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.DeleteActorBody.id)
+}
+#if LANG_CXX11
+inline void DeleteActorBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.DeleteActorBody.id)
+}
+#endif
+inline void DeleteActorBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.DeleteActorBody.id)
+}
+inline void DeleteActorBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.DeleteActorBody.id)
+}
+inline ::std::string* DeleteActorBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.DeleteActorBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DeleteActorBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.DeleteActorBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DeleteActorBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.DeleteActorBody.id)
 }
 
 // -------------------------------------------------------------------
 
 // SetCameraBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void SetCameraBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 SetCameraBody::id() const {
+inline const ::std::string& SetCameraBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.SetCameraBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void SetCameraBody::set_id(::google::protobuf::uint32 value) {
+inline void SetCameraBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.SetCameraBody.id)
+}
+#if LANG_CXX11
+inline void SetCameraBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.SetCameraBody.id)
+}
+#endif
+inline void SetCameraBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.SetCameraBody.id)
+}
+inline void SetCameraBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.SetCameraBody.id)
+}
+inline ::std::string* SetCameraBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.SetCameraBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SetCameraBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.SetCameraBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SetCameraBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.SetCameraBody.id)
 }
 
 // string name = 2;
@@ -1720,18 +1917,57 @@ inline void SetCameraBody::set_allocated_name(::std::string* name) {
 
 // MoveActorBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void MoveActorBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 MoveActorBody::id() const {
+inline const ::std::string& MoveActorBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.MoveActorBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void MoveActorBody::set_id(::google::protobuf::uint32 value) {
+inline void MoveActorBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.MoveActorBody.id)
+}
+#if LANG_CXX11
+inline void MoveActorBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.MoveActorBody.id)
+}
+#endif
+inline void MoveActorBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.MoveActorBody.id)
+}
+inline void MoveActorBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.MoveActorBody.id)
+}
+inline ::std::string* MoveActorBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.MoveActorBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MoveActorBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.MoveActorBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MoveActorBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveActorBody.id)
 }
 
 // .tbMath.Vec3Message position = 2;
@@ -1828,18 +2064,57 @@ inline void MoveActorBody::set_allocated_rotation(::tbMath::Mat3Message* rotatio
 
 // SetActorAnimationBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void SetActorAnimationBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 SetActorAnimationBody::id() const {
+inline const ::std::string& SetActorAnimationBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.SetActorAnimationBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void SetActorAnimationBody::set_id(::google::protobuf::uint32 value) {
+inline void SetActorAnimationBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.SetActorAnimationBody.id)
+}
+#if LANG_CXX11
+inline void SetActorAnimationBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.SetActorAnimationBody.id)
+}
+#endif
+inline void SetActorAnimationBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.SetActorAnimationBody.id)
+}
+inline void SetActorAnimationBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.SetActorAnimationBody.id)
+}
+inline ::std::string* SetActorAnimationBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.SetActorAnimationBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SetActorAnimationBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.SetActorAnimationBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SetActorAnimationBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.SetActorAnimationBody.id)
 }
 
 // string animation = 2;
@@ -1899,18 +2174,57 @@ inline void SetActorAnimationBody::set_allocated_animation(::std::string* animat
 
 // ApplyPhysicsBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void ApplyPhysicsBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 ApplyPhysicsBody::id() const {
+inline const ::std::string& ApplyPhysicsBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.ApplyPhysicsBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void ApplyPhysicsBody::set_id(::google::protobuf::uint32 value) {
+inline void ApplyPhysicsBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.ApplyPhysicsBody.id)
+}
+#if LANG_CXX11
+inline void ApplyPhysicsBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.ApplyPhysicsBody.id)
+}
+#endif
+inline void ApplyPhysicsBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.ApplyPhysicsBody.id)
+}
+inline void ApplyPhysicsBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.ApplyPhysicsBody.id)
+}
+inline ::std::string* ApplyPhysicsBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.ApplyPhysicsBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ApplyPhysicsBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.ApplyPhysicsBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ApplyPhysicsBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.ApplyPhysicsBody.id)
 }
 
 // float magnitude = 2;
@@ -1976,18 +2290,57 @@ inline void ApplyPhysicsBody::set_allocated_direction(::tbMath::Vec3Message* dir
 
 // LookDirectionBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void LookDirectionBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 LookDirectionBody::id() const {
+inline const ::std::string& LookDirectionBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.LookDirectionBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void LookDirectionBody::set_id(::google::protobuf::uint32 value) {
+inline void LookDirectionBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.LookDirectionBody.id)
+}
+#if LANG_CXX11
+inline void LookDirectionBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.LookDirectionBody.id)
+}
+#endif
+inline void LookDirectionBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.LookDirectionBody.id)
+}
+inline void LookDirectionBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.LookDirectionBody.id)
+}
+inline ::std::string* LookDirectionBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.LookDirectionBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* LookDirectionBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.LookDirectionBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void LookDirectionBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookDirectionBody.id)
 }
 
 // .tbMath.Vec2Message direction = 2;
@@ -2039,32 +2392,110 @@ inline void LookDirectionBody::set_allocated_direction(::tbMath::Vec2Message* di
 
 // LookAtBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void LookAtBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 LookAtBody::id() const {
+inline const ::std::string& LookAtBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.LookAtBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void LookAtBody::set_id(::google::protobuf::uint32 value) {
+inline void LookAtBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.LookAtBody.id)
 }
-
-// uint32 target = 2;
-inline void LookAtBody::clear_target() {
-  target_ = 0u;
-}
-inline ::google::protobuf::uint32 LookAtBody::target() const {
-  // @@protoc_insertion_point(field_get:tbBasics.LookAtBody.target)
-  return target_;
-}
-inline void LookAtBody::set_target(::google::protobuf::uint32 value) {
+#if LANG_CXX11
+inline void LookAtBody::set_id(::std::string&& value) {
   
-  target_ = value;
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.LookAtBody.id)
+}
+#endif
+inline void LookAtBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.LookAtBody.id)
+}
+inline void LookAtBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.LookAtBody.id)
+}
+inline ::std::string* LookAtBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.LookAtBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* LookAtBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.LookAtBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void LookAtBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookAtBody.id)
+}
+
+// string target = 2;
+inline void LookAtBody::clear_target() {
+  target_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& LookAtBody::target() const {
+  // @@protoc_insertion_point(field_get:tbBasics.LookAtBody.target)
+  return target_.GetNoArena();
+}
+inline void LookAtBody::set_target(const ::std::string& value) {
+  
+  target_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.LookAtBody.target)
+}
+#if LANG_CXX11
+inline void LookAtBody::set_target(::std::string&& value) {
+  
+  target_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.LookAtBody.target)
+}
+#endif
+inline void LookAtBody::set_target(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  target_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.LookAtBody.target)
+}
+inline void LookAtBody::set_target(const char* value, size_t size) {
+  
+  target_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.LookAtBody.target)
+}
+inline ::std::string* LookAtBody::mutable_target() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.LookAtBody.target)
+  return target_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* LookAtBody::release_target() {
+  // @@protoc_insertion_point(field_release:tbBasics.LookAtBody.target)
+  
+  return target_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void LookAtBody::set_allocated_target(::std::string* target) {
+  if (target != nullptr) {
+    
+  } else {
+    
+  }
+  target_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), target);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookAtBody.target)
 }
 
 // float distance = 3;
@@ -2130,18 +2561,57 @@ inline void LookAtBody::set_allocated_rotation(::tbMath::Vec3Message* rotation) 
 
 // MoveNodeBody
 
-// uint32 id = 1;
+// string id = 1;
 inline void MoveNodeBody::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 MoveNodeBody::id() const {
+inline const ::std::string& MoveNodeBody::id() const {
   // @@protoc_insertion_point(field_get:tbBasics.MoveNodeBody.id)
-  return id_;
+  return id_.GetNoArena();
 }
-inline void MoveNodeBody::set_id(::google::protobuf::uint32 value) {
+inline void MoveNodeBody::set_id(const ::std::string& value) {
   
-  id_ = value;
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:tbBasics.MoveNodeBody.id)
+}
+#if LANG_CXX11
+inline void MoveNodeBody::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:tbBasics.MoveNodeBody.id)
+}
+#endif
+inline void MoveNodeBody::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:tbBasics.MoveNodeBody.id)
+}
+inline void MoveNodeBody::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:tbBasics.MoveNodeBody.id)
+}
+inline ::std::string* MoveNodeBody::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:tbBasics.MoveNodeBody.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MoveNodeBody::release_id() {
+  // @@protoc_insertion_point(field_release:tbBasics.MoveNodeBody.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MoveNodeBody::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveNodeBody.id)
 }
 
 // string node = 2;

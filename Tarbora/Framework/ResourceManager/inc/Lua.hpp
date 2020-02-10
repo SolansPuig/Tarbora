@@ -20,6 +20,9 @@ namespace Tarbora {
         static T GetDefault() { return 0; }
         static std::string GetErrorName() { return "Invalid type"; }
 
+        static LuaTable &Set(LuaTable *table, const std::string &name, T value);
+        static LuaTable &Set(LuaTable *table, unsigned int index, T value);
+
         static T Get(const LuaTable *table, const std::string &name, T def, bool silent);
         static T Get(const LuaTable *table, unsigned int index, T def, bool silent);
 
@@ -96,17 +99,13 @@ namespace Tarbora {
         LuaTable(sol::state *state, sol::table table, const std::string &name)
             : m_Lua(state), m_Table(table), m_Name(name == "" ? "" : name + ".") {}
 
-        template <class T>
-        void Set(const std::string &name, T value)
-        {
-            m_Table[name] = value;
-        }
-        template <class T>
-        void Set(unsigned int index, T value)
-        {
-            m_Table[index] = value;
-        }
+        LuaTable CreateTable(const std::string &name);
+        LuaTable CreateTable(unsigned int &index);
 
+        template <class T>
+        LuaTable &Set(const std::string &name, T value) { return LuaType<T>::Set(this, name, value); }
+        template <class T>
+        LuaTable &Set(unsigned int index, T value) { return LuaType<T>::Set(this, index, value); }
         template <class T=LuaTable>
         T Get(const std::string &name, T def, bool silent=false) const { return LuaType<T>::Get(this, name, def, silent); }
         template <class T=LuaTable>
@@ -131,8 +130,8 @@ namespace Tarbora {
     class LuaScript : public Resource {
         friend class LuaLoader;
     public:
-        LuaScript(Module *m, const std::string &file)
-            : Resource(m, file)
+        LuaScript(const std::string &file)
+            : Resource(file)
         {
             m_Lua.require_file("p", "../Resources/LuaParameters.lua");
             m_Lua.safe_script_file(file, [](lua_State*, sol::protected_function_result pfr) {
@@ -143,13 +142,23 @@ namespace Tarbora {
             m_Lua.open_libraries(sol::lib::base, sol::lib::math);
         }
 
+        LuaTable CreateTable(const std::string &name)
+        {
+            return LuaTable(&m_Lua, (sol::table)m_Lua.globals(), "").CreateTable(name);
+        }
+
+        LuaTable CreateTable(unsigned int &index)
+        {
+            return LuaTable(&m_Lua, (sol::table)m_Lua.globals(), "").CreateTable(index);
+        }
+
         template <class T>
-        void Set(const std::string &name, T value)
+        LuaTable &Set(const std::string &name, T value)
         {
             return LuaTable(&m_Lua, (sol::table)m_Lua.globals(), "").Set(name, value);
         }
         template <class T>
-        void Set(unsigned int index, T value)
+        LuaTable &Set(unsigned int index, T value)
         {
             return LuaTable(&m_Lua, (sol::table)m_Lua.globals(), "").Set(index, value);
         }
@@ -190,7 +199,7 @@ namespace Tarbora {
                 if (!file) return std::shared_ptr<Resource>();
             }
 
-            return std::shared_ptr<Resource>(new LuaScript(m_Module, path));
+            return std::shared_ptr<Resource>(new LuaScript(path));
         }
     };
 
@@ -312,6 +321,20 @@ namespace Tarbora {
         static LuaFunction<T> GetDefault() { return LuaFunction<T>(); }
         static std::string GetErrorName() { return "Not a function"; }
 
+        LuaTable &Set(LuaTable *table, const std::string &name, LuaFunction<T> value)
+        {
+            if (table->m_Table)
+                table->m_Table[name] = value->m_Function;
+            return *table;
+        }
+
+        LuaTable &Set(LuaTable *table, unsigned int index, LuaFunction<T> value)
+        {
+            if (table->m_Table)
+                table->m_Table[index] = value->m_Function;
+            return *table;
+        }
+
         static LuaFunction<T> Get(const LuaTable *table, const std::string &name, LuaFunction<T> def, bool silent)
         {
             if (table->m_Table)
@@ -337,6 +360,36 @@ namespace Tarbora {
             return def;
         }
     };
+
+    inline LuaTable LuaTable::CreateTable(const std::string &name)
+    {
+    sol::table t = m_Lua->create_named_table(name);
+    m_Table[name] = t;
+    return LuaTable(m_Lua, t, m_Name + name);
+    }
+
+    inline LuaTable LuaTable::CreateTable(unsigned int &index)
+    {
+        sol::table t = m_Lua->create_named_table(index);
+        m_Table[index] = t;
+        return LuaTable(m_Lua, t, m_Name + std::to_string(index));;
+    }
+
+    template <class T>
+    LuaTable &LuaType<T>::Set(LuaTable *table, const std::string &name, T value)
+    {
+        if (table->m_Table)
+            table->m_Table[name] = value;
+        return *table;
+    }
+
+    template <class T>
+    LuaTable &LuaType<T>::Set(LuaTable *table, unsigned int index, T value)
+    {
+        if (table->m_Table)
+            table->m_Table[index] = value;
+        return *table;
+    }
 
     template <class T>
     T LuaType<T>::Get(const LuaTable *table, const std::string &name, T def, bool silent)
@@ -373,6 +426,22 @@ namespace Tarbora {
     }
 
     template <>
+    inline LuaTable &LuaType<LuaTable>::Set(LuaTable *table, const std::string &name, LuaTable value)
+    {
+        if (table->m_Table)
+            table->m_Table[name] = value.m_Table;
+        return *table;
+    }
+
+    template <>
+    inline LuaTable &LuaType<LuaTable>::Set(LuaTable *table, unsigned int index, LuaTable value)
+    {
+        if (table->m_Table)
+            table->m_Table[index] = value.m_Table;
+        return *table;
+    }
+
+    template <>
     inline bool LuaType<LuaTable>::Is(const sol_object &object) { return object.is<sol::table>(); }
 
     template <>
@@ -391,6 +460,30 @@ namespace Tarbora {
 
         if (!silent) LuaPrintError(name, GetErrorName());
         return def;
+    }
+
+    template <>
+    inline LuaTable &LuaType<glm::vec3>::Set(LuaTable *table, const std::string &name, glm::vec3 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(name);
+            for (unsigned int i = 0; i < 3; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
+    }
+
+    template <>
+    inline LuaTable &LuaType<glm::vec3>::Set(LuaTable *table, unsigned int index, glm::vec3 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(index);
+            for (unsigned int i = 0; i < 3; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
     }
 
     template <>
@@ -418,6 +511,32 @@ namespace Tarbora {
     public:
         static std::vector<T> GetDefault() { return std::vector<T>(); }
         static std::string GetErrorName() { return "Not a list"; }
+
+        LuaTable &Set(LuaTable *table, const std::string &name, std::vector<T> value)
+        {
+            if (table->m_Table)
+            {
+                LuaTable t = table->CreateTable(name);
+                for (unsigned int i = 0; i < value.size(); i++)
+                {
+                    t.Set(i+1, value[i]);
+                }
+            }
+            return *table;
+        }
+
+        LuaTable &Set(LuaTable *table, unsigned int index, std::vector<T> value)
+        {
+            if (table->m_Table)
+            {
+                LuaTable t = table->CreateTable(index);
+                for (unsigned int i = 0; i < value.size(); i++)
+                {
+                    t.Set(i+1, value[i]);
+                }
+            }
+            return *table;
+        }
 
         static std::vector<T> Get(const LuaTable *table, const std::string &name, std::vector<T> def, bool silent)
         {
