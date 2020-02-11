@@ -39,7 +39,7 @@ namespace Tarbora {
         glm::vec3 m_Rotation;
         glm::vec3 m_Origin;
         PhysicsComponent *m_Controller;
-        bool m_Updated;
+        bool m_ShouldUpdate;
     };
 
     class TransformSystem : public SystemImpl<TransformComponent>

@@ -13,7 +13,9 @@ namespace Tarbora {
     {
         m_Counter += deltaTime;
         m_Crono += deltaTime;
-        if (m_Counter >= 0.032f)
+        if (m_BlendTime > 0.f)
+            m_BlendTime -= deltaTime;
+        if ((m_Loop || m_Crono <= m_Duration) && m_Counter >= 0.032f)
         {
             UpdateAnimation();
             m_Counter = 0.0f;
@@ -23,39 +25,49 @@ namespace Tarbora {
     void AnimationController::SetAnimation(const std::string &name)
     {
         m_CurrentAnimationName = name;
-        LOG_DEBUG("Setting animation %s", name.c_str());
+        m_Crono = 0.0f;
+
+        ResourcePtr<LuaScript> resource(m_AnimationsFile);
+        LuaTable animation = resource->Get(m_CurrentAnimationName, true);
+        m_Loop = animation.Get<bool>("loop");
+        m_Duration = animation.Get<float>("duration");
+        m_BlendTime = animation.Get<float>("blend_time");
     }
 
     void AnimationController::UpdateAnimation()
     {
         ResourcePtr<LuaScript> resource(m_AnimationsFile);
-        LuaTable animation = resource->Get(m_CurrentAnimationName);
+        LuaTable animation = resource->Get(m_CurrentAnimationName, true);
         LuaTable query = resource->Get("query");
         query.Set("time", m_Crono);
-        LuaTable currentAnimation = animation.Get("nodes");
 
-        for (auto nodeKeyValue : currentAnimation)
+        if (animation.Valid() && query.Valid())
         {
-            std::string nodeName = nodeKeyValue.first.GetAs<std::string>();
-            LuaTable nodeLua = nodeKeyValue.second.GetAs<LuaTable>();
-            std::shared_ptr<SceneNode> node = m_ActorModel->m_Nodes[nodeName];
+            LuaTable currentAnimation = animation.Get("nodes");
 
-            for (auto property : nodeLua)
+            for (auto nodeKeyValue : currentAnimation)
             {
-                std::string name = property.first.GetAs<std::string>();
-                glm::vec3 value = property.second.GetAs<glm::vec3>();
+                std::string nodeName = nodeKeyValue.first.GetAs<std::string>();
+                LuaTable nodeLua = nodeKeyValue.second.GetAs<LuaTable>();
+                std::shared_ptr<SceneNode> node = m_ActorModel->m_Nodes[nodeName];
 
-                glm::vec3 currentValue = node->Get(name);
+                for (auto property : nodeLua)
+                {
+                    std::string name = property.first.GetAs<std::string>();
+                    glm::vec3 value = property.second.GetAs<glm::vec3>();
 
-                float scale = 1.f;
-                if (name == "position" || name == "scale") scale = 100.f;
-                else if (name.substr(0,5) == "color") scale = 255.f;
+                    glm::vec3 currentValue = node->Get(name);
 
-                query.Set("currentX", currentValue.x * scale);
-                query.Set("currentY", currentValue.y * scale);
-                query.Set("currentZ", currentValue.z * scale);
+                    float scale = 1.f;
+                    if (name == "position" || name == "scale") scale = 100.f;
+                    else if (name.substr(0,5) == "color") scale = 255.f;
 
-                node->InterpolateTo(name, value/scale, m_Counter);
+                    query.Set("currentX", currentValue.x * scale);
+                    query.Set("currentY", currentValue.y * scale);
+                    query.Set("currentZ", currentValue.z * scale);
+
+                    node->InterpolateTo(name, value/scale, m_Counter + m_BlendTime);
+                }
             }
         }
     }

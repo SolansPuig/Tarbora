@@ -19,3 +19,6 @@
 [submodule "Tarbora/Framework/External/lua"]
 	path = Tarbora/Framework/External/lua
 	url = https://github.com/lua/lua
+[submodule "Tarbora/Framework/External/NamedType"]
+	path = Tarbora/Framework/External/NamedType
+	url = https://github.com/joboccara/NamedType.git

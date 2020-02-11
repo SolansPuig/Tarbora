@@ -16,108 +16,108 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
-extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Vec3Message_math_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Vec4Message_math_2eproto;
-namespace tbMath {
-class Vec2MessageDefaultTypeInternal {
+extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Vec3_math_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_math_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Vec4_math_2eproto;
+namespace MathMessage {
+class Vec2DefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Vec2Message> _instance;
-} _Vec2Message_default_instance_;
-class Vec3MessageDefaultTypeInternal {
+  ::google::protobuf::internal::ExplicitlyConstructed<Vec2> _instance;
+} _Vec2_default_instance_;
+class Vec3DefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Vec3Message> _instance;
-} _Vec3Message_default_instance_;
-class Vec4MessageDefaultTypeInternal {
+  ::google::protobuf::internal::ExplicitlyConstructed<Vec3> _instance;
+} _Vec3_default_instance_;
+class Vec4DefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Vec4Message> _instance;
-} _Vec4Message_default_instance_;
-class Mat3MessageDefaultTypeInternal {
+  ::google::protobuf::internal::ExplicitlyConstructed<Vec4> _instance;
+} _Vec4_default_instance_;
+class Mat3DefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Mat3Message> _instance;
-} _Mat3Message_default_instance_;
-class Mat4MessageDefaultTypeInternal {
+  ::google::protobuf::internal::ExplicitlyConstructed<Mat3> _instance;
+} _Mat3_default_instance_;
+class Mat4DefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Mat4Message> _instance;
-} _Mat4Message_default_instance_;
-}  // namespace tbMath
-static void InitDefaultsVec2Message_math_2eproto() {
+  ::google::protobuf::internal::ExplicitlyConstructed<Mat4> _instance;
+} _Mat4_default_instance_;
+}  // namespace MathMessage
+static void InitDefaultsVec2_math_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::tbMath::_Vec2Message_default_instance_;
-    new (ptr) ::tbMath::Vec2Message();
+    void* ptr = &::MathMessage::_Vec2_default_instance_;
+    new (ptr) ::MathMessage::Vec2();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::tbMath::Vec2Message::InitAsDefaultInstance();
+  ::MathMessage::Vec2::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Vec2Message_math_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVec2Message_math_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Vec2_math_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVec2_math_2eproto}, {}};
 
-static void InitDefaultsVec3Message_math_2eproto() {
+static void InitDefaultsVec3_math_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::tbMath::_Vec3Message_default_instance_;
-    new (ptr) ::tbMath::Vec3Message();
+    void* ptr = &::MathMessage::_Vec3_default_instance_;
+    new (ptr) ::MathMessage::Vec3();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::tbMath::Vec3Message::InitAsDefaultInstance();
+  ::MathMessage::Vec3::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Vec3Message_math_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVec3Message_math_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Vec3_math_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVec3_math_2eproto}, {}};
 
-static void InitDefaultsVec4Message_math_2eproto() {
+static void InitDefaultsVec4_math_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::tbMath::_Vec4Message_default_instance_;
-    new (ptr) ::tbMath::Vec4Message();
+    void* ptr = &::MathMessage::_Vec4_default_instance_;
+    new (ptr) ::MathMessage::Vec4();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::tbMath::Vec4Message::InitAsDefaultInstance();
+  ::MathMessage::Vec4::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Vec4Message_math_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVec4Message_math_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_Vec4_math_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVec4_math_2eproto}, {}};
 
-static void InitDefaultsMat3Message_math_2eproto() {
+static void InitDefaultsMat3_math_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::tbMath::_Mat3Message_default_instance_;
-    new (ptr) ::tbMath::Mat3Message();
+    void* ptr = &::MathMessage::_Mat3_default_instance_;
+    new (ptr) ::MathMessage::Mat3();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::tbMath::Mat3Message::InitAsDefaultInstance();
+  ::MathMessage::Mat3::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_Mat3Message_math_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMat3Message_math_2eproto}, {
-      &scc_info_Vec3Message_math_2eproto.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_Mat3_math_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMat3_math_2eproto}, {
+      &scc_info_Vec3_math_2eproto.base,}};
 
-static void InitDefaultsMat4Message_math_2eproto() {
+static void InitDefaultsMat4_math_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::tbMath::_Mat4Message_default_instance_;
-    new (ptr) ::tbMath::Mat4Message();
+    void* ptr = &::MathMessage::_Mat4_default_instance_;
+    new (ptr) ::MathMessage::Mat4();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::tbMath::Mat4Message::InitAsDefaultInstance();
+  ::MathMessage::Mat4::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_Mat4Message_math_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMat4Message_math_2eproto}, {
-      &scc_info_Vec4Message_math_2eproto.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_Mat4_math_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMat4_math_2eproto}, {
+      &scc_info_Vec4_math_2eproto.base,}};
 
 void InitDefaults_math_2eproto() {
-  ::google::protobuf::internal::InitSCC(&scc_info_Vec2Message_math_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Vec3Message_math_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Vec4Message_math_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Mat3Message_math_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Mat4Message_math_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Vec2_math_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Vec3_math_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Vec4_math_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Mat3_math_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Mat4_math_2eproto.base);
 }
 
 ::google::protobuf::Metadata file_level_metadata_math_2eproto[5];
@@ -126,61 +126,61 @@ constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descr
 
 const ::google::protobuf::uint32 TableStruct_math_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec2Message, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec2, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec2Message, x_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec2Message, y_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec2, x_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec2, y_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec3Message, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec3, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec3Message, x_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec3Message, y_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec3Message, z_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec3, x_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec3, y_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec3, z_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec4Message, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec4, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec4Message, x_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec4Message, y_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec4Message, z_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Vec4Message, w_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec4, x_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec4, y_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec4, z_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Vec4, w_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat3Message, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat3, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat3Message, x_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat3Message, y_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat3Message, z_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat3, x_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat3, y_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat3, z_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat4Message, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat4, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat4Message, x_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat4Message, y_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat4Message, z_),
-  PROTOBUF_FIELD_OFFSET(::tbMath::Mat4Message, w_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat4, x_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat4, y_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat4, z_),
+  PROTOBUF_FIELD_OFFSET(::MathMessage::Mat4, w_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::tbMath::Vec2Message)},
-  { 7, -1, sizeof(::tbMath::Vec3Message)},
-  { 15, -1, sizeof(::tbMath::Vec4Message)},
-  { 24, -1, sizeof(::tbMath::Mat3Message)},
-  { 32, -1, sizeof(::tbMath::Mat4Message)},
+  { 0, -1, sizeof(::MathMessage::Vec2)},
+  { 7, -1, sizeof(::MathMessage::Vec3)},
+  { 15, -1, sizeof(::MathMessage::Vec4)},
+  { 24, -1, sizeof(::MathMessage::Mat3)},
+  { 32, -1, sizeof(::MathMessage::Mat4)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::tbMath::_Vec2Message_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::tbMath::_Vec3Message_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::tbMath::_Vec4Message_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::tbMath::_Mat3Message_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::tbMath::_Mat4Message_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::MathMessage::_Vec2_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::MathMessage::_Vec3_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::MathMessage::_Vec4_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::MathMessage::_Mat3_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::MathMessage::_Mat4_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_math_2eproto = {
@@ -190,22 +190,21 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_math_2eproto[] =
-  "\n\nmath.proto\022\006tbMath\"#\n\013Vec2Message\022\t\n\001x"
-  "\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\".\n\013Vec3Message\022\t\n\001x\030\001 "
-  "\001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"9\n\013Vec4Message"
-  "\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\t\n\001w\030\004"
-  " \001(\002\"m\n\013Mat3Message\022\036\n\001x\030\001 \001(\0132\023.tbMath."
-  "Vec3Message\022\036\n\001y\030\002 \001(\0132\023.tbMath.Vec3Mess"
-  "age\022\036\n\001z\030\003 \001(\0132\023.tbMath.Vec3Message\"\215\001\n\013"
-  "Mat4Message\022\036\n\001x\030\001 \001(\0132\023.tbMath.Vec4Mess"
-  "age\022\036\n\001y\030\002 \001(\0132\023.tbMath.Vec4Message\022\036\n\001z"
-  "\030\003 \001(\0132\023.tbMath.Vec4Message\022\036\n\001w\030\004 \001(\0132\023"
-  ".tbMath.Vec4Messageb\006proto3"
+  "\n\nmath.proto\022\013MathMessage\"\034\n\004Vec2\022\t\n\001x\030\001"
+  " \001(\002\022\t\n\001y\030\002 \001(\002\"\'\n\004Vec3\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030"
+  "\002 \001(\002\022\t\n\001z\030\003 \001(\002\"2\n\004Vec4\022\t\n\001x\030\001 \001(\002\022\t\n\001y"
+  "\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\t\n\001w\030\004 \001(\002\"`\n\004Mat3\022\034\n\001"
+  "x\030\001 \001(\0132\021.MathMessage.Vec3\022\034\n\001y\030\002 \001(\0132\021."
+  "MathMessage.Vec3\022\034\n\001z\030\003 \001(\0132\021.MathMessag"
+  "e.Vec3\"~\n\004Mat4\022\034\n\001x\030\001 \001(\0132\021.MathMessage."
+  "Vec4\022\034\n\001y\030\002 \001(\0132\021.MathMessage.Vec4\022\034\n\001z\030"
+  "\003 \001(\0132\021.MathMessage.Vec4\022\034\n\001w\030\004 \001(\0132\021.Ma"
+  "thMessage.Vec4b\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_math_2eproto = {
   false, InitDefaults_math_2eproto, 
   descriptor_table_protodef_math_2eproto,
-  "math.proto", &assign_descriptors_table_math_2eproto, 427,
+  "math.proto", &assign_descriptors_table_math_2eproto, 382,
 };
 
 void AddDescriptors_math_2eproto() {
@@ -217,61 +216,61 @@ void AddDescriptors_math_2eproto() {
 
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_math_2eproto = []() { AddDescriptors_math_2eproto(); return true; }();
-namespace tbMath {
+namespace MathMessage {
 
 // ===================================================================
 
-void Vec2Message::InitAsDefaultInstance() {
+void Vec2::InitAsDefaultInstance() {
 }
-class Vec2Message::HasBitSetters {
+class Vec2::HasBitSetters {
  public:
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Vec2Message::kXFieldNumber;
-const int Vec2Message::kYFieldNumber;
+const int Vec2::kXFieldNumber;
+const int Vec2::kYFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Vec2Message::Vec2Message()
+Vec2::Vec2()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:tbMath.Vec2Message)
+  // @@protoc_insertion_point(constructor:MathMessage.Vec2)
 }
-Vec2Message::Vec2Message(const Vec2Message& from)
+Vec2::Vec2(const Vec2& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&y_) -
     reinterpret_cast<char*>(&x_)) + sizeof(y_));
-  // @@protoc_insertion_point(copy_constructor:tbMath.Vec2Message)
+  // @@protoc_insertion_point(copy_constructor:MathMessage.Vec2)
 }
 
-void Vec2Message::SharedCtor() {
+void Vec2::SharedCtor() {
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&y_) -
       reinterpret_cast<char*>(&x_)) + sizeof(y_));
 }
 
-Vec2Message::~Vec2Message() {
-  // @@protoc_insertion_point(destructor:tbMath.Vec2Message)
+Vec2::~Vec2() {
+  // @@protoc_insertion_point(destructor:MathMessage.Vec2)
   SharedDtor();
 }
 
-void Vec2Message::SharedDtor() {
+void Vec2::SharedDtor() {
 }
 
-void Vec2Message::SetCachedSize(int size) const {
+void Vec2::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Vec2Message& Vec2Message::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Vec2Message_math_2eproto.base);
+const Vec2& Vec2::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Vec2_math_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Vec2Message::Clear() {
-// @@protoc_insertion_point(message_clear_start:tbMath.Vec2Message)
+void Vec2::Clear() {
+// @@protoc_insertion_point(message_clear_start:MathMessage.Vec2)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -283,9 +282,9 @@ void Vec2Message::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Vec2Message::_InternalParse(const char* begin, const char* end, void* object,
+const char* Vec2::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<Vec2Message*>(object);
+  auto msg = static_cast<Vec2*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -326,11 +325,11 @@ const char* Vec2Message::_InternalParse(const char* begin, const char* end, void
   return ptr;
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Vec2Message::MergePartialFromCodedStream(
+bool Vec2::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:tbMath.Vec2Message)
+  // @@protoc_insertion_point(parse_start:MathMessage.Vec2)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -374,18 +373,18 @@ bool Vec2Message::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:tbMath.Vec2Message)
+  // @@protoc_insertion_point(parse_success:MathMessage.Vec2)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:tbMath.Vec2Message)
+  // @@protoc_insertion_point(parse_failure:MathMessage.Vec2)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void Vec2Message::SerializeWithCachedSizes(
+void Vec2::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:tbMath.Vec2Message)
+  // @@protoc_insertion_point(serialize_start:MathMessage.Vec2)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -403,12 +402,12 @@ void Vec2Message::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:tbMath.Vec2Message)
+  // @@protoc_insertion_point(serialize_end:MathMessage.Vec2)
 }
 
-::google::protobuf::uint8* Vec2Message::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Vec2::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:tbMath.Vec2Message)
+  // @@protoc_insertion_point(serialize_to_array_start:MathMessage.Vec2)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -426,12 +425,12 @@ void Vec2Message::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:tbMath.Vec2Message)
+  // @@protoc_insertion_point(serialize_to_array_end:MathMessage.Vec2)
   return target;
 }
 
-size_t Vec2Message::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:tbMath.Vec2Message)
+size_t Vec2::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:MathMessage.Vec2)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -458,23 +457,23 @@ size_t Vec2Message::ByteSizeLong() const {
   return total_size;
 }
 
-void Vec2Message::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:tbMath.Vec2Message)
+void Vec2::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:MathMessage.Vec2)
   GOOGLE_DCHECK_NE(&from, this);
-  const Vec2Message* source =
-      ::google::protobuf::DynamicCastToGenerated<Vec2Message>(
+  const Vec2* source =
+      ::google::protobuf::DynamicCastToGenerated<Vec2>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:tbMath.Vec2Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:MathMessage.Vec2)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:tbMath.Vec2Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:MathMessage.Vec2)
     MergeFrom(*source);
   }
 }
 
-void Vec2Message::MergeFrom(const Vec2Message& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:tbMath.Vec2Message)
+void Vec2::MergeFrom(const Vec2& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:MathMessage.Vec2)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -488,36 +487,36 @@ void Vec2Message::MergeFrom(const Vec2Message& from) {
   }
 }
 
-void Vec2Message::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:tbMath.Vec2Message)
+void Vec2::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:MathMessage.Vec2)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Vec2Message::CopyFrom(const Vec2Message& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:tbMath.Vec2Message)
+void Vec2::CopyFrom(const Vec2& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:MathMessage.Vec2)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Vec2Message::IsInitialized() const {
+bool Vec2::IsInitialized() const {
   return true;
 }
 
-void Vec2Message::Swap(Vec2Message* other) {
+void Vec2::Swap(Vec2* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Vec2Message::InternalSwap(Vec2Message* other) {
+void Vec2::InternalSwap(Vec2* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(x_, other->x_);
   swap(y_, other->y_);
 }
 
-::google::protobuf::Metadata Vec2Message::GetMetadata() const {
+::google::protobuf::Metadata Vec2::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_math_2eproto);
   return ::file_level_metadata_math_2eproto[kIndexInFileMessages];
 }
@@ -525,58 +524,58 @@ void Vec2Message::InternalSwap(Vec2Message* other) {
 
 // ===================================================================
 
-void Vec3Message::InitAsDefaultInstance() {
+void Vec3::InitAsDefaultInstance() {
 }
-class Vec3Message::HasBitSetters {
+class Vec3::HasBitSetters {
  public:
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Vec3Message::kXFieldNumber;
-const int Vec3Message::kYFieldNumber;
-const int Vec3Message::kZFieldNumber;
+const int Vec3::kXFieldNumber;
+const int Vec3::kYFieldNumber;
+const int Vec3::kZFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Vec3Message::Vec3Message()
+Vec3::Vec3()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:tbMath.Vec3Message)
+  // @@protoc_insertion_point(constructor:MathMessage.Vec3)
 }
-Vec3Message::Vec3Message(const Vec3Message& from)
+Vec3::Vec3(const Vec3& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&z_) -
     reinterpret_cast<char*>(&x_)) + sizeof(z_));
-  // @@protoc_insertion_point(copy_constructor:tbMath.Vec3Message)
+  // @@protoc_insertion_point(copy_constructor:MathMessage.Vec3)
 }
 
-void Vec3Message::SharedCtor() {
+void Vec3::SharedCtor() {
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&z_) -
       reinterpret_cast<char*>(&x_)) + sizeof(z_));
 }
 
-Vec3Message::~Vec3Message() {
-  // @@protoc_insertion_point(destructor:tbMath.Vec3Message)
+Vec3::~Vec3() {
+  // @@protoc_insertion_point(destructor:MathMessage.Vec3)
   SharedDtor();
 }
 
-void Vec3Message::SharedDtor() {
+void Vec3::SharedDtor() {
 }
 
-void Vec3Message::SetCachedSize(int size) const {
+void Vec3::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Vec3Message& Vec3Message::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Vec3Message_math_2eproto.base);
+const Vec3& Vec3::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Vec3_math_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Vec3Message::Clear() {
-// @@protoc_insertion_point(message_clear_start:tbMath.Vec3Message)
+void Vec3::Clear() {
+// @@protoc_insertion_point(message_clear_start:MathMessage.Vec3)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -588,9 +587,9 @@ void Vec3Message::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Vec3Message::_InternalParse(const char* begin, const char* end, void* object,
+const char* Vec3::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<Vec3Message*>(object);
+  auto msg = static_cast<Vec3*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -638,11 +637,11 @@ const char* Vec3Message::_InternalParse(const char* begin, const char* end, void
   return ptr;
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Vec3Message::MergePartialFromCodedStream(
+bool Vec3::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:tbMath.Vec3Message)
+  // @@protoc_insertion_point(parse_start:MathMessage.Vec3)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -699,18 +698,18 @@ bool Vec3Message::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:tbMath.Vec3Message)
+  // @@protoc_insertion_point(parse_success:MathMessage.Vec3)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:tbMath.Vec3Message)
+  // @@protoc_insertion_point(parse_failure:MathMessage.Vec3)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void Vec3Message::SerializeWithCachedSizes(
+void Vec3::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:tbMath.Vec3Message)
+  // @@protoc_insertion_point(serialize_start:MathMessage.Vec3)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -733,12 +732,12 @@ void Vec3Message::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:tbMath.Vec3Message)
+  // @@protoc_insertion_point(serialize_end:MathMessage.Vec3)
 }
 
-::google::protobuf::uint8* Vec3Message::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Vec3::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:tbMath.Vec3Message)
+  // @@protoc_insertion_point(serialize_to_array_start:MathMessage.Vec3)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -761,12 +760,12 @@ void Vec3Message::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:tbMath.Vec3Message)
+  // @@protoc_insertion_point(serialize_to_array_end:MathMessage.Vec3)
   return target;
 }
 
-size_t Vec3Message::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:tbMath.Vec3Message)
+size_t Vec3::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:MathMessage.Vec3)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -798,23 +797,23 @@ size_t Vec3Message::ByteSizeLong() const {
   return total_size;
 }
 
-void Vec3Message::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:tbMath.Vec3Message)
+void Vec3::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:MathMessage.Vec3)
   GOOGLE_DCHECK_NE(&from, this);
-  const Vec3Message* source =
-      ::google::protobuf::DynamicCastToGenerated<Vec3Message>(
+  const Vec3* source =
+      ::google::protobuf::DynamicCastToGenerated<Vec3>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:tbMath.Vec3Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:MathMessage.Vec3)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:tbMath.Vec3Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:MathMessage.Vec3)
     MergeFrom(*source);
   }
 }
 
-void Vec3Message::MergeFrom(const Vec3Message& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:tbMath.Vec3Message)
+void Vec3::MergeFrom(const Vec3& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:MathMessage.Vec3)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -831,29 +830,29 @@ void Vec3Message::MergeFrom(const Vec3Message& from) {
   }
 }
 
-void Vec3Message::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:tbMath.Vec3Message)
+void Vec3::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:MathMessage.Vec3)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Vec3Message::CopyFrom(const Vec3Message& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:tbMath.Vec3Message)
+void Vec3::CopyFrom(const Vec3& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:MathMessage.Vec3)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Vec3Message::IsInitialized() const {
+bool Vec3::IsInitialized() const {
   return true;
 }
 
-void Vec3Message::Swap(Vec3Message* other) {
+void Vec3::Swap(Vec3* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Vec3Message::InternalSwap(Vec3Message* other) {
+void Vec3::InternalSwap(Vec3* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(x_, other->x_);
@@ -861,7 +860,7 @@ void Vec3Message::InternalSwap(Vec3Message* other) {
   swap(z_, other->z_);
 }
 
-::google::protobuf::Metadata Vec3Message::GetMetadata() const {
+::google::protobuf::Metadata Vec3::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_math_2eproto);
   return ::file_level_metadata_math_2eproto[kIndexInFileMessages];
 }
@@ -869,59 +868,59 @@ void Vec3Message::InternalSwap(Vec3Message* other) {
 
 // ===================================================================
 
-void Vec4Message::InitAsDefaultInstance() {
+void Vec4::InitAsDefaultInstance() {
 }
-class Vec4Message::HasBitSetters {
+class Vec4::HasBitSetters {
  public:
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Vec4Message::kXFieldNumber;
-const int Vec4Message::kYFieldNumber;
-const int Vec4Message::kZFieldNumber;
-const int Vec4Message::kWFieldNumber;
+const int Vec4::kXFieldNumber;
+const int Vec4::kYFieldNumber;
+const int Vec4::kZFieldNumber;
+const int Vec4::kWFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Vec4Message::Vec4Message()
+Vec4::Vec4()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:tbMath.Vec4Message)
+  // @@protoc_insertion_point(constructor:MathMessage.Vec4)
 }
-Vec4Message::Vec4Message(const Vec4Message& from)
+Vec4::Vec4(const Vec4& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&w_) -
     reinterpret_cast<char*>(&x_)) + sizeof(w_));
-  // @@protoc_insertion_point(copy_constructor:tbMath.Vec4Message)
+  // @@protoc_insertion_point(copy_constructor:MathMessage.Vec4)
 }
 
-void Vec4Message::SharedCtor() {
+void Vec4::SharedCtor() {
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&w_) -
       reinterpret_cast<char*>(&x_)) + sizeof(w_));
 }
 
-Vec4Message::~Vec4Message() {
-  // @@protoc_insertion_point(destructor:tbMath.Vec4Message)
+Vec4::~Vec4() {
+  // @@protoc_insertion_point(destructor:MathMessage.Vec4)
   SharedDtor();
 }
 
-void Vec4Message::SharedDtor() {
+void Vec4::SharedDtor() {
 }
 
-void Vec4Message::SetCachedSize(int size) const {
+void Vec4::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Vec4Message& Vec4Message::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Vec4Message_math_2eproto.base);
+const Vec4& Vec4::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Vec4_math_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Vec4Message::Clear() {
-// @@protoc_insertion_point(message_clear_start:tbMath.Vec4Message)
+void Vec4::Clear() {
+// @@protoc_insertion_point(message_clear_start:MathMessage.Vec4)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -933,9 +932,9 @@ void Vec4Message::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Vec4Message::_InternalParse(const char* begin, const char* end, void* object,
+const char* Vec4::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<Vec4Message*>(object);
+  auto msg = static_cast<Vec4*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -990,11 +989,11 @@ const char* Vec4Message::_InternalParse(const char* begin, const char* end, void
   return ptr;
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Vec4Message::MergePartialFromCodedStream(
+bool Vec4::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:tbMath.Vec4Message)
+  // @@protoc_insertion_point(parse_start:MathMessage.Vec4)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -1064,18 +1063,18 @@ bool Vec4Message::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:tbMath.Vec4Message)
+  // @@protoc_insertion_point(parse_success:MathMessage.Vec4)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:tbMath.Vec4Message)
+  // @@protoc_insertion_point(parse_failure:MathMessage.Vec4)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void Vec4Message::SerializeWithCachedSizes(
+void Vec4::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:tbMath.Vec4Message)
+  // @@protoc_insertion_point(serialize_start:MathMessage.Vec4)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1103,12 +1102,12 @@ void Vec4Message::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:tbMath.Vec4Message)
+  // @@protoc_insertion_point(serialize_end:MathMessage.Vec4)
 }
 
-::google::protobuf::uint8* Vec4Message::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Vec4::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:tbMath.Vec4Message)
+  // @@protoc_insertion_point(serialize_to_array_start:MathMessage.Vec4)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1136,12 +1135,12 @@ void Vec4Message::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:tbMath.Vec4Message)
+  // @@protoc_insertion_point(serialize_to_array_end:MathMessage.Vec4)
   return target;
 }
 
-size_t Vec4Message::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:tbMath.Vec4Message)
+size_t Vec4::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:MathMessage.Vec4)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1178,23 +1177,23 @@ size_t Vec4Message::ByteSizeLong() const {
   return total_size;
 }
 
-void Vec4Message::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:tbMath.Vec4Message)
+void Vec4::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:MathMessage.Vec4)
   GOOGLE_DCHECK_NE(&from, this);
-  const Vec4Message* source =
-      ::google::protobuf::DynamicCastToGenerated<Vec4Message>(
+  const Vec4* source =
+      ::google::protobuf::DynamicCastToGenerated<Vec4>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:tbMath.Vec4Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:MathMessage.Vec4)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:tbMath.Vec4Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:MathMessage.Vec4)
     MergeFrom(*source);
   }
 }
 
-void Vec4Message::MergeFrom(const Vec4Message& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:tbMath.Vec4Message)
+void Vec4::MergeFrom(const Vec4& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:MathMessage.Vec4)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -1214,29 +1213,29 @@ void Vec4Message::MergeFrom(const Vec4Message& from) {
   }
 }
 
-void Vec4Message::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:tbMath.Vec4Message)
+void Vec4::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:MathMessage.Vec4)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Vec4Message::CopyFrom(const Vec4Message& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:tbMath.Vec4Message)
+void Vec4::CopyFrom(const Vec4& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:MathMessage.Vec4)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Vec4Message::IsInitialized() const {
+bool Vec4::IsInitialized() const {
   return true;
 }
 
-void Vec4Message::Swap(Vec4Message* other) {
+void Vec4::Swap(Vec4* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Vec4Message::InternalSwap(Vec4Message* other) {
+void Vec4::InternalSwap(Vec4* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(x_, other->x_);
@@ -1245,7 +1244,7 @@ void Vec4Message::InternalSwap(Vec4Message* other) {
   swap(w_, other->w_);
 }
 
-::google::protobuf::Metadata Vec4Message::GetMetadata() const {
+::google::protobuf::Metadata Vec4::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_math_2eproto);
   return ::file_level_metadata_math_2eproto[kIndexInFileMessages];
 }
@@ -1253,96 +1252,96 @@ void Vec4Message::InternalSwap(Vec4Message* other) {
 
 // ===================================================================
 
-void Mat3Message::InitAsDefaultInstance() {
-  ::tbMath::_Mat3Message_default_instance_._instance.get_mutable()->x_ = const_cast< ::tbMath::Vec3Message*>(
-      ::tbMath::Vec3Message::internal_default_instance());
-  ::tbMath::_Mat3Message_default_instance_._instance.get_mutable()->y_ = const_cast< ::tbMath::Vec3Message*>(
-      ::tbMath::Vec3Message::internal_default_instance());
-  ::tbMath::_Mat3Message_default_instance_._instance.get_mutable()->z_ = const_cast< ::tbMath::Vec3Message*>(
-      ::tbMath::Vec3Message::internal_default_instance());
+void Mat3::InitAsDefaultInstance() {
+  ::MathMessage::_Mat3_default_instance_._instance.get_mutable()->x_ = const_cast< ::MathMessage::Vec3*>(
+      ::MathMessage::Vec3::internal_default_instance());
+  ::MathMessage::_Mat3_default_instance_._instance.get_mutable()->y_ = const_cast< ::MathMessage::Vec3*>(
+      ::MathMessage::Vec3::internal_default_instance());
+  ::MathMessage::_Mat3_default_instance_._instance.get_mutable()->z_ = const_cast< ::MathMessage::Vec3*>(
+      ::MathMessage::Vec3::internal_default_instance());
 }
-class Mat3Message::HasBitSetters {
+class Mat3::HasBitSetters {
  public:
-  static const ::tbMath::Vec3Message& x(const Mat3Message* msg);
-  static const ::tbMath::Vec3Message& y(const Mat3Message* msg);
-  static const ::tbMath::Vec3Message& z(const Mat3Message* msg);
+  static const ::MathMessage::Vec3& x(const Mat3* msg);
+  static const ::MathMessage::Vec3& y(const Mat3* msg);
+  static const ::MathMessage::Vec3& z(const Mat3* msg);
 };
 
-const ::tbMath::Vec3Message&
-Mat3Message::HasBitSetters::x(const Mat3Message* msg) {
+const ::MathMessage::Vec3&
+Mat3::HasBitSetters::x(const Mat3* msg) {
   return *msg->x_;
 }
-const ::tbMath::Vec3Message&
-Mat3Message::HasBitSetters::y(const Mat3Message* msg) {
+const ::MathMessage::Vec3&
+Mat3::HasBitSetters::y(const Mat3* msg) {
   return *msg->y_;
 }
-const ::tbMath::Vec3Message&
-Mat3Message::HasBitSetters::z(const Mat3Message* msg) {
+const ::MathMessage::Vec3&
+Mat3::HasBitSetters::z(const Mat3* msg) {
   return *msg->z_;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Mat3Message::kXFieldNumber;
-const int Mat3Message::kYFieldNumber;
-const int Mat3Message::kZFieldNumber;
+const int Mat3::kXFieldNumber;
+const int Mat3::kYFieldNumber;
+const int Mat3::kZFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Mat3Message::Mat3Message()
+Mat3::Mat3()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:tbMath.Mat3Message)
+  // @@protoc_insertion_point(constructor:MathMessage.Mat3)
 }
-Mat3Message::Mat3Message(const Mat3Message& from)
+Mat3::Mat3(const Mat3& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_x()) {
-    x_ = new ::tbMath::Vec3Message(*from.x_);
+    x_ = new ::MathMessage::Vec3(*from.x_);
   } else {
     x_ = nullptr;
   }
   if (from.has_y()) {
-    y_ = new ::tbMath::Vec3Message(*from.y_);
+    y_ = new ::MathMessage::Vec3(*from.y_);
   } else {
     y_ = nullptr;
   }
   if (from.has_z()) {
-    z_ = new ::tbMath::Vec3Message(*from.z_);
+    z_ = new ::MathMessage::Vec3(*from.z_);
   } else {
     z_ = nullptr;
   }
-  // @@protoc_insertion_point(copy_constructor:tbMath.Mat3Message)
+  // @@protoc_insertion_point(copy_constructor:MathMessage.Mat3)
 }
 
-void Mat3Message::SharedCtor() {
+void Mat3::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_Mat3Message_math_2eproto.base);
+      &scc_info_Mat3_math_2eproto.base);
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&z_) -
       reinterpret_cast<char*>(&x_)) + sizeof(z_));
 }
 
-Mat3Message::~Mat3Message() {
-  // @@protoc_insertion_point(destructor:tbMath.Mat3Message)
+Mat3::~Mat3() {
+  // @@protoc_insertion_point(destructor:MathMessage.Mat3)
   SharedDtor();
 }
 
-void Mat3Message::SharedDtor() {
+void Mat3::SharedDtor() {
   if (this != internal_default_instance()) delete x_;
   if (this != internal_default_instance()) delete y_;
   if (this != internal_default_instance()) delete z_;
 }
 
-void Mat3Message::SetCachedSize(int size) const {
+void Mat3::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Mat3Message& Mat3Message::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Mat3Message_math_2eproto.base);
+const Mat3& Mat3::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Mat3_math_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Mat3Message::Clear() {
-// @@protoc_insertion_point(message_clear_start:tbMath.Mat3Message)
+void Mat3::Clear() {
+// @@protoc_insertion_point(message_clear_start:MathMessage.Mat3)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1363,9 +1362,9 @@ void Mat3Message::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Mat3Message::_InternalParse(const char* begin, const char* end, void* object,
+const char* Mat3::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<Mat3Message*>(object);
+  auto msg = static_cast<Mat3*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -1375,12 +1374,12 @@ const char* Mat3Message::_InternalParse(const char* begin, const char* end, void
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // .tbMath.Vec3Message x = 1;
+      // .MathMessage.Vec3 x = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::tbMath::Vec3Message::_InternalParse;
+        parser_till_end = ::MathMessage::Vec3::_InternalParse;
         object = msg->mutable_x();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
@@ -1388,12 +1387,12 @@ const char* Mat3Message::_InternalParse(const char* begin, const char* end, void
             {parser_till_end, object}, ptr - size, ptr));
         break;
       }
-      // .tbMath.Vec3Message y = 2;
+      // .MathMessage.Vec3 y = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::tbMath::Vec3Message::_InternalParse;
+        parser_till_end = ::MathMessage::Vec3::_InternalParse;
         object = msg->mutable_y();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
@@ -1401,12 +1400,12 @@ const char* Mat3Message::_InternalParse(const char* begin, const char* end, void
             {parser_till_end, object}, ptr - size, ptr));
         break;
       }
-      // .tbMath.Vec3Message z = 3;
+      // .MathMessage.Vec3 z = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::tbMath::Vec3Message::_InternalParse;
+        parser_till_end = ::MathMessage::Vec3::_InternalParse;
         object = msg->mutable_z();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
@@ -1434,17 +1433,17 @@ len_delim_till_end:
                                {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Mat3Message::MergePartialFromCodedStream(
+bool Mat3::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:tbMath.Mat3Message)
+  // @@protoc_insertion_point(parse_start:MathMessage.Mat3)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .tbMath.Vec3Message x = 1;
+      // .MathMessage.Vec3 x = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1455,7 +1454,7 @@ bool Mat3Message::MergePartialFromCodedStream(
         break;
       }
 
-      // .tbMath.Vec3Message y = 2;
+      // .MathMessage.Vec3 y = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1466,7 +1465,7 @@ bool Mat3Message::MergePartialFromCodedStream(
         break;
       }
 
-      // .tbMath.Vec3Message z = 3;
+      // .MathMessage.Vec3 z = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1489,34 +1488,34 @@ bool Mat3Message::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:tbMath.Mat3Message)
+  // @@protoc_insertion_point(parse_success:MathMessage.Mat3)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:tbMath.Mat3Message)
+  // @@protoc_insertion_point(parse_failure:MathMessage.Mat3)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void Mat3Message::SerializeWithCachedSizes(
+void Mat3::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:tbMath.Mat3Message)
+  // @@protoc_insertion_point(serialize_start:MathMessage.Mat3)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .tbMath.Vec3Message x = 1;
+  // .MathMessage.Vec3 x = 1;
   if (this->has_x()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, HasBitSetters::x(this), output);
   }
 
-  // .tbMath.Vec3Message y = 2;
+  // .MathMessage.Vec3 y = 2;
   if (this->has_y()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, HasBitSetters::y(this), output);
   }
 
-  // .tbMath.Vec3Message z = 3;
+  // .MathMessage.Vec3 z = 3;
   if (this->has_z()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, HasBitSetters::z(this), output);
@@ -1526,30 +1525,30 @@ void Mat3Message::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:tbMath.Mat3Message)
+  // @@protoc_insertion_point(serialize_end:MathMessage.Mat3)
 }
 
-::google::protobuf::uint8* Mat3Message::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Mat3::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:tbMath.Mat3Message)
+  // @@protoc_insertion_point(serialize_to_array_start:MathMessage.Mat3)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .tbMath.Vec3Message x = 1;
+  // .MathMessage.Vec3 x = 1;
   if (this->has_x()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         1, HasBitSetters::x(this), target);
   }
 
-  // .tbMath.Vec3Message y = 2;
+  // .MathMessage.Vec3 y = 2;
   if (this->has_y()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         2, HasBitSetters::y(this), target);
   }
 
-  // .tbMath.Vec3Message z = 3;
+  // .MathMessage.Vec3 z = 3;
   if (this->has_z()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
@@ -1560,12 +1559,12 @@ void Mat3Message::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:tbMath.Mat3Message)
+  // @@protoc_insertion_point(serialize_to_array_end:MathMessage.Mat3)
   return target;
 }
 
-size_t Mat3Message::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:tbMath.Mat3Message)
+size_t Mat3::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:MathMessage.Mat3)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1577,21 +1576,21 @@ size_t Mat3Message::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .tbMath.Vec3Message x = 1;
+  // .MathMessage.Vec3 x = 1;
   if (this->has_x()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *x_);
   }
 
-  // .tbMath.Vec3Message y = 2;
+  // .MathMessage.Vec3 y = 2;
   if (this->has_y()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *y_);
   }
 
-  // .tbMath.Vec3Message z = 3;
+  // .MathMessage.Vec3 z = 3;
   if (this->has_z()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
@@ -1603,62 +1602,62 @@ size_t Mat3Message::ByteSizeLong() const {
   return total_size;
 }
 
-void Mat3Message::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:tbMath.Mat3Message)
+void Mat3::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:MathMessage.Mat3)
   GOOGLE_DCHECK_NE(&from, this);
-  const Mat3Message* source =
-      ::google::protobuf::DynamicCastToGenerated<Mat3Message>(
+  const Mat3* source =
+      ::google::protobuf::DynamicCastToGenerated<Mat3>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:tbMath.Mat3Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:MathMessage.Mat3)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:tbMath.Mat3Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:MathMessage.Mat3)
     MergeFrom(*source);
   }
 }
 
-void Mat3Message::MergeFrom(const Mat3Message& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:tbMath.Mat3Message)
+void Mat3::MergeFrom(const Mat3& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:MathMessage.Mat3)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.has_x()) {
-    mutable_x()->::tbMath::Vec3Message::MergeFrom(from.x());
+    mutable_x()->::MathMessage::Vec3::MergeFrom(from.x());
   }
   if (from.has_y()) {
-    mutable_y()->::tbMath::Vec3Message::MergeFrom(from.y());
+    mutable_y()->::MathMessage::Vec3::MergeFrom(from.y());
   }
   if (from.has_z()) {
-    mutable_z()->::tbMath::Vec3Message::MergeFrom(from.z());
+    mutable_z()->::MathMessage::Vec3::MergeFrom(from.z());
   }
 }
 
-void Mat3Message::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:tbMath.Mat3Message)
+void Mat3::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:MathMessage.Mat3)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Mat3Message::CopyFrom(const Mat3Message& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:tbMath.Mat3Message)
+void Mat3::CopyFrom(const Mat3& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:MathMessage.Mat3)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Mat3Message::IsInitialized() const {
+bool Mat3::IsInitialized() const {
   return true;
 }
 
-void Mat3Message::Swap(Mat3Message* other) {
+void Mat3::Swap(Mat3* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Mat3Message::InternalSwap(Mat3Message* other) {
+void Mat3::InternalSwap(Mat3* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(x_, other->x_);
@@ -1666,7 +1665,7 @@ void Mat3Message::InternalSwap(Mat3Message* other) {
   swap(z_, other->z_);
 }
 
-::google::protobuf::Metadata Mat3Message::GetMetadata() const {
+::google::protobuf::Metadata Mat3::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_math_2eproto);
   return ::file_level_metadata_math_2eproto[kIndexInFileMessages];
 }
@@ -1674,110 +1673,110 @@ void Mat3Message::InternalSwap(Mat3Message* other) {
 
 // ===================================================================
 
-void Mat4Message::InitAsDefaultInstance() {
-  ::tbMath::_Mat4Message_default_instance_._instance.get_mutable()->x_ = const_cast< ::tbMath::Vec4Message*>(
-      ::tbMath::Vec4Message::internal_default_instance());
-  ::tbMath::_Mat4Message_default_instance_._instance.get_mutable()->y_ = const_cast< ::tbMath::Vec4Message*>(
-      ::tbMath::Vec4Message::internal_default_instance());
-  ::tbMath::_Mat4Message_default_instance_._instance.get_mutable()->z_ = const_cast< ::tbMath::Vec4Message*>(
-      ::tbMath::Vec4Message::internal_default_instance());
-  ::tbMath::_Mat4Message_default_instance_._instance.get_mutable()->w_ = const_cast< ::tbMath::Vec4Message*>(
-      ::tbMath::Vec4Message::internal_default_instance());
+void Mat4::InitAsDefaultInstance() {
+  ::MathMessage::_Mat4_default_instance_._instance.get_mutable()->x_ = const_cast< ::MathMessage::Vec4*>(
+      ::MathMessage::Vec4::internal_default_instance());
+  ::MathMessage::_Mat4_default_instance_._instance.get_mutable()->y_ = const_cast< ::MathMessage::Vec4*>(
+      ::MathMessage::Vec4::internal_default_instance());
+  ::MathMessage::_Mat4_default_instance_._instance.get_mutable()->z_ = const_cast< ::MathMessage::Vec4*>(
+      ::MathMessage::Vec4::internal_default_instance());
+  ::MathMessage::_Mat4_default_instance_._instance.get_mutable()->w_ = const_cast< ::MathMessage::Vec4*>(
+      ::MathMessage::Vec4::internal_default_instance());
 }
-class Mat4Message::HasBitSetters {
+class Mat4::HasBitSetters {
  public:
-  static const ::tbMath::Vec4Message& x(const Mat4Message* msg);
-  static const ::tbMath::Vec4Message& y(const Mat4Message* msg);
-  static const ::tbMath::Vec4Message& z(const Mat4Message* msg);
-  static const ::tbMath::Vec4Message& w(const Mat4Message* msg);
+  static const ::MathMessage::Vec4& x(const Mat4* msg);
+  static const ::MathMessage::Vec4& y(const Mat4* msg);
+  static const ::MathMessage::Vec4& z(const Mat4* msg);
+  static const ::MathMessage::Vec4& w(const Mat4* msg);
 };
 
-const ::tbMath::Vec4Message&
-Mat4Message::HasBitSetters::x(const Mat4Message* msg) {
+const ::MathMessage::Vec4&
+Mat4::HasBitSetters::x(const Mat4* msg) {
   return *msg->x_;
 }
-const ::tbMath::Vec4Message&
-Mat4Message::HasBitSetters::y(const Mat4Message* msg) {
+const ::MathMessage::Vec4&
+Mat4::HasBitSetters::y(const Mat4* msg) {
   return *msg->y_;
 }
-const ::tbMath::Vec4Message&
-Mat4Message::HasBitSetters::z(const Mat4Message* msg) {
+const ::MathMessage::Vec4&
+Mat4::HasBitSetters::z(const Mat4* msg) {
   return *msg->z_;
 }
-const ::tbMath::Vec4Message&
-Mat4Message::HasBitSetters::w(const Mat4Message* msg) {
+const ::MathMessage::Vec4&
+Mat4::HasBitSetters::w(const Mat4* msg) {
   return *msg->w_;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Mat4Message::kXFieldNumber;
-const int Mat4Message::kYFieldNumber;
-const int Mat4Message::kZFieldNumber;
-const int Mat4Message::kWFieldNumber;
+const int Mat4::kXFieldNumber;
+const int Mat4::kYFieldNumber;
+const int Mat4::kZFieldNumber;
+const int Mat4::kWFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Mat4Message::Mat4Message()
+Mat4::Mat4()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:tbMath.Mat4Message)
+  // @@protoc_insertion_point(constructor:MathMessage.Mat4)
 }
-Mat4Message::Mat4Message(const Mat4Message& from)
+Mat4::Mat4(const Mat4& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_x()) {
-    x_ = new ::tbMath::Vec4Message(*from.x_);
+    x_ = new ::MathMessage::Vec4(*from.x_);
   } else {
     x_ = nullptr;
   }
   if (from.has_y()) {
-    y_ = new ::tbMath::Vec4Message(*from.y_);
+    y_ = new ::MathMessage::Vec4(*from.y_);
   } else {
     y_ = nullptr;
   }
   if (from.has_z()) {
-    z_ = new ::tbMath::Vec4Message(*from.z_);
+    z_ = new ::MathMessage::Vec4(*from.z_);
   } else {
     z_ = nullptr;
   }
   if (from.has_w()) {
-    w_ = new ::tbMath::Vec4Message(*from.w_);
+    w_ = new ::MathMessage::Vec4(*from.w_);
   } else {
     w_ = nullptr;
   }
-  // @@protoc_insertion_point(copy_constructor:tbMath.Mat4Message)
+  // @@protoc_insertion_point(copy_constructor:MathMessage.Mat4)
 }
 
-void Mat4Message::SharedCtor() {
+void Mat4::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_Mat4Message_math_2eproto.base);
+      &scc_info_Mat4_math_2eproto.base);
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&w_) -
       reinterpret_cast<char*>(&x_)) + sizeof(w_));
 }
 
-Mat4Message::~Mat4Message() {
-  // @@protoc_insertion_point(destructor:tbMath.Mat4Message)
+Mat4::~Mat4() {
+  // @@protoc_insertion_point(destructor:MathMessage.Mat4)
   SharedDtor();
 }
 
-void Mat4Message::SharedDtor() {
+void Mat4::SharedDtor() {
   if (this != internal_default_instance()) delete x_;
   if (this != internal_default_instance()) delete y_;
   if (this != internal_default_instance()) delete z_;
   if (this != internal_default_instance()) delete w_;
 }
 
-void Mat4Message::SetCachedSize(int size) const {
+void Mat4::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Mat4Message& Mat4Message::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Mat4Message_math_2eproto.base);
+const Mat4& Mat4::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Mat4_math_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Mat4Message::Clear() {
-// @@protoc_insertion_point(message_clear_start:tbMath.Mat4Message)
+void Mat4::Clear() {
+// @@protoc_insertion_point(message_clear_start:MathMessage.Mat4)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1802,9 +1801,9 @@ void Mat4Message::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Mat4Message::_InternalParse(const char* begin, const char* end, void* object,
+const char* Mat4::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<Mat4Message*>(object);
+  auto msg = static_cast<Mat4*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -1814,12 +1813,12 @@ const char* Mat4Message::_InternalParse(const char* begin, const char* end, void
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // .tbMath.Vec4Message x = 1;
+      // .MathMessage.Vec4 x = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::tbMath::Vec4Message::_InternalParse;
+        parser_till_end = ::MathMessage::Vec4::_InternalParse;
         object = msg->mutable_x();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
@@ -1827,12 +1826,12 @@ const char* Mat4Message::_InternalParse(const char* begin, const char* end, void
             {parser_till_end, object}, ptr - size, ptr));
         break;
       }
-      // .tbMath.Vec4Message y = 2;
+      // .MathMessage.Vec4 y = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::tbMath::Vec4Message::_InternalParse;
+        parser_till_end = ::MathMessage::Vec4::_InternalParse;
         object = msg->mutable_y();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
@@ -1840,12 +1839,12 @@ const char* Mat4Message::_InternalParse(const char* begin, const char* end, void
             {parser_till_end, object}, ptr - size, ptr));
         break;
       }
-      // .tbMath.Vec4Message z = 3;
+      // .MathMessage.Vec4 z = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::tbMath::Vec4Message::_InternalParse;
+        parser_till_end = ::MathMessage::Vec4::_InternalParse;
         object = msg->mutable_z();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
@@ -1853,12 +1852,12 @@ const char* Mat4Message::_InternalParse(const char* begin, const char* end, void
             {parser_till_end, object}, ptr - size, ptr));
         break;
       }
-      // .tbMath.Vec4Message w = 4;
+      // .MathMessage.Vec4 w = 4;
       case 4: {
         if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::tbMath::Vec4Message::_InternalParse;
+        parser_till_end = ::MathMessage::Vec4::_InternalParse;
         object = msg->mutable_w();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
@@ -1886,17 +1885,17 @@ len_delim_till_end:
                                {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Mat4Message::MergePartialFromCodedStream(
+bool Mat4::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:tbMath.Mat4Message)
+  // @@protoc_insertion_point(parse_start:MathMessage.Mat4)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .tbMath.Vec4Message x = 1;
+      // .MathMessage.Vec4 x = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1907,7 +1906,7 @@ bool Mat4Message::MergePartialFromCodedStream(
         break;
       }
 
-      // .tbMath.Vec4Message y = 2;
+      // .MathMessage.Vec4 y = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1918,7 +1917,7 @@ bool Mat4Message::MergePartialFromCodedStream(
         break;
       }
 
-      // .tbMath.Vec4Message z = 3;
+      // .MathMessage.Vec4 z = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1929,7 +1928,7 @@ bool Mat4Message::MergePartialFromCodedStream(
         break;
       }
 
-      // .tbMath.Vec4Message w = 4;
+      // .MathMessage.Vec4 w = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1952,40 +1951,40 @@ bool Mat4Message::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:tbMath.Mat4Message)
+  // @@protoc_insertion_point(parse_success:MathMessage.Mat4)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:tbMath.Mat4Message)
+  // @@protoc_insertion_point(parse_failure:MathMessage.Mat4)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void Mat4Message::SerializeWithCachedSizes(
+void Mat4::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:tbMath.Mat4Message)
+  // @@protoc_insertion_point(serialize_start:MathMessage.Mat4)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .tbMath.Vec4Message x = 1;
+  // .MathMessage.Vec4 x = 1;
   if (this->has_x()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, HasBitSetters::x(this), output);
   }
 
-  // .tbMath.Vec4Message y = 2;
+  // .MathMessage.Vec4 y = 2;
   if (this->has_y()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, HasBitSetters::y(this), output);
   }
 
-  // .tbMath.Vec4Message z = 3;
+  // .MathMessage.Vec4 z = 3;
   if (this->has_z()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, HasBitSetters::z(this), output);
   }
 
-  // .tbMath.Vec4Message w = 4;
+  // .MathMessage.Vec4 w = 4;
   if (this->has_w()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, HasBitSetters::w(this), output);
@@ -1995,37 +1994,37 @@ void Mat4Message::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:tbMath.Mat4Message)
+  // @@protoc_insertion_point(serialize_end:MathMessage.Mat4)
 }
 
-::google::protobuf::uint8* Mat4Message::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Mat4::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:tbMath.Mat4Message)
+  // @@protoc_insertion_point(serialize_to_array_start:MathMessage.Mat4)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .tbMath.Vec4Message x = 1;
+  // .MathMessage.Vec4 x = 1;
   if (this->has_x()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         1, HasBitSetters::x(this), target);
   }
 
-  // .tbMath.Vec4Message y = 2;
+  // .MathMessage.Vec4 y = 2;
   if (this->has_y()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         2, HasBitSetters::y(this), target);
   }
 
-  // .tbMath.Vec4Message z = 3;
+  // .MathMessage.Vec4 z = 3;
   if (this->has_z()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         3, HasBitSetters::z(this), target);
   }
 
-  // .tbMath.Vec4Message w = 4;
+  // .MathMessage.Vec4 w = 4;
   if (this->has_w()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
@@ -2036,12 +2035,12 @@ void Mat4Message::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:tbMath.Mat4Message)
+  // @@protoc_insertion_point(serialize_to_array_end:MathMessage.Mat4)
   return target;
 }
 
-size_t Mat4Message::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:tbMath.Mat4Message)
+size_t Mat4::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:MathMessage.Mat4)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2053,28 +2052,28 @@ size_t Mat4Message::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .tbMath.Vec4Message x = 1;
+  // .MathMessage.Vec4 x = 1;
   if (this->has_x()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *x_);
   }
 
-  // .tbMath.Vec4Message y = 2;
+  // .MathMessage.Vec4 y = 2;
   if (this->has_y()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *y_);
   }
 
-  // .tbMath.Vec4Message z = 3;
+  // .MathMessage.Vec4 z = 3;
   if (this->has_z()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *z_);
   }
 
-  // .tbMath.Vec4Message w = 4;
+  // .MathMessage.Vec4 w = 4;
   if (this->has_w()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
@@ -2086,65 +2085,65 @@ size_t Mat4Message::ByteSizeLong() const {
   return total_size;
 }
 
-void Mat4Message::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:tbMath.Mat4Message)
+void Mat4::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:MathMessage.Mat4)
   GOOGLE_DCHECK_NE(&from, this);
-  const Mat4Message* source =
-      ::google::protobuf::DynamicCastToGenerated<Mat4Message>(
+  const Mat4* source =
+      ::google::protobuf::DynamicCastToGenerated<Mat4>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:tbMath.Mat4Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:MathMessage.Mat4)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:tbMath.Mat4Message)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:MathMessage.Mat4)
     MergeFrom(*source);
   }
 }
 
-void Mat4Message::MergeFrom(const Mat4Message& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:tbMath.Mat4Message)
+void Mat4::MergeFrom(const Mat4& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:MathMessage.Mat4)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.has_x()) {
-    mutable_x()->::tbMath::Vec4Message::MergeFrom(from.x());
+    mutable_x()->::MathMessage::Vec4::MergeFrom(from.x());
   }
   if (from.has_y()) {
-    mutable_y()->::tbMath::Vec4Message::MergeFrom(from.y());
+    mutable_y()->::MathMessage::Vec4::MergeFrom(from.y());
   }
   if (from.has_z()) {
-    mutable_z()->::tbMath::Vec4Message::MergeFrom(from.z());
+    mutable_z()->::MathMessage::Vec4::MergeFrom(from.z());
   }
   if (from.has_w()) {
-    mutable_w()->::tbMath::Vec4Message::MergeFrom(from.w());
+    mutable_w()->::MathMessage::Vec4::MergeFrom(from.w());
   }
 }
 
-void Mat4Message::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:tbMath.Mat4Message)
+void Mat4::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:MathMessage.Mat4)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Mat4Message::CopyFrom(const Mat4Message& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:tbMath.Mat4Message)
+void Mat4::CopyFrom(const Mat4& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:MathMessage.Mat4)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Mat4Message::IsInitialized() const {
+bool Mat4::IsInitialized() const {
   return true;
 }
 
-void Mat4Message::Swap(Mat4Message* other) {
+void Mat4::Swap(Mat4* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Mat4Message::InternalSwap(Mat4Message* other) {
+void Mat4::InternalSwap(Mat4* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(x_, other->x_);
@@ -2153,30 +2152,30 @@ void Mat4Message::InternalSwap(Mat4Message* other) {
   swap(w_, other->w_);
 }
 
-::google::protobuf::Metadata Mat4Message::GetMetadata() const {
+::google::protobuf::Metadata Mat4::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_math_2eproto);
   return ::file_level_metadata_math_2eproto[kIndexInFileMessages];
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace tbMath
+}  // namespace MathMessage
 namespace google {
 namespace protobuf {
-template<> PROTOBUF_NOINLINE ::tbMath::Vec2Message* Arena::CreateMaybeMessage< ::tbMath::Vec2Message >(Arena* arena) {
-  return Arena::CreateInternal< ::tbMath::Vec2Message >(arena);
+template<> PROTOBUF_NOINLINE ::MathMessage::Vec2* Arena::CreateMaybeMessage< ::MathMessage::Vec2 >(Arena* arena) {
+  return Arena::CreateInternal< ::MathMessage::Vec2 >(arena);
 }
-template<> PROTOBUF_NOINLINE ::tbMath::Vec3Message* Arena::CreateMaybeMessage< ::tbMath::Vec3Message >(Arena* arena) {
-  return Arena::CreateInternal< ::tbMath::Vec3Message >(arena);
+template<> PROTOBUF_NOINLINE ::MathMessage::Vec3* Arena::CreateMaybeMessage< ::MathMessage::Vec3 >(Arena* arena) {
+  return Arena::CreateInternal< ::MathMessage::Vec3 >(arena);
 }
-template<> PROTOBUF_NOINLINE ::tbMath::Vec4Message* Arena::CreateMaybeMessage< ::tbMath::Vec4Message >(Arena* arena) {
-  return Arena::CreateInternal< ::tbMath::Vec4Message >(arena);
+template<> PROTOBUF_NOINLINE ::MathMessage::Vec4* Arena::CreateMaybeMessage< ::MathMessage::Vec4 >(Arena* arena) {
+  return Arena::CreateInternal< ::MathMessage::Vec4 >(arena);
 }
-template<> PROTOBUF_NOINLINE ::tbMath::Mat3Message* Arena::CreateMaybeMessage< ::tbMath::Mat3Message >(Arena* arena) {
-  return Arena::CreateInternal< ::tbMath::Mat3Message >(arena);
+template<> PROTOBUF_NOINLINE ::MathMessage::Mat3* Arena::CreateMaybeMessage< ::MathMessage::Mat3 >(Arena* arena) {
+  return Arena::CreateInternal< ::MathMessage::Mat3 >(arena);
 }
-template<> PROTOBUF_NOINLINE ::tbMath::Mat4Message* Arena::CreateMaybeMessage< ::tbMath::Mat4Message >(Arena* arena) {
-  return Arena::CreateInternal< ::tbMath::Mat4Message >(arena);
+template<> PROTOBUF_NOINLINE ::MathMessage::Mat4* Arena::CreateMaybeMessage< ::MathMessage::Mat4 >(Arena* arena) {
+  return Arena::CreateInternal< ::MathMessage::Mat4 >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

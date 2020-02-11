@@ -1,21 +1,16 @@
 #include "MathMessages.hpp"
 
-using tbMath::Vec3Message;
-using tbMath::Vec4Message;
-using tbMath::Mat3Message;
-using tbMath::Mat4Message;
-
 namespace Tarbora {
-    Vec2Message Vec2(glm::vec2 data)
+    MathMessage::Vec2 Vec2(glm::vec2 data)
     {
-        Vec2Message vec;
+        MathMessage::Vec2 vec;
         vec.set_x(data.x);
         vec.set_y(data.y);
 
         return vec;
     }
 
-    Vec2Message Vec2(std::string data)
+    MathMessage::Vec2 Vec2(std::string data)
     {
         std::stringstream buf(data);
         std::vector<std::string> words;
@@ -26,20 +21,20 @@ namespace Tarbora {
             words.push_back(word);
         }
 
-        Vec2Message vec;
+        MathMessage::Vec2 vec;
         vec.set_x(std::stof(words[0]));
         vec.set_y(std::stof(words[1]));
         return vec;
     }
 
-    glm::vec2 Vec2toGLM(Vec2Message data)
+    glm::vec2 Vec2toGLM(MathMessage::Vec2 data)
     {
         return glm::vec2(data.x(), data.y());
     }
 
-    Vec3Message Vec3(glm::vec3 data)
+    MathMessage::Vec3 Vec3(glm::vec3 data)
     {
-        Vec3Message vec;
+        MathMessage::Vec3 vec;
         vec.set_x(data.x);
         vec.set_y(data.y);
         vec.set_z(data.z);
@@ -47,7 +42,7 @@ namespace Tarbora {
         return vec;
     }
 
-    Vec3Message Vec3(std::string data)
+    MathMessage::Vec3 Vec3(std::string data)
     {
         std::stringstream buf(data);
         std::vector<std::string> words;
@@ -58,7 +53,7 @@ namespace Tarbora {
             words.push_back(word);
         }
 
-        Vec3Message vec;
+        MathMessage::Vec3 vec;
         vec.set_x(std::stof(words[0]));
         vec.set_y(std::stof(words[1]));
         vec.set_z(std::stof(words[2]));
@@ -66,14 +61,14 @@ namespace Tarbora {
         return vec;
     }
 
-    glm::vec3 Vec3toGLM(Vec3Message data)
+    glm::vec3 Vec3toGLM(MathMessage::Vec3 data)
     {
         return glm::vec3(data.x(), data.y(), data.z());
     }
 
-    Vec4Message Vec4(glm::vec4 data)
+    MathMessage::Vec4 Vec4(glm::vec4 data)
     {
-        Vec4Message vec;
+        MathMessage::Vec4 vec;
         vec.set_x(data.x);
         vec.set_y(data.y);
         vec.set_z(data.z);
@@ -82,7 +77,7 @@ namespace Tarbora {
         return vec;
     }
 
-    Vec4Message Vec4(std::string data)
+    MathMessage::Vec4 Vec4(std::string data)
     {
         std::stringstream buf(data);
         std::vector<std::string> words;
@@ -93,7 +88,7 @@ namespace Tarbora {
             words.push_back(word);
         }
 
-        Vec4Message vec;
+        MathMessage::Vec4 vec;
         vec.set_x(std::stof(words[0]));
         vec.set_y(std::stof(words[1]));
         vec.set_z(std::stof(words[2]));
@@ -102,16 +97,16 @@ namespace Tarbora {
         return vec;
     }
 
-    glm::vec4 Vec4toGLM(Vec4Message data)
+    glm::vec4 Vec4toGLM(MathMessage::Vec4 data)
     {
         return glm::vec4(data.x(), data.y(), data.z(), data.w());
     }
 
 
-    Mat3Message Mat3(glm::mat3 data)
+    MathMessage::Mat3 Mat3(glm::mat3 data)
     {
-        Mat3Message mat;
-        Vec3Message *vec = mat.mutable_x();
+        MathMessage::Mat3 mat;
+        MathMessage::Vec3 *vec = mat.mutable_x();
         (*vec) = Vec3(data[0]);
         vec = mat.mutable_y();
         (*vec) = Vec3(data[1]);
@@ -121,7 +116,7 @@ namespace Tarbora {
         return mat;
     }
 
-    Mat3Message Mat3(std::string data)
+    MathMessage::Mat3 Mat3(std::string data)
     {
         std::stringstream buf(data);
         std::vector<std::string> words;
@@ -132,8 +127,8 @@ namespace Tarbora {
             words.push_back(word);
         }
 
-        Mat3Message mat;
-        Vec3Message *vec = mat.mutable_x();
+        MathMessage::Mat3 mat;
+        MathMessage::Vec3 *vec = mat.mutable_x();
         (*vec) = Vec3(words[0]);
         vec = mat.mutable_y();
         (*vec) = Vec3(words[1]);
@@ -143,7 +138,7 @@ namespace Tarbora {
         return mat;
     }
 
-    glm::mat3 Mat3toGLM(Mat3Message data)
+    glm::mat3 Mat3toGLM(MathMessage::Mat3 data)
     {
         return glm::mat3(
             data.x().x(), data.x().y(), data.x().z(),
@@ -152,10 +147,10 @@ namespace Tarbora {
         );
     }
 
-    Mat4Message Mat4(glm::mat4 data)
+    MathMessage::Mat4 Mat4(glm::mat4 data)
     {
-        Mat4Message mat;
-        Vec4Message *vec = mat.mutable_x();
+        MathMessage::Mat4 mat;
+        MathMessage::Vec4 *vec = mat.mutable_x();
         (*vec) = Vec4(data[0]);
         vec = mat.mutable_y();
         (*vec) = Vec4(data[1]);
@@ -167,7 +162,7 @@ namespace Tarbora {
         return mat;
     }
 
-    Mat4Message Mat4(std::string data)
+    MathMessage::Mat4 Mat4(std::string data)
     {
         std::stringstream buf(data);
         std::vector<std::string> words;
@@ -178,8 +173,8 @@ namespace Tarbora {
             words.push_back(word);
         }
 
-        Mat4Message mat;
-        Vec4Message *vec = mat.mutable_x();
+        MathMessage::Mat4 mat;
+        MathMessage::Vec4 *vec = mat.mutable_x();
         (*vec) = Vec4(words[0]);
         vec = mat.mutable_y();
         (*vec) = Vec4(words[1]);
@@ -191,7 +186,7 @@ namespace Tarbora {
         return mat;
     }
 
-    glm::mat4 Mat4toGLM(Mat4Message data)
+    glm::mat4 Mat4toGLM(MathMessage::Mat4 data)
     {
         return glm::mat4(
             data.x().x(), data.x().y(), data.x().z(), data.x().w(),

@@ -42,82 +42,74 @@ struct TableStruct_basic_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[10]
+  static const ::google::protobuf::internal::ParseTable schema[8]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors_basic_2eproto();
-namespace tbBasics {
-class ApplyPhysicsBody;
-class ApplyPhysicsBodyDefaultTypeInternal;
-extern ApplyPhysicsBodyDefaultTypeInternal _ApplyPhysicsBody_default_instance_;
-class CreateActorBody;
-class CreateActorBodyDefaultTypeInternal;
-extern CreateActorBodyDefaultTypeInternal _CreateActorBody_default_instance_;
-class DeleteActorBody;
-class DeleteActorBodyDefaultTypeInternal;
-extern DeleteActorBodyDefaultTypeInternal _DeleteActorBody_default_instance_;
-class LookAtBody;
-class LookAtBodyDefaultTypeInternal;
-extern LookAtBodyDefaultTypeInternal _LookAtBody_default_instance_;
-class LookDirectionBody;
-class LookDirectionBodyDefaultTypeInternal;
-extern LookDirectionBodyDefaultTypeInternal _LookDirectionBody_default_instance_;
-class MatrixBody;
-class MatrixBodyDefaultTypeInternal;
-extern MatrixBodyDefaultTypeInternal _MatrixBody_default_instance_;
-class MoveActorBody;
-class MoveActorBodyDefaultTypeInternal;
-extern MoveActorBodyDefaultTypeInternal _MoveActorBody_default_instance_;
-class MoveNodeBody;
-class MoveNodeBodyDefaultTypeInternal;
-extern MoveNodeBodyDefaultTypeInternal _MoveNodeBody_default_instance_;
-class SetActorAnimationBody;
-class SetActorAnimationBodyDefaultTypeInternal;
-extern SetActorAnimationBodyDefaultTypeInternal _SetActorAnimationBody_default_instance_;
-class SetCameraBody;
-class SetCameraBodyDefaultTypeInternal;
-extern SetCameraBodyDefaultTypeInternal _SetCameraBody_default_instance_;
-}  // namespace tbBasics
+namespace MessageContent {
+class Actor;
+class ActorDefaultTypeInternal;
+extern ActorDefaultTypeInternal _Actor_default_instance_;
+class ApplyPhysics;
+class ApplyPhysicsDefaultTypeInternal;
+extern ApplyPhysicsDefaultTypeInternal _ApplyPhysics_default_instance_;
+class CreateActor;
+class CreateActorDefaultTypeInternal;
+extern CreateActorDefaultTypeInternal _CreateActor_default_instance_;
+class LookAt;
+class LookAtDefaultTypeInternal;
+extern LookAtDefaultTypeInternal _LookAt_default_instance_;
+class MoveActor;
+class MoveActorDefaultTypeInternal;
+extern MoveActorDefaultTypeInternal _MoveActor_default_instance_;
+class MoveNode;
+class MoveNodeDefaultTypeInternal;
+extern MoveNodeDefaultTypeInternal _MoveNode_default_instance_;
+class Node;
+class NodeDefaultTypeInternal;
+extern NodeDefaultTypeInternal _Node_default_instance_;
+class SetAnimation;
+class SetAnimationDefaultTypeInternal;
+extern SetAnimationDefaultTypeInternal _SetAnimation_default_instance_;
+}  // namespace MessageContent
 namespace google {
 namespace protobuf {
-template<> ::tbBasics::ApplyPhysicsBody* Arena::CreateMaybeMessage<::tbBasics::ApplyPhysicsBody>(Arena*);
-template<> ::tbBasics::CreateActorBody* Arena::CreateMaybeMessage<::tbBasics::CreateActorBody>(Arena*);
-template<> ::tbBasics::DeleteActorBody* Arena::CreateMaybeMessage<::tbBasics::DeleteActorBody>(Arena*);
-template<> ::tbBasics::LookAtBody* Arena::CreateMaybeMessage<::tbBasics::LookAtBody>(Arena*);
-template<> ::tbBasics::LookDirectionBody* Arena::CreateMaybeMessage<::tbBasics::LookDirectionBody>(Arena*);
-template<> ::tbBasics::MatrixBody* Arena::CreateMaybeMessage<::tbBasics::MatrixBody>(Arena*);
-template<> ::tbBasics::MoveActorBody* Arena::CreateMaybeMessage<::tbBasics::MoveActorBody>(Arena*);
-template<> ::tbBasics::MoveNodeBody* Arena::CreateMaybeMessage<::tbBasics::MoveNodeBody>(Arena*);
-template<> ::tbBasics::SetActorAnimationBody* Arena::CreateMaybeMessage<::tbBasics::SetActorAnimationBody>(Arena*);
-template<> ::tbBasics::SetCameraBody* Arena::CreateMaybeMessage<::tbBasics::SetCameraBody>(Arena*);
+template<> ::MessageContent::Actor* Arena::CreateMaybeMessage<::MessageContent::Actor>(Arena*);
+template<> ::MessageContent::ApplyPhysics* Arena::CreateMaybeMessage<::MessageContent::ApplyPhysics>(Arena*);
+template<> ::MessageContent::CreateActor* Arena::CreateMaybeMessage<::MessageContent::CreateActor>(Arena*);
+template<> ::MessageContent::LookAt* Arena::CreateMaybeMessage<::MessageContent::LookAt>(Arena*);
+template<> ::MessageContent::MoveActor* Arena::CreateMaybeMessage<::MessageContent::MoveActor>(Arena*);
+template<> ::MessageContent::MoveNode* Arena::CreateMaybeMessage<::MessageContent::MoveNode>(Arena*);
+template<> ::MessageContent::Node* Arena::CreateMaybeMessage<::MessageContent::Node>(Arena*);
+template<> ::MessageContent::SetAnimation* Arena::CreateMaybeMessage<::MessageContent::SetAnimation>(Arena*);
 }  // namespace protobuf
 }  // namespace google
-namespace tbBasics {
+namespace MessageContent {
 
 // ===================================================================
 
-class CreateActorBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.CreateActorBody) */ {
+class Actor final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.Actor) */ {
  public:
-  CreateActorBody();
-  virtual ~CreateActorBody();
+  Actor();
+  virtual ~Actor();
 
-  CreateActorBody(const CreateActorBody& from);
+  Actor(const Actor& from);
 
-  inline CreateActorBody& operator=(const CreateActorBody& from) {
+  inline Actor& operator=(const Actor& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  CreateActorBody(CreateActorBody&& from) noexcept
-    : CreateActorBody() {
+  Actor(Actor&& from) noexcept
+    : Actor() {
     *this = ::std::move(from);
   }
 
-  inline CreateActorBody& operator=(CreateActorBody&& from) noexcept {
+  inline Actor& operator=(Actor&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -129,34 +121,34 @@ class CreateActorBody final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const CreateActorBody& default_instance();
+  static const Actor& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const CreateActorBody* internal_default_instance() {
-    return reinterpret_cast<const CreateActorBody*>(
-               &_CreateActorBody_default_instance_);
+  static inline const Actor* internal_default_instance() {
+    return reinterpret_cast<const Actor*>(
+               &_Actor_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  void Swap(CreateActorBody* other);
-  friend void swap(CreateActorBody& a, CreateActorBody& b) {
+  void Swap(Actor* other);
+  friend void swap(Actor& a, Actor& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline CreateActorBody* New() const final {
-    return CreateMaybeMessage<CreateActorBody>(nullptr);
+  inline Actor* New() const final {
+    return CreateMaybeMessage<Actor>(nullptr);
   }
 
-  CreateActorBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<CreateActorBody>(arena);
+  Actor* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Actor>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const CreateActorBody& from);
-  void MergeFrom(const CreateActorBody& from);
+  void CopyFrom(const Actor& from);
+  void MergeFrom(const Actor& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -178,7 +170,262 @@ class CreateActorBody final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(CreateActorBody* other);
+  void InternalSwap(Actor* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
+  // @@protoc_insertion_point(class_scope:MessageContent.Actor)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_basic_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Node final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.Node) */ {
+ public:
+  Node();
+  virtual ~Node();
+
+  Node(const Node& from);
+
+  inline Node& operator=(const Node& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Node(Node&& from) noexcept
+    : Node() {
+    *this = ::std::move(from);
+  }
+
+  inline Node& operator=(Node&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const Node& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Node* internal_default_instance() {
+    return reinterpret_cast<const Node*>(
+               &_Node_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  void Swap(Node* other);
+  friend void swap(Node& a, Node& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Node* New() const final {
+    return CreateMaybeMessage<Node>(nullptr);
+  }
+
+  Node* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Node>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const Node& from);
+  void MergeFrom(const Node& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Node* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  const ::std::string& id() const;
+  void set_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_id(::std::string&& value);
+  #endif
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  ::std::string* mutable_id();
+  ::std::string* release_id();
+  void set_allocated_id(::std::string* id);
+
+  // string name = 2;
+  void clear_name();
+  static const int kNameFieldNumber = 2;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:MessageContent.Node)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr id_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_basic_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CreateActor final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.CreateActor) */ {
+ public:
+  CreateActor();
+  virtual ~CreateActor();
+
+  CreateActor(const CreateActor& from);
+
+  inline CreateActor& operator=(const CreateActor& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CreateActor(CreateActor&& from) noexcept
+    : CreateActor() {
+    *this = ::std::move(from);
+  }
+
+  inline CreateActor& operator=(CreateActor&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const CreateActor& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CreateActor* internal_default_instance() {
+    return reinterpret_cast<const CreateActor*>(
+               &_CreateActor_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  void Swap(CreateActor* other);
+  friend void swap(CreateActor& a, CreateActor& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CreateActor* New() const final {
+    return CreateMaybeMessage<CreateActor>(nullptr);
+  }
+
+  CreateActor* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<CreateActor>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const CreateActor& from);
+  void MergeFrom(const CreateActor& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CreateActor* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -236,25 +483,25 @@ class CreateActorBody final :
   ::std::string* release_variant();
   void set_allocated_variant(::std::string* variant);
 
-  // .tbMath.Vec3Message position = 4;
+  // .MathMessage.Vec3 position = 4;
   bool has_position() const;
   void clear_position();
   static const int kPositionFieldNumber = 4;
-  const ::tbMath::Vec3Message& position() const;
-  ::tbMath::Vec3Message* release_position();
-  ::tbMath::Vec3Message* mutable_position();
-  void set_allocated_position(::tbMath::Vec3Message* position);
+  const ::MathMessage::Vec3& position() const;
+  ::MathMessage::Vec3* release_position();
+  ::MathMessage::Vec3* mutable_position();
+  void set_allocated_position(::MathMessage::Vec3* position);
 
-  // .tbMath.Vec3Message rotation = 5;
+  // .MathMessage.Vec3 rotation = 5;
   bool has_rotation() const;
   void clear_rotation();
   static const int kRotationFieldNumber = 5;
-  const ::tbMath::Vec3Message& rotation() const;
-  ::tbMath::Vec3Message* release_rotation();
-  ::tbMath::Vec3Message* mutable_rotation();
-  void set_allocated_rotation(::tbMath::Vec3Message* rotation);
+  const ::MathMessage::Vec3& rotation() const;
+  ::MathMessage::Vec3* release_rotation();
+  ::MathMessage::Vec3* mutable_rotation();
+  void set_allocated_rotation(::MathMessage::Vec3* rotation);
 
-  // @@protoc_insertion_point(class_scope:tbBasics.CreateActorBody)
+  // @@protoc_insertion_point(class_scope:MessageContent.CreateActor)
  private:
   class HasBitSetters;
 
@@ -262,32 +509,32 @@ class CreateActorBody final :
   ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr entity_;
   ::google::protobuf::internal::ArenaStringPtr variant_;
-  ::tbMath::Vec3Message* position_;
-  ::tbMath::Vec3Message* rotation_;
+  ::MathMessage::Vec3* position_;
+  ::MathMessage::Vec3* rotation_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
 // -------------------------------------------------------------------
 
-class DeleteActorBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.DeleteActorBody) */ {
+class MoveActor final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.MoveActor) */ {
  public:
-  DeleteActorBody();
-  virtual ~DeleteActorBody();
+  MoveActor();
+  virtual ~MoveActor();
 
-  DeleteActorBody(const DeleteActorBody& from);
+  MoveActor(const MoveActor& from);
 
-  inline DeleteActorBody& operator=(const DeleteActorBody& from) {
+  inline MoveActor& operator=(const MoveActor& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  DeleteActorBody(DeleteActorBody&& from) noexcept
-    : DeleteActorBody() {
+  MoveActor(MoveActor&& from) noexcept
+    : MoveActor() {
     *this = ::std::move(from);
   }
 
-  inline DeleteActorBody& operator=(DeleteActorBody&& from) noexcept {
+  inline MoveActor& operator=(MoveActor&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -299,34 +546,34 @@ class DeleteActorBody final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const DeleteActorBody& default_instance();
+  static const MoveActor& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const DeleteActorBody* internal_default_instance() {
-    return reinterpret_cast<const DeleteActorBody*>(
-               &_DeleteActorBody_default_instance_);
+  static inline const MoveActor* internal_default_instance() {
+    return reinterpret_cast<const MoveActor*>(
+               &_MoveActor_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
-  void Swap(DeleteActorBody* other);
-  friend void swap(DeleteActorBody& a, DeleteActorBody& b) {
+  void Swap(MoveActor* other);
+  friend void swap(MoveActor& a, MoveActor& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline DeleteActorBody* New() const final {
-    return CreateMaybeMessage<DeleteActorBody>(nullptr);
+  inline MoveActor* New() const final {
+    return CreateMaybeMessage<MoveActor>(nullptr);
   }
 
-  DeleteActorBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<DeleteActorBody>(arena);
+  MoveActor* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MoveActor>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const DeleteActorBody& from);
-  void MergeFrom(const DeleteActorBody& from);
+  void CopyFrom(const MoveActor& from);
+  void MergeFrom(const MoveActor& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -348,7 +595,7 @@ class DeleteActorBody final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(DeleteActorBody* other);
+  void InternalSwap(MoveActor* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -378,36 +625,56 @@ class DeleteActorBody final :
   ::std::string* release_id();
   void set_allocated_id(::std::string* id);
 
-  // @@protoc_insertion_point(class_scope:tbBasics.DeleteActorBody)
+  // .MathMessage.Vec3 position = 2;
+  bool has_position() const;
+  void clear_position();
+  static const int kPositionFieldNumber = 2;
+  const ::MathMessage::Vec3& position() const;
+  ::MathMessage::Vec3* release_position();
+  ::MathMessage::Vec3* mutable_position();
+  void set_allocated_position(::MathMessage::Vec3* position);
+
+  // .MathMessage.Mat3 rotation = 3;
+  bool has_rotation() const;
+  void clear_rotation();
+  static const int kRotationFieldNumber = 3;
+  const ::MathMessage::Mat3& rotation() const;
+  ::MathMessage::Mat3* release_rotation();
+  ::MathMessage::Mat3* mutable_rotation();
+  void set_allocated_rotation(::MathMessage::Mat3* rotation);
+
+  // @@protoc_insertion_point(class_scope:MessageContent.MoveActor)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr id_;
+  ::MathMessage::Vec3* position_;
+  ::MathMessage::Mat3* rotation_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
 // -------------------------------------------------------------------
 
-class SetCameraBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.SetCameraBody) */ {
+class MoveNode final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.MoveNode) */ {
  public:
-  SetCameraBody();
-  virtual ~SetCameraBody();
+  MoveNode();
+  virtual ~MoveNode();
 
-  SetCameraBody(const SetCameraBody& from);
+  MoveNode(const MoveNode& from);
 
-  inline SetCameraBody& operator=(const SetCameraBody& from) {
+  inline MoveNode& operator=(const MoveNode& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SetCameraBody(SetCameraBody&& from) noexcept
-    : SetCameraBody() {
+  MoveNode(MoveNode&& from) noexcept
+    : MoveNode() {
     *this = ::std::move(from);
   }
 
-  inline SetCameraBody& operator=(SetCameraBody&& from) noexcept {
+  inline MoveNode& operator=(MoveNode&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -419,34 +686,34 @@ class SetCameraBody final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const SetCameraBody& default_instance();
+  static const MoveNode& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SetCameraBody* internal_default_instance() {
-    return reinterpret_cast<const SetCameraBody*>(
-               &_SetCameraBody_default_instance_);
+  static inline const MoveNode* internal_default_instance() {
+    return reinterpret_cast<const MoveNode*>(
+               &_MoveNode_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
-  void Swap(SetCameraBody* other);
-  friend void swap(SetCameraBody& a, SetCameraBody& b) {
+  void Swap(MoveNode* other);
+  friend void swap(MoveNode& a, MoveNode& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SetCameraBody* New() const final {
-    return CreateMaybeMessage<SetCameraBody>(nullptr);
+  inline MoveNode* New() const final {
+    return CreateMaybeMessage<MoveNode>(nullptr);
   }
 
-  SetCameraBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<SetCameraBody>(arena);
+  MoveNode* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MoveNode>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const SetCameraBody& from);
-  void MergeFrom(const SetCameraBody& from);
+  void CopyFrom(const MoveNode& from);
+  void MergeFrom(const MoveNode& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -468,7 +735,7 @@ class SetCameraBody final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SetCameraBody* other);
+  void InternalSwap(MoveNode* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -512,37 +779,57 @@ class SetCameraBody final :
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // @@protoc_insertion_point(class_scope:tbBasics.SetCameraBody)
+  // .MathMessage.Vec3 position = 3;
+  bool has_position() const;
+  void clear_position();
+  static const int kPositionFieldNumber = 3;
+  const ::MathMessage::Vec3& position() const;
+  ::MathMessage::Vec3* release_position();
+  ::MathMessage::Vec3* mutable_position();
+  void set_allocated_position(::MathMessage::Vec3* position);
+
+  // .MathMessage.Vec3 rotation = 4;
+  bool has_rotation() const;
+  void clear_rotation();
+  static const int kRotationFieldNumber = 4;
+  const ::MathMessage::Vec3& rotation() const;
+  ::MathMessage::Vec3* release_rotation();
+  ::MathMessage::Vec3* mutable_rotation();
+  void set_allocated_rotation(::MathMessage::Vec3* rotation);
+
+  // @@protoc_insertion_point(class_scope:MessageContent.MoveNode)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::MathMessage::Vec3* position_;
+  ::MathMessage::Vec3* rotation_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
 // -------------------------------------------------------------------
 
-class MoveActorBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.MoveActorBody) */ {
+class SetAnimation final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.SetAnimation) */ {
  public:
-  MoveActorBody();
-  virtual ~MoveActorBody();
+  SetAnimation();
+  virtual ~SetAnimation();
 
-  MoveActorBody(const MoveActorBody& from);
+  SetAnimation(const SetAnimation& from);
 
-  inline MoveActorBody& operator=(const MoveActorBody& from) {
+  inline SetAnimation& operator=(const SetAnimation& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MoveActorBody(MoveActorBody&& from) noexcept
-    : MoveActorBody() {
+  SetAnimation(SetAnimation&& from) noexcept
+    : SetAnimation() {
     *this = ::std::move(from);
   }
 
-  inline MoveActorBody& operator=(MoveActorBody&& from) noexcept {
+  inline SetAnimation& operator=(SetAnimation&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -554,34 +841,34 @@ class MoveActorBody final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const MoveActorBody& default_instance();
+  static const SetAnimation& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MoveActorBody* internal_default_instance() {
-    return reinterpret_cast<const MoveActorBody*>(
-               &_MoveActorBody_default_instance_);
+  static inline const SetAnimation* internal_default_instance() {
+    return reinterpret_cast<const SetAnimation*>(
+               &_SetAnimation_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
-  void Swap(MoveActorBody* other);
-  friend void swap(MoveActorBody& a, MoveActorBody& b) {
+  void Swap(SetAnimation* other);
+  friend void swap(SetAnimation& a, SetAnimation& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MoveActorBody* New() const final {
-    return CreateMaybeMessage<MoveActorBody>(nullptr);
+  inline SetAnimation* New() const final {
+    return CreateMaybeMessage<SetAnimation>(nullptr);
   }
 
-  MoveActorBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MoveActorBody>(arena);
+  SetAnimation* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SetAnimation>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MoveActorBody& from);
-  void MergeFrom(const MoveActorBody& from);
+  void CopyFrom(const SetAnimation& from);
+  void MergeFrom(const SetAnimation& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -603,147 +890,7 @@ class MoveActorBody final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MoveActorBody* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  const ::std::string& id() const;
-  void set_id(const ::std::string& value);
-  #if LANG_CXX11
-  void set_id(::std::string&& value);
-  #endif
-  void set_id(const char* value);
-  void set_id(const char* value, size_t size);
-  ::std::string* mutable_id();
-  ::std::string* release_id();
-  void set_allocated_id(::std::string* id);
-
-  // .tbMath.Vec3Message position = 2;
-  bool has_position() const;
-  void clear_position();
-  static const int kPositionFieldNumber = 2;
-  const ::tbMath::Vec3Message& position() const;
-  ::tbMath::Vec3Message* release_position();
-  ::tbMath::Vec3Message* mutable_position();
-  void set_allocated_position(::tbMath::Vec3Message* position);
-
-  // .tbMath.Mat3Message rotation = 3;
-  bool has_rotation() const;
-  void clear_rotation();
-  static const int kRotationFieldNumber = 3;
-  const ::tbMath::Mat3Message& rotation() const;
-  ::tbMath::Mat3Message* release_rotation();
-  ::tbMath::Mat3Message* mutable_rotation();
-  void set_allocated_rotation(::tbMath::Mat3Message* rotation);
-
-  // @@protoc_insertion_point(class_scope:tbBasics.MoveActorBody)
- private:
-  class HasBitSetters;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr id_;
-  ::tbMath::Vec3Message* position_;
-  ::tbMath::Mat3Message* rotation_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_basic_2eproto;
-};
-// -------------------------------------------------------------------
-
-class SetActorAnimationBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.SetActorAnimationBody) */ {
- public:
-  SetActorAnimationBody();
-  virtual ~SetActorAnimationBody();
-
-  SetActorAnimationBody(const SetActorAnimationBody& from);
-
-  inline SetActorAnimationBody& operator=(const SetActorAnimationBody& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  SetActorAnimationBody(SetActorAnimationBody&& from) noexcept
-    : SetActorAnimationBody() {
-    *this = ::std::move(from);
-  }
-
-  inline SetActorAnimationBody& operator=(SetActorAnimationBody&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const SetActorAnimationBody& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SetActorAnimationBody* internal_default_instance() {
-    return reinterpret_cast<const SetActorAnimationBody*>(
-               &_SetActorAnimationBody_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    4;
-
-  void Swap(SetActorAnimationBody* other);
-  friend void swap(SetActorAnimationBody& a, SetActorAnimationBody& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline SetActorAnimationBody* New() const final {
-    return CreateMaybeMessage<SetActorAnimationBody>(nullptr);
-  }
-
-  SetActorAnimationBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<SetActorAnimationBody>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const SetActorAnimationBody& from);
-  void MergeFrom(const SetActorAnimationBody& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
-  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(SetActorAnimationBody* other);
+  void InternalSwap(SetAnimation* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -787,37 +934,59 @@ class SetActorAnimationBody final :
   ::std::string* release_animation();
   void set_allocated_animation(::std::string* animation);
 
-  // @@protoc_insertion_point(class_scope:tbBasics.SetActorAnimationBody)
+  // string file = 3;
+  void clear_file();
+  static const int kFileFieldNumber = 3;
+  const ::std::string& file() const;
+  void set_file(const ::std::string& value);
+  #if LANG_CXX11
+  void set_file(::std::string&& value);
+  #endif
+  void set_file(const char* value);
+  void set_file(const char* value, size_t size);
+  ::std::string* mutable_file();
+  ::std::string* release_file();
+  void set_allocated_file(::std::string* file);
+
+  // float speed = 4;
+  void clear_speed();
+  static const int kSpeedFieldNumber = 4;
+  float speed() const;
+  void set_speed(float value);
+
+  // @@protoc_insertion_point(class_scope:MessageContent.SetAnimation)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr animation_;
+  ::google::protobuf::internal::ArenaStringPtr file_;
+  float speed_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ApplyPhysicsBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.ApplyPhysicsBody) */ {
+class ApplyPhysics final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.ApplyPhysics) */ {
  public:
-  ApplyPhysicsBody();
-  virtual ~ApplyPhysicsBody();
+  ApplyPhysics();
+  virtual ~ApplyPhysics();
 
-  ApplyPhysicsBody(const ApplyPhysicsBody& from);
+  ApplyPhysics(const ApplyPhysics& from);
 
-  inline ApplyPhysicsBody& operator=(const ApplyPhysicsBody& from) {
+  inline ApplyPhysics& operator=(const ApplyPhysics& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  ApplyPhysicsBody(ApplyPhysicsBody&& from) noexcept
-    : ApplyPhysicsBody() {
+  ApplyPhysics(ApplyPhysics&& from) noexcept
+    : ApplyPhysics() {
     *this = ::std::move(from);
   }
 
-  inline ApplyPhysicsBody& operator=(ApplyPhysicsBody&& from) noexcept {
+  inline ApplyPhysics& operator=(ApplyPhysics&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -829,34 +998,34 @@ class ApplyPhysicsBody final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const ApplyPhysicsBody& default_instance();
+  static const ApplyPhysics& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ApplyPhysicsBody* internal_default_instance() {
-    return reinterpret_cast<const ApplyPhysicsBody*>(
-               &_ApplyPhysicsBody_default_instance_);
+  static inline const ApplyPhysics* internal_default_instance() {
+    return reinterpret_cast<const ApplyPhysics*>(
+               &_ApplyPhysics_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
-  void Swap(ApplyPhysicsBody* other);
-  friend void swap(ApplyPhysicsBody& a, ApplyPhysicsBody& b) {
+  void Swap(ApplyPhysics* other);
+  friend void swap(ApplyPhysics& a, ApplyPhysics& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ApplyPhysicsBody* New() const final {
-    return CreateMaybeMessage<ApplyPhysicsBody>(nullptr);
+  inline ApplyPhysics* New() const final {
+    return CreateMaybeMessage<ApplyPhysics>(nullptr);
   }
 
-  ApplyPhysicsBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<ApplyPhysicsBody>(arena);
+  ApplyPhysics* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ApplyPhysics>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const ApplyPhysicsBody& from);
-  void MergeFrom(const ApplyPhysicsBody& from);
+  void CopyFrom(const ApplyPhysics& from);
+  void MergeFrom(const ApplyPhysics& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -878,7 +1047,7 @@ class ApplyPhysicsBody final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ApplyPhysicsBody* other);
+  void InternalSwap(ApplyPhysics* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -908,14 +1077,14 @@ class ApplyPhysicsBody final :
   ::std::string* release_id();
   void set_allocated_id(::std::string* id);
 
-  // .tbMath.Vec3Message direction = 3;
+  // .MathMessage.Vec3 direction = 3;
   bool has_direction() const;
   void clear_direction();
   static const int kDirectionFieldNumber = 3;
-  const ::tbMath::Vec3Message& direction() const;
-  ::tbMath::Vec3Message* release_direction();
-  ::tbMath::Vec3Message* mutable_direction();
-  void set_allocated_direction(::tbMath::Vec3Message* direction);
+  const ::MathMessage::Vec3& direction() const;
+  ::MathMessage::Vec3* release_direction();
+  ::MathMessage::Vec3* mutable_direction();
+  void set_allocated_direction(::MathMessage::Vec3* direction);
 
   // float magnitude = 2;
   void clear_magnitude();
@@ -923,38 +1092,38 @@ class ApplyPhysicsBody final :
   float magnitude() const;
   void set_magnitude(float value);
 
-  // @@protoc_insertion_point(class_scope:tbBasics.ApplyPhysicsBody)
+  // @@protoc_insertion_point(class_scope:MessageContent.ApplyPhysics)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr id_;
-  ::tbMath::Vec3Message* direction_;
+  ::MathMessage::Vec3* direction_;
   float magnitude_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
 // -------------------------------------------------------------------
 
-class LookDirectionBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.LookDirectionBody) */ {
+class LookAt final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageContent.LookAt) */ {
  public:
-  LookDirectionBody();
-  virtual ~LookDirectionBody();
+  LookAt();
+  virtual ~LookAt();
 
-  LookDirectionBody(const LookDirectionBody& from);
+  LookAt(const LookAt& from);
 
-  inline LookDirectionBody& operator=(const LookDirectionBody& from) {
+  inline LookAt& operator=(const LookAt& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  LookDirectionBody(LookDirectionBody&& from) noexcept
-    : LookDirectionBody() {
+  LookAt(LookAt&& from) noexcept
+    : LookAt() {
     *this = ::std::move(from);
   }
 
-  inline LookDirectionBody& operator=(LookDirectionBody&& from) noexcept {
+  inline LookAt& operator=(LookAt&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -966,164 +1135,34 @@ class LookDirectionBody final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const LookDirectionBody& default_instance();
+  static const LookAt& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const LookDirectionBody* internal_default_instance() {
-    return reinterpret_cast<const LookDirectionBody*>(
-               &_LookDirectionBody_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    6;
-
-  void Swap(LookDirectionBody* other);
-  friend void swap(LookDirectionBody& a, LookDirectionBody& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline LookDirectionBody* New() const final {
-    return CreateMaybeMessage<LookDirectionBody>(nullptr);
-  }
-
-  LookDirectionBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<LookDirectionBody>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const LookDirectionBody& from);
-  void MergeFrom(const LookDirectionBody& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
-  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(LookDirectionBody* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  const ::std::string& id() const;
-  void set_id(const ::std::string& value);
-  #if LANG_CXX11
-  void set_id(::std::string&& value);
-  #endif
-  void set_id(const char* value);
-  void set_id(const char* value, size_t size);
-  ::std::string* mutable_id();
-  ::std::string* release_id();
-  void set_allocated_id(::std::string* id);
-
-  // .tbMath.Vec2Message direction = 2;
-  bool has_direction() const;
-  void clear_direction();
-  static const int kDirectionFieldNumber = 2;
-  const ::tbMath::Vec2Message& direction() const;
-  ::tbMath::Vec2Message* release_direction();
-  ::tbMath::Vec2Message* mutable_direction();
-  void set_allocated_direction(::tbMath::Vec2Message* direction);
-
-  // @@protoc_insertion_point(class_scope:tbBasics.LookDirectionBody)
- private:
-  class HasBitSetters;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr id_;
-  ::tbMath::Vec2Message* direction_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_basic_2eproto;
-};
-// -------------------------------------------------------------------
-
-class LookAtBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.LookAtBody) */ {
- public:
-  LookAtBody();
-  virtual ~LookAtBody();
-
-  LookAtBody(const LookAtBody& from);
-
-  inline LookAtBody& operator=(const LookAtBody& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  LookAtBody(LookAtBody&& from) noexcept
-    : LookAtBody() {
-    *this = ::std::move(from);
-  }
-
-  inline LookAtBody& operator=(LookAtBody&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const LookAtBody& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const LookAtBody* internal_default_instance() {
-    return reinterpret_cast<const LookAtBody*>(
-               &_LookAtBody_default_instance_);
+  static inline const LookAt* internal_default_instance() {
+    return reinterpret_cast<const LookAt*>(
+               &_LookAt_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     7;
 
-  void Swap(LookAtBody* other);
-  friend void swap(LookAtBody& a, LookAtBody& b) {
+  void Swap(LookAt* other);
+  friend void swap(LookAt& a, LookAt& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline LookAtBody* New() const final {
-    return CreateMaybeMessage<LookAtBody>(nullptr);
+  inline LookAt* New() const final {
+    return CreateMaybeMessage<LookAt>(nullptr);
   }
 
-  LookAtBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<LookAtBody>(arena);
+  LookAt* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<LookAt>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const LookAtBody& from);
-  void MergeFrom(const LookAtBody& from);
+  void CopyFrom(const LookAt& from);
+  void MergeFrom(const LookAt& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1145,7 +1184,7 @@ class LookAtBody final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(LookAtBody* other);
+  void InternalSwap(LookAt* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -1189,14 +1228,14 @@ class LookAtBody final :
   ::std::string* release_target();
   void set_allocated_target(::std::string* target);
 
-  // .tbMath.Vec3Message rotation = 4;
-  bool has_rotation() const;
-  void clear_rotation();
-  static const int kRotationFieldNumber = 4;
-  const ::tbMath::Vec3Message& rotation() const;
-  ::tbMath::Vec3Message* release_rotation();
-  ::tbMath::Vec3Message* mutable_rotation();
-  void set_allocated_rotation(::tbMath::Vec3Message* rotation);
+  // .MathMessage.Vec3 direction = 4;
+  bool has_direction() const;
+  void clear_direction();
+  static const int kDirectionFieldNumber = 4;
+  const ::MathMessage::Vec3& direction() const;
+  ::MathMessage::Vec3* release_direction();
+  ::MathMessage::Vec3* mutable_direction();
+  void set_allocated_direction(::MathMessage::Vec3* direction);
 
   // float distance = 3;
   void clear_distance();
@@ -1204,285 +1243,15 @@ class LookAtBody final :
   float distance() const;
   void set_distance(float value);
 
-  // @@protoc_insertion_point(class_scope:tbBasics.LookAtBody)
+  // @@protoc_insertion_point(class_scope:MessageContent.LookAt)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr target_;
-  ::tbMath::Vec3Message* rotation_;
+  ::MathMessage::Vec3* direction_;
   float distance_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_basic_2eproto;
-};
-// -------------------------------------------------------------------
-
-class MoveNodeBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.MoveNodeBody) */ {
- public:
-  MoveNodeBody();
-  virtual ~MoveNodeBody();
-
-  MoveNodeBody(const MoveNodeBody& from);
-
-  inline MoveNodeBody& operator=(const MoveNodeBody& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  MoveNodeBody(MoveNodeBody&& from) noexcept
-    : MoveNodeBody() {
-    *this = ::std::move(from);
-  }
-
-  inline MoveNodeBody& operator=(MoveNodeBody&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const MoveNodeBody& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MoveNodeBody* internal_default_instance() {
-    return reinterpret_cast<const MoveNodeBody*>(
-               &_MoveNodeBody_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    8;
-
-  void Swap(MoveNodeBody* other);
-  friend void swap(MoveNodeBody& a, MoveNodeBody& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline MoveNodeBody* New() const final {
-    return CreateMaybeMessage<MoveNodeBody>(nullptr);
-  }
-
-  MoveNodeBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MoveNodeBody>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MoveNodeBody& from);
-  void MergeFrom(const MoveNodeBody& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
-  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(MoveNodeBody* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  const ::std::string& id() const;
-  void set_id(const ::std::string& value);
-  #if LANG_CXX11
-  void set_id(::std::string&& value);
-  #endif
-  void set_id(const char* value);
-  void set_id(const char* value, size_t size);
-  ::std::string* mutable_id();
-  ::std::string* release_id();
-  void set_allocated_id(::std::string* id);
-
-  // string node = 2;
-  void clear_node();
-  static const int kNodeFieldNumber = 2;
-  const ::std::string& node() const;
-  void set_node(const ::std::string& value);
-  #if LANG_CXX11
-  void set_node(::std::string&& value);
-  #endif
-  void set_node(const char* value);
-  void set_node(const char* value, size_t size);
-  ::std::string* mutable_node();
-  ::std::string* release_node();
-  void set_allocated_node(::std::string* node);
-
-  // .tbMath.Vec3Message position = 3;
-  bool has_position() const;
-  void clear_position();
-  static const int kPositionFieldNumber = 3;
-  const ::tbMath::Vec3Message& position() const;
-  ::tbMath::Vec3Message* release_position();
-  ::tbMath::Vec3Message* mutable_position();
-  void set_allocated_position(::tbMath::Vec3Message* position);
-
-  // .tbMath.Vec3Message rotation = 4;
-  bool has_rotation() const;
-  void clear_rotation();
-  static const int kRotationFieldNumber = 4;
-  const ::tbMath::Vec3Message& rotation() const;
-  ::tbMath::Vec3Message* release_rotation();
-  ::tbMath::Vec3Message* mutable_rotation();
-  void set_allocated_rotation(::tbMath::Vec3Message* rotation);
-
-  // @@protoc_insertion_point(class_scope:tbBasics.MoveNodeBody)
- private:
-  class HasBitSetters;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr id_;
-  ::google::protobuf::internal::ArenaStringPtr node_;
-  ::tbMath::Vec3Message* position_;
-  ::tbMath::Vec3Message* rotation_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_basic_2eproto;
-};
-// -------------------------------------------------------------------
-
-class MatrixBody final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbBasics.MatrixBody) */ {
- public:
-  MatrixBody();
-  virtual ~MatrixBody();
-
-  MatrixBody(const MatrixBody& from);
-
-  inline MatrixBody& operator=(const MatrixBody& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  MatrixBody(MatrixBody&& from) noexcept
-    : MatrixBody() {
-    *this = ::std::move(from);
-  }
-
-  inline MatrixBody& operator=(MatrixBody&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const MatrixBody& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MatrixBody* internal_default_instance() {
-    return reinterpret_cast<const MatrixBody*>(
-               &_MatrixBody_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    9;
-
-  void Swap(MatrixBody* other);
-  friend void swap(MatrixBody& a, MatrixBody& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline MatrixBody* New() const final {
-    return CreateMaybeMessage<MatrixBody>(nullptr);
-  }
-
-  MatrixBody* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MatrixBody>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MatrixBody& from);
-  void MergeFrom(const MatrixBody& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
-  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(MatrixBody* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // .tbMath.Mat4Message matrix = 1;
-  bool has_matrix() const;
-  void clear_matrix();
-  static const int kMatrixFieldNumber = 1;
-  const ::tbMath::Mat4Message& matrix() const;
-  ::tbMath::Mat4Message* release_matrix();
-  ::tbMath::Mat4Message* mutable_matrix();
-  void set_allocated_matrix(::tbMath::Mat4Message* matrix);
-
-  // @@protoc_insertion_point(class_scope:tbBasics.MatrixBody)
- private:
-  class HasBitSetters;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::tbMath::Mat4Message* matrix_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_basic_2eproto;
 };
@@ -1495,508 +1264,361 @@ class MatrixBody final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// CreateActorBody
+// Actor
 
 // string id = 1;
-inline void CreateActorBody::clear_id() {
+inline void Actor::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& CreateActorBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.CreateActorBody.id)
+inline const ::std::string& Actor::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.Actor.id)
   return id_.GetNoArena();
 }
-inline void CreateActorBody::set_id(const ::std::string& value) {
+inline void Actor::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.CreateActorBody.id)
+  // @@protoc_insertion_point(field_set:MessageContent.Actor.id)
 }
 #if LANG_CXX11
-inline void CreateActorBody::set_id(::std::string&& value) {
+inline void Actor::set_id(::std::string&& value) {
   
   id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.CreateActorBody.id)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.Actor.id)
 }
 #endif
-inline void CreateActorBody::set_id(const char* value) {
+inline void Actor::set_id(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.CreateActorBody.id)
+  // @@protoc_insertion_point(field_set_char:MessageContent.Actor.id)
 }
-inline void CreateActorBody::set_id(const char* value, size_t size) {
+inline void Actor::set_id(const char* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.CreateActorBody.id)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.Actor.id)
 }
-inline ::std::string* CreateActorBody::mutable_id() {
+inline ::std::string* Actor::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.CreateActorBody.id)
+  // @@protoc_insertion_point(field_mutable:MessageContent.Actor.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* CreateActorBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.CreateActorBody.id)
+inline ::std::string* Actor::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.Actor.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void CreateActorBody::set_allocated_id(::std::string* id) {
+inline void Actor::set_allocated_id(::std::string* id) {
   if (id != nullptr) {
     
   } else {
     
   }
   id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.CreateActorBody.id)
-}
-
-// string entity = 2;
-inline void CreateActorBody::clear_entity() {
-  entity_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& CreateActorBody::entity() const {
-  // @@protoc_insertion_point(field_get:tbBasics.CreateActorBody.entity)
-  return entity_.GetNoArena();
-}
-inline void CreateActorBody::set_entity(const ::std::string& value) {
-  
-  entity_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.CreateActorBody.entity)
-}
-#if LANG_CXX11
-inline void CreateActorBody::set_entity(::std::string&& value) {
-  
-  entity_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.CreateActorBody.entity)
-}
-#endif
-inline void CreateActorBody::set_entity(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  entity_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.CreateActorBody.entity)
-}
-inline void CreateActorBody::set_entity(const char* value, size_t size) {
-  
-  entity_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.CreateActorBody.entity)
-}
-inline ::std::string* CreateActorBody::mutable_entity() {
-  
-  // @@protoc_insertion_point(field_mutable:tbBasics.CreateActorBody.entity)
-  return entity_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* CreateActorBody::release_entity() {
-  // @@protoc_insertion_point(field_release:tbBasics.CreateActorBody.entity)
-  
-  return entity_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void CreateActorBody::set_allocated_entity(::std::string* entity) {
-  if (entity != nullptr) {
-    
-  } else {
-    
-  }
-  entity_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), entity);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.CreateActorBody.entity)
-}
-
-// string variant = 3;
-inline void CreateActorBody::clear_variant() {
-  variant_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& CreateActorBody::variant() const {
-  // @@protoc_insertion_point(field_get:tbBasics.CreateActorBody.variant)
-  return variant_.GetNoArena();
-}
-inline void CreateActorBody::set_variant(const ::std::string& value) {
-  
-  variant_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.CreateActorBody.variant)
-}
-#if LANG_CXX11
-inline void CreateActorBody::set_variant(::std::string&& value) {
-  
-  variant_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.CreateActorBody.variant)
-}
-#endif
-inline void CreateActorBody::set_variant(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  variant_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.CreateActorBody.variant)
-}
-inline void CreateActorBody::set_variant(const char* value, size_t size) {
-  
-  variant_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.CreateActorBody.variant)
-}
-inline ::std::string* CreateActorBody::mutable_variant() {
-  
-  // @@protoc_insertion_point(field_mutable:tbBasics.CreateActorBody.variant)
-  return variant_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* CreateActorBody::release_variant() {
-  // @@protoc_insertion_point(field_release:tbBasics.CreateActorBody.variant)
-  
-  return variant_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void CreateActorBody::set_allocated_variant(::std::string* variant) {
-  if (variant != nullptr) {
-    
-  } else {
-    
-  }
-  variant_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), variant);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.CreateActorBody.variant)
-}
-
-// .tbMath.Vec3Message position = 4;
-inline bool CreateActorBody::has_position() const {
-  return this != internal_default_instance() && position_ != nullptr;
-}
-inline const ::tbMath::Vec3Message& CreateActorBody::position() const {
-  const ::tbMath::Vec3Message* p = position_;
-  // @@protoc_insertion_point(field_get:tbBasics.CreateActorBody.position)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
-}
-inline ::tbMath::Vec3Message* CreateActorBody::release_position() {
-  // @@protoc_insertion_point(field_release:tbBasics.CreateActorBody.position)
-  
-  ::tbMath::Vec3Message* temp = position_;
-  position_ = nullptr;
-  return temp;
-}
-inline ::tbMath::Vec3Message* CreateActorBody::mutable_position() {
-  
-  if (position_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
-    position_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:tbBasics.CreateActorBody.position)
-  return position_;
-}
-inline void CreateActorBody::set_allocated_position(::tbMath::Vec3Message* position) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::google::protobuf::MessageLite*>(position_);
-  }
-  if (position) {
-    ::google::protobuf::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      position = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, position, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  position_ = position;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.CreateActorBody.position)
-}
-
-// .tbMath.Vec3Message rotation = 5;
-inline bool CreateActorBody::has_rotation() const {
-  return this != internal_default_instance() && rotation_ != nullptr;
-}
-inline const ::tbMath::Vec3Message& CreateActorBody::rotation() const {
-  const ::tbMath::Vec3Message* p = rotation_;
-  // @@protoc_insertion_point(field_get:tbBasics.CreateActorBody.rotation)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
-}
-inline ::tbMath::Vec3Message* CreateActorBody::release_rotation() {
-  // @@protoc_insertion_point(field_release:tbBasics.CreateActorBody.rotation)
-  
-  ::tbMath::Vec3Message* temp = rotation_;
-  rotation_ = nullptr;
-  return temp;
-}
-inline ::tbMath::Vec3Message* CreateActorBody::mutable_rotation() {
-  
-  if (rotation_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
-    rotation_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:tbBasics.CreateActorBody.rotation)
-  return rotation_;
-}
-inline void CreateActorBody::set_allocated_rotation(::tbMath::Vec3Message* rotation) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::google::protobuf::MessageLite*>(rotation_);
-  }
-  if (rotation) {
-    ::google::protobuf::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      rotation = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, rotation, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  rotation_ = rotation;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.CreateActorBody.rotation)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.Actor.id)
 }
 
 // -------------------------------------------------------------------
 
-// DeleteActorBody
+// Node
 
 // string id = 1;
-inline void DeleteActorBody::clear_id() {
+inline void Node::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& DeleteActorBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.DeleteActorBody.id)
+inline const ::std::string& Node::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.Node.id)
   return id_.GetNoArena();
 }
-inline void DeleteActorBody::set_id(const ::std::string& value) {
+inline void Node::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.DeleteActorBody.id)
+  // @@protoc_insertion_point(field_set:MessageContent.Node.id)
 }
 #if LANG_CXX11
-inline void DeleteActorBody::set_id(::std::string&& value) {
+inline void Node::set_id(::std::string&& value) {
   
   id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.DeleteActorBody.id)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.Node.id)
 }
 #endif
-inline void DeleteActorBody::set_id(const char* value) {
+inline void Node::set_id(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.DeleteActorBody.id)
+  // @@protoc_insertion_point(field_set_char:MessageContent.Node.id)
 }
-inline void DeleteActorBody::set_id(const char* value, size_t size) {
+inline void Node::set_id(const char* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.DeleteActorBody.id)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.Node.id)
 }
-inline ::std::string* DeleteActorBody::mutable_id() {
+inline ::std::string* Node::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.DeleteActorBody.id)
+  // @@protoc_insertion_point(field_mutable:MessageContent.Node.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* DeleteActorBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.DeleteActorBody.id)
+inline ::std::string* Node::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.Node.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void DeleteActorBody::set_allocated_id(::std::string* id) {
+inline void Node::set_allocated_id(::std::string* id) {
   if (id != nullptr) {
     
   } else {
     
   }
   id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.DeleteActorBody.id)
-}
-
-// -------------------------------------------------------------------
-
-// SetCameraBody
-
-// string id = 1;
-inline void SetCameraBody::clear_id() {
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& SetCameraBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.SetCameraBody.id)
-  return id_.GetNoArena();
-}
-inline void SetCameraBody::set_id(const ::std::string& value) {
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.SetCameraBody.id)
-}
-#if LANG_CXX11
-inline void SetCameraBody::set_id(::std::string&& value) {
-  
-  id_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.SetCameraBody.id)
-}
-#endif
-inline void SetCameraBody::set_id(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.SetCameraBody.id)
-}
-inline void SetCameraBody::set_id(const char* value, size_t size) {
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.SetCameraBody.id)
-}
-inline ::std::string* SetCameraBody::mutable_id() {
-  
-  // @@protoc_insertion_point(field_mutable:tbBasics.SetCameraBody.id)
-  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* SetCameraBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.SetCameraBody.id)
-  
-  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void SetCameraBody::set_allocated_id(::std::string* id) {
-  if (id != nullptr) {
-    
-  } else {
-    
-  }
-  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.SetCameraBody.id)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.Node.id)
 }
 
 // string name = 2;
-inline void SetCameraBody::clear_name() {
+inline void Node::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& SetCameraBody::name() const {
-  // @@protoc_insertion_point(field_get:tbBasics.SetCameraBody.name)
+inline const ::std::string& Node::name() const {
+  // @@protoc_insertion_point(field_get:MessageContent.Node.name)
   return name_.GetNoArena();
 }
-inline void SetCameraBody::set_name(const ::std::string& value) {
+inline void Node::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.SetCameraBody.name)
+  // @@protoc_insertion_point(field_set:MessageContent.Node.name)
 }
 #if LANG_CXX11
-inline void SetCameraBody::set_name(::std::string&& value) {
+inline void Node::set_name(::std::string&& value) {
   
   name_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.SetCameraBody.name)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.Node.name)
 }
 #endif
-inline void SetCameraBody::set_name(const char* value) {
+inline void Node::set_name(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.SetCameraBody.name)
+  // @@protoc_insertion_point(field_set_char:MessageContent.Node.name)
 }
-inline void SetCameraBody::set_name(const char* value, size_t size) {
+inline void Node::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.SetCameraBody.name)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.Node.name)
 }
-inline ::std::string* SetCameraBody::mutable_name() {
+inline ::std::string* Node::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.SetCameraBody.name)
+  // @@protoc_insertion_point(field_mutable:MessageContent.Node.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SetCameraBody::release_name() {
-  // @@protoc_insertion_point(field_release:tbBasics.SetCameraBody.name)
+inline ::std::string* Node::release_name() {
+  // @@protoc_insertion_point(field_release:MessageContent.Node.name)
   
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SetCameraBody::set_allocated_name(::std::string* name) {
+inline void Node::set_allocated_name(::std::string* name) {
   if (name != nullptr) {
     
   } else {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.SetCameraBody.name)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.Node.name)
 }
 
 // -------------------------------------------------------------------
 
-// MoveActorBody
+// CreateActor
 
 // string id = 1;
-inline void MoveActorBody::clear_id() {
+inline void CreateActor::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& MoveActorBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.MoveActorBody.id)
+inline const ::std::string& CreateActor::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.CreateActor.id)
   return id_.GetNoArena();
 }
-inline void MoveActorBody::set_id(const ::std::string& value) {
+inline void CreateActor::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.MoveActorBody.id)
+  // @@protoc_insertion_point(field_set:MessageContent.CreateActor.id)
 }
 #if LANG_CXX11
-inline void MoveActorBody::set_id(::std::string&& value) {
+inline void CreateActor::set_id(::std::string&& value) {
   
   id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.MoveActorBody.id)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.CreateActor.id)
 }
 #endif
-inline void MoveActorBody::set_id(const char* value) {
+inline void CreateActor::set_id(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.MoveActorBody.id)
+  // @@protoc_insertion_point(field_set_char:MessageContent.CreateActor.id)
 }
-inline void MoveActorBody::set_id(const char* value, size_t size) {
+inline void CreateActor::set_id(const char* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.MoveActorBody.id)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.CreateActor.id)
 }
-inline ::std::string* MoveActorBody::mutable_id() {
+inline ::std::string* CreateActor::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.MoveActorBody.id)
+  // @@protoc_insertion_point(field_mutable:MessageContent.CreateActor.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* MoveActorBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.MoveActorBody.id)
+inline ::std::string* CreateActor::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.CreateActor.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void MoveActorBody::set_allocated_id(::std::string* id) {
+inline void CreateActor::set_allocated_id(::std::string* id) {
   if (id != nullptr) {
     
   } else {
     
   }
   id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveActorBody.id)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.CreateActor.id)
 }
 
-// .tbMath.Vec3Message position = 2;
-inline bool MoveActorBody::has_position() const {
+// string entity = 2;
+inline void CreateActor::clear_entity() {
+  entity_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& CreateActor::entity() const {
+  // @@protoc_insertion_point(field_get:MessageContent.CreateActor.entity)
+  return entity_.GetNoArena();
+}
+inline void CreateActor::set_entity(const ::std::string& value) {
+  
+  entity_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:MessageContent.CreateActor.entity)
+}
+#if LANG_CXX11
+inline void CreateActor::set_entity(::std::string&& value) {
+  
+  entity_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.CreateActor.entity)
+}
+#endif
+inline void CreateActor::set_entity(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  entity_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:MessageContent.CreateActor.entity)
+}
+inline void CreateActor::set_entity(const char* value, size_t size) {
+  
+  entity_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.CreateActor.entity)
+}
+inline ::std::string* CreateActor::mutable_entity() {
+  
+  // @@protoc_insertion_point(field_mutable:MessageContent.CreateActor.entity)
+  return entity_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CreateActor::release_entity() {
+  // @@protoc_insertion_point(field_release:MessageContent.CreateActor.entity)
+  
+  return entity_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CreateActor::set_allocated_entity(::std::string* entity) {
+  if (entity != nullptr) {
+    
+  } else {
+    
+  }
+  entity_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), entity);
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.CreateActor.entity)
+}
+
+// string variant = 3;
+inline void CreateActor::clear_variant() {
+  variant_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& CreateActor::variant() const {
+  // @@protoc_insertion_point(field_get:MessageContent.CreateActor.variant)
+  return variant_.GetNoArena();
+}
+inline void CreateActor::set_variant(const ::std::string& value) {
+  
+  variant_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:MessageContent.CreateActor.variant)
+}
+#if LANG_CXX11
+inline void CreateActor::set_variant(::std::string&& value) {
+  
+  variant_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.CreateActor.variant)
+}
+#endif
+inline void CreateActor::set_variant(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  variant_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:MessageContent.CreateActor.variant)
+}
+inline void CreateActor::set_variant(const char* value, size_t size) {
+  
+  variant_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.CreateActor.variant)
+}
+inline ::std::string* CreateActor::mutable_variant() {
+  
+  // @@protoc_insertion_point(field_mutable:MessageContent.CreateActor.variant)
+  return variant_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CreateActor::release_variant() {
+  // @@protoc_insertion_point(field_release:MessageContent.CreateActor.variant)
+  
+  return variant_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CreateActor::set_allocated_variant(::std::string* variant) {
+  if (variant != nullptr) {
+    
+  } else {
+    
+  }
+  variant_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), variant);
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.CreateActor.variant)
+}
+
+// .MathMessage.Vec3 position = 4;
+inline bool CreateActor::has_position() const {
   return this != internal_default_instance() && position_ != nullptr;
 }
-inline const ::tbMath::Vec3Message& MoveActorBody::position() const {
-  const ::tbMath::Vec3Message* p = position_;
-  // @@protoc_insertion_point(field_get:tbBasics.MoveActorBody.position)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
+inline const ::MathMessage::Vec3& CreateActor::position() const {
+  const ::MathMessage::Vec3* p = position_;
+  // @@protoc_insertion_point(field_get:MessageContent.CreateActor.position)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
 }
-inline ::tbMath::Vec3Message* MoveActorBody::release_position() {
-  // @@protoc_insertion_point(field_release:tbBasics.MoveActorBody.position)
+inline ::MathMessage::Vec3* CreateActor::release_position() {
+  // @@protoc_insertion_point(field_release:MessageContent.CreateActor.position)
   
-  ::tbMath::Vec3Message* temp = position_;
+  ::MathMessage::Vec3* temp = position_;
   position_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec3Message* MoveActorBody::mutable_position() {
+inline ::MathMessage::Vec3* CreateActor::mutable_position() {
   
   if (position_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
     position_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbBasics.MoveActorBody.position)
+  // @@protoc_insertion_point(field_mutable:MessageContent.CreateActor.position)
   return position_;
 }
-inline void MoveActorBody::set_allocated_position(::tbMath::Vec3Message* position) {
+inline void CreateActor::set_allocated_position(::MathMessage::Vec3* position) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::google::protobuf::MessageLite*>(position_);
@@ -2012,36 +1634,36 @@ inline void MoveActorBody::set_allocated_position(::tbMath::Vec3Message* positio
     
   }
   position_ = position;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveActorBody.position)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.CreateActor.position)
 }
 
-// .tbMath.Mat3Message rotation = 3;
-inline bool MoveActorBody::has_rotation() const {
+// .MathMessage.Vec3 rotation = 5;
+inline bool CreateActor::has_rotation() const {
   return this != internal_default_instance() && rotation_ != nullptr;
 }
-inline const ::tbMath::Mat3Message& MoveActorBody::rotation() const {
-  const ::tbMath::Mat3Message* p = rotation_;
-  // @@protoc_insertion_point(field_get:tbBasics.MoveActorBody.rotation)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Mat3Message*>(
-      &::tbMath::_Mat3Message_default_instance_);
+inline const ::MathMessage::Vec3& CreateActor::rotation() const {
+  const ::MathMessage::Vec3* p = rotation_;
+  // @@protoc_insertion_point(field_get:MessageContent.CreateActor.rotation)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
 }
-inline ::tbMath::Mat3Message* MoveActorBody::release_rotation() {
-  // @@protoc_insertion_point(field_release:tbBasics.MoveActorBody.rotation)
+inline ::MathMessage::Vec3* CreateActor::release_rotation() {
+  // @@protoc_insertion_point(field_release:MessageContent.CreateActor.rotation)
   
-  ::tbMath::Mat3Message* temp = rotation_;
+  ::MathMessage::Vec3* temp = rotation_;
   rotation_ = nullptr;
   return temp;
 }
-inline ::tbMath::Mat3Message* MoveActorBody::mutable_rotation() {
+inline ::MathMessage::Vec3* CreateActor::mutable_rotation() {
   
   if (rotation_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Mat3Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
     rotation_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbBasics.MoveActorBody.rotation)
+  // @@protoc_insertion_point(field_mutable:MessageContent.CreateActor.rotation)
   return rotation_;
 }
-inline void MoveActorBody::set_allocated_rotation(::tbMath::Mat3Message* rotation) {
+inline void CreateActor::set_allocated_rotation(::MathMessage::Vec3* rotation) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::google::protobuf::MessageLite*>(rotation_);
@@ -2057,217 +1679,631 @@ inline void MoveActorBody::set_allocated_rotation(::tbMath::Mat3Message* rotatio
     
   }
   rotation_ = rotation;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveActorBody.rotation)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.CreateActor.rotation)
 }
 
 // -------------------------------------------------------------------
 
-// SetActorAnimationBody
+// MoveActor
 
 // string id = 1;
-inline void SetActorAnimationBody::clear_id() {
+inline void MoveActor::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& SetActorAnimationBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.SetActorAnimationBody.id)
+inline const ::std::string& MoveActor::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.MoveActor.id)
   return id_.GetNoArena();
 }
-inline void SetActorAnimationBody::set_id(const ::std::string& value) {
+inline void MoveActor::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.SetActorAnimationBody.id)
+  // @@protoc_insertion_point(field_set:MessageContent.MoveActor.id)
 }
 #if LANG_CXX11
-inline void SetActorAnimationBody::set_id(::std::string&& value) {
+inline void MoveActor::set_id(::std::string&& value) {
   
   id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.SetActorAnimationBody.id)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.MoveActor.id)
 }
 #endif
-inline void SetActorAnimationBody::set_id(const char* value) {
+inline void MoveActor::set_id(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.SetActorAnimationBody.id)
+  // @@protoc_insertion_point(field_set_char:MessageContent.MoveActor.id)
 }
-inline void SetActorAnimationBody::set_id(const char* value, size_t size) {
+inline void MoveActor::set_id(const char* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.SetActorAnimationBody.id)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.MoveActor.id)
 }
-inline ::std::string* SetActorAnimationBody::mutable_id() {
+inline ::std::string* MoveActor::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.SetActorAnimationBody.id)
+  // @@protoc_insertion_point(field_mutable:MessageContent.MoveActor.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SetActorAnimationBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.SetActorAnimationBody.id)
+inline ::std::string* MoveActor::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.MoveActor.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SetActorAnimationBody::set_allocated_id(::std::string* id) {
+inline void MoveActor::set_allocated_id(::std::string* id) {
   if (id != nullptr) {
     
   } else {
     
   }
   id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.SetActorAnimationBody.id)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.MoveActor.id)
+}
+
+// .MathMessage.Vec3 position = 2;
+inline bool MoveActor::has_position() const {
+  return this != internal_default_instance() && position_ != nullptr;
+}
+inline const ::MathMessage::Vec3& MoveActor::position() const {
+  const ::MathMessage::Vec3* p = position_;
+  // @@protoc_insertion_point(field_get:MessageContent.MoveActor.position)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
+}
+inline ::MathMessage::Vec3* MoveActor::release_position() {
+  // @@protoc_insertion_point(field_release:MessageContent.MoveActor.position)
+  
+  ::MathMessage::Vec3* temp = position_;
+  position_ = nullptr;
+  return temp;
+}
+inline ::MathMessage::Vec3* MoveActor::mutable_position() {
+  
+  if (position_ == nullptr) {
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
+    position_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:MessageContent.MoveActor.position)
+  return position_;
+}
+inline void MoveActor::set_allocated_position(::MathMessage::Vec3* position) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(position_);
+  }
+  if (position) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      position = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, position, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  position_ = position;
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.MoveActor.position)
+}
+
+// .MathMessage.Mat3 rotation = 3;
+inline bool MoveActor::has_rotation() const {
+  return this != internal_default_instance() && rotation_ != nullptr;
+}
+inline const ::MathMessage::Mat3& MoveActor::rotation() const {
+  const ::MathMessage::Mat3* p = rotation_;
+  // @@protoc_insertion_point(field_get:MessageContent.MoveActor.rotation)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Mat3*>(
+      &::MathMessage::_Mat3_default_instance_);
+}
+inline ::MathMessage::Mat3* MoveActor::release_rotation() {
+  // @@protoc_insertion_point(field_release:MessageContent.MoveActor.rotation)
+  
+  ::MathMessage::Mat3* temp = rotation_;
+  rotation_ = nullptr;
+  return temp;
+}
+inline ::MathMessage::Mat3* MoveActor::mutable_rotation() {
+  
+  if (rotation_ == nullptr) {
+    auto* p = CreateMaybeMessage<::MathMessage::Mat3>(GetArenaNoVirtual());
+    rotation_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:MessageContent.MoveActor.rotation)
+  return rotation_;
+}
+inline void MoveActor::set_allocated_rotation(::MathMessage::Mat3* rotation) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(rotation_);
+  }
+  if (rotation) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      rotation = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, rotation, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  rotation_ = rotation;
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.MoveActor.rotation)
+}
+
+// -------------------------------------------------------------------
+
+// MoveNode
+
+// string id = 1;
+inline void MoveNode::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MoveNode::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.MoveNode.id)
+  return id_.GetNoArena();
+}
+inline void MoveNode::set_id(const ::std::string& value) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:MessageContent.MoveNode.id)
+}
+#if LANG_CXX11
+inline void MoveNode::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.MoveNode.id)
+}
+#endif
+inline void MoveNode::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:MessageContent.MoveNode.id)
+}
+inline void MoveNode::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.MoveNode.id)
+}
+inline ::std::string* MoveNode::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:MessageContent.MoveNode.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MoveNode::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.MoveNode.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MoveNode::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.MoveNode.id)
+}
+
+// string name = 2;
+inline void MoveNode::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MoveNode::name() const {
+  // @@protoc_insertion_point(field_get:MessageContent.MoveNode.name)
+  return name_.GetNoArena();
+}
+inline void MoveNode::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:MessageContent.MoveNode.name)
+}
+#if LANG_CXX11
+inline void MoveNode::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.MoveNode.name)
+}
+#endif
+inline void MoveNode::set_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:MessageContent.MoveNode.name)
+}
+inline void MoveNode::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.MoveNode.name)
+}
+inline ::std::string* MoveNode::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:MessageContent.MoveNode.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MoveNode::release_name() {
+  // @@protoc_insertion_point(field_release:MessageContent.MoveNode.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MoveNode::set_allocated_name(::std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.MoveNode.name)
+}
+
+// .MathMessage.Vec3 position = 3;
+inline bool MoveNode::has_position() const {
+  return this != internal_default_instance() && position_ != nullptr;
+}
+inline const ::MathMessage::Vec3& MoveNode::position() const {
+  const ::MathMessage::Vec3* p = position_;
+  // @@protoc_insertion_point(field_get:MessageContent.MoveNode.position)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
+}
+inline ::MathMessage::Vec3* MoveNode::release_position() {
+  // @@protoc_insertion_point(field_release:MessageContent.MoveNode.position)
+  
+  ::MathMessage::Vec3* temp = position_;
+  position_ = nullptr;
+  return temp;
+}
+inline ::MathMessage::Vec3* MoveNode::mutable_position() {
+  
+  if (position_ == nullptr) {
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
+    position_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:MessageContent.MoveNode.position)
+  return position_;
+}
+inline void MoveNode::set_allocated_position(::MathMessage::Vec3* position) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(position_);
+  }
+  if (position) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      position = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, position, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  position_ = position;
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.MoveNode.position)
+}
+
+// .MathMessage.Vec3 rotation = 4;
+inline bool MoveNode::has_rotation() const {
+  return this != internal_default_instance() && rotation_ != nullptr;
+}
+inline const ::MathMessage::Vec3& MoveNode::rotation() const {
+  const ::MathMessage::Vec3* p = rotation_;
+  // @@protoc_insertion_point(field_get:MessageContent.MoveNode.rotation)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
+}
+inline ::MathMessage::Vec3* MoveNode::release_rotation() {
+  // @@protoc_insertion_point(field_release:MessageContent.MoveNode.rotation)
+  
+  ::MathMessage::Vec3* temp = rotation_;
+  rotation_ = nullptr;
+  return temp;
+}
+inline ::MathMessage::Vec3* MoveNode::mutable_rotation() {
+  
+  if (rotation_ == nullptr) {
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
+    rotation_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:MessageContent.MoveNode.rotation)
+  return rotation_;
+}
+inline void MoveNode::set_allocated_rotation(::MathMessage::Vec3* rotation) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(rotation_);
+  }
+  if (rotation) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      rotation = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, rotation, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  rotation_ = rotation;
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.MoveNode.rotation)
+}
+
+// -------------------------------------------------------------------
+
+// SetAnimation
+
+// string id = 1;
+inline void SetAnimation::clear_id() {
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SetAnimation::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.SetAnimation.id)
+  return id_.GetNoArena();
+}
+inline void SetAnimation::set_id(const ::std::string& value) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:MessageContent.SetAnimation.id)
+}
+#if LANG_CXX11
+inline void SetAnimation::set_id(::std::string&& value) {
+  
+  id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.SetAnimation.id)
+}
+#endif
+inline void SetAnimation::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:MessageContent.SetAnimation.id)
+}
+inline void SetAnimation::set_id(const char* value, size_t size) {
+  
+  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.SetAnimation.id)
+}
+inline ::std::string* SetAnimation::mutable_id() {
+  
+  // @@protoc_insertion_point(field_mutable:MessageContent.SetAnimation.id)
+  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SetAnimation::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.SetAnimation.id)
+  
+  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SetAnimation::set_allocated_id(::std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.SetAnimation.id)
 }
 
 // string animation = 2;
-inline void SetActorAnimationBody::clear_animation() {
+inline void SetAnimation::clear_animation() {
   animation_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& SetActorAnimationBody::animation() const {
-  // @@protoc_insertion_point(field_get:tbBasics.SetActorAnimationBody.animation)
+inline const ::std::string& SetAnimation::animation() const {
+  // @@protoc_insertion_point(field_get:MessageContent.SetAnimation.animation)
   return animation_.GetNoArena();
 }
-inline void SetActorAnimationBody::set_animation(const ::std::string& value) {
+inline void SetAnimation::set_animation(const ::std::string& value) {
   
   animation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.SetActorAnimationBody.animation)
+  // @@protoc_insertion_point(field_set:MessageContent.SetAnimation.animation)
 }
 #if LANG_CXX11
-inline void SetActorAnimationBody::set_animation(::std::string&& value) {
+inline void SetAnimation::set_animation(::std::string&& value) {
   
   animation_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.SetActorAnimationBody.animation)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.SetAnimation.animation)
 }
 #endif
-inline void SetActorAnimationBody::set_animation(const char* value) {
+inline void SetAnimation::set_animation(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   animation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.SetActorAnimationBody.animation)
+  // @@protoc_insertion_point(field_set_char:MessageContent.SetAnimation.animation)
 }
-inline void SetActorAnimationBody::set_animation(const char* value, size_t size) {
+inline void SetAnimation::set_animation(const char* value, size_t size) {
   
   animation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.SetActorAnimationBody.animation)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.SetAnimation.animation)
 }
-inline ::std::string* SetActorAnimationBody::mutable_animation() {
+inline ::std::string* SetAnimation::mutable_animation() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.SetActorAnimationBody.animation)
+  // @@protoc_insertion_point(field_mutable:MessageContent.SetAnimation.animation)
   return animation_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SetActorAnimationBody::release_animation() {
-  // @@protoc_insertion_point(field_release:tbBasics.SetActorAnimationBody.animation)
+inline ::std::string* SetAnimation::release_animation() {
+  // @@protoc_insertion_point(field_release:MessageContent.SetAnimation.animation)
   
   return animation_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SetActorAnimationBody::set_allocated_animation(::std::string* animation) {
+inline void SetAnimation::set_allocated_animation(::std::string* animation) {
   if (animation != nullptr) {
     
   } else {
     
   }
   animation_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), animation);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.SetActorAnimationBody.animation)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.SetAnimation.animation)
+}
+
+// string file = 3;
+inline void SetAnimation::clear_file() {
+  file_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SetAnimation::file() const {
+  // @@protoc_insertion_point(field_get:MessageContent.SetAnimation.file)
+  return file_.GetNoArena();
+}
+inline void SetAnimation::set_file(const ::std::string& value) {
+  
+  file_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:MessageContent.SetAnimation.file)
+}
+#if LANG_CXX11
+inline void SetAnimation::set_file(::std::string&& value) {
+  
+  file_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.SetAnimation.file)
+}
+#endif
+inline void SetAnimation::set_file(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  file_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:MessageContent.SetAnimation.file)
+}
+inline void SetAnimation::set_file(const char* value, size_t size) {
+  
+  file_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.SetAnimation.file)
+}
+inline ::std::string* SetAnimation::mutable_file() {
+  
+  // @@protoc_insertion_point(field_mutable:MessageContent.SetAnimation.file)
+  return file_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SetAnimation::release_file() {
+  // @@protoc_insertion_point(field_release:MessageContent.SetAnimation.file)
+  
+  return file_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SetAnimation::set_allocated_file(::std::string* file) {
+  if (file != nullptr) {
+    
+  } else {
+    
+  }
+  file_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), file);
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.SetAnimation.file)
+}
+
+// float speed = 4;
+inline void SetAnimation::clear_speed() {
+  speed_ = 0;
+}
+inline float SetAnimation::speed() const {
+  // @@protoc_insertion_point(field_get:MessageContent.SetAnimation.speed)
+  return speed_;
+}
+inline void SetAnimation::set_speed(float value) {
+  
+  speed_ = value;
+  // @@protoc_insertion_point(field_set:MessageContent.SetAnimation.speed)
 }
 
 // -------------------------------------------------------------------
 
-// ApplyPhysicsBody
+// ApplyPhysics
 
 // string id = 1;
-inline void ApplyPhysicsBody::clear_id() {
+inline void ApplyPhysics::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& ApplyPhysicsBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.ApplyPhysicsBody.id)
+inline const ::std::string& ApplyPhysics::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.ApplyPhysics.id)
   return id_.GetNoArena();
 }
-inline void ApplyPhysicsBody::set_id(const ::std::string& value) {
+inline void ApplyPhysics::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.ApplyPhysicsBody.id)
+  // @@protoc_insertion_point(field_set:MessageContent.ApplyPhysics.id)
 }
 #if LANG_CXX11
-inline void ApplyPhysicsBody::set_id(::std::string&& value) {
+inline void ApplyPhysics::set_id(::std::string&& value) {
   
   id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.ApplyPhysicsBody.id)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.ApplyPhysics.id)
 }
 #endif
-inline void ApplyPhysicsBody::set_id(const char* value) {
+inline void ApplyPhysics::set_id(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.ApplyPhysicsBody.id)
+  // @@protoc_insertion_point(field_set_char:MessageContent.ApplyPhysics.id)
 }
-inline void ApplyPhysicsBody::set_id(const char* value, size_t size) {
+inline void ApplyPhysics::set_id(const char* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.ApplyPhysicsBody.id)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.ApplyPhysics.id)
 }
-inline ::std::string* ApplyPhysicsBody::mutable_id() {
+inline ::std::string* ApplyPhysics::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.ApplyPhysicsBody.id)
+  // @@protoc_insertion_point(field_mutable:MessageContent.ApplyPhysics.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* ApplyPhysicsBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.ApplyPhysicsBody.id)
+inline ::std::string* ApplyPhysics::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.ApplyPhysics.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ApplyPhysicsBody::set_allocated_id(::std::string* id) {
+inline void ApplyPhysics::set_allocated_id(::std::string* id) {
   if (id != nullptr) {
     
   } else {
     
   }
   id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.ApplyPhysicsBody.id)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.ApplyPhysics.id)
 }
 
 // float magnitude = 2;
-inline void ApplyPhysicsBody::clear_magnitude() {
+inline void ApplyPhysics::clear_magnitude() {
   magnitude_ = 0;
 }
-inline float ApplyPhysicsBody::magnitude() const {
-  // @@protoc_insertion_point(field_get:tbBasics.ApplyPhysicsBody.magnitude)
+inline float ApplyPhysics::magnitude() const {
+  // @@protoc_insertion_point(field_get:MessageContent.ApplyPhysics.magnitude)
   return magnitude_;
 }
-inline void ApplyPhysicsBody::set_magnitude(float value) {
+inline void ApplyPhysics::set_magnitude(float value) {
   
   magnitude_ = value;
-  // @@protoc_insertion_point(field_set:tbBasics.ApplyPhysicsBody.magnitude)
+  // @@protoc_insertion_point(field_set:MessageContent.ApplyPhysics.magnitude)
 }
 
-// .tbMath.Vec3Message direction = 3;
-inline bool ApplyPhysicsBody::has_direction() const {
+// .MathMessage.Vec3 direction = 3;
+inline bool ApplyPhysics::has_direction() const {
   return this != internal_default_instance() && direction_ != nullptr;
 }
-inline const ::tbMath::Vec3Message& ApplyPhysicsBody::direction() const {
-  const ::tbMath::Vec3Message* p = direction_;
-  // @@protoc_insertion_point(field_get:tbBasics.ApplyPhysicsBody.direction)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
+inline const ::MathMessage::Vec3& ApplyPhysics::direction() const {
+  const ::MathMessage::Vec3* p = direction_;
+  // @@protoc_insertion_point(field_get:MessageContent.ApplyPhysics.direction)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
 }
-inline ::tbMath::Vec3Message* ApplyPhysicsBody::release_direction() {
-  // @@protoc_insertion_point(field_release:tbBasics.ApplyPhysicsBody.direction)
+inline ::MathMessage::Vec3* ApplyPhysics::release_direction() {
+  // @@protoc_insertion_point(field_release:MessageContent.ApplyPhysics.direction)
   
-  ::tbMath::Vec3Message* temp = direction_;
+  ::MathMessage::Vec3* temp = direction_;
   direction_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec3Message* ApplyPhysicsBody::mutable_direction() {
+inline ::MathMessage::Vec3* ApplyPhysics::mutable_direction() {
   
   if (direction_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
     direction_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbBasics.ApplyPhysicsBody.direction)
+  // @@protoc_insertion_point(field_mutable:MessageContent.ApplyPhysics.direction)
   return direction_;
 }
-inline void ApplyPhysicsBody::set_allocated_direction(::tbMath::Vec3Message* direction) {
+inline void ApplyPhysics::set_allocated_direction(::MathMessage::Vec3* direction) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::google::protobuf::MessageLite*>(direction_);
@@ -2283,527 +2319,176 @@ inline void ApplyPhysicsBody::set_allocated_direction(::tbMath::Vec3Message* dir
     
   }
   direction_ = direction;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.ApplyPhysicsBody.direction)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.ApplyPhysics.direction)
 }
 
 // -------------------------------------------------------------------
 
-// LookDirectionBody
+// LookAt
 
 // string id = 1;
-inline void LookDirectionBody::clear_id() {
+inline void LookAt::clear_id() {
   id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& LookDirectionBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.LookDirectionBody.id)
+inline const ::std::string& LookAt::id() const {
+  // @@protoc_insertion_point(field_get:MessageContent.LookAt.id)
   return id_.GetNoArena();
 }
-inline void LookDirectionBody::set_id(const ::std::string& value) {
+inline void LookAt::set_id(const ::std::string& value) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.LookDirectionBody.id)
+  // @@protoc_insertion_point(field_set:MessageContent.LookAt.id)
 }
 #if LANG_CXX11
-inline void LookDirectionBody::set_id(::std::string&& value) {
+inline void LookAt::set_id(::std::string&& value) {
   
   id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.LookDirectionBody.id)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.LookAt.id)
 }
 #endif
-inline void LookDirectionBody::set_id(const char* value) {
+inline void LookAt::set_id(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.LookDirectionBody.id)
+  // @@protoc_insertion_point(field_set_char:MessageContent.LookAt.id)
 }
-inline void LookDirectionBody::set_id(const char* value, size_t size) {
+inline void LookAt::set_id(const char* value, size_t size) {
   
   id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.LookDirectionBody.id)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.LookAt.id)
 }
-inline ::std::string* LookDirectionBody::mutable_id() {
+inline ::std::string* LookAt::mutable_id() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.LookDirectionBody.id)
+  // @@protoc_insertion_point(field_mutable:MessageContent.LookAt.id)
   return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* LookDirectionBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.LookDirectionBody.id)
+inline ::std::string* LookAt::release_id() {
+  // @@protoc_insertion_point(field_release:MessageContent.LookAt.id)
   
   return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void LookDirectionBody::set_allocated_id(::std::string* id) {
+inline void LookAt::set_allocated_id(::std::string* id) {
   if (id != nullptr) {
     
   } else {
     
   }
   id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookDirectionBody.id)
-}
-
-// .tbMath.Vec2Message direction = 2;
-inline bool LookDirectionBody::has_direction() const {
-  return this != internal_default_instance() && direction_ != nullptr;
-}
-inline const ::tbMath::Vec2Message& LookDirectionBody::direction() const {
-  const ::tbMath::Vec2Message* p = direction_;
-  // @@protoc_insertion_point(field_get:tbBasics.LookDirectionBody.direction)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec2Message*>(
-      &::tbMath::_Vec2Message_default_instance_);
-}
-inline ::tbMath::Vec2Message* LookDirectionBody::release_direction() {
-  // @@protoc_insertion_point(field_release:tbBasics.LookDirectionBody.direction)
-  
-  ::tbMath::Vec2Message* temp = direction_;
-  direction_ = nullptr;
-  return temp;
-}
-inline ::tbMath::Vec2Message* LookDirectionBody::mutable_direction() {
-  
-  if (direction_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec2Message>(GetArenaNoVirtual());
-    direction_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:tbBasics.LookDirectionBody.direction)
-  return direction_;
-}
-inline void LookDirectionBody::set_allocated_direction(::tbMath::Vec2Message* direction) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::google::protobuf::MessageLite*>(direction_);
-  }
-  if (direction) {
-    ::google::protobuf::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      direction = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, direction, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  direction_ = direction;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookDirectionBody.direction)
-}
-
-// -------------------------------------------------------------------
-
-// LookAtBody
-
-// string id = 1;
-inline void LookAtBody::clear_id() {
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& LookAtBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.LookAtBody.id)
-  return id_.GetNoArena();
-}
-inline void LookAtBody::set_id(const ::std::string& value) {
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.LookAtBody.id)
-}
-#if LANG_CXX11
-inline void LookAtBody::set_id(::std::string&& value) {
-  
-  id_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.LookAtBody.id)
-}
-#endif
-inline void LookAtBody::set_id(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.LookAtBody.id)
-}
-inline void LookAtBody::set_id(const char* value, size_t size) {
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.LookAtBody.id)
-}
-inline ::std::string* LookAtBody::mutable_id() {
-  
-  // @@protoc_insertion_point(field_mutable:tbBasics.LookAtBody.id)
-  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* LookAtBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.LookAtBody.id)
-  
-  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void LookAtBody::set_allocated_id(::std::string* id) {
-  if (id != nullptr) {
-    
-  } else {
-    
-  }
-  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookAtBody.id)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.LookAt.id)
 }
 
 // string target = 2;
-inline void LookAtBody::clear_target() {
+inline void LookAt::clear_target() {
   target_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& LookAtBody::target() const {
-  // @@protoc_insertion_point(field_get:tbBasics.LookAtBody.target)
+inline const ::std::string& LookAt::target() const {
+  // @@protoc_insertion_point(field_get:MessageContent.LookAt.target)
   return target_.GetNoArena();
 }
-inline void LookAtBody::set_target(const ::std::string& value) {
+inline void LookAt::set_target(const ::std::string& value) {
   
   target_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.LookAtBody.target)
+  // @@protoc_insertion_point(field_set:MessageContent.LookAt.target)
 }
 #if LANG_CXX11
-inline void LookAtBody::set_target(::std::string&& value) {
+inline void LookAt::set_target(::std::string&& value) {
   
   target_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.LookAtBody.target)
+  // @@protoc_insertion_point(field_set_rvalue:MessageContent.LookAt.target)
 }
 #endif
-inline void LookAtBody::set_target(const char* value) {
+inline void LookAt::set_target(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   target_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.LookAtBody.target)
+  // @@protoc_insertion_point(field_set_char:MessageContent.LookAt.target)
 }
-inline void LookAtBody::set_target(const char* value, size_t size) {
+inline void LookAt::set_target(const char* value, size_t size) {
   
   target_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.LookAtBody.target)
+  // @@protoc_insertion_point(field_set_pointer:MessageContent.LookAt.target)
 }
-inline ::std::string* LookAtBody::mutable_target() {
+inline ::std::string* LookAt::mutable_target() {
   
-  // @@protoc_insertion_point(field_mutable:tbBasics.LookAtBody.target)
+  // @@protoc_insertion_point(field_mutable:MessageContent.LookAt.target)
   return target_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* LookAtBody::release_target() {
-  // @@protoc_insertion_point(field_release:tbBasics.LookAtBody.target)
+inline ::std::string* LookAt::release_target() {
+  // @@protoc_insertion_point(field_release:MessageContent.LookAt.target)
   
   return target_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void LookAtBody::set_allocated_target(::std::string* target) {
+inline void LookAt::set_allocated_target(::std::string* target) {
   if (target != nullptr) {
     
   } else {
     
   }
   target_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), target);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookAtBody.target)
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.LookAt.target)
 }
 
 // float distance = 3;
-inline void LookAtBody::clear_distance() {
+inline void LookAt::clear_distance() {
   distance_ = 0;
 }
-inline float LookAtBody::distance() const {
-  // @@protoc_insertion_point(field_get:tbBasics.LookAtBody.distance)
+inline float LookAt::distance() const {
+  // @@protoc_insertion_point(field_get:MessageContent.LookAt.distance)
   return distance_;
 }
-inline void LookAtBody::set_distance(float value) {
+inline void LookAt::set_distance(float value) {
   
   distance_ = value;
-  // @@protoc_insertion_point(field_set:tbBasics.LookAtBody.distance)
+  // @@protoc_insertion_point(field_set:MessageContent.LookAt.distance)
 }
 
-// .tbMath.Vec3Message rotation = 4;
-inline bool LookAtBody::has_rotation() const {
-  return this != internal_default_instance() && rotation_ != nullptr;
+// .MathMessage.Vec3 direction = 4;
+inline bool LookAt::has_direction() const {
+  return this != internal_default_instance() && direction_ != nullptr;
 }
-inline const ::tbMath::Vec3Message& LookAtBody::rotation() const {
-  const ::tbMath::Vec3Message* p = rotation_;
-  // @@protoc_insertion_point(field_get:tbBasics.LookAtBody.rotation)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
+inline const ::MathMessage::Vec3& LookAt::direction() const {
+  const ::MathMessage::Vec3* p = direction_;
+  // @@protoc_insertion_point(field_get:MessageContent.LookAt.direction)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
 }
-inline ::tbMath::Vec3Message* LookAtBody::release_rotation() {
-  // @@protoc_insertion_point(field_release:tbBasics.LookAtBody.rotation)
+inline ::MathMessage::Vec3* LookAt::release_direction() {
+  // @@protoc_insertion_point(field_release:MessageContent.LookAt.direction)
   
-  ::tbMath::Vec3Message* temp = rotation_;
-  rotation_ = nullptr;
+  ::MathMessage::Vec3* temp = direction_;
+  direction_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec3Message* LookAtBody::mutable_rotation() {
+inline ::MathMessage::Vec3* LookAt::mutable_direction() {
   
-  if (rotation_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
-    rotation_ = p;
+  if (direction_ == nullptr) {
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
+    direction_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbBasics.LookAtBody.rotation)
-  return rotation_;
+  // @@protoc_insertion_point(field_mutable:MessageContent.LookAt.direction)
+  return direction_;
 }
-inline void LookAtBody::set_allocated_rotation(::tbMath::Vec3Message* rotation) {
+inline void LookAt::set_allocated_direction(::MathMessage::Vec3* direction) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
-    delete reinterpret_cast< ::google::protobuf::MessageLite*>(rotation_);
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(direction_);
   }
-  if (rotation) {
+  if (direction) {
     ::google::protobuf::Arena* submessage_arena = nullptr;
     if (message_arena != submessage_arena) {
-      rotation = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, rotation, submessage_arena);
+      direction = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, direction, submessage_arena);
     }
     
   } else {
     
   }
-  rotation_ = rotation;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.LookAtBody.rotation)
-}
-
-// -------------------------------------------------------------------
-
-// MoveNodeBody
-
-// string id = 1;
-inline void MoveNodeBody::clear_id() {
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& MoveNodeBody::id() const {
-  // @@protoc_insertion_point(field_get:tbBasics.MoveNodeBody.id)
-  return id_.GetNoArena();
-}
-inline void MoveNodeBody::set_id(const ::std::string& value) {
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.MoveNodeBody.id)
-}
-#if LANG_CXX11
-inline void MoveNodeBody::set_id(::std::string&& value) {
-  
-  id_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.MoveNodeBody.id)
-}
-#endif
-inline void MoveNodeBody::set_id(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.MoveNodeBody.id)
-}
-inline void MoveNodeBody::set_id(const char* value, size_t size) {
-  
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.MoveNodeBody.id)
-}
-inline ::std::string* MoveNodeBody::mutable_id() {
-  
-  // @@protoc_insertion_point(field_mutable:tbBasics.MoveNodeBody.id)
-  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* MoveNodeBody::release_id() {
-  // @@protoc_insertion_point(field_release:tbBasics.MoveNodeBody.id)
-  
-  return id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MoveNodeBody::set_allocated_id(::std::string* id) {
-  if (id != nullptr) {
-    
-  } else {
-    
-  }
-  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveNodeBody.id)
-}
-
-// string node = 2;
-inline void MoveNodeBody::clear_node() {
-  node_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& MoveNodeBody::node() const {
-  // @@protoc_insertion_point(field_get:tbBasics.MoveNodeBody.node)
-  return node_.GetNoArena();
-}
-inline void MoveNodeBody::set_node(const ::std::string& value) {
-  
-  node_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:tbBasics.MoveNodeBody.node)
-}
-#if LANG_CXX11
-inline void MoveNodeBody::set_node(::std::string&& value) {
-  
-  node_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:tbBasics.MoveNodeBody.node)
-}
-#endif
-inline void MoveNodeBody::set_node(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  node_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:tbBasics.MoveNodeBody.node)
-}
-inline void MoveNodeBody::set_node(const char* value, size_t size) {
-  
-  node_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:tbBasics.MoveNodeBody.node)
-}
-inline ::std::string* MoveNodeBody::mutable_node() {
-  
-  // @@protoc_insertion_point(field_mutable:tbBasics.MoveNodeBody.node)
-  return node_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* MoveNodeBody::release_node() {
-  // @@protoc_insertion_point(field_release:tbBasics.MoveNodeBody.node)
-  
-  return node_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MoveNodeBody::set_allocated_node(::std::string* node) {
-  if (node != nullptr) {
-    
-  } else {
-    
-  }
-  node_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), node);
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveNodeBody.node)
-}
-
-// .tbMath.Vec3Message position = 3;
-inline bool MoveNodeBody::has_position() const {
-  return this != internal_default_instance() && position_ != nullptr;
-}
-inline const ::tbMath::Vec3Message& MoveNodeBody::position() const {
-  const ::tbMath::Vec3Message* p = position_;
-  // @@protoc_insertion_point(field_get:tbBasics.MoveNodeBody.position)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
-}
-inline ::tbMath::Vec3Message* MoveNodeBody::release_position() {
-  // @@protoc_insertion_point(field_release:tbBasics.MoveNodeBody.position)
-  
-  ::tbMath::Vec3Message* temp = position_;
-  position_ = nullptr;
-  return temp;
-}
-inline ::tbMath::Vec3Message* MoveNodeBody::mutable_position() {
-  
-  if (position_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
-    position_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:tbBasics.MoveNodeBody.position)
-  return position_;
-}
-inline void MoveNodeBody::set_allocated_position(::tbMath::Vec3Message* position) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::google::protobuf::MessageLite*>(position_);
-  }
-  if (position) {
-    ::google::protobuf::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      position = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, position, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  position_ = position;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveNodeBody.position)
-}
-
-// .tbMath.Vec3Message rotation = 4;
-inline bool MoveNodeBody::has_rotation() const {
-  return this != internal_default_instance() && rotation_ != nullptr;
-}
-inline const ::tbMath::Vec3Message& MoveNodeBody::rotation() const {
-  const ::tbMath::Vec3Message* p = rotation_;
-  // @@protoc_insertion_point(field_get:tbBasics.MoveNodeBody.rotation)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
-}
-inline ::tbMath::Vec3Message* MoveNodeBody::release_rotation() {
-  // @@protoc_insertion_point(field_release:tbBasics.MoveNodeBody.rotation)
-  
-  ::tbMath::Vec3Message* temp = rotation_;
-  rotation_ = nullptr;
-  return temp;
-}
-inline ::tbMath::Vec3Message* MoveNodeBody::mutable_rotation() {
-  
-  if (rotation_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
-    rotation_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:tbBasics.MoveNodeBody.rotation)
-  return rotation_;
-}
-inline void MoveNodeBody::set_allocated_rotation(::tbMath::Vec3Message* rotation) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::google::protobuf::MessageLite*>(rotation_);
-  }
-  if (rotation) {
-    ::google::protobuf::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      rotation = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, rotation, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  rotation_ = rotation;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MoveNodeBody.rotation)
-}
-
-// -------------------------------------------------------------------
-
-// MatrixBody
-
-// .tbMath.Mat4Message matrix = 1;
-inline bool MatrixBody::has_matrix() const {
-  return this != internal_default_instance() && matrix_ != nullptr;
-}
-inline const ::tbMath::Mat4Message& MatrixBody::matrix() const {
-  const ::tbMath::Mat4Message* p = matrix_;
-  // @@protoc_insertion_point(field_get:tbBasics.MatrixBody.matrix)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Mat4Message*>(
-      &::tbMath::_Mat4Message_default_instance_);
-}
-inline ::tbMath::Mat4Message* MatrixBody::release_matrix() {
-  // @@protoc_insertion_point(field_release:tbBasics.MatrixBody.matrix)
-  
-  ::tbMath::Mat4Message* temp = matrix_;
-  matrix_ = nullptr;
-  return temp;
-}
-inline ::tbMath::Mat4Message* MatrixBody::mutable_matrix() {
-  
-  if (matrix_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Mat4Message>(GetArenaNoVirtual());
-    matrix_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:tbBasics.MatrixBody.matrix)
-  return matrix_;
-}
-inline void MatrixBody::set_allocated_matrix(::tbMath::Mat4Message* matrix) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::google::protobuf::MessageLite*>(matrix_);
-  }
-  if (matrix) {
-    ::google::protobuf::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      matrix = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, matrix, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  matrix_ = matrix;
-  // @@protoc_insertion_point(field_set_allocated:tbBasics.MatrixBody.matrix)
+  direction_ = direction;
+  // @@protoc_insertion_point(field_set_allocated:MessageContent.LookAt.direction)
 }
 
 #ifdef __GNUC__
@@ -2823,14 +2508,10 @@ inline void MatrixBody::set_allocated_matrix(::tbMath::Mat4Message* matrix) {
 
 // -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace tbBasics
+}  // namespace MessageContent
 
 // @@protoc_insertion_point(global_scope)
 

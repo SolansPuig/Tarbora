@@ -70,7 +70,7 @@ namespace Tarbora {
         tbMessages::Message message;
         message.set_type(tbMessages::MessageType::EVENT);
         message.set_subject(s);
-        message.set_body(b.GetContentStr());
+        message.set_body(b.GetContent());
 
         m_MessageClient->Send(message);
     }
@@ -81,7 +81,7 @@ namespace Tarbora {
         message.set_type(tbMessages::MessageType::COMMAND);
         message.set_to(to);
         message.set_subject(s);
-        message.set_body(b.GetContentStr());
+        message.set_body(b.GetContent());
 
         m_MessageClient->Send(message);
     }
@@ -91,7 +91,7 @@ namespace Tarbora {
         tbMessages::Message message;
         message.set_type(tbMessages::MessageType::LOCAL);
         message.set_subject(s);
-        message.set_body(b.GetContentStr());
+        message.set_body(b.GetContent());
 
         ReadMessage(message);
     }

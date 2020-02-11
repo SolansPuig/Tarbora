@@ -5,8 +5,9 @@ components = {
         model = "human.lua",
         material = "human.mat.lua"
     },
-    animations = {
-        file = "human.lua"
+    animation = {
+        file = "human.lua",
+        -- allowed = ["idle", "move"]
     },
     physics = {
         shape = "capsule",

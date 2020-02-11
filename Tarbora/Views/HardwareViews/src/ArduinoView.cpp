@@ -24,7 +24,7 @@ namespace Tarbora {
         int data = m_Arduino.get() / 5;
         if (data > 0)
         {
-            GetMessageManager()->Trigger("apply_force", ApplyPhysics("test_cube", data, glm::vec3(0.f, 1.f, 0.f)));
+            GetMessageManager()->Trigger("apply_force", Message::ApplyPhysics("test_cube", data, Direction(glm::vec3(0.f, 1.f, 0.f))));
         }
     }
 }

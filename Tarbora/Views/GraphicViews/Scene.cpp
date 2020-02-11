@@ -55,12 +55,6 @@ namespace Tarbora {
 
             std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, (RenderPass)renderPass, model, material));
 
-            LuaTable animations = resource->Get("components").Get("animations", true);
-            if (animations.Valid())
-            {
-                actor->Animate("idle", animations.Get<std::string>("file", entity + ".lua"));
-            }
-
             AddActor(actor);
             return actor;
         }
@@ -68,16 +62,18 @@ namespace Tarbora {
         return std::shared_ptr<ActorModel>();
     }
 
-    void Scene::AnimateActor(ActorId id, std::string animation)
+    void Scene::AnimateActor(ActorId id, const std::string &animation, const std::string &file)
     {
         std::shared_ptr<SceneNode> child = GetActor(id);
-        std::static_pointer_cast<ActorModel>(child)->Animate(animation);
+        if (child)
+            std::static_pointer_cast<ActorModel>(child)->Animate(animation, file);
     }
 
     std::shared_ptr<Camera> Scene::CreateCamera(ActorId id)
     {
         std::shared_ptr<Camera> camera = std::shared_ptr<Camera>(new Camera(id, "body"));
-        AddActor(camera);
+        if (camera)
+            AddActor(camera);
         return camera;
     }
 

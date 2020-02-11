@@ -48,55 +48,55 @@ struct TableStruct_math_2eproto {
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors_math_2eproto();
-namespace tbMath {
-class Mat3Message;
-class Mat3MessageDefaultTypeInternal;
-extern Mat3MessageDefaultTypeInternal _Mat3Message_default_instance_;
-class Mat4Message;
-class Mat4MessageDefaultTypeInternal;
-extern Mat4MessageDefaultTypeInternal _Mat4Message_default_instance_;
-class Vec2Message;
-class Vec2MessageDefaultTypeInternal;
-extern Vec2MessageDefaultTypeInternal _Vec2Message_default_instance_;
-class Vec3Message;
-class Vec3MessageDefaultTypeInternal;
-extern Vec3MessageDefaultTypeInternal _Vec3Message_default_instance_;
-class Vec4Message;
-class Vec4MessageDefaultTypeInternal;
-extern Vec4MessageDefaultTypeInternal _Vec4Message_default_instance_;
-}  // namespace tbMath
+namespace MathMessage {
+class Mat3;
+class Mat3DefaultTypeInternal;
+extern Mat3DefaultTypeInternal _Mat3_default_instance_;
+class Mat4;
+class Mat4DefaultTypeInternal;
+extern Mat4DefaultTypeInternal _Mat4_default_instance_;
+class Vec2;
+class Vec2DefaultTypeInternal;
+extern Vec2DefaultTypeInternal _Vec2_default_instance_;
+class Vec3;
+class Vec3DefaultTypeInternal;
+extern Vec3DefaultTypeInternal _Vec3_default_instance_;
+class Vec4;
+class Vec4DefaultTypeInternal;
+extern Vec4DefaultTypeInternal _Vec4_default_instance_;
+}  // namespace MathMessage
 namespace google {
 namespace protobuf {
-template<> ::tbMath::Mat3Message* Arena::CreateMaybeMessage<::tbMath::Mat3Message>(Arena*);
-template<> ::tbMath::Mat4Message* Arena::CreateMaybeMessage<::tbMath::Mat4Message>(Arena*);
-template<> ::tbMath::Vec2Message* Arena::CreateMaybeMessage<::tbMath::Vec2Message>(Arena*);
-template<> ::tbMath::Vec3Message* Arena::CreateMaybeMessage<::tbMath::Vec3Message>(Arena*);
-template<> ::tbMath::Vec4Message* Arena::CreateMaybeMessage<::tbMath::Vec4Message>(Arena*);
+template<> ::MathMessage::Mat3* Arena::CreateMaybeMessage<::MathMessage::Mat3>(Arena*);
+template<> ::MathMessage::Mat4* Arena::CreateMaybeMessage<::MathMessage::Mat4>(Arena*);
+template<> ::MathMessage::Vec2* Arena::CreateMaybeMessage<::MathMessage::Vec2>(Arena*);
+template<> ::MathMessage::Vec3* Arena::CreateMaybeMessage<::MathMessage::Vec3>(Arena*);
+template<> ::MathMessage::Vec4* Arena::CreateMaybeMessage<::MathMessage::Vec4>(Arena*);
 }  // namespace protobuf
 }  // namespace google
-namespace tbMath {
+namespace MathMessage {
 
 // ===================================================================
 
-class Vec2Message final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbMath.Vec2Message) */ {
+class Vec2 final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MathMessage.Vec2) */ {
  public:
-  Vec2Message();
-  virtual ~Vec2Message();
+  Vec2();
+  virtual ~Vec2();
 
-  Vec2Message(const Vec2Message& from);
+  Vec2(const Vec2& from);
 
-  inline Vec2Message& operator=(const Vec2Message& from) {
+  inline Vec2& operator=(const Vec2& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Vec2Message(Vec2Message&& from) noexcept
-    : Vec2Message() {
+  Vec2(Vec2&& from) noexcept
+    : Vec2() {
     *this = ::std::move(from);
   }
 
-  inline Vec2Message& operator=(Vec2Message&& from) noexcept {
+  inline Vec2& operator=(Vec2&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -108,34 +108,34 @@ class Vec2Message final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const Vec2Message& default_instance();
+  static const Vec2& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Vec2Message* internal_default_instance() {
-    return reinterpret_cast<const Vec2Message*>(
-               &_Vec2Message_default_instance_);
+  static inline const Vec2* internal_default_instance() {
+    return reinterpret_cast<const Vec2*>(
+               &_Vec2_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  void Swap(Vec2Message* other);
-  friend void swap(Vec2Message& a, Vec2Message& b) {
+  void Swap(Vec2* other);
+  friend void swap(Vec2& a, Vec2& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Vec2Message* New() const final {
-    return CreateMaybeMessage<Vec2Message>(nullptr);
+  inline Vec2* New() const final {
+    return CreateMaybeMessage<Vec2>(nullptr);
   }
 
-  Vec2Message* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Vec2Message>(arena);
+  Vec2* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Vec2>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Vec2Message& from);
-  void MergeFrom(const Vec2Message& from);
+  void CopyFrom(const Vec2& from);
+  void MergeFrom(const Vec2& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -157,7 +157,7 @@ class Vec2Message final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Vec2Message* other);
+  void InternalSwap(Vec2* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -185,7 +185,7 @@ class Vec2Message final :
   float y() const;
   void set_y(float value);
 
-  // @@protoc_insertion_point(class_scope:tbMath.Vec2Message)
+  // @@protoc_insertion_point(class_scope:MathMessage.Vec2)
  private:
   class HasBitSetters;
 
@@ -197,25 +197,25 @@ class Vec2Message final :
 };
 // -------------------------------------------------------------------
 
-class Vec3Message final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbMath.Vec3Message) */ {
+class Vec3 final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MathMessage.Vec3) */ {
  public:
-  Vec3Message();
-  virtual ~Vec3Message();
+  Vec3();
+  virtual ~Vec3();
 
-  Vec3Message(const Vec3Message& from);
+  Vec3(const Vec3& from);
 
-  inline Vec3Message& operator=(const Vec3Message& from) {
+  inline Vec3& operator=(const Vec3& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Vec3Message(Vec3Message&& from) noexcept
-    : Vec3Message() {
+  Vec3(Vec3&& from) noexcept
+    : Vec3() {
     *this = ::std::move(from);
   }
 
-  inline Vec3Message& operator=(Vec3Message&& from) noexcept {
+  inline Vec3& operator=(Vec3&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -227,34 +227,34 @@ class Vec3Message final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const Vec3Message& default_instance();
+  static const Vec3& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Vec3Message* internal_default_instance() {
-    return reinterpret_cast<const Vec3Message*>(
-               &_Vec3Message_default_instance_);
+  static inline const Vec3* internal_default_instance() {
+    return reinterpret_cast<const Vec3*>(
+               &_Vec3_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  void Swap(Vec3Message* other);
-  friend void swap(Vec3Message& a, Vec3Message& b) {
+  void Swap(Vec3* other);
+  friend void swap(Vec3& a, Vec3& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Vec3Message* New() const final {
-    return CreateMaybeMessage<Vec3Message>(nullptr);
+  inline Vec3* New() const final {
+    return CreateMaybeMessage<Vec3>(nullptr);
   }
 
-  Vec3Message* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Vec3Message>(arena);
+  Vec3* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Vec3>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Vec3Message& from);
-  void MergeFrom(const Vec3Message& from);
+  void CopyFrom(const Vec3& from);
+  void MergeFrom(const Vec3& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -276,7 +276,7 @@ class Vec3Message final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Vec3Message* other);
+  void InternalSwap(Vec3* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -310,7 +310,7 @@ class Vec3Message final :
   float z() const;
   void set_z(float value);
 
-  // @@protoc_insertion_point(class_scope:tbMath.Vec3Message)
+  // @@protoc_insertion_point(class_scope:MathMessage.Vec3)
  private:
   class HasBitSetters;
 
@@ -323,25 +323,25 @@ class Vec3Message final :
 };
 // -------------------------------------------------------------------
 
-class Vec4Message final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbMath.Vec4Message) */ {
+class Vec4 final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MathMessage.Vec4) */ {
  public:
-  Vec4Message();
-  virtual ~Vec4Message();
+  Vec4();
+  virtual ~Vec4();
 
-  Vec4Message(const Vec4Message& from);
+  Vec4(const Vec4& from);
 
-  inline Vec4Message& operator=(const Vec4Message& from) {
+  inline Vec4& operator=(const Vec4& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Vec4Message(Vec4Message&& from) noexcept
-    : Vec4Message() {
+  Vec4(Vec4&& from) noexcept
+    : Vec4() {
     *this = ::std::move(from);
   }
 
-  inline Vec4Message& operator=(Vec4Message&& from) noexcept {
+  inline Vec4& operator=(Vec4&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -353,34 +353,34 @@ class Vec4Message final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const Vec4Message& default_instance();
+  static const Vec4& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Vec4Message* internal_default_instance() {
-    return reinterpret_cast<const Vec4Message*>(
-               &_Vec4Message_default_instance_);
+  static inline const Vec4* internal_default_instance() {
+    return reinterpret_cast<const Vec4*>(
+               &_Vec4_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     2;
 
-  void Swap(Vec4Message* other);
-  friend void swap(Vec4Message& a, Vec4Message& b) {
+  void Swap(Vec4* other);
+  friend void swap(Vec4& a, Vec4& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Vec4Message* New() const final {
-    return CreateMaybeMessage<Vec4Message>(nullptr);
+  inline Vec4* New() const final {
+    return CreateMaybeMessage<Vec4>(nullptr);
   }
 
-  Vec4Message* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Vec4Message>(arena);
+  Vec4* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Vec4>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Vec4Message& from);
-  void MergeFrom(const Vec4Message& from);
+  void CopyFrom(const Vec4& from);
+  void MergeFrom(const Vec4& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -402,7 +402,7 @@ class Vec4Message final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Vec4Message* other);
+  void InternalSwap(Vec4* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -442,7 +442,7 @@ class Vec4Message final :
   float w() const;
   void set_w(float value);
 
-  // @@protoc_insertion_point(class_scope:tbMath.Vec4Message)
+  // @@protoc_insertion_point(class_scope:MathMessage.Vec4)
  private:
   class HasBitSetters;
 
@@ -456,25 +456,25 @@ class Vec4Message final :
 };
 // -------------------------------------------------------------------
 
-class Mat3Message final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbMath.Mat3Message) */ {
+class Mat3 final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MathMessage.Mat3) */ {
  public:
-  Mat3Message();
-  virtual ~Mat3Message();
+  Mat3();
+  virtual ~Mat3();
 
-  Mat3Message(const Mat3Message& from);
+  Mat3(const Mat3& from);
 
-  inline Mat3Message& operator=(const Mat3Message& from) {
+  inline Mat3& operator=(const Mat3& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Mat3Message(Mat3Message&& from) noexcept
-    : Mat3Message() {
+  Mat3(Mat3&& from) noexcept
+    : Mat3() {
     *this = ::std::move(from);
   }
 
-  inline Mat3Message& operator=(Mat3Message&& from) noexcept {
+  inline Mat3& operator=(Mat3&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -486,34 +486,34 @@ class Mat3Message final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const Mat3Message& default_instance();
+  static const Mat3& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Mat3Message* internal_default_instance() {
-    return reinterpret_cast<const Mat3Message*>(
-               &_Mat3Message_default_instance_);
+  static inline const Mat3* internal_default_instance() {
+    return reinterpret_cast<const Mat3*>(
+               &_Mat3_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  void Swap(Mat3Message* other);
-  friend void swap(Mat3Message& a, Mat3Message& b) {
+  void Swap(Mat3* other);
+  friend void swap(Mat3& a, Mat3& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Mat3Message* New() const final {
-    return CreateMaybeMessage<Mat3Message>(nullptr);
+  inline Mat3* New() const final {
+    return CreateMaybeMessage<Mat3>(nullptr);
   }
 
-  Mat3Message* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Mat3Message>(arena);
+  Mat3* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Mat3>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Mat3Message& from);
-  void MergeFrom(const Mat3Message& from);
+  void CopyFrom(const Mat3& from);
+  void MergeFrom(const Mat3& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -535,7 +535,7 @@ class Mat3Message final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Mat3Message* other);
+  void InternalSwap(Mat3* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -551,65 +551,65 @@ class Mat3Message final :
 
   // accessors -------------------------------------------------------
 
-  // .tbMath.Vec3Message x = 1;
+  // .MathMessage.Vec3 x = 1;
   bool has_x() const;
   void clear_x();
   static const int kXFieldNumber = 1;
-  const ::tbMath::Vec3Message& x() const;
-  ::tbMath::Vec3Message* release_x();
-  ::tbMath::Vec3Message* mutable_x();
-  void set_allocated_x(::tbMath::Vec3Message* x);
+  const ::MathMessage::Vec3& x() const;
+  ::MathMessage::Vec3* release_x();
+  ::MathMessage::Vec3* mutable_x();
+  void set_allocated_x(::MathMessage::Vec3* x);
 
-  // .tbMath.Vec3Message y = 2;
+  // .MathMessage.Vec3 y = 2;
   bool has_y() const;
   void clear_y();
   static const int kYFieldNumber = 2;
-  const ::tbMath::Vec3Message& y() const;
-  ::tbMath::Vec3Message* release_y();
-  ::tbMath::Vec3Message* mutable_y();
-  void set_allocated_y(::tbMath::Vec3Message* y);
+  const ::MathMessage::Vec3& y() const;
+  ::MathMessage::Vec3* release_y();
+  ::MathMessage::Vec3* mutable_y();
+  void set_allocated_y(::MathMessage::Vec3* y);
 
-  // .tbMath.Vec3Message z = 3;
+  // .MathMessage.Vec3 z = 3;
   bool has_z() const;
   void clear_z();
   static const int kZFieldNumber = 3;
-  const ::tbMath::Vec3Message& z() const;
-  ::tbMath::Vec3Message* release_z();
-  ::tbMath::Vec3Message* mutable_z();
-  void set_allocated_z(::tbMath::Vec3Message* z);
+  const ::MathMessage::Vec3& z() const;
+  ::MathMessage::Vec3* release_z();
+  ::MathMessage::Vec3* mutable_z();
+  void set_allocated_z(::MathMessage::Vec3* z);
 
-  // @@protoc_insertion_point(class_scope:tbMath.Mat3Message)
+  // @@protoc_insertion_point(class_scope:MathMessage.Mat3)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::tbMath::Vec3Message* x_;
-  ::tbMath::Vec3Message* y_;
-  ::tbMath::Vec3Message* z_;
+  ::MathMessage::Vec3* x_;
+  ::MathMessage::Vec3* y_;
+  ::MathMessage::Vec3* z_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_math_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Mat4Message final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tbMath.Mat4Message) */ {
+class Mat4 final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MathMessage.Mat4) */ {
  public:
-  Mat4Message();
-  virtual ~Mat4Message();
+  Mat4();
+  virtual ~Mat4();
 
-  Mat4Message(const Mat4Message& from);
+  Mat4(const Mat4& from);
 
-  inline Mat4Message& operator=(const Mat4Message& from) {
+  inline Mat4& operator=(const Mat4& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Mat4Message(Mat4Message&& from) noexcept
-    : Mat4Message() {
+  Mat4(Mat4&& from) noexcept
+    : Mat4() {
     *this = ::std::move(from);
   }
 
-  inline Mat4Message& operator=(Mat4Message&& from) noexcept {
+  inline Mat4& operator=(Mat4&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -621,34 +621,34 @@ class Mat4Message final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const Mat4Message& default_instance();
+  static const Mat4& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Mat4Message* internal_default_instance() {
-    return reinterpret_cast<const Mat4Message*>(
-               &_Mat4Message_default_instance_);
+  static inline const Mat4* internal_default_instance() {
+    return reinterpret_cast<const Mat4*>(
+               &_Mat4_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  void Swap(Mat4Message* other);
-  friend void swap(Mat4Message& a, Mat4Message& b) {
+  void Swap(Mat4* other);
+  friend void swap(Mat4& a, Mat4& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Mat4Message* New() const final {
-    return CreateMaybeMessage<Mat4Message>(nullptr);
+  inline Mat4* New() const final {
+    return CreateMaybeMessage<Mat4>(nullptr);
   }
 
-  Mat4Message* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Mat4Message>(arena);
+  Mat4* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Mat4>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Mat4Message& from);
-  void MergeFrom(const Mat4Message& from);
+  void CopyFrom(const Mat4& from);
+  void MergeFrom(const Mat4& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -670,7 +670,7 @@ class Mat4Message final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Mat4Message* other);
+  void InternalSwap(Mat4* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -686,51 +686,51 @@ class Mat4Message final :
 
   // accessors -------------------------------------------------------
 
-  // .tbMath.Vec4Message x = 1;
+  // .MathMessage.Vec4 x = 1;
   bool has_x() const;
   void clear_x();
   static const int kXFieldNumber = 1;
-  const ::tbMath::Vec4Message& x() const;
-  ::tbMath::Vec4Message* release_x();
-  ::tbMath::Vec4Message* mutable_x();
-  void set_allocated_x(::tbMath::Vec4Message* x);
+  const ::MathMessage::Vec4& x() const;
+  ::MathMessage::Vec4* release_x();
+  ::MathMessage::Vec4* mutable_x();
+  void set_allocated_x(::MathMessage::Vec4* x);
 
-  // .tbMath.Vec4Message y = 2;
+  // .MathMessage.Vec4 y = 2;
   bool has_y() const;
   void clear_y();
   static const int kYFieldNumber = 2;
-  const ::tbMath::Vec4Message& y() const;
-  ::tbMath::Vec4Message* release_y();
-  ::tbMath::Vec4Message* mutable_y();
-  void set_allocated_y(::tbMath::Vec4Message* y);
+  const ::MathMessage::Vec4& y() const;
+  ::MathMessage::Vec4* release_y();
+  ::MathMessage::Vec4* mutable_y();
+  void set_allocated_y(::MathMessage::Vec4* y);
 
-  // .tbMath.Vec4Message z = 3;
+  // .MathMessage.Vec4 z = 3;
   bool has_z() const;
   void clear_z();
   static const int kZFieldNumber = 3;
-  const ::tbMath::Vec4Message& z() const;
-  ::tbMath::Vec4Message* release_z();
-  ::tbMath::Vec4Message* mutable_z();
-  void set_allocated_z(::tbMath::Vec4Message* z);
+  const ::MathMessage::Vec4& z() const;
+  ::MathMessage::Vec4* release_z();
+  ::MathMessage::Vec4* mutable_z();
+  void set_allocated_z(::MathMessage::Vec4* z);
 
-  // .tbMath.Vec4Message w = 4;
+  // .MathMessage.Vec4 w = 4;
   bool has_w() const;
   void clear_w();
   static const int kWFieldNumber = 4;
-  const ::tbMath::Vec4Message& w() const;
-  ::tbMath::Vec4Message* release_w();
-  ::tbMath::Vec4Message* mutable_w();
-  void set_allocated_w(::tbMath::Vec4Message* w);
+  const ::MathMessage::Vec4& w() const;
+  ::MathMessage::Vec4* release_w();
+  ::MathMessage::Vec4* mutable_w();
+  void set_allocated_w(::MathMessage::Vec4* w);
 
-  // @@protoc_insertion_point(class_scope:tbMath.Mat4Message)
+  // @@protoc_insertion_point(class_scope:MathMessage.Mat4)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::tbMath::Vec4Message* x_;
-  ::tbMath::Vec4Message* y_;
-  ::tbMath::Vec4Message* z_;
-  ::tbMath::Vec4Message* w_;
+  ::MathMessage::Vec4* x_;
+  ::MathMessage::Vec4* y_;
+  ::MathMessage::Vec4* z_;
+  ::MathMessage::Vec4* w_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_math_2eproto;
 };
@@ -743,179 +743,179 @@ class Mat4Message final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Vec2Message
+// Vec2
 
 // float x = 1;
-inline void Vec2Message::clear_x() {
+inline void Vec2::clear_x() {
   x_ = 0;
 }
-inline float Vec2Message::x() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec2Message.x)
+inline float Vec2::x() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec2.x)
   return x_;
 }
-inline void Vec2Message::set_x(float value) {
+inline void Vec2::set_x(float value) {
   
   x_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec2Message.x)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec2.x)
 }
 
 // float y = 2;
-inline void Vec2Message::clear_y() {
+inline void Vec2::clear_y() {
   y_ = 0;
 }
-inline float Vec2Message::y() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec2Message.y)
+inline float Vec2::y() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec2.y)
   return y_;
 }
-inline void Vec2Message::set_y(float value) {
+inline void Vec2::set_y(float value) {
   
   y_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec2Message.y)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec2.y)
 }
 
 // -------------------------------------------------------------------
 
-// Vec3Message
+// Vec3
 
 // float x = 1;
-inline void Vec3Message::clear_x() {
+inline void Vec3::clear_x() {
   x_ = 0;
 }
-inline float Vec3Message::x() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec3Message.x)
+inline float Vec3::x() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec3.x)
   return x_;
 }
-inline void Vec3Message::set_x(float value) {
+inline void Vec3::set_x(float value) {
   
   x_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec3Message.x)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec3.x)
 }
 
 // float y = 2;
-inline void Vec3Message::clear_y() {
+inline void Vec3::clear_y() {
   y_ = 0;
 }
-inline float Vec3Message::y() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec3Message.y)
+inline float Vec3::y() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec3.y)
   return y_;
 }
-inline void Vec3Message::set_y(float value) {
+inline void Vec3::set_y(float value) {
   
   y_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec3Message.y)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec3.y)
 }
 
 // float z = 3;
-inline void Vec3Message::clear_z() {
+inline void Vec3::clear_z() {
   z_ = 0;
 }
-inline float Vec3Message::z() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec3Message.z)
+inline float Vec3::z() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec3.z)
   return z_;
 }
-inline void Vec3Message::set_z(float value) {
+inline void Vec3::set_z(float value) {
   
   z_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec3Message.z)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec3.z)
 }
 
 // -------------------------------------------------------------------
 
-// Vec4Message
+// Vec4
 
 // float x = 1;
-inline void Vec4Message::clear_x() {
+inline void Vec4::clear_x() {
   x_ = 0;
 }
-inline float Vec4Message::x() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec4Message.x)
+inline float Vec4::x() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec4.x)
   return x_;
 }
-inline void Vec4Message::set_x(float value) {
+inline void Vec4::set_x(float value) {
   
   x_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec4Message.x)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec4.x)
 }
 
 // float y = 2;
-inline void Vec4Message::clear_y() {
+inline void Vec4::clear_y() {
   y_ = 0;
 }
-inline float Vec4Message::y() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec4Message.y)
+inline float Vec4::y() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec4.y)
   return y_;
 }
-inline void Vec4Message::set_y(float value) {
+inline void Vec4::set_y(float value) {
   
   y_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec4Message.y)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec4.y)
 }
 
 // float z = 3;
-inline void Vec4Message::clear_z() {
+inline void Vec4::clear_z() {
   z_ = 0;
 }
-inline float Vec4Message::z() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec4Message.z)
+inline float Vec4::z() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec4.z)
   return z_;
 }
-inline void Vec4Message::set_z(float value) {
+inline void Vec4::set_z(float value) {
   
   z_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec4Message.z)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec4.z)
 }
 
 // float w = 4;
-inline void Vec4Message::clear_w() {
+inline void Vec4::clear_w() {
   w_ = 0;
 }
-inline float Vec4Message::w() const {
-  // @@protoc_insertion_point(field_get:tbMath.Vec4Message.w)
+inline float Vec4::w() const {
+  // @@protoc_insertion_point(field_get:MathMessage.Vec4.w)
   return w_;
 }
-inline void Vec4Message::set_w(float value) {
+inline void Vec4::set_w(float value) {
   
   w_ = value;
-  // @@protoc_insertion_point(field_set:tbMath.Vec4Message.w)
+  // @@protoc_insertion_point(field_set:MathMessage.Vec4.w)
 }
 
 // -------------------------------------------------------------------
 
-// Mat3Message
+// Mat3
 
-// .tbMath.Vec3Message x = 1;
-inline bool Mat3Message::has_x() const {
+// .MathMessage.Vec3 x = 1;
+inline bool Mat3::has_x() const {
   return this != internal_default_instance() && x_ != nullptr;
 }
-inline void Mat3Message::clear_x() {
+inline void Mat3::clear_x() {
   if (GetArenaNoVirtual() == nullptr && x_ != nullptr) {
     delete x_;
   }
   x_ = nullptr;
 }
-inline const ::tbMath::Vec3Message& Mat3Message::x() const {
-  const ::tbMath::Vec3Message* p = x_;
-  // @@protoc_insertion_point(field_get:tbMath.Mat3Message.x)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
+inline const ::MathMessage::Vec3& Mat3::x() const {
+  const ::MathMessage::Vec3* p = x_;
+  // @@protoc_insertion_point(field_get:MathMessage.Mat3.x)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
 }
-inline ::tbMath::Vec3Message* Mat3Message::release_x() {
-  // @@protoc_insertion_point(field_release:tbMath.Mat3Message.x)
+inline ::MathMessage::Vec3* Mat3::release_x() {
+  // @@protoc_insertion_point(field_release:MathMessage.Mat3.x)
   
-  ::tbMath::Vec3Message* temp = x_;
+  ::MathMessage::Vec3* temp = x_;
   x_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec3Message* Mat3Message::mutable_x() {
+inline ::MathMessage::Vec3* Mat3::mutable_x() {
   
   if (x_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
     x_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbMath.Mat3Message.x)
+  // @@protoc_insertion_point(field_mutable:MathMessage.Mat3.x)
   return x_;
 }
-inline void Mat3Message::set_allocated_x(::tbMath::Vec3Message* x) {
+inline void Mat3::set_allocated_x(::MathMessage::Vec3* x) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete x_;
@@ -931,42 +931,42 @@ inline void Mat3Message::set_allocated_x(::tbMath::Vec3Message* x) {
     
   }
   x_ = x;
-  // @@protoc_insertion_point(field_set_allocated:tbMath.Mat3Message.x)
+  // @@protoc_insertion_point(field_set_allocated:MathMessage.Mat3.x)
 }
 
-// .tbMath.Vec3Message y = 2;
-inline bool Mat3Message::has_y() const {
+// .MathMessage.Vec3 y = 2;
+inline bool Mat3::has_y() const {
   return this != internal_default_instance() && y_ != nullptr;
 }
-inline void Mat3Message::clear_y() {
+inline void Mat3::clear_y() {
   if (GetArenaNoVirtual() == nullptr && y_ != nullptr) {
     delete y_;
   }
   y_ = nullptr;
 }
-inline const ::tbMath::Vec3Message& Mat3Message::y() const {
-  const ::tbMath::Vec3Message* p = y_;
-  // @@protoc_insertion_point(field_get:tbMath.Mat3Message.y)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
+inline const ::MathMessage::Vec3& Mat3::y() const {
+  const ::MathMessage::Vec3* p = y_;
+  // @@protoc_insertion_point(field_get:MathMessage.Mat3.y)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
 }
-inline ::tbMath::Vec3Message* Mat3Message::release_y() {
-  // @@protoc_insertion_point(field_release:tbMath.Mat3Message.y)
+inline ::MathMessage::Vec3* Mat3::release_y() {
+  // @@protoc_insertion_point(field_release:MathMessage.Mat3.y)
   
-  ::tbMath::Vec3Message* temp = y_;
+  ::MathMessage::Vec3* temp = y_;
   y_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec3Message* Mat3Message::mutable_y() {
+inline ::MathMessage::Vec3* Mat3::mutable_y() {
   
   if (y_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
     y_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbMath.Mat3Message.y)
+  // @@protoc_insertion_point(field_mutable:MathMessage.Mat3.y)
   return y_;
 }
-inline void Mat3Message::set_allocated_y(::tbMath::Vec3Message* y) {
+inline void Mat3::set_allocated_y(::MathMessage::Vec3* y) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete y_;
@@ -982,42 +982,42 @@ inline void Mat3Message::set_allocated_y(::tbMath::Vec3Message* y) {
     
   }
   y_ = y;
-  // @@protoc_insertion_point(field_set_allocated:tbMath.Mat3Message.y)
+  // @@protoc_insertion_point(field_set_allocated:MathMessage.Mat3.y)
 }
 
-// .tbMath.Vec3Message z = 3;
-inline bool Mat3Message::has_z() const {
+// .MathMessage.Vec3 z = 3;
+inline bool Mat3::has_z() const {
   return this != internal_default_instance() && z_ != nullptr;
 }
-inline void Mat3Message::clear_z() {
+inline void Mat3::clear_z() {
   if (GetArenaNoVirtual() == nullptr && z_ != nullptr) {
     delete z_;
   }
   z_ = nullptr;
 }
-inline const ::tbMath::Vec3Message& Mat3Message::z() const {
-  const ::tbMath::Vec3Message* p = z_;
-  // @@protoc_insertion_point(field_get:tbMath.Mat3Message.z)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec3Message*>(
-      &::tbMath::_Vec3Message_default_instance_);
+inline const ::MathMessage::Vec3& Mat3::z() const {
+  const ::MathMessage::Vec3* p = z_;
+  // @@protoc_insertion_point(field_get:MathMessage.Mat3.z)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec3*>(
+      &::MathMessage::_Vec3_default_instance_);
 }
-inline ::tbMath::Vec3Message* Mat3Message::release_z() {
-  // @@protoc_insertion_point(field_release:tbMath.Mat3Message.z)
+inline ::MathMessage::Vec3* Mat3::release_z() {
+  // @@protoc_insertion_point(field_release:MathMessage.Mat3.z)
   
-  ::tbMath::Vec3Message* temp = z_;
+  ::MathMessage::Vec3* temp = z_;
   z_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec3Message* Mat3Message::mutable_z() {
+inline ::MathMessage::Vec3* Mat3::mutable_z() {
   
   if (z_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec3Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec3>(GetArenaNoVirtual());
     z_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbMath.Mat3Message.z)
+  // @@protoc_insertion_point(field_mutable:MathMessage.Mat3.z)
   return z_;
 }
-inline void Mat3Message::set_allocated_z(::tbMath::Vec3Message* z) {
+inline void Mat3::set_allocated_z(::MathMessage::Vec3* z) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete z_;
@@ -1033,46 +1033,46 @@ inline void Mat3Message::set_allocated_z(::tbMath::Vec3Message* z) {
     
   }
   z_ = z;
-  // @@protoc_insertion_point(field_set_allocated:tbMath.Mat3Message.z)
+  // @@protoc_insertion_point(field_set_allocated:MathMessage.Mat3.z)
 }
 
 // -------------------------------------------------------------------
 
-// Mat4Message
+// Mat4
 
-// .tbMath.Vec4Message x = 1;
-inline bool Mat4Message::has_x() const {
+// .MathMessage.Vec4 x = 1;
+inline bool Mat4::has_x() const {
   return this != internal_default_instance() && x_ != nullptr;
 }
-inline void Mat4Message::clear_x() {
+inline void Mat4::clear_x() {
   if (GetArenaNoVirtual() == nullptr && x_ != nullptr) {
     delete x_;
   }
   x_ = nullptr;
 }
-inline const ::tbMath::Vec4Message& Mat4Message::x() const {
-  const ::tbMath::Vec4Message* p = x_;
-  // @@protoc_insertion_point(field_get:tbMath.Mat4Message.x)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec4Message*>(
-      &::tbMath::_Vec4Message_default_instance_);
+inline const ::MathMessage::Vec4& Mat4::x() const {
+  const ::MathMessage::Vec4* p = x_;
+  // @@protoc_insertion_point(field_get:MathMessage.Mat4.x)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec4*>(
+      &::MathMessage::_Vec4_default_instance_);
 }
-inline ::tbMath::Vec4Message* Mat4Message::release_x() {
-  // @@protoc_insertion_point(field_release:tbMath.Mat4Message.x)
+inline ::MathMessage::Vec4* Mat4::release_x() {
+  // @@protoc_insertion_point(field_release:MathMessage.Mat4.x)
   
-  ::tbMath::Vec4Message* temp = x_;
+  ::MathMessage::Vec4* temp = x_;
   x_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec4Message* Mat4Message::mutable_x() {
+inline ::MathMessage::Vec4* Mat4::mutable_x() {
   
   if (x_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec4Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec4>(GetArenaNoVirtual());
     x_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbMath.Mat4Message.x)
+  // @@protoc_insertion_point(field_mutable:MathMessage.Mat4.x)
   return x_;
 }
-inline void Mat4Message::set_allocated_x(::tbMath::Vec4Message* x) {
+inline void Mat4::set_allocated_x(::MathMessage::Vec4* x) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete x_;
@@ -1088,42 +1088,42 @@ inline void Mat4Message::set_allocated_x(::tbMath::Vec4Message* x) {
     
   }
   x_ = x;
-  // @@protoc_insertion_point(field_set_allocated:tbMath.Mat4Message.x)
+  // @@protoc_insertion_point(field_set_allocated:MathMessage.Mat4.x)
 }
 
-// .tbMath.Vec4Message y = 2;
-inline bool Mat4Message::has_y() const {
+// .MathMessage.Vec4 y = 2;
+inline bool Mat4::has_y() const {
   return this != internal_default_instance() && y_ != nullptr;
 }
-inline void Mat4Message::clear_y() {
+inline void Mat4::clear_y() {
   if (GetArenaNoVirtual() == nullptr && y_ != nullptr) {
     delete y_;
   }
   y_ = nullptr;
 }
-inline const ::tbMath::Vec4Message& Mat4Message::y() const {
-  const ::tbMath::Vec4Message* p = y_;
-  // @@protoc_insertion_point(field_get:tbMath.Mat4Message.y)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec4Message*>(
-      &::tbMath::_Vec4Message_default_instance_);
+inline const ::MathMessage::Vec4& Mat4::y() const {
+  const ::MathMessage::Vec4* p = y_;
+  // @@protoc_insertion_point(field_get:MathMessage.Mat4.y)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec4*>(
+      &::MathMessage::_Vec4_default_instance_);
 }
-inline ::tbMath::Vec4Message* Mat4Message::release_y() {
-  // @@protoc_insertion_point(field_release:tbMath.Mat4Message.y)
+inline ::MathMessage::Vec4* Mat4::release_y() {
+  // @@protoc_insertion_point(field_release:MathMessage.Mat4.y)
   
-  ::tbMath::Vec4Message* temp = y_;
+  ::MathMessage::Vec4* temp = y_;
   y_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec4Message* Mat4Message::mutable_y() {
+inline ::MathMessage::Vec4* Mat4::mutable_y() {
   
   if (y_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec4Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec4>(GetArenaNoVirtual());
     y_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbMath.Mat4Message.y)
+  // @@protoc_insertion_point(field_mutable:MathMessage.Mat4.y)
   return y_;
 }
-inline void Mat4Message::set_allocated_y(::tbMath::Vec4Message* y) {
+inline void Mat4::set_allocated_y(::MathMessage::Vec4* y) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete y_;
@@ -1139,42 +1139,42 @@ inline void Mat4Message::set_allocated_y(::tbMath::Vec4Message* y) {
     
   }
   y_ = y;
-  // @@protoc_insertion_point(field_set_allocated:tbMath.Mat4Message.y)
+  // @@protoc_insertion_point(field_set_allocated:MathMessage.Mat4.y)
 }
 
-// .tbMath.Vec4Message z = 3;
-inline bool Mat4Message::has_z() const {
+// .MathMessage.Vec4 z = 3;
+inline bool Mat4::has_z() const {
   return this != internal_default_instance() && z_ != nullptr;
 }
-inline void Mat4Message::clear_z() {
+inline void Mat4::clear_z() {
   if (GetArenaNoVirtual() == nullptr && z_ != nullptr) {
     delete z_;
   }
   z_ = nullptr;
 }
-inline const ::tbMath::Vec4Message& Mat4Message::z() const {
-  const ::tbMath::Vec4Message* p = z_;
-  // @@protoc_insertion_point(field_get:tbMath.Mat4Message.z)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec4Message*>(
-      &::tbMath::_Vec4Message_default_instance_);
+inline const ::MathMessage::Vec4& Mat4::z() const {
+  const ::MathMessage::Vec4* p = z_;
+  // @@protoc_insertion_point(field_get:MathMessage.Mat4.z)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec4*>(
+      &::MathMessage::_Vec4_default_instance_);
 }
-inline ::tbMath::Vec4Message* Mat4Message::release_z() {
-  // @@protoc_insertion_point(field_release:tbMath.Mat4Message.z)
+inline ::MathMessage::Vec4* Mat4::release_z() {
+  // @@protoc_insertion_point(field_release:MathMessage.Mat4.z)
   
-  ::tbMath::Vec4Message* temp = z_;
+  ::MathMessage::Vec4* temp = z_;
   z_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec4Message* Mat4Message::mutable_z() {
+inline ::MathMessage::Vec4* Mat4::mutable_z() {
   
   if (z_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec4Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec4>(GetArenaNoVirtual());
     z_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbMath.Mat4Message.z)
+  // @@protoc_insertion_point(field_mutable:MathMessage.Mat4.z)
   return z_;
 }
-inline void Mat4Message::set_allocated_z(::tbMath::Vec4Message* z) {
+inline void Mat4::set_allocated_z(::MathMessage::Vec4* z) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete z_;
@@ -1190,42 +1190,42 @@ inline void Mat4Message::set_allocated_z(::tbMath::Vec4Message* z) {
     
   }
   z_ = z;
-  // @@protoc_insertion_point(field_set_allocated:tbMath.Mat4Message.z)
+  // @@protoc_insertion_point(field_set_allocated:MathMessage.Mat4.z)
 }
 
-// .tbMath.Vec4Message w = 4;
-inline bool Mat4Message::has_w() const {
+// .MathMessage.Vec4 w = 4;
+inline bool Mat4::has_w() const {
   return this != internal_default_instance() && w_ != nullptr;
 }
-inline void Mat4Message::clear_w() {
+inline void Mat4::clear_w() {
   if (GetArenaNoVirtual() == nullptr && w_ != nullptr) {
     delete w_;
   }
   w_ = nullptr;
 }
-inline const ::tbMath::Vec4Message& Mat4Message::w() const {
-  const ::tbMath::Vec4Message* p = w_;
-  // @@protoc_insertion_point(field_get:tbMath.Mat4Message.w)
-  return p != nullptr ? *p : *reinterpret_cast<const ::tbMath::Vec4Message*>(
-      &::tbMath::_Vec4Message_default_instance_);
+inline const ::MathMessage::Vec4& Mat4::w() const {
+  const ::MathMessage::Vec4* p = w_;
+  // @@protoc_insertion_point(field_get:MathMessage.Mat4.w)
+  return p != nullptr ? *p : *reinterpret_cast<const ::MathMessage::Vec4*>(
+      &::MathMessage::_Vec4_default_instance_);
 }
-inline ::tbMath::Vec4Message* Mat4Message::release_w() {
-  // @@protoc_insertion_point(field_release:tbMath.Mat4Message.w)
+inline ::MathMessage::Vec4* Mat4::release_w() {
+  // @@protoc_insertion_point(field_release:MathMessage.Mat4.w)
   
-  ::tbMath::Vec4Message* temp = w_;
+  ::MathMessage::Vec4* temp = w_;
   w_ = nullptr;
   return temp;
 }
-inline ::tbMath::Vec4Message* Mat4Message::mutable_w() {
+inline ::MathMessage::Vec4* Mat4::mutable_w() {
   
   if (w_ == nullptr) {
-    auto* p = CreateMaybeMessage<::tbMath::Vec4Message>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::MathMessage::Vec4>(GetArenaNoVirtual());
     w_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:tbMath.Mat4Message.w)
+  // @@protoc_insertion_point(field_mutable:MathMessage.Mat4.w)
   return w_;
 }
-inline void Mat4Message::set_allocated_w(::tbMath::Vec4Message* w) {
+inline void Mat4::set_allocated_w(::MathMessage::Vec4* w) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete w_;
@@ -1241,7 +1241,7 @@ inline void Mat4Message::set_allocated_w(::tbMath::Vec4Message* w) {
     
   }
   w_ = w;
-  // @@protoc_insertion_point(field_set_allocated:tbMath.Mat4Message.w)
+  // @@protoc_insertion_point(field_set_allocated:MathMessage.Mat4.w)
 }
 
 #ifdef __GNUC__
@@ -1258,7 +1258,7 @@ inline void Mat4Message::set_allocated_w(::tbMath::Vec4Message* w) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace tbMath
+}  // namespace MathMessage
 
 // @@protoc_insertion_point(global_scope)
 

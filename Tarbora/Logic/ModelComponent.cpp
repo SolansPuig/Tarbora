@@ -20,13 +20,13 @@ namespace Tarbora {
             InfoComponent *info = static_cast<InfoComponent*>(GetComponent(id, "info"));
             if (info)
             {
-                Trigger("create_actor_model", CreateActor(id, info->GetEntity(), info->GetVariant()));
+                Trigger("create_actor_model", Message::CreateActor(id, info->GetEntity(), info->GetVariant()));
             }
 
             TransformComponent *transform = static_cast<TransformComponent*>(GetComponent(id, "transform"));
             if (transform)
             {
-                Trigger("move_actor", MoveActor(id, transform->GetPosition(), transform->GetRotationMatrix()));
+                Trigger("move_actor", Message::MoveActor(id, Position(transform->GetPosition()), RotationMat(transform->GetRotationMatrix())));
             }
 
             model->Enable();

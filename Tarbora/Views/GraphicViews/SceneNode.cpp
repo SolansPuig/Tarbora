@@ -5,9 +5,9 @@ namespace Tarbora {
         : m_Parent(nullptr), m_ActorId(actorId), m_Name(name), m_Transformation(1.0f),
         m_Deformation(1.0f), m_Origin(0.0f, 0.0f, 0.0f), m_Radius(0)
     {
-        m_Properties["position"] = PropertyPtr(new Position(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation));
-        m_Properties["rotation"] = PropertyPtr(new Rotation(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation, &m_Origin));
-        m_Properties["scale"] = PropertyPtr(new Scale(glm::vec3(1.0f, 1.0f, 1.0f), &m_Deformation, &m_Origin));
+        m_Properties["position"] = PropertyPtr(new NodePosition(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation));
+        m_Properties["rotation"] = PropertyPtr(new NodeRotation(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation, &m_Origin));
+        m_Properties["scale"] = PropertyPtr(new NodeScale(glm::vec3(1.0f, 1.0f, 1.0f), &m_Deformation, &m_Origin));
     }
 
     void SceneNode::Update(Scene *scene, float deltaTime)

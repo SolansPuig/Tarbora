@@ -19,6 +19,9 @@ namespace Tarbora {
         ActorModel *m_ActorModel;
         std::string m_AnimationsFile;
 
+        float m_Duration;
+        bool m_Loop;
+        float m_BlendTime;
         float m_Counter;
         float m_Crono;
 

@@ -5,6 +5,7 @@
 #include "ModelComponent.hpp"
 #include "PhysicsComponent.hpp"
 #include "ControllerComponent.hpp"
+#include "AnimationComponent.hpp"
 #include "../Messages/BasicMessages.hpp"
 
 #define REGISTER_SYSTEM(T) \
@@ -19,15 +20,16 @@ namespace Tarbora {
 
         REGISTER_SYSTEM(InfoSystem);
         REGISTER_SYSTEM(TypeSystem);
-        REGISTER_SYSTEM(ModelSystem);
         REGISTER_SYSTEM(ControllerSystem);
+        REGISTER_SYSTEM(AnimationSystem);
+        REGISTER_SYSTEM(ModelSystem);
         REGISTER_SYSTEM(PhysicsSystem);
         REGISTER_SYSTEM(TransformSystem);
 
         GetMessageManager()->Subscribe("create_actor", [this](MessageSubject subject, MessageBody *body)
         {
-            CreateActorBody m = body->GetContent<CreateActorBody>();
-            CreateActor(m.id(), m.entity(), Vec3toGLM(m.position()), Vec3toGLM(m.rotation()));
+            Message::CreateActor m(body);
+            CreateActor(m.GetId(), m.GetEntity(), m.GetPosition(), m.GetRotation());
         });
     }
 

@@ -8,22 +8,14 @@ namespace Tarbora {
     class MessageBody
     {
     public:
-        MessageBody(std::string body)
+        MessageBody(const std::string &body)
             : m_Body(body) {}
 
         MessageBody() {}
 
-        std::string GetContentStr() const
+        const std::string &GetContent() const
         {
             return m_Body;
-        }
-
-        template <class T>
-        T GetContent() const
-        {
-            T m;
-            m.ParseFromString(m_Body);
-            return m;
         }
 
     protected:

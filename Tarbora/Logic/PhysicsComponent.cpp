@@ -117,32 +117,32 @@ namespace Tarbora {
 
         Subscribe("apply_force", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.id()));
+            Message::ApplyPhysics m(body);
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
             if (physics && physics->m_Enabled)
-                physics->ApplyForce(m.magnitude(), Vec3toGLM(m.direction()));
+                physics->ApplyForce(m.GetMagnitude(), m.GetDirection());
         });
 
         Subscribe("apply_torque", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.id()));
+            Message::ApplyPhysics m(body);
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
             if (physics && physics->m_Enabled)
-                physics->ApplyTorque(m.magnitude(), Vec3toGLM(m.direction()));
+                physics->ApplyTorque(m.GetMagnitude(), m.GetDirection());
         });
 
         Subscribe("set_velocity", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.id()));
+            Message::ApplyPhysics m(body);
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
             if (physics && physics->m_Enabled)
-                physics->SetVelocity(m.magnitude(), Vec3toGLM(m.direction()));
+                physics->SetVelocity(m.GetMagnitude(), m.GetDirection());
         });
 
         Subscribe("stop", [this](MessageSubject subject, MessageBody *body)
         {
-            ApplyPhysicsBody m = body->GetContent<ApplyPhysicsBody>();
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.id()));
+            Message::ApplyPhysics m(body);
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
             if (physics && physics->m_Enabled)
                 physics->Stop();
         });

@@ -4,4 +4,5 @@ add_library (Logic SHARED
     TransformComponent.cpp
     PhysicsComponent.cpp
     ControllerComponent.cpp
+    AnimationComponent.cpp
 )

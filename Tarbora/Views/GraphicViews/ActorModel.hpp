@@ -14,7 +14,7 @@ namespace Tarbora {
 
         virtual std::shared_ptr<SceneNode> GetChild(const std::string &name) override;
 
-        void Animate(const std::string &animation, const std::string &animations_file="");
+        void Animate(const std::string &name, const std::string &file="");
 
     private:
         std::shared_ptr<MeshNode> CreateNode(ActorId id, RenderPass renderPass, LuaTable table);
@@ -22,6 +22,6 @@ namespace Tarbora {
 
         std::map<std::string, std::shared_ptr<SceneNode>> m_Nodes;
 
-        std::optional<AnimationController> m_AnimationController;
+        std::unique_ptr<AnimationController> m_AnimationController;
     };
 }

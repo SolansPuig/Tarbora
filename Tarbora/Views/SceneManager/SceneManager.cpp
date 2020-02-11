@@ -18,12 +18,12 @@ namespace Tarbora {
     void SceneManager::LoadActor(LuaTable actor)
     {
         GetMessageManager()->Send(1, "create_actor",
-            CreateActor(
+            Message::CreateActor(
                 actor.Get<std::string>("id", true),
                 actor.Get<std::string>("name"),
                 actor.Get<std::string>("variant", true),
-                actor.Get<glm::vec3>("position"),
-                actor.Get<glm::vec3>("rotation", true)
+                Position(actor.Get<glm::vec3>("position")),
+                Rotation(actor.Get<glm::vec3>("rotation", true))
             )
         );
     }

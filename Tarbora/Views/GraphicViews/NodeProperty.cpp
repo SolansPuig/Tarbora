@@ -55,24 +55,24 @@ namespace Tarbora {
         }
     }
 
-    void Position::Add(const glm::vec3 &newValue)
+    void NodePosition::Add(const glm::vec3 &newValue)
     {
         m_Value += newValue;
         *m_Transformation = glm::translate(*m_Transformation, newValue);
     }
 
-    PropertyPtr Position::MakeAnimatable()
+    PropertyPtr NodePosition::MakeAnimatable()
     {
-        return PropertyPtr(new AnimatedPosition(m_Value, m_Transformation));
+        return PropertyPtr(new AnimatedNodePosition(m_Value, m_Transformation));
     }
 
-    void AnimatedPosition::Add(const glm::vec3 &newValue)
+    void AnimatedNodePosition::Add(const glm::vec3 &newValue)
     {
         m_Value += newValue;
         *m_Transformation = glm::translate(*m_Transformation, newValue);
     }
 
-    void Rotation::Add(const glm::vec3 &newValue)
+    void NodeRotation::Add(const glm::vec3 &newValue)
     {
         glm::quat addValue(glm::radians(newValue));
 
@@ -83,12 +83,12 @@ namespace Tarbora {
         m_Value = glm::degrees(glm::eulerAngles(glm::quat_cast(*m_Transformation)));
     }
 
-    PropertyPtr Rotation::MakeAnimatable()
+    PropertyPtr NodeRotation::MakeAnimatable()
     {
-        return PropertyPtr(new AnimatedRotation(m_Value, m_Transformation, m_Origin));
+        return PropertyPtr(new AnimatedNodeRotation(m_Value, m_Transformation, m_Origin));
     }
 
-    void AnimatedRotation::Add(const glm::vec3 &newValue)
+    void AnimatedNodeRotation::Add(const glm::vec3 &newValue)
     {
         glm::quat addValue(glm::radians(newValue));
 
@@ -99,7 +99,7 @@ namespace Tarbora {
         m_Value = glm::degrees(glm::eulerAngles(glm::quat_cast(*m_Transformation)));
     }
 
-    void AnimatedRotation::Interpolate(float fraction)
+    void AnimatedNodeRotation::Interpolate(float fraction)
     {
         if (fraction >= 1.0f)
         {
@@ -115,30 +115,30 @@ namespace Tarbora {
         }
     }
 
-    void Scale::Set(const glm::vec3 &newValue)
+    void NodeScale::Set(const glm::vec3 &newValue)
     {
         Add(newValue/m_Value);
     }
 
-    void Scale::Add(const glm::vec3 &newValue)
+    void NodeScale::Add(const glm::vec3 &newValue)
     {
         *m_Transformation = glm::scale(*m_Transformation, newValue);
         m_Value *= newValue;
         (*m_Origin) *= newValue;
     }
 
-    PropertyPtr Scale::MakeAnimatable()
+    PropertyPtr NodeScale::MakeAnimatable()
     {
-        return PropertyPtr(new AnimatedScale(m_Value, m_Transformation, m_Origin));
+        return PropertyPtr(new AnimatedNodeScale(m_Value, m_Transformation, m_Origin));
     }
 
 
-    void AnimatedScale::Set(const glm::vec3 &newValue)
+    void AnimatedNodeScale::Set(const glm::vec3 &newValue)
     {
         Add(newValue/m_Value);
     }
 
-    void AnimatedScale::Add(const glm::vec3 &newValue)
+    void AnimatedNodeScale::Add(const glm::vec3 &newValue)
     {
         *m_Transformation = glm::scale(*m_Transformation, newValue);
         m_Value *= newValue;

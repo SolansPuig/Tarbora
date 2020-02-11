@@ -23,46 +23,48 @@ namespace Tarbora {
 
         Subscribe("create_actor_model", [this](MessageSubject subject, MessageBody * body)
         {
-            CreateActorBody m = body->GetContent<CreateActorBody>();
-            if (m_Scene->GetActor(m.id()) != nullptr)
+            Message::CreateActor m(body);
+            if (m_Scene->GetActor(m.GetId()) != nullptr)
             {
-                m_Scene->RemoveActor(m.id());
+                m_Scene->RemoveActor(m.GetId());
             }
-            m_Scene->CreateActorModel(m.id(), m.entity(), m.variant());
+            m_Scene->CreateActorModel(m.GetId(), m.GetEntity(), m.GetVariant());
         });
 
         Subscribe("set_camera", [this](MessageSubject subject, MessageBody *body)
         {
-            SetCameraBody m = body->GetContent<SetCameraBody>();
-            m_Scene->SetCamera(m.id(), m.name());
+            Message::Node m(body);
+            m_Scene->SetCamera(m.GetId(), m.GetName());
         });
 
         Subscribe("move_actor", [this](MessageSubject subject, MessageBody *body)
         {
-            MoveActorBody m = body->GetContent<MoveActorBody>();
-            std::shared_ptr<SceneNode> actor = m_Scene->GetActor(m.id());
-            actor->SetPosition(Vec3toGLM(m.position()));
-            actor->SetRotationMatrix(Mat3toGLM(m.rotation()));
+            Message::MoveActor m(body);
+            std::shared_ptr<SceneNode> actor = m_Scene->GetActor(m.GetId());
+            actor->SetPosition(m.GetPosition());
+            actor->SetRotationMatrix(m.GetRotation());
         });
 
         Subscribe("move_node", [this](MessageSubject subject, MessageBody *body)
         {
-            MoveNodeBody m = body->GetContent<MoveNodeBody>();
-            std::shared_ptr<SceneNode> node = m_Scene->GetActor(m.id())->GetChild(m.node());
-            node->Add("position", Vec3toGLM(m.position()));
-            node->Add("rotation", Vec3toGLM(m.rotation()));
+            Message::MoveNode m(body);
+            std::shared_ptr<SceneNode> node = m_Scene->GetActor(m.GetId())->GetChild(m.GetName());
+            if (m.HasPosition())
+                node->Set("position", m.GetPosition());
+            if (m.HasRotation())
+                node->Set("rotation", m.GetRotation());
         });
 
         Subscribe("delete_actor", [this](MessageSubject subject, MessageBody *body)
         {
-            DeleteActorBody m = body->GetContent<DeleteActorBody>();
-            m_Scene->RemoveActor(m.id());
+            Message::Actor m(body);
+            m_Scene->RemoveActor(m.GetId());
         });
 
-        Subscribe("set_actor_animation", [this](MessageSubject subject, MessageBody *body)
+        Subscribe("set_animation", [this](MessageSubject subject, MessageBody *body)
         {
-            SetActorAnimationBody m = body->GetContent<SetActorAnimationBody>();
-            m_Scene->AnimateActor(m.id(), m.animation());
+            Message::SetAnimation m(body);
+            m_Scene->AnimateActor(m.GetId(), m.GetAnimation(), m.GetFile());
         });
 
         m_Scene->SetCamera(m_TargetId, "1st_person");
@@ -98,7 +100,7 @@ namespace Tarbora {
 
         if (GetInputManager()->GetKeyDown(KEY_X))
         {
-            Send(1, "create_actor", CreateActor("", "cube.lua", "", glm::vec3(0.f,1.f,-5.f)));
+            Send(1, "create_actor", Message::CreateActor("", "cube.lua", "", Position(glm::vec3(0.f,1.f,-5.f))));
         }
         if (GetInputManager()->GetKeyDown(KEY_Y))
         {
@@ -119,15 +121,15 @@ namespace Tarbora {
         }
         if (m_Movement != lastMovement)
         {
-            Send(1, "set_movement", ApplyPhysics(m_TargetId, 1, glm::normalize(m_Movement)));
+            Send(1, "set_movement", Message::ApplyPhysics(m_TargetId, 1, Direction(glm::normalize(m_Movement))));
         }
         if (m_LookDirection != lastLookDirection)
         {
-            Send(1, "look_direction", LookDirection(m_TargetId, m_LookDirection));
+            Send(1, "look_direction", Message::LookAt(m_TargetId, Direction(glm::vec3(m_LookDirection, 0.f))));
         }
         if (m_Jump)
         {
-            Send(1, "apply_force", ApplyPhysics(m_TargetId, 1, glm::vec3(0.f, 1.f, 0.f)));
+            Send(1, "apply_force", Message::ApplyPhysics(m_TargetId, 1, Direction(glm::vec3(0.f, 1.f, 0.f))));
             m_Jump = false;
         }
     }

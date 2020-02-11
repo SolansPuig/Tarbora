@@ -18,7 +18,7 @@ namespace Tarbora {
         std::shared_ptr<ActorModel> CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material);
         std::shared_ptr<ActorModel> CreateActorModel(ActorId id, std::string entity, std::string variant);
 
-        void AnimateActor(ActorId id, std::string animation);
+        void AnimateActor(ActorId id, const std::string &animation, const std::string &file="");
 
         std::shared_ptr<Skybox> CreateSkybox(std::string material);
         std::shared_ptr<Skybox> GetSkybox() { return m_Skybox; }

@@ -130,15 +130,26 @@ namespace Tarbora {
     class LuaScript : public Resource {
         friend class LuaLoader;
     public:
-        LuaScript(const std::string &file)
-            : Resource(file)
+        LuaScript(const std::string &script, bool isFile = true)
+            : Resource(script)
         {
             m_Lua.require_file("p", "../Resources/LuaParameters.lua");
-            m_Lua.safe_script_file(file, [](lua_State*, sol::protected_function_result pfr) {
-                sol::error err = pfr;
-                LOG_ERR("Error: In file %s", err.what());
-                return pfr;
-            });
+            if (isFile)
+            {
+                m_Lua.safe_script_file(script, [](lua_State*, sol::protected_function_result pfr) {
+                    sol::error err = pfr;
+                    LOG_ERR("Error: In file %s", err.what());
+                    return pfr;
+                });
+            }
+            else
+            {
+                m_Lua.safe_script(script, [](lua_State*, sol::protected_function_result pfr) {
+                    sol::error err = pfr;
+                    LOG_ERR("Error: In script %s", err.what());
+                    return pfr;
+                });
+            }
             m_Lua.open_libraries(sol::lib::base, sol::lib::math);
         }
 
@@ -199,7 +210,7 @@ namespace Tarbora {
                 if (!file) return std::shared_ptr<Resource>();
             }
 
-            return std::shared_ptr<Resource>(new LuaScript(path));
+            return std::shared_ptr<Resource>(new LuaScript(path, true));
         }
     };
 
@@ -230,6 +241,18 @@ namespace Tarbora {
     inline glm::vec3 LuaType<glm::vec3>::GetDefault() { return glm::vec3(0.0f); }
     template <>
     inline std::string LuaType<glm::vec3>::GetErrorName() { return "Not a vec3"; }
+    template <>
+    inline glm::vec4 LuaType<glm::vec4>::GetDefault() { return glm::vec4(0.0f); }
+    template <>
+    inline std::string LuaType<glm::vec4>::GetErrorName() { return "Not a vec4"; }
+    template <>
+    inline glm::mat3 LuaType<glm::mat3>::GetDefault() { return glm::mat3(1.0f); }
+    template <>
+    inline std::string LuaType<glm::mat3>::GetErrorName() { return "Not a mat3"; }
+    template <>
+    inline glm::mat4 LuaType<glm::mat4>::GetDefault() { return glm::mat4(1.0f); }
+    template <>
+    inline std::string LuaType<glm::mat4>::GetErrorName() { return "Not a mat4"; }
 
 
     template <class T>
@@ -487,7 +510,88 @@ namespace Tarbora {
     }
 
     template <>
+    inline LuaTable &LuaType<glm::vec4>::Set(LuaTable *table, const std::string &name, glm::vec4 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(name);
+            for (unsigned int i = 0; i < 4; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
+    }
+
+    template <>
+    inline LuaTable &LuaType<glm::vec4>::Set(LuaTable *table, unsigned int index, glm::vec4 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(index);
+            for (unsigned int i = 0; i < 4; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
+    }
+
+    template <>
+    inline LuaTable &LuaType<glm::mat3>::Set(LuaTable *table, const std::string &name, glm::mat3 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(name);
+            for (unsigned int i = 0; i < 3; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
+    }
+
+    template <>
+    inline LuaTable &LuaType<glm::mat3>::Set(LuaTable *table, unsigned int index, glm::mat3 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(index);
+            for (unsigned int i = 0; i < 3; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
+    }
+
+    template <>
+    inline LuaTable &LuaType<glm::mat4>::Set(LuaTable *table, const std::string &name, glm::mat4 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(name);
+            for (unsigned int i = 0; i < 4; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
+    }
+
+    template <>
+    inline LuaTable &LuaType<glm::mat4>::Set(LuaTable *table, unsigned int index, glm::mat4 value)
+    {
+        if (table->m_Table)
+        {
+            LuaTable t = table->CreateTable(index);
+            for (unsigned int i = 0; i < 4; i++)
+                t.Set(i+1, value[i]);
+        }
+        return *table;
+    }
+
+    template <>
     inline bool LuaType<glm::vec3>::Is(const sol_object &object) { return object.is<sol::table>(); }
+
+    template <>
+    inline bool LuaType<glm::vec4>::Is(const sol_object &object) { return object.is<sol::table>(); }
+
+    template <>
+    inline bool LuaType<glm::mat3>::Is(const sol_object &object) { return object.is<sol::table>(); }
+
+    template <>
+    inline bool LuaType<glm::mat4>::Is(const sol_object &object) { return object.is<sol::table>(); }
 
     template <>
     inline glm::vec3 LuaType<glm::vec3>::As(sol::state *state, const sol_object &object, const std::string &name, glm::vec3 def, bool silent)
@@ -497,6 +601,36 @@ namespace Tarbora {
         for (int i = 0; i < 3; i++)
             vec[i] = table.Get<float>(i+1, def[i], silent);
         return vec;
+    }
+
+    template <>
+    inline glm::vec4 LuaType<glm::vec4>::As(sol::state *state, const sol_object &object, const std::string &name, glm::vec4 def, bool silent)
+    {
+        LuaTable table = LuaType<LuaTable>::As(state, object, name, LuaTable(), silent);
+        glm::vec4 vec;
+        for (int i = 0; i < 4; i++)
+            vec[i] = table.Get<float>(i+1, def[i], silent);
+        return vec;
+    }
+
+    template <>
+    inline glm::mat3 LuaType<glm::mat3>::As(sol::state *state, const sol_object &object, const std::string &name, glm::mat3 def, bool silent)
+    {
+        LuaTable table = LuaType<LuaTable>::As(state, object, name, LuaTable(), silent);
+        glm::mat3 mat;
+        for (int i = 0; i < 3; i++)
+            mat[i] = table.Get<glm::vec3>(i+1, def[i], silent);
+        return mat;
+    }
+
+    template <>
+    inline glm::mat4 LuaType<glm::mat4>::As(sol::state *state, const sol_object &object, const std::string &name, glm::mat4 def, bool silent)
+    {
+        LuaTable table = LuaType<LuaTable>::As(state, object, name, LuaTable(), silent);
+        glm::mat4 mat;
+        for (int i = 0; i < 4; i++)
+            mat[i] = table.Get<glm::vec4>(i+1, def[i], silent);
+        return mat;
     }
 
     template <>

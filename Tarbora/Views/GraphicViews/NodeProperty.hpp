@@ -45,9 +45,9 @@ namespace Tarbora {
         glm::vec3 m_TargetValue;
     };
 
-    class Position : public NodeProperty {
+    class NodePosition : public NodeProperty {
     public:
-        Position(const glm::vec3 &value, glm::mat4 *transformation)
+        NodePosition(const glm::vec3 &value, glm::mat4 *transformation)
             : NodeProperty(value), m_Transformation(transformation) {}
 
         virtual void Add(const glm::vec3 &value);
@@ -58,21 +58,21 @@ namespace Tarbora {
         glm::mat4 *m_Transformation;
     };
 
-    class AnimatedPosition : public AnimatedNodeProperty {
-        friend class Position;
+    class AnimatedNodePosition : public AnimatedNodeProperty {
+        friend class NodePosition;
     public:
         virtual void Add(const glm::vec3 &value);
 
     protected:
-        AnimatedPosition(const glm::vec3 &value, glm::mat4 *transformation)
+        AnimatedNodePosition(const glm::vec3 &value, glm::mat4 *transformation)
             : AnimatedNodeProperty(value), m_Transformation(transformation) {}
 
         glm::mat4 *m_Transformation;
     };
 
-    class Rotation : public NodeProperty {
+    class NodeRotation : public NodeProperty {
     public:
-        Rotation(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
+        NodeRotation(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
             : NodeProperty(value), m_Transformation(transformation), m_Origin(origin) {}
 
         virtual void Add(const glm::vec3 &value);
@@ -84,13 +84,13 @@ namespace Tarbora {
         glm::vec3 *m_Origin;
     };
 
-    class AnimatedRotation : public AnimatedNodeProperty {
-        friend class Rotation;
+    class AnimatedNodeRotation : public AnimatedNodeProperty {
+        friend class NodeRotation;
     public:
         virtual void Add(const glm::vec3 &value);
 
     protected:
-        AnimatedRotation(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
+        AnimatedNodeRotation(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
             : AnimatedNodeProperty(value), m_Transformation(transformation), m_Origin(origin) {}
 
         virtual void Interpolate(float fraction);
@@ -99,9 +99,9 @@ namespace Tarbora {
         glm::vec3 *m_Origin;
     };
 
-    class Scale : public NodeProperty {
+    class NodeScale : public NodeProperty {
     public:
-        Scale(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
+        NodeScale(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
             : NodeProperty(value), m_Transformation(transformation), m_Origin(origin) {}
 
         virtual void Set(const glm::vec3 &value);
@@ -114,14 +114,14 @@ namespace Tarbora {
         glm::vec3 *m_Origin;
     };
 
-    class AnimatedScale : public AnimatedNodeProperty {
-        friend class Scale;
+    class AnimatedNodeScale : public AnimatedNodeProperty {
+        friend class NodeScale;
     public:
         virtual void Set(const glm::vec3 &value);
         virtual void Add(const glm::vec3 &value);
 
     protected:
-        AnimatedScale(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
+        AnimatedNodeScale(const glm::vec3 &value, glm::mat4 *transformation, glm::vec3 *origin)
             : AnimatedNodeProperty(value), m_Transformation(transformation), m_Origin(origin) {}
 
         glm::mat4 *m_Transformation;
