@@ -1,29 +1,28 @@
 #pragma once
 #include "Layer.hpp"
 #include "GraphicView.hpp"
-#include "GameLayer.hpp"
-#include "Console.hpp"
+#include "ModelEditor.hpp"
 
 namespace Tarbora {
+    class GameLayer;
+
     class HumanView : public GraphicView
     {
     public:
         HumanView();
         ~HumanView();
 
-        virtual void GetInput() override;
-        virtual void Update(float elapsed_time) override;
-        virtual void Draw() override;
+        virtual void getInput() override;
+        virtual void update(float delta_time) override;
+        virtual void draw() override;
 
-        virtual void PushLayer(std::shared_ptr<Layer> layer);
-        virtual void RemoveLayer(std::shared_ptr<Layer> layer);
+        virtual void pushLayer(std::shared_ptr<Layer> layer);
+        virtual void removeLayer(std::shared_ptr<Layer> layer);
 
-        std::shared_ptr<GameLayerImpl> GameLayer() { return m_GameLayer; }
-        std::shared_ptr<ConsoleImpl> Console() { return m_Console; }
+        std::shared_ptr<GameLayer> getGameLayer() { return game_layer_; }
 
     protected:
-        LayerList m_Layers;
-        std::shared_ptr<GameLayerImpl> m_GameLayer;
-        std::shared_ptr<ConsoleImpl> m_Console;
+        std::shared_ptr<GameLayer> game_layer_;
+        std::list<std::shared_ptr<Layer>> layers_;
     };
 }

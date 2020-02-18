@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/Module.hpp"
+#include "../../../Framework/Module/Module.hpp"
 #include "../../Framework/Global.hpp"
 
 namespace Tarbora {
@@ -9,9 +9,9 @@ namespace Tarbora {
         SceneManager() : Module(2) {}
         ~SceneManager() {}
 
-        void Load(const std::string &level);
-        virtual void Update(float elapsed_time) override {}
+        void load(const std::string &level);
+        virtual void update(float delta_time) override { UNUSED(delta_time); }
 
-        void LoadActor(LuaTable table);
+        void loadActor(LuaTable table);
     };
 }

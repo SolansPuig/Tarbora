@@ -1,5 +1,5 @@
 #pragma once
-#include "../Framework/Module.hpp"
+#include "../Framework/Framework.hpp"
 
 namespace Tarbora {
     class System;
@@ -10,22 +10,22 @@ namespace Tarbora {
         public:
             World();
 
-            ActorId CreateActor(ActorId id, const std::string &entity, const glm::vec3 &position, const glm::vec3 &rotation);
+            ActorId createActor(ActorId id, const std::string &entity, const glm::vec3 &p, const glm::quat &r);
 
-            void Update(float deltaTime);
+            void update(float delta_time);
 
-            void AddComponent(const ActorId &id, const ComponentId &name, const LuaTable &t);
+            void addComponent(const ActorId &id, const ComponentId &component, const LuaTable &table);
 
-            Component *GetComponent(const ActorId &id, const ComponentId &compId);
+            Component* getComponent(const ActorId &id, const ComponentId &component);
 
-            void EnableActor(const ActorId &id);
+            void enableActor(const ActorId &id);
 
-            void DisableActor(const ActorId &id);
+            void disableActor(const ActorId &id);
 
 
         private:
-            std::unordered_map<ComponentId, std::shared_ptr<System>> m_Systems;
-            std::vector<ComponentId> m_SystemsOrdered;
-            long m_NextId;
+            std::unordered_map<ComponentId, std::shared_ptr<System>> systems_;
+            std::vector<ComponentId> systems_order_;
+            long next_id_;
     };
 }

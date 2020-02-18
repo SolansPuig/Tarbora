@@ -7,18 +7,18 @@ namespace Tarbora {
     public:
         ModelComponent(System *s, const ActorId &id, const LuaTable &table);
 
-        void SetRenderPass(int renderPass) { m_RenderPass = renderPass; }
-        void SetModel(const std::string &model) { m_Model = model; }
-        void SetMaterial(const std::string &material) { m_Material = material; }
+        void setRenderPass(int render_pass) { render_pass_ = render_pass; }
+        void setModel(const std::string &model) { model_ = model; }
+        void setMaterial(const std::string &material) { material_ = material; }
 
-        int GetRenderPass() { return m_RenderPass; }
-        const std::string &GetModel() { return m_Model; }
-        const std::string &GetMaterial() { return m_Material; }
+        int getRenderPass() { return render_pass_; }
+        const std::string& getModel() { return model_; }
+        const std::string& getMaterial() { return material_; }
 
     private:
-        int m_RenderPass;
-        std::string m_Model;
-        std::string m_Material;
+        int render_pass_;
+        std::string model_;
+        std::string material_;
     };
 
     class ModelSystem : public SystemImpl<ModelComponent>
@@ -26,8 +26,8 @@ namespace Tarbora {
     public:
         ModelSystem(World *w) : SystemImpl<ModelComponent>(w) {}
 
-        static std::string GetName() { return "model"; }
+        static std::string getName() { return "model"; }
 
-        virtual void Init(const ActorId &id);
+        virtual void init(const ActorId &id);
     };
 }

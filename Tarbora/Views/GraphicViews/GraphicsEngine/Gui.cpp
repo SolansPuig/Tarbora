@@ -1,10 +1,10 @@
 #include "GraphicsEngine.hpp"
-#include "imgui/examples/imgui_impl_glfw.h"
-#include "imgui/examples/imgui_impl_opengl3.h"
+#include "External/imgui/examples/imgui_impl_glfw.h"
+#include "External/imgui/examples/imgui_impl_opengl3.h"
 
 namespace Tarbora {
     Gui::Gui(GraphicsEngine *graphicsEngine) :
-        m_GraphicsEngine(graphicsEngine)
+        graphics_engine_(graphicsEngine)
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
@@ -14,7 +14,7 @@ namespace Tarbora {
         ImGui::StyleColorsDark();
         // ImGuiStyle& style = ImGui::GetStyle();
 
-        ImGui_ImplGlfw_InitForOpenGL(graphicsEngine->GetWindow()->GetRawWindow(), true);
+        ImGui_ImplGlfw_InitForOpenGL(graphicsEngine->getWindow()->getRawWindow(), true);
         ImGui_ImplOpenGL3_Init("#version 410");
     }
 
@@ -25,14 +25,14 @@ namespace Tarbora {
         ImGui::DestroyContext();
     }
 
-    void Gui::BeforeDraw()
+    void Gui::beforeDraw()
     {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
     }
 
-    void Gui::AfterDraw()
+    void Gui::afterDraw()
     {
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

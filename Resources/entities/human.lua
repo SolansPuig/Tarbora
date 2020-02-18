@@ -7,7 +7,6 @@ components = {
     },
     animation = {
         file = "human.lua",
-        -- allowed = ["idle", "move"]
     },
     physics = {
         shape = "capsule",

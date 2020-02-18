@@ -7,36 +7,36 @@ namespace Tarbora {
     struct RenderElementData
     {
         glm::mat4 transform;
-        glm::tvec2<unsigned short> uvMap;
-        glm::vec3 meshSize;
-        glm::vec3 textureSize;
-        glm::tvec3<char> colorPrimary;
-        glm::tvec3<char> colorSecondary;
-        glm::tvec3<char> colorDetail;
-        glm::tvec3<char> colorDetail2;
+        glm::tvec2<unsigned short> uv_map;
+        glm::vec3 mesh_size;
+        glm::vec3 texture_size;
+        glm::tvec3<unsigned char> color_primary;
+        glm::tvec3<unsigned char> color_secondary;
+        glm::tvec3<unsigned char> color_detail;
+        glm::tvec3<unsigned char> color_detail2;
     };
 
     class MeshInternal
     {
     public:
-        MeshInternal(std::vector<float> data, unsigned int vertices);
+        MeshInternal(const std::vector<float> &data, unsigned int vertices);
         ~MeshInternal();
 
-        void Bind();
-        void Draw();
-        void AddInstance(RenderElementData data);
-        void DrawInstanced();
+        void bind();
+        void draw();
+        void addInstance(const RenderElementData &data);
+        void drawInstanced();
 
-        MeshId GetId() { return m_Vao; }
-        int GetVertices() const { return m_Vertices; }
+        const MeshId &getId() { return vao_; }
+        int getVertices() const { return vertices_; }
 
     private:
-        void Build(std::vector<float> data);
-        void Delete();
+        void build(const std::vector<float> &data);
+        void deleteMesh();
 
-        unsigned int m_Vao;
-        unsigned int m_DataBuffer;
-        int m_Vertices;
-        std::vector<RenderElementData> m_InstanceData;
+        unsigned int vao_;
+        unsigned int data_buffer_;
+        int vertices_;
+        std::vector<RenderElementData> instance_data_;
     };
 }

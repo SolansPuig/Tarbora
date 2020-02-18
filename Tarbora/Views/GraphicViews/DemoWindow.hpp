@@ -8,16 +8,16 @@ namespace Tarbora {
         DemoWindow(GraphicView *view, bool start_active) : Layer(view, start_active)
         {}
 
-        void GetInput() override
+        void getInput() override
         {
-            if (GetInputManager()->GetKeyDown(KEY_F5)) {
-                m_active = !m_active;
+            if (getInputManager()->getKeyDown(KEY_F6)) {
+                active_ = !active_;
             }
         }
 
-        void Draw() override
+        void draw() override
         {
-            ImGui::ShowDemoWindow(&m_active);
+            ImGui::ShowDemoWindow(&active_);
         }
     };
 }

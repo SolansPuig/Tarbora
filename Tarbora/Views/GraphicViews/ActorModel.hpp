@@ -1,5 +1,6 @@
 #pragma once
-#include "../../Framework/Module.hpp"
+#include "../../Framework/Module/Module.hpp"
+#include "ActorModel.hpp"
 #include "SceneNode.hpp"
 #include "AnimationController.hpp"
 
@@ -8,20 +9,20 @@ namespace Tarbora {
     {
         friend class AnimationController;
     public:
-        ActorModel(ActorId id, RenderPass renderPass, const std::string &model, const std::string &material);
+        ActorModel(const ActorId &id, RenderPass render_pass, const std::string &model, const std::string &material);
 
-        virtual void Update(Scene *scene, float deltaTime) override;
+        std::shared_ptr<MeshNode> createNode(const ActorId &id, RenderPass render_pass, LuaTable table);
 
-        virtual std::shared_ptr<SceneNode> GetChild(const std::string &name) override;
+        std::shared_ptr<Camera> createCamera(const ActorId &id, LuaTable table);
 
-        void Animate(const std::string &name, const std::string &file="");
+        virtual void update(Scene *scene, float delta_time) override;
+
+        virtual std::shared_ptr<SceneNode> getChild(const std::string &name) override;
+
+        void animate(const std::string &name, const std::string &file="");
 
     private:
-        std::shared_ptr<MeshNode> CreateNode(ActorId id, RenderPass renderPass, LuaTable table);
-        std::shared_ptr<Camera> CreateCamera(ActorId id, LuaTable table);
-
-        std::map<std::string, std::shared_ptr<SceneNode>> m_Nodes;
-
-        std::unique_ptr<AnimationController> m_AnimationController;
+        std::map<std::string, std::shared_ptr<SceneNode>> nodes_;
+        std::unique_ptr<AnimationController> animation_controller_;
     };
 }

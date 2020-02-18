@@ -1,6 +1,6 @@
 #pragma once
 #include "../../../Framework/Global.hpp"
-#include "../../../Framework/ResourceManager/inc/Resource.hpp"
+#include "../../../Framework/ResourceManager/Resource.hpp"
 
 namespace Tarbora {
     class Shader : public Resource
@@ -9,29 +9,28 @@ namespace Tarbora {
     public:
         ~Shader();
 
-        void Use() const;
-        unsigned int GetId() const { return m_Id; }
+        void use() const;
+        unsigned int getId() const { return id_; }
 
-        void Set(const std::string name, bool value);
-        void Set(const std::string name, int value);
-        void Set(const std::string name, float value);
-        void Set(const std::string name, const glm::vec2 &value);
-        void Set(const std::string name, float x, float y);
-        void Set(const std::string name, const glm::vec3 &value);
-        void Set(const std::string name, float x, float y, float z);
-        void Set(const std::string name, const glm::vec4 &value);
-        void Set(const std::string name, float x, float y, float z, float w);
-        void Set(const std::string name, const glm::mat4 &value);
+        void set(const std::string &name, bool value);
+        void set(const std::string &name, int value);
+        void set(const std::string &name, float value);
+        void set(const std::string &name, const glm::vec2 &value);
+        void set(const std::string &name, float x, float y);
+        void set(const std::string &name, const glm::vec3 &value);
+        void set(const std::string &name, float x, float y, float z);
+        void set(const std::string &name, const glm::vec4 &value);
+        void set(const std::string &name, float x, float y, float z, float w);
+        void set(const std::string &name, const glm::mat4 &value);
     private:
-        Shader(std::string name) : Resource(name) {}
-        void Delete();
+        Shader(const std::string &name) : Resource(name) {}
+        void deleteShader();
 
-        unsigned int CompileShader(const std::string &path, const std::string &type);
-        unsigned int CompileShaderFile(const std::string &type, const std::string &code);
-        void LinkProgram(unsigned int *ids);
-        void DeleteProgram();
+        unsigned int compileShader(const std::string &path, const std::string &type);
+        unsigned int compileShaderFile(const std::string &type, const std::string &code);
+        void linkProgram(unsigned int *ids);
 
-        unsigned int m_Id;
+        unsigned int id_;
     };
 
     //! \cond HIDDEN_SYMBOLS
@@ -39,8 +38,8 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string GetPattern() override { return "*.shader.lua"; };
-        virtual std::shared_ptr<Resource> Load(std::string path) override;
+        virtual const std::string getPattern() override { return "*.shader.lua"; };
+        virtual std::shared_ptr<Resource> load(const std::string &path) override;
     };
     //! \endcond
 }

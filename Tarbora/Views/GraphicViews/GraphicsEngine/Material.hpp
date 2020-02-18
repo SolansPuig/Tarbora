@@ -9,23 +9,23 @@ namespace Tarbora {
     {
         friend class MaterialResourceLoader;
     public:
-        void Bind(const glm::mat4 &projection, const glm::mat4 &view) const;
+        void bind(const glm::mat4 &projection, const glm::mat4 &view) const;
 
-        ResourcePtr<Texture> GetAlbedo() const { return m_Albedo; }
-        ResourcePtr<Texture> GetSpecular() const { return m_Specular; }
-        ResourcePtr<Texture> GetColorTint() const { return m_ColorTint; }
-        ResourcePtr<Shader> GetShader() const { return m_Shader; }
-        MaterialId GetId() const { return m_Name; }
+        ResourcePtr<Texture> getAlbedo() const { return albedo_; }
+        ResourcePtr<Texture> getSpecular() const { return specular_; }
+        ResourcePtr<Texture> getColorTint() const { return color_tint_; }
+        ResourcePtr<Shader> getShader() const { return shader_; }
+        const MaterialId& getId() const { return name_; }
 
     private:
-        Material(std::string name)
+        Material(const std::string &name)
             : Resource(name) {}
 
-        ResourcePtr<Texture> m_Albedo;
-        ResourcePtr<Texture> m_Specular;
-        ResourcePtr<Texture> m_ColorTint;
-        ResourcePtr<Shader> m_Shader;
-        int m_PixelDensity;
+        ResourcePtr<Texture> albedo_;
+        ResourcePtr<Texture> specular_;
+        ResourcePtr<Texture> color_tint_;
+        ResourcePtr<Shader> shader_;
+        int pixel_density_;
     };
 
     //! \cond HIDDEN_SYMBOLS
@@ -33,8 +33,8 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string GetPattern() override { return "*.mat.lua"; };
-        virtual std::shared_ptr<Resource> Load(std::string path) override;
+        virtual const std::string getPattern() override { return "*.mat.lua"; };
+        virtual std::shared_ptr<Resource> load(const std::string &path) override;
     };
     //! \endcond
 }

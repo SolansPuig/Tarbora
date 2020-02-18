@@ -2,52 +2,52 @@
 #include "Window.hpp"
 
 namespace Tarbora {
-    MeshInternal::MeshInternal(std::vector<float> data, unsigned int vertices)
+    MeshInternal::MeshInternal(const std::vector<float> &data, unsigned int vertices)
     {
-        m_Vertices = vertices;
-        Build(data);
+        vertices_ = vertices;
+        build(data);
     }
 
     MeshInternal::~MeshInternal()
     {
-        Delete();
+        deleteMesh();
     }
 
-    void MeshInternal::Bind()
+    void MeshInternal::bind()
     {
-        glBindVertexArray(m_Vao);
+        glBindVertexArray(vao_);
     }
 
-    void MeshInternal::AddInstance(RenderElementData data)
+    void MeshInternal::addInstance(const RenderElementData &data)
     {
-        m_InstanceData.push_back(data);
+        instance_data_.push_back(data);
     }
 
-    void MeshInternal::Draw()
+    void MeshInternal::draw()
     {
-        glBindVertexArray(m_Vao);
-        glDrawArrays(GL_TRIANGLES, 0, m_Vertices);
+        glBindVertexArray(vao_);
+        glDrawArrays(GL_TRIANGLES, 0, vertices_);
     }
 
-    void MeshInternal::DrawInstanced()
+    void MeshInternal::drawInstanced()
     {
-        unsigned int amount = m_InstanceData.size();
-        glBindBuffer(GL_ARRAY_BUFFER, m_DataBuffer);
-        glBufferData(GL_ARRAY_BUFFER, amount * sizeof(RenderElementData), &m_InstanceData[0], GL_STATIC_DRAW);
-        glBindVertexArray(m_Vao);
-        glDrawArraysInstanced(GL_TRIANGLES, 0, m_Vertices, amount);
-        m_InstanceData.clear();
+        unsigned int amount = instance_data_.size();
+        glBindBuffer(GL_ARRAY_BUFFER, data_buffer_);
+        glBufferData(GL_ARRAY_BUFFER, amount * sizeof(RenderElementData), &instance_data_[0], GL_STATIC_DRAW);
+        glBindVertexArray(vao_);
+        glDrawArraysInstanced(GL_TRIANGLES, 0, vertices_, amount);
+        instance_data_.clear();
     }
 
-    void MeshInternal::Build(std::vector<float> data)
+    void MeshInternal::build(const std::vector<float> &data)
     {
         unsigned int VBO;
-        glGenVertexArrays(1, &m_Vao);
+        glGenVertexArrays(1, &vao_);
         glGenBuffers(1, &VBO);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), &data[0], GL_STATIC_DRAW);
 
-        glBindVertexArray(m_Vao);
+        glBindVertexArray(vao_);
         glEnableVertexAttribArray(0); // position
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(1); // normal
@@ -55,8 +55,8 @@ namespace Tarbora {
         glEnableVertexAttribArray(2); // vertex id
         glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(6 * sizeof(float)));
 
-        glGenBuffers(1, &m_DataBuffer);
-        glBindBuffer(GL_ARRAY_BUFFER, m_DataBuffer);
+        glGenBuffers(1, &data_buffer_);
+        glBindBuffer(GL_ARRAY_BUFFER, data_buffer_);
         glEnableVertexAttribArray(3); // transform[0]
         glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 104, (void*)0);
         glEnableVertexAttribArray(4); // transform[1]
@@ -93,8 +93,8 @@ namespace Tarbora {
         glVertexAttribDivisor(13, 1);
     }
 
-    void MeshInternal::Delete()
+    void MeshInternal::deleteMesh()
     {
-        glDeleteVertexArrays(1, &m_Vao);
+        glDeleteVertexArrays(1, &vao_);
     }
 }

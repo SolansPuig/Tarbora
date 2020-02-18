@@ -1,5 +1,4 @@
 #pragma once
-#include "../Framework/ModuleComponent.hpp"
 #include "World.hpp"
 
 namespace Tarbora {
@@ -8,18 +7,18 @@ namespace Tarbora {
     class System : public ModuleComponent
     {
     public:
-        System(World *w) : ModuleComponent(w), m_World(w) {}
+        System(World *w) : ModuleComponent(w), world_(w) {}
 
-        virtual void Add(const ActorId &id, const LuaTable &table) = 0;
-        virtual Component *Get(const ActorId &id) = 0;
-        inline Component *GetComponent(const ActorId &id, const ComponentId &compId) { return m_World->GetComponent(id, compId); }
-        virtual void Init(const ActorId &id) = 0;
-        virtual void Update(float deltaTime) = 0;
-        virtual void Enable(const ActorId &id) = 0;
-        virtual void Disable(const ActorId &id) = 0;
+        virtual void add(const ActorId &id, const LuaTable &table) = 0;
+        virtual Component* get(const ActorId &id) = 0;
+        inline Component* getComponent(const ActorId &id, const ComponentId &component) { return world_->getComponent(id, component); }
+        virtual void init(const ActorId &id) = 0;
+        virtual void update(float delta_time) = 0;
+        virtual void enable(const ActorId &id) = 0;
+        virtual void disable(const ActorId &id) = 0;
 
     protected:
-        World *m_World;
+        World *world_;
     };
 
     template <class T>
@@ -28,46 +27,46 @@ namespace Tarbora {
     public:
         SystemImpl(World *w) : System(w) {}
 
-        virtual void Add(const ActorId &id, const LuaTable &table)
+        virtual void add(const ActorId &id, const LuaTable &table)
         {
-            m_Components.emplace(id, T(this, id, table));
+            components_.emplace(id, T(this, id, table));
         }
 
-        virtual Component *Get(const ActorId &id)
+        virtual Component* get(const ActorId &id)
         {
-            auto component = m_Components.find(id);
-            if (component != m_Components.end()) {
+            auto component = components_.find(id);
+            if (component != components_.end()) {
                 return &component->second;
             }
             return nullptr;
         }
 
-        virtual void Init(const ActorId &id)
+        virtual void init(const ActorId &id)
         {
-            T *component =  static_cast<T*>(Get(id));
-            if (component && !component->Error())
-                component->Enable();
+            T *component =  static_cast<T*>(get(id));
+            if (component && !component->error())
+                component->enable();
         }
 
-        virtual void Update(float deltaTime) {}
+        virtual void update(float delta_time) { UNUSED(delta_time); }
 
-        virtual void Enable(const ActorId &id)
+        virtual void enable(const ActorId &id)
         {
-            auto component = m_Components.find(id);
-            if (component != m_Components.end()) {
-                component->second.Enable();
+            auto component = components_.find(id);
+            if (component != components_.end()) {
+                component->second.enable();
             }
         }
 
-        virtual void Disable(const ActorId &id)
+        virtual void disable(const ActorId &id)
         {
-            auto component = m_Components.find(id);
-            if (component != m_Components.end()) {
-                component->second.Disable();
+            auto component = components_.find(id);
+            if (component != components_.end()) {
+                component->second.disable();
             }
         }
 
     protected:
-        std::map<ActorId, T> m_Components;
+        std::map<ActorId, T> components_;
     };
 }

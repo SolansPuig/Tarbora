@@ -5,24 +5,24 @@ namespace Tarbora {
     AnimationComponent::AnimationComponent(System *s, const ActorId &id, const LuaTable &table) :
         Component(s, id, table)
     {
-        m_File = table.Get<std::string>("file", "");
+        file_ = table.get<std::string>("file", "");
     }
 
-    void AnimationComponent::SetAnimation(const std::string &animation)
+    void AnimationComponent::set(const std::string &animation)
     {
-        if (m_Animation != animation)
+        if (animation_ != animation)
         {
-            m_Animation = animation;
-            Trigger("set_animation", Message::SetAnimation(m_Owner, m_Animation, m_File));
+            animation_ = animation;
+            trigger("set_animation", Message::SetAnimation(owner_, animation_, file_));
         }
     }
 
-    void AnimationSystem::Init(const ActorId &id)
+    void AnimationSystem::init(const ActorId &id)
     {
-        AnimationComponent *animation = static_cast<AnimationComponent*>(Get(id));
-        if (animation && !animation->Error())
+        AnimationComponent *animation = static_cast<AnimationComponent*>(get(id));
+        if (animation && !animation->error())
         {
-            animation->Enable();
+            animation->enable();
         }
     }
 }

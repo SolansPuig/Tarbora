@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/ResourceManager/inc/Resource.hpp"
+#include "../../../Framework/ResourceManager/Resource.hpp"
 #include "MeshInternal.hpp"
 
 namespace Tarbora {
@@ -8,7 +8,7 @@ namespace Tarbora {
     {
         friend class MeshResourceLoader;
     private:
-        Mesh(std::string name, std::vector<float> data, unsigned int vertices)
+        Mesh(const std::string &name, const std::vector<float> &data, unsigned int vertices)
             : Resource(name), MeshInternal(data, vertices) {}
     };
 
@@ -17,8 +17,8 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string GetPattern() override { return "*.mesh"; };
-        virtual std::shared_ptr<Resource> Load(std::string path) override;
+        virtual const std::string getPattern() override { return "*.mesh"; };
+        virtual std::shared_ptr<Resource> load(const std::string &path) override;
     };
     //! \endcond
 }

@@ -13,28 +13,28 @@ namespace Tarbora {
         Input(GraphicsEngine *graphicsEngine);
         ~Input();
 
-        bool GetKey(int keycode);
-        bool GetKeyDown(int keycode);
-        bool GetKeyUp(int keycode);
-        State GetKeyState(int keycode);
+        bool getKey(int keycode);
+        bool getKeyDown(int keycode);
+        bool getKeyUp(int keycode);
+        State getKeyState(int keycode);
 
-        void SetKeyState(int keycode, State state) { m_KeyState[keycode] = state; }
+        void setKeyState(int keycode, State state) { key_state_[keycode] = state; }
 
-        bool GetButton(int button);
-        bool GetButtonDown(int button);
-        bool GetButtonUp(int button);
-        State GetButtonState(int button);
+        bool getButton(int button);
+        bool getButtonDown(int button);
+        bool getButtonUp(int button);
+        State getButtonState(int button);
 
-        void SetButtonState(int button, State state) { m_ButtonState[button] = state; }
+        void setButtonState(int button, State state) { button_state_[button] = state; }
 
-        glm::vec2 GetMousePosition();
-        glm::vec2 GetMouseDelta();
+        glm::vec2 getMousePosition();
+        glm::vec2 getMouseDelta();
 
     private:
-        std::shared_ptr<Window> m_Window;
+        std::shared_ptr<Window> window_;
 
-        std::vector<State> m_KeyState;
-        std::vector<State> m_ButtonState;
-        glm::vec2 m_LastMousePosition;
+        std::vector<State> key_state_;
+        std::vector<State> button_state_;
+        glm::vec2 last_mouse_position_;
     };
 }

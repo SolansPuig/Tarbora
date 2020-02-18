@@ -1,2 +1,5 @@
 add_subdirectory (glm)
 add_library (lua SHARED lua/onelua.c)
+target_compile_options(lua PRIVATE -w -DLUA_USE_POSIX)
+add_library (tracy SHARED tracy/TracyClient.cpp)
+target_compile_options(tracy PRIVATE -w -fPIC)

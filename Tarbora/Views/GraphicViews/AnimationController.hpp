@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Framework/Module.hpp"
+#include "../../Framework/Module/Module.hpp"
 
 namespace Tarbora {
     class ActorModel;
@@ -9,22 +9,22 @@ namespace Tarbora {
     public:
         AnimationController(ActorModel *actor, const std::string &file);
 
-        void Update(float deltaTime);
+        void update(float delta_time);
 
-        void SetAnimation(const std::string &name);
+        void setAnimation(const std::string &name);
 
     private:
-        void UpdateAnimation();
+        void updateAnimation();
 
-        ActorModel *m_ActorModel;
-        std::string m_AnimationsFile;
+        ActorModel *actor_model_;
+        std::string animations_file_;
 
-        float m_Duration;
-        bool m_Loop;
-        float m_BlendTime;
-        float m_Counter;
-        float m_Crono;
+        float duration_;
+        bool loop_;
+        float blend_time_;
+        float crono_;
+        float counter_;
 
-        std::string m_CurrentAnimationName;
+        std::string current_animation_name_;
     };
 }

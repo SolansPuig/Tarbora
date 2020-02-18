@@ -8,13 +8,13 @@ namespace Tarbora {
     public:
         AnimationComponent(System *s, const ActorId &id, const LuaTable &table);
 
-        void SetAnimation(const std::string &animation);
+        void set(const std::string &animation);
 
-        const std::string &GetAnimation() { return m_Animation; }
+        const std::string& get() { return animation_; }
 
     private:
-        std::string m_File;
-        std::string m_Animation;
+        std::string file_;
+        std::string animation_;
     };
 
     class AnimationSystem : public SystemImpl<AnimationComponent>
@@ -22,8 +22,8 @@ namespace Tarbora {
     public:
         AnimationSystem(World *w) : SystemImpl<AnimationComponent>(w) {}
 
-        static std::string GetName() { return "animation"; }
+        static std::string getName() { return "animation"; }
 
-        virtual void Init(const ActorId &id);
+        virtual void init(const ActorId &id);
     };
 }

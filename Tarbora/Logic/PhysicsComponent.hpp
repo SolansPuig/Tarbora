@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.hpp"
-#include "../Framework/PhysicsEngine/inc/RigidBody.hpp"
+#include "PhysicsEngine/RigidBody.hpp"
 
 namespace Tarbora {
     class TransformComponent;
@@ -11,36 +11,36 @@ namespace Tarbora {
     public:
         PhysicsComponent(System *s, const ActorId &id, const LuaTable &table);
 
-        void UpdateTransform();
+        void updateTransform();
 
-        void RestrictRotation(const glm::vec3 &rotation);
+        void setAngularFactor(const glm::vec3 &direction);
 
-        void SetLinearDamping(float value);
+        void setLinearDamping(float value);
 
-        void SetVelocity(float magnitude, const glm::vec3 &direction);
+        void setVelocity(const glm::vec3 &direction);
 
-        void SetAngularVelocity(float magnitude, const glm::vec3 &direction);
+        void setAngularVelocity(const glm::vec3 &direction);
 
-        void ApplyForce(float magnitude, const glm::vec3 &direction);
+        void applyForce(const glm::vec3 &direction);
 
-        void ApplyTorque(float magnitude, const glm::vec3 &direction);
+        void applyTorque(const glm::vec3 &direction);
 
-        void Stop();
+        void stop();
 
-        std::shared_ptr<RayCastResult> RayCast(const glm::vec3 &origin, const glm::vec3 &direction, float length);
+        std::shared_ptr<RayCastResult> rayCast(const glm::vec3 &origin, const glm::quat &direction, float length);
 
-        float GetHeight() { return m_Height; }
+        float getHeight() { return height_; }
 
 
 
     private:
-        virtual void OnEnable();
-        virtual void OnDisable();
+        virtual void onEnable();
+        virtual void onDisable();
 
-        std::shared_ptr<RigidBody> m_Body;
-        TransformComponent *m_Transform;
-        ActorMotionState *m_MotionState;
-        float m_Height;
+        std::shared_ptr<RigidBody> body_;
+        TransformComponent *transform_;
+        ActorMotionState *motion_state_;
+        float height_;
     };
 
     class PhysicsSystem : public SystemImpl<PhysicsComponent>
@@ -49,10 +49,10 @@ namespace Tarbora {
         PhysicsSystem(World *w);
         ~PhysicsSystem();
 
-        static std::string GetName() { return "physics"; }
+        static std::string getName() { return "physics"; }
 
-        virtual void Init(const ActorId &id);
+        virtual void init(const ActorId &id);
 
-        virtual void Update(float deltaTime);
+        virtual void update(float delta_time);
     };
 }

@@ -3,36 +3,40 @@
 
 namespace Tarbora {
     Input::Input(GraphicsEngine *graphicsEngine) :
-        m_KeyState(KEY_LAST, State::UNCHANGED),
-        m_ButtonState(MOUSE_BUTTON_LAST, State::UNCHANGED),
-        m_LastMousePosition(glm::vec2(0.f, 0.f))
+        key_state_(KEY_LAST, State::UNCHANGED),
+        button_state_(MOUSE_BUTTON_LAST, State::UNCHANGED),
+        last_mouse_position_(glm::vec2(0.f, 0.f))
     {
-        m_Window = graphicsEngine->GetWindow();
+        window_ = graphicsEngine->getWindow();
 
-        glfwSetKeyCallback(m_Window->GetRawWindow(), [](GLFWwindow* window, int key, int scancode, int action, int mods)
+        glfwSetKeyCallback(window_->getRawWindow(), [](GLFWwindow* window, int key, int scancode, int action, int mods)
         {
+            UNUSED(scancode); UNUSED(mods);
+
             WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
 
             switch (action) {
                 case GLFW_RELEASE:
-                    data.graphicsEngine->GetInputManager()->SetKeyState(key, State::UP);
+                    data.graphics_engine->getInputManager()->setKeyState(key, State::UP);
                     break;
                 case GLFW_PRESS:
-                    data.graphicsEngine->GetInputManager()->SetKeyState(key, State::DOWN);
+                    data.graphics_engine->getInputManager()->setKeyState(key, State::DOWN);
                     break;
             }
         });
 
-        glfwSetMouseButtonCallback(m_Window->GetRawWindow(), [](GLFWwindow* window, int button, int action, int mods)
+        glfwSetMouseButtonCallback(window_->getRawWindow(), [](GLFWwindow* window, int button, int action, int mods)
         {
+            UNUSED(mods);
+
             WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
 
             switch (action) {
                 case GLFW_RELEASE:
-                    data.graphicsEngine->GetInputManager()->SetButtonState(button, State::UP);
+                    data.graphics_engine->getInputManager()->setButtonState(button, State::UP);
                     break;
                 case GLFW_PRESS:
-                    data.graphicsEngine->GetInputManager()->SetButtonState(button, State::DOWN);
+                    data.graphics_engine->getInputManager()->setButtonState(button, State::DOWN);
                     break;
             }
         });
@@ -43,88 +47,88 @@ namespace Tarbora {
 
     }
 
-    bool Input::GetKey(int keycode)
+    bool Input::getKey(int keycode)
     {
-        auto state = glfwGetKey(m_Window->GetRawWindow(), keycode);
+        auto state = glfwGetKey(window_->getRawWindow(), keycode);
         return state == GLFW_PRESS || state == GLFW_REPEAT;
     }
 
-    bool Input::GetKeyDown(int keycode)
+    bool Input::getKeyDown(int keycode)
     {
-        State state = m_KeyState[keycode];
+        State state = key_state_[keycode];
         if (state == State::DOWN)
         {
-            m_KeyState[keycode] = State::UNCHANGED;
+            key_state_[keycode] = State::UNCHANGED;
             return true;
         }
         return false;
     }
 
-    bool Input::GetKeyUp(int keycode)
+    bool Input::getKeyUp(int keycode)
     {
-        State state = m_KeyState[keycode];
+        State state = key_state_[keycode];
         if (state == State::UP)
         {
-            m_KeyState[keycode] = State::UNCHANGED;
+            key_state_[keycode] = State::UNCHANGED;
             return true;
         }
         return false;
     }
 
-    Input::State Input::GetKeyState(int keycode)
+    Input::State Input::getKeyState(int keycode)
     {
-        State state = m_KeyState[keycode];
-        m_KeyState[keycode] = State::UNCHANGED;
+        State state = key_state_[keycode];
+        key_state_[keycode] = State::UNCHANGED;
         return state;
     }
 
-    bool Input::GetButton(int button)
+    bool Input::getButton(int button)
     {
-        auto state = glfwGetMouseButton(m_Window->GetRawWindow(), button);
+        auto state = glfwGetMouseButton(window_->getRawWindow(), button);
         return state == GLFW_PRESS || state == GLFW_REPEAT;
     }
 
-    bool Input::GetButtonDown(int button)
+    bool Input::getButtonDown(int button)
     {
-        State state = m_ButtonState[button];
+        State state = button_state_[button];
         if (state == State::DOWN)
         {
-            m_ButtonState[button] = State::UNCHANGED;
+            button_state_[button] = State::UNCHANGED;
             return true;
         }
         return false;
     }
 
-    bool Input::GetButtonUp(int button)
+    bool Input::getButtonUp(int button)
     {
-        State state = m_ButtonState[button];
+        State state = button_state_[button];
         if (state == State::UP)
         {
-            m_ButtonState[button] = State::UNCHANGED;
+            button_state_[button] = State::UNCHANGED;
             return true;
         }
         return false;
     }
 
-    Input::State Input::GetButtonState(int button)
+    Input::State Input::getButtonState(int button)
     {
-        State state = m_ButtonState[button];
-        m_ButtonState[button] = State::UNCHANGED;
+        State state = button_state_[button];
+        button_state_[button] = State::UNCHANGED;
         return state;
     }
 
-    glm::vec2 Input::GetMouseDelta()
+    glm::vec2 Input::getMouseDelta()
     {
-        glm::vec2 mousePosition = GetMousePosition();
-        glm::vec2 delta =  m_LastMousePosition - mousePosition;
-        m_LastMousePosition = mousePosition;
+        glm::vec2 mouse_position = getMousePosition();
+        glm::vec2 delta =  last_mouse_position_ - mouse_position;
+        last_mouse_position_ = mouse_position;
         return delta;
     }
 
-    glm::vec2 Input::GetMousePosition()
+    glm::vec2 Input::getMousePosition()
     {
         double xpos, ypos;
-        glfwGetCursorPos(m_Window->GetRawWindow(), &xpos, &ypos);
+        glfwGetCursorPos(window_->getRawWindow(), &xpos, &ypos);
         return glm::vec2(xpos, ypos);
     }
 }

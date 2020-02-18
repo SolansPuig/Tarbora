@@ -16,3 +16,6 @@
 [submodule "Tarbora/Framework/External/sol2"]
 	path = Tarbora/Framework/External/sol2
 	url = https://github.com/ThePhD/sol2.git
+[submodule "Tarbora/Framework/External/tracy"]
+	path = Tarbora/Framework/External/tracy
+	url = https://github.com/Leandros/tracy.git

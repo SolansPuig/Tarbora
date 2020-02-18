@@ -6,137 +6,108 @@ namespace Tarbora {
     TransformComponent::TransformComponent(System *s, const ActorId &id, const LuaTable &table) :
         Component(s, id, table)
     {
-        m_Transform = glm::mat4(1.f);
-        m_Rotation = glm::vec3(0.f);
-        m_ShouldUpdate = false;
-        m_Controller = nullptr;
+        changed_ = false;
+        controller_ = nullptr;
 
-        SetOrigin(table.Get<glm::vec3>("origin", true));
-        SetPosition(table.Get<glm::vec3>("position"));
-        SetRotation(table.Get<glm::vec3>("rotation"));
-        SetRotation(table.Get<glm::vec3>("rotation"));
+        setOrigin(table.get<glm::vec3>("origin", true));
+        setPosition(table.get<glm::vec3>("position"));
+        setRotation(table.get<glm::vec3>("rotation"));
     }
 
-    void TransformComponent::SetTransform(const glm::mat4 &transform)
+    void TransformComponent::setPosition(const glm::vec3 &position)
     {
-        m_ShouldUpdate = true;
-        m_Transform = transform;
+        changed_ = true;
+        position_ = position;
     }
 
-    void TransformComponent::SetPosition(const glm::vec3 &position)
+    void TransformComponent::setRotation(const glm::vec3 &rotation)
     {
-        m_ShouldUpdate = true;
-        Move(position - glm::vec3(m_Transform[3]));
+        setRotation(glm::quat(glm::radians(rotation)));
     }
 
-    void TransformComponent::SetRotation(const glm::vec3 &rotation)
+    void TransformComponent::setRotation(const glm::quat &rotation)
     {
-        m_ShouldUpdate = true;
-        Rotate(rotation - m_Rotation);
+        changed_ = true;
+        rotation_ = rotation;
     }
 
-    void TransformComponent::Move(const glm::vec3 &position)
+    void TransformComponent::setOrigin(const glm::vec3 &origin)
     {
-        m_ShouldUpdate = true;
-        m_Transform = glm::translate(m_Transform, position);
+        changed_ = true;
+        origin_ = origin;
     }
 
-    void TransformComponent::Rotate(const glm::vec3 &rotation)
+    void TransformComponent::move(const glm::vec3 &position)
     {
-        m_ShouldUpdate = true;
-        glm::quat quat(glm::radians(rotation));
-        m_Transform = glm::translate(m_Transform, m_Origin);
-        m_Transform = m_Transform * glm::mat4_cast(quat);
-        m_Transform = glm::translate(m_Transform, -m_Origin);
-        m_Rotation = glm::degrees(glm::eulerAngles(glm::quat_cast(m_Transform)));
+        changed_ = true;
+        position_ += position;
     }
 
-    void TransformComponent::SetOrigin(const glm::vec3 &origin)
+    void TransformComponent::rotate(const glm::vec3 &rotation)
     {
-        m_Origin = origin;
+        rotate(glm::quat(rotation));
     }
 
-    glm::vec3 TransformComponent::GetPosition()
+    void TransformComponent::rotate(const glm::quat &rotation)
     {
-        return glm::vec3(m_Transform[3]);
-    }
-
-    glm::vec3 TransformComponent::GetRotation()
-    {
-        return m_Rotation;
-    }
-
-    glm::mat3 TransformComponent::GetRotationMatrix()
-    {
-        return glm::mat3(m_Transform);
+        changed_ = true;
+        rotation_ *= rotation;
     }
 
     TransformSystem::TransformSystem(World *w) :
         SystemImpl<TransformComponent>(w)
     {
-        Subscribe("set_position", [this](MessageSubject subject, MessageBody *body)
+        subscribe("set_position", [this](const MessageSubject &subject, const MessageBody &body)
         {
+            UNUSED(subject);
             Message::ApplyPhysics m(body);
-            TransformComponent *transform = static_cast<TransformComponent*>(Get(m.GetId()));
+            TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
-            {
-                transform->SetPosition(m.GetMagnitude() * m.GetDirection());
-                if (transform->m_Controller)
-                    transform->m_Controller->UpdateTransform();
-            }
-
+                transform->setPosition(m.getDirection());
         });
 
-        Subscribe("move", [this](MessageSubject subject, MessageBody *body)
+        subscribe("move", [this](const MessageSubject &subject, const MessageBody &body)
         {
+            UNUSED(subject);
             Message::ApplyPhysics m(body);
-            TransformComponent *transform = static_cast<TransformComponent*>(Get(m.GetId()));
+            TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
-            {
-                transform->Move(m.GetMagnitude() * m.GetDirection());
-                if (transform->m_Controller)
-                    transform->m_Controller->UpdateTransform();
-            }
+                transform->move(m.getDirection());
         });
 
-        Subscribe("set_rotation", [this](MessageSubject subject, MessageBody *body)
+        subscribe("set_rotation", [this](const MessageSubject &subject, const MessageBody &body)
         {
+            UNUSED(subject);
             Message::ApplyPhysics m(body);
-            TransformComponent *transform = static_cast<TransformComponent*>(Get(m.GetId()));
+            TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
-            {
-                transform->SetRotation(m.GetMagnitude() * m.GetDirection());
-                if (transform->m_Controller)
-                    transform->m_Controller->UpdateTransform();
-            }
+                transform->setRotation(m.getDirection());
         });
 
-        Subscribe("rotate", [this](MessageSubject subject, MessageBody *body)
+        subscribe("rotate", [this](const MessageSubject &subject, const MessageBody &body)
         {
+            UNUSED(subject);
             Message::ApplyPhysics m(body);
-            TransformComponent *transform = static_cast<TransformComponent*>(Get(m.GetId()));
+            TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
-            {
-                transform->Rotate(m.GetMagnitude() * m.GetDirection());
-                if (transform->m_Controller)
-                    transform->m_Controller->UpdateTransform();
-            }
+                transform->rotate(m.getDirection());
         });
     }
 
-    void TransformSystem::Update(float deltaTime)
+    void TransformSystem::update(float delta_time)
     {
-        for (auto &component : m_Components)
+        UNUSED(delta_time);
+        for (auto &component : components_)
         {
             TransformComponent *transform = &component.second;
-            if (transform->m_ShouldUpdate)
+            if (transform->enabled_ && transform->changed_)
             {
-                Trigger("move_actor", Message::MoveActor(
-                    transform->m_Owner,
-                    Position(transform->GetPosition()),
-                    RotationMat(transform->GetRotationMatrix())
+                trigger("move_actor", Message::MoveActor(
+                    transform->owner_,
+                    transform->getPosition(),
+                    transform->getRotation()
                 ));
-                transform->m_ShouldUpdate = false;
+                transform->changed_ = false;
             }
         }
     }

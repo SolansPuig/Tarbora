@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/Module.hpp"
+#include "../../../Framework/Module/Module.hpp"
 
 namespace Tarbora {
     class ArduinoView : public Module
@@ -8,9 +8,9 @@ namespace Tarbora {
         ArduinoView();
         ~ArduinoView();
 
-        virtual void Update(float elapsed_time) override;
+        virtual void update(float delta_time) override;
 
     private:
-        std::fstream m_Arduino;
+        std::fstream arduino_;
     };
 }

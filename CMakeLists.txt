@@ -3,7 +3,7 @@ project (Tarbora)
 
 set (CMAKE_BUILD_TYPE Debug)
 if (CMAKE_COMPILER_IS_GNUCXX)
-    set (CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -Ofast -DTRACY_ENABLE")
+    set (CMAKE_CXX_FLAGS "-Ofast -DTRACY_ENABLE")
     set (CMAKE_CXX_FLAGS_DEBUG "-g -D DEBUG_MODE=true")
     set (CMAKE_CXX_FLAGS_RELEASE "-D DEBUG_MODE=false")
     set (CMAKE_CXX_STANDARD_LIBRARIES "-lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW")
@@ -15,16 +15,20 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(cotire)
 
-include_directories(Tarbora/Framework/PhysicsEngine/bullet3/src)
-include_directories(Tarbora/Views/GraphicViews/GraphicsEngine/imgui)
-include_directories(Tarbora/Views/GraphicViews/GraphicsEngine/glfw/include)
-include_directories(Tarbora/Framework/External/sol2/include)
-include_directories(Tarbora/Framework/External/lua)
-
+include_directories(SYSTEM Tarbora/Framework/External/glm)
+include_directories(SYSTEM Tarbora/Framework/External/lua)
+include_directories(SYSTEM Tarbora/Framework/External/sol2/include)
+include_directories(SYSTEM Tarbora/Framework/External/tracy)
+include_directories(SYSTEM Tarbora/Logic/PhysicsEngine/External/bullet3/src)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/Tarbora/Messages)
+include_directories(SYSTEM Tarbora/Framework/External/glm)
+include_directories(SYSTEM Tarbora/Views/GraphicViews/GraphicsEngine/External/imgui)
+include_directories(SYSTEM Tarbora/Views/GraphicViews/GraphicsEngine/External/glfw/include)
 
 add_subdirectory (Tarbora)
 
 add_executable (tarbora main.cpp)
+
 target_link_libraries (tarbora
     GraphicViews
     HardwareViews
@@ -34,16 +38,6 @@ target_link_libraries (tarbora
     PhysicsEngine
     GraphicsEngine
     Messages
-    glfw
-    imgui
-    glm
-    grpc
-    grpc++
-    grpc++_reflection
-    BulletDynamics
-    BulletCollision
-    LinearMath
-    lua
 )
 
 # cotire(tarbora)

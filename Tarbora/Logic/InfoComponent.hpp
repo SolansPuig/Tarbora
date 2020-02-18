@@ -8,16 +8,16 @@ namespace Tarbora {
         InfoComponent(System *s, const ActorId &id, const LuaTable &table) :
             Component(s, id, table)
         {
-            m_Entity = table.Get<std::string>("entity");
-            m_Variant = table.Get<std::string>("variant");
+            entity_ = table.get<std::string>("entity");
+            variant_ = table.get<std::string>("variant");
         }
 
-        const std::string &GetEntity() { return m_Entity; }
-        const std::string &GetVariant() { return m_Variant; }
+        const std::string& getEntity() { return entity_; }
+        const std::string& getVariant() { return variant_; }
 
     private:
-        std::string m_Entity;
-        std::string m_Variant;
+        std::string entity_;
+        std::string variant_;
     };
 
     class InfoSystem : public SystemImpl<InfoComponent>
@@ -25,6 +25,6 @@ namespace Tarbora {
     public:
         InfoSystem(World *w) : SystemImpl<InfoComponent>(w) {}
 
-        static std::string GetName() { return "info"; }
+        static std::string getName() { return "info"; }
     };
 }

@@ -3,29 +3,31 @@
 #include "Layer.hpp"
 
 namespace Tarbora {
-    class GameLayerImpl : public Layer
+    class GameLayer : public Layer
     {
     public:
-        GameLayerImpl(GraphicView *view, bool start_active=true);
-        ~GameLayerImpl() {}
+        GameLayer(HumanView *view, bool start_active=true);
+        ~GameLayer() {}
 
-        virtual bool OnMessage(MessageBody *m) override;
+        virtual bool onMessage(const MessageBody &m) override;
 
-        virtual void GetInput() override;
-        virtual void Update(float deltaTime) override;
-        virtual void Draw() override;
+        virtual void getInput() override;
+        virtual void update(float delta_time) override;
+        virtual void draw() override;
 
-        void SetTargetId(ActorId id) { m_TargetId = id; }
-        ActorId GetTargetId() const { return m_TargetId; }
+        void setTargetId(ActorId id) { target_id_ = id; }
+        const ActorId& getTargetId() const { return target_id_; }
 
-        void FreezeMouse(bool freeze) {m_FreezeMouse = freeze; }
+        std::shared_ptr<Scene> getScene() { return scene_; }
+
+        void freezeMouse(bool freeze) {freeze_mouse_ = freeze; }
     private:
-        std::unique_ptr<Scene> m_Scene;
+        std::shared_ptr<Scene> scene_;
 
-        ActorId m_TargetId;
-        glm::vec2 m_LookDirection;
-        glm::vec3 m_Movement;
-        bool m_Jump;
-        bool m_FreezeMouse;
+        ActorId target_id_;
+        glm::vec2 look_direction_;
+        glm::vec3 movement_;
+        bool jump_;
+        bool freeze_mouse_;
     };
 }

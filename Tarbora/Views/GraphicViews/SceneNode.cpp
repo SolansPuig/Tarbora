@@ -1,208 +1,192 @@
 #include "Scene.hpp"
 
 namespace Tarbora {
-    SceneNode::SceneNode(ActorId actorId, const std::string &name)
-        : m_Parent(nullptr), m_ActorId(actorId), m_Name(name), m_Transformation(1.0f),
-        m_Deformation(1.0f), m_Origin(0.0f, 0.0f, 0.0f), m_Radius(0)
+    SceneNode::SceneNode(const ActorId &id, const std::string &name)
     {
-        m_Properties["position"] = PropertyPtr(new NodePosition(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation));
-        m_Properties["rotation"] = PropertyPtr(new NodeRotation(glm::vec3(0.0f, 0.0f, 0.0f), &m_Transformation, &m_Origin));
-        m_Properties["scale"] = PropertyPtr(new NodeScale(glm::vec3(1.0f, 1.0f, 1.0f), &m_Deformation, &m_Origin));
+        id_ = id;
+        name_ = name;
+        parent_ = nullptr;
+
+        position_ = glm::vec3(0.f);
+        rotation_ = glm::quat();
+        scale_ = glm::vec3(1.f);
+        global_scale_ = 1.f;
+        origin_ = glm::vec3(0.f);
+
+        radius_ = 0;
     }
 
-    void SceneNode::Update(Scene *scene, float deltaTime)
+    void SceneNode::update(Scene *scene, float delta_time)
     {
-        for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
-        {
-            (*itr).second->Update(scene, deltaTime);
-        }
-        for (auto itr = m_Properties.begin(); itr != m_Properties.end(); itr++)
-        {
-            (*itr).second->Update(deltaTime);
-        }
+        for (auto child : children_)
+            child.second->update(scene, delta_time);
     }
 
-    void SceneNode::DrawChildren(Scene *scene, const glm::mat4 &parentTransform)
+    void SceneNode::drawChildren(Scene *scene, const glm::mat4 &parent_transform)
     {
-        glm::mat4 transform = parentTransform * m_Transformation;
-        for (auto itr = m_Children.begin(); itr != m_Children.end(); itr++)
+        const glm::mat4 &transform = parent_transform * getLocalTransform();
+        glm::mat4 deform = glm::scale(glm::mat4(1.f), scale_);
+
+        draw(scene, transform * deform);
+
+        for (auto child : children_)
         {
-            if (itr->second->IsVisible(scene))
-            {
-                itr->second->Draw(scene, transform);
-                itr->second->DrawChildren(scene, transform);
-                itr->second->AfterDraw(scene);
-            }
+            if (child.second->isVisible(scene))
+                child.second->drawChildren(scene, transform);
         }
+
+        afterDraw(scene);
     }
 
-    bool SceneNode::AddChild(std::shared_ptr<SceneNode> child)
+    bool SceneNode::addChild(std::shared_ptr<SceneNode> child)
     {
-        m_Children[child->GetName()] = child;
-        child->m_Parent = this;
-        float new_radius = child->Get("position").length() + child->GetRadius();
-        if (new_radius > m_Radius)
+        children_[child->getName()] = child;
+        child->parent_ = this;
+        float new_radius = child->getPosition().length() + child->getRadius();
+        if (new_radius > radius_)
         {
-            m_Radius = new_radius;
+            radius_ = new_radius;
         }
         return true;
     }
 
-    std::shared_ptr<SceneNode> SceneNode::GetChild(const std::string &name)
+    std::shared_ptr<SceneNode> SceneNode::getChild(const std::string &name)
     {
-        auto itr = m_Children.find(name);
-        if (itr != m_Children.end())
+        auto itr = children_.find(name);
+        if (itr != children_.end())
         {
             return itr->second;
         }
         return std::shared_ptr<SceneNode>();
     }
 
-    bool SceneNode::RemoveChild(const std::string &name)
+    bool SceneNode::removeChild(const std::string &name)
     {
-        auto itr = m_Children.find(name);
-        if (itr != m_Children.end())
+        auto itr = children_.find(name);
+        if (itr != children_.end())
         {
-            m_Children.erase(itr);
+            children_.erase(itr);
             return true;
         }
         return false;
     }
 
-    bool SceneNode::IsVisible(Scene *scene)
+    bool SceneNode::isVisible(Scene *scene)
     {
-        (void)(scene);
+        UNUSED(scene);
         return true;
     }
 
-    void SceneNode::SetPosition(const glm::vec3 &position)
+    void SceneNode::setScale(const glm::vec3 &scale)
     {
-        m_Transformation[3] = glm::vec4(position.x, position.y, position.z, 1.0f);
-    }
-
-    void SceneNode::SetRotationMatrix(const glm::mat3 &rotation)
-    {
-        glm::mat3 newrot = glm::transpose(rotation);
-        m_Transformation[0] = glm::vec4(newrot[0][0], newrot[1][0], newrot[2][0], m_Transformation[0][3]);
-        m_Transformation[1] = glm::vec4(newrot[0][1], newrot[1][1], newrot[2][1], m_Transformation[1][3]);
-        m_Transformation[2] = glm::vec4(newrot[0][2], newrot[1][2], newrot[2][2], m_Transformation[2][3]);
-    }
-
-    void SceneNode::SetTransform(const glm::mat4 &matrix)
-    {
-        m_Transformation = matrix;
-    }
-
-    const glm::mat4 SceneNode::GetGlobalTransform()
-    {
-        if (m_Parent)
+        if (scale.x > 0.f && scale.y > 0.f && scale.z > 0.f)
         {
-            return m_Parent->GetGlobalTransform() * m_Transformation;
+            origin_ *= scale/scale_;
+            scale_ = scale;
         }
+    }
+
+    void SceneNode::setGlobalScale(float scale)
+    {
+        if (scale > 0.f)
+        {
+            origin_ *= scale/global_scale_;
+            global_scale_ = scale;
+        }
+    }
+
+    void SceneNode::setOrigin(const glm::vec3 &origin)
+    {
+        origin_ = origin * global_scale_ * scale_;
+    }
+
+    glm::mat4 SceneNode::getGlobalTransform()
+    {
+        if (parent_)
+            return parent_->getGlobalTransform() * getLocalTransform();
         else
-        {
-            return m_Transformation;
-        }
+            return getLocalTransform();
     }
 
-    void SceneNode::Set(const std::string &name, const glm::vec3 &value)
+    glm::mat4 SceneNode::getLocalTransform()
     {
-        m_Properties[name]->Set(value);
+        glm::mat4 transform = glm::translate(glm::mat4(1.f), position_ + origin_);
+        transform = transform * glm::mat4_cast(rotation_);
+        transform = glm::scale(transform, glm::vec3(global_scale_));
+        transform = glm::translate(transform, -origin_);
+        return transform;
     }
 
-    void SceneNode::Add(const std::string &name, const glm::vec3 &value)
+    const glm::mat4 Camera::getView()
     {
-        m_Properties[name]->Add(value);
-    }
-
-    void SceneNode::InterpolateTo(const std::string &name, const glm::vec3 &value, float timeToComplete)
-    {
-        PropertyPtr property = m_Properties[name];
-        if (!property->IsAnimatable())
-        {
-            property = property->MakeAnimatable();
-            m_Properties[name] = property;
-        }
-        property->InterpolateTo(value, timeToComplete);
-    }
-
-    const glm::vec3 &SceneNode::Get(const std::string &name)
-    {
-        return m_Properties[name]->Get();
-    }
-
-    const glm::mat4 Camera::GetView()
-    {
-        glm::mat4 matrix = GetGlobalTransform();
+        glm::mat4 matrix = getGlobalTransform();
         glm::vec3 front = glm::vec3(matrix[2]);
         glm::vec3 position = glm::vec3(matrix[3]);
         glm::mat4 view = glm::lookAt(position, position + front, glm::vec3(0.0f, 1.0f, 0.0f));
         return view;
     }
 
-    const glm::mat4 Camera::GetViewAngle()
+    const glm::mat4 Camera::getViewAngle()
     {
-        glm::mat4 matrix = GetGlobalTransform();
+        glm::mat4 matrix = getGlobalTransform();
         glm::vec3 front = glm::vec3(matrix[2]);
         glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 0), front, glm::vec3(0.0f, 1.0f, 0.0f));
         return view;
     }
 
-    const glm::vec3 Camera::GetViewPosition()
+    const glm::vec3 Camera::getViewPosition()
     {
-        glm::mat4 matrix = GetGlobalTransform();
+        glm::mat4 matrix = getGlobalTransform();
         glm::vec3 position = glm::vec3(matrix[3]);
         return position;
     }
 
-    MaterialNode::MaterialNode(ActorId actorId, const std::string &name, const std::string &material) :
-        SceneNode(actorId, name)
+    MaterialNode::MaterialNode(const ActorId &id, const std::string &name, const std::string &material) :
+        SceneNode(id, name)
     {
-        m_Material = ResourcePtr<Material>("materials/" + material, "materials/missing.mat.lua");
+        material_ = ResourcePtr<Material>("materials/" + material, "materials/missing.mat.lua");
     }
 
-    void MaterialNode::Draw(Scene *scene, const glm::mat4 &parentTransform)
+    void MaterialNode::draw(Scene *scene, const glm::mat4 &transform)
     {
-        (void)(parentTransform);
-        scene->GetRenderQueue()->PushMaterial(m_Material);
+        UNUSED(transform);
+        scene->getRenderQueue()->pushMaterial(material_);
     }
 
-    void MaterialNode::AfterDraw(Scene *scene)
+    void MaterialNode::afterDraw(Scene *scene)
     {
-        scene->GetRenderQueue()->PopMaterial();
+        scene->getRenderQueue()->popMaterial();
     }
 
-    MeshNode::MeshNode(ActorId actorId, const std::string &name, RenderPass renderPass, const std::string &mesh) :
-        SceneNode(actorId, name), m_RenderPass(renderPass)
+    MeshNode::MeshNode(const ActorId &id, const std::string &name, RenderPass render_pass, const std::string &mesh) :
+        SceneNode(id, name), render_pass_(render_pass)
     {
-        m_Mesh = ResourcePtr<Mesh>("meshes/" + mesh, "meshes/cube.mesh");
+        mesh_ = ResourcePtr<Mesh>("meshes/" + mesh, "meshes/cube.mesh");
 
-        m_Properties["uv_map"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["mesh_size"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["texture_size"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-
-        m_Properties["color_primary"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["color_secondary"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["color_detail1"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
-        m_Properties["color_detail2"] = PropertyPtr(new NodeProperty(glm::vec3(0.0f, 0.0f, 0.0f)));
+        uv_map_ = glm::tvec2<unsigned short>(0);
+        mesh_size_ = glm::vec3(0.f);
+        texture_size_ = glm::vec3(0.f);
+        color_primary_ = glm::tvec3<unsigned char>(0);
+        color_secondary_ = glm::tvec3<unsigned char>(0);
+        color_detail_ = glm::tvec3<unsigned char>(0);
+        color_detail2_ = glm::tvec3<unsigned char>(0);
     }
 
-    void MeshNode::Draw(Scene *scene, const glm::mat4 &parentTransform)
+    void MeshNode::draw(Scene *scene, const glm::mat4 &transform)
     {
-        if (m_Mesh != nullptr)
+        if (mesh_ != nullptr)
         {
-            glm::mat4 transform = parentTransform * m_Transformation * m_Deformation;
-            scene->GetRenderQueue()->DrawMesh(
-                m_RenderPass,
-                m_Mesh,
+            scene->getRenderQueue()->drawMesh(
+                render_pass_,
+                mesh_,
                 transform,
-                m_Properties["uv_map"]->Get(),
-                m_Properties["mesh_size"]->Get(),
-                m_Properties["texture_size"]->Get(),
-                m_Properties["color_primary"]->Get(),
-                m_Properties["color_secondary"]->Get(),
-                m_Properties["color_detail1"]->Get(),
-                m_Properties["color_detail2"]->Get()
+                uv_map_,
+                mesh_size_,
+                texture_size_,
+                color_primary_,
+                color_secondary_,
+                color_detail_,
+                color_detail2_
             );
         }
     }

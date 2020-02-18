@@ -2,8 +2,8 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wtype-limits"
 #pragma GCC diagnostic ignored "-Wextra"
-#include "imgui/imgui.h"
-#include "imgui/misc/cpp/imgui_stdlib.h"
+#include "External/imgui/imgui.h"
+#include "External/imgui/misc/cpp/imgui_stdlib.h"
 #pragma GCC diagnostic pop
 
 namespace Tarbora {
@@ -15,10 +15,10 @@ namespace Tarbora {
         Gui(GraphicsEngine *graphicsEngine);
         ~Gui();
 
-        void BeforeDraw();
-        void AfterDraw();
+        void beforeDraw();
+        void afterDraw();
 
     private:
-        GraphicsEngine *m_GraphicsEngine;
+        GraphicsEngine *graphics_engine_;
     };
 }

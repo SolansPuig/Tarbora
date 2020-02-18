@@ -2,48 +2,46 @@
 #include "SceneNode.hpp"
 #include "ActorModel.hpp"
 #include "Skybox.hpp"
-#include "GraphicView.hpp"
+#include "HumanView.hpp"
 
 namespace Tarbora {
-    typedef std::map<ActorId, std::shared_ptr<SceneNode>> SceneActorMap;
-
     class Scene
     {
     public:
-        Scene(GraphicView *view);
+        Scene(HumanView *view);
 
-        void Update(float deltaTime);
-        void Draw();
+        void update(float delta_time);
+        void draw();
 
-        std::shared_ptr<ActorModel> CreateActorModel(ActorId id, RenderPass renderPass, std::string model, std::string material);
-        std::shared_ptr<ActorModel> CreateActorModel(ActorId id, std::string entity, std::string variant);
+        std::shared_ptr<ActorModel> createActorModel(const ActorId &id, RenderPass render_pass, const std::string &model, const std::string &material);
+        std::shared_ptr<ActorModel> createActorModel(const ActorId &id, const std::string &entity, const std::string &variant);
 
-        void AnimateActor(ActorId id, const std::string &animation, const std::string &file="");
+        void animateActor(const ActorId &id, const std::string &animation, const std::string &file="");
 
-        std::shared_ptr<Skybox> CreateSkybox(std::string material);
-        std::shared_ptr<Skybox> GetSkybox() { return m_Skybox; }
+        std::shared_ptr<Skybox> createSkybox(const std::string &material);
+        std::shared_ptr<Skybox> getSkybox() { return skybox_; }
 
-        void AddActor(std::shared_ptr<SceneNode> actor);
-        std::shared_ptr<SceneNode> GetActor(ActorId id);
-        bool RemoveActor(ActorId id);
+        void addActor(std::shared_ptr<SceneNode> actor);
+        std::shared_ptr<SceneNode> getActor(const ActorId &id);
+        bool removeActor(const ActorId &id);
 
-        std::shared_ptr<Camera> CreateCamera(ActorId id);
-        void SetCamera(std::shared_ptr<Camera> camera) { m_Camera = camera; }
-        void SetCamera(ActorId id, std::string nodeName);
-        std::shared_ptr<Camera> GetCamera() { return m_Camera; }
+        std::shared_ptr<Camera> createCamera(const ActorId &id);
+        void setCamera(std::shared_ptr<Camera> camera) { camera_ = camera; }
+        void setCamera(const ActorId &id, const std::string &node_name);
+        std::shared_ptr<Camera> getCamera() { return camera_; }
 
-        inline std::shared_ptr<GraphicsEngine> GetGraphicsEngine() { return m_View->GetGraphicsEngine(); }
-        inline std::shared_ptr<RenderQueue> GetRenderQueue() { return m_View->GetGraphicsEngine()->GetRenderQueue(); }
+        inline std::shared_ptr<GraphicsEngine> getGraphicsEngine() { return view_->getGraphicsEngine(); }
+        inline std::shared_ptr<RenderQueue> getRenderQueue() { return view_->getGraphicsEngine()->getRenderQueue(); }
 
     protected:
-        std::shared_ptr<RootNode> m_Root;
-        std::shared_ptr<Skybox> m_Skybox;
-        std::shared_ptr<Camera> m_Camera;
+        std::shared_ptr<RootNode> root_;
+        std::shared_ptr<Skybox> skybox_;
+        std::shared_ptr<Camera> camera_;
 
-        SceneActorMap m_ActorMap;
+        std::map<ActorId, std::shared_ptr<SceneNode>> actor_map_;
 
-        glm::mat4 m_Projection;
+        glm::mat4 projection_;
 
-        GraphicView *m_View;
+        GraphicView *view_;
     };
 }

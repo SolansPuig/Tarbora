@@ -1,4 +1,3 @@
-#include "Tarbora/Framework/Server.hpp"
 #include "Tarbora/Views/GraphicViews/HumanView.hpp"
 #include "Tarbora/Views/SceneManager/SceneManager.hpp"
 #include "Tarbora/Views/HardwareViews/inc/ArduinoView.hpp"
@@ -10,25 +9,25 @@ using namespace Tarbora;
 int main() {
     ZoneScoped;
     LOG_LEVEL(DEBUG);
-    ResourceManager::Init("../Resources/");
+    ResourceManager::init("../Resources/");
 
     // std::shared_ptr<MessageBus> messageBus(new MessageBus("0.0.0.0:50051"));
     // messageBus->RunThread("Message Bus");
 
     std::shared_ptr<World> logic(new World());
-    logic->RunThread("Logic");
+    logic->runThread("Logic");
 
     // std::shared_ptr<ArduinoView> arduino(new ArduinoView());
     // arduino->RunThread("arduino");
 
-    std::shared_ptr<HumanView> humanView(new HumanView());
+    std::shared_ptr<HumanView> human_view(new HumanView());
 
-    std::shared_ptr<SceneManager> sceneManager(new SceneManager());
-    sceneManager->Load("test.lua");
+    std::shared_ptr<SceneManager> scene_manager(new SceneManager());
+    scene_manager->load("test.lua");
 
-    humanView->Run("Human View");
+    human_view->run("Human View");
 
-    ResourceManager::Close();
+    ResourceManager::close();
 
     return 0;
 }

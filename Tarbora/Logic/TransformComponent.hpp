@@ -10,36 +10,27 @@ namespace Tarbora {
     public:
         TransformComponent(System *s, const ActorId &id, const LuaTable &table);
 
-        void SetController(PhysicsComponent *controller) { m_Controller = controller; }
+        void setController(PhysicsComponent *controller) { controller_ = controller; }
+        void setPosition(const glm::vec3 &position);
+        void setRotation(const glm::vec3 &rotation);
+        void setRotation(const glm::quat &rotation);
+        void setOrigin(const glm::vec3 &origin);
+        void move(const glm::vec3 &position);
+        void rotate(const glm::vec3 &rotation);
+        void rotate(const glm::quat &rotation);
 
-        void SetTransform(const glm::mat4 &transform);
-
-        void SetPosition(const glm::vec3 &position);
-
-        void SetRotation(const glm::vec3 &rotation);
-
-        void Move(const glm::vec3 &position);
-
-        void Rotate(const glm::vec3 &rotation);
-
-        void SetOrigin(const glm::vec3 &origin);
-
-        const glm::mat4 &GetTransform() { return m_Transform; }
-
-        glm::vec3 GetPosition();
-
-        glm::vec3 GetRotation();
-
-        glm::vec3 GetOrigin();
-
-        glm::mat3 GetRotationMatrix();
+        const glm::vec3& getPosition() { return position_; }
+        const glm::quat& getRotation() { return rotation_; }
+        glm::vec3 getEulerRotation() { return glm::eulerAngles(rotation_); }
+        const glm::vec3& getOrigin() { return origin_; }
 
     private:
-        glm::mat4 m_Transform;
-        glm::vec3 m_Rotation;
-        glm::vec3 m_Origin;
-        PhysicsComponent *m_Controller;
-        bool m_ShouldUpdate;
+        PhysicsComponent *controller_;
+
+        glm::vec3 position_;
+        glm::quat rotation_;
+        glm::vec3 origin_;
+        bool changed_;
     };
 
     class TransformSystem : public SystemImpl<TransformComponent>
@@ -47,8 +38,7 @@ namespace Tarbora {
     public:
         TransformSystem(World *w);
 
-        static std::string GetName() { return "transform"; }
-
-        virtual void Update(float deltaTime);
+        static std::string getName() { return "transform"; }
+        virtual void update(float delta_time);
     };
 }

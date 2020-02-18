@@ -3,70 +3,127 @@
 
 namespace Tarbora {
     AnimationController::AnimationController(ActorModel *actor, const std::string &file) :
-        m_ActorModel(actor), m_AnimationsFile("animations/" + file)
+        actor_model_(actor), animations_file_("animations/" + file)
     {
-        m_Counter = 0.0f;
-        m_Crono = 0.0f;
+        crono_ = 0.f;
+        counter_ = 0.f;
     }
 
-    void AnimationController::Update(float deltaTime)
+    void AnimationController::update(float delta_time)
     {
-        m_Counter += deltaTime;
-        m_Crono += deltaTime;
-        if (m_BlendTime > 0.f)
-            m_BlendTime -= deltaTime;
-        if ((m_Loop || m_Crono <= m_Duration) && m_Counter >= 0.032f)
+        crono_ += delta_time;
+        counter_ += delta_time;
+        if (blend_time_ > 0.f)
+            blend_time_ -= delta_time;
+        if (((loop_ || crono_ <= duration_)))
         {
-            UpdateAnimation();
-            m_Counter = 0.0f;
+            updateAnimation();
+            counter_ = 0.f;
         }
     }
 
-    void AnimationController::SetAnimation(const std::string &name)
+    void AnimationController::setAnimation(const std::string &name)
     {
-        m_CurrentAnimationName = name;
-        m_Crono = 0.0f;
+        current_animation_name_ = name;
+        crono_ = 0.0f;
 
-        ResourcePtr<LuaScript> resource(m_AnimationsFile);
-        LuaTable animation = resource->Get(m_CurrentAnimationName, true);
-        m_Loop = animation.Get<bool>("loop");
-        m_Duration = animation.Get<float>("duration");
-        m_BlendTime = animation.Get<float>("blend_time");
+        ResourcePtr<LuaScript> resource(animations_file_);
+        LuaTable animation = resource->get(current_animation_name_, true);
+        loop_ = animation.get<bool>("loop");
+        duration_ = animation.get<float>("duration");
+        blend_time_ = animation.get<float>("blend_time");
     }
 
-    void AnimationController::UpdateAnimation()
+    void AnimationController::updateAnimation()
     {
-        ResourcePtr<LuaScript> resource(m_AnimationsFile);
-        LuaTable animation = resource->Get(m_CurrentAnimationName, true);
-        LuaTable query = resource->Get("query");
-        query.Set("time", m_Crono);
+        ResourcePtr<LuaScript> resource(animations_file_);
+        LuaTable animation = resource->get(current_animation_name_, true);
+        LuaTable query = resource->get("query");
+        query.set("time", crono_);
 
-        if (animation.Valid() && query.Valid())
+        if (animation.valid() && query.valid())
         {
-            LuaTable currentAnimation = animation.Get("nodes");
+            LuaTable current_animation = animation.get("nodes");
 
-            for (auto nodeKeyValue : currentAnimation)
+            for (auto itr : current_animation)
             {
-                std::string nodeName = nodeKeyValue.first.GetAs<std::string>();
-                LuaTable nodeLua = nodeKeyValue.second.GetAs<LuaTable>();
-                std::shared_ptr<SceneNode> node = m_ActorModel->m_Nodes[nodeName];
+                std::string node_name = itr.first.getAs<std::string>();
+                LuaTable node_lua = itr.second.getAs<LuaTable>();
+                std::shared_ptr<SceneNode> node = actor_model_->nodes_[node_name];
 
-                for (auto property : nodeLua)
+                for (auto property : node_lua)
                 {
-                    std::string name = property.first.GetAs<std::string>();
-                    glm::vec3 value = property.second.GetAs<glm::vec3>();
+                    std::string name = property.first.getAs<std::string>();
+                    glm::vec3 value = property.second.getAs<glm::vec3>();
 
-                    glm::vec3 currentValue = node->Get(name);
-
-                    float scale = 1.f;
-                    if (name == "position" || name == "scale") scale = 100.f;
-                    else if (name.substr(0,5) == "color") scale = 255.f;
-
-                    query.Set("currentX", currentValue.x * scale);
-                    query.Set("currentY", currentValue.y * scale);
-                    query.Set("currentZ", currentValue.z * scale);
-
-                    node->InterpolateTo(name, value/scale, m_Counter + m_BlendTime);
+                    if (name == "position")
+                    {
+                        glm::vec3 current_value = node->getPosition();
+                        query.set("currentX", current_value.x * 100.f);
+                        query.set("currentY", current_value.y * 100.f);
+                        query.set("currentZ", current_value.z * 100.f);
+                        node->setPosition(value/100.f);
+                    }
+                    else if (name == "rotation")
+                    {
+                        glm::vec3 current_value = node->getRotation();
+                        query.set("currentX", current_value.x);
+                        query.set("currentY", current_value.y);
+                        query.set("currentZ", current_value.z);
+                        node->setRotation(value);
+                    }
+                    else if (name == "scale")
+                    {
+                        glm::vec3 current_value = node->getScale();
+                        query.set("currentX", current_value.x * 100.f);
+                        query.set("currentY", current_value.y * 100.f);
+                        query.set("currentZ", current_value.z * 100.f);
+                        node->setScale(value/100.f);
+                    }
+                    else if (name == "uv_map" && node->getNodeType() == "MESH")
+                    {
+                        auto mesh = std::static_pointer_cast<MeshNode>(node);
+                        glm::tvec2<unsigned short> current_value = mesh->getUvMap();
+                        query.set("currentX", current_value.x);
+                        query.set("currentY", current_value.y);
+                        mesh->setUvMap(value);
+                    }
+                    else if (name == "color_primary" && node->getNodeType() == "MESH")
+                    {
+                        auto mesh = std::static_pointer_cast<MeshNode>(node);
+                        glm::vec3 current_value = mesh->getColorPrimary();
+                        query.set("currentX", current_value.x);
+                        query.set("currentY", current_value.y);
+                        query.set("currentZ", current_value.z);
+                        mesh->setColorPrimary(value);
+                    }
+                    else if (name == "color_secondary" && node->getNodeType() == "MESH")
+                    {
+                        auto mesh = std::static_pointer_cast<MeshNode>(node);
+                        glm::vec3 current_value = mesh->getColorSecondary();
+                        query.set("currentX", current_value.x);
+                        query.set("currentY", current_value.y);
+                        query.set("currentZ", current_value.z);
+                        mesh->setColorSecondary(value);
+                    }
+                    else if (name == "color_detail1" && node->getNodeType() == "MESH")
+                    {
+                        auto mesh = std::static_pointer_cast<MeshNode>(node);
+                        glm::vec3 current_value = mesh->getColorDetail();
+                        query.set("currentX", current_value.x);
+                        query.set("currentY", current_value.y);
+                        query.set("currentZ", current_value.z);
+                        mesh->setColorDetail(value);
+                    }
+                    else if (name == "color_detail2" && node->getNodeType() == "MESH")
+                    {
+                        auto mesh = std::static_pointer_cast<MeshNode>(node);
+                        glm::vec3 current_value = mesh->getColorDetail2();
+                        query.set("currentX", current_value.x);
+                        query.set("currentY", current_value.y);
+                        query.set("currentZ", current_value.z);
+                        mesh->setColorDetail2(value);
+                    }
                 }
             }
         }

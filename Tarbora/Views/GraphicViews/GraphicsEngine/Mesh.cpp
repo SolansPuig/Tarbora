@@ -1,7 +1,7 @@
 #include "GraphicsEngine.hpp"
 
 namespace Tarbora {
-    std::shared_ptr<Resource> MeshResourceLoader::Load(std::string path)
+    std::shared_ptr<Resource> MeshResourceLoader::load(const std::string &path)
     {
         std::ifstream file;
         file.open(path.c_str());
@@ -15,14 +15,14 @@ namespace Tarbora {
         while (std::getline(file, line))
         {
             float value;
-            bool validLine = false;
+            bool valid_line = false;
             std::stringstream ss(line);
             while (ss >> value)
             {
                 data.push_back(value);
-                validLine = true;
+                valid_line = true;
             }
-            if (validLine) vertices++;
+            if (valid_line) vertices++;
         }
 
         std::shared_ptr<Resource> r = std::shared_ptr<Resource>(new Mesh(path, data, vertices));

@@ -1,0 +1,6 @@
+vertex = "shaders/outline.vert"
+tes_control = ""
+tes_eval = ""
+geometry = "shaders/outline.geom"
+fragment = "shaders/outline.frag"
+compute = ""

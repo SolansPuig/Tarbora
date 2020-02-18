@@ -14,10 +14,10 @@ walk = {
             position = {0, function() return math.cos(20*query.time) end, 0}
         },
         arm_r = {
-            rotation = {0, function() return -30*math.cos(10*query.time) end, 80}
+            rotation = {0, function() return -20*math.cos(10*query.time) end, 80}
         },
         arm_l = {
-            rotation = {0, function() return -30*math.cos(10*query.time) end, -80}
+            rotation = {0, function() return -20*math.cos(10*query.time) end, -80}
         },
         forearm_r = {
             rotation = {0, function() return -10*math.cos(10*query.time) + 10 end, 5}

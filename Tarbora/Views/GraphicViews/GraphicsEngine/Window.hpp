@@ -4,45 +4,45 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 // #include <GL/glext.h>
-#include "glfw/include/GLFW/glfw3.h"
+#include "External/glfw/include/GLFW/glfw3.h"
 #define GLM_FORCE_CXX98
 
 namespace Tarbora {
     class GraphicsEngine;
 
     struct WindowProps {
-        const char* title;
+        const std::string title;
         int width;
         int height;
         float ratio;
-        GraphicsEngine *graphicsEngine;
+        GraphicsEngine *graphics_engine;
 
-        WindowProps(const char *title, int width, int height, GraphicsEngine *graphicsEngine) :
-            title(title), width(width), height(height), ratio((float)width/(float)height), graphicsEngine(graphicsEngine) {};
+        WindowProps(const std::string &title, int width, int height, GraphicsEngine *graphics_engine) :
+            title(title), width(width), height(height), ratio((float)width/(float)height), graphics_engine(graphics_engine) {};
     };
 
     class Window
     {
     public:
-        Window(const char* title, int width, int height, GraphicsEngine *graphicsEngine);
+        Window(const std::string &title, int width, int height, GraphicsEngine *graphics_engine);
         ~Window();
 
-        void SetTitle(const char* title);
+        void setTitle(const std::string &title);
 
-        void Close();
-        void Update();
+        void close();
+        void update();
 
-        void CaptureMouse(bool capture);
+        void captureMouse(bool capture);
 
-        int GetWidth() { return m_Props.width; }
-        int GetHeight() { return m_Props.height; }
-        float GetRatio() { return m_Props.ratio; }
+        int getWidth() { return props_.width; }
+        int getHeight() { return props_.height; }
+        float getRatio() { return props_.ratio; }
 
-        GLFWwindow* GetRawWindow() { return m_Window; }
+        GLFWwindow* getRawWindow() { return window_; }
 
-        int TakeScreenshot(const std::string &filename);
+        int takeScreenshot(const std::string &filename);
     private:
-        GLFWwindow* m_Window;
-        WindowProps m_Props;
+        GLFWwindow* window_;
+        WindowProps props_;
     };
 }

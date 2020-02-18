@@ -1,4 +1,6 @@
-add_subdirectory (glfw)
+add_subdirectory (External/glfw)
+add_library (imgui SHARED External/imgui/imgui.cpp External/imgui/imgui_draw.cpp External/imgui/imgui_demo.cpp External/imgui/imgui_widgets.cpp)
+target_compile_options(imgui PRIVATE -w)
 add_library (GraphicsEngine SHARED
     Window.cpp
     GraphicsEngine.cpp
@@ -14,4 +16,5 @@ add_library (GraphicsEngine SHARED
     RenderQueue.cpp
     Renderer.cpp
 )
-add_library (imgui SHARED imgui/imgui.cpp imgui/imgui_draw.cpp imgui/imgui_demo.cpp imgui/imgui_widgets.cpp)
+target_link_libraries(GraphicsEngine PUBLIC imgui glfw)
+target_compile_options(GraphicsEngine PRIVATE -Werror -Wall -Wextra -Wpedantic)

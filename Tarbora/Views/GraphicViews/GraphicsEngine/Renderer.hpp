@@ -14,59 +14,59 @@ namespace Tarbora {
         Renderer();
         ~Renderer();
 
-        void Init(int widht, int height);
+        void init(int width, int height);
 
-        void GeometryPass();
-        void OcclusionPass();
-        void LightingPass();
-        void ScenePass();
-        void Postprocess();
+        void geometryPass();
+        void occlusionPass();
+        void lightingPass();
+        void scenePass();
+        void postprocess();
 
-        void Sky();
-        void CleanSky();
+        void sky();
+        void cleanSky();
 
-        void SetFaceCulling(bool value);
-        void SetPostprocessShader(const std::string &shader) { m_PostprocessShaderName = shader; }
+        void setFaceCulling(bool value);
+        void setPostprocessShader(const std::string &shader) { postprocess_shader_name_ = shader; }
 
-        void SetProjectionMatrix(const glm::mat4 &m);
-        void SetViewMatrix(const glm::mat4 &m);
+        void setProjectionMatrix(const glm::mat4 &m);
+        void setViewMatrix(const glm::mat4 &m);
 
     private:
-        void SetupGeometryPass();
-        void SetupOcclusionPass();
-        void SetupLightingPass();
-        void SetupScenePass();
-        void SetupPostprocess();
+        void setupGeometryPass();
+        void setupOcclusionPass();
+        void setupLightingPass();
+        void setupScenePass();
+        void setupPostprocess();
 
-        glm::mat4 m_Projection;
-        glm::mat4 m_View;
+        glm::mat4 projection_;
+        glm::mat4 view_;
 
-        int m_Width, m_Height;
+        int width_, height_;
 
-        unsigned int m_gBuffer;
-        std::unique_ptr<TextureInternal> m_gPosition;
-        std::unique_ptr<TextureInternal> m_gNormal;
-        std::unique_ptr<TextureInternal> m_gColorSpec;
+        unsigned int g_buffer_;
+        std::unique_ptr<TextureInternal> g_position_;
+        std::unique_ptr<TextureInternal> g_normal_;
+        std::unique_ptr<TextureInternal> g_color_spec_;
 
-        unsigned int m_ssaoBuffer;
-        std::unique_ptr<TextureInternal> m_ssaoColor;
-        std::unique_ptr<TextureInternal> m_NoiseTexture;
-        ResourcePtr<Shader> m_OcclusionShader;
+        unsigned int ssao_buffer_;
+        std::unique_ptr<TextureInternal> ssao_color_;
+        std::unique_ptr<TextureInternal> noise_texture_;
+        ResourcePtr<Shader> occlusion_shader_;
 
-        unsigned int m_ssaoBlurBuffer;
-        std::unique_ptr<TextureInternal> m_ssaoBlurColor;
-        ResourcePtr<Shader> m_OcclusionBlurShader;
+        unsigned int ssao_blur_buffer_;
+        std::unique_ptr<TextureInternal> ssao_blur_color_;
+        ResourcePtr<Shader> occlusion_blur_shader_;
 
-        unsigned int m_LightingBuffer;
-        std::unique_ptr<TextureInternal> m_LightingColor;
-        ResourcePtr<Shader> m_LightingShader;
+        unsigned int lighting_buffer_;
+        std::unique_ptr<TextureInternal> lighting_color_;
+        ResourcePtr<Shader> lighting_shader_;
 
-        unsigned int m_SceneBuffer;
-        std::unique_ptr<TextureInternal> m_SceneColor;
-        ResourcePtr<Shader> m_SceneShader;
+        unsigned int scene_buffer_;
+        std::unique_ptr<TextureInternal> scene_color_;
+        ResourcePtr<Shader> scene_shader_;
 
-        ResourcePtr<Mesh> m_QuadMesh;
-        std::string m_PostprocessShaderName;
-        ResourcePtr<Shader> m_PostprocessShader;
+        ResourcePtr<Mesh> quad_mesh_;
+        std::string postprocess_shader_name_;
+        ResourcePtr<Shader> postprocess_shader_;
     };
 }

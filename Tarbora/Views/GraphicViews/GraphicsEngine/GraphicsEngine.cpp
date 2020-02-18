@@ -1,35 +1,31 @@
 #include "GraphicsEngine.hpp"
-#include "../../../Framework/ResourceManager/inc/Lua.hpp"
+#include "../../../Framework/ResourceManager/Lua.hpp"
 
 namespace Tarbora {
-    GraphicsEngine::GraphicsEngine(Module *module, std::string settingsFile) :
-        m_Module(module)
+    GraphicsEngine::GraphicsEngine(Module *module, const std::string &settings_file) :
+        module_(module)
     {
-        ResourceManager::RegisterLoader(LoaderPtr(new ShaderResourceLoader()));
-        ResourceManager::RegisterLoader(LoaderPtr(new TextureResourceLoader()));
-        ResourceManager::RegisterLoader(LoaderPtr(new MeshResourceLoader()));
-        ResourceManager::RegisterLoader(LoaderPtr(new MaterialResourceLoader()));
+        ResourceManager::registerLoader(std::shared_ptr<ResourceLoader>(new ShaderResourceLoader()));
+        ResourceManager::registerLoader(std::shared_ptr<ResourceLoader>(new TextureResourceLoader()));
+        ResourceManager::registerLoader(std::shared_ptr<ResourceLoader>(new MeshResourceLoader()));
+        ResourceManager::registerLoader(std::shared_ptr<ResourceLoader>(new MaterialResourceLoader()));
 
-        m_Renderer = std::shared_ptr<Renderer>(new Renderer());
+        renderer_ = std::shared_ptr<Renderer>(new Renderer());
 
-        std::string windowTitle = "Tarbora Game Engine";
-        int windowWidth = 1280, windowHeight = 720;
-        std::string postprocessShader = "shaders/postprocess.shader.lua";
+        ResourcePtr<LuaScript> settings(settings_file);
+        LuaTable window = settings->get("window");
+        std::string window_title = window.get<std::string>("title", "Tarbora Game Engine");
+        float window_width = window.get("size").get<int>(1, 1280);
+        float window_height = window.get("size").get<int>(2, 720);
+        std::string postprocess_shader = "shaders/postprocess.shader.lua";
+        renderer_->setPostprocessShader(window.get<std::string>("postprocessShader", postprocess_shader));
 
-        ResourcePtr<LuaScript> settings(settingsFile);
+        window_ = std::unique_ptr<Window>(new Window(window_title, window_width, window_height, this));
 
-        LuaTable window = settings->Get("window");
-        windowTitle = window.Get<std::string>("title", windowTitle);
-        windowWidth = window.Get("size").Get<int>(1, windowWidth);
-        windowHeight = window.Get("size").Get<int>(2, windowHeight);
-        m_Renderer->SetPostprocessShader(window.Get<std::string>("postprocessShader", postprocessShader));
-
-        m_Window = std::unique_ptr<Window>(new Window(windowTitle.c_str(), windowWidth, windowHeight, this));
-
-        m_Renderer->Init(windowWidth, windowHeight);
-        m_RenderQueue = std::shared_ptr<RenderQueue>(new RenderQueue(m_Renderer));
-        m_InputManager = std::shared_ptr<Input>(new Input(this));
-        m_Gui = std::unique_ptr<Gui>(new Gui(this));
+        renderer_->init(window_width, window_height);
+        render_queue_ = std::shared_ptr<RenderQueue>(new RenderQueue(renderer_));
+        input_manager_ = std::shared_ptr<Input>(new Input(this));
+        gui_ = std::shared_ptr<Gui>(new Gui(this));
     }
 
     GraphicsEngine::~GraphicsEngine()
@@ -37,15 +33,15 @@ namespace Tarbora {
         LOG_DEBUG("Destroying Graphics Engine");
     }
 
-    void GraphicsEngine::BeforeDraw()
+    void GraphicsEngine::beforeDraw()
     {
-        m_Gui->BeforeDraw();
+        gui_->beforeDraw();
     }
 
-    void GraphicsEngine::AfterDraw()
+    void GraphicsEngine::afterDraw()
     {
-        m_Renderer->Postprocess();
-        m_Gui->AfterDraw();
-        m_Window->Update();
+        renderer_->postprocess();
+        gui_->afterDraw();
+        window_->update();
     }
 }

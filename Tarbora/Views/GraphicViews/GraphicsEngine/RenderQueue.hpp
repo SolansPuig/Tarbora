@@ -29,26 +29,37 @@ namespace Tarbora {
     {
     public:
         RenderQueue(std::shared_ptr<Renderer> renderer) :
-            m_Renderer(renderer) {}
+            renderer_(renderer) {}
 
-        void DrawMesh(RenderPass renderPass, ResourcePtr<Mesh> mesh, glm::mat4 transform, glm::vec2 uv, glm::vec3 meshSize, glm::vec3 textureSize, glm::vec3 primary, glm::vec3 secondary, glm::vec3 detail, glm::vec3 detail2);
+        void drawMesh(
+            RenderPass render_pass,
+            ResourcePtr<Mesh> mesh,
+            const glm::mat4 &transform,
+            const glm::tvec2<unsigned short> &uv,
+            const glm::vec3 &mesh_size,
+            const glm::vec3 &texture_size,
+            const glm::tvec3<unsigned char> &primary,
+            const glm::tvec3<unsigned char> &secondary,
+            const glm::tvec3<unsigned char> &detail,
+            const glm::tvec3<unsigned char> &detail2
+        );
 
-        void Draw();
+        void draw();
 
-        void PushMaterial(ResourcePtr<Material> material);
-        ResourcePtr<Material> GetActiveMaterial();
-        void PopMaterial();
+        void pushMaterial(ResourcePtr<Material> material);
+        ResourcePtr<Material> getActiveMaterial();
+        void popMaterial();
 
-        void SetProjectionMatrix(const glm::mat4 &m);
-        void SetViewMatrix(const glm::mat4 &m);
+        void setProjectionMatrix(const glm::mat4 &m);
+        void setViewMatrix(const glm::mat4 &m);
 
     private:
-        RenderList m_RenderList;
-        std::stack<ResourcePtr<Material>> m_MaterialStack;
+        RenderList render_list_;
+        std::stack<ResourcePtr<Material>> material_stack_;
 
-        std::shared_ptr<Renderer> m_Renderer;
+        std::shared_ptr<Renderer> renderer_;
 
-        glm::mat4 m_Projection;
-        glm::mat4 m_View;
+        glm::mat4 projection_;
+        glm::mat4 view_;
     };
 }

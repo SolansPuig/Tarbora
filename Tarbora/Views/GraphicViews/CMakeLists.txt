@@ -7,5 +7,6 @@ add_library (GraphicViews SHARED
     GameLayer.cpp
     ActorModel.cpp
     AnimationController.cpp
-    NodeProperty.cpp
+    ModelEditor.cpp
 )
+target_compile_options(GraphicViews PRIVATE -Werror -Wall -Wextra -Wpedantic)

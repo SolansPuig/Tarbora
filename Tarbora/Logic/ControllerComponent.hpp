@@ -1,8 +1,8 @@
 #pragma once
 #include "Component.hpp"
-#include "../Framework/PhysicsEngine/inc/RigidBody.hpp"
 
 namespace Tarbora {
+    class TransformComponent;
     class PhysicsComponent;
     class AnimationComponent;
 
@@ -12,23 +12,26 @@ namespace Tarbora {
     public:
         ControllerComponent(System *s, const ActorId &id, const LuaTable &table);
 
-        void SetMovement(const glm::vec3 &direction);
+        void setMovement(const glm::vec3 &direction);
 
-        void SetLookDirection(const glm::vec3 &direction);
+        void setLookDirection(const glm::vec3 &direction);
 
     private:
-        void CheckGround();
+        void checkGround();
+        void checkLookAt();
 
-        PhysicsComponent *m_Physics;
-        AnimationComponent *m_Animation;
-        float m_Speed;
-        float m_RunSpeed;
-        glm::vec3 m_Movement;
-        glm::vec3 m_Rotation;
-        glm::vec3 m_LookRotation;
-        bool m_OnGround;
-        bool m_Walking;
-        bool m_ShouldUpdate;
+        TransformComponent *transform_;
+        PhysicsComponent *physics_;
+        AnimationComponent *animation_;
+        float speed_;
+        float run_speed_;
+        glm::vec3 movement_;
+        glm::vec3 facing_;
+        glm::quat look_direction_;
+        bool on_ground_;
+
+        ActorId target_;
+        int target_distance_;
     };
 
     class ControllerSystem : public SystemImpl<ControllerComponent>
@@ -36,10 +39,10 @@ namespace Tarbora {
     public:
         ControllerSystem(World *w);
 
-        static std::string GetName() { return "controller"; }
+        static std::string getName() { return "controller"; }
 
-        virtual void Init(const ActorId &id);
+        virtual void init(const ActorId &id);
 
-        virtual void Update(float deltaTime);
+        virtual void update(float delta_time);
     };
 }

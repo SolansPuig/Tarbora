@@ -10,16 +10,16 @@ namespace Tarbora {
         {
             for (auto type : table)
             {
-                Add(type.second.GetAs<std::string>());
+                add(type.second.getAs<std::string>());
             }
         }
 
-        void Add(const std::string &type) { m_Types.push_back(type); }
+        void add(const std::string &type) { types_.push_back(type); }
 
-        bool Has(const std::string &type) { return count(m_Types.begin(), m_Types.end(), type) > 0; }
+        bool has(const std::string &type) { return count(types_.begin(), types_.end(), type) > 0; }
 
     private:
-        std::vector<std::string> m_Types;
+        std::vector<std::string> types_;
     };
 
     class TypeSystem : public SystemImpl<TypeComponent>
@@ -27,6 +27,6 @@ namespace Tarbora {
     public:
         TypeSystem(World *w) : SystemImpl<TypeComponent>(w) {}
 
-        static std::string GetName() { return "type"; }
+        static std::string getName() { return "type"; }
     };
 }

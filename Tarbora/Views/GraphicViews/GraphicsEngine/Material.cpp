@@ -1,50 +1,52 @@
 #include "GraphicsEngine.hpp"
-#include "../../../Framework/ResourceManager/inc/Lua.hpp"
+#include "../../../Framework/ResourceManager/Lua.hpp"
 
 namespace Tarbora {
-    void Material::Bind(const glm::mat4 &projection, const glm::mat4 &view) const
+    void Material::bind(const glm::mat4 &projection, const glm::mat4 &view) const
     {
-        m_Shader->Use();
-        m_Shader->Set("pixelDensity", m_PixelDensity);
-        m_Shader->Set("projection", projection);
-        m_Shader->Set("view", view);
-        m_Albedo->Bind(0);
-        m_Specular->Bind(1);
-        m_ColorTint->Bind(2);
+        shader_->use();
+        shader_->set("pixelDensity", pixel_density_);
+        shader_->set("projection", projection);
+        shader_->set("view", view);
+        albedo_->bind(0);
+        specular_->bind(1);
+        color_tint_->bind(2);
     }
 
-    std::shared_ptr<Resource> MaterialResourceLoader::Load(std::string path)
+    std::shared_ptr<Resource> MaterialResourceLoader::load(const std::string &path)
     {
+        ZoneScoped;
+
         std::string albedo = "missing.png";
         std::string specular = "grey.png";
-        std::string colorTint = "generic_mask.png";
+        std::string color_tint = "generic_mask.png";
         std::string shader = "model.shader.lua";
-        int pixelDensity = 100;
+        int pixel_density = 100;
 
         {
             std::ifstream file(path);
             if (file) {
                 LuaScript resource(path);
-                albedo = resource.Get<std::string>("albedo");
-                specular = resource.Get<std::string>("specular", specular, true);
-                colorTint = resource.Get<std::string>("colorTint", colorTint, true);
-                shader = resource.Get<std::string>("shader", shader, true);
-                pixelDensity = resource.Get<int>("pixel_density", pixelDensity, true);
+                albedo = resource.get<std::string>("albedo");
+                specular = resource.get<std::string>("specular", specular, true);
+                color_tint = resource.get<std::string>("color_tint", color_tint, true);
+                shader = resource.get<std::string>("shader", shader, true);
+                pixel_density = resource.get<int>("pixel_density", pixel_density, true);
             }
         }
 
         // Create the material resource
         std::shared_ptr<Material> mat(new Material(path));
-        mat->m_Albedo = ResourcePtr<Texture>("textures/" + albedo, "textures/missing.png");
-        mat->m_Specular = ResourcePtr<Texture>("textures/" + specular, "textures/grey.png");
-        mat->m_ColorTint = ResourcePtr<Texture>("textures/" + colorTint, "textures/generic_mask.png");
-        mat->m_PixelDensity = pixelDensity;
-        mat->m_Shader = ResourcePtr<Shader>("shaders/" + shader, "shaders/model.shader.lua");
-        mat->m_Shader.SetInitialConfig([](auto shader){
-            shader->Use();
-            shader->Set("albedo", 0);
-            shader->Set("specular", 1);
-            shader->Set("colorTint", 2);
+        mat->albedo_ = ResourcePtr<Texture>("textures/" + albedo, "textures/missing.png");
+        mat->specular_ = ResourcePtr<Texture>("textures/" + specular, "textures/grey.png");
+        mat->color_tint_ = ResourcePtr<Texture>("textures/" + color_tint, "textures/generic_mask.png");
+        mat->pixel_density_ = pixel_density;
+        mat->shader_ = ResourcePtr<Shader>("shaders/" + shader, "shaders/model.shader.lua");
+        mat->shader_.setInitialConfig([](auto shader){
+            shader->use();
+            shader->set("albedo", 0);
+            shader->set("specular", 1);
+            shader->set("colorTint", 2);
         });
 
         return mat;

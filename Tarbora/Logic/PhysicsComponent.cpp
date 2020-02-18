@@ -6,187 +6,209 @@ namespace Tarbora {
     PhysicsComponent::PhysicsComponent(System *s, const ActorId &id, const LuaTable &table) :
         Component(s, id, table)
     {
-        std::string shape = table.Get<std::string>("shape", "null");
+        std::string shape = table.get<std::string>("shape", "null");
 
         if (shape == "sphere")
         {
-            m_Height = table.Get<float>("radius");
-            m_Body = std::shared_ptr<RigidBody>(new SphereBody(m_Height));
+            height_ = table.get<float>("radius");
+            body_ = std::shared_ptr<RigidBody>(new SphereBody(height_));
         }
         else if (shape == "capsule")
         {
-            float radius = table.Get<float>("radius");
-            float height = table.Get<float>("height");
-            m_Body = std::shared_ptr<RigidBody>(new CapsuleBody(radius, height));
-            m_Height = 2 * radius + height;
+            float radius = table.get<float>("radius");
+            float height = table.get<float>("height");
+            body_ = std::shared_ptr<RigidBody>(new CapsuleBody(radius, height));
+            height_ = 2 * radius + height;
         }
         else if (shape == "box")
         {
-            glm::vec3 size = table.Get<glm::vec3>("size");
-            m_Body = std::shared_ptr<RigidBody>(new BoxBody(size));
-            m_Height = size.y;
+            glm::vec3 size = table.get<glm::vec3>("size");
+            body_ = std::shared_ptr<RigidBody>(new BoxBody(size));
+            height_ = size.y;
         }
         else
         {
             LOG_ERR("PhysicsComponent: \"%s\" is not a valid character controller shape.", shape.c_str());
-            m_Error = true;
+            error_ = true;
             return;
         }
 
-        m_Body->SetProperties(
-            table.Get<float>("friction", 0.f, true),
-            table.Get<float>("density", 1.f, true),
-            table.Get<float>("restitution", 0.f, true)
+        body_->setProperties(
+            table.get<float>("friction", 0.f, true),
+            table.get<float>("density", 1.f, true),
+            table.get<float>("restitution", 0.f, true)
         );
     }
 
-    void PhysicsComponent::UpdateTransform()
+    void PhysicsComponent::updateTransform()
     {
-        if (m_Enabled)
-        {
-            m_Body->SetTransform(m_Transform->GetTransform());
-        }
+        if (enabled_)
+            body_->setTransform(transform_->getPosition(), transform_->getRotation());
     }
 
-    void PhysicsComponent::RestrictRotation(const glm::vec3 &rotation)
+    void PhysicsComponent::setAngularFactor(const glm::vec3 &direction)
     {
-        if (m_Enabled)
-            m_Body->RestrictRotation(glm::vec3(0.0f, 1.0f, 0.0f));
+        if (enabled_)
+            body_->setAngularFactor(direction);
     }
 
-    void PhysicsComponent::SetLinearDamping(float value)
+    void PhysicsComponent::setLinearDamping(float value)
     {
-        if (m_Enabled)
-            m_Body->SetLinearDamping(value);
+        if (enabled_)
+            body_->setLinearDamping(value);
     }
 
-    void PhysicsComponent::SetVelocity(float magnitude, const glm::vec3 &direction)
+    void PhysicsComponent::setVelocity(const glm::vec3 &direction)
     {
-        if (m_Enabled)
-            m_Body->SetVelocity(magnitude * direction);
+        if (enabled_)
+            body_->setVelocity(direction);
     }
 
-    void PhysicsComponent::SetAngularVelocity(float magnitude, const glm::vec3 &direction)
+    void PhysicsComponent::setAngularVelocity(const glm::vec3 &direction)
     {
-        if (m_Enabled)
-            m_Body->SetAngularVelocity(magnitude * direction);
+        if (enabled_)
+            body_->setAngularVelocity(direction);
     }
 
-    void PhysicsComponent::ApplyForce(float magnitude, const glm::vec3 &direction)
+    void PhysicsComponent::applyForce(const glm::vec3 &direction)
     {
-        if (m_Enabled)
-            m_Body->ApplyForce(magnitude, direction);
+        if (enabled_)
+            body_->applyForce(direction);
     }
 
-    void PhysicsComponent::ApplyTorque(float magnitude, const glm::vec3 &direction)
+    void PhysicsComponent::applyTorque(const glm::vec3 &direction)
     {
-        if (m_Enabled)
-            m_Body->ApplyTorque(magnitude, direction);
+        if (enabled_)
+            body_->applyTorque(direction);
     }
 
-    void PhysicsComponent::Stop()
+    void PhysicsComponent::stop()
     {
-        if (m_Enabled)
-            m_Body->Stop();
+        if (enabled_)
+            body_->stop();
     }
 
-    std::shared_ptr<RayCastResult> PhysicsComponent::RayCast(const glm::vec3 &origin, const glm::vec3 &direction, float length)
+    std::shared_ptr<RayCastResult> PhysicsComponent::rayCast(const glm::vec3 &origin, const glm::quat &direction, float length)
     {
-        if (m_Enabled)
-            return m_Body->RayCast(origin, direction, length);
+        if (enabled_)
+            return body_->rayCast(origin, direction, length);
         else
             return std::shared_ptr<RayCastResult>();
     }
 
-    void PhysicsComponent::OnEnable()
+    void PhysicsComponent::onEnable()
     {
-        if (m_Transform)
-            m_Transform->SetController(this);
+        if (transform_)
+            transform_->setController(this);
     }
 
-    void PhysicsComponent::OnDisable()
+    void PhysicsComponent::onDisable()
     {
-        if (m_Transform)
-            m_Transform->SetController(nullptr);
+        if (transform_)
+            transform_->setController(nullptr);
     }
 
     PhysicsSystem::PhysicsSystem(World *w) :
         SystemImpl<PhysicsComponent>(w)
     {
-        PhysicsEngine::Init();
+        PhysicsEngine::init();
 
-        Subscribe("apply_force", [this](MessageSubject subject, MessageBody *body)
+        subscribe("update_transform", [this](const MessageSubject &subject, const MessageBody &body)
         {
-            Message::ApplyPhysics m(body);
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
-            if (physics && physics->m_Enabled)
-                physics->ApplyForce(m.GetMagnitude(), m.GetDirection());
+            UNUSED(subject);
+            Message::Actor m(body);
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(m.getId()));
+            if (physics)
+                physics->updateTransform();
         });
 
-        Subscribe("apply_torque", [this](MessageSubject subject, MessageBody *body)
+        subscribe("apply_force", [this](const MessageSubject &subject, const MessageBody &body)
         {
+            UNUSED(subject);
             Message::ApplyPhysics m(body);
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
-            if (physics && physics->m_Enabled)
-                physics->ApplyTorque(m.GetMagnitude(), m.GetDirection());
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(m.getId()));
+            if (physics)
+                physics->applyForce(m.getDirection());
         });
 
-        Subscribe("set_velocity", [this](MessageSubject subject, MessageBody *body)
+        subscribe("apply_torque", [this](const MessageSubject &subject, const MessageBody &body)
         {
+            UNUSED(subject);
             Message::ApplyPhysics m(body);
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
-            if (physics && physics->m_Enabled)
-                physics->SetVelocity(m.GetMagnitude(), m.GetDirection());
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(m.getId()));
+            if (physics)
+                physics->applyTorque(m.getDirection());
         });
 
-        Subscribe("stop", [this](MessageSubject subject, MessageBody *body)
+        subscribe("set_velocity", [this](const MessageSubject &subject, const MessageBody &body)
         {
+            UNUSED(subject);
             Message::ApplyPhysics m(body);
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(m.GetId()));
-            if (physics && physics->m_Enabled)
-                physics->Stop();
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(m.getId()));
+            if (physics)
+                physics->setVelocity(m.getDirection());
+        });
+
+        subscribe("set_angular_velocity", [this](const MessageSubject &subject, const MessageBody &body)
+        {
+            UNUSED(subject);
+            Message::ApplyPhysics m(body);
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(m.getId()));
+            if (physics)
+                physics->setAngularVelocity(m.getDirection());
+        });
+
+        subscribe("stop", [this](const MessageSubject &subject, const MessageBody &body)
+        {
+            UNUSED(subject);
+            Message::ApplyPhysics m(body);
+            PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(m.getId()));
+            if (physics)
+                physics->stop();
         });
     }
 
     PhysicsSystem::~PhysicsSystem()
     {
-        m_Components.clear();
-        PhysicsEngine::Close();
+        components_.clear();
+        PhysicsEngine::close();
     }
 
-    void PhysicsSystem::Init(const ActorId &id)
+    void PhysicsSystem::init(const ActorId &id)
     {
-        PhysicsComponent *physics = static_cast<PhysicsComponent*>(Get(id));
-        if (physics && !physics->Error())
+        PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(id));
+        if (physics && !physics->error())
         {
-            physics->m_Transform = static_cast<TransformComponent*>(GetComponent(id, "transform"));
-            if (physics->m_Transform)
+            physics->transform_ = static_cast<TransformComponent*>(getComponent(id, "transform"));
+            if (physics->transform_)
             {
-                glm::mat4 transform = physics->m_Transform->GetTransform();
-                physics->m_Body->Register(physics->m_Owner, transform);
+                physics->body_->registerActor(
+                    physics->owner_,
+                    physics->transform_->getPosition(),
+                    physics->transform_->getRotation()
+                );
             }
 
-            physics->m_MotionState = static_cast<ActorMotionState*>(physics->m_Body->GetBody()->getMotionState());
-
-            physics->Enable();
+            physics->enable();
         }
     }
 
-    void PhysicsSystem::Update(float deltaTime)
+    void PhysicsSystem::update(float delta_time)
     {
-        PhysicsEngine::Update(deltaTime);
+        PhysicsEngine::update(delta_time);
 
-        for (auto &component : m_Components)
+        for (auto &component : components_)
         {
             PhysicsComponent *physics = &component.second;
-            if (physics->m_Enabled)
+            if (physics->enabled_)
             {
-                if (physics->m_MotionState && physics->m_Transform)
+                if (physics->body_ && physics->transform_)
                 {
-                    if (physics->m_Transform->GetTransform() != physics->m_MotionState->m_Transform)
-                    {
-                        physics->m_Transform->SetTransform(physics->m_MotionState->m_Transform);
-                    }
+                    if (physics->transform_->getPosition() != physics->body_->getPosition())
+                        physics->transform_->setPosition(physics->body_->getPosition());
+
+                    if (physics->transform_->getRotation() != physics->body_->getRotation())
+                        physics->transform_->setRotation(physics->body_->getRotation());
                 }
             }
         }

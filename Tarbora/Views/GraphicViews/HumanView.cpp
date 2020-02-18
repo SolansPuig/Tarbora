@@ -1,5 +1,6 @@
 #include "HumanView.hpp"
 #include "DemoWindow.hpp"
+#include "GameLayer.hpp"
 #include "MetricsGui.hpp"
 
 namespace Tarbora {
@@ -8,27 +9,24 @@ namespace Tarbora {
     {
         LOG_DEBUG("Creating human game view...");
 
-        m_MaxFrameRate = 60;
+        max_fps_ = 60;
 
-        m_GameLayer = std::make_shared<GameLayerImpl>(this, true);
-        m_GameLayer->SetTargetId("player");
-        PushLayer(m_GameLayer);
+        game_layer_ = std::shared_ptr<GameLayer>(new GameLayer(this, true));
+        game_layer_->setTargetId("player");
+        pushLayer(game_layer_);
 
         std::shared_ptr<MetricsGui> metrics(new MetricsGui(this, false));
-        PushLayer(metrics);
+        pushLayer(metrics);
 
-        m_Console = std::make_shared<ConsoleImpl>(this, false, false, [this](std::string &input)
-        {
-            Console()->Log(input);
-        });
+        std::shared_ptr<ModelEditor> model_editor(new ModelEditor(this, false));
+        pushLayer(model_editor);
 
-        PushLayer(m_Console);
+        std::shared_ptr<DemoWindow> demo_gui(new DemoWindow(this, false));
+        pushLayer(demo_gui);
 
-        GetGraphicsEngine()->GetWindow()->CaptureMouse(true);
+        getGraphicsEngine()->getWindow()->captureMouse(true);
 
         LOG_DEBUG("Created");
-        // std::shared_ptr<DemoWindow> demo_gui(new DemoWindow(this, false));
-        // PushLayer(demo_gui);
     }
 
     HumanView::~HumanView()
@@ -36,69 +34,69 @@ namespace Tarbora {
         LOG_DEBUG("Destroying human game view...");
     }
 
-    void HumanView::GetInput()
+    void HumanView::getInput()
     {
         ZoneScoped;
 
-        if (GetGraphicsEngine()->GetInputManager()->GetKeyDown(KEY_ESCAPE)) {
+        if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_ESCAPE)) {
             static bool capture = true;
             capture = !capture;
-            GetGraphicsEngine()->GetWindow()->CaptureMouse(capture);
-            m_GameLayer->FreezeMouse(!capture);
+            getGraphicsEngine()->getWindow()->captureMouse(capture);
+            game_layer_->freezeMouse(!capture);
         }
 
-        if (GetGraphicsEngine()->GetInputManager()->GetKeyDown(KEY_F2)) {
-            GetGraphicsEngine()->GetWindow()->TakeScreenshot("/home/roger/Imatges/test");
+        if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F2)) {
+            getGraphicsEngine()->getWindow()->takeScreenshot("/home/roger/Imatges/test");
         }
 
-        if (GetGraphicsEngine()->GetInputManager()->GetKeyDown(KEY_F5)) {
-            ResourceManager::Flush();
+        if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F5)) {
+            ResourceManager::flush();
         }
 
-        for (auto itr = m_Layers.rbegin(); itr != m_Layers.rend(); itr++)
+        for (auto itr = layers_.rbegin(); itr != layers_.rend(); itr++)
         {
-            (*itr)->GetInput();
+            (*itr)->getInput();
         }
     }
 
-    void HumanView::Update(float elapsed_time)
+    void HumanView::update(float delta_time)
     {
         ZoneScoped;
 
-        for (auto itr = m_Layers.rbegin(); itr != m_Layers.rend(); itr++)
+        for (auto itr = layers_.rbegin(); itr != layers_.rend(); itr++)
         {
-            if ((*itr)->IsActive())
-                (*itr)->Update(elapsed_time);
+            if ((*itr)->isActive())
+                (*itr)->update(delta_time);
         }
     }
 
-    void HumanView::Draw()
+    void HumanView::draw()
     {
         {
             ZoneScopedN("Before Draw");
-            GetGraphicsEngine()->BeforeDraw();
+            getGraphicsEngine()->beforeDraw();
         }
         {
             ZoneScopedN("Draw");
-            for (auto &itr : m_Layers)
+            for (auto &itr : layers_)
             {
-                if (itr->IsActive())
-                    itr->Draw();
+                if (itr->isActive())
+                    itr->draw();
             }
         }
         {
             ZoneScopedN("After Draw");
-            GetGraphicsEngine()->AfterDraw();
+            getGraphicsEngine()->afterDraw();
         }
     }
 
-    void HumanView::PushLayer(std::shared_ptr<Layer> layer)
+    void HumanView::pushLayer(std::shared_ptr<Layer> layer)
     {
-        m_Layers.push_back(layer);
+        layers_.push_back(layer);
     }
 
-    void HumanView::RemoveLayer(std::shared_ptr<Layer> layer)
+    void HumanView::removeLayer(std::shared_ptr<Layer> layer)
     {
-        m_Layers.remove(layer);
+        layers_.remove(layer);
     }
 }

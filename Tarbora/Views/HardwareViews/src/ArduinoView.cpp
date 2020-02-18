@@ -7,7 +7,7 @@ namespace Tarbora {
     {
         LOG_INFO("Creating arduino view...");
 
-        m_Arduino.open("/dev/ttyACM0");
+        arduino_.open("/dev/ttyACM0");
 
         LOG_INFO("Successfully created arduino game view");
     }
@@ -15,16 +15,18 @@ namespace Tarbora {
     ArduinoView::~ArduinoView()
     {
         LOG_INFO("Destroying arduino game view...");
-        m_Arduino.close();
+        arduino_.close();
         LOG_INFO("Successfully destroyed arduino game view");
     }
 
-    void ArduinoView::Update(float elapsed_time)
+    void ArduinoView::update(float delta_time)
     {
-        int data = m_Arduino.get() / 5;
+        UNUSED(delta_time);
+
+        int data = arduino_.get() / 5;
         if (data > 0)
         {
-            GetMessageManager()->Trigger("apply_force", Message::ApplyPhysics("test_cube", data, Direction(glm::vec3(0.f, 1.f, 0.f))));
+            getMessageManager()->trigger("apply_force", Message::ApplyPhysics("test_cube", glm::vec3(0.f, 1.f, 0.f) * (float)data));
         }
     }
 }

@@ -1,44 +1,42 @@
 #pragma once
-#include "../../Framework/ModuleComponent.hpp"
+#include "../../Framework/Module/ModuleComponent.hpp"
 #include "GraphicView.hpp"
 
 namespace Tarbora {
     class Layer : public ModuleComponent
     {
     public:
-        Layer(GraphicView *view, bool start_active = true) :  ModuleComponent(view), m_active(start_active) {}
+        Layer(GraphicView *view, bool start_active = true) :  ModuleComponent(view), active_(start_active) {}
         virtual ~Layer() {}
 
-        virtual void OnActivate() {}
-        virtual void OnDeactivate() {}
+        virtual void onActivate() {}
+        virtual void onDeactivate() {}
 
-        virtual void GetInput() {}
-        virtual void Update(float elapsed_time) { (void)(elapsed_time); }
-        virtual void Draw() {}
+        virtual void getInput() {}
+        virtual void update(float delta_time) { (void)(delta_time); }
+        virtual void draw() {}
 
-        virtual bool OnMessage(MessageBody *m) { (void)(m); return false; }
+        virtual bool onMessage(const MessageBody &m) { (void)(m); return false; }
 
-        void SetActive(bool active)
+        void setActive(bool active)
         {
-            m_active = active;
-            if (m_active) OnActivate();
-            else OnDeactivate();
+            active_ = active;
+            if (active_) onActivate();
+            else onDeactivate();
         }
 
-        bool IsActive() const
+        bool isActive() const
         {
-            return m_active;
+            return active_;
         }
 
-        std::shared_ptr<Input> GetInputManager()
+        std::shared_ptr<Input> getInputManager()
         {
-            return static_cast<GraphicView*>(m_Module)->GetGraphicsEngine()->GetInputManager();
+            return static_cast<GraphicView*>(module_)->getGraphicsEngine()->getInputManager();
         }
 
     protected:
-        bool m_active;
-        bool m_event_blocking;
+        bool active_;
+        bool event_blocking_;
     };
-
-    typedef std::list<std::shared_ptr<Layer>> LayerList;
 }

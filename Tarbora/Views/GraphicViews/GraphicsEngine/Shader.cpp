@@ -1,73 +1,75 @@
 #include "GraphicsEngine.hpp"
 #include "../../../Messages/BasicMessages.hpp"
-#include "../../../Framework/ResourceManager/inc/Lua.hpp"
+#include "../../../Framework/ResourceManager/Lua.hpp"
 
 namespace Tarbora {
     Shader::~Shader()
     {
-        Delete();
+        deleteShader();
     }
 
-    void Shader::Use() const
+    void Shader::use() const
     {
-        glUseProgram(m_Id);
+        glUseProgram(id_);
     }
 
-    void Shader::Set(const std::string name, int value)
+    void Shader::set(const std::string &name, int value)
     {
-        glUniform1i(glGetUniformLocation(m_Id, name.c_str()), value);
+        glUniform1i(glGetUniformLocation(id_, name.c_str()), value);
     }
 
-    void Shader::Set(const std::string name, float value)
+    void Shader::set(const std::string &name, float value)
     {
-        glUniform1f(glGetUniformLocation(m_Id, name.c_str()), value);
+        glUniform1f(glGetUniformLocation(id_, name.c_str()), value);
     }
 
-    void Shader::Set(const std::string name, const glm::vec2 &value)
+    void Shader::set(const std::string &name, const glm::vec2 &value)
     {
-        glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
+        glUniform2fv(glGetUniformLocation(id_, name.c_str()), 1, glm::value_ptr(value));
     }
 
-    void Shader::Set(const std::string name, float x, float y)
+    void Shader::set(const std::string &name, float x, float y)
     {
-        glUniform2fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec2(x, y)));
+        glUniform2fv(glGetUniformLocation(id_, name.c_str()), 1, glm::value_ptr(glm::vec2(x, y)));
     }
 
-    void Shader::Set(const std::string name, const glm::vec3 &value)
+    void Shader::set(const std::string &name, const glm::vec3 &value)
     {
-        glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
+        glUniform3fv(glGetUniformLocation(id_, name.c_str()), 1, glm::value_ptr(value));
     }
 
-    void Shader::Set(const std::string name, float x, float y, float z)
+    void Shader::set(const std::string &name, float x, float y, float z)
     {
-        glUniform3fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec3(x, y, z)));
+        glUniform3fv(glGetUniformLocation(id_, name.c_str()), 1, glm::value_ptr(glm::vec3(x, y, z)));
     }
 
-    void Shader::Set(const std::string name, const glm::vec4 &value)
+    void Shader::set(const std::string &name, const glm::vec4 &value)
     {
-        glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(value));
+        glUniform4fv(glGetUniformLocation(id_, name.c_str()), 1, glm::value_ptr(value));
     }
 
-    void Shader::Set(const std::string name, float x, float y, float z, float w)
+    void Shader::set(const std::string &name, float x, float y, float z, float w)
     {
-        glUniform4fv(glGetUniformLocation(m_Id, name.c_str()), 1, glm::value_ptr(glm::vec4(x, y, z, w)));
+        glUniform4fv(glGetUniformLocation(id_, name.c_str()), 1, glm::value_ptr(glm::vec4(x, y, z, w)));
     }
 
-    void Shader::Set(const std::string name, const glm::mat4 &value)
+    void Shader::set(const std::string &name, const glm::mat4 &value)
     {
-        glUniformMatrix4fv(glGetUniformLocation(m_Id, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+        glUniformMatrix4fv(glGetUniformLocation(id_, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
     }
 
-    unsigned int Shader::CompileShader(const std::string &path, const std::string &type)
+    unsigned int Shader::compileShader(const std::string &path, const std::string &type)
     {
+        ZoneScoped;
+
         if (path != "")
         {
-            std::ifstream file(ResourceManager::GetResourceFolder() + path.c_str());
+            std::ifstream file(ResourceManager::getResourceFolder() + path.c_str());
             if (file)
             {
-                std::string code = std::string(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
+                const std::string code = std::string(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
                 file.close();
-                return CompileShaderFile(type, code);
+                return compileShaderFile(type, code);
             }
             LOG_ERR("ShaderCompiler: Failed to load file %s for shader type %s.", path.c_str(), type.c_str());
         }
@@ -80,8 +82,10 @@ namespace Tarbora {
         return 0;
     }
 
-    unsigned int Shader::CompileShaderFile(const std::string &type, const std::string &code)
+    unsigned int Shader::compileShaderFile(const std::string &type, const std::string &code)
     {
+        ZoneScoped;
+
         // Create and compile the shader
         unsigned int id = 0;
         if (type == "vertex") id = glCreateShader(GL_VERTEX_SHADER);
@@ -106,8 +110,10 @@ namespace Tarbora {
         return id;
     }
 
-    void Shader::LinkProgram(unsigned int *ids)
+    void Shader::linkProgram(unsigned int *ids)
     {
+        ZoneScoped;
+
         // Attach all the shaders if they are valid and link the program
         unsigned int id = glCreateProgram();
         for (int i = 0; i < 6; i++)
@@ -128,16 +134,18 @@ namespace Tarbora {
         for (int i = 0; i < 6; i++)
             glDeleteShader(ids[i]);
 
-        m_Id = id;
+        id_ = id;
     }
 
-    void Shader::Delete()
+    void Shader::deleteShader()
     {
-        glDeleteProgram(m_Id);
+        glDeleteProgram(id_);
     }
 
-    std::shared_ptr<Resource> ShaderResourceLoader::Load(std::string path)
+    std::shared_ptr<Resource> ShaderResourceLoader::load(const std::string &path)
     {
+        ZoneScoped;
+
         std::string vertex = "empty.vert";
         std::string tesControl = "";
         std::string tesEval = "";
@@ -149,12 +157,12 @@ namespace Tarbora {
             std::ifstream file(path);
             if (file) {
                 LuaScript resource(path);
-                vertex = resource.Get<std::string>("vertex");
-                tesControl = resource.Get<std::string>("tes_control", tesControl, true);
-                tesEval = resource.Get<std::string>("tes_eval", tesEval, true);
-                geometry = resource.Get<std::string>("geometry", geometry, true);
-                fragment = resource.Get<std::string>("fragment");
-                compute = resource.Get<std::string>("compute", compute, true);
+                vertex = resource.get<std::string>("vertex");
+                tesControl = resource.get<std::string>("tes_control", tesControl, true);
+                tesEval = resource.get<std::string>("tes_eval", tesEval, true);
+                geometry = resource.get<std::string>("geometry", geometry, true);
+                fragment = resource.get<std::string>("fragment");
+                compute = resource.get<std::string>("compute", compute, true);
             }
         }
 
@@ -163,15 +171,15 @@ namespace Tarbora {
 
         // Read each entry and create and compile the shaders
         unsigned int ids[6];
-        ids[0] = shader->CompileShader(vertex, "vertex");
-        ids[1] = shader->CompileShader(tesControl, "tes_control");
-        ids[2] = shader->CompileShader(tesEval, "tes_eval");
-        ids[3] = shader->CompileShader(geometry, "geometry");
-        ids[4] = shader->CompileShader(fragment, "fragment");
-        ids[5] = shader->CompileShader(compute, "compute");
+        ids[0] = shader->compileShader(vertex, "vertex");
+        ids[1] = shader->compileShader(tesControl, "tes_control");
+        ids[2] = shader->compileShader(tesEval, "tes_eval");
+        ids[3] = shader->compileShader(geometry, "geometry");
+        ids[4] = shader->compileShader(fragment, "fragment");
+        ids[5] = shader->compileShader(compute, "compute");
 
         // Link the program
-        shader->LinkProgram(ids);
+        shader->linkProgram(ids);
 
         return shader;
     }

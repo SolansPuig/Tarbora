@@ -1,31 +1,81 @@
 #pragma once
 
-#include "../Framework/MessageManager.hpp"
-#include "proto/math.pb.h"
+#include "../Framework/MessageManager/MessageManager.hpp"
+#include "math.pb.h"
 
 namespace Tarbora {
-    MathMessage::Vec2 Vec2(glm::vec2 data);
-    MathMessage::Vec2 Vec2(std::string data);
+    namespace Message {
+        inline MathMessage::Vector toMessage(const glm::vec3 &vector)
+        {
+            MathMessage::Vector vec;
+            vec.set_x(vector.x);
+            vec.set_y(vector.y);
+            vec.set_z(vector.z);
+            return vec;
+        }
 
-    glm::vec2 Vec2toGLM(MathMessage::Vec2 data);
+        inline glm::vec3 toMath(const MathMessage::Vector &vector)
+        {
+            glm::vec3 vec;
+            vec.x = vector.x();
+            vec.y = vector.y();
+            vec.z = vector.z();
+            return vec;
+        }
 
-    MathMessage::Vec3 Vec3(glm::vec3 data);
-    MathMessage::Vec3 Vec3(std::string data);
+        inline MathMessage::Quaternion toMessage(const glm::quat &quaternion)
+        {
+            MathMessage::Quaternion quat;
+            quat.set_x(quaternion.x);
+            quat.set_y(quaternion.y);
+            quat.set_z(quaternion.z);
+            quat.set_w(quaternion.w);
+            return quat;
+        }
 
-    glm::vec3 Vec3toGLM(MathMessage::Vec3 data);
+        inline glm::quat toMath(const MathMessage::Quaternion &quaternion)
+        {
+            glm::quat quat;
+            quat.x = quaternion.x();
+            quat.y = quaternion.y();
+            quat.z = quaternion.z();
+            quat.w = quaternion.w();
+            return quat;
+        }
 
-    MathMessage::Vec4 Vec4(glm::vec4 data);
-    MathMessage::Vec4 Vec4(std::string data);
+        inline MathMessage::UvMap toMessage(const glm::tvec2<unsigned short> &uv_map)
+        {
+            MathMessage::UvMap vec;
+            vec.set_x(uv_map.x);
+            vec.set_y(uv_map.y);
+            return vec;
+        }
 
-    glm::vec4 Vec4toGLM(MathMessage::Vec4 data);
+        inline glm::u16vec2 toMath(const MathMessage::UvMap &uv_map)
+        {
+            glm::u16vec2 vec;
+            vec.x = uv_map.x();
+            vec.y = uv_map.y();
+            return vec;
+        }
 
-    MathMessage::Mat3 Mat3(glm::mat3 data);
-    MathMessage::Mat3 Mat3(std::string data);
+        inline MathMessage::Color toMessage(const glm::tvec3<unsigned char> &color)
+        {
+            MathMessage::Color vec;
+            vec.set_r(color.r);
+            vec.set_g(color.g);
+            vec.set_b(color.b);
+            return vec;
+        }
 
-    glm::mat3 Mat3toGLM(MathMessage::Mat3 data);
+        inline glm::u8vec3 toMath(const MathMessage::Color &color)
+        {
+            glm::u8vec3 vec;
+            vec.r = color.r();
+            vec.g = color.g();
+            vec.b = color.b();
+            return vec;
+        }
+    }
 
-    MathMessage::Mat4 Mat4(glm::mat4 data);
-    MathMessage::Mat4 Mat4(std::string data);
-
-    glm::mat4 Mat4toGLM(MathMessage::Mat4 data);
 }

@@ -1,6 +1,5 @@
 #pragma once
 #include "GraphicView.hpp"
-#include "NodeProperty.hpp"
 
 namespace Tarbora {
     class Scene;
@@ -8,98 +7,131 @@ namespace Tarbora {
     class SceneNode
     {
         friend class Scene;
-        typedef std::map<std::string, std::shared_ptr<SceneNode>> SceneNodeMap;
-        typedef std::unordered_map<std::string, PropertyPtr> PropertyMap;
+
     public:
-        SceneNode(ActorId actorId, const std::string &name);
+        SceneNode(const ActorId &id, const std::string &name);
         virtual ~SceneNode() {}
 
-        virtual void Update(Scene *scene, float deltaTime);
-        virtual void Draw(Scene *scene, const glm::mat4 &parentTransform) { (void)(scene); (void)(parentTransform); }
-        virtual void DrawChildren(Scene *scene, const glm::mat4 &parentTransform);
-        virtual void AfterDraw(Scene *scene) { (void)(scene); }
+        virtual const std::string getNodeType() { return "SCENE"; }
 
-        virtual bool AddChild(std::shared_ptr<SceneNode> child);
-        virtual std::shared_ptr<SceneNode> GetChild(const std::string &name);
-        virtual bool RemoveChild(const std::string &name);
+        virtual void update(Scene *scene, float delta_time);
+        virtual void drawChildren(Scene *scene, const glm::mat4 &parent_transform);
+        virtual void draw(Scene *scene, const glm::mat4 &transform) { UNUSED(scene); UNUSED(transform); }
+        virtual void afterDraw(Scene *scene) { UNUSED(scene); }
 
-        bool IsVisible(Scene *scene);
+        virtual bool addChild(std::shared_ptr<SceneNode> child);
+        virtual std::shared_ptr<SceneNode> getChild(const std::string &name);
+        virtual bool removeChild(const std::string &name);
 
-        ActorId GetActorId() const { return m_ActorId; }
-        const char *GetName() const { return m_Name.c_str(); }
+        bool isVisible(Scene *scene);
 
-        void SetPosition(const glm::vec3 &position);
-        void SetRotationMatrix(const glm::mat3 &rotation);
+        const ActorId& getActorId() const { return id_; }
+        const std::string& getName() const { return name_; }
 
-        void SetTransform(const glm::mat4 &matrix);
-        const glm::mat4 GetGlobalTransform();
-        const glm::mat4 &GetLocalTransform() const { return m_Transformation; }
+        void setPosition(const glm::vec3 &position) { position_ = position; }
+        void setRotation(const glm::vec3 &rotation) { rotation_ = glm::quat(glm::radians(rotation)); }
+        void setRotation(const glm::quat &rotation) { rotation_ = rotation; }
+        void setScale(const glm::vec3 &scale);
+        void setGlobalScale(float scale);
+        void setOrigin(const glm::vec3 &origin);
 
-        void Set(const std::string &name, const glm::vec3 &value);
-        void Add(const std::string &name, const glm::vec3 &value);
-        void InterpolateTo(const std::string &name, const glm::vec3 &value, float timeToComplete);
-        const glm::vec3 &Get(const std::string &name);
+        const glm::vec3& getPosition() { return position_; }
+        glm::vec3 getRotation() { return glm::degrees(glm::eulerAngles(rotation_)); }
+        const glm::quat& getRotationQuat() { return rotation_; }
+        const glm::vec3& getScale() { return scale_; }
+        float getGlobalScale() { return global_scale_; }
+        const glm::vec3& getOrigin() { return origin_; }
 
-        void SetOrigin(const glm::vec3 &origin) { m_Origin = origin; }
+        glm::mat4 getGlobalTransform();
+        glm::mat4 getLocalTransform();
 
-        void SetRadius(float radius) { m_Radius = radius; }
-        float GetRadius() const { return m_Radius; }
+        void setRadius(float radius) { radius_ = radius; }
+        float getRadius() const { return radius_; }
+
+        auto begin() { return children_.begin(); }
+        auto end() { return children_.end(); }
 
     protected:
-        SceneNodeMap m_Children;
-        SceneNode *m_Parent;
+        ActorId id_;
+        std::string name_;
 
-        PropertyMap m_Properties;
+        std::map<std::string, std::shared_ptr<SceneNode>> children_;
+        SceneNode *parent_;
 
-        ActorId m_ActorId;
-        std::string m_Name;
+        glm::vec3 position_;
+        glm::quat rotation_;
+        glm::vec3 scale_;
+        float global_scale_;
+        glm::vec3 origin_;
 
-        glm::mat4 m_Transformation;
-        glm::mat4 m_Deformation;
-
-        glm::vec3 m_Origin;
-
-        float m_Radius;
+        float radius_;
     };
 
     class RootNode : public SceneNode
     {
     public:
-        RootNode()
-            : SceneNode("", "Root") {}
-        virtual bool IsVisible(Scene *scene) const { (void)(scene); return true; }
+        RootNode() : SceneNode("", "Root") {}
+        virtual const std::string getNodeType() { return "ROOT"; }
+        virtual bool isVisible(Scene *scene) const { UNUSED(scene); return true; }
     };
 
     class Camera : public SceneNode
     {
     public:
-        Camera(ActorId actorId, const std::string &name)
-            : SceneNode(actorId, name) {}
-        const glm::mat4 GetView();
-        const glm::mat4 GetViewAngle();
-        const glm::vec3 GetViewPosition();
+        Camera(const ActorId &id, const std::string &name)
+            : SceneNode(id, name) {}
+        virtual const std::string getNodeType() { return "CAMERA"; }
+        const glm::mat4 getView();
+        const glm::mat4 getViewAngle();
+        const glm::vec3 getViewPosition();
     private:
-        glm::mat4 m_View;
+        glm::mat4 view_;
     };
 
     class MaterialNode : public SceneNode
     {
     public:
-        MaterialNode(ActorId actorId, const std::string &name, const std::string &material);
-        virtual void Draw(Scene *scene, const glm::mat4 &parentTransform);
-        virtual void AfterDraw(Scene *scene);
+        MaterialNode(const ActorId &id, const std::string &name, const std::string &material);
+        virtual const std::string getNodeType() { return "MATERIAL"; }
+        virtual void draw(Scene *scene, const glm::mat4 &transform);
+        virtual void afterDraw(Scene *scene);
     protected:
-        ResourcePtr<Material> m_Material;
+        ResourcePtr<Material> material_;
     };
 
     class MeshNode : public SceneNode
     {
     public:
-        MeshNode(ActorId actorId, const std::string &name, RenderPass renderPass, const std::string &mesh);
-        virtual void Draw(Scene *scene, const glm::mat4 &parentTransform);
+        MeshNode(const ActorId &id, const std::string &name, RenderPass render_pass, const std::string &mesh);
+        virtual const std::string getNodeType() { return "MESH"; }
+        virtual void draw(Scene *scene, const glm::mat4 &transform);
+
+        void setUvMap(const glm::tvec2<unsigned short> &uv) { uv_map_ = uv; }
+        void setMeshSize(const glm::vec3 &size) { mesh_size_ = size; }
+        void setTextureSize(const glm::vec3 &size) { texture_size_ = size; }
+        void setColorPrimary(const glm::tvec3<unsigned char> &color) { color_primary_ = color; }
+        void setColorSecondary(const glm::tvec3<unsigned char> &color) { color_secondary_ = color; }
+        void setColorDetail(const glm::tvec3<unsigned char> &color) { color_detail_ = color; }
+        void setColorDetail2(const glm::tvec3<unsigned char> &color) { color_detail2_ = color; }
+
+        const glm::tvec2<unsigned short>& getUvMap() { return uv_map_; }
+        const glm::vec3& getMeshSize() { return mesh_size_; }
+        const glm::vec3& geTextureSize() { return texture_size_; }
+        const glm::tvec3<unsigned char>& getColorPrimary() { return color_primary_; }
+        const glm::tvec3<unsigned char>& getColorSecondary() { return color_secondary_; }
+        const glm::tvec3<unsigned char>& getColorDetail() { return color_detail_; }
+        const glm::tvec3<unsigned char>& getColorDetail2() { return color_detail2_; }
 
     protected:
-        RenderPass m_RenderPass;
-        ResourcePtr<Mesh> m_Mesh;
+        RenderPass render_pass_;
+        ResourcePtr<Mesh> mesh_;
+
+        glm::tvec2<unsigned short> uv_map_;
+        glm::vec3 mesh_size_;
+        glm::vec3 texture_size_;
+        glm::tvec3<unsigned char> color_primary_;
+        glm::tvec3<unsigned char> color_secondary_;
+        glm::tvec3<unsigned char> color_detail_;
+        glm::tvec3<unsigned char> color_detail2_;
     };
 }

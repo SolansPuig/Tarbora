@@ -6,55 +6,55 @@ namespace Tarbora {
     {
     public:
         Component(System *s, const ActorId &id, const LuaTable &table) :
-            m_System(s), m_Owner(id), m_Enabled(false), m_Error(false) {}
+            system_(s), owner_(id), enabled_(false), error_(false) { UNUSED(table); }
 
-        inline Component *GetComponent(const ActorId &id, const ComponentId &compId)
+        inline Component* getComponent(const ActorId &id, const ComponentId &component)
         {
-            return m_System->GetComponent(id, compId);
+            return system_->getComponent(id, component);
         }
 
-        inline Component *GetComponent(const ComponentId &compId)
+        inline Component* getComponent(const ComponentId &component)
         {
-            return m_System->GetComponent(m_Owner, compId);
+            return system_->getComponent(owner_, component);
         }
 
-        void Enable()
+        void enable()
         {
-            m_Enabled = true;
-            OnEnable();
+            enabled_ = true;
+            onEnable();
         }
 
-        void Disable()
+        void disable()
         {
-            m_Enabled = false;
-            OnDisable();
+            enabled_ = false;
+            onDisable();
         }
 
-        inline void Send(ClientId to, MessageSubject s, MessageBody b) const
+        inline void send(ClientId to, MessageSubject s, MessageBody b) const
         {
-            m_System->Send(to, s, b);
+            system_->send(to, s, b);
         }
 
-        inline void Trigger(MessageSubject s, MessageBody b) const
+        inline void trigger(MessageSubject s, MessageBody b) const
         {
-            m_System->Trigger(s, b);
+            system_->trigger(s, b);
         }
 
-        inline void TriggerLocal(MessageSubject s, MessageBody b) const
+        inline void triggerLocal(MessageSubject s, MessageBody b) const
         {
-            m_System->TriggerLocal(s, b);
+            system_->triggerLocal(s, b);
         }
 
-        bool Error() { return m_Error; }
+        bool error() { return error_; }
 
     protected:
-        virtual void OnEnable() {}
+        virtual void onEnable() {}
 
-        virtual void OnDisable() {}
+        virtual void onDisable() {}
 
-        System *m_System;
-        ActorId m_Owner;
-        bool m_Enabled;
-        bool m_Error;
+        System *system_;
+        ActorId owner_;
+        bool enabled_;
+        bool error_;
     };
 }

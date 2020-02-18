@@ -6,40 +6,40 @@ namespace Tarbora {
     {
     public:
         MetricsGui(GraphicView *view, bool start_active)
-            : Layer(view, start_active), m_elapsed_time(0.0f)
+            : Layer(view, start_active), delta_time_(0.0f)
         {}
 
-        void GetInput() override
+        void getInput() override
         {
-            if (GetInputManager()->GetKeyDown(KEY_F3)) {
-                m_active = !m_active;
+            if (getInputManager()->getKeyDown(KEY_F3)) {
+                active_ = !active_;
             }
         }
 
-        void Update(float elapsed_time) override
+        void update(float delta_time) override
         {
-            m_elapsed_time = elapsed_time;
+            delta_time_ = delta_time;
         }
 
-        void Draw() override
+        void draw() override
         {
-            const float DISTANCE = 10.0f;
+            const float DISTANCE = 10.f;
 
             ImVec2 window_pos = ImVec2(ImGui::GetWindowPos().x + DISTANCE, ImGui::GetWindowPos().y + DISTANCE);
             ImVec2 window_pos_pivot = ImVec2(0.0f, 0.0f);
             ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
             ImGui::SetNextWindowBgAlpha(0.3f);
-            ImGui::Begin("Metrics", &m_active, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-            ImGui::Text("FPS: %.0f", 1/m_elapsed_time);
+            ImGui::Begin("Metrics", &active_, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
+            ImGui::Text("FPS: %.0f", 1/delta_time_);
             ImGui::End();
         }
 
-        void SetTime(float elapsed_time)
+        void SetTime(float delta_time)
         {
-            m_elapsed_time = elapsed_time * 1000;
+            delta_time_ = delta_time * 1000;
         }
 
     private:
-        float m_elapsed_time;
+        float delta_time_;
     };
 }

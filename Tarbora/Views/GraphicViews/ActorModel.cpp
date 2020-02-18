@@ -2,106 +2,104 @@
 #include "Scene.hpp"
 
 namespace Tarbora {
-    ActorModel::ActorModel(ActorId id, RenderPass renderPass, const std::string &model, const std::string &material)
+    ActorModel::ActorModel(const ActorId &id, RenderPass render_pass, const std::string &model, const std::string &material)
         : MaterialNode(id, id, material)
     {
         ResourcePtr<LuaScript> resource("models/" + model, "models/cube.lua");
-        // float scale = resource->Get<float>("scale");
-        std::shared_ptr<MeshNode> mesh = CreateNode(id, renderPass, resource->Get("root"));
-        // mesh->SetGlobalScale(glm::vec3(scale, scale, scale));
-
-        AddChild(mesh);
+        std::shared_ptr<MeshNode> mesh = createNode(id, render_pass, resource->get("root"));
+        mesh->setGlobalScale(resource->get<float>("scale", true));
+        addChild(mesh);
     }
 
-    std::shared_ptr<MeshNode> ActorModel::CreateNode(ActorId id, RenderPass renderPass, LuaTable table)
+    std::shared_ptr<MeshNode> ActorModel::createNode(const ActorId &id, RenderPass render_pass, LuaTable table)
     {
         // Read all the parameters for the node
-        std::string name = table.Get<std::string>("name");
-        std::string shape = table.Get<std::string>("shape");
+        const std::string name = table.get<std::string>("name");
+        const std::string shape = table.get<std::string>("shape");
 
         // Create the node
-        std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, renderPass, shape));
-        node->SetOrigin(table.Get<glm::vec3>("origin", true));
-        node->Set("position", table.Get<glm::vec3>("position", true)/100.f);
-        node->Set("rotation", table.Get<glm::vec3>("rotation", true));
-        node->Set("uv_map", table.Get<glm::vec3>("uv_map", true));
-        node->Set("color_primary", table.Get<glm::vec3>("color_primary", glm::vec3(255.f), true));
-        node->Set("color_secondary", table.Get<glm::vec3>("color_secondary", glm::vec3(255.f), true));
-        node->Set("color_detail1", table.Get<glm::vec3>("color_detail1", glm::vec3(255.f), true));
-        node->Set("color_detail2", table.Get<glm::vec3>("color_detail2", glm::vec3(255.f), true));
-        glm::vec3 scale = table.Get<glm::vec3>("size", true)/100.f;
-        node->Set("scale", scale);
-        node->Set("mesh_size", scale);
-        glm::vec3 textureSize = table.Get<glm::vec3>("texture_size", true)/100.f;
-        if (textureSize == glm::vec3(0.0f)) textureSize = scale;
-        node->Set("texture_size", textureSize);
+        std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, render_pass, shape));
+        node->setOrigin(table.get<glm::vec3>("origin", true));
+        node->setPosition(table.get<glm::vec3>("position", true)/100.f);
+        node->setRotation(table.get<glm::vec3>("rotation", true));
+        node->setUvMap(table.get<glm::vec3>("uv_map", true));
+        node->setColorPrimary(table.get<glm::vec3>("color_primary", glm::vec3(255.f), true));
+        node->setColorSecondary(table.get<glm::vec3>("color_secondary", glm::vec3(255.f), true));
+        node->setColorDetail(table.get<glm::vec3>("color_detail1", glm::vec3(255.f), true));
+        node->setColorDetail2(table.get<glm::vec3>("color_detail2", glm::vec3(255.f), true));
+        const glm::vec3 scale = table.get<glm::vec3>("size", true)/100.f;
+        node->setScale(scale);
+        node->setMeshSize(scale);
+        glm::vec3 texture_size = table.get<glm::vec3>("texture_size", true)/100.f;
+        if (texture_size == glm::vec3(0.0f)) texture_size = scale;
+        node->setTextureSize(texture_size);
 
         // Create all its child nodes and add them as children to this
-        for (auto n : table.Get("nodes", true))
+        for (auto n : table.get("nodes", true))
         {
-            std::shared_ptr<MeshNode> new_node = CreateNode(id, renderPass, n.second.GetAs<LuaTable>());
-            node->AddChild(new_node);
+            std::shared_ptr<MeshNode> new_node = createNode(id, render_pass, n.second.getAs<LuaTable>());
+            node->addChild(new_node);
         }
 
         // Create the child cameras, if any
-        for (auto c : table.Get("cameras", true))
+        for (auto c : table.get("cameras", true))
         {
-            std::shared_ptr<Camera> newCamera = CreateCamera(id, c.second.GetAs<LuaTable>());
-            node->AddChild(newCamera);
+            std::shared_ptr<Camera> new_camera = createCamera(id, c.second.getAs<LuaTable>());
+            node->addChild(new_camera);
         }
 
-        m_Nodes[name] = node;
+        nodes_[name] = node;
 
         return node;
     }
 
-    std::shared_ptr<Camera> ActorModel::CreateCamera(ActorId id, LuaTable table)
+    std::shared_ptr<Camera> ActorModel::createCamera(const ActorId &id, LuaTable table)
     {
         // Read all the parameters for the node
-        std::string name = table.Get<std::string>("name");
+        const std::string name = table.get<std::string>("name");
 
         // Create the node
         std::shared_ptr<Camera> node = std::shared_ptr<Camera>(new Camera(id, name));
-        node->SetOrigin(table.Get<glm::vec3>("origin", true));
-        node->Set("position", table.Get<glm::vec3>("position", true)/100.f);
-        node->Set("rotation", table.Get<glm::vec3>("rotation", true));
+        node->setOrigin(table.get<glm::vec3>("origin", true));
+        node->setPosition(table.get<glm::vec3>("position", true)/100.f);
+        node->setRotation(table.get<glm::vec3>("rotation", true));
 
-        m_Nodes[name] = node;
+        nodes_[name] = node;
 
         return node;
     }
 
-    void ActorModel::Update(Scene *scene, float deltaTime)
+    void ActorModel::update(Scene *scene, float delta_time)
     {
-        if (m_AnimationController)
+        if (animation_controller_)
         {
-            m_AnimationController->Update(deltaTime);
+            animation_controller_->update(delta_time);
         }
 
-        MaterialNode::Update(scene, deltaTime);
+        MaterialNode::update(scene, delta_time);
     }
 
-    std::shared_ptr<SceneNode> ActorModel::GetChild(const std::string &name)
+    std::shared_ptr<SceneNode> ActorModel::getChild(const std::string &name)
     {
-        auto itr = m_Nodes.find(name);
-        if (itr != m_Nodes.end())
+        auto itr = nodes_.find(name);
+        if (itr != nodes_.end())
         {
             return itr->second;
         }
         return std::shared_ptr<SceneNode>();
     }
 
-    void ActorModel::Animate(const std::string &name, const std::string &file)
+    void ActorModel::animate(const std::string &name, const std::string &file)
     {
-        if (!m_AnimationController)
+        if (!animation_controller_)
         {
             if (file == "")
             {
-                LOG_ERR("Trying to animate an actor model with no Animation Controller defined and without an animations file");
+                // LOG_ERR("Trying to animate an actor model with no Animation Controller defined and without an animations file");
                 return;
             }
-            m_AnimationController = std::unique_ptr<AnimationController>(new AnimationController(this, file));
+            animation_controller_ = std::unique_ptr<AnimationController>(new AnimationController(this, file));
         }
-        m_AnimationController->SetAnimation(name);
+        animation_controller_->setAnimation(name);
     }
 }

@@ -16,7 +16,7 @@ namespace Tarbora {
                 LOG_LEVEL(LEVEL)
             \endcode
         */
-        static void SetLevel(LogLevel level) { s_LogLevel = level; }
+        static void setLevel(LogLevel level) { log_level_ = level; }
 
         //! Log a message.
         /*!
@@ -32,15 +32,15 @@ namespace Tarbora {
                 LOG_ERR(TEXT, ...)
             \endcode
         */
-        static void Log(LogLevel level, const char *text, ...);
+        static void log(LogLevel level, const char *text, ...);
 
     private:
-        inline static LogLevel s_LogLevel; // The current log level.
+        inline static LogLevel log_level_; // The current log level.
     };
 }
 
-#define LOG_LEVEL(LEVEL) ::Tarbora::Logger::SetLevel(::Tarbora::Logger::LogLevel::LEVEL)
-#define LOG_DEBUG(...) ::Tarbora::Logger::Log(::Tarbora::Logger::LogLevel::DEBUG, __VA_ARGS__)
-#define LOG_INFO(...) ::Tarbora::Logger::Log(::Tarbora::Logger::LogLevel::INFO, __VA_ARGS__)
-#define LOG_WARN(...) ::Tarbora::Logger::Log(::Tarbora::Logger::LogLevel::WARN, __VA_ARGS__)
-#define LOG_ERR(...) ::Tarbora::Logger::Log(::Tarbora::Logger::LogLevel::ERR, __VA_ARGS__)
+#define LOG_LEVEL(LEVEL) ::Tarbora::Logger::setLevel(::Tarbora::Logger::LogLevel::LEVEL)
+#define LOG_DEBUG(...) ::Tarbora::Logger::log(::Tarbora::Logger::LogLevel::DEBUG, __VA_ARGS__)
+#define LOG_INFO(...) ::Tarbora::Logger::log(::Tarbora::Logger::LogLevel::INFO, __VA_ARGS__)
+#define LOG_WARN(...) ::Tarbora::Logger::log(::Tarbora::Logger::LogLevel::WARN, __VA_ARGS__)
+#define LOG_ERR(...) ::Tarbora::Logger::log(::Tarbora::Logger::LogLevel::ERR, __VA_ARGS__)
