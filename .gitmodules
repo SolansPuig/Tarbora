@@ -1,24 +1,18 @@
+[submodule "Tarbora/Views/GraphicViews/GraphicsEngine/External/imgui"]
+	path = Tarbora/Views/GraphicViews/GraphicsEngine/External/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "Tarbora/Views/GraphicViews/GraphicsEngine/External/glfw"]
+	path = Tarbora/Views/GraphicViews/GraphicsEngine/External/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "Tarbora/Logic/PhysicsEngine/External/bullet3"]
+	path = Tarbora/Logic/PhysicsEngine/External/bullet3
+	url = https://github.com/bulletphysics/bullet3.git
 [submodule "Tarbora/Framework/External/glm"]
 	path = Tarbora/Framework/External/glm
-	url = https://github.com/g-truc/glm
-[submodule "Tarbora/Framework/PhysicsEngine/bullet3"]
-	path = Tarbora/Framework/PhysicsEngine/bullet3
-	url = https://github.com/bulletphysics/bullet3
-[submodule "Tarbora/Views/GraphicsEngine/glfw"]
-	path = Tarbora/Views/GraphicsEngine/glfw
-	url = https://github.com/glfw/glfw
-[submodule "Tarbora/Views/GraphicsEngine/imgui"]
-	path = Tarbora/Views/GraphicsEngine/imgui
-	url = https://github.com/ocornut/imgui
-[submodule "Tarbora/Framework/External/tracy"]
-	path = Tarbora/Framework/External/tracy
-	url = https://github.com/Leandros/tracy.git
-[submodule "Tarbora/Framework/External/sol2"]
-	path = Tarbora/Framework/External/sol2
-	url = https://github.com/ThePhD/sol2
+	url = https://github.com/g-truc/glm.git
 [submodule "Tarbora/Framework/External/lua"]
 	path = Tarbora/Framework/External/lua
-	url = https://github.com/lua/lua
-[submodule "Tarbora/Framework/External/NamedType"]
-	path = Tarbora/Framework/External/NamedType
-	url = https://github.com/joboccara/NamedType.git
+	url = https://github.com/lua/lua.git
+[submodule "Tarbora/Framework/External/sol2"]
+	path = Tarbora/Framework/External/sol2
+	url = https://github.com/ThePhD/sol2.git
