@@ -21,6 +21,13 @@ message CreateActor {
     MathMessage.Quaternion rotation = 5;
 }
 
+message CreateActorModel {
+    string id = 1;
+    string model = 2;
+    string material = 3;
+    uint32 render_pass = 4;
+}
+
 message MoveActor {
     string id = 1;
     MathMessage.Vector position = 2;

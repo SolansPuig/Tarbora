@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package LuaMessage;
+
+import "math.proto";
+
+message KeyValue {
+    string key = 1;
+    oneof value {
+        string string = 2;
+        float float = 3;
+        bool bool = 4;
+        MathMessage.Vector vector = 5;
+        MathMessage.Quaternion quaternion = 6;
+        MathMessage.UvMap uv = 7;
+        MathMessage.Color color = 8;
+        List list = 9;
+    }
+}
+
+message Node {
+    oneof content {
+        List list = 1;
+        KeyValue value = 2;
+    }
+}
+
+message List {
+    repeated Node node = 1;
+}

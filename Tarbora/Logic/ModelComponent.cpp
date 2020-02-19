@@ -8,8 +8,8 @@ namespace Tarbora {
         Component(s, id, table)
     {
         render_pass_ = table.get<int>("render_pass", 1);
-        model_ = table.get<int>("model", "cube");
-        material_ = table.get<int>("material", "white");
+        model_ = table.get<std::string>("model", "cube");
+        material_ = table.get<std::string>("material", "white");
     }
 
     void ModelSystem::init(const ActorId &id)
@@ -17,11 +17,7 @@ namespace Tarbora {
         ModelComponent *model = static_cast<ModelComponent*>(get(id));
         if (model && !model->error())
         {
-            InfoComponent *info = static_cast<InfoComponent*>(getComponent(id, "info"));
-            if (info)
-            {
-                trigger("create_actor_model", Message::CreateActor(id, info->getEntity(), info->getVariant()));
-            }
+            trigger("create_actor_model", Message::CreateActorModel(id, model->model_, model->material_, model->render_pass_));
 
             TransformComponent *transform = static_cast<TransformComponent*>(getComponent(id, "transform"));
             if (transform)

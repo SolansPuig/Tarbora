@@ -10,7 +10,7 @@ namespace Tarbora {
 
     public:
         SceneNode(const ActorId &id, const std::string &name);
-        virtual ~SceneNode() {}
+        ~SceneNode();
 
         virtual const std::string getNodeType() { return "SCENE"; }
 
@@ -19,9 +19,10 @@ namespace Tarbora {
         virtual void draw(Scene *scene, const glm::mat4 &transform) { UNUSED(scene); UNUSED(transform); }
         virtual void afterDraw(Scene *scene) { UNUSED(scene); }
 
-        virtual bool addChild(std::shared_ptr<SceneNode> child);
+        bool addChild(std::shared_ptr<SceneNode> child);
         virtual std::shared_ptr<SceneNode> getChild(const std::string &name);
-        virtual bool removeChild(const std::string &name);
+        SceneNode* getParent() { return parent_; }
+        bool removeChild(const std::string &name);
 
         bool isVisible(Scene *scene);
 
@@ -95,8 +96,11 @@ namespace Tarbora {
         virtual const std::string getNodeType() { return "MATERIAL"; }
         virtual void draw(Scene *scene, const glm::mat4 &transform);
         virtual void afterDraw(Scene *scene);
+
+        const std::string& getMaterial() { return material_name_; }
     protected:
         ResourcePtr<Material> material_;
+        std::string material_name_;
     };
 
     class MeshNode : public SceneNode
@@ -121,6 +125,7 @@ namespace Tarbora {
         const glm::tvec3<unsigned char>& getColorSecondary() { return color_secondary_; }
         const glm::tvec3<unsigned char>& getColorDetail() { return color_detail_; }
         const glm::tvec3<unsigned char>& getColorDetail2() { return color_detail2_; }
+        RenderPass getRenderPass() { return render_pass_; }
 
     protected:
         RenderPass render_pass_;

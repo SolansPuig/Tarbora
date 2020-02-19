@@ -5,10 +5,17 @@ namespace Tarbora {
     ActorModel::ActorModel(const ActorId &id, RenderPass render_pass, const std::string &model, const std::string &material)
         : MaterialNode(id, id, material)
     {
+        model_ = model;
+        render_pass_ = render_pass;
         ResourcePtr<LuaScript> resource("models/" + model, "models/cube.lua");
         std::shared_ptr<MeshNode> mesh = createNode(id, render_pass, resource->get("root"));
         mesh->setGlobalScale(resource->get<float>("scale", true));
         addChild(mesh);
+    }
+
+    ActorModel::~ActorModel()
+    {
+        nodes_.clear();
     }
 
     std::shared_ptr<MeshNode> ActorModel::createNode(const ActorId &id, RenderPass render_pass, LuaTable table)

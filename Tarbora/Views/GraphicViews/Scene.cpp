@@ -18,7 +18,7 @@ namespace Tarbora {
     void Scene::draw()
     {
         getRenderQueue()->setProjectionMatrix(projection_);
-        getRenderQueue()->setViewMatrix(getCamera()->getView());
+        getRenderQueue()->setViewMatrix(camera_->getView());
 
         if (root_)
         {
@@ -36,36 +36,12 @@ namespace Tarbora {
 
     std::shared_ptr<ActorModel> Scene::createActorModel(const ActorId &id, RenderPass render_pass, const std::string &model, const std::string &material)
     {
+        if (getActor(id))
+            removeActor(id);
+
         std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, render_pass, model, material));
         addActor(actor);
         return actor;
-    }
-
-    std::shared_ptr<ActorModel> Scene::createActorModel(const ActorId &id, const std::string &entity, const std::string &variant)
-    {
-        UNUSED(variant); // TODO
-        ResourcePtr<LuaScript> resource("entities/" + entity);
-        if (resource != nullptr)
-        {
-            LuaTable model = resource->get("components").get("model");
-            int render_pass = model.get<int>("render_pass", 1);
-            const std::string mesh = model.get<std::string>("model", "cube");
-            const std::string material = model.get<std::string>("material", "white");
-
-            std::shared_ptr<ActorModel> actor = std::shared_ptr<ActorModel>(new ActorModel(id, (RenderPass)render_pass, mesh, material));
-
-            addActor(actor);
-            return actor;
-        }
-
-        return std::shared_ptr<ActorModel>();
-    }
-
-    void Scene::animateActor(const ActorId &id, const std::string &animation, const std::string &file)
-    {
-        std::shared_ptr<SceneNode> child = getActor(id);
-        if (child)
-            std::static_pointer_cast<ActorModel>(child)->animate(animation, file);
     }
 
     std::shared_ptr<Camera> Scene::createCamera(const ActorId &id)
@@ -111,7 +87,6 @@ namespace Tarbora {
     {
         if (id != "")
         {
-            std::shared_ptr<SceneNode> child = getActor(id);
             actor_map_.erase(id);
             return root_->removeChild(id);
         }

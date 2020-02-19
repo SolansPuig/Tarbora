@@ -3,6 +3,7 @@
 #include "Tarbora/Views/HardwareViews/inc/ArduinoView.hpp"
 #include "Tarbora/Logic/World.hpp"
 #include "Tarbora/Messages/BasicMessages.hpp"
+#include "Tarbora/Editor/Editor.hpp"
 
 using namespace Tarbora;
 
@@ -21,6 +22,9 @@ int main() {
     // arduino->RunThread("arduino");
 
     std::shared_ptr<HumanView> human_view(new HumanView());
+
+    std::shared_ptr<Editor> editor(new Editor(&*human_view, false));
+    human_view->pushLayer(editor);
 
     std::shared_ptr<SceneManager> scene_manager(new SceneManager());
     scene_manager->load("test.lua");

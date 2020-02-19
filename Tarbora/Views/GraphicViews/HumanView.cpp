@@ -18,9 +18,6 @@ namespace Tarbora {
         std::shared_ptr<MetricsGui> metrics(new MetricsGui(this, false));
         pushLayer(metrics);
 
-        std::shared_ptr<ModelEditor> model_editor(new ModelEditor(this, false));
-        pushLayer(model_editor);
-
         std::shared_ptr<DemoWindow> demo_gui(new DemoWindow(this, false));
         pushLayer(demo_gui);
 

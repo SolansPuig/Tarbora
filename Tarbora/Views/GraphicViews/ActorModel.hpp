@@ -10,6 +10,7 @@ namespace Tarbora {
         friend class AnimationController;
     public:
         ActorModel(const ActorId &id, RenderPass render_pass, const std::string &model, const std::string &material);
+        ~ActorModel();
 
         std::shared_ptr<MeshNode> createNode(const ActorId &id, RenderPass render_pass, LuaTable table);
 
@@ -21,8 +22,13 @@ namespace Tarbora {
 
         void animate(const std::string &name, const std::string &file="");
 
+        const std::string& getModel() { return model_; }
+        RenderPass getRenderPass() { return render_pass_; }
+
     private:
         std::map<std::string, std::shared_ptr<SceneNode>> nodes_;
         std::unique_ptr<AnimationController> animation_controller_;
+        RenderPass render_pass_;
+        std::string model_;
     };
 }

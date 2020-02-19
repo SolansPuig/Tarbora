@@ -22,12 +22,8 @@ namespace Tarbora {
         subscribe("create_actor_model", [this](const MessageSubject &subject, const MessageBody &body)
         {
             UNUSED(subject);
-            Message::CreateActor m(body);
-            if (scene_->getActor(m.getId()) != nullptr)
-            {
-                scene_->removeActor(m.getId());
-            }
-            scene_->createActorModel(m.getId(), m.getEntity(), m.getVariant());
+            Message::CreateActorModel m(body);
+            scene_->createActorModel(m.getId(), (RenderPass)m.getRenderPass(), m.getModel(), m.getMaterial());
         });
 
         subscribe("set_camera", [this](const MessageSubject &subject, const MessageBody &body)
@@ -42,19 +38,29 @@ namespace Tarbora {
             UNUSED(subject);
             Message::MoveActor m(body);
             std::shared_ptr<SceneNode> actor = scene_->getActor(m.getId());
-            actor->setPosition(m.getPosition());
-            actor->setRotation(m.getRotation());
+            if (actor)
+            {
+                actor->setPosition(m.getPosition());
+                actor->setRotation(m.getRotation());
+            }
         });
 
         subscribe("move_node", [this](const MessageSubject &subject, const MessageBody &body)
         {
             UNUSED(subject);
             Message::MoveNode m(body);
-            std::shared_ptr<SceneNode> node = scene_->getActor(m.getId())->getChild(m.getName());
-            if (m.hasPosition())
-                node->setPosition(m.getPosition());
-            if (m.hasRotation())
-                node->setRotation(m.getRotation());
+            std::shared_ptr<SceneNode> actor = scene_->getActor(m.getId());
+            if (actor)
+            {
+                std::shared_ptr<SceneNode> node = actor->getChild(m.getName());
+                if (node)
+                {
+                    if (m.hasPosition())
+                        node->setPosition(m.getPosition());
+                    if (m.hasRotation())
+                        node->setRotation(m.getRotation());
+                }
+            }
         });
 
         subscribe("delete_actor", [this](const MessageSubject &subject, const MessageBody &body)
@@ -68,7 +74,7 @@ namespace Tarbora {
         {
             UNUSED(subject);
             Message::SetAnimation m(body);
-            scene_->animateActor(m.getId(), m.getAnimation(), m.getFile());
+            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->animate(m.getAnimation(), m.getFile());
         });
 
         scene_->setCamera(target_id_, "1st_person");

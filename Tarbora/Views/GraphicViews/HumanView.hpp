@@ -1,7 +1,6 @@
 #pragma once
 #include "Layer.hpp"
 #include "GraphicView.hpp"
-#include "ModelEditor.hpp"
 
 namespace Tarbora {
     class GameLayer;

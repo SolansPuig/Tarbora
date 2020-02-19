@@ -40,10 +40,10 @@ namespace Tarbora {
             facing_.x = facing_.x - direction.y;
             facing_.y = facing_.y + direction.x;
 
-            if (facing_.x >= 90.f)
-                facing_.x = 90.f;
-            else if (facing_.x <= -90.f)
-                facing_.x = -90.f;
+            if (facing_.x >= 70.f)
+                facing_.x = 70.f;
+            else if (facing_.x <= -70.f)
+                facing_.x = -70.f;
 
             glm::vec3 facing = glm::radians(facing_);
 

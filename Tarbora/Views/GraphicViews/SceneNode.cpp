@@ -16,6 +16,11 @@ namespace Tarbora {
         radius_ = 0;
     }
 
+    SceneNode::~SceneNode()
+    {
+        children_.clear();
+    }
+
     void SceneNode::update(Scene *scene, float delta_time)
     {
         for (auto child : children_)
@@ -62,10 +67,10 @@ namespace Tarbora {
 
     bool SceneNode::removeChild(const std::string &name)
     {
-        auto itr = children_.find(name);
-        if (itr != children_.end())
+        auto child = children_.find(name);
+        if (child != children_.end())
         {
-            children_.erase(itr);
+            children_.erase(child);
             return true;
         }
         return false;
@@ -112,8 +117,8 @@ namespace Tarbora {
     {
         glm::mat4 transform = glm::translate(glm::mat4(1.f), position_ + origin_);
         transform = transform * glm::mat4_cast(rotation_);
-        transform = glm::scale(transform, glm::vec3(global_scale_));
         transform = glm::translate(transform, -origin_);
+        transform = glm::scale(transform, glm::vec3(global_scale_));
         return transform;
     }
 
@@ -145,6 +150,7 @@ namespace Tarbora {
         SceneNode(id, name)
     {
         material_ = ResourcePtr<Material>("materials/" + material, "materials/missing.mat.lua");
+        material_name_ = material;
     }
 
     void MaterialNode::draw(Scene *scene, const glm::mat4 &transform)
@@ -166,10 +172,10 @@ namespace Tarbora {
         uv_map_ = glm::tvec2<unsigned short>(0);
         mesh_size_ = glm::vec3(0.f);
         texture_size_ = glm::vec3(0.f);
-        color_primary_ = glm::tvec3<unsigned char>(0);
-        color_secondary_ = glm::tvec3<unsigned char>(0);
-        color_detail_ = glm::tvec3<unsigned char>(0);
-        color_detail2_ = glm::tvec3<unsigned char>(0);
+        color_primary_ = glm::tvec3<unsigned char>(255);
+        color_secondary_ = glm::tvec3<unsigned char>(255);
+        color_detail_ = glm::tvec3<unsigned char>(255);
+        color_detail2_ = glm::tvec3<unsigned char>(255);
     }
 
     void MeshNode::draw(Scene *scene, const glm::mat4 &transform)

@@ -4,6 +4,7 @@
 namespace Tarbora {
     class ModelComponent : public Component
     {
+        friend class ModelSystem;
     public:
         ModelComponent(System *s, const ActorId &id, const LuaTable &table);
 

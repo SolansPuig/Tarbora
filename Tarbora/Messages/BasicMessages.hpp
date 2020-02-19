@@ -102,6 +102,25 @@ namespace Tarbora {
             bool hasRotation() { return message_.has_rotation(); }
         };
 
+        class CreateActorModel : public Message<::MessageContent::CreateActorModel>
+        {
+        public:
+            CreateActorModel(const MessageBody &m) : Message<::MessageContent::CreateActorModel>(m) {}
+
+            CreateActorModel(const ActorId &id, const std::string &model, const std::string &material, int render_pass)
+            {
+                message_.set_id(id);
+                message_.set_model(model);
+                message_.set_material(material);
+                message_.set_render_pass(render_pass);
+            }
+
+            const ActorId& getId() { return message_.id(); }
+            const std::string& getModel() { return message_.model(); }
+            const std::string& getMaterial() { return message_.material(); }
+            int getRenderPass() { return message_.render_pass(); }
+        };
+
         class MoveActor : public Message<::MessageContent::MoveActor>
         {
         public:

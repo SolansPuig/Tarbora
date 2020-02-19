@@ -38,6 +38,7 @@ target_link_libraries (tarbora
     PhysicsEngine
     GraphicsEngine
     Messages
+    Editor
 )
 
 # cotire(tarbora)
