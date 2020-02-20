@@ -95,6 +95,75 @@ namespace Tarbora {
                     model->setRotation(rotation);
                 }
 
+                ImGui::SameLine();
+
+                if (ImGui::Button("Load from..."))
+                {
+                    ImGui::OpenPopup("Select File");
+                }
+
+                ImGui::SameLine();
+
+                if (ImGui::Button("Save"))
+                {
+                    ImGui::OpenPopup("Save to File");
+                }
+
+                if (ImGui::BeginPopupModal("Select File", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+                {
+                    static std::string file = "example.lua";
+                    ImGui::InputText("File Name", &file);
+
+                    ImGui::Separator();
+
+                    // Submit or cancel the modal
+                    if (ImGui::Button("Cancel", ImVec2(120, 0)))
+                    {
+                        file = "example.lua";
+                        ImGui::CloseCurrentPopup();
+                    }
+                    ImGui::SameLine();
+                    if (ImGui::Button("Ok", ImVec2(120, 0)) && file != "")
+                    {
+                        // TODO: Change that
+                        glm::vec3 position = model->getPosition();
+                        glm::quat rotation = model->getRotation();
+                        ResourceManager::flush();
+                        model_ = scene_->createActorModel(actor_id_, model->getRenderPass(), file, model->getMaterial());
+                        model = model_.lock();
+                        model->setPosition(position);
+                        model->setRotation(rotation);
+
+                        file = "example.lua";
+                        ImGui::CloseCurrentPopup();
+                    }
+                    ImGui::EndPopup();
+                }
+
+                if (ImGui::BeginPopupModal("Save to File", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+                {
+                    ImGui::TextUnformatted("Caution! This function could overwrite files that have extended functionality, losing it. Always keep a copy!");
+                    static std::string file = "example.lua";
+                    ImGui::InputText("File Name", &file);
+
+                    ImGui::Separator();
+
+                    // Submit or cancel the modal
+                    if (ImGui::Button("Cancel", ImVec2(120, 0)))
+                    {
+                        file = "example.lua";
+                        ImGui::CloseCurrentPopup();
+                    }
+                    ImGui::SameLine();
+                    if (ImGui::Button("Ok", ImVec2(120, 0)) && file != "")
+                    {
+                        ModelSaver saver("../Resources/models/" + file, model);
+                        file = "example.lua";
+                        ImGui::CloseCurrentPopup();
+                    }
+                    ImGui::EndPopup();
+                }
+
                 ImGui::Spacing();
 
                 const float step = 0.1f;
@@ -305,26 +374,32 @@ namespace Tarbora {
                 ImGui::Spacing();
                 glm::vec3 p = node->getPosition()*100.f;
                 float position[3] = {p.x, p.y, p.z};
-                if (ImGui::DragFloat3("Position", position, 1.f, 0.f, 0.f, "%.1f cm"))
+                if (ImGui::DragFloat3("Position", position, 1.f, 0.f, 0.f, "%.2f cm"))
                     node->setPosition(glm::make_vec3(position)/100.f);
 
                 // TODO: Fix gimbal lock
                 ImGui::Spacing();
                 glm::vec3 r = node->getRotation();
                 float rotation[3] = {r.x, r.y, r.z};
-                if (ImGui::DragFloat3("Rotation", rotation, 1.f, -180.f, 180.f, "%.1f°"))
+                if (ImGui::DragFloat3("Rotation", rotation, 1.f, -180.f, 180.f, "%.2f°"))
                     node->setRotation(glm::make_vec3(rotation));
 
                 ImGui::Spacing();
                 glm::vec3 s = node->getScale()*100.f;
                 float scale[3] = {s.x, s.y, s.z};
-                if (ImGui::DragFloat3("Scale", scale, 1.f, 1.f, 1000.f, "%.1f cm"))
+                if (ImGui::DragFloat3("Scale", scale, 1.f, 1.f, 1000.f, "%.2f cm"))
                     node->setScale(glm::make_vec3(scale)/100.f);
 
                 ImGui::Spacing();
                 float g_scale = node->getGlobalScale();
-                if (ImGui::DragFloat("Global Scale", &g_scale, 0.1f, 0.1f, 1000.f, "%.1f"))
+                if (ImGui::DragFloat("Global Scale", &g_scale, 0.1f, 0.1f, 1000.f, "%.2f"))
                     node->setGlobalScale(g_scale);
+
+                ImGui::Spacing();
+                glm::vec3 o = node->getOrigin();
+                float origin[3] = {o.x, o.y, o.z};
+                if (ImGui::DragFloat3("Origin", origin, 0.01f, -0.5f, 0.5f, "%.2f"))
+                    node->setOrigin(glm::make_vec3(origin));
             }
 
             if (node->getNodeType() == "MESH")
@@ -379,5 +454,93 @@ namespace Tarbora {
         }
 
         ImGui::End();
+    }
+
+    ModelSaver::ModelSaver(const std::string &file, std::shared_ptr<ActorModel> model)
+    {
+        file_.open(file.c_str());
+        indentation_ = 0;
+
+        if (file_.is_open())
+        {
+            file_ << "scale = " << model->getGlobalScale() << std::endl;
+            file_ << "nodes = {" << std::endl;
+            indentation_ += 4;
+            for (auto n : *model)
+                saveNode(n.second);
+            file_ << "}" << std::endl;
+        }
+    }
+
+    void ModelSaver::saveNode(std::shared_ptr<SceneNode> node)
+    {
+        file_ << std::string(indentation_, ' ') << "{" << std::endl;
+        indentation_ += 4;
+        file_ << std::string(indentation_, ' ') << "name = \"" << node->getName() << "\"," << std::endl;
+        file_ << std::string(indentation_, ' ') << "scale = " << std::fixed << std::setprecision(2) << node->getGlobalScale() << "," << std::endl;
+        if (node->getOrigin() != glm::vec3(0.f)) saveVec3("origin", node->getOrigin());
+        if (node->getPosition() != glm::vec3(0.f)) saveVec3("position", node->getPosition() * 100.f);
+        if (node->getRotation() != glm::vec3(0.f)) saveVec3("rotation", node->getRotation());
+
+        if (node->getNodeType() == "MESH")
+        {
+            auto mesh = std::static_pointer_cast<MeshNode>(node);
+            if (mesh->getScale() != glm::vec3(0.f)) saveVec3("size", mesh->getScale() * 100.f);
+            file_ << std::string(indentation_, ' ') << "shape = \"" << mesh->getShape() << "\"," << std::endl;
+            saveVec2("uv_map", mesh->getUvMap());
+            if (mesh->getTextureSize() != mesh->getScale()) saveVec3("texture_size", mesh->getTextureSize());
+            if (mesh->getColorPrimary() != glm::tvec3<unsigned char>(255)) saveVec3("color_primary", mesh->getColorPrimary());
+            if (mesh->getColorSecondary() != glm::tvec3<unsigned char>(255)) saveVec3("color_secondary", mesh->getColorSecondary());
+            if (mesh->getColorDetail() != glm::tvec3<unsigned char>(255)) saveVec3("color_detail", mesh->getColorDetail());
+            if (mesh->getColorDetail2() != glm::tvec3<unsigned char>(255)) saveVec3("color_detail2", mesh->getColorDetail2());
+        }
+        else if (node->getNodeType() == "CAMERA")
+        {
+            file_ << std::string(indentation_, ' ') << "type = \"camera\"" << std::endl;
+        }
+        else if (node->getNodeType() == "MATERIAL")
+        {
+            file_ << std::string(indentation_, ' ') << "type = \"material\"" << std::endl;
+        }
+
+        if (node->size() > 0)
+        {
+            file_ << std::string(indentation_, ' ') << "nodes = {" << std::endl;
+            indentation_ += 4;
+            for (auto n : *node)
+                saveNode(n.second);
+            indentation_ -= 4;
+            file_ << std::string(indentation_, ' ') << "}" << std::endl;
+        }
+        indentation_ -= 4;
+        file_ << std::string(indentation_, ' ') << "}," << std::endl;
+    }
+
+    void ModelSaver::saveVec3(const std::string &name, const glm::vec3 &vector)
+    {
+        file_ << std::string(indentation_, ' ') << name << " = "
+            << "{" << std::fixed << std::setprecision(2) << vector.x << ", "
+            << std::fixed << std::setprecision(2) << vector.y << ", "
+            << std::fixed << std::setprecision(2) << vector.z << "}," << std::endl;
+    }
+
+    void ModelSaver::saveVec2(const std::string &name, const glm::vec2 &vector)
+    {
+        file_ << std::string(indentation_, ' ') << name << " = "
+            << "{" << std::fixed << std::setprecision(2) << vector.x << ", "
+            << std::fixed << std::setprecision(2) << "}," << std::endl;
+    }
+
+    void ModelSaver::saveVec3(const std::string &name, const glm::tvec3<unsigned char> &vector)
+    {
+        file_ << std::string(indentation_, ' ') << name << " = "
+            << "{" << (unsigned int)vector.x << ", " << (unsigned int)vector.y << ", "
+            << (unsigned int)vector.z << "}," << std::endl;
+    }
+
+    void ModelSaver::saveVec2(const std::string &name, const glm::tvec2<unsigned short> &vector)
+    {
+        file_ << std::string(indentation_, ' ') << name << " = "
+            << "{" << vector.x << ", " << vector.y << "}," << std::endl;
     }
 }

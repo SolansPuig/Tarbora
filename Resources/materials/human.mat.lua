@@ -1,4 +1,4 @@
 shader = "model.shader.lua"
-albedo = "human.png"
+albedo = "grey.png"
 color_tint = "white.png"
-pixel_density = 40
+pixel_density = 50

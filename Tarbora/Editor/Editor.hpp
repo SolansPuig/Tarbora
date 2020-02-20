@@ -64,4 +64,20 @@ namespace Tarbora {
         std::string node_name_;
         std::weak_ptr<SceneNode> node_;
     };
+
+    class ModelSaver
+    {
+    public:
+        ModelSaver(const std::string &file, std::shared_ptr<ActorModel> model);
+
+    private:
+        void saveNode(std::shared_ptr<SceneNode> node);
+        void saveVec3(const std::string &name, const glm::vec3 &vector);
+        void saveVec2(const std::string &name, const glm::vec2 &vector);
+        void saveVec3(const std::string &name, const glm::tvec3<unsigned char> &vector);
+        void saveVec2(const std::string &name, const glm::tvec2<unsigned short> &vector);
+
+        std::ofstream file_;
+        unsigned int indentation_;
+    };
 }

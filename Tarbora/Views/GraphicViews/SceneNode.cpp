@@ -105,6 +105,11 @@ namespace Tarbora {
         origin_ = origin * global_scale_ * scale_;
     }
 
+    glm::vec3 SceneNode::getOrigin()
+    {
+        return origin_ / global_scale_ / scale_;
+    }
+
     glm::mat4 SceneNode::getGlobalTransform()
     {
         if (parent_)
@@ -168,6 +173,7 @@ namespace Tarbora {
         SceneNode(id, name), render_pass_(render_pass)
     {
         mesh_ = ResourcePtr<Mesh>("meshes/" + mesh, "meshes/cube.mesh");
+        mesh_name_ = mesh;
 
         uv_map_ = glm::tvec2<unsigned short>(0);
         mesh_size_ = glm::vec3(0.f);

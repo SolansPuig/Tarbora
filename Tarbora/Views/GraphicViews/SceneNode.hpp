@@ -41,7 +41,7 @@ namespace Tarbora {
         const glm::quat& getRotationQuat() { return rotation_; }
         const glm::vec3& getScale() { return scale_; }
         float getGlobalScale() { return global_scale_; }
-        const glm::vec3& getOrigin() { return origin_; }
+        glm::vec3 getOrigin();
 
         glm::mat4 getGlobalTransform();
         glm::mat4 getLocalTransform();
@@ -49,6 +49,7 @@ namespace Tarbora {
         void setRadius(float radius) { radius_ = radius; }
         float getRadius() const { return radius_; }
 
+        bool size() { return children_.size(); }
         auto begin() { return children_.begin(); }
         auto end() { return children_.end(); }
 
@@ -120,16 +121,18 @@ namespace Tarbora {
 
         const glm::tvec2<unsigned short>& getUvMap() { return uv_map_; }
         const glm::vec3& getMeshSize() { return mesh_size_; }
-        const glm::vec3& geTextureSize() { return texture_size_; }
+        const glm::vec3& getTextureSize() { return texture_size_; }
         const glm::tvec3<unsigned char>& getColorPrimary() { return color_primary_; }
         const glm::tvec3<unsigned char>& getColorSecondary() { return color_secondary_; }
         const glm::tvec3<unsigned char>& getColorDetail() { return color_detail_; }
         const glm::tvec3<unsigned char>& getColorDetail2() { return color_detail2_; }
         RenderPass getRenderPass() { return render_pass_; }
+        const std::string& getShape() { return mesh_name_; }
 
     protected:
         RenderPass render_pass_;
         ResourcePtr<Mesh> mesh_;
+        std::string mesh_name_;
 
         glm::tvec2<unsigned short> uv_map_;
         glm::vec3 mesh_size_;

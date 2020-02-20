@@ -8,9 +8,12 @@ namespace Tarbora {
         model_ = model;
         render_pass_ = render_pass;
         ResourcePtr<LuaScript> resource("models/" + model, "models/cube.lua");
-        std::shared_ptr<MeshNode> mesh = createNode(id, render_pass, resource->get("root"));
-        mesh->setGlobalScale(resource->get<float>("scale", true));
-        addChild(mesh);
+        for (auto n : resource->get("nodes"))
+        {
+            std::shared_ptr<MeshNode> new_node = createNode(id, render_pass, n.second.getAs<LuaTable>());
+            addChild(new_node);
+        }
+        setGlobalScale(resource->get<float>("scale", 1.f, true));
     }
 
     ActorModel::~ActorModel()
@@ -26,6 +29,7 @@ namespace Tarbora {
 
         // Create the node
         std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, render_pass, shape));
+        node->setGlobalScale(table.get<float>("scale", 1.f, true));
         node->setOrigin(table.get<glm::vec3>("origin", true));
         node->setPosition(table.get<glm::vec3>("position", true)/100.f);
         node->setRotation(table.get<glm::vec3>("rotation", true));
@@ -44,15 +48,12 @@ namespace Tarbora {
         // Create all its child nodes and add them as children to this
         for (auto n : table.get("nodes", true))
         {
-            std::shared_ptr<MeshNode> new_node = createNode(id, render_pass, n.second.getAs<LuaTable>());
-            node->addChild(new_node);
-        }
-
-        // Create the child cameras, if any
-        for (auto c : table.get("cameras", true))
-        {
-            std::shared_ptr<Camera> new_camera = createCamera(id, c.second.getAs<LuaTable>());
-            node->addChild(new_camera);
+            LuaTable t = n.second.getAs<LuaTable>();
+            std::string type = t.get<std::string>("type", "mesh", true);
+            if (type == "mesh")
+                node->addChild(createNode(id, render_pass, t));
+            else if (type == "camera")
+                node->addChild(createCamera(id, t));
         }
 
         nodes_[name] = node;
