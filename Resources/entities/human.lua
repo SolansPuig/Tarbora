@@ -2,7 +2,7 @@ components = {
     type = {"human"},
     model = {
         render_pass = 1,
-        model = "human.lua",
+        model = "human4.lua",
         material = "human.mat.lua"
     },
     animation = {
@@ -10,7 +10,7 @@ components = {
     },
     physics = {
         shape = "capsule",
-        height = 1.5,
+        height = 1.4,
         radius = 0.5,
         density = 2
     },

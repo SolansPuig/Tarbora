@@ -63,6 +63,7 @@ namespace Tarbora {
 
         std::string node_name_;
         std::weak_ptr<SceneNode> node_;
+        bool auto_texture_size_;
     };
 
     class ModelSaver

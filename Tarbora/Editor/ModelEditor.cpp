@@ -354,6 +354,17 @@ namespace Tarbora {
     {
         node_name_ = name;
         node_ = node;
+
+        // Configure auto texture size
+        auto_texture_size_ = false;
+        if (auto node = node_.lock())
+        {
+            if (node->getNodeType() == "MESH")
+            {
+                auto mesh = std::static_pointer_cast<MeshNode>(node);
+                auto_texture_size_ = mesh->getTextureSize() == mesh->getScale();
+            }
+        }
     }
 
     void NodeEditor::draw(bool *active)
@@ -388,7 +399,16 @@ namespace Tarbora {
                 glm::vec3 s = node->getScale()*100.f;
                 float scale[3] = {s.x, s.y, s.z};
                 if (ImGui::DragFloat3("Scale", scale, 1.f, 1.f, 1000.f, "%.2f cm"))
-                    node->setScale(glm::make_vec3(scale)/100.f);
+                {
+                    glm::vec3 size = glm::make_vec3(scale)/100.f;
+                    node->setScale(size);
+                    if (node->getNodeType() == "MESH")
+                    {
+                        auto mesh = std::static_pointer_cast<MeshNode>(node);
+                        mesh->setMeshSize(size);
+                        if (auto_texture_size_) mesh->setTextureSize(size);
+                    }
+                }
 
                 ImGui::Spacing();
                 float g_scale = node->getGlobalScale();
@@ -449,6 +469,19 @@ namespace Tarbora {
                     int uv_map[2] = {uv.x, uv.y};
                     if (ImGui::DragInt2("UV Map", uv_map))
                         mesh->setUvMap(glm::make_vec2(uv_map));
+
+                    ImGui::Spacing();
+                    if (ImGui::Checkbox("Auto Texture Size", &auto_texture_size_))
+                    {
+                        if (auto_texture_size_) mesh->setTextureSize(mesh->getScale());
+                    }
+                    if (!auto_texture_size_)
+                    {
+                        glm::vec3 ts = mesh->getTextureSize()*100.f;
+                        float texture_size[3] = {ts.x, ts.y, ts.z};
+                        if (ImGui::DragFloat3("Texture Size", texture_size, 1.f, 1.f, 1000.f, "%.2f cm"))
+                            mesh->setTextureSize(glm::make_vec3(texture_size)/100.f);
+                    }
                 }
             }
         }
@@ -488,7 +521,7 @@ namespace Tarbora {
             if (mesh->getScale() != glm::vec3(0.f)) saveVec3("size", mesh->getScale() * 100.f);
             file_ << std::string(indentation_, ' ') << "shape = \"" << mesh->getShape() << "\"," << std::endl;
             saveVec2("uv_map", mesh->getUvMap());
-            if (mesh->getTextureSize() != mesh->getScale()) saveVec3("texture_size", mesh->getTextureSize());
+            if (mesh->getTextureSize() != mesh->getScale()) saveVec3("texture_size", mesh->getTextureSize() * 100.f);
             if (mesh->getColorPrimary() != glm::tvec3<unsigned char>(255)) saveVec3("color_primary", mesh->getColorPrimary());
             if (mesh->getColorSecondary() != glm::tvec3<unsigned char>(255)) saveVec3("color_secondary", mesh->getColorSecondary());
             if (mesh->getColorDetail() != glm::tvec3<unsigned char>(255)) saveVec3("color_detail", mesh->getColorDetail());

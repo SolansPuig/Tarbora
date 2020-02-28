@@ -49,28 +49,34 @@ idle = {
             position = {0, 0, 0}
         },
         arm_r = {
-            rotation = {10, 0, function() return 80 + 5*math.cos(query.time) end}
+            rotation = {0, -5, function() return math.cos(query.time) + 85 end}
         },
         forearm_r = {
-            rotation = {0, 20, 5}
+            rotation = {10, 20, 5}
         },
         arm_l = {
-            rotation = {10, 0, function() return -80 - 5*math.cos(query.time) end}
+            rotation = {0, 5, function() return -math.cos(query.time) - 85 end}
         },
         forearm_l = {
-            rotation = {0, -20, -5}
+            rotation = {10, -20, -5}
         },
         thig_r = {
-            rotation = {0, 0, 0}
-        },
-        thig_l = {
-            rotation = {0, 0, 0}
+            rotation = {-5, 0, -2}
         },
         leg_r = {
-            rotation = {0, 0, 0}
+            rotation = {10, 0, 0}
+        },
+        foot_r = {
+            rotation = {-5, 0, 2}
+        },
+        thig_l = {
+            rotation = {-5, 0, 2}
         },
         leg_l = {
-            rotation = {0, 0, 0}
+            rotation = {10, 0, 0}
+        },
+        foot_l = {
+            rotation = {-5, 0, -2}
         },
     }
 }
