@@ -1,6 +1,6 @@
 # Tarbora, The Game Engine for Makers
 
-Check out the docs at https://solanspuig.github.io/Tarbora/html/index.html
+Check out the docs at https://solanspuig.github.io/Tarbora/html
 
 Check out my Patreon at https://www.patreon.com/tarbora
 
