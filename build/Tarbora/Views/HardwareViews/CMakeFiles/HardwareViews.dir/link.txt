@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -Ofast -DTRACY_ENABLE -fPIC -g -D DEBUG_MODE=true  -shared -Wl,-soname,libHardwareViews.so -o libHardwareViews.so CMakeFiles/HardwareViews.dir/src/ArduinoView.cpp.o -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 
