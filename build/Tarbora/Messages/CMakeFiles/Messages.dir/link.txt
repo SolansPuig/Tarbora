@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMessages.a  CMakeFiles/Messages.dir/math.pb.cc.o CMakeFiles/Messages.dir/basic.pb.cc.o CMakeFiles/Messages.dir/lua.pb.cc.o CMakeFiles/Messages.dir/BasicMessages.cpp.o
+/usr/bin/ranlib libMessages.a

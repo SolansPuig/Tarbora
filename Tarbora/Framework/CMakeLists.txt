@@ -5,7 +5,7 @@ protobuf_generate_cpp(ProtoSources ProtoHeaders MessageManager/messages.proto)
 
 add_subdirectory (External)
 
-add_library (TarboraCore SHARED
+add_library (TarboraCore STATIC
     Logger.cpp
     Module/AbstractModule.cpp
     Module/Module.cpp
@@ -20,5 +20,5 @@ add_library (TarboraCore SHARED
     ${ProtoHeaders}
 )
 
-target_link_libraries(TarboraCore PUBLIC lua tracy glm grpc grpc++ grpc++_reflection)
+target_link_libraries(TarboraCore PUBLIC lua tracy glm ${PROTOBUF_LIBRARIES})
 target_compile_options(TarboraCore PRIVATE -Werror -Wall -Wextra -Wpedantic)

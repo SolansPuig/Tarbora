@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -Ofast -DTRACY_ENABLE -fPIC -g -D DEBUG_MODE=true  -shared -Wl,-soname,libEditor.so -o libEditor.so CMakeFiles/Editor.dir/ModelEditor.cpp.o -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

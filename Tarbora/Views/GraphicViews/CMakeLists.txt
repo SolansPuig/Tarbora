@@ -8,4 +8,5 @@ add_library (GraphicViews SHARED
     ActorModel.cpp
     AnimationController.cpp
 )
+add_dependencies (GraphicViews Messages)
 target_compile_options(GraphicViews PRIVATE -Werror -Wall -Wextra -Wpedantic)

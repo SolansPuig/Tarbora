@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -Ofast -DTRACY_ENABLE -fPIC -g -D DEBUG_MODE=true  -shared -Wl,-soname,libimgui.so -o libimgui.so CMakeFiles/imgui.dir/External/imgui/imgui.cpp.o CMakeFiles/imgui.dir/External/imgui/imgui_draw.cpp.o CMakeFiles/imgui.dir/External/imgui/imgui_demo.cpp.o CMakeFiles/imgui.dir/External/imgui/imgui_widgets.cpp.o -lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW 

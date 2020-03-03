@@ -8,5 +8,6 @@ add_library (Logic SHARED
     ControllerComponent.cpp
     AnimationComponent.cpp
 )
-
+add_dependencies (Logic Messages)
+target_link_libraries (Logic Messages)
 target_compile_options(Logic PRIVATE -Werror -Wall -Wextra -Wpedantic)

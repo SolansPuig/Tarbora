@@ -1,6 +1,6 @@
 # add_subdirectory (Application)
 add_subdirectory (Framework)
+add_subdirectory (Messages)
 add_subdirectory (Logic)
 add_subdirectory (Views)
-add_subdirectory (Messages)
 add_subdirectory (Editor)

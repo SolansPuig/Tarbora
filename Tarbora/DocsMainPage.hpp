@@ -1,7 +1,7 @@
 /*!
     \mainpage
     \section intro_sec Introduction
-    Tarbora is a Game Engine meant to be very easily expandable and modifiable. 
+    Tarbora is a Game Engine meant to be very easily expandable and modifiable.
     \section install_sec Installation
     \subsection windows On Windows
     Windows isn't supported yet, but it will be very soon.
@@ -21,6 +21,11 @@
     and "Tarbora/Framework/PhysicsEngine/bullet3/CMakeLists.txt" to set OFF all
     the tests, examples and demos so you don't have to compile unnecessary code!
 
+    Install the dependencies:
+    \code{.sh}
+        sudo apt install cmake g++ libglew-dev doxygen mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libprotobuf-dev protobuf-compiler
+    \endcode
+
     Create the build directory:
     \code{.sh}
         mkdir build
@@ -37,6 +42,9 @@
     \code{.sh}
         ./tarbora
     \endcode
+
+    I haven't tried compiling on many computers yet, if you get any errors please
+    open an issue on GitHub.
 
     \section getting_started How to start
     I will set up some tutorials in the future, but for now, you'll have to figure

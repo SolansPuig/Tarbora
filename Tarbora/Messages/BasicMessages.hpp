@@ -31,75 +31,40 @@ namespace Tarbora {
         class Actor : public Message<::MessageContent::Actor>
         {
         public:
-            Actor(const MessageBody &m) : Message<::MessageContent::Actor>(m) {}
-
-            Actor(const ActorId &id)
-            {
-                message_.set_id(id);
-            }
-
-            const ActorId& getId() { return message_.id(); }
+            Actor(const MessageBody &m);
+            Actor(const ActorId &id);
+            const ActorId& getId();
         };
 
         class Node : public Message<::MessageContent::Node>
         {
         public:
-            Node(const MessageBody &m) : Message<::MessageContent::Node>(m) {}
-
-            Node(const ActorId &id, const std::string &name)
-            {
-                message_.set_id(id);
-                message_.set_name(name);
-            }
-
-            const ActorId& getId() { return message_.id(); }
-            const std::string& getName() { return message_.name(); }
+            Node(const MessageBody &m);
+            Node(const ActorId &id, const std::string &name);
+            const ActorId& getId();
+            const std::string& getName();
         };
 
         class CreateActor : public Message<::MessageContent::CreateActor>
         {
         public:
-            CreateActor(const MessageBody &m) : Message<::MessageContent::CreateActor>(m) {}
+            CreateActor(const MessageBody &m);
 
-            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant)
-            {
-                message_.set_id(id);
-                message_.set_entity(entity);
-                message_.set_variant(variant);
-            }
+            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant);
 
-            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant, const glm::vec3 &position)
-            {
-                message_.set_id(id);
-                message_.set_entity(entity);
-                message_.set_variant(variant);
-                (*message_.mutable_position()) = toMessage(position);
-            }
+            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant, const glm::vec3 &position);
 
-            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant, const glm::quat &rotation)
-            {
-                message_.set_id(id);
-                message_.set_entity(entity);
-                message_.set_variant(variant);
-                (*message_.mutable_rotation()) = toMessage(rotation);
-            }
+            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant, const glm::quat &rotation);
 
-            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant, const glm::vec3 &position, const glm::quat &rotation)
-            {
-                message_.set_id(id);
-                message_.set_entity(entity);
-                message_.set_variant(variant);
-                (*message_.mutable_position()) = toMessage(position);
-                (*message_.mutable_rotation()) = toMessage(rotation);
-            }
+            CreateActor(const ActorId &id, const std::string &entity, const std::string &variant, const glm::vec3 &position, const glm::quat &rotation);
 
-            const ActorId& getId() { return message_.id(); }
-            const std::string& getEntity() { return message_.entity(); }
-            const std::string& getVariant() { return message_.variant(); }
-            glm::vec3 getPosition() { return toMath(message_.position()); }
-            glm::quat getRotation() { return toMath(message_.rotation()); }
-            bool hasPosition() { return message_.has_position(); }
-            bool hasRotation() { return message_.has_rotation(); }
+            const ActorId& getId();
+            const std::string& getEntity();
+            const std::string& getVariant();
+            glm::vec3 getPosition();
+            glm::quat getRotation();
+            bool hasPosition();
+            bool hasRotation();
         };
 
         class CreateActorModel : public Message<::MessageContent::CreateActorModel>

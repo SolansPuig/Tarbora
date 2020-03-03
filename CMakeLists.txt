@@ -3,7 +3,7 @@ project (Tarbora)
 
 set (CMAKE_BUILD_TYPE Debug)
 if (CMAKE_COMPILER_IS_GNUCXX)
-    set (CMAKE_CXX_FLAGS "-Ofast -DTRACY_ENABLE")
+    set (CMAKE_CXX_FLAGS "-Ofast -DTRACY_ENABLE -fPIC")
     set (CMAKE_CXX_FLAGS_DEBUG "-g -D DEBUG_MODE=true")
     set (CMAKE_CXX_FLAGS_RELEASE "-D DEBUG_MODE=false")
     set (CMAKE_CXX_STANDARD_LIBRARIES "-lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW")
@@ -30,43 +30,13 @@ add_subdirectory (Tarbora)
 add_executable (tarbora main.cpp)
 
 target_link_libraries (tarbora
+    TarboraCore
+    Messages
+    Logic
     GraphicViews
     HardwareViews
     SceneManager
-    TarboraCore
-    Logic
     PhysicsEngine
     GraphicsEngine
-    Messages
     Editor
 )
-
-# cotire(tarbora)
-
-# add_executable (tarbora_client main_client.cpp)
-# target_link_libraries (tarbora_client
-#     GraphicViews
-#     TarboraCore
-#     GraphicsEngine
-#     ResourceManager
-#     MessageManager
-#     glfw
-#     imgui
-#     glm
-#     grpc
-#     grpc++
-#     grpc++_reflection
-# )
-
-# add_executable (tarbora_logic main_logic.cpp)
-# target_link_libraries (tarbora_logic GameLogic)
-# target_link_libraries (tarbora_logic PhysicsEngine)
-# target_link_libraries (tarbora_logic ResourceManager)
-# target_link_libraries (tarbora_logic EventManager)
-# target_link_libraries (tarbora_logic Logger)
-#
-# target_link_libraries (tarbora_logic BulletDynamics)
-# target_link_libraries (tarbora_logic BulletCollision)
-# target_link_libraries (tarbora_logic LinearMath)
-#
-# target_link_libraries (tarbora_logic glm)
