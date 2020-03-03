@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -82,48 +82,55 @@ $(function() {
 Inheritance diagram for Tarbora::ActorMotionState:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTarbora_1_1ActorMotionState__inherit__graph.png" border="0" usemap="#Tarbora_1_1ActorMotionState_inherit__map" alt="Inheritance graph"/></div>
+<map name="Tarbora_1_1ActorMotionState_inherit__map" id="Tarbora_1_1ActorMotionState_inherit__map">
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Tarbora::ActorMotionState:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTarbora_1_1ActorMotionState__coll__graph.png" border="0" usemap="#Tarbora_1_1ActorMotionState_coll__map" alt="Collaboration graph"/></div>
+<map name="Tarbora_1_1ActorMotionState_coll__map" id="Tarbora_1_1ActorMotionState_coll__map">
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9f0f8dfe3b52a74c0dff5196629f28c9"><td class="memItemLeft" align="right" valign="top"><a id="a9f0f8dfe3b52a74c0dff5196629f28c9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ActorMotionState</b> (glm::mat4 const &amp;transform)</td></tr>
-<tr class="separator:a9f0f8dfe3b52a74c0dff5196629f28c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae06b97069b1883711ec2828a71ec6da2"><td class="memItemLeft" align="right" valign="top"><a id="ae06b97069b1883711ec2828a71ec6da2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ActorMotionState</b> (const glm::vec3 &amp;position, const glm::quat &amp;rotation)</td></tr>
+<tr class="separator:ae06b97069b1883711ec2828a71ec6da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ca1b1961e95b7469e9dbef6d32f38e4"><td class="memItemLeft" align="right" valign="top"><a id="a6ca1b1961e95b7469e9dbef6d32f38e4"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>getWorldTransform</b> (btTransform &amp;transform) const</td></tr>
 <tr class="separator:a6ca1b1961e95b7469e9dbef6d32f38e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a116151bb38d94aede50f35841bb03e6b"><td class="memItemLeft" align="right" valign="top"><a id="a116151bb38d94aede50f35841bb03e6b"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setWorldTransform</b> (const btTransform &amp;transform)</td></tr>
 <tr class="separator:a116151bb38d94aede50f35841bb03e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebdbbe65dc6e5b8826cc500baf5f0318"><td class="memItemLeft" align="right" valign="top"><a id="aebdbbe65dc6e5b8826cc500baf5f0318"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getWorldTransform</b> (glm::mat4 &amp;transform) const</td></tr>
-<tr class="separator:aebdbbe65dc6e5b8826cc500baf5f0318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac39c57708b091d92a0812f9cda68e7bb"><td class="memItemLeft" align="right" valign="top"><a id="ac39c57708b091d92a0812f9cda68e7bb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setWorldTransform</b> (const glm::mat4 &amp;transform)</td></tr>
-<tr class="separator:ac39c57708b091d92a0812f9cda68e7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab79ee121003e3adda3c77c210dadc058"><td class="memItemLeft" align="right" valign="top"><a id="ab79ee121003e3adda3c77c210dadc058"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getPosition</b> ()</td></tr>
-<tr class="separator:ab79ee121003e3adda3c77c210dadc058"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af57e028d47be8d142a01c61c25952eb0"><td class="memItemLeft" align="right" valign="top"><a id="af57e028d47be8d142a01c61c25952eb0"></a>
-glm::mat3&#160;</td><td class="memItemRight" valign="bottom"><b>getRotation</b> ()</td></tr>
-<tr class="separator:af57e028d47be8d142a01c61c25952eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a118343149b46f1eb5d01fdd86724f9ef"><td class="memItemLeft" align="right" valign="top"><a id="a118343149b46f1eb5d01fdd86724f9ef"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>getWorldTransform</b> (glm::vec3 &amp;position, glm::quat &amp;rotation) const</td></tr>
+<tr class="separator:a118343149b46f1eb5d01fdd86724f9ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6a787efc2a07051dde18a78eef97de8"><td class="memItemLeft" align="right" valign="top"><a id="af6a787efc2a07051dde18a78eef97de8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setWorldTransform</b> (const glm::vec3 &amp;position, const glm::quat &amp;rotation)</td></tr>
+<tr class="separator:af6a787efc2a07051dde18a78eef97de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c3f7ed8f30d1a1e2949c3e03f4b3fcb"><td class="memItemLeft" align="right" valign="top"><a id="a1c3f7ed8f30d1a1e2949c3e03f4b3fcb"></a>
+const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPosition</b> ()</td></tr>
+<tr class="separator:a1c3f7ed8f30d1a1e2949c3e03f4b3fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb8ec35604c3d3d9aee692703947b0af"><td class="memItemLeft" align="right" valign="top"><a id="acb8ec35604c3d3d9aee692703947b0af"></a>
+const glm::quat &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getRotation</b> ()</td></tr>
+<tr class="separator:acb8ec35604c3d3d9aee692703947b0af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a89476c358757187de24d4917f4986b93"><td class="memItemLeft" align="right" valign="top"><a id="a89476c358757187de24d4917f4986b93"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>m_Transform</b></td></tr>
-<tr class="separator:a89476c358757187de24d4917f4986b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac44cb2f74ba0c4f34215a1d95755cd14"><td class="memItemLeft" align="right" valign="top"><a id="ac44cb2f74ba0c4f34215a1d95755cd14"></a>
+glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position_</b></td></tr>
+<tr class="separator:ac44cb2f74ba0c4f34215a1d95755cd14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab222c596b6124d7f8d9794491a9d10a3"><td class="memItemLeft" align="right" valign="top"><a id="ab222c596b6124d7f8d9794491a9d10a3"></a>
+glm::quat&#160;</td><td class="memItemRight" valign="bottom"><b>rotation_</b></td></tr>
+<tr class="separator:ab222c596b6124d7f8d9794491a9d10a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The position and rotation of an actor. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Framework/PhysicsEngine/inc/<a class="el" href="PhysicsEngine_8hpp_source.html">PhysicsEngine.hpp</a></li>
-<li>Tarbora/Framework/PhysicsEngine/src/PhysicsEngine.cpp</li>
+<li>Tarbora/Logic/PhysicsEngine/<a class="el" href="PhysicsEngine_8hpp_source.html">PhysicsEngine.hpp</a></li>
+<li>Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

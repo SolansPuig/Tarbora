@@ -17,23 +17,35 @@ Collaboration diagram for Tarbora\+:\+:Actor\+Model\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=254pt]{classTarbora_1_1ActorModel__coll__graph}
+\includegraphics[width=350pt]{classTarbora_1_1ActorModel__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorModel_a8dd61b7cd4cc494d4d0cdbea246e3b79}\label{classTarbora_1_1ActorModel_a8dd61b7cd4cc494d4d0cdbea246e3b79}} 
-{\bfseries Actor\+Model} (Actor\+Id id, std\+::string model, std\+::string shader, std\+::string texture)
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a1fefe619a840e2bbdf214e5d44962193}\label{classTarbora_1_1ActorModel_a1fefe619a840e2bbdf214e5d44962193}} 
+{\bfseries Actor\+Model} (const Actor\+Id \&id, Render\+Pass render\+\_\+pass, const std\+::string \&model, const std\+::string \&material)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorModel_a9944324a64a3e7213c1cfbee4947f576}\label{classTarbora_1_1ActorModel_a9944324a64a3e7213c1cfbee4947f576}} 
-virtual void {\bfseries Update} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, float delta\+Time) override
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a444103ab29247d23375fe2a55392fae0}\label{classTarbora_1_1ActorModel_a444103ab29247d23375fe2a55392fae0}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1MeshNode}{Mesh\+Node} $>$ {\bfseries create\+Node} (const Actor\+Id \&id, Render\+Pass render\+\_\+pass, \hyperlink{classTarbora_1_1LuaTable}{Lua\+Table} table)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorModel_ae162c537a3f3d16c08f2189603de8a32}\label{classTarbora_1_1ActorModel_ae162c537a3f3d16c08f2189603de8a32}} 
-virtual Scene\+Node\+Ptr {\bfseries Get\+Child} (std\+::string name) override
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a162b40dc0f465add232c332fd7899610}\label{classTarbora_1_1ActorModel_a162b40dc0f465add232c332fd7899610}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Camera}{Camera} $>$ {\bfseries create\+Camera} (const Actor\+Id \&id, \hyperlink{classTarbora_1_1LuaTable}{Lua\+Table} table)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorModel_a1ebd54715b2f4453c6d3dc60e0f1ede9}\label{classTarbora_1_1ActorModel_a1ebd54715b2f4453c6d3dc60e0f1ede9}} 
-void {\bfseries Animate} (std\+::string animation, std\+::string animations\+\_\+file=\char`\"{}\char`\"{})
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a7c6a17305abb923b03a190e90b4f856e}\label{classTarbora_1_1ActorModel_a7c6a17305abb923b03a190e90b4f856e}} 
+virtual void {\bfseries update} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, float delta\+\_\+time) override
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a896fc0026eeed7a5527846711364cd88}\label{classTarbora_1_1ActorModel_a896fc0026eeed7a5527846711364cd88}} 
+virtual std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1SceneNode}{Scene\+Node} $>$ {\bfseries get\+Child} (const std\+::string \&name) override
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_ae6ddda6bd0f911223020741eaa0e7694}\label{classTarbora_1_1ActorModel_ae6ddda6bd0f911223020741eaa0e7694}} 
+void {\bfseries animate} (const std\+::string \&name, const std\+::string \&file=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a9c2a219815c5952de9aa1b4cd298b23d}\label{classTarbora_1_1ActorModel_a9c2a219815c5952de9aa1b4cd298b23d}} 
+const std\+::string \& {\bfseries get\+Model} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a2955e28f4e1ab4fcb81affcbcd04cbd5}\label{classTarbora_1_1ActorModel_a2955e28f4e1ab4fcb81affcbcd04cbd5}} 
+Render\+Pass {\bfseries get\+Render\+Pass} ()
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -46,5 +58,5 @@ class {\bfseries Animation\+Controller}
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Views/\+Graphic\+Views/inc/Actor\+Model.\+hpp\item 
-Tarbora/\+Views/\+Graphic\+Views/src/Actor\+Model.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/Actor\+Model.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/Actor\+Model.\+cpp\end{DoxyCompactItemize}

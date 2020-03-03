@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['init',['Init',['../classTarbora_1_1PhysicsEngine.html#a7ec00bd287d1366ce059f2821b023634',1,'Tarbora::PhysicsEngine::Init()'],['../classTarbora_1_1ResourceManager.html#a92a90cbe0795350a30b45ba1f6e14a7f',1,'Tarbora::ResourceManager::Init()']]],
-  ['inputimpl',['InputImpl',['../classTarbora_1_1InputImpl.html',1,'Tarbora']]],
-  ['is_5fproto_5fenum_3c_20_3a_3atbmessages_3a_3amessagetype_20_3e',['is_proto_enum&lt; ::tbMessages::MessageType &gt;',['../structgoogle_1_1protobuf_1_1is__proto__enum_3_01_1_1tbMessages_1_1MessageType_01_4.html',1,'google::protobuf']]]
+  ['infocomponent',['InfoComponent',['../classTarbora_1_1InfoComponent.html',1,'Tarbora']]],
+  ['infosystem',['InfoSystem',['../classTarbora_1_1InfoSystem.html',1,'Tarbora']]],
+  ['init',['init',['../classTarbora_1_1ResourceManager.html#a83f6083aa9a2c8331a0fd519b7d9f62d',1,'Tarbora::ResourceManager::init()'],['../classTarbora_1_1PhysicsEngine.html#a964f0a4c51a88137fe063d5297829b00',1,'Tarbora::PhysicsEngine::init()']]],
+  ['input',['Input',['../classTarbora_1_1Input.html',1,'Tarbora']]]
 ];

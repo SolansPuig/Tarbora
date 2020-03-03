@@ -17,37 +17,55 @@ Collaboration diagram for Tarbora\+:\+:Physics\+Component\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=334pt]{classTarbora_1_1PhysicsComponent__coll__graph}
+\includegraphics[width=316pt]{classTarbora_1_1PhysicsComponent__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a3bf156d0a42bd132ea8ebb51b5c9e34c}\label{classTarbora_1_1PhysicsComponent_a3bf156d0a42bd132ea8ebb51b5c9e34c}} 
-{\bfseries Physics\+Component} (\hyperlink{classTarbora_1_1World}{World} $\ast$world)
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_adcd3fe64e2bc064de0a6892f4d102b99}\label{classTarbora_1_1PhysicsComponent_adcd3fe64e2bc064de0a6892f4d102b99}} 
+{\bfseries Physics\+Component} (\hyperlink{classTarbora_1_1System}{System} $\ast$s, const Actor\+Id \&id, const \hyperlink{classTarbora_1_1LuaTable}{Lua\+Table} \&table)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a6f091a08748045941ac8b7f64c7bf787}\label{classTarbora_1_1PhysicsComponent_a6f091a08748045941ac8b7f64c7bf787}} 
-Component\+Id {\bfseries Get\+Id} () const
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a8874d33c4a057f8cc511c9a51cf34d38}\label{classTarbora_1_1PhysicsComponent_a8874d33c4a057f8cc511c9a51cf34d38}} 
+void {\bfseries update\+Transform} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_aa3449fb88e5737316433a6c04565dcf3}\label{classTarbora_1_1PhysicsComponent_aa3449fb88e5737316433a6c04565dcf3}} 
-bool {\bfseries Init} (Json\+Ptr resource, raw\+\_\+json data)
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_ac3f872ede813fed363bdc33b25299a54}\label{classTarbora_1_1PhysicsComponent_ac3f872ede813fed363bdc33b25299a54}} 
+void {\bfseries set\+Angular\+Factor} (const glm\+::vec3 \&direction)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_ab6d6e87ef073850de24193ed144e9588}\label{classTarbora_1_1PhysicsComponent_ab6d6e87ef073850de24193ed144e9588}} 
-void {\bfseries After\+Init} ()
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_ab3b5bc3c5be6f23b660aa7436ace3551}\label{classTarbora_1_1PhysicsComponent_ab3b5bc3c5be6f23b660aa7436ace3551}} 
+void {\bfseries set\+Linear\+Damping} (float value)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a103b68beca09b42ccc6b01cff6e153bc}\label{classTarbora_1_1PhysicsComponent_a103b68beca09b42ccc6b01cff6e153bc}} 
-virtual void {\bfseries Update} (float delta\+Time) override
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_ace3b5c0be5b1591ebd42beae7f262555}\label{classTarbora_1_1PhysicsComponent_ace3b5c0be5b1591ebd42beae7f262555}} 
+void {\bfseries set\+Velocity} (const glm\+::vec3 \&direction)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_ad6f45e2f3430f2f7291aee8345502cd1}\label{classTarbora_1_1PhysicsComponent_ad6f45e2f3430f2f7291aee8345502cd1}} 
+void {\bfseries set\+Angular\+Velocity} (const glm\+::vec3 \&direction)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a79b71671292aacad7a70091f60eb0705}\label{classTarbora_1_1PhysicsComponent_a79b71671292aacad7a70091f60eb0705}} 
+void {\bfseries apply\+Force} (const glm\+::vec3 \&direction)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a939807ea8611effbe26f099a6625a4a6}\label{classTarbora_1_1PhysicsComponent_a939807ea8611effbe26f099a6625a4a6}} 
+void {\bfseries apply\+Torque} (const glm\+::vec3 \&direction)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a8222600edf6ea348ca313108d6fab96c}\label{classTarbora_1_1PhysicsComponent_a8222600edf6ea348ca313108d6fab96c}} 
+void {\bfseries stop} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a022f79441052ce75ae1a1c2b29ed36cd}\label{classTarbora_1_1PhysicsComponent_a022f79441052ce75ae1a1c2b29ed36cd}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{structTarbora_1_1RayCastResult}{Ray\+Cast\+Result} $>$ {\bfseries ray\+Cast} (const glm\+::vec3 \&origin, const glm\+::quat \&direction, float length)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a3e7abcc1f30026b578a88c3ad826af10}\label{classTarbora_1_1PhysicsComponent_a3e7abcc1f30026b578a88c3ad826af10}} 
+float {\bfseries get\+Height} ()
 \end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_ab94afd2c8e4d1b28356a44ae9ad963a5}\label{classTarbora_1_1PhysicsComponent_ab94afd2c8e4d1b28356a44ae9ad963a5}} 
-static Actor\+Component\+Ptr {\bfseries Creator} (\hyperlink{classTarbora_1_1World}{World} $\ast$world)
+\mbox{\Hypertarget{classTarbora_1_1PhysicsComponent_a6fb7520528fab4a670001f041b872bf2}\label{classTarbora_1_1PhysicsComponent_a6fb7520528fab4a670001f041b872bf2}} 
+class {\bfseries Physics\+System}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Logic/inc/Physics\+Component.\+hpp\item 
-Tarbora/\+Logic/src/Physics\+Component.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Logic/Physics\+Component.\+hpp\item 
+Tarbora/\+Logic/Physics\+Component.\+cpp\end{DoxyCompactItemize}

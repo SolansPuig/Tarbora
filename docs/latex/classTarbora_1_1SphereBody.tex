@@ -11,7 +11,8 @@ A physics rigid body representing an sphere.
 
 
 
-Inheritance diagram for Tarbora\+:\+:Sphere\+Body\+:\nopagebreak
+Inheritance diagram for Tarbora\+:\+:Sphere\+Body\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Tarbora\+:\+:Sphere\+Body\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Tarbora\+:\+:Sphere\+Body\+:\nopagebreak
+Collaboration diagram for Tarbora\+:\+:Sphere\+Body\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,18 +37,18 @@ Collaboration diagram for Tarbora\+:\+:Sphere\+Body\+:\nopagebreak
 \mbox{\Hypertarget{classTarbora_1_1SphereBody_a4592aa7dad4a13f33839f4883f21654b}\label{classTarbora_1_1SphereBody_a4592aa7dad4a13f33839f4883f21654b}} 
 \hyperlink{classTarbora_1_1SphereBody_a4592aa7dad4a13f33839f4883f21654b}{$\sim$\+Sphere\+Body} ()
 \begin{DoxyCompactList}\small\item\em Destroys and unregisters this body. \end{DoxyCompactList}\item 
-virtual void \hyperlink{classTarbora_1_1SphereBody_aa4c177c62075afa568b73ec019201dd7}{Register} (unsigned int id, glm\+::mat4 \&transform) override
+virtual void \hyperlink{classTarbora_1_1SphereBody_aa4a13d5e547bac9cb9fa30405517de2c}{register\+Actor} (Actor\+Id \&id, const glm\+::vec3 \&position, const glm\+::quat \&rotation) override
 \begin{DoxyCompactList}\small\item\em Register the rigid body to the Physics Engine. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1SphereBody_abb1c800fda3cfab36f60a64fb8c77cae}\label{classTarbora_1_1SphereBody_abb1c800fda3cfab36f60a64fb8c77cae}} 
-virtual void \hyperlink{classTarbora_1_1SphereBody_abb1c800fda3cfab36f60a64fb8c77cae}{Unregister} () override
+\mbox{\Hypertarget{classTarbora_1_1SphereBody_a65741975df1d4f37a1cf203e7453dbbe}\label{classTarbora_1_1SphereBody_a65741975df1d4f37a1cf203e7453dbbe}} 
+virtual void \hyperlink{classTarbora_1_1SphereBody_a65741975df1d4f37a1cf203e7453dbbe}{unregister} () override
 \begin{DoxyCompactList}\small\item\em Remove the rigid body from the Physics Engine. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1SphereBody_a6421e1677d335d10f3f49c68f71613ab}\label{classTarbora_1_1SphereBody_a6421e1677d335d10f3f49c68f71613ab}} 
-virtual void \hyperlink{classTarbora_1_1SphereBody_a6421e1677d335d10f3f49c68f71613ab}{Calc\+Volume} () override
+\mbox{\Hypertarget{classTarbora_1_1SphereBody_a47e3ba2b62a9156392e4b704e436a792}\label{classTarbora_1_1SphereBody_a47e3ba2b62a9156392e4b704e436a792}} 
+virtual void \hyperlink{classTarbora_1_1SphereBody_a47e3ba2b62a9156392e4b704e436a792}{calc\+Volume} () override
 \begin{DoxyCompactList}\small\item\em Calculate the volume when the shape or the size changes. Automatically called by the functions that change those. \end{DoxyCompactList}\item 
-void \hyperlink{classTarbora_1_1SphereBody_a218bff80687143aff24f524cc01f2175}{Set\+Radius} (float radius)
+void \hyperlink{classTarbora_1_1SphereBody_a60e5b823f2d7db527252840691078a92}{set\+Radius} (float radius)
 \begin{DoxyCompactList}\small\item\em Set the radius of that sphere. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1SphereBody_a5554aa58df71f4ada4537d48b5e0b1d3}\label{classTarbora_1_1SphereBody_a5554aa58df71f4ada4537d48b5e0b1d3}} 
-float \hyperlink{classTarbora_1_1SphereBody_a5554aa58df71f4ada4537d48b5e0b1d3}{Get\+Radius} ()
+\mbox{\Hypertarget{classTarbora_1_1SphereBody_a8c2285ff2cdac58b5955202c715990b0}\label{classTarbora_1_1SphereBody_a8c2285ff2cdac58b5955202c715990b0}} 
+float \hyperlink{classTarbora_1_1SphereBody_a8c2285ff2cdac58b5955202c715990b0}{get\+Radius} ()
 \begin{DoxyCompactList}\small\item\em Get the radius of that sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -82,11 +84,11 @@ Creates an \hyperlink{classTarbora_1_1SphereBody}{Sphere\+Body}.
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classTarbora_1_1SphereBody_aa4c177c62075afa568b73ec019201dd7}\label{classTarbora_1_1SphereBody_aa4c177c62075afa568b73ec019201dd7}} 
-\index{Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}!Register@{Register}}
-\index{Register@{Register}!Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}}
-\subsubsection{\texorpdfstring{Register()}{Register()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Sphere\+Body\+::\+Register (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classTarbora_1_1SphereBody_aa4a13d5e547bac9cb9fa30405517de2c}\label{classTarbora_1_1SphereBody_aa4a13d5e547bac9cb9fa30405517de2c}} 
+\index{Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}!register\+Actor@{register\+Actor}}
+\index{register\+Actor@{register\+Actor}!Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}}
+\subsubsection{\texorpdfstring{register\+Actor()}{registerActor()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Sphere\+Body\+::register\+Actor (\begin{DoxyParamCaption}\item[{Actor\+Id \&}]{id,  }\item[{const glm\+::vec3 \&}]{position,  }\item[{const glm\+::quat \&}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -96,18 +98,20 @@ Register the rigid body to the Physics Engine.
 \begin{DoxyParams}{Parameters}
 {\em id} & The id of the actor that owns that rigid body. \\
 \hline
-{\em transform} & The transform matrix of that actor. \\
+{\em position} & The initial position of that actor. \\
+\hline
+{\em rotation} & The initial rotation of that actor. \\
 \hline
 \end{DoxyParams}
 
 
-Implements \hyperlink{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}{Tarbora\+::\+Rigid\+Body}.
+Implements \hyperlink{classTarbora_1_1RigidBody_acd1c63e93fd607f74f48fb68aa764b29}{Tarbora\+::\+Rigid\+Body}.
 
-\mbox{\Hypertarget{classTarbora_1_1SphereBody_a218bff80687143aff24f524cc01f2175}\label{classTarbora_1_1SphereBody_a218bff80687143aff24f524cc01f2175}} 
-\index{Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}!Set\+Radius@{Set\+Radius}}
-\index{Set\+Radius@{Set\+Radius}!Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}}
-\subsubsection{\texorpdfstring{Set\+Radius()}{SetRadius()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Sphere\+Body\+::\+Set\+Radius (\begin{DoxyParamCaption}\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classTarbora_1_1SphereBody_a60e5b823f2d7db527252840691078a92}\label{classTarbora_1_1SphereBody_a60e5b823f2d7db527252840691078a92}} 
+\index{Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}!set\+Radius@{set\+Radius}}
+\index{set\+Radius@{set\+Radius}!Tarbora\+::\+Sphere\+Body@{Tarbora\+::\+Sphere\+Body}}
+\subsubsection{\texorpdfstring{set\+Radius()}{setRadius()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Sphere\+Body\+::set\+Radius (\begin{DoxyParamCaption}\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -122,5 +126,5 @@ Set the radius of that sphere.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Framework/\+Physics\+Engine/inc/Rigid\+Body.\+hpp\item 
-Tarbora/\+Framework/\+Physics\+Engine/src/Rigid\+Body.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Logic/\+Physics\+Engine/Rigid\+Body.\+hpp\item 
+Tarbora/\+Logic/\+Physics\+Engine/Rigid\+Body.\+cpp\end{DoxyCompactItemize}

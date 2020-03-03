@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -85,16 +85,16 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a59bc914b6c12023fbce1b230899ac5fa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#a59bc914b6c12023fbce1b230899ac5fa">SetLevel</a> (LogLevel level)</td></tr>
-<tr class="memdesc:a59bc914b6c12023fbce1b230899ac5fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the log level.  <a href="#a59bc914b6c12023fbce1b230899ac5fa">More...</a><br /></td></tr>
-<tr class="separator:a59bc914b6c12023fbce1b230899ac5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa32641fca455178d88f3b1c8b2f552ab"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#aa32641fca455178d88f3b1c8b2f552ab">Log</a> (LogLevel level, const char *text,...)</td></tr>
-<tr class="memdesc:aa32641fca455178d88f3b1c8b2f552ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message.  <a href="#aa32641fca455178d88f3b1c8b2f552ab">More...</a><br /></td></tr>
-<tr class="separator:aa32641fca455178d88f3b1c8b2f552ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2641541068ea40f58ae52defcad4caea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#a2641541068ea40f58ae52defcad4caea">setLevel</a> (LogLevel level)</td></tr>
+<tr class="memdesc:a2641541068ea40f58ae52defcad4caea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the log level.  <a href="#a2641541068ea40f58ae52defcad4caea">More...</a><br /></td></tr>
+<tr class="separator:a2641541068ea40f58ae52defcad4caea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6b2478d42d5d6985c4683022531de0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Logger.html#a4a6b2478d42d5d6985c4683022531de0">log</a> (LogLevel level, const char *text,...)</td></tr>
+<tr class="memdesc:a4a6b2478d42d5d6985c4683022531de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message.  <a href="#a4a6b2478d42d5d6985c4683022531de0">More...</a><br /></td></tr>
+<tr class="separator:a4a6b2478d42d5d6985c4683022531de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa32641fca455178d88f3b1c8b2f552ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa32641fca455178d88f3b1c8b2f552ab">&#9670;&nbsp;</a></span>Log()</h2>
+<a id="a4a6b2478d42d5d6985c4683022531de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6b2478d42d5d6985c4683022531de0">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -103,7 +103,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tarbora::Logger::Log </td>
+          <td class="memname">void Tarbora::Logger::log </td>
           <td>(</td>
           <td class="paramtype">LogLevel&#160;</td>
           <td class="paramname"><em>level</em>, </td>
@@ -145,8 +145,8 @@ Static Public Member Functions</h2></td></tr>
 <p>It can be called through the macros: </p><div class="fragment"><div class="line">LOG_DEBUG(TEXT, ...)</div><div class="line">LOG_INFO(TEXT, ...)</div><div class="line">LOG_WARN(TEXT, ...)</div><div class="line">LOG_ERR(TEXT, ...)</div></div><!-- fragment --> 
 </div>
 </div>
-<a id="a59bc914b6c12023fbce1b230899ac5fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59bc914b6c12023fbce1b230899ac5fa">&#9670;&nbsp;</a></span>SetLevel()</h2>
+<a id="a2641541068ea40f58ae52defcad4caea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2641541068ea40f58ae52defcad4caea">&#9670;&nbsp;</a></span>setLevel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +155,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void Tarbora::Logger::SetLevel </td>
+          <td class="memname">static void Tarbora::Logger::setLevel </td>
           <td>(</td>
           <td class="paramtype">LogLevel&#160;</td>
           <td class="paramname"><em>level</em></td><td>)</td>

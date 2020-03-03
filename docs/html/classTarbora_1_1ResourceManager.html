@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -67,7 +67,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classTarbora_1_1ResourceManager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Tarbora::ResourceManager Class Reference</div>  </div>
@@ -78,54 +77,39 @@ $(function() {
  <a href="classTarbora_1_1ResourceManager.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ResourceManager_8hpp_source.html">ResourceManager.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for Tarbora::ResourceManager:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1ResourceManager__coll__graph.png" border="0" usemap="#Tarbora_1_1ResourceManager_coll__map" alt="Collaboration graph"/></div>
-<map name="Tarbora_1_1ResourceManager_coll__map" id="Tarbora_1_1ResourceManager_coll__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="37,81,153,108"/>
-<area shape="rect" id="node3" href="classTarbora_1_1AbstractModule.html" title="Each of the parts that compose the Engine. " alt="" coords="13,5,178,32"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a92a90cbe0795350a30b45ba1f6e14a7f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a92a90cbe0795350a30b45ba1f6e14a7f">Init</a> (<a class="el" href="classTarbora_1_1Module.html">Module</a> *m, const std::string resourceFolderPath)</td></tr>
-<tr class="memdesc:a92a90cbe0795350a30b45ba1f6e14a7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the <a class="el" href="classTarbora_1_1ResourceManager.html" title="Load resources and make them available to all the systems. ">ResourceManager</a>.  <a href="#a92a90cbe0795350a30b45ba1f6e14a7f">More...</a><br /></td></tr>
-<tr class="separator:a92a90cbe0795350a30b45ba1f6e14a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4a1c0a551c5a788aaa18688ca7f7592"><td class="memItemLeft" align="right" valign="top"><a id="ad4a1c0a551c5a788aaa18688ca7f7592"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
-<tr class="separator:ad4a1c0a551c5a788aaa18688ca7f7592"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a531683525f49833ac4b06916cd8a2bc8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a531683525f49833ac4b06916cd8a2bc8">RegisterLoader</a> (LoaderPtr loader)</td></tr>
-<tr class="memdesc:a531683525f49833ac4b06916cd8a2bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a <em>ResourceLoader</em>.  <a href="#a531683525f49833ac4b06916cd8a2bc8">More...</a><br /></td></tr>
-<tr class="separator:a531683525f49833ac4b06916cd8a2bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a755c3216ac424ec13d28fa84b0814e0b"><td class="memItemLeft" align="right" valign="top">static ResourcePtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a755c3216ac424ec13d28fa84b0814e0b">GetResource</a> (const std::string resource)</td></tr>
-<tr class="memdesc:a755c3216ac424ec13d28fa84b0814e0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <a class="el" href="classTarbora_1_1Resource.html">Resource</a> by name.  <a href="#a755c3216ac424ec13d28fa84b0814e0b">More...</a><br /></td></tr>
-<tr class="separator:a755c3216ac424ec13d28fa84b0814e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7267c1da4dc124b41f34b6c870fdb10e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a7267c1da4dc124b41f34b6c870fdb10e">FreeResource</a> (ResourcePtr resource)</td></tr>
-<tr class="memdesc:a7267c1da4dc124b41f34b6c870fdb10e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a <a class="el" href="classTarbora_1_1Resource.html">Resource</a>.  <a href="#a7267c1da4dc124b41f34b6c870fdb10e">More...</a><br /></td></tr>
-<tr class="separator:a7267c1da4dc124b41f34b6c870fdb10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaef7ce514df5baa069b870aa69d9626e"><td class="memItemLeft" align="right" valign="top"><a id="aaef7ce514df5baa069b870aa69d9626e"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#aaef7ce514df5baa069b870aa69d9626e">Flush</a> (void)</td></tr>
-<tr class="memdesc:aaef7ce514df5baa069b870aa69d9626e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy all the Resources. <br /></td></tr>
-<tr class="separator:aaef7ce514df5baa069b870aa69d9626e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a302419fdf0455a322394fcd7fb754593"><td class="memItemLeft" align="right" valign="top"><a id="a302419fdf0455a322394fcd7fb754593"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a302419fdf0455a322394fcd7fb754593">GetResourceFolder</a> ()</td></tr>
-<tr class="memdesc:a302419fdf0455a322394fcd7fb754593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path to folder where all the resource files are be located at. <br /></td></tr>
-<tr class="separator:a302419fdf0455a322394fcd7fb754593"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a5c0cc274d57c723fab4621216eb45a84"><td class="memItemLeft" align="right" valign="top"><a id="a5c0cc274d57c723fab4621216eb45a84"></a>
-static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Module</b></td></tr>
-<tr class="separator:a5c0cc274d57c723fab4621216eb45a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f6083aa9a2c8331a0fd519b7d9f62d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a83f6083aa9a2c8331a0fd519b7d9f62d">init</a> (const std::string &amp;folder_path)</td></tr>
+<tr class="memdesc:a83f6083aa9a2c8331a0fd519b7d9f62d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the <a class="el" href="classTarbora_1_1ResourceManager.html" title="Load resources and make them available to all the systems. ">ResourceManager</a>.  <a href="#a83f6083aa9a2c8331a0fd519b7d9f62d">More...</a><br /></td></tr>
+<tr class="separator:a83f6083aa9a2c8331a0fd519b7d9f62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1338ebabf7eea681140d78749789204"><td class="memItemLeft" align="right" valign="top"><a id="ad1338ebabf7eea681140d78749789204"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="separator:ad1338ebabf7eea681140d78749789204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16851fa61eb7b4c3db0d079ddb295080"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a16851fa61eb7b4c3db0d079ddb295080">registerLoader</a> (std::shared_ptr&lt; ResourceLoader &gt;)</td></tr>
+<tr class="memdesc:a16851fa61eb7b4c3db0d079ddb295080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a <em>ResourceLoader</em>.  <a href="#a16851fa61eb7b4c3db0d079ddb295080">More...</a><br /></td></tr>
+<tr class="separator:a16851fa61eb7b4c3db0d079ddb295080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c160dc338dfbfecc0b6f7d5a5da981e"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a2c160dc338dfbfecc0b6f7d5a5da981e">getResource</a> (const std::string &amp;resource, bool *just_loaded=nullptr)</td></tr>
+<tr class="memdesc:a2c160dc338dfbfecc0b6f7d5a5da981e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <a class="el" href="classTarbora_1_1Resource.html">Resource</a> by name.  <a href="#a2c160dc338dfbfecc0b6f7d5a5da981e">More...</a><br /></td></tr>
+<tr class="separator:a2c160dc338dfbfecc0b6f7d5a5da981e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a99005c26783713e6581d53a997020e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a5a99005c26783713e6581d53a997020e">freeResource</a> (std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt; resource)</td></tr>
+<tr class="memdesc:a5a99005c26783713e6581d53a997020e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a <a class="el" href="classTarbora_1_1Resource.html">Resource</a>.  <a href="#a5a99005c26783713e6581d53a997020e">More...</a><br /></td></tr>
+<tr class="separator:a5a99005c26783713e6581d53a997020e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc7aaf81229d7ca40c25bde72ab36420"><td class="memItemLeft" align="right" valign="top"><a id="afc7aaf81229d7ca40c25bde72ab36420"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#afc7aaf81229d7ca40c25bde72ab36420">flush</a> ()</td></tr>
+<tr class="memdesc:afc7aaf81229d7ca40c25bde72ab36420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy all the Resources. <br /></td></tr>
+<tr class="separator:afc7aaf81229d7ca40c25bde72ab36420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac557dc5499cc9bfd55fea10eaac0da5b"><td class="memItemLeft" align="right" valign="top"><a id="ac557dc5499cc9bfd55fea10eaac0da5b"></a>
+static std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#ac557dc5499cc9bfd55fea10eaac0da5b">getResourceFolder</a> ()</td></tr>
+<tr class="memdesc:ac557dc5499cc9bfd55fea10eaac0da5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path to folder where all the resource files are be located at. <br /></td></tr>
+<tr class="separator:ac557dc5499cc9bfd55fea10eaac0da5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Load resources and make them available to all the systems. </p>
-<p>See an example of usage in <a class="el" href="classTarbora_1_1Json.html">Json</a>. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classTarbora_1_1Resource.html" title="An abstract resource. ">Resource</a> </dd></dl>
+<p>See an example of usage in Json. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classTarbora_1_1Resource.html" title="An abstract resource. ">Resource</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7267c1da4dc124b41f34b6c870fdb10e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7267c1da4dc124b41f34b6c870fdb10e">&#9670;&nbsp;</a></span>FreeResource()</h2>
+<a id="a5a99005c26783713e6581d53a997020e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a99005c26783713e6581d53a997020e">&#9670;&nbsp;</a></span>freeResource()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,9 +118,9 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tarbora::ResourceManager::FreeResource </td>
+          <td class="memname">void Tarbora::ResourceManager::freeResource </td>
           <td>(</td>
-          <td class="paramtype">ResourcePtr&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt;&#160;</td>
           <td class="paramname"><em>resource</em></td><td>)</td>
           <td></td>
         </tr>
@@ -158,8 +142,8 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
 
 </div>
 </div>
-<a id="a755c3216ac424ec13d28fa84b0814e0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a755c3216ac424ec13d28fa84b0814e0b">&#9670;&nbsp;</a></span>GetResource()</h2>
+<a id="a2c160dc338dfbfecc0b6f7d5a5da981e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c160dc338dfbfecc0b6f7d5a5da981e">&#9670;&nbsp;</a></span>getResource()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,11 +152,21 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ResourcePtr Tarbora::ResourceManager::GetResource </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt; Tarbora::ResourceManager::getResource </td>
           <td>(</td>
-          <td class="paramtype">const std::string&#160;</td>
-          <td class="paramname"><em>resource</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>just_loaded</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -190,12 +184,12 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to a <a class="el" href="classTarbora_1_1Resource.html">Resource</a>.</dd></dl>
-<p>The returned <a class="el" href="classTarbora_1_1Resource.html">Resource</a> must be casted to the required type, so a macro is provided to make Get easier, as it typecasts the result: </p><div class="fragment"><div class="line">GET_RESOURCE(TYPE, NAME)</div></div><!-- fragment --><p>If the <a class="el" href="classTarbora_1_1Resource.html">Resource</a> isn't loaded yet, <a class="el" href="classTarbora_1_1ResourceManager.html#a755c3216ac424ec13d28fa84b0814e0b">GetResource</a> automatically finds the appropiate <em>ResourceLoader</em> (see <a class="el" href="classTarbora_1_1Resource.html">Resource</a>) and loads it. </p>
+<p>The returned <a class="el" href="classTarbora_1_1Resource.html">Resource</a> must be casted to the required type, so a macro is provided to make Get easier, as it typecasts the result: </p><div class="fragment"><div class="line">GET_RESOURCE(TYPE, NAME)</div></div><!-- fragment --><p>If the <a class="el" href="classTarbora_1_1Resource.html">Resource</a> isn't loaded yet, GetResource automatically finds the appropiate <em>ResourceLoader</em> (see <a class="el" href="classTarbora_1_1Resource.html">Resource</a>) and loads it. </p>
 
 </div>
 </div>
-<a id="a92a90cbe0795350a30b45ba1f6e14a7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92a90cbe0795350a30b45ba1f6e14a7f">&#9670;&nbsp;</a></span>Init()</h2>
+<a id="a83f6083aa9a2c8331a0fd519b7d9f62d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f6083aa9a2c8331a0fd519b7d9f62d">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,21 +198,11 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tarbora::ResourceManager::Init </td>
+          <td class="memname">void Tarbora::ResourceManager::init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>folder_path</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const std::string&#160;</td>
-          <td class="paramname"><em>resourceFolderPath</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -238,8 +222,8 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
 
 </div>
 </div>
-<a id="a531683525f49833ac4b06916cd8a2bc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a531683525f49833ac4b06916cd8a2bc8">&#9670;&nbsp;</a></span>RegisterLoader()</h2>
+<a id="a16851fa61eb7b4c3db0d079ddb295080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16851fa61eb7b4c3db0d079ddb295080">&#9670;&nbsp;</a></span>registerLoader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,9 +232,9 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tarbora::ResourceManager::RegisterLoader </td>
+          <td class="memname">void Tarbora::ResourceManager::registerLoader </td>
           <td>(</td>
-          <td class="paramtype">LoaderPtr&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; ResourceLoader &gt;&#160;</td>
           <td class="paramname"><em>loader</em></td><td>)</td>
           <td></td>
         </tr>
@@ -273,8 +257,8 @@ static <a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Framework/ResourceManager/inc/<a class="el" href="ResourceManager_8hpp_source.html">ResourceManager.hpp</a></li>
-<li>Tarbora/Framework/ResourceManager/src/ResourceManager.cpp</li>
+<li>Tarbora/Framework/ResourceManager/<a class="el" href="ResourceManager_8hpp_source.html">ResourceManager.hpp</a></li>
+<li>Tarbora/Framework/ResourceManager/ResourceManager.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

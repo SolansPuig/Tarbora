@@ -1,7 +1,7 @@
 <map id="Tarbora::Layer" name="Tarbora::Layer">
-<area shape="rect" id="node3" href="$classTarbora_1_1ConsoleImpl.html" title="Tarbora::ConsoleImpl" alt="" coords="5,155,152,181"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1DemoWindow.html" title="Tarbora::DemoWindow" alt="" coords="177,155,333,181"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1GameLayerImpl.html" title="Tarbora::GameLayerImpl" alt="" coords="357,155,523,181"/>
-<area shape="rect" id="node6" href="$classTarbora_1_1MetricsGui.html" title="Tarbora::MetricsGui" alt="" coords="547,155,685,181"/>
-<area shape="rect" id="node2" href="$classTarbora_1_1ModuleComponent.html" title="Tarbora::ModuleComponent" alt="" coords="255,5,438,32"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1DemoWindow.html" title="Tarbora::DemoWindow" alt="" coords="5,155,161,181"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1Editor.html" title="Tarbora::Editor" alt="" coords="185,155,293,181"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1GameLayer.html" title="Tarbora::GameLayer" alt="" coords="318,155,459,181"/>
+<area shape="rect" id="node6" href="$classTarbora_1_1MetricsGui.html" title="Tarbora::MetricsGui" alt="" coords="484,155,621,181"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1ModuleComponent.html" title="Tarbora::ModuleComponent" alt="" coords="223,5,405,32"/>
 </map>

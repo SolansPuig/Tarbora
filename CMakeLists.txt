@@ -13,8 +13,6 @@ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include(cotire)
-
 include_directories(SYSTEM Tarbora/Framework/External/glm)
 include_directories(SYSTEM Tarbora/Framework/External/lua)
 include_directories(SYSTEM Tarbora/Framework/External/sol2/include)

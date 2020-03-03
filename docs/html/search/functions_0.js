@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['addbox',['AddBox',['../classTarbora_1_1PhysicsEngine.html#a4ec40e1a3ab05c7fe1e0216534484750',1,'Tarbora::PhysicsEngine']]],
-  ['addcapsule',['AddCapsule',['../classTarbora_1_1PhysicsEngine.html#af511b9509696fa6ffcaa2515f3a391aa',1,'Tarbora::PhysicsEngine']]],
-  ['addsphere',['AddSphere',['../classTarbora_1_1PhysicsEngine.html#ab20c015fd1b1aa9d8dd8e0c10a9ef249',1,'Tarbora::PhysicsEngine']]],
-  ['applyforce',['ApplyForce',['../classTarbora_1_1PhysicsEngine.html#a83b98f62953485af3b5e04d6bf4adba9',1,'Tarbora::PhysicsEngine::ApplyForce()'],['../classTarbora_1_1RigidBody.html#ae60a0e3d1f035698dfc11a117c28999b',1,'Tarbora::RigidBody::ApplyForce()']]],
-  ['applyimpulse',['ApplyImpulse',['../classTarbora_1_1PhysicsEngine.html#a3d5343fcdd079664377637ff9188595e',1,'Tarbora::PhysicsEngine::ApplyImpulse()'],['../classTarbora_1_1RigidBody.html#a55a0003f237d0f1a324350bcf9bbfd28',1,'Tarbora::RigidBody::ApplyImpulse()']]],
-  ['applytorque',['ApplyTorque',['../classTarbora_1_1PhysicsEngine.html#a7bfaabd962f0825536195708d4442a3d',1,'Tarbora::PhysicsEngine::ApplyTorque()'],['../classTarbora_1_1RigidBody.html#a025666d2545230e12b546b68d955871c',1,'Tarbora::RigidBody::ApplyTorque()']]]
+  ['addbox',['addBox',['../classTarbora_1_1PhysicsEngine.html#a91b5135f470a3648242224fa34358d71',1,'Tarbora::PhysicsEngine']]],
+  ['addcapsule',['addCapsule',['../classTarbora_1_1PhysicsEngine.html#a82787c2e79bbf802c6b6acbc828fbad8',1,'Tarbora::PhysicsEngine']]],
+  ['addsphere',['addSphere',['../classTarbora_1_1PhysicsEngine.html#a2e17e513d5f43612b30c5c6b6a5d6ef1',1,'Tarbora::PhysicsEngine']]],
+  ['applyforce',['applyForce',['../classTarbora_1_1RigidBody.html#afb1e923b3c9d499af761f51405b6bce2',1,'Tarbora::RigidBody']]],
+  ['applyimpulse',['applyImpulse',['../classTarbora_1_1RigidBody.html#a814a768747705b5a0c8fc81fca1ab1bc',1,'Tarbora::RigidBody']]],
+  ['applytorque',['applyTorque',['../classTarbora_1_1RigidBody.html#ab1f757870850021535f28674bce9eb20',1,'Tarbora::RigidBody']]]
 ];

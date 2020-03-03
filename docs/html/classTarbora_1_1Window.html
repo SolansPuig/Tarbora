@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -75,37 +75,40 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad37c35901d032a4f878c4432a02b1cf8"><td class="memItemLeft" align="right" valign="top"><a id="ad37c35901d032a4f878c4432a02b1cf8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Window</b> (const char *title, int width, int height, <a class="el" href="classTarbora_1_1GraphicView.html">GraphicView</a> *view)</td></tr>
-<tr class="separator:ad37c35901d032a4f878c4432a02b1cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a937281939b010abfcf4ee3b5af7965"><td class="memItemLeft" align="right" valign="top"><a id="a7a937281939b010abfcf4ee3b5af7965"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTitle</b> (const char *title)</td></tr>
-<tr class="separator:a7a937281939b010abfcf4ee3b5af7965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4364444d692f3987cad5dd7af2ef500c"><td class="memItemLeft" align="right" valign="top"><a id="a4364444d692f3987cad5dd7af2ef500c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
-<tr class="separator:a4364444d692f3987cad5dd7af2ef500c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5a3c70ba1dae1504632c0c5c1c4400c"><td class="memItemLeft" align="right" valign="top"><a id="ad5a3c70ba1dae1504632c0c5c1c4400c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></tr>
-<tr class="separator:ad5a3c70ba1dae1504632c0c5c1c4400c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac421916de237342ac7bd76ca93b7bb66"><td class="memItemLeft" align="right" valign="top"><a id="ac421916de237342ac7bd76ca93b7bb66"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Clear</b> ()</td></tr>
-<tr class="separator:ac421916de237342ac7bd76ca93b7bb66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63cfffc2853e2ccc3b98e1321d87380f"><td class="memItemLeft" align="right" valign="top"><a id="a63cfffc2853e2ccc3b98e1321d87380f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetWidth</b> ()</td></tr>
-<tr class="separator:a63cfffc2853e2ccc3b98e1321d87380f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96caf5673282b3b36025d978483171b4"><td class="memItemLeft" align="right" valign="top"><a id="a96caf5673282b3b36025d978483171b4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetHeight</b> ()</td></tr>
-<tr class="separator:a96caf5673282b3b36025d978483171b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8793c64c13ae101011895dd7b0aabc54"><td class="memItemLeft" align="right" valign="top"><a id="a8793c64c13ae101011895dd7b0aabc54"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>GetRatio</b> ()</td></tr>
-<tr class="separator:a8793c64c13ae101011895dd7b0aabc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a184b2465651ced28b68d71239d66b51a"><td class="memItemLeft" align="right" valign="top"><a id="a184b2465651ced28b68d71239d66b51a"></a>
-GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>GetRawWindow</b> ()</td></tr>
-<tr class="separator:a184b2465651ced28b68d71239d66b51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ccaeef1d7f9e4445c56d224945142cb"><td class="memItemLeft" align="right" valign="top"><a id="a9ccaeef1d7f9e4445c56d224945142cb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Window</b> (const std::string &amp;title, int width, int height, <a class="el" href="classTarbora_1_1GraphicsEngine.html">GraphicsEngine</a> *graphics_engine)</td></tr>
+<tr class="separator:a9ccaeef1d7f9e4445c56d224945142cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ecdcd5c928e780f0128cc7c99f4f823"><td class="memItemLeft" align="right" valign="top"><a id="a8ecdcd5c928e780f0128cc7c99f4f823"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setTitle</b> (const std::string &amp;title)</td></tr>
+<tr class="separator:a8ecdcd5c928e780f0128cc7c99f4f823"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a343fa4ea9982eb298b1b36f4d8a189bd"><td class="memItemLeft" align="right" valign="top"><a id="a343fa4ea9982eb298b1b36f4d8a189bd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="separator:a343fa4ea9982eb298b1b36f4d8a189bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af462407a8dd0b487b83aaa8d6c6faed2"><td class="memItemLeft" align="right" valign="top"><a id="af462407a8dd0b487b83aaa8d6c6faed2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
+<tr class="separator:af462407a8dd0b487b83aaa8d6c6faed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b406ebbe722ffb33fc025c843ae317"><td class="memItemLeft" align="right" valign="top"><a id="aa6b406ebbe722ffb33fc025c843ae317"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>captureMouse</b> (bool capture)</td></tr>
+<tr class="separator:aa6b406ebbe722ffb33fc025c843ae317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fbeb897a0c26fa7271c03d21b4d8c34"><td class="memItemLeft" align="right" valign="top"><a id="a6fbeb897a0c26fa7271c03d21b4d8c34"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> ()</td></tr>
+<tr class="separator:a6fbeb897a0c26fa7271c03d21b4d8c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9fd39537faf43ca3b8a33b2b3f0aa12"><td class="memItemLeft" align="right" valign="top"><a id="ac9fd39537faf43ca3b8a33b2b3f0aa12"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getHeight</b> ()</td></tr>
+<tr class="separator:ac9fd39537faf43ca3b8a33b2b3f0aa12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad23758222424b59ce0f419b509948997"><td class="memItemLeft" align="right" valign="top"><a id="ad23758222424b59ce0f419b509948997"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getRatio</b> ()</td></tr>
+<tr class="separator:ad23758222424b59ce0f419b509948997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1457ccb06c33e1993c0e98ad02ea56a1"><td class="memItemLeft" align="right" valign="top"><a id="a1457ccb06c33e1993c0e98ad02ea56a1"></a>
+GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>getRawWindow</b> ()</td></tr>
+<tr class="separator:a1457ccb06c33e1993c0e98ad02ea56a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10be2c64abc65c8e296365938e4af184"><td class="memItemLeft" align="right" valign="top"><a id="a10be2c64abc65c8e296365938e4af184"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>takeScreenshot</b> (const std::string &amp;filename)</td></tr>
+<tr class="separator:a10be2c64abc65c8e296365938e4af184"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Views/GraphicsEngine/inc/<a class="el" href="Window_8hpp_source.html">Window.hpp</a></li>
-<li>Tarbora/Views/GraphicsEngine/src/Window.cpp</li>
+<li>Tarbora/Views/GraphicViews/GraphicsEngine/<a class="el" href="Window_8hpp_source.html">Window.hpp</a></li>
+<li>Tarbora/Views/GraphicViews/GraphicsEngine/Window.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

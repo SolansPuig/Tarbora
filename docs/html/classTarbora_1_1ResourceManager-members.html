@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -72,14 +72,13 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Close</b>() (defined in <a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a>)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#aaef7ce514df5baa069b870aa69d9626e">Flush</a>(void)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a7267c1da4dc124b41f34b6c870fdb10e">FreeResource</a>(ResourcePtr resource)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a755c3216ac424ec13d28fa84b0814e0b">GetResource</a>(const std::string resource)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a302419fdf0455a322394fcd7fb754593">GetResourceFolder</a>()</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a92a90cbe0795350a30b45ba1f6e14a7f">Init</a>(Module *m, const std::string resourceFolderPath)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_Module</b> (defined in <a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a>)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a531683525f49833ac4b06916cd8a2bc8">RegisterLoader</a>(LoaderPtr loader)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>close</b>() (defined in <a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a>)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#afc7aaf81229d7ca40c25bde72ab36420">flush</a>()</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a5a99005c26783713e6581d53a997020e">freeResource</a>(std::shared_ptr&lt; Resource &gt; resource)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a2c160dc338dfbfecc0b6f7d5a5da981e">getResource</a>(const std::string &amp;resource, bool *just_loaded=nullptr)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#ac557dc5499cc9bfd55fea10eaac0da5b">getResourceFolder</a>()</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a83f6083aa9a2c8331a0fd519b7d9f62d">init</a>(const std::string &amp;folder_path)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html#a16851fa61eb7b4c3db0d079ddb295080">registerLoader</a>(std::shared_ptr&lt; ResourceLoader &gt;)</td><td class="entry"><a class="el" href="classTarbora_1_1ResourceManager.html">Tarbora::ResourceManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

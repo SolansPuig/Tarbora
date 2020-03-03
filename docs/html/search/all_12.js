@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['vec3message',['Vec3Message',['../classtbMath_1_1Vec3Message.html',1,'tbMath']]],
-  ['vec3messagedefaulttypeinternal',['Vec3MessageDefaultTypeInternal',['../classtbMath_1_1Vec3MessageDefaultTypeInternal.html',1,'tbMath']]],
-  ['vec4message',['Vec4Message',['../classtbMath_1_1Vec4Message.html',1,'tbMath']]],
-  ['vec4messagedefaulttypeinternal',['Vec4MessageDefaultTypeInternal',['../classtbMath_1_1Vec4MessageDefaultTypeInternal.html',1,'tbMath']]]
+  ['_7eboxbody',['~BoxBody',['../classTarbora_1_1BoxBody.html#adb0e7074d88a5e14ae8c9abca875ac52',1,'Tarbora::BoxBody']]],
+  ['_7ecapsulebody',['~CapsuleBody',['../classTarbora_1_1CapsuleBody.html#a70eeff3b16e27269076fef05a42a7de8',1,'Tarbora::CapsuleBody']]],
+  ['_7espherebody',['~SphereBody',['../classTarbora_1_1SphereBody.html#a4592aa7dad4a13f33839f4883f21654b',1,'Tarbora::SphereBody']]]
 ];

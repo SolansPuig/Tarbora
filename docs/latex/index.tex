@@ -16,6 +16,13 @@ git submodule update
 \end{DoxyCode}
  And modify the files \char`\"{}\+Tarbora/\+Framework/\+Maths/glm/\+C\+Make\+Lists.\+txt\char`\"{} and \char`\"{}\+Tarbora/\+Framework/\+Physics\+Engine/bullet3/\+C\+Make\+Lists.\+txt\char`\"{} to set O\+FF all the tests, examples and demos so you don\textquotesingle{}t have to compile unnecessary code!
 
+Install the dependencies\+: 
+\begin{DoxyCode}
+sudo apt install cmake g++ libglew-dev doxygen mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev
+       libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libprotobuf-dev protobuf-compiler
+\end{DoxyCode}
+
+
 Create the build directory\+: 
 \begin{DoxyCode}
 mkdir build
@@ -34,9 +41,11 @@ And test it!
 \begin{DoxyCode}
 ./tarbora
 \end{DoxyCode}
-\hypertarget{index_getting_started}{}\section{How to start}\label{index_getting_started}
+
+
+I haven\textquotesingle{}t tried compiling on many computers yet, if you get any errors please open an issue on Git\+Hub.\hypertarget{index_getting_started}{}\section{How to start}\label{index_getting_started}
 I will set up some tutorials in the future, but for now, you\textquotesingle{}ll have to figure everything by looking at this documentation.
 
-To start easy, try to modify only the main.\+cpp file and the Resources folder, and then also the files under the Demo folder.
+To start easy, try to modify only the Resources folder.
 
 Do not touch anything inside the folder Tarbora until you really know what you are doing, but if you mess something up, just delete everything and repeat the installation process. 

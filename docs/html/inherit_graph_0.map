@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$structgoogle_1_1protobuf_1_1is__proto__enum_3_01_1_1tbMessages_1_1MessageType_01_4.html" title="google::protobuf::is\l_proto_enum\&lt; ::tbMessages\l::MessageType \&gt;" alt="" coords="129,5,317,61"/>
+<area shape="rect" id="node1" href="$classTarbora_1_1AbstractModule.html" title="Each of the parts that compose the Engine. " alt="" coords="5,81,171,108"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="219,81,335,108"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1ArduinoView.html" title="Tarbora::ArduinoView" alt="" coords="390,5,537,32"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="389,56,537,83"/>
+<area shape="rect" id="node6" href="$classTarbora_1_1SceneManager.html" title="Tarbora::SceneManager" alt="" coords="383,107,544,133"/>
+<area shape="rect" id="node7" href="$classTarbora_1_1World.html" title="Tarbora::World" alt="" coords="409,157,517,184"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1HumanView.html" title="Tarbora::HumanView" alt="" coords="592,56,737,83"/>
 </map>

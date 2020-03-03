@@ -873,12 +873,9 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                =    Tarbora/Framework/PhysicsEngine/bullet3/ \
-                            Tarbora/Framework/GraphicsEngine/glfw/ \
-                            Tarbora/Framework/Maths/glm/ \
-                            Tarbora/Framework/Utility/inc/stb_image.h \
-                            Tarbora/Framework/Utility/inc/stb_image_write.h \
-                            Tarbora/Framework/Utility/inc/json.hpp
+EXCLUDE                =    Tarbora/Framework/External/ \
+                            Tarbora/Logic/PhysicsEngine/External/ \
+                            Tarbora/Views/GraphicsEngine/External/
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded

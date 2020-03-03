@@ -26,41 +26,45 @@ Collaboration diagram for Tarbora\+:\+:Layer\+:
 \mbox{\Hypertarget{classTarbora_1_1Layer_a58106508db0aafaec0d5e9bbcf79e24f}\label{classTarbora_1_1Layer_a58106508db0aafaec0d5e9bbcf79e24f}} 
 {\bfseries Layer} (\hyperlink{classTarbora_1_1GraphicView}{Graphic\+View} $\ast$view, bool start\+\_\+active=true)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_a7ae1fe1313d53004e2de8b2f02dd074f}\label{classTarbora_1_1Layer_a7ae1fe1313d53004e2de8b2f02dd074f}} 
-virtual void {\bfseries On\+Activate} ()
+\mbox{\Hypertarget{classTarbora_1_1Layer_aab6d82e0e2048dc50be2dc3d545c0e7f}\label{classTarbora_1_1Layer_aab6d82e0e2048dc50be2dc3d545c0e7f}} 
+virtual void {\bfseries on\+Activate} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_a5e0a67e64b23696527b93c5b388f3f0a}\label{classTarbora_1_1Layer_a5e0a67e64b23696527b93c5b388f3f0a}} 
-virtual void {\bfseries On\+Deactivate} ()
+\mbox{\Hypertarget{classTarbora_1_1Layer_aaa4c828f3c6fb7ff42e5667805f650c0}\label{classTarbora_1_1Layer_aaa4c828f3c6fb7ff42e5667805f650c0}} 
+virtual void {\bfseries on\+Deactivate} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_ac37d465ecfde640ba36c76a59a028931}\label{classTarbora_1_1Layer_ac37d465ecfde640ba36c76a59a028931}} 
-virtual void {\bfseries Get\+Input} ()
+\mbox{\Hypertarget{classTarbora_1_1Layer_a6f06c6331635d6f29b6b711fecafc617}\label{classTarbora_1_1Layer_a6f06c6331635d6f29b6b711fecafc617}} 
+virtual void {\bfseries get\+Input} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_af0819c61bf5b4a1746dfa93f0d819e1a}\label{classTarbora_1_1Layer_af0819c61bf5b4a1746dfa93f0d819e1a}} 
-virtual void {\bfseries Update} (float elapsed\+\_\+time)
+\mbox{\Hypertarget{classTarbora_1_1Layer_aa840eefc7b9a7fc08f6ca7ba14e219de}\label{classTarbora_1_1Layer_aa840eefc7b9a7fc08f6ca7ba14e219de}} 
+virtual void {\bfseries update} (float delta\+\_\+time)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_a77874dc29e6cfccff041460e05d0c892}\label{classTarbora_1_1Layer_a77874dc29e6cfccff041460e05d0c892}} 
-virtual void {\bfseries Draw} ()
+\mbox{\Hypertarget{classTarbora_1_1Layer_a0744dccca287ad0100f688eba65c9d3f}\label{classTarbora_1_1Layer_a0744dccca287ad0100f688eba65c9d3f}} 
+virtual void {\bfseries draw} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_a5cef4ea54e1dae64e612f4422485743c}\label{classTarbora_1_1Layer_a5cef4ea54e1dae64e612f4422485743c}} 
-virtual bool {\bfseries On\+Message} (\hyperlink{classTarbora_1_1MessageBody}{Message\+Body} $\ast$m)
+\mbox{\Hypertarget{classTarbora_1_1Layer_a246f85b37366ddf34b446331fe7a3447}\label{classTarbora_1_1Layer_a246f85b37366ddf34b446331fe7a3447}} 
+virtual bool {\bfseries on\+Message} (const \hyperlink{classTarbora_1_1MessageBody}{Message\+Body} \&m)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_a9451fd1d4d3929c11a02e5d11c425d8d}\label{classTarbora_1_1Layer_a9451fd1d4d3929c11a02e5d11c425d8d}} 
-void {\bfseries Set\+Active} (bool active)
+\mbox{\Hypertarget{classTarbora_1_1Layer_a4fc2a9f5064bbd6776bd1ae8398aa734}\label{classTarbora_1_1Layer_a4fc2a9f5064bbd6776bd1ae8398aa734}} 
+void {\bfseries set\+Active} (bool active)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_a48f220755f55d79401212d9e857a8ecb}\label{classTarbora_1_1Layer_a48f220755f55d79401212d9e857a8ecb}} 
-bool {\bfseries Is\+Active} () const
+\mbox{\Hypertarget{classTarbora_1_1Layer_a606bb2b75b38acf75e5f4caabceedb97}\label{classTarbora_1_1Layer_a606bb2b75b38acf75e5f4caabceedb97}} 
+bool {\bfseries is\+Active} () const
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Layer_a6f787d1153bdbaf8066e2745d2faf86a}\label{classTarbora_1_1Layer_a6f787d1153bdbaf8066e2745d2faf86a}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Input}{Input} $>$ {\bfseries get\+Input\+Manager} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_a8b0109c4480595c468e59d6c20028791}\label{classTarbora_1_1Layer_a8b0109c4480595c468e59d6c20028791}} 
-bool {\bfseries m\+\_\+active}
+\mbox{\Hypertarget{classTarbora_1_1Layer_a4d7fdc234d3b929bff31b80013355ddb}\label{classTarbora_1_1Layer_a4d7fdc234d3b929bff31b80013355ddb}} 
+bool {\bfseries active\+\_\+}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Layer_ae2d36fe9cabdd70efe3b0db506ffc842}\label{classTarbora_1_1Layer_ae2d36fe9cabdd70efe3b0db506ffc842}} 
-bool {\bfseries m\+\_\+event\+\_\+blocking}
+\mbox{\Hypertarget{classTarbora_1_1Layer_a0c24802fe48c762c865fea4fa6357e04}\label{classTarbora_1_1Layer_a0c24802fe48c762c865fea4fa6357e04}} 
+bool {\bfseries event\+\_\+blocking\+\_\+}
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Views/\+Graphic\+Views/inc/Layer.\+hpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/Layer.\+hpp\end{DoxyCompactItemize}

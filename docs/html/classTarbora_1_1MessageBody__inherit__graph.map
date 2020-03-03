@@ -1,8 +1,0 @@
-<map id="Tarbora::MessageBody" name="Tarbora::MessageBody">
-<area shape="rect" id="node2" href="$classTarbora_1_1ApplyPhysics.html" title="Tarbora::ApplyPhysics" alt="" coords="225,5,379,32"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1CreateActor.html" title="Tarbora::CreateActor" alt="" coords="230,56,374,83"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1DeleteActor.html" title="Tarbora::DeleteActor" alt="" coords="231,107,373,133"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1MoveActor.html" title="Tarbora::MoveActor" alt="" coords="233,157,371,184"/>
-<area shape="rect" id="node6" href="$classTarbora_1_1SetActorAnimation.html" title="Tarbora::SetActorAnimation" alt="" coords="211,208,393,235"/>
-<area shape="rect" id="node7" href="$classTarbora_1_1SetCamera.html" title="Tarbora::SetCamera" alt="" coords="232,259,372,285"/>
-</map>

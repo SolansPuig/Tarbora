@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -77,7 +77,8 @@ Inheritance diagram for Tarbora::GameLayer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTarbora_1_1GameLayer__inherit__graph.png" border="0" usemap="#Tarbora_1_1GameLayer_inherit__map" alt="Inheritance graph"/></div>
 <map name="Tarbora_1_1GameLayer_inherit__map" id="Tarbora_1_1GameLayer_inherit__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Layer.html" title="Tarbora::Layer" alt="" coords="23,5,129,32"/>
+<area shape="rect" id="node2" href="classTarbora_1_1Layer.html" title="Tarbora::Layer" alt="" coords="43,80,150,107"/>
+<area shape="rect" id="node3" href="classTarbora_1_1ModuleComponent.html" title="Tarbora::ModuleComponent" alt="" coords="5,5,188,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -85,52 +86,99 @@ Collaboration diagram for Tarbora::GameLayer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTarbora_1_1GameLayer__coll__graph.png" border="0" usemap="#Tarbora_1_1GameLayer_coll__map" alt="Collaboration graph"/></div>
 <map name="Tarbora_1_1GameLayer_coll__map" id="Tarbora_1_1GameLayer_coll__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Layer.html" title="Tarbora::Layer" alt="" coords="23,5,129,32"/>
+<area shape="rect" id="node2" href="classTarbora_1_1Layer.html" title="Tarbora::Layer" alt="" coords="43,247,150,273"/>
+<area shape="rect" id="node3" href="classTarbora_1_1ModuleComponent.html" title="Tarbora::ModuleComponent" alt="" coords="5,171,188,197"/>
+<area shape="rect" id="node4" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="39,81,155,108"/>
+<area shape="rect" id="node5" href="classTarbora_1_1AbstractModule.html" title="Each of the parts that compose the Engine. " alt="" coords="14,5,179,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3847c040b2c15631e725e8c6ce5ad45b"><td class="memItemLeft" align="right" valign="top"><a id="a3847c040b2c15631e725e8c6ce5ad45b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GameLayer</b> (bool start_active=true)</td></tr>
-<tr class="separator:a3847c040b2c15631e725e8c6ce5ad45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8721890fc92132ba29840cd5a6660cb0"><td class="memItemLeft" align="right" valign="top"><a id="a8721890fc92132ba29840cd5a6660cb0"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>OnEvent</b> (<a class="el" href="structTarbora_1_1Event.html">Event</a> *e) override</td></tr>
-<tr class="separator:a8721890fc92132ba29840cd5a6660cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e9a1674da8efb1c22e38afd38db8712"><td class="memItemLeft" align="right" valign="top"><a id="a0e9a1674da8efb1c22e38afd38db8712"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> (float deltaTime) override</td></tr>
-<tr class="separator:a0e9a1674da8efb1c22e38afd38db8712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f511121ff4d7a0b3b93e62c047b3a7e"><td class="memItemLeft" align="right" valign="top"><a id="a4f511121ff4d7a0b3b93e62c047b3a7e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> () override</td></tr>
-<tr class="separator:a4f511121ff4d7a0b3b93e62c047b3a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc5698563557cb438eb3cc10ef6fef43"><td class="memItemLeft" align="right" valign="top"><a id="acc5698563557cb438eb3cc10ef6fef43"></a>
-SkyboxPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetSkybox</b> () const</td></tr>
-<tr class="separator:acc5698563557cb438eb3cc10ef6fef43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a20a0c5d3a1bde8ebb1560771787513"><td class="memItemLeft" align="right" valign="top"><a id="a9a20a0c5d3a1bde8ebb1560771787513"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTargetId</b> (ActorId id)</td></tr>
-<tr class="separator:a9a20a0c5d3a1bde8ebb1560771787513"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18d2cdf99a18fa88bf2c91f8093d9921"><td class="memItemLeft" align="right" valign="top"><a id="a18d2cdf99a18fa88bf2c91f8093d9921"></a>
-ActorId&#160;</td><td class="memItemRight" valign="bottom"><b>GetTargetId</b> () const</td></tr>
-<tr class="separator:a18d2cdf99a18fa88bf2c91f8093d9921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a624aa27bf638bab890e78e5604f44c"><td class="memItemLeft" align="right" valign="top"><a id="a9a624aa27bf638bab890e78e5604f44c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>GameLayer</b> (<a class="el" href="classTarbora_1_1HumanView.html">HumanView</a> *view, bool start_active=true)</td></tr>
+<tr class="separator:a9a624aa27bf638bab890e78e5604f44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d70196a70ef9c1cc7acf7c5b908be02"><td class="memItemLeft" align="right" valign="top"><a id="a1d70196a70ef9c1cc7acf7c5b908be02"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>onMessage</b> (const <a class="el" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;m) override</td></tr>
+<tr class="separator:a1d70196a70ef9c1cc7acf7c5b908be02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3a39e9730ea40ebee92a43e42e1a249"><td class="memItemLeft" align="right" valign="top"><a id="ad3a39e9730ea40ebee92a43e42e1a249"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>getInput</b> () override</td></tr>
+<tr class="separator:ad3a39e9730ea40ebee92a43e42e1a249"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20514f1a57bf8a3e3d4a74067d6f24dd"><td class="memItemLeft" align="right" valign="top"><a id="a20514f1a57bf8a3e3d4a74067d6f24dd"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (float delta_time) override</td></tr>
+<tr class="separator:a20514f1a57bf8a3e3d4a74067d6f24dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4b1aabaca2dde69cdba47ff98657b69"><td class="memItemLeft" align="right" valign="top"><a id="ab4b1aabaca2dde69cdba47ff98657b69"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> () override</td></tr>
+<tr class="separator:ab4b1aabaca2dde69cdba47ff98657b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc05735a53b9213a41a317195b938848"><td class="memItemLeft" align="right" valign="top"><a id="afc05735a53b9213a41a317195b938848"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setTargetId</b> (ActorId id)</td></tr>
+<tr class="separator:afc05735a53b9213a41a317195b938848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4feb03466ed79adb482bc759e4106cef"><td class="memItemLeft" align="right" valign="top"><a id="a4feb03466ed79adb482bc759e4106cef"></a>
+const ActorId &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getTargetId</b> () const</td></tr>
+<tr class="separator:a4feb03466ed79adb482bc759e4106cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa95596d17f70cdfa47dffcbc83366faf"><td class="memItemLeft" align="right" valign="top"><a id="aa95596d17f70cdfa47dffcbc83366faf"></a>
+std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Scene.html">Scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getScene</b> ()</td></tr>
+<tr class="separator:aa95596d17f70cdfa47dffcbc83366faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac447161777b7e86d435eaca87651cde3"><td class="memItemLeft" align="right" valign="top"><a id="ac447161777b7e86d435eaca87651cde3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>freezeMouse</b> (bool freeze)</td></tr>
+<tr class="separator:ac447161777b7e86d435eaca87651cde3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classTarbora_1_1Layer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classTarbora_1_1Layer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTarbora_1_1Layer.html">Tarbora::Layer</a></td></tr>
-<tr class="memitem:ac718548de706f1cea072eaecda09f537 inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="ac718548de706f1cea072eaecda09f537"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Layer</b> (bool start_active=true)</td></tr>
-<tr class="separator:ac718548de706f1cea072eaecda09f537 inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ae1fe1313d53004e2de8b2f02dd074f inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a7ae1fe1313d53004e2de8b2f02dd074f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnActivate</b> ()</td></tr>
-<tr class="separator:a7ae1fe1313d53004e2de8b2f02dd074f inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e0a67e64b23696527b93c5b388f3f0a inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a5e0a67e64b23696527b93c5b388f3f0a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnDeactivate</b> ()</td></tr>
-<tr class="separator:a5e0a67e64b23696527b93c5b388f3f0a inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9451fd1d4d3929c11a02e5d11c425d8d inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a9451fd1d4d3929c11a02e5d11c425d8d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetActive</b> (bool active)</td></tr>
-<tr class="separator:a9451fd1d4d3929c11a02e5d11c425d8d inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48f220755f55d79401212d9e857a8ecb inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a48f220755f55d79401212d9e857a8ecb"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsActive</b> () const</td></tr>
-<tr class="separator:a48f220755f55d79401212d9e857a8ecb inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58106508db0aafaec0d5e9bbcf79e24f inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a58106508db0aafaec0d5e9bbcf79e24f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Layer</b> (<a class="el" href="classTarbora_1_1GraphicView.html">GraphicView</a> *view, bool start_active=true)</td></tr>
+<tr class="separator:a58106508db0aafaec0d5e9bbcf79e24f inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6d82e0e2048dc50be2dc3d545c0e7f inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="aab6d82e0e2048dc50be2dc3d545c0e7f"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onActivate</b> ()</td></tr>
+<tr class="separator:aab6d82e0e2048dc50be2dc3d545c0e7f inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa4c828f3c6fb7ff42e5667805f650c0 inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="aaa4c828f3c6fb7ff42e5667805f650c0"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onDeactivate</b> ()</td></tr>
+<tr class="separator:aaa4c828f3c6fb7ff42e5667805f650c0 inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc2a9f5064bbd6776bd1ae8398aa734 inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a4fc2a9f5064bbd6776bd1ae8398aa734"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setActive</b> (bool active)</td></tr>
+<tr class="separator:a4fc2a9f5064bbd6776bd1ae8398aa734 inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606bb2b75b38acf75e5f4caabceedb97 inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a606bb2b75b38acf75e5f4caabceedb97"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isActive</b> () const</td></tr>
+<tr class="separator:a606bb2b75b38acf75e5f4caabceedb97 inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f787d1153bdbaf8066e2745d2faf86a inherit pub_methods_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a6f787d1153bdbaf8066e2745d2faf86a"></a>
+std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getInputManager</b> ()</td></tr>
+<tr class="separator:a6f787d1153bdbaf8066e2745d2faf86a inherit pub_methods_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classTarbora_1_1ModuleComponent"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classTarbora_1_1ModuleComponent')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTarbora_1_1ModuleComponent.html">Tarbora::ModuleComponent</a></td></tr>
+<tr class="memitem:abf895d50857190a19b6879aeecc21668 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memItemLeft" align="right" valign="top"><a id="abf895d50857190a19b6879aeecc21668"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ModuleComponent</b> (<a class="el" href="classTarbora_1_1Module.html">Module</a> *m)</td></tr>
+<tr class="separator:abf895d50857190a19b6879aeecc21668 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b71373206a4a74318e5214bd8baf833 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memItemLeft" align="right" valign="top"><a id="a6b71373206a4a74318e5214bd8baf833"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (const ClientId &amp;to, const MessageSubject &amp;s, const <a class="el" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;b) const</td></tr>
+<tr class="separator:a6b71373206a4a74318e5214bd8baf833 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bfd9e0688f15c8c957d7e6b4aa55e02 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memItemLeft" align="right" valign="top"><a id="a9bfd9e0688f15c8c957d7e6b4aa55e02"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>trigger</b> (const MessageSubject &amp;s, const <a class="el" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;b) const</td></tr>
+<tr class="separator:a9bfd9e0688f15c8c957d7e6b4aa55e02 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a352f36fb03dbcf383c4485a463515292 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memItemLeft" align="right" valign="top"><a id="a352f36fb03dbcf383c4485a463515292"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>triggerLocal</b> (const MessageSubject &amp;s, const <a class="el" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;b) const</td></tr>
+<tr class="separator:a352f36fb03dbcf383c4485a463515292 inherit pub_methods_classTarbora_1_1ModuleComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classTarbora_1_1ModuleComponent"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classTarbora_1_1ModuleComponent')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classTarbora_1_1ModuleComponent.html">Tarbora::ModuleComponent</a></td></tr>
+<tr class="memitem:a6b782690dc2819a2ba06ad72a64ee419 inherit pro_methods_classTarbora_1_1ModuleComponent"><td class="memItemLeft" align="right" valign="top"><a id="a6b782690dc2819a2ba06ad72a64ee419"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>subscribe</b> (const MessageSubject &amp;s, MessageFn callback)</td></tr>
+<tr class="separator:a6b782690dc2819a2ba06ad72a64ee419 inherit pro_methods_classTarbora_1_1ModuleComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06628e8d630f575630d88fe33815a9ed inherit pro_methods_classTarbora_1_1ModuleComponent"><td class="memItemLeft" align="right" valign="top"><a id="a06628e8d630f575630d88fe33815a9ed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>desubscribe</b> (const MessageSubject &amp;s)</td></tr>
+<tr class="separator:a06628e8d630f575630d88fe33815a9ed inherit pro_methods_classTarbora_1_1ModuleComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classTarbora_1_1Layer"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classTarbora_1_1Layer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classTarbora_1_1Layer.html">Tarbora::Layer</a></td></tr>
+<tr class="memitem:a4d7fdc234d3b929bff31b80013355ddb inherit pro_attribs_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a4d7fdc234d3b929bff31b80013355ddb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></tr>
+<tr class="separator:a4d7fdc234d3b929bff31b80013355ddb inherit pro_attribs_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c24802fe48c762c865fea4fa6357e04 inherit pro_attribs_classTarbora_1_1Layer"><td class="memItemLeft" align="right" valign="top"><a id="a0c24802fe48c762c865fea4fa6357e04"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>event_blocking_</b></td></tr>
+<tr class="separator:a0c24802fe48c762c865fea4fa6357e04 inherit pro_attribs_classTarbora_1_1Layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classTarbora_1_1ModuleComponent"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classTarbora_1_1ModuleComponent')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classTarbora_1_1ModuleComponent.html">Tarbora::ModuleComponent</a></td></tr>
+<tr class="memitem:a77fdd1e8ca1d2b9f72708a3aa127f0be inherit pro_attribs_classTarbora_1_1ModuleComponent"><td class="memItemLeft" align="right" valign="top"><a id="a77fdd1e8ca1d2b9f72708a3aa127f0be"></a>
+<a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>module_</b></td></tr>
+<tr class="separator:a77fdd1e8ca1d2b9f72708a3aa127f0be inherit pro_attribs_classTarbora_1_1ModuleComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>Tarbora/GameView/inc/<a class="el" href="GameLayer_8hpp_source.html">GameLayer.hpp</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>Tarbora/Views/GraphicViews/<a class="el" href="GameLayer_8hpp_source.html">GameLayer.hpp</a></li>
+<li>Tarbora/Views/GraphicViews/GameLayer.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

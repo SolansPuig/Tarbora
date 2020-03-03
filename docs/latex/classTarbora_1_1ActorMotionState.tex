@@ -11,7 +11,8 @@ The position and rotation of an actor.
 
 
 
-Inheritance diagram for Tarbora\+:\+:Actor\+Motion\+State\+:\nopagebreak
+Inheritance diagram for Tarbora\+:\+:Actor\+Motion\+State\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Tarbora\+:\+:Actor\+Motion\+State\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Tarbora\+:\+:Actor\+Motion\+State\+:\nopagebreak
+Collaboration diagram for Tarbora\+:\+:Actor\+Motion\+State\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,8 +32,8 @@ Collaboration diagram for Tarbora\+:\+:Actor\+Motion\+State\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_a9f0f8dfe3b52a74c0dff5196629f28c9}\label{classTarbora_1_1ActorMotionState_a9f0f8dfe3b52a74c0dff5196629f28c9}} 
-{\bfseries Actor\+Motion\+State} (glm\+::mat4 const \&transform)
+\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_ae06b97069b1883711ec2828a71ec6da2}\label{classTarbora_1_1ActorMotionState_ae06b97069b1883711ec2828a71ec6da2}} 
+{\bfseries Actor\+Motion\+State} (const glm\+::vec3 \&position, const glm\+::quat \&rotation)
 \item 
 \mbox{\Hypertarget{classTarbora_1_1ActorMotionState_a6ca1b1961e95b7469e9dbef6d32f38e4}\label{classTarbora_1_1ActorMotionState_a6ca1b1961e95b7469e9dbef6d32f38e4}} 
 virtual void {\bfseries get\+World\+Transform} (bt\+Transform \&transform) const
@@ -39,23 +41,26 @@ virtual void {\bfseries get\+World\+Transform} (bt\+Transform \&transform) const
 \mbox{\Hypertarget{classTarbora_1_1ActorMotionState_a116151bb38d94aede50f35841bb03e6b}\label{classTarbora_1_1ActorMotionState_a116151bb38d94aede50f35841bb03e6b}} 
 virtual void {\bfseries set\+World\+Transform} (const bt\+Transform \&transform)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_aebdbbe65dc6e5b8826cc500baf5f0318}\label{classTarbora_1_1ActorMotionState_aebdbbe65dc6e5b8826cc500baf5f0318}} 
-void {\bfseries get\+World\+Transform} (glm\+::mat4 \&transform) const
+\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_a118343149b46f1eb5d01fdd86724f9ef}\label{classTarbora_1_1ActorMotionState_a118343149b46f1eb5d01fdd86724f9ef}} 
+void {\bfseries get\+World\+Transform} (glm\+::vec3 \&position, glm\+::quat \&rotation) const
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_ac39c57708b091d92a0812f9cda68e7bb}\label{classTarbora_1_1ActorMotionState_ac39c57708b091d92a0812f9cda68e7bb}} 
-void {\bfseries set\+World\+Transform} (const glm\+::mat4 \&transform)
+\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_af6a787efc2a07051dde18a78eef97de8}\label{classTarbora_1_1ActorMotionState_af6a787efc2a07051dde18a78eef97de8}} 
+void {\bfseries set\+World\+Transform} (const glm\+::vec3 \&position, const glm\+::quat \&rotation)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_ab79ee121003e3adda3c77c210dadc058}\label{classTarbora_1_1ActorMotionState_ab79ee121003e3adda3c77c210dadc058}} 
-glm\+::vec3 {\bfseries get\+Position} ()
+\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_a1c3f7ed8f30d1a1e2949c3e03f4b3fcb}\label{classTarbora_1_1ActorMotionState_a1c3f7ed8f30d1a1e2949c3e03f4b3fcb}} 
+const glm\+::vec3 \& {\bfseries get\+Position} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_af57e028d47be8d142a01c61c25952eb0}\label{classTarbora_1_1ActorMotionState_af57e028d47be8d142a01c61c25952eb0}} 
-glm\+::mat3 {\bfseries get\+Rotation} ()
+\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_acb8ec35604c3d3d9aee692703947b0af}\label{classTarbora_1_1ActorMotionState_acb8ec35604c3d3d9aee692703947b0af}} 
+const glm\+::quat \& {\bfseries get\+Rotation} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_a89476c358757187de24d4917f4986b93}\label{classTarbora_1_1ActorMotionState_a89476c358757187de24d4917f4986b93}} 
-glm\+::mat4 {\bfseries m\+\_\+\+Transform}
+\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_ac44cb2f74ba0c4f34215a1d95755cd14}\label{classTarbora_1_1ActorMotionState_ac44cb2f74ba0c4f34215a1d95755cd14}} 
+glm\+::vec3 {\bfseries position\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ActorMotionState_ab222c596b6124d7f8d9794491a9d10a3}\label{classTarbora_1_1ActorMotionState_ab222c596b6124d7f8d9794491a9d10a3}} 
+glm\+::quat {\bfseries rotation\+\_\+}
 \end{DoxyCompactItemize}
 
 
@@ -64,5 +69,5 @@ The position and rotation of an actor.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Framework/\+Physics\+Engine/inc/Physics\+Engine.\+hpp\item 
-Tarbora/\+Framework/\+Physics\+Engine/src/Physics\+Engine.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Logic/\+Physics\+Engine/Physics\+Engine.\+hpp\item 
+Tarbora/\+Logic/\+Physics\+Engine/Physics\+Engine.\+cpp\end{DoxyCompactItemize}

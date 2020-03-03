@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -85,45 +85,34 @@ Inheritance diagram for Tarbora::Resource:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTarbora_1_1Resource__inherit__graph.png" border="0" usemap="#Tarbora_1_1Resource_inherit__map" alt="Inheritance graph"/></div>
 <map name="Tarbora_1_1Resource_inherit__map" id="Tarbora_1_1Resource_inherit__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Json.html" title="Secure access Json files. " alt="" coords="5,80,108,107"/>
-<area shape="rect" id="node3" href="classTarbora_1_1Mesh.html" title="Tarbora::Mesh" alt="" coords="133,80,239,107"/>
-<area shape="rect" id="node4" href="classTarbora_1_1Shader.html" title="Tarbora::Shader" alt="" coords="263,80,378,107"/>
-<area shape="rect" id="node5" href="classTarbora_1_1Text.html" title="A wrapper class for a raw text file. " alt="" coords="403,80,503,107"/>
-<area shape="rect" id="node6" href="classTarbora_1_1Texture.html" title="Tarbora::Texture" alt="" coords="527,80,645,107"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Tarbora::Resource:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1Resource__coll__graph.png" border="0" usemap="#Tarbora_1_1Resource_coll__map" alt="Collaboration graph"/></div>
-<map name="Tarbora_1_1Resource_coll__map" id="Tarbora_1_1Resource_coll__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="30,81,146,108"/>
-<area shape="rect" id="node3" href="classTarbora_1_1AbstractModule.html" title="Each of the parts that compose the Engine. " alt="" coords="5,5,171,32"/>
+<area shape="rect" id="node2" href="classTarbora_1_1LuaScript.html" title="Tarbora::LuaScript" alt="" coords="184,5,313,32"/>
+<area shape="rect" id="node3" href="classTarbora_1_1Material.html" title="Tarbora::Material" alt="" coords="189,56,309,83"/>
+<area shape="rect" id="node4" href="classTarbora_1_1Mesh.html" title="Tarbora::Mesh" alt="" coords="195,107,302,133"/>
+<area shape="rect" id="node5" href="classTarbora_1_1Shader.html" title="Tarbora::Shader" alt="" coords="191,157,306,184"/>
+<area shape="rect" id="node6" href="classTarbora_1_1Text.html" title="A wrapper class for a raw text file. " alt="" coords="199,208,299,235"/>
+<area shape="rect" id="node7" href="classTarbora_1_1Texture.html" title="Tarbora::Texture" alt="" coords="189,259,308,285"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4483e47dbcd9f291bce9671983437ee3"><td class="memItemLeft" align="right" valign="top"><a id="a4483e47dbcd9f291bce9671983437ee3"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Resource.html#a4483e47dbcd9f291bce9671983437ee3">GetName</a> () const</td></tr>
-<tr class="memdesc:a4483e47dbcd9f291bce9671983437ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the filename of the resource. <br /></td></tr>
-<tr class="separator:a4483e47dbcd9f291bce9671983437ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc89548edc7c22bfe6c2270dd011d189"><td class="memItemLeft" align="right" valign="top"><a id="afc89548edc7c22bfe6c2270dd011d189"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Resource.html#afc89548edc7c22bfe6c2270dd011d189">getName</a> () const</td></tr>
+<tr class="memdesc:afc89548edc7c22bfe6c2270dd011d189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the filename of the resource. <br /></td></tr>
+<tr class="separator:afc89548edc7c22bfe6c2270dd011d189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a3ffc8c75f081f3fceed3a9c8cb99c295"><td class="memItemLeft" align="right" valign="top"><a id="a3ffc8c75f081f3fceed3a9c8cb99c295"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Resource</b> (<a class="el" href="classTarbora_1_1Module.html">Module</a> *m, const std::string name)</td></tr>
-<tr class="separator:a3ffc8c75f081f3fceed3a9c8cb99c295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c37d25d519a673529cac26dc179b449"><td class="memItemLeft" align="right" valign="top"><a id="a7c37d25d519a673529cac26dc179b449"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Resource</b> (const std::string &amp;name)</td></tr>
+<tr class="separator:a7c37d25d519a673529cac26dc179b449"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a13c33cb798d0940924047d0f28617d7a"><td class="memItemLeft" align="right" valign="top"><a id="a13c33cb798d0940924047d0f28617d7a"></a>
-<a class="el" href="classTarbora_1_1Module.html">Module</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Module</b></td></tr>
-<tr class="separator:a13c33cb798d0940924047d0f28617d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac66c4d8338373309735cfab7e8f13d97"><td class="memItemLeft" align="right" valign="top"><a id="ac66c4d8338373309735cfab7e8f13d97"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Resource.html#ac66c4d8338373309735cfab7e8f13d97">m_Name</a></td></tr>
-<tr class="memdesc:ac66c4d8338373309735cfab7e8f13d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">The filename of the resource. <br /></td></tr>
-<tr class="separator:ac66c4d8338373309735cfab7e8f13d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00dae18f7cf782dabaab704896c52069"><td class="memItemLeft" align="right" valign="top"><a id="a00dae18f7cf782dabaab704896c52069"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1Resource.html#a00dae18f7cf782dabaab704896c52069">name_</a></td></tr>
+<tr class="memdesc:a00dae18f7cf782dabaab704896c52069"><td class="mdescLeft">&#160;</td><td class="mdescRight">The filename of the resource. <br /></td></tr>
+<tr class="separator:a00dae18f7cf782dabaab704896c52069"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -137,18 +126,18 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceLoader</b></
 <p>If you want to implement your own resource, inherit from this class. Make sure your constructor calls the <a class="el" href="classTarbora_1_1Resource.html">Resource</a> constructor with the filename of the resource.</p>
 <p>A resource constructor must be private, as it can only be created inside a <em>ResourceLoader</em>.</p>
 <p>A ResourceLoader is also needed, it must inherit from <em>ResourceLoader</em>, be a friend of the class <a class="el" href="classTarbora_1_1ResourceManager.html">ResourceManager</a> and implement two private methods:</p>
-<div class="fragment"><div class="line"><span class="keyword">virtual</span> <span class="keyword">const</span> std::string GetPattern();</div><div class="line"><span class="keyword">virtual</span> ResourcePtr Load(std::string path);</div></div><!-- fragment --><p><em>GetPattern</em> returns a regex, the files that match it will be loaded with that loader.</p>
+<div class="fragment"><div class="line"><span class="keyword">virtual</span> <span class="keyword">const</span> std::string getPattern();</div><div class="line"><span class="keyword">virtual</span> std::shared_ptr&lt;Resource&gt; load(std::string path);</div></div><!-- fragment --><p><em>getPattern</em> returns a regex, the files that match it will be loaded with that loader.</p>
 <p><em>Load</em> loads the file in <em>path</em>, reading it from disk and parsing it or doing the needed conversions.</p>
 <p>All ResourceLoaders need to be registered in <a class="el" href="classTarbora_1_1ResourceManager.html">ResourceManager</a> to work.</p>
 <p>If a file would match the pattern of several ResourceLoaders, it will be loaded by the lastest registered one.</p>
 <p>Here's an example of the implementation of a <a class="el" href="classTarbora_1_1Resource.html" title="An abstract resource. ">Resource</a> and its <em>ResourceLoader</em> for txt files:</p>
-<div class="fragment"><div class="line"><span class="keyword">class </span>Text : <span class="keyword">public</span> Resource</div><div class="line">{</div><div class="line">    <span class="keyword">friend</span> <span class="keyword">class </span>TextResourceLoader;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">const</span> std::string GetText()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Text; }</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    Text(std::string name, std::string text) : Resource(name), m_Text(text) {}</div><div class="line"></div><div class="line">    std::string m_Text;</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">class </span>TextResourceLoader : <span class="keyword">public</span> ResourceLoader</div><div class="line">{</div><div class="line">    <span class="keyword">friend</span> <span class="keyword">class </span>ResourceManager;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">virtual</span> <span class="keyword">const</span> std::string GetPattern()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;*.txt&quot;</span>; }</div><div class="line">    <span class="keyword">virtual</span> ResourcePtr Load(std::string path)<span class="keyword"> override</span></div><div class="line"><span class="keyword">    </span>{</div><div class="line">        <span class="comment">// Try to open the file.</span></div><div class="line">        std::ifstream file;</div><div class="line">        file.open(path.c_str());</div><div class="line">        <span class="keywordflow">if</span> (file.fail())</div><div class="line">            <span class="keywordflow">return</span> ResourcePtr();</div><div class="line"></div><div class="line">        <span class="comment">// Parse the contents to a string.</span></div><div class="line">        std::string s = std::string(std::istreambuf_iterator&lt;char&gt;(file), std::istreambuf_iterator&lt;char&gt;());</div><div class="line">        ResourcePtr r = ResourcePtr(<span class="keyword">new</span> Text(path, s)); <span class="comment">// Create the Resource.</span></div><div class="line">        file.close(); <span class="comment">// Remember to close the file!</span></div><div class="line">        <span class="keywordflow">return</span> r;</div><div class="line">    }</div><div class="line">};</div></div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classTarbora_1_1ResourceManager.html" title="Load resources and make them available to all the systems. ">ResourceManager</a> </dd>
+<div class="fragment"><div class="line"><span class="keyword">class </span>Text : <span class="keyword">public</span> Resource</div><div class="line">{</div><div class="line">    <span class="keyword">friend</span> <span class="keyword">class </span>TextResourceLoader;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">const</span> std::string GetText()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Text; }</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    Text(std::string name, std::string text) : Resource(name), m_Text(text) {}</div><div class="line"></div><div class="line">    std::string m_Text;</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">class </span>TextResourceLoader : <span class="keyword">public</span> ResourceLoader</div><div class="line">{</div><div class="line">    <span class="keyword">friend</span> <span class="keyword">class </span>ResourceManager;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">virtual</span> <span class="keyword">const</span> std::string getPattern()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;*.txt&quot;</span>; }</div><div class="line">    <span class="keyword">virtual</span> std::shared_ptr&lt;Resource&gt; load(std::string path)<span class="keyword"> override</span></div><div class="line"><span class="keyword">    </span>{</div><div class="line">        <span class="comment">// Try to open the file.</span></div><div class="line">        std::ifstream file;</div><div class="line">        file.open(path.c_str());</div><div class="line">        <span class="keywordflow">if</span> (file.fail())</div><div class="line">            <span class="keywordflow">return</span> std::shared_ptr&lt;Resource&gt;();</div><div class="line"></div><div class="line">        <span class="comment">// Parse the contents to a string.</span></div><div class="line">        std::string s = std::string(std::istreambuf_iterator&lt;char&gt;(file), std::istreambuf_iterator&lt;char&gt;());</div><div class="line">        std::shared_ptr&lt;Resource&gt; r = std::shared_ptr&lt;Resource&gt;(<span class="keyword">new</span> Text(path, s)); <span class="comment">// Create the Resource.</span></div><div class="line">        file.close(); <span class="comment">// Remember to close the file!</span></div><div class="line">        <span class="keywordflow">return</span> r;</div><div class="line">    }</div><div class="line">};</div></div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classTarbora_1_1ResourceManager.html" title="Load resources and make them available to all the systems. ">ResourceManager</a> </dd>
 <dd>
-<a class="el" href="classTarbora_1_1Json.html" title="Secure access Json files. ">Json</a> </dd>
+Json </dd>
 <dd>
 <a class="el" href="classTarbora_1_1Text.html" title="A wrapper class for a raw text file. ">Text</a> </dd></dl>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Tarbora/Framework/ResourceManager/inc/<a class="el" href="Resource_8hpp_source.html">Resource.hpp</a></li>
+<li>Tarbora/Framework/ResourceManager/<a class="el" href="Resource_8hpp_source.html">Resource.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

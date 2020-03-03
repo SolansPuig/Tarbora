@@ -1,0 +1,35 @@
+\hypertarget{classTarbora_1_1RenderQueue}{}\section{Tarbora\+:\+:Render\+Queue Class Reference}
+\label{classTarbora_1_1RenderQueue}\index{Tarbora\+::\+Render\+Queue@{Tarbora\+::\+Render\+Queue}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_af7c03190dc5846f4859662238535f3f9}\label{classTarbora_1_1RenderQueue_af7c03190dc5846f4859662238535f3f9}} 
+{\bfseries Render\+Queue} (std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Renderer}{Renderer} $>$ renderer)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_a5e2a17364f5676c7f192a3a6f3fd3891}\label{classTarbora_1_1RenderQueue_a5e2a17364f5676c7f192a3a6f3fd3891}} 
+void {\bfseries draw\+Mesh} (Render\+Pass render\+\_\+pass, \hyperlink{classTarbora_1_1ResourcePtr}{Resource\+Ptr}$<$ \hyperlink{classTarbora_1_1Mesh}{Mesh} $>$ mesh, const glm\+::mat4 \&transform, const glm\+::tvec2$<$ unsigned short $>$ \&uv, const glm\+::vec3 \&mesh\+\_\+size, const glm\+::vec3 \&texture\+\_\+size, const glm\+::tvec3$<$ unsigned char $>$ \&primary, const glm\+::tvec3$<$ unsigned char $>$ \&secondary, const glm\+::tvec3$<$ unsigned char $>$ \&detail, const glm\+::tvec3$<$ unsigned char $>$ \&detail2)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_a04c3d762239288fa41881011fca4844f}\label{classTarbora_1_1RenderQueue_a04c3d762239288fa41881011fca4844f}} 
+void {\bfseries draw} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_aaa8306d72b9805e0fd8b050c8200970d}\label{classTarbora_1_1RenderQueue_aaa8306d72b9805e0fd8b050c8200970d}} 
+void {\bfseries push\+Material} (\hyperlink{classTarbora_1_1ResourcePtr}{Resource\+Ptr}$<$ \hyperlink{classTarbora_1_1Material}{Material} $>$ material)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_ab62a6bff424b7f44a20319197579a4d1}\label{classTarbora_1_1RenderQueue_ab62a6bff424b7f44a20319197579a4d1}} 
+\hyperlink{classTarbora_1_1ResourcePtr}{Resource\+Ptr}$<$ \hyperlink{classTarbora_1_1Material}{Material} $>$ {\bfseries get\+Active\+Material} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_a1d5f7081996e241f6d680ff0f72b2a91}\label{classTarbora_1_1RenderQueue_a1d5f7081996e241f6d680ff0f72b2a91}} 
+void {\bfseries pop\+Material} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_a38f7ecb8298eb82da788887c24345ae7}\label{classTarbora_1_1RenderQueue_a38f7ecb8298eb82da788887c24345ae7}} 
+void {\bfseries set\+Projection\+Matrix} (const glm\+::mat4 \&m)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1RenderQueue_a525f21465a92dd64cbadfb0de0fe9422}\label{classTarbora_1_1RenderQueue_a525f21465a92dd64cbadfb0de0fe9422}} 
+void {\bfseries set\+View\+Matrix} (const glm\+::mat4 \&m)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Views/\+Graphic\+Views/\+Graphics\+Engine/Render\+Queue.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/\+Graphics\+Engine/Render\+Queue.\+cpp\end{DoxyCompactItemize}

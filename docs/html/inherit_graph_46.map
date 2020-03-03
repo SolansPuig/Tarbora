@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classtbMath_1_1Mat4MessageDefaultTypeInternal.html" title="tbMath::Mat4MessageDefault\lTypeInternal" alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node1" href="$classTarbora_1_1RigidBody.html" title="An abstract physics rigid body. " alt="" coords="5,56,140,83"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1BoxBody.html" title="A physics rigid body representing a cube. " alt="" coords="201,5,327,32"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1CapsuleBody.html" title="A physics rigid body representing an capsule shape. " alt="" coords="188,56,340,83"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1SphereBody.html" title="A physics rigid body representing an sphere. " alt="" coords="191,107,337,133"/>
 </map>

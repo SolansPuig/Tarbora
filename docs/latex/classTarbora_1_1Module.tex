@@ -23,44 +23,64 @@ Collaboration diagram for Tarbora\+:\+:Module\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Module_a6d35f53c3259f4a55e1d66d17fc08e3e}\label{classTarbora_1_1Module_a6d35f53c3259f4a55e1d66d17fc08e3e}} 
-{\bfseries Module} (Client\+Id id, const std\+::string server\+Address)
+\mbox{\Hypertarget{classTarbora_1_1Module_a9b8cd7c58bfdede1cfad00854dd4fa6b}\label{classTarbora_1_1Module_a9b8cd7c58bfdede1cfad00854dd4fa6b}} 
+{\bfseries Module} (const Client\+Id \&id)
 \item 
-virtual void \hyperlink{classTarbora_1_1Module_a62a1e7435f81e085354cbe603a023aee}{Run} () override
+virtual void \hyperlink{classTarbora_1_1Module_a8c0352045b21b985d3798caa3190c70b}{run} (const std\+::string \&name=\char`\"{}Unamed \hyperlink{classTarbora_1_1Module}{Module}\char`\"{})
 \begin{DoxyCompactList}\small\item\em Start this module\textquotesingle{}s loop. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1Module_a92c5bea564ff0e9fd6bd6cf8509eb8fc}\label{classTarbora_1_1Module_a92c5bea564ff0e9fd6bd6cf8509eb8fc}} 
-virtual void {\bfseries Get\+Input} ()
+\mbox{\Hypertarget{classTarbora_1_1Module_a72b275060190479d24616564384cb891}\label{classTarbora_1_1Module_a72b275060190479d24616564384cb891}} 
+virtual void {\bfseries get\+Input} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Module_a8097596a5bae0353c9b25dd670bb4d76}\label{classTarbora_1_1Module_a8097596a5bae0353c9b25dd670bb4d76}} 
-virtual void {\bfseries Update} (float elapsed\+Time)=0
+\mbox{\Hypertarget{classTarbora_1_1Module_a9d7b1d6f34c2ed64f628d1c958ba1719}\label{classTarbora_1_1Module_a9d7b1d6f34c2ed64f628d1c958ba1719}} 
+virtual void {\bfseries update} (float delta\+\_\+time)=0
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Module_a2ee3849b4577b1ae705f9511d185588f}\label{classTarbora_1_1Module_a2ee3849b4577b1ae705f9511d185588f}} 
-virtual void {\bfseries Draw} ()
+\mbox{\Hypertarget{classTarbora_1_1Module_a9dfb5e4073e01bb09899a2001b6c65d0}\label{classTarbora_1_1Module_a9dfb5e4073e01bb09899a2001b6c65d0}} 
+virtual void {\bfseries draw} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Module_aca2361d57f02594db6c14749ae5af588}\label{classTarbora_1_1Module_aca2361d57f02594db6c14749ae5af588}} 
-std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1MessageManager}{Message\+Manager} $>$ {\bfseries Get\+Message\+Manager} () const
+\mbox{\Hypertarget{classTarbora_1_1Module_a8e97a14fd27c595d1794ce859ae332b0}\label{classTarbora_1_1Module_a8e97a14fd27c595d1794ce859ae332b0}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1MessageManager}{Message\+Manager} $>$ {\bfseries get\+Message\+Manager} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Module_abc87fb2d39229905dfa1e8e4539f916c}\label{classTarbora_1_1Module_abc87fb2d39229905dfa1e8e4539f916c}} 
+uint {\bfseries max\+\_\+fps\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Module_aa5257bba6d1feaf686824c5ed461c990}\label{classTarbora_1_1Module_aa5257bba6d1feaf686824c5ed461c990}} 
+class {\bfseries Module\+Component}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classTarbora_1_1Module_a62a1e7435f81e085354cbe603a023aee}\label{classTarbora_1_1Module_a62a1e7435f81e085354cbe603a023aee}} 
-\index{Tarbora\+::\+Module@{Tarbora\+::\+Module}!Run@{Run}}
-\index{Run@{Run}!Tarbora\+::\+Module@{Tarbora\+::\+Module}}
-\subsubsection{\texorpdfstring{Run()}{Run()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Module\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classTarbora_1_1Module_a8c0352045b21b985d3798caa3190c70b}\label{classTarbora_1_1Module_a8c0352045b21b985d3798caa3190c70b}} 
+\index{Tarbora\+::\+Module@{Tarbora\+::\+Module}!run@{run}}
+\index{run@{run}!Tarbora\+::\+Module@{Tarbora\+::\+Module}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Module\+::run (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name = {\ttfamily \char`\"{}Unamed~\hyperlink{classTarbora_1_1Module}{Module}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Start this module\textquotesingle{}s loop. 
 
-It should stop when Abstract\+Module\+::m\+\_\+\+Run is set to false. 
+All modules should stop when Abstract\+Module\+::run\+\_\+ is set to false. 
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the module, only used for the profiler. \\
+\hline
+\end{DoxyParams}
 
-Implements \hyperlink{classTarbora_1_1AbstractModule_abc4de331276ff78b18efafe14498bf21}{Tarbora\+::\+Abstract\+Module}.
+
+Implements \hyperlink{classTarbora_1_1AbstractModule_acfb70b92b109b5e8ceae997c8629180a}{Tarbora\+::\+Abstract\+Module}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Framework/Module.\+hpp\item 
-Tarbora/\+Framework/Module.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Framework/\+Module/Module.\+hpp\item 
+Tarbora/\+Framework/\+Module/Module.\+cpp\end{DoxyCompactItemize}

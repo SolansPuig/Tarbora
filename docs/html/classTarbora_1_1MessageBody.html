@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -73,41 +73,24 @@ $(function() {
 <div class="title">Tarbora::MessageBody Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for Tarbora::MessageBody:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1MessageBody__inherit__graph.png" border="0" usemap="#Tarbora_1_1MessageBody_inherit__map" alt="Inheritance graph"/></div>
-<map name="Tarbora_1_1MessageBody_inherit__map" id="Tarbora_1_1MessageBody_inherit__map">
-<area shape="rect" id="node2" href="classTarbora_1_1ApplyPhysics.html" title="Tarbora::ApplyPhysics" alt="" coords="225,5,379,32"/>
-<area shape="rect" id="node3" href="classTarbora_1_1CreateActor.html" title="Tarbora::CreateActor" alt="" coords="230,56,374,83"/>
-<area shape="rect" id="node4" href="classTarbora_1_1DeleteActor.html" title="Tarbora::DeleteActor" alt="" coords="231,107,373,133"/>
-<area shape="rect" id="node5" href="classTarbora_1_1MoveActor.html" title="Tarbora::MoveActor" alt="" coords="233,157,371,184"/>
-<area shape="rect" id="node6" href="classTarbora_1_1SetActorAnimation.html" title="Tarbora::SetActorAnimation" alt="" coords="211,208,393,235"/>
-<area shape="rect" id="node7" href="classTarbora_1_1SetCamera.html" title="Tarbora::SetCamera" alt="" coords="232,259,372,285"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4eb35d5c93039753ace8af2dac1a2078"><td class="memItemLeft" align="right" valign="top"><a id="a4eb35d5c93039753ace8af2dac1a2078"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MessageBody</b> (std::string body)</td></tr>
-<tr class="separator:a4eb35d5c93039753ace8af2dac1a2078"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a467839c6f4ef43a6f287282b1335f7ba"><td class="memItemLeft" align="right" valign="top"><a id="a467839c6f4ef43a6f287282b1335f7ba"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetContentStr</b> () const</td></tr>
-<tr class="separator:a467839c6f4ef43a6f287282b1335f7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5d09e2631a506c48277daf9dc071c29"><td class="memTemplParams" colspan="2"><a id="af5d09e2631a506c48277daf9dc071c29"></a>
-template&lt;class T &gt; </td></tr>
-<tr class="memitem:af5d09e2631a506c48277daf9dc071c29"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>GetContent</b> () const</td></tr>
-<tr class="separator:af5d09e2631a506c48277daf9dc071c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e719ae55e020020531b51243999fe1f"><td class="memItemLeft" align="right" valign="top"><a id="a6e719ae55e020020531b51243999fe1f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MessageBody</b> (const std::string &amp;body)</td></tr>
+<tr class="separator:a6e719ae55e020020531b51243999fe1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c437f659cc409d12971a00b310dd690"><td class="memItemLeft" align="right" valign="top"><a id="a3c437f659cc409d12971a00b310dd690"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getContent</b> () const</td></tr>
+<tr class="separator:a3c437f659cc409d12971a00b310dd690"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a306d1c445f275b4b7097e3d66aff420d"><td class="memItemLeft" align="right" valign="top"><a id="a306d1c445f275b4b7097e3d66aff420d"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_Body</b></td></tr>
-<tr class="separator:a306d1c445f275b4b7097e3d66aff420d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab59f021e75e652d11bf053af9f6150c0"><td class="memItemLeft" align="right" valign="top"><a id="ab59f021e75e652d11bf053af9f6150c0"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>body_</b></td></tr>
+<tr class="separator:ab59f021e75e652d11bf053af9f6150c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Tarbora/Framework/<a class="el" href="MessageManager_8hpp_source.html">MessageManager.hpp</a></li>
+<li>Tarbora/Framework/MessageManager/<a class="el" href="MessageManager_8hpp_source.html">MessageManager.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

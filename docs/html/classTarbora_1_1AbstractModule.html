@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.1-PRERELEASE1</span>
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
    </div>
    <div id="projectbrief">The Game Engine for Makers</div>
   </td>
@@ -67,6 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classTarbora_1_1AbstractModule-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -83,40 +84,45 @@ Inheritance diagram for Tarbora::AbstractModule:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTarbora_1_1AbstractModule__inherit__graph.png" border="0" usemap="#Tarbora_1_1AbstractModule_inherit__map" alt="Inheritance graph"/></div>
 <map name="Tarbora_1_1AbstractModule_inherit__map" id="Tarbora_1_1AbstractModule_inherit__map">
-<area shape="rect" id="node2" href="classTarbora_1_1MessageBus.html" title="The module that makes possible the communication between modules in different processes or even machi..." alt="" coords="18,80,169,107"/>
-<area shape="rect" id="node3" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="193,80,309,107"/>
-<area shape="rect" id="node4" href="classTarbora_1_1ArduinoView.html" title="Tarbora::ArduinoView" alt="" coords="5,155,152,181"/>
-<area shape="rect" id="node5" href="classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="177,155,325,181"/>
-<area shape="rect" id="node7" href="classTarbora_1_1World.html" title="Tarbora::World" alt="" coords="349,155,457,181"/>
-<area shape="rect" id="node6" href="classTarbora_1_1HumanView.html" title="Tarbora::HumanView" alt="" coords="178,229,323,256"/>
+<area shape="rect" id="node2" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="282,80,398,107"/>
+<area shape="rect" id="node3" href="classTarbora_1_1ArduinoView.html" title="Tarbora::ArduinoView" alt="" coords="5,155,152,181"/>
+<area shape="rect" id="node4" href="classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="177,155,325,181"/>
+<area shape="rect" id="node6" href="classTarbora_1_1SceneManager.html" title="Tarbora::SceneManager" alt="" coords="349,155,510,181"/>
+<area shape="rect" id="node7" href="classTarbora_1_1World.html" title="Tarbora::World" alt="" coords="534,155,642,181"/>
+<area shape="rect" id="node5" href="classTarbora_1_1HumanView.html" title="Tarbora::HumanView" alt="" coords="178,229,323,256"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abc4de331276ff78b18efafe14498bf21"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#abc4de331276ff78b18efafe14498bf21">Run</a> ()=0</td></tr>
-<tr class="memdesc:abc4de331276ff78b18efafe14498bf21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start this module's loop.  <a href="#abc4de331276ff78b18efafe14498bf21">More...</a><br /></td></tr>
-<tr class="separator:abc4de331276ff78b18efafe14498bf21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d5baaab3f030968e4ed352b43b155e7"><td class="memItemLeft" align="right" valign="top"><a id="a2d5baaab3f030968e4ed352b43b155e7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#a2d5baaab3f030968e4ed352b43b155e7">RunThread</a> ()</td></tr>
-<tr class="memdesc:a2d5baaab3f030968e4ed352b43b155e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start this module's loop in a new thread. <br /></td></tr>
-<tr class="separator:a2d5baaab3f030968e4ed352b43b155e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade3cdb52217ae0fce50b0ed085b7efb7"><td class="memItemLeft" align="right" valign="top"><a id="ade3cdb52217ae0fce50b0ed085b7efb7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#ade3cdb52217ae0fce50b0ed085b7efb7">Close</a> ()</td></tr>
-<tr class="memdesc:ade3cdb52217ae0fce50b0ed085b7efb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop this module's loop. <br /></td></tr>
-<tr class="separator:ade3cdb52217ae0fce50b0ed085b7efb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb70b92b109b5e8ceae997c8629180a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#acfb70b92b109b5e8ceae997c8629180a">run</a> (const std::string &amp;name=&quot;Unamed <a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;)=0</td></tr>
+<tr class="memdesc:acfb70b92b109b5e8ceae997c8629180a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start this module's loop.  <a href="#acfb70b92b109b5e8ceae997c8629180a">More...</a><br /></td></tr>
+<tr class="separator:acfb70b92b109b5e8ceae997c8629180a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65c482cc7cca2aae3e24811880c6313"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#ae65c482cc7cca2aae3e24811880c6313">runThread</a> (const std::string &amp;name=&quot;Unamed <a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;)</td></tr>
+<tr class="memdesc:ae65c482cc7cca2aae3e24811880c6313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start this module's loop in a new thread.  <a href="#ae65c482cc7cca2aae3e24811880c6313">More...</a><br /></td></tr>
+<tr class="separator:ae65c482cc7cca2aae3e24811880c6313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1cc88ec4fc5c1351e5f4abe0e25948"><td class="memItemLeft" align="right" valign="top"><a id="a3b1cc88ec4fc5c1351e5f4abe0e25948"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#a3b1cc88ec4fc5c1351e5f4abe0e25948">close</a> ()</td></tr>
+<tr class="memdesc:a3b1cc88ec4fc5c1351e5f4abe0e25948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop this module's loop. <br /></td></tr>
+<tr class="separator:a3b1cc88ec4fc5c1351e5f4abe0e25948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aa13dfaed16573bef7cce22a473616bd5"><td class="memItemLeft" align="right" valign="top"><a id="aa13dfaed16573bef7cce22a473616bd5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>using_thread_</b></td></tr>
+<tr class="separator:aa13dfaed16573bef7cce22a473616bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
-<tr class="memitem:ae0b9893d8b8fa1f0cc4a15f7a50ba185"><td class="memItemLeft" align="right" valign="top"><a id="ae0b9893d8b8fa1f0cc4a15f7a50ba185"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_Run</b> = true</td></tr>
-<tr class="separator:ae0b9893d8b8fa1f0cc4a15f7a50ba185"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66ab779015a191a3188b1f91925e592b"><td class="memItemLeft" align="right" valign="top"><a id="a66ab779015a191a3188b1f91925e592b"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>run_</b> = true</td></tr>
+<tr class="separator:a66ab779015a191a3188b1f91925e592b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Each of the parts that compose the Engine. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="abc4de331276ff78b18efafe14498bf21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc4de331276ff78b18efafe14498bf21">&#9670;&nbsp;</a></span>Run()</h2>
+<a id="acfb70b92b109b5e8ceae997c8629180a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfb70b92b109b5e8ceae997c8629180a">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,9 +131,10 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_Run</b> = tr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Tarbora::AbstractModule::Run </td>
+          <td class="memname">virtual void Tarbora::AbstractModule::run </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em> = <code>&quot;Unamed&#160;<a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -139,15 +146,46 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_Run</b> = tr
 </div><div class="memdoc">
 
 <p>Start this module's loop. </p>
-<p>It should stop when AbstractModule::m_Run is set to false. </p>
+<p>All modules should stop when AbstractModule::run_ is set to false. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the module, only used for the profiler. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Implemented in <a class="el" href="classTarbora_1_1MessageBus.html#a1de6d06fd522da0c19c4b4889a26e5dd">Tarbora::MessageBus</a>, and <a class="el" href="classTarbora_1_1Module.html#a62a1e7435f81e085354cbe603a023aee">Tarbora::Module</a>.</p>
+<p>Implemented in <a class="el" href="classTarbora_1_1Module.html#a8c0352045b21b985d3798caa3190c70b">Tarbora::Module</a>.</p>
+
+</div>
+</div>
+<a id="ae65c482cc7cca2aae3e24811880c6313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65c482cc7cca2aae3e24811880c6313">&#9670;&nbsp;</a></span>runThread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tarbora::AbstractModule::runThread </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em> = <code>&quot;Unamed&#160;<a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start this module's loop in a new thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the module, only used for the profiler. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Framework/<a class="el" href="AbstractModule_8hpp_source.html">AbstractModule.hpp</a></li>
-<li>Tarbora/Framework/AbstractModule.cpp</li>
+<li>Tarbora/Framework/Module/<a class="el" href="AbstractModule_8hpp_source.html">AbstractModule.hpp</a></li>
+<li>Tarbora/Framework/Module/AbstractModule.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

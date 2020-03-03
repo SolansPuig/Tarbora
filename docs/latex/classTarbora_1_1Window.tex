@@ -3,36 +3,39 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_ad37c35901d032a4f878c4432a02b1cf8}\label{classTarbora_1_1Window_ad37c35901d032a4f878c4432a02b1cf8}} 
-{\bfseries Window} (const char $\ast$title, int width, int height, \hyperlink{classTarbora_1_1GraphicView}{Graphic\+View} $\ast$view)
+\mbox{\Hypertarget{classTarbora_1_1Window_a9ccaeef1d7f9e4445c56d224945142cb}\label{classTarbora_1_1Window_a9ccaeef1d7f9e4445c56d224945142cb}} 
+{\bfseries Window} (const std\+::string \&title, int width, int height, \hyperlink{classTarbora_1_1GraphicsEngine}{Graphics\+Engine} $\ast$graphics\+\_\+engine)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_a7a937281939b010abfcf4ee3b5af7965}\label{classTarbora_1_1Window_a7a937281939b010abfcf4ee3b5af7965}} 
-void {\bfseries Set\+Title} (const char $\ast$title)
+\mbox{\Hypertarget{classTarbora_1_1Window_a8ecdcd5c928e780f0128cc7c99f4f823}\label{classTarbora_1_1Window_a8ecdcd5c928e780f0128cc7c99f4f823}} 
+void {\bfseries set\+Title} (const std\+::string \&title)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_a4364444d692f3987cad5dd7af2ef500c}\label{classTarbora_1_1Window_a4364444d692f3987cad5dd7af2ef500c}} 
-void {\bfseries Close} ()
+\mbox{\Hypertarget{classTarbora_1_1Window_a343fa4ea9982eb298b1b36f4d8a189bd}\label{classTarbora_1_1Window_a343fa4ea9982eb298b1b36f4d8a189bd}} 
+void {\bfseries close} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_ad5a3c70ba1dae1504632c0c5c1c4400c}\label{classTarbora_1_1Window_ad5a3c70ba1dae1504632c0c5c1c4400c}} 
-void {\bfseries Update} ()
+\mbox{\Hypertarget{classTarbora_1_1Window_af462407a8dd0b487b83aaa8d6c6faed2}\label{classTarbora_1_1Window_af462407a8dd0b487b83aaa8d6c6faed2}} 
+void {\bfseries update} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_ac421916de237342ac7bd76ca93b7bb66}\label{classTarbora_1_1Window_ac421916de237342ac7bd76ca93b7bb66}} 
-void {\bfseries Clear} ()
+\mbox{\Hypertarget{classTarbora_1_1Window_aa6b406ebbe722ffb33fc025c843ae317}\label{classTarbora_1_1Window_aa6b406ebbe722ffb33fc025c843ae317}} 
+void {\bfseries capture\+Mouse} (bool capture)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_a63cfffc2853e2ccc3b98e1321d87380f}\label{classTarbora_1_1Window_a63cfffc2853e2ccc3b98e1321d87380f}} 
-int {\bfseries Get\+Width} ()
+\mbox{\Hypertarget{classTarbora_1_1Window_a6fbeb897a0c26fa7271c03d21b4d8c34}\label{classTarbora_1_1Window_a6fbeb897a0c26fa7271c03d21b4d8c34}} 
+int {\bfseries get\+Width} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_a96caf5673282b3b36025d978483171b4}\label{classTarbora_1_1Window_a96caf5673282b3b36025d978483171b4}} 
-int {\bfseries Get\+Height} ()
+\mbox{\Hypertarget{classTarbora_1_1Window_ac9fd39537faf43ca3b8a33b2b3f0aa12}\label{classTarbora_1_1Window_ac9fd39537faf43ca3b8a33b2b3f0aa12}} 
+int {\bfseries get\+Height} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_a8793c64c13ae101011895dd7b0aabc54}\label{classTarbora_1_1Window_a8793c64c13ae101011895dd7b0aabc54}} 
-float {\bfseries Get\+Ratio} ()
+\mbox{\Hypertarget{classTarbora_1_1Window_ad23758222424b59ce0f419b509948997}\label{classTarbora_1_1Window_ad23758222424b59ce0f419b509948997}} 
+float {\bfseries get\+Ratio} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Window_a184b2465651ced28b68d71239d66b51a}\label{classTarbora_1_1Window_a184b2465651ced28b68d71239d66b51a}} 
-G\+L\+F\+Wwindow $\ast$ {\bfseries Get\+Raw\+Window} ()
+\mbox{\Hypertarget{classTarbora_1_1Window_a1457ccb06c33e1993c0e98ad02ea56a1}\label{classTarbora_1_1Window_a1457ccb06c33e1993c0e98ad02ea56a1}} 
+G\+L\+F\+Wwindow $\ast$ {\bfseries get\+Raw\+Window} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Window_a10be2c64abc65c8e296365938e4af184}\label{classTarbora_1_1Window_a10be2c64abc65c8e296365938e4af184}} 
+int {\bfseries take\+Screenshot} (const std\+::string \&filename)
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Views/\+Graphics\+Engine/inc/Window.\+hpp\item 
-Tarbora/\+Views/\+Graphics\+Engine/src/Window.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/\+Graphics\+Engine/Window.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/\+Graphics\+Engine/Window.\+cpp\end{DoxyCompactItemize}

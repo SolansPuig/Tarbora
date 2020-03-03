@@ -2,7 +2,8 @@
 \label{classTarbora_1_1MeshNode}\index{Tarbora\+::\+Mesh\+Node@{Tarbora\+::\+Mesh\+Node}}
 
 
-Inheritance diagram for Tarbora\+:\+:Mesh\+Node\+:\nopagebreak
+Inheritance diagram for Tarbora\+:\+:Mesh\+Node\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,41 +12,110 @@ Inheritance diagram for Tarbora\+:\+:Mesh\+Node\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Tarbora\+:\+:Mesh\+Node\+:\nopagebreak
+Collaboration diagram for Tarbora\+:\+:Mesh\+Node\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=251pt]{classTarbora_1_1MeshNode__coll__graph}
+\includegraphics[width=350pt]{classTarbora_1_1MeshNode__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MeshNode_ac8707ba03bcbd43176f5d8a01cb8a814}\label{classTarbora_1_1MeshNode_ac8707ba03bcbd43176f5d8a01cb8a814}} 
-{\bfseries Mesh\+Node} (Actor\+Id actor\+Id, std\+::string name, std\+::string mesh)
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a0efb0e3c02ed8171d4e8fd8767db56d5}\label{classTarbora_1_1MeshNode_a0efb0e3c02ed8171d4e8fd8767db56d5}} 
+{\bfseries Mesh\+Node} (const Actor\+Id \&id, const std\+::string \&name, Render\+Pass render\+\_\+pass, const std\+::string \&mesh)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MeshNode_af6e0518f98fc972ceac872669c837d77}\label{classTarbora_1_1MeshNode_af6e0518f98fc972ceac872669c837d77}} 
-virtual void {\bfseries Draw} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, glm\+::mat4 \&parent\+Transform)
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a9d08270219e7fcf60bb5cb60dcfd37bc}\label{classTarbora_1_1MeshNode_a9d08270219e7fcf60bb5cb60dcfd37bc}} 
+virtual const std\+::string {\bfseries get\+Node\+Type} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MeshNode_a310d0e5d46197b54bf4f63ea47876ec2}\label{classTarbora_1_1MeshNode_a310d0e5d46197b54bf4f63ea47876ec2}} 
-void {\bfseries Set\+UV} (glm\+::vec3 \&size, glm\+::vec2 \&uv)
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a75eb4c26b4462296708f304ad98f99cd}\label{classTarbora_1_1MeshNode_a75eb4c26b4462296708f304ad98f99cd}} 
+virtual void {\bfseries draw} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, const glm\+::mat4 \&transform)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a3c8bd7580be12704276915ce38da68e9}\label{classTarbora_1_1MeshNode_a3c8bd7580be12704276915ce38da68e9}} 
+void {\bfseries set\+Uv\+Map} (const glm\+::tvec2$<$ unsigned short $>$ \&uv)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_afaaf9bb00ddf7e2c5a42d1daee15b91f}\label{classTarbora_1_1MeshNode_afaaf9bb00ddf7e2c5a42d1daee15b91f}} 
+void {\bfseries set\+Mesh\+Size} (const glm\+::vec3 \&size)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_aeb45fbaa931407921cacc80678e1dde6}\label{classTarbora_1_1MeshNode_aeb45fbaa931407921cacc80678e1dde6}} 
+void {\bfseries set\+Texture\+Size} (const glm\+::vec3 \&size)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_af2af710ccd6aa8f1147246964d4e7dee}\label{classTarbora_1_1MeshNode_af2af710ccd6aa8f1147246964d4e7dee}} 
+void {\bfseries set\+Color\+Primary} (const glm\+::tvec3$<$ unsigned char $>$ \&color)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a590258c4e7f24617d3edc9a678cfa08b}\label{classTarbora_1_1MeshNode_a590258c4e7f24617d3edc9a678cfa08b}} 
+void {\bfseries set\+Color\+Secondary} (const glm\+::tvec3$<$ unsigned char $>$ \&color)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a196021be1a2decf451511227ad059b1b}\label{classTarbora_1_1MeshNode_a196021be1a2decf451511227ad059b1b}} 
+void {\bfseries set\+Color\+Detail} (const glm\+::tvec3$<$ unsigned char $>$ \&color)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a99c9d41bdbaacb28e464685e2fb0234b}\label{classTarbora_1_1MeshNode_a99c9d41bdbaacb28e464685e2fb0234b}} 
+void {\bfseries set\+Color\+Detail2} (const glm\+::tvec3$<$ unsigned char $>$ \&color)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_ab85533b2df1604ac9271f51a28107858}\label{classTarbora_1_1MeshNode_ab85533b2df1604ac9271f51a28107858}} 
+const glm\+::tvec2$<$ unsigned short $>$ \& {\bfseries get\+Uv\+Map} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_aa2f81f5004d3078f73175a63b0703492}\label{classTarbora_1_1MeshNode_aa2f81f5004d3078f73175a63b0703492}} 
+const glm\+::vec3 \& {\bfseries get\+Mesh\+Size} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a8825bb0adb903b1817d3faff926d1a13}\label{classTarbora_1_1MeshNode_a8825bb0adb903b1817d3faff926d1a13}} 
+const glm\+::vec3 \& {\bfseries get\+Texture\+Size} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a43cb669adccd8cdeba8c449b96fb10f4}\label{classTarbora_1_1MeshNode_a43cb669adccd8cdeba8c449b96fb10f4}} 
+const glm\+::tvec3$<$ unsigned char $>$ \& {\bfseries get\+Color\+Primary} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a2ee7aee12aa9833ed65b8c53bfab64d0}\label{classTarbora_1_1MeshNode_a2ee7aee12aa9833ed65b8c53bfab64d0}} 
+const glm\+::tvec3$<$ unsigned char $>$ \& {\bfseries get\+Color\+Secondary} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_acd86779d43bc4d304b61837b264bed08}\label{classTarbora_1_1MeshNode_acd86779d43bc4d304b61837b264bed08}} 
+const glm\+::tvec3$<$ unsigned char $>$ \& {\bfseries get\+Color\+Detail} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_ae0265cd2d74ec321c0bee040abce9359}\label{classTarbora_1_1MeshNode_ae0265cd2d74ec321c0bee040abce9359}} 
+const glm\+::tvec3$<$ unsigned char $>$ \& {\bfseries get\+Color\+Detail2} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a84bc23514bf0faa9d6b75216185f83c8}\label{classTarbora_1_1MeshNode_a84bc23514bf0faa9d6b75216185f83c8}} 
+Render\+Pass {\bfseries get\+Render\+Pass} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_ae3b11a8e2956a25bb962271c8e0a2078}\label{classTarbora_1_1MeshNode_ae3b11a8e2956a25bb962271c8e0a2078}} 
+const std\+::string \& {\bfseries get\+Shape} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MeshNode_a31ccba7c83a72dd07ff7ee06bbc93328}\label{classTarbora_1_1MeshNode_a31ccba7c83a72dd07ff7ee06bbc93328}} 
-std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Mesh}{Mesh} $>$ {\bfseries m\+\_\+\+Mesh}
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_afcfdf1bd6a3d3656c478cdee62f15d72}\label{classTarbora_1_1MeshNode_afcfdf1bd6a3d3656c478cdee62f15d72}} 
+Render\+Pass {\bfseries render\+\_\+pass\+\_\+}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MeshNode_ac8b90dda0514d71ffddf36243063203b}\label{classTarbora_1_1MeshNode_ac8b90dda0514d71ffddf36243063203b}} 
-glm\+::vec2 {\bfseries m\+\_\+\+Uv}
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a2fff0c6db39a4d27bc484c66b00fd7cc}\label{classTarbora_1_1MeshNode_a2fff0c6db39a4d27bc484c66b00fd7cc}} 
+\hyperlink{classTarbora_1_1ResourcePtr}{Resource\+Ptr}$<$ \hyperlink{classTarbora_1_1Mesh}{Mesh} $>$ {\bfseries mesh\+\_\+}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MeshNode_a8964635446ab4a46e509b07a3de41e0c}\label{classTarbora_1_1MeshNode_a8964635446ab4a46e509b07a3de41e0c}} 
-glm\+::vec3 {\bfseries m\+\_\+\+Tex\+Size}
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a4a84136c112f9f9f6efc9464167d9eeb}\label{classTarbora_1_1MeshNode_a4a84136c112f9f9f6efc9464167d9eeb}} 
+std\+::string {\bfseries mesh\+\_\+name\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_afdf5555abddd25e249a748b889198eac}\label{classTarbora_1_1MeshNode_afdf5555abddd25e249a748b889198eac}} 
+glm\+::tvec2$<$ unsigned short $>$ {\bfseries uv\+\_\+map\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a79f457fdd6161807b81916c09d90bcfa}\label{classTarbora_1_1MeshNode_a79f457fdd6161807b81916c09d90bcfa}} 
+glm\+::vec3 {\bfseries mesh\+\_\+size\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a29c654c0d45ae53425fcc074d8862d52}\label{classTarbora_1_1MeshNode_a29c654c0d45ae53425fcc074d8862d52}} 
+glm\+::vec3 {\bfseries texture\+\_\+size\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a94ec7dc843765def28e339278b6f30b6}\label{classTarbora_1_1MeshNode_a94ec7dc843765def28e339278b6f30b6}} 
+glm\+::tvec3$<$ unsigned char $>$ {\bfseries color\+\_\+primary\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a05b0ee41684eec48db8751b323a635fa}\label{classTarbora_1_1MeshNode_a05b0ee41684eec48db8751b323a635fa}} 
+glm\+::tvec3$<$ unsigned char $>$ {\bfseries color\+\_\+secondary\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a98922801d806120194d59366e0e54a78}\label{classTarbora_1_1MeshNode_a98922801d806120194d59366e0e54a78}} 
+glm\+::tvec3$<$ unsigned char $>$ {\bfseries color\+\_\+detail\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MeshNode_a9c8fde9bafb87ee78df7e5ac3d2ceec2}\label{classTarbora_1_1MeshNode_a9c8fde9bafb87ee78df7e5ac3d2ceec2}} 
+glm\+::tvec3$<$ unsigned char $>$ {\bfseries color\+\_\+detail2\+\_\+}
 \end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Views/\+Graphic\+Views/inc/Scene\+Node.\+hpp\item 
-Tarbora/\+Views/\+Graphic\+Views/src/Scene\+Node.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/Scene\+Node.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/Scene\+Node.\+cpp\end{DoxyCompactItemize}

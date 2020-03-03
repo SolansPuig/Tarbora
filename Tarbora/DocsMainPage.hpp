@@ -50,8 +50,7 @@
     I will set up some tutorials in the future, but for now, you'll have to figure
     everything by looking at this documentation.
 
-    To start easy, try to modify only the main.cpp file and the Resources folder,
-    and then also the files under the Demo folder.
+    To start easy, try to modify only the Resources folder.
 
     Do not touch anything inside the folder Tarbora until you really
     know what you are doing, but if you mess something up, just delete everything

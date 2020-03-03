@@ -1,0 +1,81 @@
+\hypertarget{classTarbora_1_1Component}{}\section{Tarbora\+:\+:Component Class Reference}
+\label{classTarbora_1_1Component}\index{Tarbora\+::\+Component@{Tarbora\+::\+Component}}
+
+
+Inheritance diagram for Tarbora\+:\+:Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTarbora_1_1Component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tarbora\+:\+:Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{classTarbora_1_1Component__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_af131ce04afe7eadb2589afcec5fa52d8}\label{classTarbora_1_1Component_af131ce04afe7eadb2589afcec5fa52d8}} 
+{\bfseries Component} (\hyperlink{classTarbora_1_1System}{System} $\ast$s, const Actor\+Id \&id, const \hyperlink{classTarbora_1_1LuaTable}{Lua\+Table} \&table)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a9b772f4d99f64b23685a58e7294ab981}\label{classTarbora_1_1Component_a9b772f4d99f64b23685a58e7294ab981}} 
+\hyperlink{classTarbora_1_1Component}{Component} $\ast$ {\bfseries get\+Component} (const Actor\+Id \&id, const Component\+Id \&component)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_abeeb3dba77af922915cbe9bc7d29d646}\label{classTarbora_1_1Component_abeeb3dba77af922915cbe9bc7d29d646}} 
+\hyperlink{classTarbora_1_1Component}{Component} $\ast$ {\bfseries get\+Component} (const Component\+Id \&component)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a856a0b9e17ccd0336f1a33cf2fd2ac20}\label{classTarbora_1_1Component_a856a0b9e17ccd0336f1a33cf2fd2ac20}} 
+void {\bfseries enable} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a163aa5702b50ede0dddfe1f8620afca5}\label{classTarbora_1_1Component_a163aa5702b50ede0dddfe1f8620afca5}} 
+void {\bfseries disable} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a227a558106b74d4b8b0be7667c7610c5}\label{classTarbora_1_1Component_a227a558106b74d4b8b0be7667c7610c5}} 
+void {\bfseries send} (Client\+Id to, Message\+Subject s, \hyperlink{classTarbora_1_1MessageBody}{Message\+Body} b) const
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a47985733836fce6b3cc5e0f77607d4e8}\label{classTarbora_1_1Component_a47985733836fce6b3cc5e0f77607d4e8}} 
+void {\bfseries trigger} (Message\+Subject s, \hyperlink{classTarbora_1_1MessageBody}{Message\+Body} b) const
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_aa3eddb1cf4ba3fb1f0652d0c3aee07b6}\label{classTarbora_1_1Component_aa3eddb1cf4ba3fb1f0652d0c3aee07b6}} 
+void {\bfseries trigger\+Local} (Message\+Subject s, \hyperlink{classTarbora_1_1MessageBody}{Message\+Body} b) const
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_ad8232ed039bec74c81fc7589ee34cbf7}\label{classTarbora_1_1Component_ad8232ed039bec74c81fc7589ee34cbf7}} 
+bool {\bfseries error} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a644061cabaf91ed54eae79ce616c25b9}\label{classTarbora_1_1Component_a644061cabaf91ed54eae79ce616c25b9}} 
+virtual void {\bfseries on\+Enable} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a62150a85e0eb8f3601d211245ca08a2d}\label{classTarbora_1_1Component_a62150a85e0eb8f3601d211245ca08a2d}} 
+virtual void {\bfseries on\+Disable} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a19bde335970f5e3af9bc845122f28f3f}\label{classTarbora_1_1Component_a19bde335970f5e3af9bc845122f28f3f}} 
+\hyperlink{classTarbora_1_1System}{System} $\ast$ {\bfseries system\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a4c2092ce4a44d193308669024867775c}\label{classTarbora_1_1Component_a4c2092ce4a44d193308669024867775c}} 
+Actor\+Id {\bfseries owner\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_ac5b26f24609f28419cf2a2e6065b17c8}\label{classTarbora_1_1Component_ac5b26f24609f28419cf2a2e6065b17c8}} 
+bool {\bfseries enabled\+\_\+}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1Component_a7e022fe62bcf3c3781977ca972383c0d}\label{classTarbora_1_1Component_a7e022fe62bcf3c3781977ca972383c0d}} 
+bool {\bfseries error\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tarbora/\+Logic/Component.\+hpp\end{DoxyCompactItemize}

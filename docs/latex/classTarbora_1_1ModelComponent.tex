@@ -7,7 +7,7 @@ Inheritance diagram for Tarbora\+:\+:Model\+Component\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=217pt]{classTarbora_1_1ModelComponent__inherit__graph}
+\includegraphics[width=212pt]{classTarbora_1_1ModelComponent__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -17,58 +17,43 @@ Collaboration diagram for Tarbora\+:\+:Model\+Component\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=334pt]{classTarbora_1_1ModelComponent__coll__graph}
+\includegraphics[width=316pt]{classTarbora_1_1ModelComponent__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a2a1f370ef9d585e9f5bcab7f3b254ff4}\label{classTarbora_1_1ModelComponent_a2a1f370ef9d585e9f5bcab7f3b254ff4}} 
-{\bfseries Model\+Component} (\hyperlink{classTarbora_1_1World}{World} $\ast$world)
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a3c65630afb4f7492991d89e90ff5a58d}\label{classTarbora_1_1ModelComponent_a3c65630afb4f7492991d89e90ff5a58d}} 
+{\bfseries Model\+Component} (\hyperlink{classTarbora_1_1System}{System} $\ast$s, const Actor\+Id \&id, const \hyperlink{classTarbora_1_1LuaTable}{Lua\+Table} \&table)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a49da0c2e62fcdba8bfb83c307eb5a129}\label{classTarbora_1_1ModelComponent_a49da0c2e62fcdba8bfb83c307eb5a129}} 
-bool {\bfseries Init} (Json\+Ptr resource, raw\+\_\+json data)
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a8e53127e98624155f27ee99354f0f355}\label{classTarbora_1_1ModelComponent_a8e53127e98624155f27ee99354f0f355}} 
+void {\bfseries set\+Render\+Pass} (int render\+\_\+pass)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a07ca563963e5de22474c828b8b281e4c}\label{classTarbora_1_1ModelComponent_a07ca563963e5de22474c828b8b281e4c}} 
-void {\bfseries After\+Init} ()
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a246f4351be1c4dd303bc2623e07f40bf}\label{classTarbora_1_1ModelComponent_a246f4351be1c4dd303bc2623e07f40bf}} 
+void {\bfseries set\+Model} (const std\+::string \&model)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a620916de39913b9a6a96707c88c4a167}\label{classTarbora_1_1ModelComponent_a620916de39913b9a6a96707c88c4a167}} 
-Component\+Id {\bfseries Get\+Id} () const
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_aaa7dc552cad6e0729501eb88de18495e}\label{classTarbora_1_1ModelComponent_aaa7dc552cad6e0729501eb88de18495e}} 
+void {\bfseries set\+Material} (const std\+::string \&material)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_aa06e79e4424e91754e11b987a0adb7ea}\label{classTarbora_1_1ModelComponent_aa06e79e4424e91754e11b987a0adb7ea}} 
-void {\bfseries Set\+Render\+Pass} (int render\+Pass)
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_ac4b358020b796b0cd73888f6a5a043d8}\label{classTarbora_1_1ModelComponent_ac4b358020b796b0cd73888f6a5a043d8}} 
+int {\bfseries get\+Render\+Pass} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a8bcf3f0c6735a5363bba7610aca2fea2}\label{classTarbora_1_1ModelComponent_a8bcf3f0c6735a5363bba7610aca2fea2}} 
-void {\bfseries Set\+Model} (std\+::string model)
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a2c0be08c15bcd5b4afe3faf7a326b18a}\label{classTarbora_1_1ModelComponent_a2c0be08c15bcd5b4afe3faf7a326b18a}} 
+const std\+::string \& {\bfseries get\+Model} ()
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a9ab30aa1419e11c091d81c9ea8b2db82}\label{classTarbora_1_1ModelComponent_a9ab30aa1419e11c091d81c9ea8b2db82}} 
-void {\bfseries Set\+Texture} (std\+::string texture)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a0860357c8a6b95923504b66f5bb449a7}\label{classTarbora_1_1ModelComponent_a0860357c8a6b95923504b66f5bb449a7}} 
-void {\bfseries Set\+Shader} (std\+::string shader)
-\item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_af2d425ad1c24eb830dabe9cbd1d892ee}\label{classTarbora_1_1ModelComponent_af2d425ad1c24eb830dabe9cbd1d892ee}} 
-int {\bfseries Get\+Render\+Pass} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_ae250b64d2857b56ac008928c66fa0e81}\label{classTarbora_1_1ModelComponent_ae250b64d2857b56ac008928c66fa0e81}} 
-std\+::string {\bfseries Get\+Model} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_ab2ec5e0e4c51ca686c4d134f5908f48c}\label{classTarbora_1_1ModelComponent_ab2ec5e0e4c51ca686c4d134f5908f48c}} 
-std\+::string {\bfseries Get\+Texture} ()
-\item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a7349644d6856612ad67dff4439fc3d40}\label{classTarbora_1_1ModelComponent_a7349644d6856612ad67dff4439fc3d40}} 
-std\+::string {\bfseries Get\+Shader} ()
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_aec4698d542d90ef5908b29be125283fc}\label{classTarbora_1_1ModelComponent_aec4698d542d90ef5908b29be125283fc}} 
+const std\+::string \& {\bfseries get\+Material} ()
 \end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a1cda437d0a5771102c9d7402e77cc6de}\label{classTarbora_1_1ModelComponent_a1cda437d0a5771102c9d7402e77cc6de}} 
-static Actor\+Component\+Ptr {\bfseries Creator} (\hyperlink{classTarbora_1_1World}{World} $\ast$world)
+\mbox{\Hypertarget{classTarbora_1_1ModelComponent_a7a991f5b81897980348210f2f9f6ad69}\label{classTarbora_1_1ModelComponent_a7a991f5b81897980348210f2f9f6ad69}} 
+class {\bfseries Model\+System}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Logic/inc/Components.\+hpp\item 
-Tarbora/\+Logic/src/Components.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Logic/Model\+Component.\+hpp\item 
+Tarbora/\+Logic/Model\+Component.\+cpp\end{DoxyCompactItemize}

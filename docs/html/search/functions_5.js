@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init',['Init',['../classTarbora_1_1PhysicsEngine.html#a7ec00bd287d1366ce059f2821b023634',1,'Tarbora::PhysicsEngine::Init()'],['../classTarbora_1_1ResourceManager.html#a92a90cbe0795350a30b45ba1f6e14a7f',1,'Tarbora::ResourceManager::Init()']]]
+  ['init',['init',['../classTarbora_1_1ResourceManager.html#a83f6083aa9a2c8331a0fd519b7d9f62d',1,'Tarbora::ResourceManager::init()'],['../classTarbora_1_1PhysicsEngine.html#a964f0a4c51a88137fe063d5297829b00',1,'Tarbora::PhysicsEngine::init()']]]
 ];

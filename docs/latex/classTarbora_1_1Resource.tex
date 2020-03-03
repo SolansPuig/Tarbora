@@ -11,43 +11,31 @@ An abstract resource.
 
 
 
-Inheritance diagram for Tarbora\+:\+:Resource\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classTarbora_1_1Resource__inherit__graph}
-\end{center}
-\end{figure}
-
-
-Collaboration diagram for Tarbora\+:\+:Resource\+:
+Inheritance diagram for Tarbora\+:\+:Resource\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=204pt]{classTarbora_1_1Resource__coll__graph}
+\includegraphics[width=311pt]{classTarbora_1_1Resource__inherit__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Resource_a4483e47dbcd9f291bce9671983437ee3}\label{classTarbora_1_1Resource_a4483e47dbcd9f291bce9671983437ee3}} 
-std\+::string \hyperlink{classTarbora_1_1Resource_a4483e47dbcd9f291bce9671983437ee3}{Get\+Name} () const
+\mbox{\Hypertarget{classTarbora_1_1Resource_afc89548edc7c22bfe6c2270dd011d189}\label{classTarbora_1_1Resource_afc89548edc7c22bfe6c2270dd011d189}} 
+const std\+::string \& \hyperlink{classTarbora_1_1Resource_afc89548edc7c22bfe6c2270dd011d189}{get\+Name} () const
 \begin{DoxyCompactList}\small\item\em Returns the filename of the resource. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Resource_a3ffc8c75f081f3fceed3a9c8cb99c295}\label{classTarbora_1_1Resource_a3ffc8c75f081f3fceed3a9c8cb99c295}} 
-{\bfseries Resource} (\hyperlink{classTarbora_1_1Module}{Module} $\ast$m, const std\+::string name)
+\mbox{\Hypertarget{classTarbora_1_1Resource_a7c37d25d519a673529cac26dc179b449}\label{classTarbora_1_1Resource_a7c37d25d519a673529cac26dc179b449}} 
+{\bfseries Resource} (const std\+::string \&name)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1Resource_a13c33cb798d0940924047d0f28617d7a}\label{classTarbora_1_1Resource_a13c33cb798d0940924047d0f28617d7a}} 
-\hyperlink{classTarbora_1_1Module}{Module} $\ast$ {\bfseries m\+\_\+\+Module}
-\item 
-\mbox{\Hypertarget{classTarbora_1_1Resource_ac66c4d8338373309735cfab7e8f13d97}\label{classTarbora_1_1Resource_ac66c4d8338373309735cfab7e8f13d97}} 
-std\+::string \hyperlink{classTarbora_1_1Resource_ac66c4d8338373309735cfab7e8f13d97}{m\+\_\+\+Name}
+\mbox{\Hypertarget{classTarbora_1_1Resource_a00dae18f7cf782dabaab704896c52069}\label{classTarbora_1_1Resource_a00dae18f7cf782dabaab704896c52069}} 
+std\+::string \hyperlink{classTarbora_1_1Resource_a00dae18f7cf782dabaab704896c52069}{name\+\_\+}
 \begin{DoxyCompactList}\small\item\em The filename of the resource. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -70,12 +58,12 @@ A Resource\+Loader is also needed, it must inherit from {\itshape Resource\+Load
 
 
 \begin{DoxyCode}
-\textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string GetPattern();
-\textcolor{keyword}{virtual} ResourcePtr Load(std::string path);
+\textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string getPattern();
+\textcolor{keyword}{virtual} std::shared\_ptr<Resource> load(std::string path);
 \end{DoxyCode}
 
 
-{\itshape Get\+Pattern} returns a regex, the files that match it will be loaded with that loader.
+{\itshape get\+Pattern} returns a regex, the files that match it will be loaded with that loader.
 
 {\itshape Load} loads the file in {\itshape path}, reading it from disk and parsing it or doing the needed conversions.
 
@@ -102,19 +90,19 @@ Here\textquotesingle{}s an example of the implementation of a \hyperlink{classTa
 \{
     \textcolor{keyword}{friend} \textcolor{keyword}{class }ResourceManager;
 \textcolor{keyword}{private}:
-    \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string GetPattern()\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"*.txt"}; \}
-    \textcolor{keyword}{virtual} ResourcePtr Load(std::string path)\textcolor{keyword}{ override}
+    \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string getPattern()\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"*.txt"}; \}
+    \textcolor{keyword}{virtual} std::shared\_ptr<Resource> load(std::string path)\textcolor{keyword}{ override}
 \textcolor{keyword}{    }\{
         \textcolor{comment}{// Try to open the file.}
         std::ifstream file;
         file.open(path.c\_str());
         \textcolor{keywordflow}{if} (file.fail())
-            \textcolor{keywordflow}{return} ResourcePtr();
+            \textcolor{keywordflow}{return} std::shared\_ptr<Resource>();
 
         \textcolor{comment}{// Parse the contents to a string.}
         std::string s = std::string(std::istreambuf\_iterator<char>(file), std::istreambuf\_iterator<char>())
       ;
-        ResourcePtr r = ResourcePtr(\textcolor{keyword}{new} Text(path, s)); \textcolor{comment}{// Create the Resource.}
+        std::shared\_ptr<Resource> r = std::shared\_ptr<Resource>(\textcolor{keyword}{new} Text(path, s)); \textcolor{comment}{// Create the Resource.}
         file.close(); \textcolor{comment}{// Remember to close the file!}
         \textcolor{keywordflow}{return} r;
     \}
@@ -125,7 +113,7 @@ Here\textquotesingle{}s an example of the implementation of a \hyperlink{classTa
 \begin{DoxySeeAlso}{See also}
 \hyperlink{classTarbora_1_1ResourceManager}{Resource\+Manager} 
 
-\hyperlink{classTarbora_1_1Json}{Json} 
+Json 
 
 \hyperlink{classTarbora_1_1Text}{Text} 
 \end{DoxySeeAlso}
@@ -133,4 +121,4 @@ Here\textquotesingle{}s an example of the implementation of a \hyperlink{classTa
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Framework/\+Resource\+Manager/inc/Resource.\+hpp\end{DoxyCompactItemize}
+Tarbora/\+Framework/\+Resource\+Manager/Resource.\+hpp\end{DoxyCompactItemize}

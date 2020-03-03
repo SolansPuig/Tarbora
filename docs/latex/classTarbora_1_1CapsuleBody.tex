@@ -37,23 +37,23 @@ Collaboration diagram for Tarbora\+:\+:Capsule\+Body\+:
 \mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a70eeff3b16e27269076fef05a42a7de8}\label{classTarbora_1_1CapsuleBody_a70eeff3b16e27269076fef05a42a7de8}} 
 \hyperlink{classTarbora_1_1CapsuleBody_a70eeff3b16e27269076fef05a42a7de8}{$\sim$\+Capsule\+Body} ()
 \begin{DoxyCompactList}\small\item\em Destroys and unregisters this body. \end{DoxyCompactList}\item 
-virtual void \hyperlink{classTarbora_1_1CapsuleBody_a1083e8df5302931850b34a9c9ec764e6}{Register} (unsigned int id, glm\+::mat4 \&transform) override
+virtual void \hyperlink{classTarbora_1_1CapsuleBody_a4613a4f0cf0ab92189169d6f3865274e}{register\+Actor} (Actor\+Id \&id, const glm\+::vec3 \&position, const glm\+::quat \&rotation) override
 \begin{DoxyCompactList}\small\item\em Register the rigid body to the Physics Engine. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a9a6b4cf636ab2535ab45976c793112a0}\label{classTarbora_1_1CapsuleBody_a9a6b4cf636ab2535ab45976c793112a0}} 
-virtual void \hyperlink{classTarbora_1_1CapsuleBody_a9a6b4cf636ab2535ab45976c793112a0}{Unregister} () override
+\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a3cce96469ed469136728ed0ea3004bc0}\label{classTarbora_1_1CapsuleBody_a3cce96469ed469136728ed0ea3004bc0}} 
+virtual void \hyperlink{classTarbora_1_1CapsuleBody_a3cce96469ed469136728ed0ea3004bc0}{unregister} () override
 \begin{DoxyCompactList}\small\item\em Remove the rigid body from the Physics Engine. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a5e296d4aab6f3b5b737a43d9e1937c91}\label{classTarbora_1_1CapsuleBody_a5e296d4aab6f3b5b737a43d9e1937c91}} 
-virtual void \hyperlink{classTarbora_1_1CapsuleBody_a5e296d4aab6f3b5b737a43d9e1937c91}{Calc\+Volume} () override
+\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a16af8c987d2a1d6602a317850b0ae17a}\label{classTarbora_1_1CapsuleBody_a16af8c987d2a1d6602a317850b0ae17a}} 
+virtual void \hyperlink{classTarbora_1_1CapsuleBody_a16af8c987d2a1d6602a317850b0ae17a}{calc\+Volume} () override
 \begin{DoxyCompactList}\small\item\em Calculate the volume when the shape or the size changes. Automatically called by the functions that change those. \end{DoxyCompactList}\item 
-void \hyperlink{classTarbora_1_1CapsuleBody_ace07a924c2dd8830983b056a07813530}{Set\+Radius} (float radius)
+void \hyperlink{classTarbora_1_1CapsuleBody_a10ae8b263f437a7d810f727cd7e7e943}{set\+Radius} (float radius)
 \begin{DoxyCompactList}\small\item\em Set the radius of that capsule. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_aa4838f288f011f812a3efed5abef24c5}\label{classTarbora_1_1CapsuleBody_aa4838f288f011f812a3efed5abef24c5}} 
-float \hyperlink{classTarbora_1_1CapsuleBody_aa4838f288f011f812a3efed5abef24c5}{Get\+Radius} ()
+\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a3c4217bfdf918f48a49221e07aee262c}\label{classTarbora_1_1CapsuleBody_a3c4217bfdf918f48a49221e07aee262c}} 
+float \hyperlink{classTarbora_1_1CapsuleBody_a3c4217bfdf918f48a49221e07aee262c}{get\+Radius} ()
 \begin{DoxyCompactList}\small\item\em Get the radius of that sphere. \end{DoxyCompactList}\item 
-void \hyperlink{classTarbora_1_1CapsuleBody_a8d9cf25e8ce8cf0d180b67b2063f94f2}{Set\+Height} (float height)
+void \hyperlink{classTarbora_1_1CapsuleBody_a8ecfb8196d5156649b8e04256e1d63c1}{set\+Height} (float height)
 \begin{DoxyCompactList}\small\item\em Set the height of that capsule. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_ae1da23b6109046079febce5c0e44efcc}\label{classTarbora_1_1CapsuleBody_ae1da23b6109046079febce5c0e44efcc}} 
-float \hyperlink{classTarbora_1_1CapsuleBody_ae1da23b6109046079febce5c0e44efcc}{Get\+Height} ()
+\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a521b8b538755f1f72c7298a4a291053d}\label{classTarbora_1_1CapsuleBody_a521b8b538755f1f72c7298a4a291053d}} 
+float \hyperlink{classTarbora_1_1CapsuleBody_a521b8b538755f1f72c7298a4a291053d}{get\+Height} ()
 \begin{DoxyCompactList}\small\item\em Get the height of that sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -91,11 +91,11 @@ Creates an \hyperlink{classTarbora_1_1CapsuleBody}{Capsule\+Body}.
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a1083e8df5302931850b34a9c9ec764e6}\label{classTarbora_1_1CapsuleBody_a1083e8df5302931850b34a9c9ec764e6}} 
-\index{Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}!Register@{Register}}
-\index{Register@{Register}!Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}}
-\subsubsection{\texorpdfstring{Register()}{Register()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Capsule\+Body\+::\+Register (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{glm\+::mat4 \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a4613a4f0cf0ab92189169d6f3865274e}\label{classTarbora_1_1CapsuleBody_a4613a4f0cf0ab92189169d6f3865274e}} 
+\index{Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}!register\+Actor@{register\+Actor}}
+\index{register\+Actor@{register\+Actor}!Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}}
+\subsubsection{\texorpdfstring{register\+Actor()}{registerActor()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Capsule\+Body\+::register\+Actor (\begin{DoxyParamCaption}\item[{Actor\+Id \&}]{id,  }\item[{const glm\+::vec3 \&}]{position,  }\item[{const glm\+::quat \&}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -105,18 +105,20 @@ Register the rigid body to the Physics Engine.
 \begin{DoxyParams}{Parameters}
 {\em id} & The id of the actor that owns that rigid body. \\
 \hline
-{\em transform} & The transform matrix of that actor. \\
+{\em position} & The initial position of that actor. \\
+\hline
+{\em rotation} & The initial rotation of that actor. \\
 \hline
 \end{DoxyParams}
 
 
-Implements \hyperlink{classTarbora_1_1RigidBody_a5f41c214aabe2a7f069a317cb755f0f1}{Tarbora\+::\+Rigid\+Body}.
+Implements \hyperlink{classTarbora_1_1RigidBody_acd1c63e93fd607f74f48fb68aa764b29}{Tarbora\+::\+Rigid\+Body}.
 
-\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a8d9cf25e8ce8cf0d180b67b2063f94f2}\label{classTarbora_1_1CapsuleBody_a8d9cf25e8ce8cf0d180b67b2063f94f2}} 
-\index{Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}!Set\+Height@{Set\+Height}}
-\index{Set\+Height@{Set\+Height}!Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}}
-\subsubsection{\texorpdfstring{Set\+Height()}{SetHeight()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Capsule\+Body\+::\+Set\+Height (\begin{DoxyParamCaption}\item[{float}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a8ecfb8196d5156649b8e04256e1d63c1}\label{classTarbora_1_1CapsuleBody_a8ecfb8196d5156649b8e04256e1d63c1}} 
+\index{Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}!set\+Height@{set\+Height}}
+\index{set\+Height@{set\+Height}!Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}}
+\subsubsection{\texorpdfstring{set\+Height()}{setHeight()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Capsule\+Body\+::set\+Height (\begin{DoxyParamCaption}\item[{float}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -127,11 +129,11 @@ Set the height of that capsule.
 {\em height} & The height of that capsule, used to calculate the volume and the mass. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_ace07a924c2dd8830983b056a07813530}\label{classTarbora_1_1CapsuleBody_ace07a924c2dd8830983b056a07813530}} 
-\index{Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}!Set\+Radius@{Set\+Radius}}
-\index{Set\+Radius@{Set\+Radius}!Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}}
-\subsubsection{\texorpdfstring{Set\+Radius()}{SetRadius()}}
-{\footnotesize\ttfamily void Tarbora\+::\+Capsule\+Body\+::\+Set\+Radius (\begin{DoxyParamCaption}\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classTarbora_1_1CapsuleBody_a10ae8b263f437a7d810f727cd7e7e943}\label{classTarbora_1_1CapsuleBody_a10ae8b263f437a7d810f727cd7e7e943}} 
+\index{Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}!set\+Radius@{set\+Radius}}
+\index{set\+Radius@{set\+Radius}!Tarbora\+::\+Capsule\+Body@{Tarbora\+::\+Capsule\+Body}}
+\subsubsection{\texorpdfstring{set\+Radius()}{setRadius()}}
+{\footnotesize\ttfamily void Tarbora\+::\+Capsule\+Body\+::set\+Radius (\begin{DoxyParamCaption}\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -146,5 +148,5 @@ Set the radius of that capsule.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Framework/\+Physics\+Engine/inc/Rigid\+Body.\+hpp\item 
-Tarbora/\+Framework/\+Physics\+Engine/src/Rigid\+Body.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Logic/\+Physics\+Engine/Rigid\+Body.\+hpp\item 
+Tarbora/\+Logic/\+Physics\+Engine/Rigid\+Body.\+cpp\end{DoxyCompactItemize}

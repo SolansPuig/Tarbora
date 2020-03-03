@@ -17,31 +17,39 @@ Collaboration diagram for Tarbora\+:\+:Material\+Node\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=254pt]{classTarbora_1_1MaterialNode__coll__graph}
+\includegraphics[width=350pt]{classTarbora_1_1MaterialNode__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MaterialNode_afd0e3139cbb0826d6036dd6d67b59b99}\label{classTarbora_1_1MaterialNode_afd0e3139cbb0826d6036dd6d67b59b99}} 
-{\bfseries Material\+Node} (Actor\+Id actor\+Id, std\+::string name, std\+::string shader, std\+::string texture=\char`\"{}\char`\"{})
+\mbox{\Hypertarget{classTarbora_1_1MaterialNode_a1e1fa10626850624e034d6ff2998ae25}\label{classTarbora_1_1MaterialNode_a1e1fa10626850624e034d6ff2998ae25}} 
+{\bfseries Material\+Node} (const Actor\+Id \&id, const std\+::string \&name, const std\+::string \&material)
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MaterialNode_ab8f6e0d14b183da53bd08af20dc45193}\label{classTarbora_1_1MaterialNode_ab8f6e0d14b183da53bd08af20dc45193}} 
-virtual void {\bfseries Draw} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, glm\+::mat4 \&parent\+Transform)
+\mbox{\Hypertarget{classTarbora_1_1MaterialNode_a2fdff51603afd7a8f143b43f6ac44a83}\label{classTarbora_1_1MaterialNode_a2fdff51603afd7a8f143b43f6ac44a83}} 
+virtual const std\+::string {\bfseries get\+Node\+Type} ()
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MaterialNode_abb529ca3cba4c4701d2408cfd951a0bd}\label{classTarbora_1_1MaterialNode_abb529ca3cba4c4701d2408cfd951a0bd}} 
+virtual void {\bfseries draw} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene, const glm\+::mat4 \&transform)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MaterialNode_a18f420780044fc1b8ccbc88831713590}\label{classTarbora_1_1MaterialNode_a18f420780044fc1b8ccbc88831713590}} 
+virtual void {\bfseries after\+Draw} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$scene)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1MaterialNode_abd98982aff234982d98687d5e95a2de4}\label{classTarbora_1_1MaterialNode_abd98982aff234982d98687d5e95a2de4}} 
+const std\+::string \& {\bfseries get\+Material} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MaterialNode_a74acc208d1b85cedc9f88f14a1cc87db}\label{classTarbora_1_1MaterialNode_a74acc208d1b85cedc9f88f14a1cc87db}} 
-std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Texture}{Texture} $>$ {\bfseries m\+\_\+\+Texture}
+\mbox{\Hypertarget{classTarbora_1_1MaterialNode_aea611cfa751354cba50f9ed434d138db}\label{classTarbora_1_1MaterialNode_aea611cfa751354cba50f9ed434d138db}} 
+\hyperlink{classTarbora_1_1ResourcePtr}{Resource\+Ptr}$<$ \hyperlink{classTarbora_1_1Material}{Material} $>$ {\bfseries material\+\_\+}
 \item 
-\mbox{\Hypertarget{classTarbora_1_1MaterialNode_ac974ea545195c373b5d59abf2605629c}\label{classTarbora_1_1MaterialNode_ac974ea545195c373b5d59abf2605629c}} 
-std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1Shader}{Shader} $>$ {\bfseries m\+\_\+\+Shader}
+\mbox{\Hypertarget{classTarbora_1_1MaterialNode_a02a5eee099049757bbcd9fdd3fc139c9}\label{classTarbora_1_1MaterialNode_a02a5eee099049757bbcd9fdd3fc139c9}} 
+std\+::string {\bfseries material\+\_\+name\+\_\+}
 \end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Tarbora/\+Views/\+Graphic\+Views/inc/Scene\+Node.\+hpp\item 
-Tarbora/\+Views/\+Graphic\+Views/src/Scene\+Node.\+cpp\end{DoxyCompactItemize}
+Tarbora/\+Views/\+Graphic\+Views/Scene\+Node.\+hpp\item 
+Tarbora/\+Views/\+Graphic\+Views/Scene\+Node.\+cpp\end{DoxyCompactItemize}

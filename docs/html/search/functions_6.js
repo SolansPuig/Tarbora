@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['log',['Log',['../classTarbora_1_1Logger.html#aa32641fca455178d88f3b1c8b2f552ab',1,'Tarbora::Logger']]]
+  ['log',['log',['../classTarbora_1_1Logger.html#a4a6b2478d42d5d6985c4683022531de0',1,'Tarbora::Logger']]]
 ];
