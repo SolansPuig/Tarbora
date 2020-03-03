@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -g  -shared -Wl,-soname,liblua.so -o liblua.so CMakeFiles/lua.dir/lua/onelua.c.o 
