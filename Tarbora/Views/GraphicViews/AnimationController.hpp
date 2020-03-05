@@ -2,6 +2,12 @@
 #include "../../Framework/Module/Module.hpp"
 
 namespace Tarbora {
+    struct Animation
+    {
+        std::string name;
+        float timer;
+    };
+
     class ActorModel;
 
     class AnimationController
@@ -14,17 +20,11 @@ namespace Tarbora {
         void setAnimation(const std::string &name);
 
     private:
-        void updateAnimation();
+        void updateAnimation(float delta_time);
+
+        Animation animation_;
 
         ActorModel *actor_model_;
         std::string animations_file_;
-
-        float duration_;
-        bool loop_;
-        float blend_time_;
-        float crono_;
-        float counter_;
-
-        std::string current_animation_name_;
     };
 }

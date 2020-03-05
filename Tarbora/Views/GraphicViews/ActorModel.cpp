@@ -28,7 +28,7 @@ namespace Tarbora {
         const std::string shape = table.get<std::string>("shape");
 
         // Create the node
-        std::shared_ptr<MeshNode> node = std::shared_ptr<MeshNode>(new MeshNode(id, name, render_pass, shape));
+        std::shared_ptr<AnimatedNode> node = std::shared_ptr<AnimatedNode>(new AnimatedNode(id, name, render_pass, shape));
         node->setGlobalScale(table.get<float>("scale", 1.f, true));
         node->setOrigin(table.get<glm::vec3>("origin", true));
         node->setPosition(table.get<glm::vec3>("position", true)/100.f);

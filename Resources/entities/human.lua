@@ -6,7 +6,7 @@ components = {
         material = "human.mat.lua"
     },
     animation = {
-        file = "human.lua",
+        file = "human2.lua",
     },
     physics = {
         shape = "capsule",

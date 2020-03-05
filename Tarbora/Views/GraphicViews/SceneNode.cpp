@@ -30,7 +30,7 @@ namespace Tarbora {
     void SceneNode::drawChildren(Scene *scene, const glm::mat4 &parent_transform)
     {
         const glm::mat4 &transform = parent_transform * getLocalTransform();
-        glm::mat4 deform = glm::scale(glm::mat4(1.f), scale_);
+        const glm::mat4 &deform = getDeform();
 
         draw(scene, transform * deform);
 
@@ -127,6 +127,12 @@ namespace Tarbora {
         return transform;
     }
 
+    glm::mat4 SceneNode::getDeform()
+    {
+        glm::mat4 deform = glm::scale(glm::mat4(1.f), scale_);
+        return deform;
+    }
+
     const glm::mat4 Camera::getView()
     {
         glm::mat4 matrix = getGlobalTransform();
@@ -202,6 +208,60 @@ namespace Tarbora {
             );
         }
     }
+
+    AnimatedNode::AnimatedNode(const ActorId &id, const std::string &name, RenderPass render_pass, const std::string &mesh) :
+        MeshNode(id, name, render_pass, mesh)
+    {
+        resetAll();
+    }
+
+    void AnimatedNode::resetAll()
+    {
+        position_anim_ = glm::vec3(0.f);
+        rotation_anim_ = glm::quat();
+        scale_anim_ = glm::vec3(0.f);
+        global_scale_anim_ = 1.f;
+        uv_map_anim_ = glm::tvec2<unsigned short>(0);
+        color_primary_anim_ = glm::tvec3<unsigned char>(255);
+        color_secondary_anim_ = glm::tvec3<unsigned char>(255);
+        color_detail_anim_ = glm::tvec3<unsigned char>(255);
+        color_detail2_anim_ = glm::tvec3<unsigned char>(255);
+    }
+
+    glm::mat4 AnimatedNode::getLocalTransform()
+    {
+        glm::mat4 transform = glm::translate(glm::mat4(1.f), position_ + position_anim_ + origin_);
+        transform = transform * glm::mat4_cast(rotation_);
+        transform = glm::translate(transform, -origin_);
+        transform = glm::scale(transform, glm::vec3(global_scale_ * global_scale_anim_));
+        return transform;
+    }
+
+    glm::mat4 AnimatedNode::getDeform()
+    {
+        glm::mat4 deform = glm::scale(glm::mat4(1.f), scale_ + scale_anim_);
+        return deform;
+    }
+
+    void AnimatedNode::draw(Scene *scene, const glm::mat4 &transform)
+    {
+        if (mesh_ != nullptr)
+        {
+            scene->getRenderQueue()->drawMesh(
+                render_pass_,
+                mesh_,
+                transform,
+                uv_map_ + uv_map_anim_,
+                mesh_size_,
+                texture_size_,
+                color_primary_ + color_primary_anim_,
+                color_secondary_ + color_secondary_anim_,
+                color_detail_ + color_detail_anim_,
+                color_detail2_ + color_detail2_anim_
+            );
+        }
+    }
+
 
     // void MeshNode::SetShear(const glm::vec3 &shearA, const glm::vec3 &shearB)
     // {

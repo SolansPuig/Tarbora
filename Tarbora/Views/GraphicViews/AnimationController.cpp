@@ -5,124 +5,131 @@ namespace Tarbora {
     AnimationController::AnimationController(ActorModel *actor, const std::string &file) :
         actor_model_(actor), animations_file_("animations/" + file)
     {
-        crono_ = 0.f;
-        counter_ = 0.f;
     }
 
     void AnimationController::update(float delta_time)
     {
-        crono_ += delta_time;
-        counter_ += delta_time;
-        if (blend_time_ > 0.f)
-            blend_time_ -= delta_time;
-        if (((loop_ || crono_ <= duration_)))
+        if (animation_.name != "")
         {
-            updateAnimation();
-            counter_ = 0.f;
+            updateAnimation(delta_time);
         }
     }
 
     void AnimationController::setAnimation(const std::string &name)
     {
-        current_animation_name_ = name;
-        crono_ = 0.0f;
-
-        ResourcePtr<LuaScript> resource(animations_file_);
-        LuaTable animation = resource->get(current_animation_name_, true);
-        loop_ = animation.get<bool>("loop");
-        duration_ = animation.get<float>("duration");
-        blend_time_ = animation.get<float>("blend_time");
+        animation_.name = name;
+        animation_.timer = 0.0f;
     }
 
-    void AnimationController::updateAnimation()
+    void AnimationController::updateAnimation(float delta_time)
     {
         ResourcePtr<LuaScript> resource(animations_file_);
-        LuaTable animation = resource->get(current_animation_name_, true);
-        LuaTable query = resource->get("query");
-        query.set("time", crono_);
+        LuaTable animation = resource->get(animation_.name, true);
 
-        if (animation.valid() && query.valid())
+        if (animation.valid())
         {
-            LuaTable current_animation = animation.get("nodes");
+            LuaTable nodes = animation.get("nodes");
+            float duration = animation.get<float>("duration");
+            float step = animation.get<float>("step", 1, true);
+            float current_frame = animation_.timer / step;
 
-            for (auto itr : current_animation)
+            for (auto itr : nodes)
             {
                 std::string node_name = itr.first.getAs<std::string>();
                 LuaTable node_lua = itr.second.getAs<LuaTable>();
-                std::shared_ptr<SceneNode> node = actor_model_->nodes_[node_name];
-
-                for (auto property : node_lua)
+                std::shared_ptr<SceneNode> n = actor_model_->nodes_[node_name];
+                if (n->getNodeType() == "ANIMATED")
                 {
-                    std::string name = property.first.getAs<std::string>();
-                    glm::vec3 value = property.second.getAs<glm::vec3>();
+                    auto node = std::static_pointer_cast<AnimatedNode>(n);
 
-                    if (name == "position")
+                    for (auto property : node_lua)
                     {
-                        glm::vec3 current_value = node->getPosition();
-                        query.set("currentX", current_value.x * 100.f);
-                        query.set("currentY", current_value.y * 100.f);
-                        query.set("currentZ", current_value.z * 100.f);
-                        node->setPosition(value/100.f);
+                        std::string name = property.first.getAs<std::string>();
+                        LuaTable keyframes = property.second.getAs<LuaTable>();
+
+                        int previous_frame = 0;
+                        int next_frame = 0;
+                        for (auto keyframe : keyframes)
+                        {
+                            int frame = keyframe.first.getAs<int>();
+                            if (frame <= current_frame)
+                                previous_frame = frame;
+                            else
+                            {
+                                next_frame = frame;
+                                break;
+                            }
+                        }
+                        float distance = (next_frame > 0 ? (next_frame - previous_frame) : (duration - previous_frame));
+                        float lerp_factor = (current_frame - previous_frame)/(distance > 0 ? distance : 1);
+
+                        if (name == "position")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            node->setPositionAnimation(glm::lerp(previous_value, next_value, lerp_factor)/100.f);
+                        }
+                        else if (name == "rotation")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            node->setRotationAnimation(glm::mix(
+                                glm::quat(glm::radians(previous_value)),
+                                glm::quat(glm::radians(next_value)),
+                                lerp_factor));
+                        }
+                        else if (name == "scale")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            glm::vec3 new_value = glm::lerp(previous_value, next_value, lerp_factor);
+                            node->setScaleAnimation(new_value/100.f);
+                        }
+                        else if (name == "global_scale")
+                        {
+                            float previous_value = keyframes.get<float>(previous_frame);
+                            float next_value = keyframes.get<float>(next_frame);
+                            node->setGlobalScaleAnimation(glm::lerp(previous_value, next_value, lerp_factor));
+                        }
+                        else if (name == "uv_map")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            node->setUvMapAnimation(glm::lerp(previous_value, next_value, lerp_factor));
+                        }
+                        else if (name == "color_primary")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            node->setColorPrimaryAnimation(glm::lerp(previous_value, next_value, lerp_factor));
+                        }
+                        else if (name == "color_secondary")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            node->setColorSecondaryAnimation(glm::lerp(previous_value, next_value, lerp_factor));
+                        }
+                        else if (name == "color_detail1")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            node->setColorDetailAnimation(glm::lerp(previous_value, next_value, lerp_factor));
+                        }
+                        else if (name == "color_detail2")
+                        {
+                            glm::vec3 previous_value = keyframes.get<glm::vec3>(previous_frame);
+                            glm::vec3 next_value = keyframes.get<glm::vec3>(next_frame);
+                            node->setColorDetail2Animation(glm::lerp(previous_value, next_value, lerp_factor));
+                        }
                     }
-                    else if (name == "rotation")
+
+                    animation_.timer += delta_time;
+                    if (current_frame >= duration)
                     {
-                        glm::vec3 current_value = node->getRotation();
-                        query.set("currentX", current_value.x);
-                        query.set("currentY", current_value.y);
-                        query.set("currentZ", current_value.z);
-                        node->setRotation(value);
-                    }
-                    else if (name == "scale")
-                    {
-                        glm::vec3 current_value = node->getScale();
-                        query.set("currentX", current_value.x * 100.f);
-                        query.set("currentY", current_value.y * 100.f);
-                        query.set("currentZ", current_value.z * 100.f);
-                        node->setScale(value/100.f);
-                    }
-                    else if (name == "uv_map" && node->getNodeType() == "MESH")
-                    {
-                        auto mesh = std::static_pointer_cast<MeshNode>(node);
-                        glm::tvec2<unsigned short> current_value = mesh->getUvMap();
-                        query.set("currentX", current_value.x);
-                        query.set("currentY", current_value.y);
-                        mesh->setUvMap(value);
-                    }
-                    else if (name == "color_primary" && node->getNodeType() == "MESH")
-                    {
-                        auto mesh = std::static_pointer_cast<MeshNode>(node);
-                        glm::vec3 current_value = mesh->getColorPrimary();
-                        query.set("currentX", current_value.x);
-                        query.set("currentY", current_value.y);
-                        query.set("currentZ", current_value.z);
-                        mesh->setColorPrimary(value);
-                    }
-                    else if (name == "color_secondary" && node->getNodeType() == "MESH")
-                    {
-                        auto mesh = std::static_pointer_cast<MeshNode>(node);
-                        glm::vec3 current_value = mesh->getColorSecondary();
-                        query.set("currentX", current_value.x);
-                        query.set("currentY", current_value.y);
-                        query.set("currentZ", current_value.z);
-                        mesh->setColorSecondary(value);
-                    }
-                    else if (name == "color_detail1" && node->getNodeType() == "MESH")
-                    {
-                        auto mesh = std::static_pointer_cast<MeshNode>(node);
-                        glm::vec3 current_value = mesh->getColorDetail();
-                        query.set("currentX", current_value.x);
-                        query.set("currentY", current_value.y);
-                        query.set("currentZ", current_value.z);
-                        mesh->setColorDetail(value);
-                    }
-                    else if (name == "color_detail2" && node->getNodeType() == "MESH")
-                    {
-                        auto mesh = std::static_pointer_cast<MeshNode>(node);
-                        glm::vec3 current_value = mesh->getColorDetail2();
-                        query.set("currentX", current_value.x);
-                        query.set("currentY", current_value.y);
-                        query.set("currentZ", current_value.z);
-                        mesh->setColorDetail2(value);
+                        if (animation.get<bool>("loop", true, true))
+                            animation_.timer = 0.f;
+                        else
+                            animation_.name = "";
                     }
                 }
             }

@@ -44,7 +44,8 @@ namespace Tarbora {
         glm::vec3 getOrigin();
 
         glm::mat4 getGlobalTransform();
-        glm::mat4 getLocalTransform();
+        virtual glm::mat4 getLocalTransform();
+        virtual glm::mat4 getDeform();
 
         void setRadius(float radius) { radius_ = radius; }
         float getRadius() const { return radius_; }
@@ -141,5 +142,39 @@ namespace Tarbora {
         glm::tvec3<unsigned char> color_secondary_;
         glm::tvec3<unsigned char> color_detail_;
         glm::tvec3<unsigned char> color_detail2_;
+    };
+
+    class AnimatedNode : public MeshNode
+    {
+    public:
+        AnimatedNode(const ActorId &id, const std::string &name, RenderPass render_pass, const std::string &mesh);
+        virtual const std::string getNodeType() { return "ANIMATED"; }
+        virtual void draw(Scene *scene, const glm::mat4 &transform);
+        void resetAll();
+
+        void setPositionAnimation(const glm::vec3 &position) { position_anim_ = position; }
+        void setRotationAnimation(const glm::vec3 &rotation) { rotation_anim_ = glm::quat(glm::radians(rotation)); }
+        void setRotationAnimation(const glm::quat &rotation) { rotation_anim_ = rotation; }
+        void setScaleAnimation(const glm::vec3 &scale) { scale_anim_ = scale; }
+        void setGlobalScaleAnimation(float scale) { global_scale_anim_ = scale; }
+        void setUvMapAnimation(const glm::tvec2<unsigned short> &uv) { uv_map_anim_ = uv; }
+        void setColorPrimaryAnimation(const glm::tvec3<unsigned char> &color) { color_primary_anim_ = color; }
+        void setColorSecondaryAnimation(const glm::tvec3<unsigned char> &color) { color_secondary_anim_ = color; }
+        void setColorDetailAnimation(const glm::tvec3<unsigned char> &color) { color_detail_anim_ = color; }
+        void setColorDetail2Animation(const glm::tvec3<unsigned char> &color) { color_detail2_anim_ = color; }
+
+        virtual glm::mat4 getLocalTransform();
+        virtual glm::mat4 getDeform();
+
+    protected:
+        glm::vec3 position_anim_;
+        glm::quat rotation_anim_;
+        glm::vec3 scale_anim_;
+        float global_scale_anim_;
+        glm::tvec2<unsigned short> uv_map_anim_;
+        glm::tvec3<unsigned char> color_primary_anim_;
+        glm::tvec3<unsigned char> color_secondary_anim_;
+        glm::tvec3<unsigned char> color_detail_anim_;
+        glm::tvec3<unsigned char> color_detail2_anim_;
     };
 }
