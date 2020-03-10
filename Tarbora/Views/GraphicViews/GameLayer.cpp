@@ -70,12 +70,34 @@ namespace Tarbora {
             scene_->removeActor(m.getId());
         });
 
-        subscribe("set_animation", [this](const MessageSubject &subject, const MessageBody &body)
+        subscribe("start_animation", [this](const MessageSubject &subject, const MessageBody &body)
         {
             UNUSED(subject);
-            Message::SetAnimation m(body);
-            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->animate(m.getAnimation(), m.getFile());
+            Message::StartAnimation m(body);
+            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->startAnimation(
+                Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()}
+            );
         });
+
+        subscribe("start_base_animation", [this](const MessageSubject &subject, const MessageBody &body)
+        {
+            UNUSED(subject);
+            Message::StartAnimation m(body);
+            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->startAnimation(
+                Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()},
+                true
+            );
+        });
+
+        subscribe("end_animation", [this](const MessageSubject &subject, const MessageBody &body)
+        {
+            UNUSED(subject);
+            Message::EndAnimation m(body);
+            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->endAnimation(
+                m.getAnimation(), (StopMode)m.getStopMode(), m.getFadeOutTimer()
+            );
+        });
+
 
         scene_->setCamera(target_id_, "1st_person");
     }

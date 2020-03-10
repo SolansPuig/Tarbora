@@ -6,7 +6,7 @@ components = {
         material = "human.mat.lua"
     },
     animation = {
-        file = "human2.lua",
+        file = "entities/human.lua"
     },
     physics = {
         shape = "capsule",
@@ -15,7 +15,23 @@ components = {
         density = 2
     },
     controller = {
-        speed = 6.0,
+        speed = 4.0,
         run_speed = 9.0,
+    }
+}
+
+animation_controller = {
+    start = { play = {{ name = "idle" }} },
+    idle = {
+        file = "human2.lua", loop = true, base = true,
+        events = {
+            walk = { stop = {}, play = {{ name = "walk" }} },
+        }
+    },
+    walk = {
+        file = "human2.lua", loop = true, speed = 4, base = true,
+        events = {
+            stop = { stop = {stop_mode = 2, fade_out=0.5}, play = {{ name = "idle" }} },
+        }
     }
 }

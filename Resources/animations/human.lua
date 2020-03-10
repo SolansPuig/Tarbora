@@ -26,10 +26,10 @@ walk = {
             rotation = {0, function() return -10*math.cos(10*query.time) - 10 end, -5}
         },
         thig_r = {
-            rotation = {function() return -30*math.cos(10*query.time) end, 0, 0}
+            rotation = {function() return -30*math.cos(10*query.time) end, 0, -2}
         },
         thig_l = {
-            rotation = {function() return 30*math.cos(10*query.time) end, 0, 0}
+            rotation = {function() return 30*math.cos(10*query.time) end, 0, 2}
         },
         leg_r = {
             rotation = {function() return -10*math.cos(10*query.time) + 10 end, 0, 0}

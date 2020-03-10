@@ -5,16 +5,17 @@
 namespace Tarbora {
     class AnimationComponent : public Component
     {
+        friend class AnimationSystem;
     public:
         AnimationComponent(System *s, const ActorId &id, const LuaTable &table);
 
-        void set(const std::string &animation);
-
-        const std::string& get() { return animation_; }
+        void event(const std::string &event_name);
 
     private:
-        std::string file_;
-        std::string animation_;
+        void parseEvent(const std::string &current_animation, LuaTable event);
+
+        std::string animation_controller_path_;
+        std::set<std::string> current_animations_;
     };
 
     class AnimationSystem : public SystemImpl<AnimationComponent>

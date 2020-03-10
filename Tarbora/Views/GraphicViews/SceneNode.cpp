@@ -160,7 +160,9 @@ namespace Tarbora {
     MaterialNode::MaterialNode(const ActorId &id, const std::string &name, const std::string &material) :
         SceneNode(id, name)
     {
-        material_ = ResourcePtr<Material>("materials/" + material, "materials/missing.mat.lua");
+        material_ = ResourcePtr<Material>(
+            "materials/" + material,
+            "materials/missing.mat.lua");
         material_name_ = material;
     }
 
@@ -218,7 +220,7 @@ namespace Tarbora {
     void AnimatedNode::resetAll()
     {
         position_anim_ = glm::vec3(0.f);
-        rotation_anim_ = glm::quat();
+        rotation_anim_ = glm::quat(1.f, 0.f, 0.f, 0.f);
         scale_anim_ = glm::vec3(0.f);
         global_scale_anim_ = 1.f;
         uv_map_anim_ = glm::tvec2<unsigned short>(0);
@@ -230,8 +232,8 @@ namespace Tarbora {
 
     glm::mat4 AnimatedNode::getLocalTransform()
     {
-        glm::mat4 transform = glm::translate(glm::mat4(1.f), position_ + position_anim_ + origin_);
-        transform = transform * glm::mat4_cast(rotation_);
+        auto transform = glm::translate(glm::mat4(1.f), position_ + position_anim_ + origin_);
+        transform = transform * glm::mat4_cast(rotation_ * rotation_anim_);
         transform = glm::translate(transform, -origin_);
         transform = glm::scale(transform, glm::vec3(global_scale_ * global_scale_anim_));
         return transform;

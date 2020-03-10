@@ -152,43 +152,77 @@ namespace Tarbora {
             bool hasRotation() { return message_.has_rotation(); }
         };
 
-        class SetAnimation : public Message<::MessageContent::SetAnimation>
+        class StartAnimation : public Message<::MessageContent::StartAnimation>
         {
         public:
-            SetAnimation(const MessageBody &m) : Message<::MessageContent::SetAnimation>(m) {}
+            StartAnimation(const MessageBody &m) : Message<::MessageContent::StartAnimation>(m) {}
 
-            SetAnimation(const ActorId &id, const std::string animation)
-            {
-                message_.set_id(id);
-                message_.set_animation(animation);
-            }
-
-            SetAnimation(const ActorId &id, const std::string animation, const std::string file)
+            StartAnimation(const ActorId &id, const std::string animation, const std::string file)
             {
                 message_.set_id(id);
                 message_.set_animation(animation);
                 message_.set_file(file);
+                message_.set_speed(1.f);
+                message_.set_blend_mode(0);
+                message_.set_blend_factor(1.f);
+                message_.set_loop(false);
+                message_.set_fade_in_timer(0.f);
             }
 
-            SetAnimation(const ActorId &id, const std::string animation, float speed)
-            {
-                message_.set_id(id);
-                message_.set_animation(animation);
-                message_.set_speed(speed);
-            }
-
-            SetAnimation(const ActorId &id, const std::string animation, const std::string file, float speed)
+            StartAnimation(const ActorId &id, const std::string animation, const std::string file, int blend_mode)
             {
                 message_.set_id(id);
                 message_.set_animation(animation);
                 message_.set_file(file);
-                message_.set_speed(speed);
+                message_.set_speed(1.f);
+                message_.set_blend_mode(blend_mode);
+                message_.set_blend_factor(1.f);
+                message_.set_loop(false);
+                message_.set_fade_in_timer(0.f);
             }
+
+            void setSpeed(float speed) { message_.set_speed(speed); }
+            void setBlendFactor(float blend_factor) { message_.set_blend_factor(blend_factor); }
+            void setLoop(bool loop) { message_.set_loop(loop); }
+            void setFadeInTimer(float timer) { message_.set_fade_in_timer(timer); }
 
             const ActorId& getId() { return message_.id(); }
             const std::string& getAnimation() { return message_.animation(); }
             const std::string& getFile() { return message_.file(); }
             float getSpeed() { return message_.speed(); }
+            int getBlendMode() { return message_.blend_mode(); }
+            float getBlendFactor() { return message_.blend_factor(); }
+            bool getLoop() { return message_.loop(); }
+            float getFadeInTimer() { return message_.fade_in_timer(); }
+        };
+
+        class EndAnimation : public Message<::MessageContent::EndAnimation>
+        {
+        public:
+            EndAnimation(const MessageBody &m) : Message<::MessageContent::EndAnimation>(m) {}
+
+            EndAnimation(const ActorId &id, const std::string animation)
+            {
+                message_.set_id(id);
+                message_.set_animation(animation);
+                message_.set_stop_mode(2);
+                message_.set_fade_out_timer(0.f);
+            }
+
+            EndAnimation(const ActorId &id, const std::string animation, int stop_mode)
+            {
+                message_.set_id(id);
+                message_.set_animation(animation);
+                message_.set_stop_mode(stop_mode);
+                message_.set_fade_out_timer(0.f);
+            }
+
+            void setFadeOutTimer(float timer) { message_.set_fade_out_timer(timer); }
+
+            const ActorId& getId() { return message_.id(); }
+            const std::string& getAnimation() { return message_.animation(); }
+            int getStopMode() { return message_.stop_mode(); }
+            float getFadeOutTimer() { return message_.fade_out_timer(); }
         };
 
         class ApplyPhysics : public Message<::MessageContent::ApplyPhysics>

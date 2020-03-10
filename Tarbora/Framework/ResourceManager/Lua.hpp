@@ -133,6 +133,7 @@ namespace Tarbora {
         LuaScript(const std::string &name, bool is_file = true) : Resource(name)
         {
             lua_.require_file("p", "../Resources/LuaParameters.lua");
+            lua_.open_libraries(sol::lib::base, sol::lib::math);
             if (is_file)
             {
                 lua_.safe_script_file(name, [](lua_State*, sol::protected_function_result pfr) {
@@ -149,7 +150,6 @@ namespace Tarbora {
                     return pfr;
                 });
             }
-            lua_.open_libraries(sol::lib::base, sol::lib::math);
         }
 
         LuaTable createTable(const std::string &name)

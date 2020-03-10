@@ -97,17 +97,20 @@ namespace Tarbora {
         return std::shared_ptr<SceneNode>();
     }
 
-    void ActorModel::animate(const std::string &name, const std::string &file)
+    void ActorModel::startAnimation(Animation animation, bool background)
     {
         if (!animation_controller_)
         {
-            if (file == "")
-            {
-                // LOG_ERR("Trying to animate an actor model with no Animation Controller defined and without an animations file");
-                return;
-            }
-            animation_controller_ = std::unique_ptr<AnimationController>(new AnimationController(this, file));
+            animation_controller_ = std::unique_ptr<AnimationController>(new AnimationController(this));
         }
-        animation_controller_->setAnimation(name);
+        animation_controller_->startAnimation(animation, background);
+    }
+
+    void ActorModel::endAnimation(const std::string &name, StopMode mode, float fade_out_timer)
+    {
+        if (animation_controller_)
+        {
+            animation_controller_->endAnimation(name, mode, fade_out_timer);
+        }
     }
 }

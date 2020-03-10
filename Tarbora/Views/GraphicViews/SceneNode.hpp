@@ -163,6 +163,16 @@ namespace Tarbora {
         void setColorDetailAnimation(const glm::tvec3<unsigned char> &color) { color_detail_anim_ = color; }
         void setColorDetail2Animation(const glm::tvec3<unsigned char> &color) { color_detail2_anim_ = color; }
 
+        const glm::vec3 &getPositionAnimation() { return position_anim_; }
+        const glm::quat &getRotationAnimation() { return rotation_anim_; }
+        const glm::vec3 &getScaleAnimation() { return scale_anim_; }
+        float getGlobalScaleAnimation() { return global_scale_anim_; }
+        const glm::tvec2<unsigned short> &getUvMapAnimation() { return uv_map_anim_; }
+        const glm::tvec3<unsigned char> &getColorPrimaryAnimation() { return color_primary_anim_; }
+        const glm::tvec3<unsigned char> &getColorSecondaryAnimation() { return color_secondary_anim_; }
+        const glm::tvec3<unsigned char> &getColorDetailAnimation() { return color_detail_anim_; }
+        const glm::tvec3<unsigned char> &getColorDetail2Animation() { return color_detail2_anim_; }
+
         virtual glm::mat4 getLocalTransform();
         virtual glm::mat4 getDeform();
 

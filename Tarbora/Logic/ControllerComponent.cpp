@@ -26,9 +26,9 @@ namespace Tarbora {
             if (animation_)
             {
                 if (walking)
-                    animation_->set("walk");
+                    animation_->event("walk");
                 else
-                    animation_->set("idle");
+                    animation_->event("stop");
             }
         }
     }
@@ -139,7 +139,7 @@ namespace Tarbora {
             controller->animation_ = static_cast<AnimationComponent*>(getComponent(id, "animation"));
             if (controller->animation_)
             {
-                controller->animation_->set("idle");
+                controller->animation_->event("idle");
             }
 
             controller->enable();

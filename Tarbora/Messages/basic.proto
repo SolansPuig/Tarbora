@@ -41,11 +41,22 @@ message MoveNode {
     MathMessage.Quaternion rotation = 4;
 }
 
-message SetAnimation {
+message StartAnimation {
     string id = 1;
     string animation = 2;
     string file = 3;
     float speed = 4;
+    uint32 blend_mode = 5;
+    float blend_factor = 6;
+    float fade_in_timer = 7;
+    bool loop = 8;
+}
+
+message EndAnimation {
+    string id = 1;
+    string animation = 2;
+    uint32 stop_mode = 5;
+    float fade_out_timer = 7;
 }
 
 message ApplyPhysics {

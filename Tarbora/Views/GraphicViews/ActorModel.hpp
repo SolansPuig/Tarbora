@@ -8,6 +8,7 @@ namespace Tarbora {
     class ActorModel : public MaterialNode
     {
         friend class AnimationController;
+        friend class Animation;
     public:
         ActorModel(const ActorId &id, RenderPass render_pass, const std::string &model, const std::string &material);
         ~ActorModel();
@@ -20,7 +21,9 @@ namespace Tarbora {
 
         virtual std::shared_ptr<SceneNode> getChild(const std::string &name) override;
 
-        void animate(const std::string &name, const std::string &file="");
+        void startAnimation(Animation animation, bool background=false);
+
+        void endAnimation(const std::string &name, StopMode mode, float fade_out_timer);
 
         const std::string& getModel() { return model_; }
         RenderPass getRenderPass() { return render_pass_; }
