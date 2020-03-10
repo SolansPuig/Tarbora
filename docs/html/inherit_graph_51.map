@@ -1,3 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structTarbora_1_1WindowProps.html" title="Tarbora::WindowProps" alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node1" href="$classTarbora_1_1MeshInternal.html" title="Tarbora::MeshInternal" alt="" coords="11,5,161,32"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Mesh.html" title="Tarbora::Mesh" alt="" coords="226,5,333,32"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1Resource.html" title="An abstract resource. " alt="" coords="21,132,151,159"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1LuaScript.html" title="Tarbora::LuaScript" alt="" coords="215,56,344,83"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1Material.html" title="Tarbora::Material" alt="" coords="219,107,339,133"/>
+<area shape="rect" id="node6" href="$classTarbora_1_1Shader.html" title="Tarbora::Shader" alt="" coords="222,157,337,184"/>
+<area shape="rect" id="node7" href="$classTarbora_1_1Text.html" title="A wrapper class for a raw text file. " alt="" coords="229,208,329,235"/>
+<area shape="rect" id="node8" href="$classTarbora_1_1Texture.html" title="Tarbora::Texture" alt="" coords="220,259,339,285"/>
+<area shape="rect" id="node9" href="$classTarbora_1_1TextureInternal.html" title="Tarbora::TextureInternal" alt="" coords="5,259,167,285"/>
 </map>

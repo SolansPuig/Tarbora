@@ -2,8 +2,7 @@
 \label{classTarbora_1_1ActorModel}\index{Tarbora\+::\+Actor\+Model@{Tarbora\+::\+Actor\+Model}}
 
 
-Inheritance diagram for Tarbora\+:\+:Actor\+Model\+:
-\nopagebreak
+Inheritance diagram for Tarbora\+:\+:Actor\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Tarbora\+:\+:Actor\+Model\+:
 \end{figure}
 
 
-Collaboration diagram for Tarbora\+:\+:Actor\+Model\+:
-\nopagebreak
+Collaboration diagram for Tarbora\+:\+:Actor\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,8 +36,11 @@ virtual void {\bfseries update} (\hyperlink{classTarbora_1_1Scene}{Scene} $\ast$
 \mbox{\Hypertarget{classTarbora_1_1ActorModel_a896fc0026eeed7a5527846711364cd88}\label{classTarbora_1_1ActorModel_a896fc0026eeed7a5527846711364cd88}} 
 virtual std\+::shared\+\_\+ptr$<$ \hyperlink{classTarbora_1_1SceneNode}{Scene\+Node} $>$ {\bfseries get\+Child} (const std\+::string \&name) override
 \item 
-\mbox{\Hypertarget{classTarbora_1_1ActorModel_ae6ddda6bd0f911223020741eaa0e7694}\label{classTarbora_1_1ActorModel_ae6ddda6bd0f911223020741eaa0e7694}} 
-void {\bfseries animate} (const std\+::string \&name, const std\+::string \&file=\char`\"{}\char`\"{})
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_aadffd78db0a996cb2accb2f2476f0571}\label{classTarbora_1_1ActorModel_aadffd78db0a996cb2accb2f2476f0571}} 
+void {\bfseries start\+Animation} (\hyperlink{structTarbora_1_1Animation}{Animation} animation, bool background=false)
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_a7f55aa586b116b6cf62cc8723062282f}\label{classTarbora_1_1ActorModel_a7f55aa586b116b6cf62cc8723062282f}} 
+void {\bfseries end\+Animation} (const std\+::string \&name, Stop\+Mode mode, float fade\+\_\+out\+\_\+timer)
 \item 
 \mbox{\Hypertarget{classTarbora_1_1ActorModel_a9c2a219815c5952de9aa1b4cd298b23d}\label{classTarbora_1_1ActorModel_a9c2a219815c5952de9aa1b4cd298b23d}} 
 const std\+::string \& {\bfseries get\+Model} ()
@@ -52,6 +53,9 @@ Render\+Pass {\bfseries get\+Render\+Pass} ()
 \item 
 \mbox{\Hypertarget{classTarbora_1_1ActorModel_a7899599edce4988a894c8e7431e7bb85}\label{classTarbora_1_1ActorModel_a7899599edce4988a894c8e7431e7bb85}} 
 class {\bfseries Animation\+Controller}
+\item 
+\mbox{\Hypertarget{classTarbora_1_1ActorModel_af47625f50036c466946f960db7320bcf}\label{classTarbora_1_1ActorModel_af47625f50036c466946f960db7320bcf}} 
+class {\bfseries Animation}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 

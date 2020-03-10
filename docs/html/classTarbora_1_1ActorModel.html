@@ -110,9 +110,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (<
 <tr class="memitem:a896fc0026eeed7a5527846711364cd88"><td class="memItemLeft" align="right" valign="top"><a id="a896fc0026eeed7a5527846711364cd88"></a>
 virtual std::shared_ptr&lt; <a class="el" href="classTarbora_1_1SceneNode.html">SceneNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getChild</b> (const std::string &amp;name) override</td></tr>
 <tr class="separator:a896fc0026eeed7a5527846711364cd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6ddda6bd0f911223020741eaa0e7694"><td class="memItemLeft" align="right" valign="top"><a id="ae6ddda6bd0f911223020741eaa0e7694"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>animate</b> (const std::string &amp;name, const std::string &amp;file=&quot;&quot;)</td></tr>
-<tr class="separator:ae6ddda6bd0f911223020741eaa0e7694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadffd78db0a996cb2accb2f2476f0571"><td class="memItemLeft" align="right" valign="top"><a id="aadffd78db0a996cb2accb2f2476f0571"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>startAnimation</b> (<a class="el" href="structTarbora_1_1Animation.html">Animation</a> animation, bool background=false)</td></tr>
+<tr class="separator:aadffd78db0a996cb2accb2f2476f0571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f55aa586b116b6cf62cc8723062282f"><td class="memItemLeft" align="right" valign="top"><a id="a7f55aa586b116b6cf62cc8723062282f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>endAnimation</b> (const std::string &amp;name, StopMode mode, float fade_out_timer)</td></tr>
+<tr class="separator:a7f55aa586b116b6cf62cc8723062282f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c2a219815c5952de9aa1b4cd298b23d"><td class="memItemLeft" align="right" valign="top"><a id="a9c2a219815c5952de9aa1b4cd298b23d"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getModel</b> ()</td></tr>
 <tr class="separator:a9c2a219815c5952de9aa1b4cd298b23d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,8 +203,11 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getOrigin</b> ()
 glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getGlobalTransform</b> ()</td></tr>
 <tr class="separator:afac714f06014bdcb93a57a57cdf87bca inherit pub_methods_classTarbora_1_1SceneNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4144df0e04e1d70c6b53323c86b6fe21 inherit pub_methods_classTarbora_1_1SceneNode"><td class="memItemLeft" align="right" valign="top"><a id="a4144df0e04e1d70c6b53323c86b6fe21"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalTransform</b> ()</td></tr>
+virtual glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalTransform</b> ()</td></tr>
 <tr class="separator:a4144df0e04e1d70c6b53323c86b6fe21 inherit pub_methods_classTarbora_1_1SceneNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceecd2ee682d39fbc0c38d0907043b2a inherit pub_methods_classTarbora_1_1SceneNode"><td class="memItemLeft" align="right" valign="top"><a id="aceecd2ee682d39fbc0c38d0907043b2a"></a>
+virtual glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getDeform</b> ()</td></tr>
+<tr class="separator:aceecd2ee682d39fbc0c38d0907043b2a inherit pub_methods_classTarbora_1_1SceneNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f0f6876882a058a013a998b6bfaf42 inherit pub_methods_classTarbora_1_1SceneNode"><td class="memItemLeft" align="right" valign="top"><a id="a62f0f6876882a058a013a998b6bfaf42"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setRadius</b> (float radius)</td></tr>
 <tr class="separator:a62f0f6876882a058a013a998b6bfaf42 inherit pub_methods_classTarbora_1_1SceneNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,6 +229,9 @@ Friends</h2></td></tr>
 <tr class="memitem:a7899599edce4988a894c8e7431e7bb85"><td class="memItemLeft" align="right" valign="top"><a id="a7899599edce4988a894c8e7431e7bb85"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>AnimationController</b></td></tr>
 <tr class="separator:a7899599edce4988a894c8e7431e7bb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47625f50036c466946f960db7320bcf"><td class="memItemLeft" align="right" valign="top"><a id="af47625f50036c466946f960db7320bcf"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Animation</b></td></tr>
+<tr class="separator:af47625f50036c466946f960db7320bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
