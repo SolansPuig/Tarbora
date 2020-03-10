@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1MessageClient" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::MessageClient</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1MessageClient_1a8e121fb99813e079e1f51dc0db309f95" prot="private" static="no" mutable="no">
+        <type>std::queue&lt; <ref refid="classTarbora_1_1Message_1_1Message" kindref="compound">Message::Message</ref> &gt;</type>
+        <definition>std::queue&lt;Message::Message&gt; Tarbora::MessageClient::messages_</definition>
+        <argsstring></argsstring>
+        <name>messages_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="29" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1MessageClient_1aaffec4b90ec4bf21eda70c356f0a5ff5" prot="private" static="no" mutable="no">
+        <type>ClientId</type>
+        <definition>ClientId Tarbora::MessageClient::id_</definition>
+        <argsstring></argsstring>
+        <name>id_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="31" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1a7bd80a6ee4ea1ba03052b4a2804d4ef5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::MessageClient::MessageClient</definition>
+        <argsstring>(const ClientId &amp;id)</argsstring>
+        <name>MessageClient</name>
+        <param>
+          <type>const ClientId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="11" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="6" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1a89b17761f726fb42d3efbb36bbbf9498" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MessageClient::connect</definition>
+        <argsstring>()</argsstring>
+        <name>connect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="13" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="10" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1acf6e8e3acb25ffb5b93fee46e7be1274" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MessageClient::disconnect</definition>
+        <argsstring>()</argsstring>
+        <name>disconnect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="14" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1ae7e2c3b8eafd7120a982874e063b28a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::MessageClient::getMessage</definition>
+        <argsstring>(Message::Message *message)</argsstring>
+        <name>getMessage</name>
+        <param>
+          <type><ref refid="classTarbora_1_1Message_1_1Message" kindref="compound">Message::Message</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="16" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="20" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1a4b33031bc1d16ccb22109e92c0795424" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MessageClient::send</definition>
+        <argsstring>(const Message::Message &amp;message)</argsstring>
+        <name>send</name>
+        <param>
+          <type>const <ref refid="classTarbora_1_1Message_1_1Message" kindref="compound">Message::Message</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="17" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1a701a47885bf3deadd9a8437e353e53f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MessageClient::receive</definition>
+        <argsstring>(const Message::Message &amp;message)</argsstring>
+        <name>receive</name>
+        <param>
+          <type>const <ref refid="classTarbora_1_1Message_1_1Message" kindref="compound">Message::Message</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="18" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1ae0d0b75ce74ba317ff07aca007e9b48b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MessageClient::subscribe</definition>
+        <argsstring>(const MessageSubject &amp;s)</argsstring>
+        <name>subscribe</name>
+        <param>
+          <type>const MessageSubject &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="20" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1acd172722445ec4a80f6fdffe903eb983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MessageClient::desubscribe</definition>
+        <argsstring>(const MessageSubject &amp;s)</argsstring>
+        <name>desubscribe</name>
+        <param>
+          <type>const MessageSubject &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="21" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.cpp" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MessageClient_1acf5431afba593f4f40516edc803a2244" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MessageClient::setDebugName</definition>
+        <argsstring>(std::string)</argsstring>
+        <name>setDebugName</name>
+        <param>
+          <type>std::string</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="23" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.hpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/MessageManager/MessageClient.hpp" line="9" column="1" bodyfile="Tarbora/Framework/MessageManager/MessageClient.hpp" bodystart="9" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1MessageClient_1a89b17761f726fb42d3efbb36bbbf9498" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>connect</name></member>
+      <member refid="classTarbora_1_1MessageClient_1acd172722445ec4a80f6fdffe903eb983" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>desubscribe</name></member>
+      <member refid="classTarbora_1_1MessageClient_1acf6e8e3acb25ffb5b93fee46e7be1274" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>disconnect</name></member>
+      <member refid="classTarbora_1_1MessageClient_1ae7e2c3b8eafd7120a982874e063b28a1" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>getMessage</name></member>
+      <member refid="classTarbora_1_1MessageClient_1aaffec4b90ec4bf21eda70c356f0a5ff5" prot="private" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>id_</name></member>
+      <member refid="classTarbora_1_1MessageClient_1a7bd80a6ee4ea1ba03052b4a2804d4ef5" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>MessageClient</name></member>
+      <member refid="classTarbora_1_1MessageClient_1a8e121fb99813e079e1f51dc0db309f95" prot="private" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>messages_</name></member>
+      <member refid="classTarbora_1_1MessageClient_1a701a47885bf3deadd9a8437e353e53f9" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>receive</name></member>
+      <member refid="classTarbora_1_1MessageClient_1a4b33031bc1d16ccb22109e92c0795424" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>send</name></member>
+      <member refid="classTarbora_1_1MessageClient_1acf5431afba593f4f40516edc803a2244" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>setDebugName</name></member>
+      <member refid="classTarbora_1_1MessageClient_1ae0d0b75ce74ba317ff07aca007e9b48b" prot="public" virt="non-virtual"><scope>Tarbora::MessageClient</scope><name>subscribe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

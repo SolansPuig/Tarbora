@@ -1,0 +1,726 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1RigidBody" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Tarbora::RigidBody</compoundname>
+    <derivedcompoundref refid="classTarbora_1_1BoxBody" prot="public" virt="non-virtual">Tarbora::BoxBody</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1CapsuleBody" prot="public" virt="non-virtual">Tarbora::CapsuleBody</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1SphereBody" prot="public" virt="non-virtual">Tarbora::SphereBody</derivedcompoundref>
+    <includes refid="RigidBody_8hpp" local="no">RigidBody.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1RigidBody_1a2ce3f561d2aeaab0e2efc613675c670f" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::friction_</definition>
+        <argsstring></argsstring>
+        <name>friction_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="140" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RigidBody_1a9835a8aa577d42210e3eef8c54733d3e" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::density_</definition>
+        <argsstring></argsstring>
+        <name>density_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="141" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RigidBody_1a3e5ff1ecb93eca1a459188d07f4b40e4" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::restitution_</definition>
+        <argsstring></argsstring>
+        <name>restitution_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="142" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RigidBody_1a545c30e0443c98139522be2c7ce8caf8" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::volume_</definition>
+        <argsstring></argsstring>
+        <name>volume_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="143" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RigidBody_1aab7639b1d7546bff208728a2d494e359" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::mass_</definition>
+        <argsstring></argsstring>
+        <name>mass_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="144" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RigidBody_1a29c0718af663f9a80d4111e1050658c3" prot="protected" static="no" mutable="no">
+        <type>btRigidBody *</type>
+        <definition>btRigidBody* Tarbora::RigidBody::body_</definition>
+        <argsstring></argsstring>
+        <name>body_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="145" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a9baab30ac5e3275f27778ed9b6fd94de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::RigidBody::RigidBody</definition>
+        <argsstring>()</argsstring>
+        <name>RigidBody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="14" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a823a9af878324896283fc95b1a396603" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::RigidBody::~RigidBody</definition>
+        <argsstring>()</argsstring>
+        <name>~RigidBody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="15" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1acd1c63e93fd607f74f48fb68aa764b29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::RigidBody::registerActor</definition>
+        <argsstring>(ActorId &amp;id, const glm::vec3 &amp;position, const glm::quat &amp;rotation)=0</argsstring>
+        <name>registerActor</name>
+        <reimplementedby refid="classTarbora_1_1SphereBody_1aa4a13d5e547bac9cb9fa30405517de2c">registerActor</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1CapsuleBody_1a4613a4f0cf0ab92189169d6f3865274e">registerActor</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1BoxBody_1a25941ea2802421df525ff0b7d0bd22f1">registerActor</reimplementedby>
+        <param>
+          <type>ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+<para>Register the rigid body to the Physics Engine. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The id of the actor that owns that rigid body. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initial position of that actor. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rotation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initial rotation of that actor. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a7bd0fc405871ebaf67fe6eb2b7d8ef73" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::RigidBody::unregister</definition>
+        <argsstring>()=0</argsstring>
+        <name>unregister</name>
+        <reimplementedby refid="classTarbora_1_1SphereBody_1a65741975df1d4f37a1cf203e7453dbbe">unregister</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1CapsuleBody_1a3cce96469ed469136728ed0ea3004bc0">unregister</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1BoxBody_1aa1023ad459040a23379d0b250303cfe6">unregister</reimplementedby>
+        <briefdescription>
+<para>Remove the rigid body from the Physics Engine. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="26" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a4ef35440e9a86d070ec05f507b1a3e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setProperties</definition>
+        <argsstring>(float friction, float density, float resitution)</argsstring>
+        <name>setProperties</name>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>density</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>resitution</declname>
+        </param>
+        <briefdescription>
+<para>Set all the properties that define a physics object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>friction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See SetFriction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>density</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See SetDensity </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resitution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See SetRestitution </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="34" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="4" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1ada1b1247d514beb54c11a5baa4a065cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setFriction</definition>
+        <argsstring>(float friction)</argsstring>
+        <name>setFriction</name>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+        </param>
+        <briefdescription>
+<para>Set the friction property. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is a per object coeficient. Usually from 0 (like ice) to 1 (like rubber), but can be more. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="40" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1af6eb6a7aaf2eba4d1375ba40ca89bcdd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setDensity</definition>
+        <argsstring>(float density)</argsstring>
+        <name>setDensity</name>
+        <param>
+          <type>float</type>
+          <declname>density</declname>
+        </param>
+        <briefdescription>
+<para>Set the density property. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to calculate the mass (&quot;weight&quot;) of the object, based on its volume (&quot;size and shape&quot;). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="46" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a52dd135d02cb25601ed62bb94a895fb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setRestitution</definition>
+        <argsstring>(float restitution)</argsstring>
+        <name>setRestitution</name>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+        </param>
+        <briefdescription>
+<para>Set the resitution property. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is a per object coeficient that determines the &quot;bounciness&quot; of the object. Usually from 0 (like play dough) to 1 (like a bouncing ball), but can be more. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="52" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1af0c50f3394ca1bf3f83ddcee2e30396d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::getFriction</definition>
+        <argsstring>()</argsstring>
+        <name>getFriction</name>
+        <briefdescription>
+<para>Get the friction property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="55" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a247809c524822d19753753b4f0b1ea44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::getDensity</definition>
+        <argsstring>()</argsstring>
+        <name>getDensity</name>
+        <briefdescription>
+<para>Get the density property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="58" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a62fd5b9616c9089c4e1835a333ba8058" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::getRestitution</definition>
+        <argsstring>()</argsstring>
+        <name>getRestitution</name>
+        <briefdescription>
+<para>Get the resitution property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="61" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1ae989466abcaf66c6b4dab5e865619a15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::getVolume</definition>
+        <argsstring>()</argsstring>
+        <name>getVolume</name>
+        <briefdescription>
+<para>Get the volume of the physics object. </para>        </briefdescription>
+        <detaileddescription>
+<para>This may be a bit different (usually smaller) than the size of the rendered model. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="67" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a13fc84c59cb7f027cbf69a464218c76e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Tarbora::RigidBody::getMass</definition>
+        <argsstring>()</argsstring>
+        <name>getMass</name>
+        <briefdescription>
+<para>Get the mass of the object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="70" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1accab5fc63ffca7f3ad4389a35bb11298" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setTransform</definition>
+        <argsstring>(const glm::vec3 &amp;position, const glm::quat &amp;rotation)</argsstring>
+        <name>setTransform</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+<para>Change the position and rotation of the object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="73" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="12" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1adcaae2853b343b788c253e0b4ba79be3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const glm::vec3 &amp;</type>
+        <definition>const glm::vec3 &amp; Tarbora::RigidBody::getPosition</definition>
+        <argsstring>()</argsstring>
+        <name>getPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="75" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1ab1a71add64c48d6566ea28e0f2a6c8ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const glm::quat &amp;</type>
+        <definition>const glm::quat &amp; Tarbora::RigidBody::getRotation</definition>
+        <argsstring>()</argsstring>
+        <name>getRotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="77" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a814a768747705b5a0c8fc81fca1ab1bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::applyImpulse</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>applyImpulse</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Apply an impulse on the center of the object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector representing the direction of the impulse. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="83" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="35" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1afb1e923b3c9d499af761f51405b6bce2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::applyForce</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>applyForce</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Apply a force on the center of the object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector representing the direction of the force. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="89" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="44" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1ab1f757870850021535f28674bce9eb20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::applyTorque</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>applyTorque</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Apply a torque to the object. A force that will make the object rotate. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector representing the direction of the force. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="95" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="53" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1aa7191b36165f8c612630ad9ba05707a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setVelocity</definition>
+        <argsstring>(const glm::vec3 &amp;velocity)</argsstring>
+        <name>setVelocity</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Set a constant velocity to the object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector representing the speed in each of the axis (x, y and z). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="101" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="62" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a895d8b8c01ee5c813d7f9d9df5dc08cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setAngularVelocity</definition>
+        <argsstring>(const glm::vec3 &amp;velocity)</argsstring>
+        <name>setAngularVelocity</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Set a constant angular velocity to the object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector representing the rotation speed in each of the roation axis (x, y and z). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="107" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="75" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a73a0ee3f89b0d221da433d0a3b102a63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <briefdescription>
+<para>Set the object&apos;s velocity to zero. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="110" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="84" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a2cc6295e8f2a6c9eaf88c037ee32aa4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setAngularFactor</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>setAngularFactor</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Set the angular factor of the body. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The multiplier to the rotation in each of the axis. Set to 0 to forbid the rotation in that axis, set to 1 to leave it untouched. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="116" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="89" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1ae1ccef4eb62dd20d709e28ff012bff84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::setLinearDamping</definition>
+        <argsstring>(float damping)</argsstring>
+        <name>setLinearDamping</name>
+        <param>
+          <type>float</type>
+          <declname>damping</declname>
+        </param>
+        <briefdescription>
+<para>Set the linear damping of the body. This will slow down the movement of the body. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>damping</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The multiplier to the movement in each of the axis. Set to 0 to forbid the movement in that axis, set to 1 to leave it untouched. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="122" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="95" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1ab0ea04e6929334288ba061767c9ad141" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="structTarbora_1_1RayCastResult" kindref="compound">RayCastResult</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; RayCastResult &gt; Tarbora::RigidBody::rayCast</definition>
+        <argsstring>(const glm::vec3 &amp;origin, const glm::quat &amp;direction, float distance)</argsstring>
+        <name>rayCast</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>origin</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>Perform a Raycast from the body. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative position from the center of the body from where the raycast is shoot. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative direction of the raycast, a quaternion. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum reach of the raycast. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>See <ref refid="structTarbora_1_1RayCastResult" kindref="compound">RayCastResult</ref>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="131" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.cpp" bodystart="101" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1a5d97acef2ff4067bd2261dd1a05badad" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::RigidBody::calcVolume</definition>
+        <argsstring>()=0</argsstring>
+        <name>calcVolume</name>
+        <reimplementedby refid="classTarbora_1_1SphereBody_1a47e3ba2b62a9156392e4b704e436a792">calcVolume</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1CapsuleBody_1a16af8c987d2a1d6602a317850b0ae17a">calcVolume</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1BoxBody_1a43cd5db557e31c4401a2a51abd1e77a8">calcVolume</reimplementedby>
+        <briefdescription>
+<para>Calculate the volume when the shape or the size changes. Automatically called by the functions that change those. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="135" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RigidBody_1afa38ef0ea477b4ad94dae47d36b4bb5f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RigidBody::calcMass</definition>
+        <argsstring>()</argsstring>
+        <name>calcMass</name>
+        <briefdescription>
+<para>Calculate the mass when the volume changes. Automatically called by CalcVolume. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="138" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="138" bodyend="138"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract physics rigid body. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classTarbora_1_1PhysicsEngine" kindref="compound">PhysicsEngine</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="388">
+        <label>Tarbora::CapsuleBody</label>
+        <link refid="classTarbora_1_1CapsuleBody"/>
+        <childnode refid="386" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="389">
+        <label>Tarbora::SphereBody</label>
+        <link refid="classTarbora_1_1SphereBody"/>
+        <childnode refid="386" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="386">
+        <label>Tarbora::RigidBody</label>
+        <link refid="classTarbora_1_1RigidBody"/>
+      </node>
+      <node id="387">
+        <label>Tarbora::BoxBody</label>
+        <link refid="classTarbora_1_1BoxBody"/>
+        <childnode refid="386" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" line="12" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/RigidBody.hpp" bodystart="11" bodyend="146"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1RigidBody_1afb1e923b3c9d499af761f51405b6bce2" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>applyForce</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a814a768747705b5a0c8fc81fca1ab1bc" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>applyImpulse</name></member>
+      <member refid="classTarbora_1_1RigidBody_1ab1f757870850021535f28674bce9eb20" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>applyTorque</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a29c0718af663f9a80d4111e1050658c3" prot="protected" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>body_</name></member>
+      <member refid="classTarbora_1_1RigidBody_1afa38ef0ea477b4ad94dae47d36b4bb5f" prot="protected" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>calcMass</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a5d97acef2ff4067bd2261dd1a05badad" prot="protected" virt="pure-virtual"><scope>Tarbora::RigidBody</scope><name>calcVolume</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a9835a8aa577d42210e3eef8c54733d3e" prot="protected" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>density_</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a2ce3f561d2aeaab0e2efc613675c670f" prot="protected" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>friction_</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a247809c524822d19753753b4f0b1ea44" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>getDensity</name></member>
+      <member refid="classTarbora_1_1RigidBody_1af0c50f3394ca1bf3f83ddcee2e30396d" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>getFriction</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a13fc84c59cb7f027cbf69a464218c76e" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>getMass</name></member>
+      <member refid="classTarbora_1_1RigidBody_1adcaae2853b343b788c253e0b4ba79be3" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>getPosition</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a62fd5b9616c9089c4e1835a333ba8058" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>getRestitution</name></member>
+      <member refid="classTarbora_1_1RigidBody_1ab1a71add64c48d6566ea28e0f2a6c8ea" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>getRotation</name></member>
+      <member refid="classTarbora_1_1RigidBody_1ae989466abcaf66c6b4dab5e865619a15" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>getVolume</name></member>
+      <member refid="classTarbora_1_1RigidBody_1aab7639b1d7546bff208728a2d494e359" prot="protected" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>mass_</name></member>
+      <member refid="classTarbora_1_1RigidBody_1ab0ea04e6929334288ba061767c9ad141" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>rayCast</name></member>
+      <member refid="classTarbora_1_1RigidBody_1acd1c63e93fd607f74f48fb68aa764b29" prot="public" virt="pure-virtual"><scope>Tarbora::RigidBody</scope><name>registerActor</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a3e5ff1ecb93eca1a459188d07f4b40e4" prot="protected" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>restitution_</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a9baab30ac5e3275f27778ed9b6fd94de" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>RigidBody</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a2cc6295e8f2a6c9eaf88c037ee32aa4f" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setAngularFactor</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a895d8b8c01ee5c813d7f9d9df5dc08cd" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setAngularVelocity</name></member>
+      <member refid="classTarbora_1_1RigidBody_1af6eb6a7aaf2eba4d1375ba40ca89bcdd" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setDensity</name></member>
+      <member refid="classTarbora_1_1RigidBody_1ada1b1247d514beb54c11a5baa4a065cf" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setFriction</name></member>
+      <member refid="classTarbora_1_1RigidBody_1ae1ccef4eb62dd20d709e28ff012bff84" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setLinearDamping</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a4ef35440e9a86d070ec05f507b1a3e26" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setProperties</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a52dd135d02cb25601ed62bb94a895fb8" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setRestitution</name></member>
+      <member refid="classTarbora_1_1RigidBody_1accab5fc63ffca7f3ad4389a35bb11298" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setTransform</name></member>
+      <member refid="classTarbora_1_1RigidBody_1aa7191b36165f8c612630ad9ba05707a6" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>setVelocity</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a73a0ee3f89b0d221da433d0a3b102a63" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>stop</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a7bd0fc405871ebaf67fe6eb2b7d8ef73" prot="public" virt="pure-virtual"><scope>Tarbora::RigidBody</scope><name>unregister</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a545c30e0443c98139522be2c7ce8caf8" prot="protected" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>volume_</name></member>
+      <member refid="classTarbora_1_1RigidBody_1a823a9af878324896283fc95b1a396603" prot="public" virt="non-virtual"><scope>Tarbora::RigidBody</scope><name>~RigidBody</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

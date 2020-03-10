@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Component" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Component</compoundname>
+    <derivedcompoundref refid="classTarbora_1_1AnimationComponent" prot="public" virt="non-virtual">Tarbora::AnimationComponent</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1ControllerComponent" prot="public" virt="non-virtual">Tarbora::ControllerComponent</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1InfoComponent" prot="public" virt="non-virtual">Tarbora::InfoComponent</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1ModelComponent" prot="public" virt="non-virtual">Tarbora::ModelComponent</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1PhysicsComponent" prot="public" virt="non-virtual">Tarbora::PhysicsComponent</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1TransformComponent" prot="public" virt="non-virtual">Tarbora::TransformComponent</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1TypeComponent" prot="public" virt="non-virtual">Tarbora::TypeComponent</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1Component_1a19bde335970f5e3af9bc845122f28f3f" prot="protected" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1System" kindref="compound">System</ref> *</type>
+        <definition>System* Tarbora::Component::system_</definition>
+        <argsstring></argsstring>
+        <name>system_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="55" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Component_1a4c2092ce4a44d193308669024867775c" prot="protected" static="no" mutable="no">
+        <type>ActorId</type>
+        <definition>ActorId Tarbora::Component::owner_</definition>
+        <argsstring></argsstring>
+        <name>owner_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="56" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Component_1ac5b26f24609f28419cf2a2e6065b17c8" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tarbora::Component::enabled_</definition>
+        <argsstring></argsstring>
+        <name>enabled_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="57" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Component_1a7e022fe62bcf3c3781977ca972383c0d" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tarbora::Component::error_</definition>
+        <argsstring></argsstring>
+        <name>error_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="58" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Component_1af131ce04afe7eadb2589afcec5fa52d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Component::Component</definition>
+        <argsstring>(System *s, const ActorId &amp;id, const LuaTable &amp;table)</argsstring>
+        <name>Component</name>
+        <param>
+          <type><ref refid="classTarbora_1_1System" kindref="compound">System</ref> *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTarbora_1_1LuaTable" kindref="compound">LuaTable</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="8" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="8" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1a9b772f4d99f64b23685a58e7294ab981" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classTarbora_1_1Component" kindref="compound">Component</ref> *</type>
+        <definition>Component* Tarbora::Component::getComponent</definition>
+        <argsstring>(const ActorId &amp;id, const ComponentId &amp;component)</argsstring>
+        <name>getComponent</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const ComponentId &amp;</type>
+          <declname>component</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="11" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1abeeb3dba77af922915cbe9bc7d29d646" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classTarbora_1_1Component" kindref="compound">Component</ref> *</type>
+        <definition>Component* Tarbora::Component::getComponent</definition>
+        <argsstring>(const ComponentId &amp;component)</argsstring>
+        <name>getComponent</name>
+        <param>
+          <type>const ComponentId &amp;</type>
+          <declname>component</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="16" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1a856a0b9e17ccd0336f1a33cf2fd2ac20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Component::enable</definition>
+        <argsstring>()</argsstring>
+        <name>enable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="21" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="21" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1a163aa5702b50ede0dddfe1f8620afca5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Component::disable</definition>
+        <argsstring>()</argsstring>
+        <name>disable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="27" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="27" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1a227a558106b74d4b8b0be7667c7610c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Component::send</definition>
+        <argsstring>(ClientId to, MessageSubject s, MessageBody b) const</argsstring>
+        <name>send</name>
+        <param>
+          <type>ClientId</type>
+          <declname>to</declname>
+        </param>
+        <param>
+          <type>MessageSubject</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="classTarbora_1_1MessageBody" kindref="compound">MessageBody</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="33" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1a47985733836fce6b3cc5e0f77607d4e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Component::trigger</definition>
+        <argsstring>(MessageSubject s, MessageBody b) const</argsstring>
+        <name>trigger</name>
+        <param>
+          <type>MessageSubject</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="classTarbora_1_1MessageBody" kindref="compound">MessageBody</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="38" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1aa3eddb1cf4ba3fb1f0652d0c3aee07b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Component::triggerLocal</definition>
+        <argsstring>(MessageSubject s, MessageBody b) const</argsstring>
+        <name>triggerLocal</name>
+        <param>
+          <type>MessageSubject</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="classTarbora_1_1MessageBody" kindref="compound">MessageBody</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="43" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1ad8232ed039bec74c81fc7589ee34cbf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::Component::error</definition>
+        <argsstring>()</argsstring>
+        <name>error</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="48" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classTarbora_1_1Component_1a644061cabaf91ed54eae79ce616c25b9" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::Component::onEnable</definition>
+        <argsstring>()</argsstring>
+        <name>onEnable</name>
+        <reimplementedby refid="classTarbora_1_1PhysicsComponent_1a355824ebba674e1f8ff9c9069637f716">onEnable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="51" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Component_1a62150a85e0eb8f3601d211245ca08a2d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::Component::onDisable</definition>
+        <argsstring>()</argsstring>
+        <name>onDisable</name>
+        <reimplementedby refid="classTarbora_1_1PhysicsComponent_1abc018dd64594397b5e40972fc4a94f22">onDisable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/Component.hpp" line="53" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="53" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="81">
+        <label>Tarbora::PhysicsComponent</label>
+        <link refid="classTarbora_1_1PhysicsComponent"/>
+        <childnode refid="76" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>Tarbora::TransformComponent</label>
+        <link refid="classTarbora_1_1TransformComponent"/>
+        <childnode refid="76" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>Tarbora::TypeComponent</label>
+        <link refid="classTarbora_1_1TypeComponent"/>
+        <childnode refid="76" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>Tarbora::ControllerComponent</label>
+        <link refid="classTarbora_1_1ControllerComponent"/>
+        <childnode refid="76" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>Tarbora::ModelComponent</label>
+        <link refid="classTarbora_1_1ModelComponent"/>
+        <childnode refid="76" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>Tarbora::InfoComponent</label>
+        <link refid="classTarbora_1_1InfoComponent"/>
+        <childnode refid="76" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>Tarbora::AnimationComponent</label>
+        <link refid="classTarbora_1_1AnimationComponent"/>
+        <childnode refid="76" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="86">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="87" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="85">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+        <childnode refid="89" relation="usage">
+          <edgelabel>world_</edgelabel>
+        </childnode>
+      </node>
+      <node id="87">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="88" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>Tarbora::World</label>
+        <link refid="classTarbora_1_1World"/>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+      <node id="84">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+        <childnode refid="85" relation="usage">
+          <edgelabel>system_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Logic/Component.hpp" line="6" column="1" bodyfile="Tarbora/Logic/Component.hpp" bodystart="5" bodyend="59"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Component_1af131ce04afe7eadb2589afcec5fa52d8" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>Component</name></member>
+      <member refid="classTarbora_1_1Component_1a163aa5702b50ede0dddfe1f8620afca5" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>disable</name></member>
+      <member refid="classTarbora_1_1Component_1a856a0b9e17ccd0336f1a33cf2fd2ac20" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>enable</name></member>
+      <member refid="classTarbora_1_1Component_1ac5b26f24609f28419cf2a2e6065b17c8" prot="protected" virt="non-virtual"><scope>Tarbora::Component</scope><name>enabled_</name></member>
+      <member refid="classTarbora_1_1Component_1ad8232ed039bec74c81fc7589ee34cbf7" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>error</name></member>
+      <member refid="classTarbora_1_1Component_1a7e022fe62bcf3c3781977ca972383c0d" prot="protected" virt="non-virtual"><scope>Tarbora::Component</scope><name>error_</name></member>
+      <member refid="classTarbora_1_1Component_1a9b772f4d99f64b23685a58e7294ab981" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1Component_1abeeb3dba77af922915cbe9bc7d29d646" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1Component_1a62150a85e0eb8f3601d211245ca08a2d" prot="protected" virt="virtual"><scope>Tarbora::Component</scope><name>onDisable</name></member>
+      <member refid="classTarbora_1_1Component_1a644061cabaf91ed54eae79ce616c25b9" prot="protected" virt="virtual"><scope>Tarbora::Component</scope><name>onEnable</name></member>
+      <member refid="classTarbora_1_1Component_1a4c2092ce4a44d193308669024867775c" prot="protected" virt="non-virtual"><scope>Tarbora::Component</scope><name>owner_</name></member>
+      <member refid="classTarbora_1_1Component_1a227a558106b74d4b8b0be7667c7610c5" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>send</name></member>
+      <member refid="classTarbora_1_1Component_1a19bde335970f5e3af9bc845122f28f3f" prot="protected" virt="non-virtual"><scope>Tarbora::Component</scope><name>system_</name></member>
+      <member refid="classTarbora_1_1Component_1a47985733836fce6b3cc5e0f77607d4e8" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1Component_1aa3eddb1cf4ba3fb1f0652d0c3aee07b6" prot="public" virt="non-virtual"><scope>Tarbora::Component</scope><name>triggerLocal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

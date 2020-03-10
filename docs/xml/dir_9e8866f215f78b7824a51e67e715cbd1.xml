@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_9e8866f215f78b7824a51e67e715cbd1" kind="dir">
+    <compoundname>Tarbora/Framework</compoundname>
+    <innerdir refid="dir_a5c464f3fa28b5ece6b6b5d7c088348c">Tarbora/Framework/Math</innerdir>
+    <innerdir refid="dir_c982ddecd1d4f9ecffb41d976a0c310b">Tarbora/Framework/MessageManager</innerdir>
+    <innerdir refid="dir_1353a95bc43a19b9e686d3b6519ed9fd">Tarbora/Framework/Module</innerdir>
+    <innerdir refid="dir_6109f1962567bb8c0ca369ae07e2c67f">Tarbora/Framework/ResourceManager</innerdir>
+    <innerfile refid="CommonHeaders_8hpp">CommonHeaders.hpp</innerfile>
+    <innerfile refid="Framework_8hpp">Framework.hpp</innerfile>
+    <innerfile refid="Global_8hpp">Global.hpp</innerfile>
+    <innerfile refid="Logger_8cpp">Logger.cpp</innerfile>
+    <innerfile refid="Logger_8hpp">Logger.hpp</innerfile>
+    <briefdescription>
+<para>Utilities that assist the high-level functionalities. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/"/>
+  </compounddef>
+</doxygen>

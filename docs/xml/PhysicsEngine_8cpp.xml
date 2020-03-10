@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="PhysicsEngine_8cpp" kind="file" language="C++">
+    <compoundname>PhysicsEngine.cpp</compoundname>
+    <includes refid="PhysicsEngine_8hpp" local="yes">PhysicsEngine.hpp</includes>
+    <incdepgraph>
+      <node id="1967">
+        <label>list</label>
+      </node>
+      <node id="1953">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1965">
+        <label>iomanip</label>
+      </node>
+      <node id="1954">
+        <label>functional</label>
+      </node>
+      <node id="1973">
+        <label>queue</label>
+      </node>
+      <node id="1948">
+        <label>Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp</label>
+        <link refid="PhysicsEngine_8cpp"/>
+        <childnode refid="1949" relation="include">
+        </childnode>
+      </node>
+      <node id="1962">
+        <label>string</label>
+      </node>
+      <node id="1983">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="1970">
+        <label>map</label>
+      </node>
+      <node id="1969">
+        <label>unordered_set</label>
+      </node>
+      <node id="1963">
+        <label>fstream</label>
+      </node>
+      <node id="1985">
+        <label>btBulletCollisionCommon.h</label>
+      </node>
+      <node id="1979">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="1950">
+        <label>../../Framework/CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="1951" relation="include">
+        </childnode>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1953" relation="include">
+        </childnode>
+        <childnode refid="1954" relation="include">
+        </childnode>
+        <childnode refid="1955" relation="include">
+        </childnode>
+        <childnode refid="1956" relation="include">
+        </childnode>
+        <childnode refid="1957" relation="include">
+        </childnode>
+        <childnode refid="1958" relation="include">
+        </childnode>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1960" relation="include">
+        </childnode>
+        <childnode refid="1961" relation="include">
+        </childnode>
+        <childnode refid="1962" relation="include">
+        </childnode>
+        <childnode refid="1963" relation="include">
+        </childnode>
+        <childnode refid="1964" relation="include">
+        </childnode>
+        <childnode refid="1965" relation="include">
+        </childnode>
+        <childnode refid="1966" relation="include">
+        </childnode>
+        <childnode refid="1967" relation="include">
+        </childnode>
+        <childnode refid="1968" relation="include">
+        </childnode>
+        <childnode refid="1969" relation="include">
+        </childnode>
+        <childnode refid="1970" relation="include">
+        </childnode>
+        <childnode refid="1971" relation="include">
+        </childnode>
+        <childnode refid="1972" relation="include">
+        </childnode>
+        <childnode refid="1973" relation="include">
+        </childnode>
+        <childnode refid="1974" relation="include">
+        </childnode>
+      </node>
+      <node id="1949">
+        <label>PhysicsEngine.hpp</label>
+        <link refid="PhysicsEngine_8hpp_source"/>
+        <childnode refid="1950" relation="include">
+        </childnode>
+        <childnode refid="1975" relation="include">
+        </childnode>
+        <childnode refid="1985" relation="include">
+        </childnode>
+        <childnode refid="1986" relation="include">
+        </childnode>
+      </node>
+      <node id="1977">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="1950" relation="include">
+        </childnode>
+        <childnode refid="1975" relation="include">
+        </childnode>
+        <childnode refid="1978" relation="include">
+        </childnode>
+        <childnode refid="1979" relation="include">
+        </childnode>
+        <childnode refid="1980" relation="include">
+        </childnode>
+        <childnode refid="1981" relation="include">
+        </childnode>
+        <childnode refid="1982" relation="include">
+        </childnode>
+        <childnode refid="1983" relation="include">
+        </childnode>
+      </node>
+      <node id="1981">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="1961">
+        <label>ctime</label>
+      </node>
+      <node id="1975">
+        <label>../../Framework/Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="1976" relation="include">
+        </childnode>
+        <childnode refid="1977" relation="include">
+        </childnode>
+        <childnode refid="1984" relation="include">
+        </childnode>
+      </node>
+      <node id="1955">
+        <label>optional</label>
+      </node>
+      <node id="1972">
+        <label>stack</label>
+      </node>
+      <node id="1966">
+        <label>vector</label>
+      </node>
+      <node id="1964">
+        <label>sstream</label>
+      </node>
+      <node id="1971">
+        <label>unordered_map</label>
+      </node>
+      <node id="1959">
+        <label>shared_mutex</label>
+      </node>
+      <node id="1976">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="1950" relation="include">
+        </childnode>
+      </node>
+      <node id="1958">
+        <label>mutex</label>
+      </node>
+      <node id="1960">
+        <label>chrono</label>
+      </node>
+      <node id="1951">
+        <label>csignal</label>
+      </node>
+      <node id="1982">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="1957">
+        <label>thread</label>
+      </node>
+      <node id="1986">
+        <label>btBulletDynamicsCommon.h</label>
+      </node>
+      <node id="1968">
+        <label>set</label>
+      </node>
+      <node id="1980">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="1974">
+        <label>algorithm</label>
+      </node>
+      <node id="1984">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="1952">
+        <label>stdio.h</label>
+      </node>
+      <node id="1956">
+        <label>memory</label>
+      </node>
+      <node id="1978">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp"/>
+  </compounddef>
+</doxygen>

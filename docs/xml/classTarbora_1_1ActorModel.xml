@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1ActorModel" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::ActorModel</compoundname>
+    <basecompoundref refid="classTarbora_1_1MaterialNode" prot="public" virt="non-virtual">Tarbora::MaterialNode</basecompoundref>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classTarbora_1_1ActorModel_1a7899599edce4988a894c8e7431e7bb85" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class AnimationController</definition>
+        <argsstring></argsstring>
+        <name>AnimationController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="10" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classTarbora_1_1ActorModel_1af47625f50036c466946f960db7320bcf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class Animation</definition>
+        <argsstring></argsstring>
+        <name>Animation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="11" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1ActorModel_1aee3c0355e8af9b43182a8ee8e8cd5166" prot="private" static="no" mutable="no">
+        <type>std::map&lt; std::string, std::shared_ptr&lt; <ref refid="classTarbora_1_1SceneNode" kindref="compound">SceneNode</ref> &gt; &gt;</type>
+        <definition>std::map&lt;std::string, std::shared_ptr&lt;SceneNode&gt; &gt; Tarbora::ActorModel::nodes_</definition>
+        <argsstring></argsstring>
+        <name>nodes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="32" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1ActorModel_1a4592bfa95429d651165b2494b59feed0" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1AnimationController" kindref="compound">AnimationController</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;AnimationController&gt; Tarbora::ActorModel::animation_controller_</definition>
+        <argsstring></argsstring>
+        <name>animation_controller_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="33" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1ActorModel_1a846b6bb8ba8be982073f24a63430e4c6" prot="private" static="no" mutable="no">
+        <type>RenderPass</type>
+        <definition>RenderPass Tarbora::ActorModel::render_pass_</definition>
+        <argsstring></argsstring>
+        <name>render_pass_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="34" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1ActorModel_1a54887bc7ea22112759862b1a55eb092c" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tarbora::ActorModel::model_</definition>
+        <argsstring></argsstring>
+        <name>model_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="35" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a1fefe619a840e2bbdf214e5d44962193" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::ActorModel::ActorModel</definition>
+        <argsstring>(const ActorId &amp;id, RenderPass render_pass, const std::string &amp;model, const std::string &amp;material)</argsstring>
+        <name>ActorModel</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>RenderPass</type>
+          <declname>render_pass</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="13" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="5" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a015ab4fef5af74f1362a2d580a07dbc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::ActorModel::~ActorModel</definition>
+        <argsstring>()</argsstring>
+        <name>~ActorModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="14" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a444103ab29247d23375fe2a55392fae0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1MeshNode" kindref="compound">MeshNode</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; MeshNode &gt; Tarbora::ActorModel::createNode</definition>
+        <argsstring>(const ActorId &amp;id, RenderPass render_pass, LuaTable table)</argsstring>
+        <name>createNode</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>RenderPass</type>
+          <declname>render_pass</declname>
+        </param>
+        <param>
+          <type><ref refid="classTarbora_1_1LuaTable" kindref="compound">LuaTable</ref></type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="16" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="24" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a162b40dc0f465add232c332fd7899610" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Camera" kindref="compound">Camera</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Camera &gt; Tarbora::ActorModel::createCamera</definition>
+        <argsstring>(const ActorId &amp;id, LuaTable table)</argsstring>
+        <name>createCamera</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="classTarbora_1_1LuaTable" kindref="compound">LuaTable</ref></type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="18" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="64" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a7c6a17305abb923b03a190e90b4f856e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::ActorModel::update</definition>
+        <argsstring>(Scene *scene, float delta_time) override</argsstring>
+        <name>update</name>
+        <reimplements refid="classTarbora_1_1SceneNode_1a4b3a843a9bcfcbbefd518a7a6f018c28">update</reimplements>
+        <param>
+          <type><ref refid="classTarbora_1_1Scene" kindref="compound">Scene</ref> *</type>
+          <declname>scene</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="20" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="80" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a896fc0026eeed7a5527846711364cd88" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1SceneNode" kindref="compound">SceneNode</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SceneNode &gt; Tarbora::ActorModel::getChild</definition>
+        <argsstring>(const std::string &amp;name) override</argsstring>
+        <name>getChild</name>
+        <reimplements refid="classTarbora_1_1SceneNode_1a803d63c178c7a18e201c94abf523cb32">getChild</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="22" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="90" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1aadffd78db0a996cb2accb2f2476f0571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ActorModel::startAnimation</definition>
+        <argsstring>(Animation animation, bool background=false)</argsstring>
+        <name>startAnimation</name>
+        <param>
+          <type><ref refid="structTarbora_1_1Animation" kindref="compound">Animation</ref></type>
+          <declname>animation</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>background</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="24" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="100" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a7f55aa586b116b6cf62cc8723062282f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ActorModel::endAnimation</definition>
+        <argsstring>(const std::string &amp;name, StopMode mode, float fade_out_timer)</argsstring>
+        <name>endAnimation</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>StopMode</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>fade_out_timer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="26" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.cpp" bodystart="109" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a9c2a219815c5952de9aa1b4cd298b23d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; Tarbora::ActorModel::getModel</definition>
+        <argsstring>()</argsstring>
+        <name>getModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="28" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ActorModel_1a2955e28f4e1ab4fcb81affcbcd04cbd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>RenderPass</type>
+        <definition>RenderPass Tarbora::ActorModel::getRenderPass</definition>
+        <argsstring>()</argsstring>
+        <name>getRenderPass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="29" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="29" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13">
+        <label>Tarbora::MaterialNode</label>
+        <link refid="classTarbora_1_1MaterialNode"/>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>Tarbora::SceneNode</label>
+        <link refid="classTarbora_1_1SceneNode"/>
+      </node>
+      <node id="12">
+        <label>Tarbora::ActorModel</label>
+        <link refid="classTarbora_1_1ActorModel"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="16">
+        <label>Tarbora::MaterialNode</label>
+        <link refid="classTarbora_1_1MaterialNode"/>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>material_</edgelabel>
+        </childnode>
+      </node>
+      <node id="17">
+        <label>Tarbora::SceneNode</label>
+        <link refid="classTarbora_1_1SceneNode"/>
+        <childnode refid="17" relation="usage">
+          <edgelabel>parent_</edgelabel>
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Tarbora::ActorModel</label>
+        <link refid="classTarbora_1_1ActorModel"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Tarbora::ResourcePtr&lt; Tarbora::Material &gt;</label>
+        <link refid="classTarbora_1_1ResourcePtr"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/ActorModel.hpp" line="9" column="1" bodyfile="Tarbora/Views/GraphicViews/ActorModel.hpp" bodystart="8" bodyend="36"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1ActorModel_1a1fefe619a840e2bbdf214e5d44962193" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>ActorModel</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aca1275aac5f57efcb246bc49664c6381" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>addChild</name></member>
+      <member refid="classTarbora_1_1MaterialNode_1a18f420780044fc1b8ccbc88831713590" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>afterDraw</name></member>
+      <member refid="classTarbora_1_1ActorModel_1af47625f50036c466946f960db7320bcf" prot="private" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>Animation</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a4592bfa95429d651165b2494b59feed0" prot="private" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>animation_controller_</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a7899599edce4988a894c8e7431e7bb85" prot="private" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>AnimationController</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a2303eceadaa9782d33fcd2529297c127" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>begin</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a023b1ecdc817d49475003b6c18e8340d" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>children_</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a162b40dc0f465add232c332fd7899610" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>createCamera</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a444103ab29247d23375fe2a55392fae0" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>createNode</name></member>
+      <member refid="classTarbora_1_1MaterialNode_1abb529ca3cba4c4701d2408cfd951a0bd" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aaf186e7334c6bd39b4d7c05e27760310" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>drawChildren</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a87132c6b69eca517e9f7e5587397a722" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>end</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a7f55aa586b116b6cf62cc8723062282f" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>endAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ac5286baceec7d660738d82737e2845e1" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getActorId</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a896fc0026eeed7a5527846711364cd88" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>getChild</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aceecd2ee682d39fbc0c38d0907043b2a" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>getDeform</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aa90970fd5157deaa0e79eb0c80d81bbb" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getGlobalScale</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afac714f06014bdcb93a57a57cdf87bca" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getGlobalTransform</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a4144df0e04e1d70c6b53323c86b6fe21" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>getLocalTransform</name></member>
+      <member refid="classTarbora_1_1MaterialNode_1abd98982aff234982d98687d5e95a2de4" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getMaterial</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a9c2a219815c5952de9aa1b4cd298b23d" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getModel</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ab110073c6c0f97013b9df24bb18514be" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getName</name></member>
+      <member refid="classTarbora_1_1MaterialNode_1a2fdff51603afd7a8f143b43f6ac44a83" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>getNodeType</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afe8d5ea5c9ee9f9c427595fb19404873" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getOrigin</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a8b95f1289055b031beeee3ff42879ce9" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getParent</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af674e2d2672fcee77ef2f942da30a255" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getPosition</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ad14d66d3d3aeb879791b3bbbe1dd8387" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getRadius</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a2955e28f4e1ab4fcb81affcbcd04cbd5" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getRenderPass</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aaf391946c2b5bf3c6622192d00a3002b" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getRotation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ae99b5787d214c2a490f555f7b6e1046c" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getRotationQuat</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aec0945771093c2b01e41442c32170053" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>getScale</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afba9afc0d19c85bef4de320d8f05be5c" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>global_scale_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a9432d7afb4256f34d05a947d73fd36a5" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>id_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a962a27c04440caf98356eca8c270c5d1" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>isVisible</name></member>
+      <member refid="classTarbora_1_1MaterialNode_1aea611cfa751354cba50f9ed434d138db" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>material_</name></member>
+      <member refid="classTarbora_1_1MaterialNode_1a02a5eee099049757bbcd9fdd3fc139c9" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>material_name_</name></member>
+      <member refid="classTarbora_1_1MaterialNode_1a1e1fa10626850624e034d6ff2998ae25" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>MaterialNode</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a54887bc7ea22112759862b1a55eb092c" prot="private" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>model_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a73e6fbba6218f5b3f739b74fd36a1490" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>name_</name></member>
+      <member refid="classTarbora_1_1ActorModel_1aee3c0355e8af9b43182a8ee8e8cd5166" prot="private" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>nodes_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a5946ac3c4bcb661acf4d0e429e2532b1" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>origin_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1adaa560b8bcf270c2b443f8f8c7cdaa35" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>parent_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ab70a006bc1c86995ebb2e657c9a45ee9" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>position_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af86fdbfafb4b4c212ebd3b9fd1ab3835" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>radius_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aff5f3858deb27da7584e1d83d5a0dd5c" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>removeChild</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a846b6bb8ba8be982073f24a63430e4c6" prot="private" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>render_pass_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a75263c64acd53e86dcecc6a5b3165835" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>rotation_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a50fe08135eb77ca0583a72402a16cbbe" prot="protected" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>scale_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a525d466d830ecdccc16173b3d0f9029e" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>SceneNode</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a115945c69b88fb376c7c918dca6fba3a" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>setGlobalScale</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a98dfaf7374e49ac5bd0c72e499364b4a" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>setOrigin</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a295afaee0c2b91631e12bdbb5a7da4ea" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>setPosition</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a62f0f6876882a058a013a998b6bfaf42" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>setRadius</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a0baf3d85a731703d536183ab4be0a802" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>setRotation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af8033a1185542cf5567b9105aec7f4ba" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>setRotation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ac098d121c3ea7d52d35467089c3e4bb8" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>setScale</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af7665fb94e484e19896499299d577fa5" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>size</name></member>
+      <member refid="classTarbora_1_1ActorModel_1aadffd78db0a996cb2accb2f2476f0571" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>startAnimation</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a7c6a17305abb923b03a190e90b4f856e" prot="public" virt="virtual"><scope>Tarbora::ActorModel</scope><name>update</name></member>
+      <member refid="classTarbora_1_1ActorModel_1a015ab4fef5af74f1362a2d580a07dbc3" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>~ActorModel</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afec9dce3f1e8574894488485c94fd9cb" prot="public" virt="non-virtual"><scope>Tarbora::ActorModel</scope><name>~SceneNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

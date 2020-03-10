@@ -1,271 +1,191 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tarbora Game Engine: Tarbora::ResourceManager Class Reference</title>
-<link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
-<script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8" />
+  <title>Tarbora::ResourceManager class | Tarbora Game Engine The Game Engine for Makers</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
-<div id="titlearea">
-<table cellspacing="0" cellpadding="0">
- <tbody>
- <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.5-ALPHA</span>
-   </div>
-   <div id="projectbrief">The Game Engine for Makers</div>
-  </td>
- </tr>
- </tbody>
-</table>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="icon_white.png" />Tarbora Game Engine <span class="m-thin">The Game Engine for Makers</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespaceTarbora.html">Tarbora</a>::<wbr/></span>ResourceManager <span class="m-thin">class</span>
+        </h1>
+        <p>Load resources and make them available to all the systems.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>See an example of usage in Json.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a></p></aside>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a83f6083aa9a2c8331a0fd519b7d9f62d">
+              <span class="m-doc-wrap-bumper">static void <a href="#a83f6083aa9a2c8331a0fd519b7d9f62d" class="m-doc-self">init</a>(</span><span class="m-doc-wrap">const std::string&amp; folder_path)</span>
+            </dt>
+            <dd>Start the <a href="classTarbora_1_1ResourceManager.html" class="m-doc">ResourceManager</a>.</dd>
+            <dt id="a16851fa61eb7b4c3db0d079ddb295080">
+              <span class="m-doc-wrap-bumper">static void <a href="#a16851fa61eb7b4c3db0d079ddb295080" class="m-doc-self">registerLoader</a>(</span><span class="m-doc-wrap">std::shared_ptr&lt;ResourceLoader&gt;)</span>
+            </dt>
+            <dd>Register a <em>ResourceLoader</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a2c160dc338dfbfecc0b6f7d5a5da981e" class="m-doc">getResource</a>(</span><span class="m-doc-wrap">const std::string&amp; resource,
+              bool* just_loaded = nullptr) -&gt; std::shared_ptr&lt;<a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>&gt;</span>
+            </dt>
+            <dd>Get a <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a> by name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a5a99005c26783713e6581d53a997020e" class="m-doc">freeResource</a>(</span><span class="m-doc-wrap">std::shared_ptr&lt;<a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>&gt; resource)</span>
+            </dt>
+            <dd>Destroy a <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>.</dd>
+            <dt id="afc7aaf81229d7ca40c25bde72ab36420">
+              <span class="m-doc-wrap-bumper">static void <a href="#afc7aaf81229d7ca40c25bde72ab36420" class="m-doc-self">flush</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Destroy all the Resources.</dd>
+            <dt id="ac557dc5499cc9bfd55fea10eaac0da5b">
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac557dc5499cc9bfd55fea10eaac0da5b" class="m-doc-self">getResourceFolder</a>(</span><span class="m-doc-wrap">) -&gt; std::string&amp;</span>
+            </dt>
+            <dd>Get the path to folder where all the resource files are be located at.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a2c160dc338dfbfecc0b6f7d5a5da981e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static std::shared_ptr&lt;<a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>&gt; Tarbora::<wbr />ResourceManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2c160dc338dfbfecc0b6f7d5a5da981e" class="m-doc-self">getResource</a>(</span><span class="m-doc-wrap">const std::string&amp; resource,
+              bool* just_loaded = nullptr)</span></span>
+            </h3>
+            <p>Get a <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a> by name.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">resource</td>
+                  <td>The file name of the resource.</td>
+                </tr>
+                <tr>
+                  <td>just_loaded</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>A pointer to a <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The returned <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a> must be casted to the required type, so a macro is provided to make Get easier, as it typecasts the result: <code class="m-code"><span class="n">GET_RESOURCE</span><span class="p">(</span><span class="n">TYPE</span><span class="p">,</span> <span class="n">NAME</span><span class="p">)</span></code></p><p>If the <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a> isn&#x27;t loaded yet, GetResource automatically finds the appropiate <em>ResourceLoader</em> (see <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>) and loads it.</p>
+          </div></section>
+          <section class="m-doc-details" id="a5a99005c26783713e6581d53a997020e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void Tarbora::<wbr />ResourceManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5a99005c26783713e6581d53a997020e" class="m-doc-self">freeResource</a>(</span><span class="m-doc-wrap">std::shared_ptr&lt;<a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>&gt; resource)</span></span>
+            </h3>
+            <p>Destroy a <a href="classTarbora_1_1Resource.html" class="m-doc">Resource</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">resource</td>
+                  <td>The file name of the resource to destroy.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- end header part -->
-<!-- Generated by Doxygen 1.8.13 -->
-<script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search",false,'Search');
-</script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Tarbora</b></li><li class="navelem"><a class="el" href="classTarbora_1_1ResourceManager.html">ResourceManager</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div class="header">
-  <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="classTarbora_1_1ResourceManager-members.html">List of all members</a>  </div>
-  <div class="headertitle">
-<div class="title">Tarbora::ResourceManager Class Reference</div>  </div>
-</div><!--header-->
-<div class="contents">
-
-<p>Load resources and make them available to all the systems.  
- <a href="classTarbora_1_1ResourceManager.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="ResourceManager_8hpp_source.html">ResourceManager.hpp</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a83f6083aa9a2c8331a0fd519b7d9f62d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a83f6083aa9a2c8331a0fd519b7d9f62d">init</a> (const std::string &amp;folder_path)</td></tr>
-<tr class="memdesc:a83f6083aa9a2c8331a0fd519b7d9f62d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the <a class="el" href="classTarbora_1_1ResourceManager.html" title="Load resources and make them available to all the systems. ">ResourceManager</a>.  <a href="#a83f6083aa9a2c8331a0fd519b7d9f62d">More...</a><br /></td></tr>
-<tr class="separator:a83f6083aa9a2c8331a0fd519b7d9f62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1338ebabf7eea681140d78749789204"><td class="memItemLeft" align="right" valign="top"><a id="ad1338ebabf7eea681140d78749789204"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
-<tr class="separator:ad1338ebabf7eea681140d78749789204"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16851fa61eb7b4c3db0d079ddb295080"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a16851fa61eb7b4c3db0d079ddb295080">registerLoader</a> (std::shared_ptr&lt; ResourceLoader &gt;)</td></tr>
-<tr class="memdesc:a16851fa61eb7b4c3db0d079ddb295080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a <em>ResourceLoader</em>.  <a href="#a16851fa61eb7b4c3db0d079ddb295080">More...</a><br /></td></tr>
-<tr class="separator:a16851fa61eb7b4c3db0d079ddb295080"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c160dc338dfbfecc0b6f7d5a5da981e"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a2c160dc338dfbfecc0b6f7d5a5da981e">getResource</a> (const std::string &amp;resource, bool *just_loaded=nullptr)</td></tr>
-<tr class="memdesc:a2c160dc338dfbfecc0b6f7d5a5da981e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <a class="el" href="classTarbora_1_1Resource.html">Resource</a> by name.  <a href="#a2c160dc338dfbfecc0b6f7d5a5da981e">More...</a><br /></td></tr>
-<tr class="separator:a2c160dc338dfbfecc0b6f7d5a5da981e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a99005c26783713e6581d53a997020e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#a5a99005c26783713e6581d53a997020e">freeResource</a> (std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt; resource)</td></tr>
-<tr class="memdesc:a5a99005c26783713e6581d53a997020e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a <a class="el" href="classTarbora_1_1Resource.html">Resource</a>.  <a href="#a5a99005c26783713e6581d53a997020e">More...</a><br /></td></tr>
-<tr class="separator:a5a99005c26783713e6581d53a997020e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc7aaf81229d7ca40c25bde72ab36420"><td class="memItemLeft" align="right" valign="top"><a id="afc7aaf81229d7ca40c25bde72ab36420"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#afc7aaf81229d7ca40c25bde72ab36420">flush</a> ()</td></tr>
-<tr class="memdesc:afc7aaf81229d7ca40c25bde72ab36420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy all the Resources. <br /></td></tr>
-<tr class="separator:afc7aaf81229d7ca40c25bde72ab36420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac557dc5499cc9bfd55fea10eaac0da5b"><td class="memItemLeft" align="right" valign="top"><a id="ac557dc5499cc9bfd55fea10eaac0da5b"></a>
-static std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1ResourceManager.html#ac557dc5499cc9bfd55fea10eaac0da5b">getResourceFolder</a> ()</td></tr>
-<tr class="memdesc:ac557dc5499cc9bfd55fea10eaac0da5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path to folder where all the resource files are be located at. <br /></td></tr>
-<tr class="separator:ac557dc5499cc9bfd55fea10eaac0da5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Load resources and make them available to all the systems. </p>
-<p>See an example of usage in Json. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classTarbora_1_1Resource.html" title="An abstract resource. ">Resource</a> </dd></dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5a99005c26783713e6581d53a997020e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a99005c26783713e6581d53a997020e">&#9670;&nbsp;</a></span>freeResource()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Tarbora::ResourceManager::freeResource </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt;&#160;</td>
-          <td class="paramname"><em>resource</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Destroy a <a class="el" href="classTarbora_1_1Resource.html">Resource</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">resource</td><td>The file name of the resource to destroy. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a2c160dc338dfbfecc0b6f7d5a5da981e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c160dc338dfbfecc0b6f7d5a5da981e">&#9670;&nbsp;</a></span>getResource()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="classTarbora_1_1Resource.html">Resource</a> &gt; Tarbora::ResourceManager::getResource </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>resource</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool *&#160;</td>
-          <td class="paramname"><em>just_loaded</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get a <a class="el" href="classTarbora_1_1Resource.html">Resource</a> by name. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">resource</td><td>The file name of the resource. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to a <a class="el" href="classTarbora_1_1Resource.html">Resource</a>.</dd></dl>
-<p>The returned <a class="el" href="classTarbora_1_1Resource.html">Resource</a> must be casted to the required type, so a macro is provided to make Get easier, as it typecasts the result: </p><div class="fragment"><div class="line">GET_RESOURCE(TYPE, NAME)</div></div><!-- fragment --><p>If the <a class="el" href="classTarbora_1_1Resource.html">Resource</a> isn't loaded yet, GetResource automatically finds the appropiate <em>ResourceLoader</em> (see <a class="el" href="classTarbora_1_1Resource.html">Resource</a>) and loads it. </p>
-
-</div>
-</div>
-<a id="a83f6083aa9a2c8331a0fd519b7d9f62d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83f6083aa9a2c8331a0fd519b7d9f62d">&#9670;&nbsp;</a></span>init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Tarbora::ResourceManager::init </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>folder_path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Start the <a class="el" href="classTarbora_1_1ResourceManager.html" title="Load resources and make them available to all the systems. ">ResourceManager</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">resourceFolderPath</td><td>The path to folder where all the resource files are be located at. It must be called on startup, before initializing any system that uses resources. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a16851fa61eb7b4c3db0d079ddb295080"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16851fa61eb7b4c3db0d079ddb295080">&#9670;&nbsp;</a></span>registerLoader()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Tarbora::ResourceManager::registerLoader </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; ResourceLoader &gt;&#160;</td>
-          <td class="paramname"><em>loader</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Register a <em>ResourceLoader</em>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">loader</td><td>A pointer to the loader. See <a class="el" href="classTarbora_1_1Resource.html">Resource</a>. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Framework/ResourceManager/<a class="el" href="ResourceManager_8hpp_source.html">ResourceManager.hpp</a></li>
-<li>Tarbora/Framework/ResourceManager/ResourceManager.cpp</li>
-</ul>
-</div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>Tarbora Game Engine The Game Engine for Makers. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
 </body>
 </html>

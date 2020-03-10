@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1ControllerSystem" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::ControllerSystem</compoundname>
+    <basecompoundref refid="classTarbora_1_1SystemImpl" prot="public" virt="non-virtual">Tarbora::SystemImpl&lt; ControllerComponent &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1ControllerSystem_1af2f2f8df2b467fb113fdcc38c48784e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::ControllerSystem::ControllerSystem</definition>
+        <argsstring>(World *w)</argsstring>
+        <name>ControllerSystem</name>
+        <param>
+          <type><ref refid="classTarbora_1_1World" kindref="compound">World</ref> *</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/ControllerComponent.hpp" line="40" column="1" bodyfile="Tarbora/Logic/ControllerComponent.cpp" bodystart="104" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ControllerSystem_1ac117af8c62be21fe5bf9188b32606009" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::ControllerSystem::init</definition>
+        <argsstring>(const ActorId &amp;id)</argsstring>
+        <name>init</name>
+        <reimplements refid="classTarbora_1_1SystemImpl_1a453cc8490cfba14be97fd17a8f2866af">init</reimplements>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/ControllerComponent.hpp" line="44" column="1" bodyfile="Tarbora/Logic/ControllerComponent.cpp" bodystart="126" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ControllerSystem_1a3798b5b50d140e986a6cfc1b4467bc7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::ControllerSystem::update</definition>
+        <argsstring>(float delta_time)</argsstring>
+        <name>update</name>
+        <reimplements refid="classTarbora_1_1SystemImpl_1a8bcfcd3cdce7e590179628c878bdac3a">update</reimplements>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+<para>Perform the logic and the computations of the component. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child component, it will be called inside of <ref refid="classTarbora_1_1Module_1a9d7b1d6f34c2ed64f628d1c958ba1719" kindref="member">Module::update</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delta_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The elapsed time, in seconds, since the last iteration. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/ControllerComponent.hpp" line="46" column="1" bodyfile="Tarbora/Logic/ControllerComponent.cpp" bodystart="149" bodyend="162"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classTarbora_1_1ControllerSystem_1adca814b261e48d028367dffab874ed5e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Tarbora::ControllerSystem::getName</definition>
+        <argsstring>()</argsstring>
+        <name>getName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/ControllerComponent.hpp" line="42" column="1" bodyfile="Tarbora/Logic/ControllerComponent.hpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="102">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+      </node>
+      <node id="99">
+        <label>Tarbora::ControllerSystem</label>
+        <link refid="classTarbora_1_1ControllerSystem"/>
+        <childnode refid="100" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="102" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>Tarbora::SystemImpl&lt; ControllerComponent &gt;</label>
+        <link refid="classTarbora_1_1SystemImpl"/>
+        <childnode refid="101" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="106">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="107" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="103">
+        <label>Tarbora::ControllerSystem</label>
+        <link refid="classTarbora_1_1ControllerSystem"/>
+        <childnode refid="104" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="106" relation="public-inheritance">
+        </childnode>
+        <childnode refid="109" relation="usage">
+          <edgelabel>world_</edgelabel>
+        </childnode>
+      </node>
+      <node id="107">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="108" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="104">
+        <label>Tarbora::SystemImpl&lt; ControllerComponent &gt;</label>
+        <link refid="classTarbora_1_1SystemImpl"/>
+        <childnode refid="105" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>Tarbora::World</label>
+        <link refid="classTarbora_1_1World"/>
+        <childnode refid="107" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="108">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Logic/ControllerComponent.hpp" line="38" column="1" bodyfile="Tarbora/Logic/ControllerComponent.hpp" bodystart="37" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1SystemImpl_1abfaf3411daed7227993a57de7c0cd634" prot="public" virt="virtual"><scope>Tarbora::ControllerSystem</scope><name>add</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1a816816b142fe3cfeb76c1a71af30e4ba" prot="protected" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>components_</name></member>
+      <member refid="classTarbora_1_1ControllerSystem_1af2f2f8df2b467fb113fdcc38c48784e8" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>ControllerSystem</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a06628e8d630f575630d88fe33815a9ed" prot="protected" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>desubscribe</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1a7e3ff91142da0d31dd3203b89f00a181" prot="public" virt="virtual"><scope>Tarbora::ControllerSystem</scope><name>disable</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1adac1428851fc4c3b84fbda5fa81326f0" prot="public" virt="virtual"><scope>Tarbora::ControllerSystem</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1ab44fa2ff9db7d5cb6541719590dce3ab" prot="public" virt="virtual"><scope>Tarbora::ControllerSystem</scope><name>enable</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1a96cdd0e80d8b53bfb8fa394ca168e849" prot="public" virt="virtual"><scope>Tarbora::ControllerSystem</scope><name>get</name></member>
+      <member refid="classTarbora_1_1System_1a08bb90708160b948dc5bfc3c7c8854bc" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1ControllerSystem_1adca814b261e48d028367dffab874ed5e" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>getName</name></member>
+      <member refid="classTarbora_1_1ControllerSystem_1ac117af8c62be21fe5bf9188b32606009" prot="public" virt="virtual"><scope>Tarbora::ControllerSystem</scope><name>init</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a77fdd1e8ca1d2b9f72708a3aa127f0be" prot="protected" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>module_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1abf895d50857190a19b6879aeecc21668" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>ModuleComponent</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b71373206a4a74318e5214bd8baf833" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>send</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b782690dc2819a2ba06ad72a64ee419" prot="protected" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>subscribe</name></member>
+      <member refid="classTarbora_1_1System_1a74903e3c7ad96875d506083592f58c73" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>System</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1aa5a44080178fc08d40988860d53958e0" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>SystemImpl</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a9bfd9e0688f15c8c957d7e6b4aa55e02" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a352f36fb03dbcf383c4485a463515292" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>triggerLocal</name></member>
+      <member refid="classTarbora_1_1ControllerSystem_1a3798b5b50d140e986a6cfc1b4467bc7b" prot="public" virt="virtual"><scope>Tarbora::ControllerSystem</scope><name>update</name></member>
+      <member refid="classTarbora_1_1System_1a957e428c39b4612a76d32ce237f42251" prot="protected" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>world_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a950d758fa03cf6d5dc24b4f48461454d" prot="public" virt="non-virtual"><scope>Tarbora::ControllerSystem</scope><name>~ModuleComponent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

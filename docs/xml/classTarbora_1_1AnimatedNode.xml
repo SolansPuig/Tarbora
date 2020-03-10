@@ -1,0 +1,675 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1AnimatedNode" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::AnimatedNode</compoundname>
+    <basecompoundref refid="classTarbora_1_1MeshNode" prot="public" virt="non-virtual">Tarbora::MeshNode</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a02fc79ea76ea1a7b2a5c34c92e215716" prot="protected" static="no" mutable="no">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 Tarbora::AnimatedNode::position_anim_</definition>
+        <argsstring></argsstring>
+        <name>position_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="180" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1ace8df245f00cf87a48a9f25508415589" prot="protected" static="no" mutable="no">
+        <type>glm::quat</type>
+        <definition>glm::quat Tarbora::AnimatedNode::rotation_anim_</definition>
+        <argsstring></argsstring>
+        <name>rotation_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="181" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a951070a55a9c75da3af2d6ae10f8c3ed" prot="protected" static="no" mutable="no">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 Tarbora::AnimatedNode::scale_anim_</definition>
+        <argsstring></argsstring>
+        <name>scale_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="182" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a7941318652eed31b40cc44c5927c65e8" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::AnimatedNode::global_scale_anim_</definition>
+        <argsstring></argsstring>
+        <name>global_scale_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="183" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a03c3d13efeb19eee3cb774fafc77f62e" prot="protected" static="no" mutable="no">
+        <type>glm::tvec2&lt; unsigned short &gt;</type>
+        <definition>glm::tvec2&lt;unsigned short&gt; Tarbora::AnimatedNode::uv_map_anim_</definition>
+        <argsstring></argsstring>
+        <name>uv_map_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="184" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a5afaff7507ededc5f6cfb4ffef6b7d41" prot="protected" static="no" mutable="no">
+        <type>glm::tvec3&lt; unsigned char &gt;</type>
+        <definition>glm::tvec3&lt;unsigned char&gt; Tarbora::AnimatedNode::color_primary_anim_</definition>
+        <argsstring></argsstring>
+        <name>color_primary_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="185" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a594393a8878b86938f3552c1515cf7f7" prot="protected" static="no" mutable="no">
+        <type>glm::tvec3&lt; unsigned char &gt;</type>
+        <definition>glm::tvec3&lt;unsigned char&gt; Tarbora::AnimatedNode::color_secondary_anim_</definition>
+        <argsstring></argsstring>
+        <name>color_secondary_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="186" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a93916433f3bc22b7817a51b9a9ff5161" prot="protected" static="no" mutable="no">
+        <type>glm::tvec3&lt; unsigned char &gt;</type>
+        <definition>glm::tvec3&lt;unsigned char&gt; Tarbora::AnimatedNode::color_detail_anim_</definition>
+        <argsstring></argsstring>
+        <name>color_detail_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="187" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimatedNode_1a3b2b12634b95c0d9008dda3a1a96e666" prot="protected" static="no" mutable="no">
+        <type>glm::tvec3&lt; unsigned char &gt;</type>
+        <definition>glm::tvec3&lt;unsigned char&gt; Tarbora::AnimatedNode::color_detail2_anim_</definition>
+        <argsstring></argsstring>
+        <name>color_detail2_anim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="188" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a9a53e7180e339f37d11c2a565efa36f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::AnimatedNode::AnimatedNode</definition>
+        <argsstring>(const ActorId &amp;id, const std::string &amp;name, RenderPass render_pass, const std::string &amp;mesh)</argsstring>
+        <name>AnimatedNode</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>RenderPass</type>
+          <declname>render_pass</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="150" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.cpp" bodystart="214" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1af6e8caa16b073c2c4e9a74ba9c4385d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>const std::string</type>
+        <definition>virtual const std::string Tarbora::AnimatedNode::getNodeType</definition>
+        <argsstring>()</argsstring>
+        <name>getNodeType</name>
+        <reimplements refid="classTarbora_1_1MeshNode_1a9d08270219e7fcf60bb5cb60dcfd37bc">getNodeType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="151" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="151" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1ab2ca2c3bc1ef81c51cc6060f5495ba2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::draw</definition>
+        <argsstring>(Scene *scene, const glm::mat4 &amp;transform)</argsstring>
+        <name>draw</name>
+        <reimplements refid="classTarbora_1_1MeshNode_1a75eb4c26b4462296708f304ad98f99cd">draw</reimplements>
+        <param>
+          <type><ref refid="classTarbora_1_1Scene" kindref="compound">Scene</ref> *</type>
+          <declname>scene</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="152" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.cpp" bodystart="248" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a6da3fadd5907f3970b6257ace4755bd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::resetAll</definition>
+        <argsstring>()</argsstring>
+        <name>resetAll</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="153" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.cpp" bodystart="220" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1af273bb9d74d9e41e2d602cd954e36562" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setPositionAnimation</definition>
+        <argsstring>(const glm::vec3 &amp;position)</argsstring>
+        <name>setPositionAnimation</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="155" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="155" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a6f1e6162f6a50ce39ce65b08cbc8a159" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setRotationAnimation</definition>
+        <argsstring>(const glm::vec3 &amp;rotation)</argsstring>
+        <name>setRotationAnimation</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="156" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="156" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a09bccc0e9e1e2450eeca7acbb58cc6ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setRotationAnimation</definition>
+        <argsstring>(const glm::quat &amp;rotation)</argsstring>
+        <name>setRotationAnimation</name>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="157" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="157" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a2e5a5186a22248d950223b7224b6167c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setScaleAnimation</definition>
+        <argsstring>(const glm::vec3 &amp;scale)</argsstring>
+        <name>setScaleAnimation</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="158" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="158" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1ab2bc2200bbdacc8bb27573b8da0cdd00" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setGlobalScaleAnimation</definition>
+        <argsstring>(float scale)</argsstring>
+        <name>setGlobalScaleAnimation</name>
+        <param>
+          <type>float</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="159" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="159" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a6b32e3442bbbd370d73cc61ac6e80514" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setUvMapAnimation</definition>
+        <argsstring>(const glm::tvec2&lt; unsigned short &gt; &amp;uv)</argsstring>
+        <name>setUvMapAnimation</name>
+        <param>
+          <type>const glm::tvec2&lt; unsigned short &gt; &amp;</type>
+          <declname>uv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="160" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="160" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a25054223d38704d2671a9f5214f94702" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setColorPrimaryAnimation</definition>
+        <argsstring>(const glm::tvec3&lt; unsigned char &gt; &amp;color)</argsstring>
+        <name>setColorPrimaryAnimation</name>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="161" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="161" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1abc723035daccf254fa2e4e590ab8625c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setColorSecondaryAnimation</definition>
+        <argsstring>(const glm::tvec3&lt; unsigned char &gt; &amp;color)</argsstring>
+        <name>setColorSecondaryAnimation</name>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="162" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="162" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a606f8d404bd97a8524e3bd52434b9686" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setColorDetailAnimation</definition>
+        <argsstring>(const glm::tvec3&lt; unsigned char &gt; &amp;color)</argsstring>
+        <name>setColorDetailAnimation</name>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="163" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="163" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a7a36adb6aecddf443a8d91f64b42d16a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimatedNode::setColorDetail2Animation</definition>
+        <argsstring>(const glm::tvec3&lt; unsigned char &gt; &amp;color)</argsstring>
+        <name>setColorDetail2Animation</name>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="164" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="164" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a3992e83c9d856be4312c2a82818202f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::vec3 &amp;</type>
+        <definition>const glm::vec3&amp; Tarbora::AnimatedNode::getPositionAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getPositionAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="166" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="166" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a60ed996f8227702ccc8afaf470629f54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::quat &amp;</type>
+        <definition>const glm::quat&amp; Tarbora::AnimatedNode::getRotationAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getRotationAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="167" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="167" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a381ebd9c6caadd103e839b3faf6489ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::vec3 &amp;</type>
+        <definition>const glm::vec3&amp; Tarbora::AnimatedNode::getScaleAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getScaleAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="168" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="168" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a0fddc54e94bf50c435305043dc328ddc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Tarbora::AnimatedNode::getGlobalScaleAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getGlobalScaleAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="169" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="169" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a184531fec66eb3f9e53c3432942b51d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::tvec2&lt; unsigned short &gt; &amp;</type>
+        <definition>const glm::tvec2&lt;unsigned short&gt;&amp; Tarbora::AnimatedNode::getUvMapAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getUvMapAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="170" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="170" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a06713d98a7b6cb58aab0b88bca3516fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+        <definition>const glm::tvec3&lt;unsigned char&gt;&amp; Tarbora::AnimatedNode::getColorPrimaryAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getColorPrimaryAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="171" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a5a24c0231010fc0ccc022eb6aed40a70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+        <definition>const glm::tvec3&lt;unsigned char&gt;&amp; Tarbora::AnimatedNode::getColorSecondaryAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getColorSecondaryAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="172" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="172" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a2d401e3ab855f9190b1e75c491b7144e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+        <definition>const glm::tvec3&lt;unsigned char&gt;&amp; Tarbora::AnimatedNode::getColorDetailAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>getColorDetailAnimation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="173" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1abbf3c7d7ec39ab9ce0d2ba26c83d4f97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+        <definition>const glm::tvec3&lt;unsigned char&gt;&amp; Tarbora::AnimatedNode::getColorDetail2Animation</definition>
+        <argsstring>()</argsstring>
+        <name>getColorDetail2Animation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="174" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="174" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1a384a1b6cf9e5895aab591230cf95eb1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Tarbora::AnimatedNode::getLocalTransform</definition>
+        <argsstring>()</argsstring>
+        <name>getLocalTransform</name>
+        <reimplements refid="classTarbora_1_1SceneNode_1a4144df0e04e1d70c6b53323c86b6fe21">getLocalTransform</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="176" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.cpp" bodystart="233" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimatedNode_1ab4b9aff67108cbdcae4384dec91e370b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Tarbora::AnimatedNode::getDeform</definition>
+        <argsstring>()</argsstring>
+        <name>getDeform</name>
+        <reimplements refid="classTarbora_1_1SceneNode_1aceecd2ee682d39fbc0c38d0907043b2a">getDeform</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="177" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.cpp" bodystart="242" bodyend="246"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="24">
+        <label>Tarbora::MeshNode</label>
+        <link refid="classTarbora_1_1MeshNode"/>
+        <childnode refid="25" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>Tarbora::SceneNode</label>
+        <link refid="classTarbora_1_1SceneNode"/>
+      </node>
+      <node id="23">
+        <label>Tarbora::AnimatedNode</label>
+        <link refid="classTarbora_1_1AnimatedNode"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="29">
+        <label>Tarbora::ResourcePtr&lt; Tarbora::Mesh &gt;</label>
+        <link refid="classTarbora_1_1ResourcePtr"/>
+      </node>
+      <node id="27">
+        <label>Tarbora::MeshNode</label>
+        <link refid="classTarbora_1_1MeshNode"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+        <childnode refid="29" relation="usage">
+          <edgelabel>mesh_</edgelabel>
+        </childnode>
+      </node>
+      <node id="28">
+        <label>Tarbora::SceneNode</label>
+        <link refid="classTarbora_1_1SceneNode"/>
+        <childnode refid="28" relation="usage">
+          <edgelabel>parent_</edgelabel>
+        </childnode>
+      </node>
+      <node id="26">
+        <label>Tarbora::AnimatedNode</label>
+        <link refid="classTarbora_1_1AnimatedNode"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/SceneNode.hpp" line="148" column="1" bodyfile="Tarbora/Views/GraphicViews/SceneNode.hpp" bodystart="147" bodyend="189"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1SceneNode_1aca1275aac5f57efcb246bc49664c6381" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>addChild</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af3e0f513ce4f490dc385dc00d7c61a2c" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>afterDraw</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a9a53e7180e339f37d11c2a565efa36f1" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>AnimatedNode</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a2303eceadaa9782d33fcd2529297c127" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>begin</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a023b1ecdc817d49475003b6c18e8340d" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>children_</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a9c8fde9bafb87ee78df7e5ac3d2ceec2" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_detail2_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a3b2b12634b95c0d9008dda3a1a96e666" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_detail2_anim_</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a98922801d806120194d59366e0e54a78" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_detail_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a93916433f3bc22b7817a51b9a9ff5161" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_detail_anim_</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a94ec7dc843765def28e339278b6f30b6" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_primary_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a5afaff7507ededc5f6cfb4ffef6b7d41" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_primary_anim_</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a05b0ee41684eec48db8751b323a635fa" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_secondary_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a594393a8878b86938f3552c1515cf7f7" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>color_secondary_anim_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1ab2ca2c3bc1ef81c51cc6060f5495ba2a" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aaf186e7334c6bd39b4d7c05e27760310" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>drawChildren</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a87132c6b69eca517e9f7e5587397a722" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>end</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ac5286baceec7d660738d82737e2845e1" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getActorId</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a803d63c178c7a18e201c94abf523cb32" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>getChild</name></member>
+      <member refid="classTarbora_1_1MeshNode_1acd86779d43bc4d304b61837b264bed08" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorDetail</name></member>
+      <member refid="classTarbora_1_1MeshNode_1ae0265cd2d74ec321c0bee040abce9359" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorDetail2</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1abbf3c7d7ec39ab9ce0d2ba26c83d4f97" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorDetail2Animation</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a2d401e3ab855f9190b1e75c491b7144e" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorDetailAnimation</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a43cb669adccd8cdeba8c449b96fb10f4" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorPrimary</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a06713d98a7b6cb58aab0b88bca3516fb" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorPrimaryAnimation</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a2ee7aee12aa9833ed65b8c53bfab64d0" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorSecondary</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a5a24c0231010fc0ccc022eb6aed40a70" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getColorSecondaryAnimation</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1ab4b9aff67108cbdcae4384dec91e370b" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>getDeform</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aa90970fd5157deaa0e79eb0c80d81bbb" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getGlobalScale</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a0fddc54e94bf50c435305043dc328ddc" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getGlobalScaleAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afac714f06014bdcb93a57a57cdf87bca" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getGlobalTransform</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a384a1b6cf9e5895aab591230cf95eb1b" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>getLocalTransform</name></member>
+      <member refid="classTarbora_1_1MeshNode_1aa2f81f5004d3078f73175a63b0703492" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getMeshSize</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ab110073c6c0f97013b9df24bb18514be" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getName</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1af6e8caa16b073c2c4e9a74ba9c4385d5" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>getNodeType</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afe8d5ea5c9ee9f9c427595fb19404873" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getOrigin</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a8b95f1289055b031beeee3ff42879ce9" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getParent</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af674e2d2672fcee77ef2f942da30a255" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getPosition</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a3992e83c9d856be4312c2a82818202f7" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getPositionAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ad14d66d3d3aeb879791b3bbbe1dd8387" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getRadius</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a84bc23514bf0faa9d6b75216185f83c8" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getRenderPass</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aaf391946c2b5bf3c6622192d00a3002b" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getRotation</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a60ed996f8227702ccc8afaf470629f54" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getRotationAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ae99b5787d214c2a490f555f7b6e1046c" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getRotationQuat</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aec0945771093c2b01e41442c32170053" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getScale</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a381ebd9c6caadd103e839b3faf6489ba" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getScaleAnimation</name></member>
+      <member refid="classTarbora_1_1MeshNode_1ae3b11a8e2956a25bb962271c8e0a2078" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getShape</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a8825bb0adb903b1817d3faff926d1a13" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getTextureSize</name></member>
+      <member refid="classTarbora_1_1MeshNode_1ab85533b2df1604ac9271f51a28107858" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getUvMap</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a184531fec66eb3f9e53c3432942b51d2" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>getUvMapAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afba9afc0d19c85bef4de320d8f05be5c" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>global_scale_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a7941318652eed31b40cc44c5927c65e8" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>global_scale_anim_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a9432d7afb4256f34d05a947d73fd36a5" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>id_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a962a27c04440caf98356eca8c270c5d1" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>isVisible</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a2fff0c6db39a4d27bc484c66b00fd7cc" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>mesh_</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a4a84136c112f9f9f6efc9464167d9eeb" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>mesh_name_</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a79f457fdd6161807b81916c09d90bcfa" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>mesh_size_</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a0efb0e3c02ed8171d4e8fd8767db56d5" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>MeshNode</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a73e6fbba6218f5b3f739b74fd36a1490" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>name_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a5946ac3c4bcb661acf4d0e429e2532b1" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>origin_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1adaa560b8bcf270c2b443f8f8c7cdaa35" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>parent_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ab70a006bc1c86995ebb2e657c9a45ee9" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>position_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a02fc79ea76ea1a7b2a5c34c92e215716" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>position_anim_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af86fdbfafb4b4c212ebd3b9fd1ab3835" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>radius_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1aff5f3858deb27da7584e1d83d5a0dd5c" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>removeChild</name></member>
+      <member refid="classTarbora_1_1MeshNode_1afcfdf1bd6a3d3656c478cdee62f15d72" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>render_pass_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a6da3fadd5907f3970b6257ace4755bd4" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>resetAll</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a75263c64acd53e86dcecc6a5b3165835" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>rotation_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1ace8df245f00cf87a48a9f25508415589" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>rotation_anim_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a50fe08135eb77ca0583a72402a16cbbe" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>scale_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a951070a55a9c75da3af2d6ae10f8c3ed" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>scale_anim_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a525d466d830ecdccc16173b3d0f9029e" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>SceneNode</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a196021be1a2decf451511227ad059b1b" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorDetail</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a99c9d41bdbaacb28e464685e2fb0234b" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorDetail2</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a7a36adb6aecddf443a8d91f64b42d16a" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorDetail2Animation</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a606f8d404bd97a8524e3bd52434b9686" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorDetailAnimation</name></member>
+      <member refid="classTarbora_1_1MeshNode_1af2af710ccd6aa8f1147246964d4e7dee" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorPrimary</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a25054223d38704d2671a9f5214f94702" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorPrimaryAnimation</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a590258c4e7f24617d3edc9a678cfa08b" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorSecondary</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1abc723035daccf254fa2e4e590ab8625c" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setColorSecondaryAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a115945c69b88fb376c7c918dca6fba3a" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setGlobalScale</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1ab2bc2200bbdacc8bb27573b8da0cdd00" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setGlobalScaleAnimation</name></member>
+      <member refid="classTarbora_1_1MeshNode_1afaaf9bb00ddf7e2c5a42d1daee15b91f" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setMeshSize</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a98dfaf7374e49ac5bd0c72e499364b4a" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setOrigin</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a295afaee0c2b91631e12bdbb5a7da4ea" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setPosition</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1af273bb9d74d9e41e2d602cd954e36562" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setPositionAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a62f0f6876882a058a013a998b6bfaf42" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setRadius</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a0baf3d85a731703d536183ab4be0a802" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setRotation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af8033a1185542cf5567b9105aec7f4ba" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setRotation</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a6f1e6162f6a50ce39ce65b08cbc8a159" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setRotationAnimation</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a09bccc0e9e1e2450eeca7acbb58cc6ad" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setRotationAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1ac098d121c3ea7d52d35467089c3e4bb8" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setScale</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a2e5a5186a22248d950223b7224b6167c" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setScaleAnimation</name></member>
+      <member refid="classTarbora_1_1MeshNode_1aeb45fbaa931407921cacc80678e1dde6" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setTextureSize</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a3c8bd7580be12704276915ce38da68e9" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setUvMap</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a6b32e3442bbbd370d73cc61ac6e80514" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>setUvMapAnimation</name></member>
+      <member refid="classTarbora_1_1SceneNode_1af7665fb94e484e19896499299d577fa5" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>size</name></member>
+      <member refid="classTarbora_1_1MeshNode_1a29c654c0d45ae53425fcc074d8862d52" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>texture_size_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1a4b3a843a9bcfcbbefd518a7a6f018c28" prot="public" virt="virtual"><scope>Tarbora::AnimatedNode</scope><name>update</name></member>
+      <member refid="classTarbora_1_1MeshNode_1afdf5555abddd25e249a748b889198eac" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>uv_map_</name></member>
+      <member refid="classTarbora_1_1AnimatedNode_1a03c3d13efeb19eee3cb774fafc77f62e" prot="protected" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>uv_map_anim_</name></member>
+      <member refid="classTarbora_1_1SceneNode_1afec9dce3f1e8574894488485c94fd9cb" prot="public" virt="non-virtual"><scope>Tarbora::AnimatedNode</scope><name>~SceneNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

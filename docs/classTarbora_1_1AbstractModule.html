@@ -1,198 +1,178 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tarbora Game Engine: Tarbora::AbstractModule Class Reference</title>
-<link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
-<script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8" />
+  <title>Tarbora::AbstractModule class | Tarbora Game Engine The Game Engine for Makers</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
-<div id="titlearea">
-<table cellspacing="0" cellpadding="0">
- <tbody>
- <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.5-ALPHA</span>
-   </div>
-   <div id="projectbrief">The Game Engine for Makers</div>
-  </td>
- </tr>
- </tbody>
-</table>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="icon_white.png" />Tarbora Game Engine <span class="m-thin">The Game Engine for Makers</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespaceTarbora.html">Tarbora</a>::<wbr/></span>AbstractModule <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="AbstractModule_8hpp.html">&lt;Tarbora/Framework/Module/AbstractModule.hpp&gt;</a></div>
+        </h1>
+        <p>An abstract module that allows all modules to run as threads.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classTarbora_1_1Module.html" class="m-doc">Module</a>
+            </dt>
+            <dd>The class that most modules inherit from.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5f48ed13447dc859b095bf799d20ab61" class="m-doc">run</a>(</span><span class="m-doc-wrap">const std::string&amp; name = &quot;Unamed_Module&quot;) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Start this module&#x27;s loop.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aca0e62a1ce7b61b06b7f60d841306380" class="m-doc">runThread</a>(</span><span class="m-doc-wrap">const std::string&amp; name = &quot;Unamed_Module&quot;)</span>
+            </dt>
+            <dd>Start this module&#x27;s loop in a new thread.</dd>
+            <dt id="a3b1cc88ec4fc5c1351e5f4abe0e25948">
+              <span class="m-doc-wrap-bumper">void <a href="#a3b1cc88ec4fc5c1351e5f4abe0e25948" class="m-doc-self">close</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Stop all the modules.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a5f48ed13447dc859b095bf799d20ab61"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void Tarbora::<wbr />AbstractModule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5f48ed13447dc859b095bf799d20ab61" class="m-doc-self">run</a>(</span><span class="m-doc-wrap">const std::string&amp; name = &quot;Unamed_Module&quot;) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Start this module&#x27;s loop.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>The name of the module, only used for the profiler.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>All modules should stop when AbstractModule::run_ is set to false.</p>
+          </div></section>
+          <section class="m-doc-details" id="aca0e62a1ce7b61b06b7f60d841306380"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void Tarbora::<wbr />AbstractModule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aca0e62a1ce7b61b06b7f60d841306380" class="m-doc-self">runThread</a>(</span><span class="m-doc-wrap">const std::string&amp; name = &quot;Unamed_Module&quot;)</span></span>
+            </h3>
+            <p>Start this module&#x27;s loop in a new thread.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>The name of the module, only used for the profiler.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This function calls <a href="classTarbora_1_1AbstractModule.html#a5f48ed13447dc859b095bf799d20ab61" class="m-doc">AbstractModule::<wbr />run</a> in a new thread.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- end header part -->
-<!-- Generated by Doxygen 1.8.13 -->
-<script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search",false,'Search');
-</script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Tarbora</b></li><li class="navelem"><a class="el" href="classTarbora_1_1AbstractModule.html">AbstractModule</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
-<a href="classTarbora_1_1AbstractModule-members.html">List of all members</a>  </div>
-  <div class="headertitle">
-<div class="title">Tarbora::AbstractModule Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
-</div><!--header-->
-<div class="contents">
-
-<p>Each of the parts that compose the Engine.  
- <a href="classTarbora_1_1AbstractModule.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="AbstractModule_8hpp_source.html">AbstractModule.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Tarbora::AbstractModule:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1AbstractModule__inherit__graph.png" border="0" usemap="#Tarbora_1_1AbstractModule_inherit__map" alt="Inheritance graph"/></div>
-<map name="Tarbora_1_1AbstractModule_inherit__map" id="Tarbora_1_1AbstractModule_inherit__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="282,80,398,107"/>
-<area shape="rect" id="node3" href="classTarbora_1_1ArduinoView.html" title="Tarbora::ArduinoView" alt="" coords="5,155,152,181"/>
-<area shape="rect" id="node4" href="classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="177,155,325,181"/>
-<area shape="rect" id="node6" href="classTarbora_1_1SceneManager.html" title="Tarbora::SceneManager" alt="" coords="349,155,510,181"/>
-<area shape="rect" id="node7" href="classTarbora_1_1World.html" title="Tarbora::World" alt="" coords="534,155,642,181"/>
-<area shape="rect" id="node5" href="classTarbora_1_1HumanView.html" title="Tarbora::HumanView" alt="" coords="178,229,323,256"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:acfb70b92b109b5e8ceae997c8629180a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#acfb70b92b109b5e8ceae997c8629180a">run</a> (const std::string &amp;name=&quot;Unamed <a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;)=0</td></tr>
-<tr class="memdesc:acfb70b92b109b5e8ceae997c8629180a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start this module's loop.  <a href="#acfb70b92b109b5e8ceae997c8629180a">More...</a><br /></td></tr>
-<tr class="separator:acfb70b92b109b5e8ceae997c8629180a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae65c482cc7cca2aae3e24811880c6313"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#ae65c482cc7cca2aae3e24811880c6313">runThread</a> (const std::string &amp;name=&quot;Unamed <a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;)</td></tr>
-<tr class="memdesc:ae65c482cc7cca2aae3e24811880c6313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start this module's loop in a new thread.  <a href="#ae65c482cc7cca2aae3e24811880c6313">More...</a><br /></td></tr>
-<tr class="separator:ae65c482cc7cca2aae3e24811880c6313"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b1cc88ec4fc5c1351e5f4abe0e25948"><td class="memItemLeft" align="right" valign="top"><a id="a3b1cc88ec4fc5c1351e5f4abe0e25948"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTarbora_1_1AbstractModule.html#a3b1cc88ec4fc5c1351e5f4abe0e25948">close</a> ()</td></tr>
-<tr class="memdesc:a3b1cc88ec4fc5c1351e5f4abe0e25948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop this module's loop. <br /></td></tr>
-<tr class="separator:a3b1cc88ec4fc5c1351e5f4abe0e25948"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:aa13dfaed16573bef7cce22a473616bd5"><td class="memItemLeft" align="right" valign="top"><a id="aa13dfaed16573bef7cce22a473616bd5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>using_thread_</b></td></tr>
-<tr class="separator:aa13dfaed16573bef7cce22a473616bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
-Static Protected Attributes</h2></td></tr>
-<tr class="memitem:a66ab779015a191a3188b1f91925e592b"><td class="memItemLeft" align="right" valign="top"><a id="a66ab779015a191a3188b1f91925e592b"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>run_</b> = true</td></tr>
-<tr class="separator:a66ab779015a191a3188b1f91925e592b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Each of the parts that compose the Engine. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="acfb70b92b109b5e8ceae997c8629180a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfb70b92b109b5e8ceae997c8629180a">&#9670;&nbsp;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Tarbora::AbstractModule::run </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;Unamed&#160;<a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Start this module's loop. </p>
-<p>All modules should stop when AbstractModule::run_ is set to false. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the module, only used for the profiler. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classTarbora_1_1Module.html#a8c0352045b21b985d3798caa3190c70b">Tarbora::Module</a>.</p>
-
-</div>
-</div>
-<a id="ae65c482cc7cca2aae3e24811880c6313"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae65c482cc7cca2aae3e24811880c6313">&#9670;&nbsp;</a></span>runThread()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Tarbora::AbstractModule::runThread </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;Unamed&#160;<a class="el" href="classTarbora_1_1Module.html">Module</a>&quot;</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Start this module's loop in a new thread. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the module, only used for the profiler. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Framework/Module/<a class="el" href="AbstractModule_8hpp_source.html">AbstractModule.hpp</a></li>
-<li>Tarbora/Framework/Module/AbstractModule.cpp</li>
-</ul>
-</div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>Tarbora Game Engine The Game Engine for Makers. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
 </body>
 </html>

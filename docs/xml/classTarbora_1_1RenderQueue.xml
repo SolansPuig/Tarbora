@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1RenderQueue" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::RenderQueue</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1RenderQueue_1a364c2db3fb9de321f2d4b1722ad5764c" prot="private" static="no" mutable="no">
+        <type>RenderList</type>
+        <definition>RenderList Tarbora::RenderQueue::render_list_</definition>
+        <argsstring></argsstring>
+        <name>render_list_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="57" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RenderQueue_1a897191ed271ac39e676e860ef9150087" prot="private" static="no" mutable="no">
+        <type>std::stack&lt; <ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Material" kindref="compound">Material</ref> &gt; &gt;</type>
+        <definition>std::stack&lt;ResourcePtr&lt;Material&gt; &gt; Tarbora::RenderQueue::material_stack_</definition>
+        <argsstring></argsstring>
+        <name>material_stack_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="58" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RenderQueue_1ab723e45d1b0fc92d1abf173e71d5c25e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Renderer" kindref="compound">Renderer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Renderer&gt; Tarbora::RenderQueue::renderer_</definition>
+        <argsstring></argsstring>
+        <name>renderer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="60" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RenderQueue_1a329dda967248d09e8b35c56190c79fb6" prot="private" static="no" mutable="no">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Tarbora::RenderQueue::projection_</definition>
+        <argsstring></argsstring>
+        <name>projection_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="62" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1RenderQueue_1a496e0458210a14d8d2b4473efea4aad6" prot="private" static="no" mutable="no">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Tarbora::RenderQueue::view_</definition>
+        <argsstring></argsstring>
+        <name>view_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="63" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1af7c03190dc5846f4859662238535f3f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::RenderQueue::RenderQueue</definition>
+        <argsstring>(std::shared_ptr&lt; Renderer &gt; renderer)</argsstring>
+        <name>RenderQueue</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Renderer" kindref="compound">Renderer</ref> &gt;</type>
+          <declname>renderer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="31" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" bodystart="31" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1a5e2a17364f5676c7f192a3a6f3fd3891" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RenderQueue::drawMesh</definition>
+        <argsstring>(RenderPass render_pass, ResourcePtr&lt; Mesh &gt; mesh, const glm::mat4 &amp;transform, const glm::tvec2&lt; unsigned short &gt; &amp;uv, const glm::vec3 &amp;mesh_size, const glm::vec3 &amp;texture_size, const glm::tvec3&lt; unsigned char &gt; &amp;primary, const glm::tvec3&lt; unsigned char &gt; &amp;secondary, const glm::tvec3&lt; unsigned char &gt; &amp;detail, const glm::tvec3&lt; unsigned char &gt; &amp;detail2)</argsstring>
+        <name>drawMesh</name>
+        <param>
+          <type>RenderPass</type>
+          <declname>render_pass</declname>
+        </param>
+        <param>
+          <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Mesh" kindref="compound">Mesh</ref> &gt;</type>
+          <declname>mesh</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <param>
+          <type>const glm::tvec2&lt; unsigned short &gt; &amp;</type>
+          <declname>uv</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>mesh_size</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>texture_size</declname>
+        </param>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>primary</declname>
+        </param>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>secondary</declname>
+        </param>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>detail</declname>
+        </param>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>detail2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="34" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.cpp" bodystart="4" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1a04c3d762239288fa41881011fca4844f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RenderQueue::draw</definition>
+        <argsstring>()</argsstring>
+        <name>draw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="47" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.cpp" bodystart="32" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1aaa8306d72b9805e0fd8b050c8200970d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RenderQueue::pushMaterial</definition>
+        <argsstring>(ResourcePtr&lt; Material &gt; material)</argsstring>
+        <name>pushMaterial</name>
+        <param>
+          <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Material" kindref="compound">Material</ref> &gt;</type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="49" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.cpp" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1ab62a6bff424b7f44a20319197579a4d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Material" kindref="compound">Material</ref> &gt;</type>
+        <definition>ResourcePtr&lt; Material &gt; Tarbora::RenderQueue::getActiveMaterial</definition>
+        <argsstring>()</argsstring>
+        <name>getActiveMaterial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="50" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.cpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1a1d5f7081996e241f6d680ff0f72b2a91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RenderQueue::popMaterial</definition>
+        <argsstring>()</argsstring>
+        <name>popMaterial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="51" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.cpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1a38f7ecb8298eb82da788887c24345ae7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RenderQueue::setProjectionMatrix</definition>
+        <argsstring>(const glm::mat4 &amp;m)</argsstring>
+        <name>setProjectionMatrix</name>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="53" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.cpp" bodystart="92" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1RenderQueue_1a525f21465a92dd64cbadfb0de0fe9422" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::RenderQueue::setViewMatrix</definition>
+        <argsstring>(const glm::mat4 &amp;m)</argsstring>
+        <name>setViewMatrix</name>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="54" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.cpp" bodystart="98" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" line="29" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp" bodystart="28" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1RenderQueue_1a04c3d762239288fa41881011fca4844f" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a5e2a17364f5676c7f192a3a6f3fd3891" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>drawMesh</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1ab62a6bff424b7f44a20319197579a4d1" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>getActiveMaterial</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a897191ed271ac39e676e860ef9150087" prot="private" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>material_stack_</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a1d5f7081996e241f6d680ff0f72b2a91" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>popMaterial</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a329dda967248d09e8b35c56190c79fb6" prot="private" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>projection_</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1aaa8306d72b9805e0fd8b050c8200970d" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>pushMaterial</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a364c2db3fb9de321f2d4b1722ad5764c" prot="private" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>render_list_</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1ab723e45d1b0fc92d1abf173e71d5c25e" prot="private" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>renderer_</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1af7c03190dc5846f4859662238535f3f9" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>RenderQueue</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a38f7ecb8298eb82da788887c24345ae7" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>setProjectionMatrix</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a525f21465a92dd64cbadfb0de0fe9422" prot="public" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>setViewMatrix</name></member>
+      <member refid="classTarbora_1_1RenderQueue_1a496e0458210a14d8d2b4473efea4aad6" prot="private" virt="non-virtual"><scope>Tarbora::RenderQueue</scope><name>view_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

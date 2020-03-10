@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1PhysicsSystem" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::PhysicsSystem</compoundname>
+    <basecompoundref refid="classTarbora_1_1SystemImpl" prot="public" virt="non-virtual">Tarbora::SystemImpl&lt; PhysicsComponent &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1PhysicsSystem_1adcffe4eadcb8ea852099ebb661075ec2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::PhysicsSystem::PhysicsSystem</definition>
+        <argsstring>(World *w)</argsstring>
+        <name>PhysicsSystem</name>
+        <param>
+          <type><ref refid="classTarbora_1_1World" kindref="compound">World</ref> *</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="49" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="111" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsSystem_1ac2d1145e0eb75fb76cf6eb5e4c52d659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::PhysicsSystem::~PhysicsSystem</definition>
+        <argsstring>()</argsstring>
+        <name>~PhysicsSystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="50" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="171" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsSystem_1a1b5ac1c67c926fca91b2d84b5b61c226" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsSystem::init</definition>
+        <argsstring>(const ActorId &amp;id)</argsstring>
+        <name>init</name>
+        <reimplements refid="classTarbora_1_1SystemImpl_1a453cc8490cfba14be97fd17a8f2866af">init</reimplements>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="54" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="177" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsSystem_1a218a82658b50a4282fd0cfd38397a9ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsSystem::update</definition>
+        <argsstring>(float delta_time)</argsstring>
+        <name>update</name>
+        <reimplements refid="classTarbora_1_1SystemImpl_1a8bcfcd3cdce7e590179628c878bdac3a">update</reimplements>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+<para>Perform the logic and the computations of the component. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child component, it will be called inside of <ref refid="classTarbora_1_1Module_1a9d7b1d6f34c2ed64f628d1c958ba1719" kindref="member">Module::update</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delta_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The elapsed time, in seconds, since the last iteration. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="56" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="196" bodyend="215"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classTarbora_1_1PhysicsSystem_1a58892489b0127fb0948ecae955477724" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Tarbora::PhysicsSystem::getName</definition>
+        <argsstring>()</argsstring>
+        <name>getName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="52" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="52" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="356">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+      </node>
+      <node id="355">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="356" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="354">
+        <label>Tarbora::SystemImpl&lt; PhysicsComponent &gt;</label>
+        <link refid="classTarbora_1_1SystemImpl"/>
+        <childnode refid="355" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="353">
+        <label>Tarbora::PhysicsSystem</label>
+        <link refid="classTarbora_1_1PhysicsSystem"/>
+        <childnode refid="354" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="360">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="361" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="359">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="360" relation="public-inheritance">
+        </childnode>
+        <childnode refid="363" relation="usage">
+          <edgelabel>world_</edgelabel>
+        </childnode>
+      </node>
+      <node id="361">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="362" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="358">
+        <label>Tarbora::SystemImpl&lt; PhysicsComponent &gt;</label>
+        <link refid="classTarbora_1_1SystemImpl"/>
+        <childnode refid="359" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="357">
+        <label>Tarbora::PhysicsSystem</label>
+        <link refid="classTarbora_1_1PhysicsSystem"/>
+        <childnode refid="358" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="363">
+        <label>Tarbora::World</label>
+        <link refid="classTarbora_1_1World"/>
+        <childnode refid="361" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="362">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Logic/PhysicsComponent.hpp" line="47" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="46" bodyend="57"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1SystemImpl_1abfaf3411daed7227993a57de7c0cd634" prot="public" virt="virtual"><scope>Tarbora::PhysicsSystem</scope><name>add</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1a816816b142fe3cfeb76c1a71af30e4ba" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>components_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a06628e8d630f575630d88fe33815a9ed" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>desubscribe</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1a7e3ff91142da0d31dd3203b89f00a181" prot="public" virt="virtual"><scope>Tarbora::PhysicsSystem</scope><name>disable</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1adac1428851fc4c3b84fbda5fa81326f0" prot="public" virt="virtual"><scope>Tarbora::PhysicsSystem</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1ab44fa2ff9db7d5cb6541719590dce3ab" prot="public" virt="virtual"><scope>Tarbora::PhysicsSystem</scope><name>enable</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1a96cdd0e80d8b53bfb8fa394ca168e849" prot="public" virt="virtual"><scope>Tarbora::PhysicsSystem</scope><name>get</name></member>
+      <member refid="classTarbora_1_1System_1a08bb90708160b948dc5bfc3c7c8854bc" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1PhysicsSystem_1a58892489b0127fb0948ecae955477724" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>getName</name></member>
+      <member refid="classTarbora_1_1PhysicsSystem_1a1b5ac1c67c926fca91b2d84b5b61c226" prot="public" virt="virtual"><scope>Tarbora::PhysicsSystem</scope><name>init</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a77fdd1e8ca1d2b9f72708a3aa127f0be" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>module_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1abf895d50857190a19b6879aeecc21668" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>ModuleComponent</name></member>
+      <member refid="classTarbora_1_1PhysicsSystem_1adcffe4eadcb8ea852099ebb661075ec2" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>PhysicsSystem</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b71373206a4a74318e5214bd8baf833" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>send</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b782690dc2819a2ba06ad72a64ee419" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>subscribe</name></member>
+      <member refid="classTarbora_1_1System_1a74903e3c7ad96875d506083592f58c73" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>System</name></member>
+      <member refid="classTarbora_1_1SystemImpl_1aa5a44080178fc08d40988860d53958e0" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>SystemImpl</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a9bfd9e0688f15c8c957d7e6b4aa55e02" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a352f36fb03dbcf383c4485a463515292" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>triggerLocal</name></member>
+      <member refid="classTarbora_1_1PhysicsSystem_1a218a82658b50a4282fd0cfd38397a9ed" prot="public" virt="virtual"><scope>Tarbora::PhysicsSystem</scope><name>update</name></member>
+      <member refid="classTarbora_1_1System_1a957e428c39b4612a76d32ce237f42251" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>world_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a950d758fa03cf6d5dc24b4f48461454d" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>~ModuleComponent</name></member>
+      <member refid="classTarbora_1_1PhysicsSystem_1ac2d1145e0eb75fb76cf6eb5e4c52d659" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsSystem</scope><name>~PhysicsSystem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

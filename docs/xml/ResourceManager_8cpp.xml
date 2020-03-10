@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="ResourceManager_8cpp" kind="file" language="C++">
+    <compoundname>ResourceManager.cpp</compoundname>
+    <includes refid="ResourceManager_8hpp" local="yes">ResourceManager.hpp</includes>
+    <includes refid="Resource_8hpp" local="yes">Resource.hpp</includes>
+    <includes refid="Lua_8hpp" local="yes">Lua.hpp</includes>
+    <includes local="no">fnmatch.h</includes>
+    <incdepgraph>
+      <node id="1281">
+        <label>../../Global.hpp</label>
+      </node>
+      <node id="1282">
+        <label>Resource.hpp</label>
+        <link refid="Resource_8hpp_source"/>
+        <childnode refid="1279" relation="include">
+        </childnode>
+      </node>
+      <node id="1279">
+        <label>ResourceManager.hpp</label>
+        <link refid="ResourceManager_8hpp_source"/>
+        <childnode refid="1280" relation="include">
+        </childnode>
+        <childnode refid="1281" relation="include">
+        </childnode>
+      </node>
+      <node id="1278">
+        <label>Tarbora/Framework/ResourceManager/ResourceManager.cpp</label>
+        <link refid="ResourceManager_8cpp"/>
+        <childnode refid="1279" relation="include">
+        </childnode>
+        <childnode refid="1282" relation="include">
+        </childnode>
+        <childnode refid="1283" relation="include">
+        </childnode>
+        <childnode refid="1285" relation="include">
+        </childnode>
+      </node>
+      <node id="1283">
+        <label>Lua.hpp</label>
+        <link refid="Lua_8hpp_source"/>
+        <childnode refid="1282" relation="include">
+        </childnode>
+        <childnode refid="1284" relation="include">
+        </childnode>
+      </node>
+      <node id="1280">
+        <label>../../CommonHeaders.hpp</label>
+      </node>
+      <node id="1285">
+        <label>fnmatch.h</label>
+      </node>
+      <node id="1284">
+        <label>sol/sol.hpp</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/ResourceManager/ResourceManager.cpp"/>
+  </compounddef>
+</doxygen>

@@ -224,10 +224,10 @@ namespace Tarbora {
         scale_anim_ = glm::vec3(0.f);
         global_scale_anim_ = 1.f;
         uv_map_anim_ = glm::tvec2<unsigned short>(0);
-        color_primary_anim_ = glm::tvec3<unsigned char>(255);
-        color_secondary_anim_ = glm::tvec3<unsigned char>(255);
-        color_detail_anim_ = glm::tvec3<unsigned char>(255);
-        color_detail2_anim_ = glm::tvec3<unsigned char>(255);
+        color_primary_anim_ = glm::tvec3<unsigned char>(0);
+        color_secondary_anim_ = glm::tvec3<unsigned char>(0);
+        color_detail_anim_ = glm::tvec3<unsigned char>(0);
+        color_detail2_anim_ = glm::tvec3<unsigned char>(0);
     }
 
     glm::mat4 AnimatedNode::getLocalTransform()
@@ -262,6 +262,8 @@ namespace Tarbora {
                 color_detail2_ + color_detail2_anim_
             );
         }
+
+        resetAll();
     }
 
 

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_c8d62e4e3b7763f8e473302c01e3764f" kind="dir">
+    <compoundname>Tarbora/Views/GraphicViews/GraphicsEngine</compoundname>
+    <innerfile refid="GraphicsEngine_8cpp">GraphicsEngine.cpp</innerfile>
+    <innerfile refid="GraphicsEngine_8hpp">GraphicsEngine.hpp</innerfile>
+    <innerfile refid="Gui_8cpp">Gui.cpp</innerfile>
+    <innerfile refid="Gui_8hpp">Gui.hpp</innerfile>
+    <innerfile refid="ImGuiBuild_8cpp">ImGuiBuild.cpp</innerfile>
+    <innerfile refid="Input_8cpp">Input.cpp</innerfile>
+    <innerfile refid="Input_8hpp">Input.hpp</innerfile>
+    <innerfile refid="KeyCodes_8hpp">KeyCodes.hpp</innerfile>
+    <innerfile refid="Material_8cpp">Material.cpp</innerfile>
+    <innerfile refid="Material_8hpp">Material.hpp</innerfile>
+    <innerfile refid="Mesh_8cpp">Mesh.cpp</innerfile>
+    <innerfile refid="Mesh_8hpp">Mesh.hpp</innerfile>
+    <innerfile refid="MeshInternal_8cpp">MeshInternal.cpp</innerfile>
+    <innerfile refid="MeshInternal_8hpp">MeshInternal.hpp</innerfile>
+    <innerfile refid="Renderer_8cpp">Renderer.cpp</innerfile>
+    <innerfile refid="Renderer_8hpp">Renderer.hpp</innerfile>
+    <innerfile refid="RenderQueue_8cpp">RenderQueue.cpp</innerfile>
+    <innerfile refid="RenderQueue_8hpp">RenderQueue.hpp</innerfile>
+    <innerfile refid="Shader_8cpp">Shader.cpp</innerfile>
+    <innerfile refid="Shader_8hpp">Shader.hpp</innerfile>
+    <innerfile refid="Texture_8cpp">Texture.cpp</innerfile>
+    <innerfile refid="Texture_8hpp">Texture.hpp</innerfile>
+    <innerfile refid="TextureInternal_8cpp">TextureInternal.cpp</innerfile>
+    <innerfile refid="TextureInternal_8hpp">TextureInternal.hpp</innerfile>
+    <innerfile refid="Window_8cpp">Window.cpp</innerfile>
+    <innerfile refid="Window_8hpp">Window.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/"/>
+  </compounddef>
+</doxygen>

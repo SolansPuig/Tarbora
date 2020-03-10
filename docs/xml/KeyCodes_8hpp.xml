@@ -1,0 +1,1647 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="KeyCodes_8hpp" kind="file" language="C++">
+    <compoundname>KeyCodes.hpp</compoundname>
+    <includedby refid="Input_8hpp" local="yes">Tarbora/Views/GraphicViews/GraphicsEngine/Input.hpp</includedby>
+    <includedby refid="Renderer_8hpp" local="yes">Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp</includedby>
+    <invincdepgraph>
+      <node id="3428">
+        <label>Tarbora/Views/GraphicViews/MetricsGui.hpp</label>
+        <link refid="MetricsGui_8hpp_source"/>
+      </node>
+      <node id="3418">
+        <label>Tarbora/Views/GraphicViews/GraphicsEngine/Input.hpp</label>
+        <link refid="Input_8hpp_source"/>
+        <childnode refid="3419" relation="include">
+        </childnode>
+        <childnode refid="3431" relation="include">
+        </childnode>
+      </node>
+      <node id="3417">
+        <label>Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp</label>
+        <link refid="KeyCodes_8hpp"/>
+        <childnode refid="3418" relation="include">
+        </childnode>
+        <childnode refid="3431" relation="include">
+        </childnode>
+      </node>
+      <node id="3426">
+        <label>Tarbora/Views/GraphicViews/Skybox.hpp</label>
+        <link refid="Skybox_8hpp_source"/>
+        <childnode refid="3424" relation="include">
+        </childnode>
+      </node>
+      <node id="3422">
+        <label>Tarbora/Editor/Editor.hpp</label>
+        <link refid="Editor_8hpp_source"/>
+      </node>
+      <node id="3424">
+        <label>Tarbora/Views/GraphicViews/Scene.hpp</label>
+        <link refid="Scene_8hpp_source"/>
+        <childnode refid="3425" relation="include">
+        </childnode>
+        <childnode refid="3426" relation="include">
+        </childnode>
+      </node>
+      <node id="3431">
+        <label>Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp</label>
+        <link refid="Renderer_8hpp_source"/>
+        <childnode refid="3419" relation="include">
+        </childnode>
+        <childnode refid="3432" relation="include">
+        </childnode>
+      </node>
+      <node id="3432">
+        <label>Tarbora/Views/GraphicViews/GraphicsEngine/RenderQueue.hpp</label>
+        <link refid="RenderQueue_8hpp_source"/>
+        <childnode refid="3419" relation="include">
+        </childnode>
+      </node>
+      <node id="3427">
+        <label>Tarbora/Views/GraphicViews/DemoWindow.hpp</label>
+        <link refid="DemoWindow_8hpp_source"/>
+      </node>
+      <node id="3423">
+        <label>Tarbora/Views/GraphicViews/HumanView.hpp</label>
+        <link refid="HumanView_8hpp_source"/>
+        <childnode refid="3424" relation="include">
+        </childnode>
+      </node>
+      <node id="3419">
+        <label>Tarbora/Views/GraphicViews/GraphicsEngine/GraphicsEngine.hpp</label>
+        <link refid="GraphicsEngine_8hpp_source"/>
+        <childnode refid="3420" relation="include">
+        </childnode>
+      </node>
+      <node id="3421">
+        <label>Tarbora/Views/GraphicViews/Layer.hpp</label>
+        <link refid="Layer_8hpp_source"/>
+        <childnode refid="3422" relation="include">
+        </childnode>
+        <childnode refid="3423" relation="include">
+        </childnode>
+        <childnode refid="3425" relation="include">
+        </childnode>
+        <childnode refid="3427" relation="include">
+        </childnode>
+        <childnode refid="3428" relation="include">
+        </childnode>
+      </node>
+      <node id="3420">
+        <label>Tarbora/Views/GraphicViews/GraphicView.hpp</label>
+        <link refid="GraphicView_8hpp_source"/>
+        <childnode refid="3421" relation="include">
+        </childnode>
+        <childnode refid="3423" relation="include">
+        </childnode>
+        <childnode refid="3429" relation="include">
+        </childnode>
+      </node>
+      <node id="3429">
+        <label>Tarbora/Views/GraphicViews/SceneNode.hpp</label>
+        <link refid="SceneNode_8hpp_source"/>
+        <childnode refid="3424" relation="include">
+        </childnode>
+        <childnode refid="3430" relation="include">
+        </childnode>
+      </node>
+      <node id="3430">
+        <label>Tarbora/Views/GraphicViews/ActorModel.hpp</label>
+        <link refid="ActorModel_8hpp_source"/>
+        <childnode refid="3424" relation="include">
+        </childnode>
+        <childnode refid="3430" relation="include">
+        </childnode>
+      </node>
+      <node id="3425">
+        <label>Tarbora/Views/GraphicViews/GameLayer.hpp</label>
+        <link refid="GameLayer_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="KeyCodes_8hpp_1a640e5770ec5c594beb6f1c101b607ef3" prot="public" static="no">
+        <name>KEY_UNKNOWN</name>
+        <initializer>-1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="3" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="3" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a8a5ff83d21dfa704c1c3eff56d5b3a4b" prot="public" static="no">
+        <name>KEY_SPACE</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="4" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a04c942f1bdb07af34d274e09ae4387d0" prot="public" static="no">
+        <name>KEY_APOSTROPHE</name>
+        <initializer>39</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="5" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a6aa02ea882191812302aa9d1d26186fc" prot="public" static="no">
+        <name>KEY_COMMA</name>
+        <initializer>44</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="6" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a3eefcaaf496c52c1c7283caa3d1dab99" prot="public" static="no">
+        <name>KEY_MINUS</name>
+        <initializer>45</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="7" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a53f3c246f66d6cd725ff79bb3b1e0c74" prot="public" static="no">
+        <name>KEY_PERIOD</name>
+        <initializer>46</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="8" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae98958c265380bd0e491ef368c513196" prot="public" static="no">
+        <name>KEY_SLASH</name>
+        <initializer>47</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="9" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a51ca76d1508339b071a974798b90474b" prot="public" static="no">
+        <name>KEY_0</name>
+        <initializer>48</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="10" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a5a7fd35018971faa28dacd3e33a8f737" prot="public" static="no">
+        <name>KEY_1</name>
+        <initializer>49</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="11" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a3a146cb397d373be978dfa9fd1dc9b3a" prot="public" static="no">
+        <name>KEY_2</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="12" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a701a135e841c3cfb69d9c5bb1444e198" prot="public" static="no">
+        <name>KEY_3</name>
+        <initializer>51</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="13" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a219891753a1b6ccd51c8ae763905dbf9" prot="public" static="no">
+        <name>KEY_4</name>
+        <initializer>52</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="14" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a8520da12c76efb8ca95ca2068d1ca35c" prot="public" static="no">
+        <name>KEY_5</name>
+        <initializer>53</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="15" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a4ab32ce5ef6b5d115253d2a712f2e19b" prot="public" static="no">
+        <name>KEY_6</name>
+        <initializer>54</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="16" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a5895875bee3ae13b13cdb5e85b45161b" prot="public" static="no">
+        <name>KEY_7</name>
+        <initializer>55</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="17" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad2888e35bf1cbd0b25c3e82bc360c647" prot="public" static="no">
+        <name>KEY_8</name>
+        <initializer>56</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="18" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae6838379f118dfbfc78d82fcd8886a41" prot="public" static="no">
+        <name>KEY_9</name>
+        <initializer>57</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="19" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aaaf77eb9716854e4838799c5d2bd26a5" prot="public" static="no">
+        <name>KEY_SEMICOLON</name>
+        <initializer>59</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="20" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae83cfa48ed6b7c324e233c6603a9bea4" prot="public" static="no">
+        <name>KEY_EQUAL</name>
+        <initializer>61</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="21" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a024e62650f02bfd64a4ce2b158ec2dd7" prot="public" static="no">
+        <name>KEY_A</name>
+        <initializer>65</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="22" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad2ae94d1ffed5c399aa6f8c40c0fc3c7" prot="public" static="no">
+        <name>KEY_B</name>
+        <initializer>66</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="23" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a21db833332c950e74a8d5cd79ebffc8d" prot="public" static="no">
+        <name>KEY_C</name>
+        <initializer>67</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="24" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad2017b35fcff527a10050ab7c9af2d5c" prot="public" static="no">
+        <name>KEY_D</name>
+        <initializer>68</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="25" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a76fcab7ae716facf6eefcee03457fe7d" prot="public" static="no">
+        <name>KEY_E</name>
+        <initializer>69</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="26" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1acc696937f28ef5bdd90eeb8addd0ef82" prot="public" static="no">
+        <name>KEY_F</name>
+        <initializer>70</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="27" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ac38f385af8c9c0b21678f07b55f28edf" prot="public" static="no">
+        <name>KEY_G</name>
+        <initializer>71</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="28" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ac7cfd77bb9d2d498bbf591be4420f7a8" prot="public" static="no">
+        <name>KEY_H</name>
+        <initializer>72</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="29" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a31ae832a3de882f92710ed9cb0b46e0a" prot="public" static="no">
+        <name>KEY_I</name>
+        <initializer>73</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="30" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a5e90bac1d19a8a6b8bc79be340470271" prot="public" static="no">
+        <name>KEY_J</name>
+        <initializer>74</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="31" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a98a32c947983c2266dfc309eb7f3fc5c" prot="public" static="no">
+        <name>KEY_K</name>
+        <initializer>75</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="32" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a600bb1ce7eb7b6ca4dcbb41546c32ec5" prot="public" static="no">
+        <name>KEY_L</name>
+        <initializer>76</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="33" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae2552d156f2ef6dff240456f7c648beb" prot="public" static="no">
+        <name>KEY_M</name>
+        <initializer>77</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="34" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a2e446da6a7d4ff47e81f5318a40e53ea" prot="public" static="no">
+        <name>KEY_N</name>
+        <initializer>78</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="35" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1adc0df72b7f6cbb006adeabff653ebeac" prot="public" static="no">
+        <name>KEY_O</name>
+        <initializer>79</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="36" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a0d7cb02ca48dc1dc020e54d104fb9915" prot="public" static="no">
+        <name>KEY_P</name>
+        <initializer>80</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="37" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a201284fc5d50eea7e2db09fb5495bceb" prot="public" static="no">
+        <name>KEY_Q</name>
+        <initializer>81</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="38" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aa020da9e48a194889ac72f94408b3c25" prot="public" static="no">
+        <name>KEY_R</name>
+        <initializer>82</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="39" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a6f09e2899747f5db41369ce1dae11ebd" prot="public" static="no">
+        <name>KEY_S</name>
+        <initializer>83</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="40" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1adb39050b8845e8b16f503a747e196749" prot="public" static="no">
+        <name>KEY_T</name>
+        <initializer>84</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="41" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a050a6de4c5edb8eb9582c3eb80fed07f" prot="public" static="no">
+        <name>KEY_U</name>
+        <initializer>85</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="42" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a1b4a450ef7e51ae0b691dd5489f74535" prot="public" static="no">
+        <name>KEY_V</name>
+        <initializer>86</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="43" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1afdebd5d771ee260c703a74f459767c09" prot="public" static="no">
+        <name>KEY_W</name>
+        <initializer>87</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="44" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a832280ef5a7afeda19f32939951e8b10" prot="public" static="no">
+        <name>KEY_X</name>
+        <initializer>88</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="45" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad9db04899df9fe71bb221c02721e28ac" prot="public" static="no">
+        <name>KEY_Y</name>
+        <initializer>89</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="46" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a7c655f9f55336c6db42503e356028f4d" prot="public" static="no">
+        <name>KEY_Z</name>
+        <initializer>90</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="47" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a4ac032967bfa2021b38e8127e50d97e1" prot="public" static="no">
+        <name>KEY_LEFT_BRACKET</name>
+        <initializer>91</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="48" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a8734bd813d4bbbab29cdf61a085b6762" prot="public" static="no">
+        <name>KEY_BACKSLASH</name>
+        <initializer>92</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="49" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a9c8d4a791d76ddab78fcb714dc0e703f" prot="public" static="no">
+        <name>KEY_RIGHT_BRACKET</name>
+        <initializer>93</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="50" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a3ef4ad20913d5b8bfbd2842dd86c17a1" prot="public" static="no">
+        <name>KEY_GRAVE_ACCENT</name>
+        <initializer>96</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="51" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1adc3ff27f726f48c448302ef601d0db4e" prot="public" static="no">
+        <name>KEY_WORLD_1</name>
+        <initializer>161</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="52" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aedfaa7b5516040ad0aca1b7cd172f706" prot="public" static="no">
+        <name>KEY_WORLD_2</name>
+        <initializer>162</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="53" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a6c8ee53908fc5d6df19f1da8502b38dc" prot="public" static="no">
+        <name>KEY_ESCAPE</name>
+        <initializer>256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="54" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1abaee5edb96e542206ae6c8102ac228af" prot="public" static="no">
+        <name>KEY_ENTER</name>
+        <initializer>257</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="55" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a4fa9fbcc86d5ee884a821459a87f3a54" prot="public" static="no">
+        <name>KEY_TAB</name>
+        <initializer>258</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="56" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a1e9a449dee19c686a2af4edcdc1a1042" prot="public" static="no">
+        <name>KEY_BACKSPACE</name>
+        <initializer>259</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="57" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aaa67a531439790dc20ed750f482d4a3e" prot="public" static="no">
+        <name>KEY_INSERT</name>
+        <initializer>260</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="58" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a1d654db2e04ad94a58f880fb9e127ad6" prot="public" static="no">
+        <name>KEY_DELETE</name>
+        <initializer>261</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="59" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a004194639b9ad76cea01d9e93716d4d6" prot="public" static="no">
+        <name>KEY_RIGHT</name>
+        <initializer>262</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="60" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1af4d1b8a2912354646c74cf36c69f8223" prot="public" static="no">
+        <name>KEY_LEFT</name>
+        <initializer>263</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="61" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a203163bc0189184a1de6ca8d1e53c6bf" prot="public" static="no">
+        <name>KEY_DOWN</name>
+        <initializer>264</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="62" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1afa086fc916a81e7fd348ec00cf786916" prot="public" static="no">
+        <name>KEY_UP</name>
+        <initializer>265</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="63" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a148dd567ca75b9320e8862d54139406a" prot="public" static="no">
+        <name>KEY_PAGE_UP</name>
+        <initializer>266</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="64" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a83760e7f00c16682c746c2844c712b01" prot="public" static="no">
+        <name>KEY_PAGE_DOWN</name>
+        <initializer>267</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="65" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1af6806366178266b3eaf1fb16f991cbee" prot="public" static="no">
+        <name>KEY_HOME</name>
+        <initializer>268</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="66" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a912861b945e779c29f718cdcd62be10c" prot="public" static="no">
+        <name>KEY_END</name>
+        <initializer>269</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="67" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aaac34940ff83d1431044aaca015639ce" prot="public" static="no">
+        <name>KEY_CAPS_LOCK</name>
+        <initializer>280</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="68" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ab94d4309f6059492ef7dbf1a880cf7e0" prot="public" static="no">
+        <name>KEY_SCROLL_LOCK</name>
+        <initializer>281</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="69" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1accb7a413ed6fa7db7192fc957d477ab8" prot="public" static="no">
+        <name>KEY_NUM_LOCK</name>
+        <initializer>282</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="70" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a77e8247cb7e0a962a50ecdc6c1dd4a8d" prot="public" static="no">
+        <name>KEY_PRINT_SCREEN</name>
+        <initializer>283</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="71" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae176aa9af3d2acaeba5b8453aff5bbbf" prot="public" static="no">
+        <name>KEY_PAUSE</name>
+        <initializer>284</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="72" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a2772a1f7024ba1fd62e88ec1adb541f8" prot="public" static="no">
+        <name>KEY_F1</name>
+        <initializer>290</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="73" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae2e2edb31bb7796786da12f85f2d5cd1" prot="public" static="no">
+        <name>KEY_F2</name>
+        <initializer>291</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="74" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a38ebe8e5c5f1d5727c9638bf79fc3952" prot="public" static="no">
+        <name>KEY_F3</name>
+        <initializer>292</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="75" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ab99474b01ffcbc57d74b60a77895e5e8" prot="public" static="no">
+        <name>KEY_F4</name>
+        <initializer>293</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="76" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a2a0aae1931111382ade29fd75ef64790" prot="public" static="no">
+        <name>KEY_F5</name>
+        <initializer>294</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="77" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad31281b771b8b85f4aa98bbd527d91a0" prot="public" static="no">
+        <name>KEY_F6</name>
+        <initializer>295</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="78" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a7eed6766ef9ddb721c6a2bce807fc9dc" prot="public" static="no">
+        <name>KEY_F7</name>
+        <initializer>296</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="79" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a7a8ad03f07f2e4757a70385e88fbbe3c" prot="public" static="no">
+        <name>KEY_F8</name>
+        <initializer>297</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="80" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a417a382624f91fb0cdfdf1c33adc8c90" prot="public" static="no">
+        <name>KEY_F9</name>
+        <initializer>298</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="81" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad37282615edb2c357149c2a1342b4a85" prot="public" static="no">
+        <name>KEY_F10</name>
+        <initializer>299</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="82" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1abd820bb8b4b2a47e4210401b13789106" prot="public" static="no">
+        <name>KEY_F11</name>
+        <initializer>300</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="83" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a0a3de83275f6bbc2b88692f947f0d595" prot="public" static="no">
+        <name>KEY_F12</name>
+        <initializer>301</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="84" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1af87d33df472dd073863b12035c7bd1d4" prot="public" static="no">
+        <name>KEY_F13</name>
+        <initializer>302</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="85" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad566421e6cb409e725578835e9e328bb" prot="public" static="no">
+        <name>KEY_F14</name>
+        <initializer>303</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="86" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a4835f0dc20db5a4d3433acab66236595" prot="public" static="no">
+        <name>KEY_F15</name>
+        <initializer>304</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="87" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1afea8064b70679bb9e0389d5f6621a2f2" prot="public" static="no">
+        <name>KEY_F16</name>
+        <initializer>305</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="88" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a6fa230f5d490af7d6ef87a88ca2db5ae" prot="public" static="no">
+        <name>KEY_F17</name>
+        <initializer>306</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="89" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a2f93cd984f0472309d8af80e1e2f947f" prot="public" static="no">
+        <name>KEY_F18</name>
+        <initializer>307</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="90" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a5bf91538e8323ad995199c817045b26e" prot="public" static="no">
+        <name>KEY_F19</name>
+        <initializer>308</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="91" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a49e680a4ea19e73fb97fe98b0891b0b5" prot="public" static="no">
+        <name>KEY_F20</name>
+        <initializer>309</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="92" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a0084ae075bfc60dc50f2a11c2fdf299f" prot="public" static="no">
+        <name>KEY_F21</name>
+        <initializer>310</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="93" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ab481f83ccc2f1af97e32fcef5bf5c7f3" prot="public" static="no">
+        <name>KEY_F22</name>
+        <initializer>311</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="94" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aae4824ffb7a7f7e29443290c503e6718" prot="public" static="no">
+        <name>KEY_F23</name>
+        <initializer>312</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="95" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aa495d7fdfc50768240f0838fcebbd54b" prot="public" static="no">
+        <name>KEY_F24</name>
+        <initializer>313</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="96" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aaf3acce8d6b3c1c4b274acbeceab3f02" prot="public" static="no">
+        <name>KEY_F25</name>
+        <initializer>314</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="97" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a00d61046c59a7681792d12eb0242a6af" prot="public" static="no">
+        <name>KEY_KP_0</name>
+        <initializer>320</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="98" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a209f631838ed5150e1e4eb9572f2931a" prot="public" static="no">
+        <name>KEY_KP_1</name>
+        <initializer>321</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="99" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae3bbf1389c87103a8a153b901e739c5f" prot="public" static="no">
+        <name>KEY_KP_2</name>
+        <initializer>322</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="100" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aa8b82865739737e93e80ee52671964c8" prot="public" static="no">
+        <name>KEY_KP_3</name>
+        <initializer>323</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="101" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ab5fb02cf27de2d325540492142224085" prot="public" static="no">
+        <name>KEY_KP_4</name>
+        <initializer>324</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="102" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a11b696881ff319badca7ffaace823f0e" prot="public" static="no">
+        <name>KEY_KP_5</name>
+        <initializer>325</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="103" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a4022910cb22ec195156ec970b70bdc69" prot="public" static="no">
+        <name>KEY_KP_6</name>
+        <initializer>326</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="104" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a2919d3f1f6d7cd385062739530f6ba3a" prot="public" static="no">
+        <name>KEY_KP_7</name>
+        <initializer>327</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="105" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1adf8d49bf3fe6a0140a7d5edb9c1ce96e" prot="public" static="no">
+        <name>KEY_KP_8</name>
+        <initializer>328</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="106" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a9579d60b5a593b8c8664cdb1053f71e7" prot="public" static="no">
+        <name>KEY_KP_9</name>
+        <initializer>329</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="107" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad2f19fb33ae5b0010a08a1b33b1eb82b" prot="public" static="no">
+        <name>KEY_KP_DECIMAL</name>
+        <initializer>330</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="108" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a072d900b0ed7b67ea8e6f6975aad52b3" prot="public" static="no">
+        <name>KEY_KP_DIVIDE</name>
+        <initializer>331</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="109" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aa7d07d9793c6a06dd34f1aadb065ca12" prot="public" static="no">
+        <name>KEY_KP_MULTIPLY</name>
+        <initializer>332</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="110" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a754e3cb8946a10d5c779c4cce7c48ff9" prot="public" static="no">
+        <name>KEY_KP_SUBTRACT</name>
+        <initializer>333</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="111" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a5b66ab871d9573dbefe48e4362ad028c" prot="public" static="no">
+        <name>KEY_KP_ADD</name>
+        <initializer>334</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="112" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1abc694590066b6b711cde73342c6ea781" prot="public" static="no">
+        <name>KEY_KP_ENTER</name>
+        <initializer>335</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="113" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae32218416682409e3fc6e44b00434aee" prot="public" static="no">
+        <name>KEY_KP_EQUAL</name>
+        <initializer>336</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="114" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a3e95e749fcf469807632dbf5dad74fa2" prot="public" static="no">
+        <name>KEY_LEFT_SHIFT</name>
+        <initializer>340</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="115" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aa6cc994a75ed65715deead3ea5ad762d" prot="public" static="no">
+        <name>KEY_LEFT_CONTROL</name>
+        <initializer>341</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="116" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a6036ee57ef02abbd7413b1fa9fe1a549" prot="public" static="no">
+        <name>KEY_LEFT_ALT</name>
+        <initializer>342</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="117" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a538adc297392d0693acc7755bf680083" prot="public" static="no">
+        <name>KEY_LEFT_SUPER</name>
+        <initializer>343</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="118" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a49d666fa7e03666c2337ccc7389f3db0" prot="public" static="no">
+        <name>KEY_RIGHT_SHIFT</name>
+        <initializer>344</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="119" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a2527b24b125c9b03ed346334a6be46c2" prot="public" static="no">
+        <name>KEY_RIGHT_CONTROL</name>
+        <initializer>345</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="120" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a64ff7fd78f7b580ef2093c1be785ac16" prot="public" static="no">
+        <name>KEY_RIGHT_ALT</name>
+        <initializer>346</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="121" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a43633595c9d26f462f00d7a256a02e1f" prot="public" static="no">
+        <name>KEY_RIGHT_SUPER</name>
+        <initializer>347</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="122" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a711f41a42892af1b1457e0984a7f4ebc" prot="public" static="no">
+        <name>KEY_MENU</name>
+        <initializer>348</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="123" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1aea07fbab8862471fcd5cdb8d713b5c7c" prot="public" static="no">
+        <name>KEY_LAST</name>
+        <initializer>KEY_MENU</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="124" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a04de37b056058b254cdd15a0b2f880de" prot="public" static="no">
+        <name>MOUSE_BUTTON_1</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="126" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad8aeb008be1701be89fbc05493b71ca9" prot="public" static="no">
+        <name>MOUSE_BUTTON_2</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="127" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a549f3ed1ae1748b1229fd46ce30134ea" prot="public" static="no">
+        <name>MOUSE_BUTTON_3</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="128" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a60e93f6f9d41b9a9532ef82388e194c2" prot="public" static="no">
+        <name>MOUSE_BUTTON_4</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="129" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a305ec65a70fd3ab935245bb48282531c" prot="public" static="no">
+        <name>MOUSE_BUTTON_5</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="130" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a806b8b22783fd9ccf439baa49c5cc25a" prot="public" static="no">
+        <name>MOUSE_BUTTON_6</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="131" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a5c55cd82c9d328678d6ce0f781c8c1d9" prot="public" static="no">
+        <name>MOUSE_BUTTON_7</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="132" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a7fa624b7494427c2c3973c46ab7f2c06" prot="public" static="no">
+        <name>MOUSE_BUTTON_8</name>
+        <initializer>7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="133" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a998e42ad58b8dbb31998fc90d413bfd7" prot="public" static="no">
+        <name>MOUSE_BUTTON_LAST</name>
+        <initializer>MOUSE_BUTTON_8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="134" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a67d41b5dcdb6d241343bf97e15304079" prot="public" static="no">
+        <name>MOUSE_BUTTON_LEFT</name>
+        <initializer>MOUSE_BUTTON_1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="135" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ae62804387f4df3c1b2ab28e4ad8a7fa3" prot="public" static="no">
+        <name>MOUSE_BUTTON_RIGHT</name>
+        <initializer>MOUSE_BUTTON_2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="136" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ad3379a48b44213dfa6b756488082902a" prot="public" static="no">
+        <name>MOUSE_BUTTON_MIDDLE</name>
+        <initializer>MOUSE_BUTTON_3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="137" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a80466852094a4327279c19227119f908" prot="public" static="no">
+        <name>MOD_SHIFT</name>
+        <initializer>0x0001</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="139" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1ab2812cd7de68c54439a75558e476815e" prot="public" static="no">
+        <name>MOD_CONTROL</name>
+        <initializer>0x0002</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="140" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1a6b2d0dbee4745049e0df5982809bd8f9" prot="public" static="no">
+        <name>MOD_ALT</name>
+        <initializer>0x0004</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="141" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="KeyCodes_8hpp_1af4e0ad9d6c5d2aadcfbfb184d1b2a3fb" prot="public" static="no">
+        <name>MOD_SUPER</name>
+        <initializer>0x0008</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" line="142" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/KeyCodes.hpp"/>
+  </compounddef>
+</doxygen>

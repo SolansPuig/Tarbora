@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="BasicMessages_8hpp" kind="file" language="C++">
+    <compoundname>BasicMessages.hpp</compoundname>
+    <includes refid="MathMessages_8hpp" local="yes">MathMessages.hpp</includes>
+    <includes local="yes">basic.pb.h</includes>
+    <includedby refid="ModelEditor_8cpp" local="yes">Tarbora/Editor/ModelEditor.cpp</includedby>
+    <includedby refid="AnimationComponent_8hpp" local="yes">Tarbora/Logic/AnimationComponent.hpp</includedby>
+    <includedby refid="AnimationComponent_8cpp" local="yes">Tarbora/Logic/AnimationComponent.cpp</includedby>
+    <includedby refid="ControllerComponent_8cpp" local="yes">Tarbora/Logic/ControllerComponent.cpp</includedby>
+    <includedby refid="ModelComponent_8cpp" local="yes">Tarbora/Logic/ModelComponent.cpp</includedby>
+    <includedby refid="PhysicsComponent_8cpp" local="yes">Tarbora/Logic/PhysicsComponent.cpp</includedby>
+    <includedby refid="TransformComponent_8cpp" local="yes">Tarbora/Logic/TransformComponent.cpp</includedby>
+    <includedby refid="World_8cpp" local="yes">Tarbora/Logic/World.cpp</includedby>
+    <includedby refid="BasicMessages_8cpp" local="yes">Tarbora/Messages/BasicMessages.cpp</includedby>
+    <includedby refid="GameLayer_8cpp" local="yes">Tarbora/Views/GraphicViews/GameLayer.cpp</includedby>
+    <includedby refid="Shader_8cpp" local="yes">Tarbora/Views/GraphicViews/GraphicsEngine/Shader.cpp</includedby>
+    <includedby refid="ArduinoView_8cpp" local="yes">Tarbora/Views/HardwareViews/src/ArduinoView.cpp</includedby>
+    <includedby refid="SceneManager_8cpp" local="yes">Tarbora/Views/SceneManager/SceneManager.cpp</includedby>
+    <incdepgraph>
+      <node id="2526">
+        <label>list</label>
+      </node>
+      <node id="2512">
+        <label>stdarg.h</label>
+      </node>
+      <node id="2524">
+        <label>iomanip</label>
+      </node>
+      <node id="2513">
+        <label>functional</label>
+      </node>
+      <node id="2532">
+        <label>queue</label>
+      </node>
+      <node id="2545">
+        <label>basic.pb.h</label>
+      </node>
+      <node id="2508">
+        <label>MessageClient.hpp</label>
+        <link refid="MessageClient_8hpp_source"/>
+        <childnode refid="2509" relation="include">
+        </childnode>
+        <childnode refid="2534" relation="include">
+        </childnode>
+      </node>
+      <node id="2505">
+        <label>Tarbora/Messages/BasicMessages.hpp</label>
+        <link refid="BasicMessages_8hpp"/>
+        <childnode refid="2506" relation="include">
+        </childnode>
+        <childnode refid="2545" relation="include">
+        </childnode>
+      </node>
+      <node id="2544">
+        <label>math.pb.h</label>
+      </node>
+      <node id="2521">
+        <label>string</label>
+      </node>
+      <node id="2542">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="2529">
+        <label>map</label>
+      </node>
+      <node id="2528">
+        <label>unordered_set</label>
+      </node>
+      <node id="2522">
+        <label>fstream</label>
+      </node>
+      <node id="2538">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="2509">
+        <label>../CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2511" relation="include">
+        </childnode>
+        <childnode refid="2512" relation="include">
+        </childnode>
+        <childnode refid="2513" relation="include">
+        </childnode>
+        <childnode refid="2514" relation="include">
+        </childnode>
+        <childnode refid="2515" relation="include">
+        </childnode>
+        <childnode refid="2516" relation="include">
+        </childnode>
+        <childnode refid="2517" relation="include">
+        </childnode>
+        <childnode refid="2518" relation="include">
+        </childnode>
+        <childnode refid="2519" relation="include">
+        </childnode>
+        <childnode refid="2520" relation="include">
+        </childnode>
+        <childnode refid="2521" relation="include">
+        </childnode>
+        <childnode refid="2522" relation="include">
+        </childnode>
+        <childnode refid="2523" relation="include">
+        </childnode>
+        <childnode refid="2524" relation="include">
+        </childnode>
+        <childnode refid="2525" relation="include">
+        </childnode>
+        <childnode refid="2526" relation="include">
+        </childnode>
+        <childnode refid="2527" relation="include">
+        </childnode>
+        <childnode refid="2528" relation="include">
+        </childnode>
+        <childnode refid="2529" relation="include">
+        </childnode>
+        <childnode refid="2530" relation="include">
+        </childnode>
+        <childnode refid="2531" relation="include">
+        </childnode>
+        <childnode refid="2532" relation="include">
+        </childnode>
+        <childnode refid="2533" relation="include">
+        </childnode>
+      </node>
+      <node id="2507">
+        <label>../Framework/MessageManager/MessageManager.hpp</label>
+        <link refid="MessageManager_8hpp"/>
+        <childnode refid="2508" relation="include">
+        </childnode>
+      </node>
+      <node id="2536">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="2509" relation="include">
+        </childnode>
+        <childnode refid="2534" relation="include">
+        </childnode>
+        <childnode refid="2537" relation="include">
+        </childnode>
+        <childnode refid="2538" relation="include">
+        </childnode>
+        <childnode refid="2539" relation="include">
+        </childnode>
+        <childnode refid="2540" relation="include">
+        </childnode>
+        <childnode refid="2541" relation="include">
+        </childnode>
+        <childnode refid="2542" relation="include">
+        </childnode>
+      </node>
+      <node id="2540">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="2520">
+        <label>ctime</label>
+      </node>
+      <node id="2534">
+        <label>../Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="2535" relation="include">
+        </childnode>
+        <childnode refid="2536" relation="include">
+        </childnode>
+        <childnode refid="2543" relation="include">
+        </childnode>
+      </node>
+      <node id="2514">
+        <label>optional</label>
+      </node>
+      <node id="2531">
+        <label>stack</label>
+      </node>
+      <node id="2525">
+        <label>vector</label>
+      </node>
+      <node id="2523">
+        <label>sstream</label>
+      </node>
+      <node id="2530">
+        <label>unordered_map</label>
+      </node>
+      <node id="2518">
+        <label>shared_mutex</label>
+      </node>
+      <node id="2535">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="2509" relation="include">
+        </childnode>
+      </node>
+      <node id="2517">
+        <label>mutex</label>
+      </node>
+      <node id="2519">
+        <label>chrono</label>
+      </node>
+      <node id="2510">
+        <label>csignal</label>
+      </node>
+      <node id="2541">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="2516">
+        <label>thread</label>
+      </node>
+      <node id="2527">
+        <label>set</label>
+      </node>
+      <node id="2539">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="2533">
+        <label>algorithm</label>
+      </node>
+      <node id="2543">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="2511">
+        <label>stdio.h</label>
+      </node>
+      <node id="2506">
+        <label>MathMessages.hpp</label>
+        <link refid="MathMessages_8hpp_source"/>
+        <childnode refid="2507" relation="include">
+        </childnode>
+        <childnode refid="2544" relation="include">
+        </childnode>
+      </node>
+      <node id="2515">
+        <label>memory</label>
+      </node>
+      <node id="2537">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2546">
+        <label>Tarbora/Messages/BasicMessages.hpp</label>
+        <link refid="BasicMessages_8hpp"/>
+        <childnode refid="2547" relation="include">
+        </childnode>
+      </node>
+      <node id="2547">
+        <label>Tarbora/Logic/AnimationComponent.hpp</label>
+        <link refid="AnimationComponent_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classTarbora_1_1Message_1_1Message" prot="public">Tarbora::Message::Message</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1Actor" prot="public">Tarbora::Message::Actor</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1Node" prot="public">Tarbora::Message::Node</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1CreateActor" prot="public">Tarbora::Message::CreateActor</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1CreateActorModel" prot="public">Tarbora::Message::CreateActorModel</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1MoveActor" prot="public">Tarbora::Message::MoveActor</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1MoveNode" prot="public">Tarbora::Message::MoveNode</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1StartAnimation" prot="public">Tarbora::Message::StartAnimation</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1EndAnimation" prot="public">Tarbora::Message::EndAnimation</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1ApplyPhysics" prot="public">Tarbora::Message::ApplyPhysics</innerclass>
+    <innerclass refid="classTarbora_1_1Message_1_1LookAt" prot="public">Tarbora::Message::LookAt</innerclass>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <innernamespace refid="namespaceTarbora_1_1Message">Tarbora::Message</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Messages/BasicMessages.hpp"/>
+  </compounddef>
+</doxygen>

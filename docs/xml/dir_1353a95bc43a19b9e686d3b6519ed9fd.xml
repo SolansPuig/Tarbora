@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_1353a95bc43a19b9e686d3b6519ed9fd" kind="dir">
+    <compoundname>Tarbora/Framework/Module</compoundname>
+    <innerfile refid="AbstractModule_8cpp">AbstractModule.cpp</innerfile>
+    <innerfile refid="AbstractModule_8hpp">AbstractModule.hpp</innerfile>
+    <innerfile refid="Module_8cpp">Module.cpp</innerfile>
+    <innerfile refid="Module_8hpp">Module.hpp</innerfile>
+    <innerfile refid="ModuleComponent_8cpp">ModuleComponent.cpp</innerfile>
+    <innerfile refid="ModuleComponent_8hpp">ModuleComponent.hpp</innerfile>
+    <briefdescription>
+<para>The main parts that compose the engine. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/Module/"/>
+  </compounddef>
+</doxygen>

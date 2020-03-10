@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Tarbora Game Engine</title>
+    <detaileddescription>
+<sect1 id="index_1intro_sec">
+<title>Introduction</title>
+<para><ref refid="namespaceTarbora" kindref="compound">Tarbora</ref> is a Game Engine meant to be very easily expandable and modifiable. </para></sect1>
+<sect1 id="index_1install_sec">
+<title>Installation</title>
+<sect2 id="index_1windows">
+<title>On Windows</title>
+<para>Windows isn&apos;t supported yet, but it will be very soon. </para></sect2>
+<sect2 id="index_1linux">
+<title>On Linux</title>
+<para>Get the source code from GitHub:</para><para><programlisting><codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/SolansPuig/Tarbora.git<sp/>YourProject</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>YourProject</highlight></codeline>
+</programlisting></para><para>Initialize the submodules:</para><para><programlisting><codeline><highlight class="normal">git<sp/>submodule<sp/>init</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>submodule<sp/>update</highlight></codeline>
+</programlisting></para><para>And modify the files &quot;Tarbora/Framework/External/glm/CMakeLists.txt&quot; and &quot;Tarbora/Logic/PhysicsEngine/External/bullet3/CMakeLists.txt&quot; to set OFF all the tests, examples and demos so you don&apos;t have to compile unnecessary code!</para><para>Install the dependencies:</para><para><programlisting><codeline><highlight class="normal">sudo<sp/>apt<sp/>install<sp/>cmake<sp/>g++<sp/>libglew-dev<sp/>doxygen<sp/>mesa-common-dev<sp/>libgl1-mesa-dev<sp/>libglu1-mesa-dev<sp/>libxrandr-dev<sp/>libxinerama-dev<sp/>libxcursor-dev<sp/>libxi-dev<sp/>libprotobuf-dev<sp/>protobuf-compiler</highlight></codeline>
+</programlisting></para><para>Create the build directory:</para><para><programlisting><codeline><highlight class="normal">mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+</programlisting></para><para>Compile the source code (it will probabliy take several minutes):</para><para><programlisting><codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+</programlisting></para><para>And test it!</para><para><programlisting><codeline><highlight class="normal">./tarbora</highlight></codeline>
+</programlisting></para><para>I haven&apos;t tried compiling on many computers yet, if you get any errors please open an issue on GitHub.</para></sect2>
+</sect1>
+<sect1 id="index_1getting_started">
+<title>How to start</title>
+<para>I will set up some tutorials in the future, but for now, you&apos;ll have to figure everything by looking at this documentation.</para><para>To start easy, try to modify only the Resources folder.</para><para>Do not touch anything inside the folder <ref refid="namespaceTarbora" kindref="compound">Tarbora</ref> until you really know what you are doing, but if you mess something up, just delete everything and repeat the installation process. </para></sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

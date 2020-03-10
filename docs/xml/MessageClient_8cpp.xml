@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="MessageClient_8cpp" kind="file" language="C++">
+    <compoundname>MessageClient.cpp</compoundname>
+    <includes refid="MessageClient_8hpp" local="yes">MessageClient.hpp</includes>
+    <includes refid="MessageHub_8hpp" local="yes">MessageHub.hpp</includes>
+    <includes local="yes">messages.pb.h</includes>
+    <incdepgraph>
+      <node id="582">
+        <label>list</label>
+      </node>
+      <node id="568">
+        <label>stdarg.h</label>
+      </node>
+      <node id="580">
+        <label>iomanip</label>
+      </node>
+      <node id="569">
+        <label>functional</label>
+      </node>
+      <node id="588">
+        <label>queue</label>
+      </node>
+      <node id="564">
+        <label>MessageClient.hpp</label>
+        <link refid="MessageClient_8hpp_source"/>
+        <childnode refid="565" relation="include">
+        </childnode>
+        <childnode refid="590" relation="include">
+        </childnode>
+      </node>
+      <node id="601">
+        <label>messages.pb.h</label>
+      </node>
+      <node id="600">
+        <label>MessageHub.hpp</label>
+        <link refid="MessageHub_8hpp_source"/>
+        <childnode refid="601" relation="include">
+        </childnode>
+        <childnode refid="565" relation="include">
+        </childnode>
+        <childnode refid="590" relation="include">
+        </childnode>
+        <childnode refid="564" relation="include">
+        </childnode>
+      </node>
+      <node id="577">
+        <label>string</label>
+      </node>
+      <node id="598">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="585">
+        <label>map</label>
+      </node>
+      <node id="584">
+        <label>unordered_set</label>
+      </node>
+      <node id="578">
+        <label>fstream</label>
+      </node>
+      <node id="594">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="565">
+        <label>../CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="566" relation="include">
+        </childnode>
+        <childnode refid="567" relation="include">
+        </childnode>
+        <childnode refid="568" relation="include">
+        </childnode>
+        <childnode refid="569" relation="include">
+        </childnode>
+        <childnode refid="570" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+        <childnode refid="572" relation="include">
+        </childnode>
+        <childnode refid="573" relation="include">
+        </childnode>
+        <childnode refid="574" relation="include">
+        </childnode>
+        <childnode refid="575" relation="include">
+        </childnode>
+        <childnode refid="576" relation="include">
+        </childnode>
+        <childnode refid="577" relation="include">
+        </childnode>
+        <childnode refid="578" relation="include">
+        </childnode>
+        <childnode refid="579" relation="include">
+        </childnode>
+        <childnode refid="580" relation="include">
+        </childnode>
+        <childnode refid="581" relation="include">
+        </childnode>
+        <childnode refid="582" relation="include">
+        </childnode>
+        <childnode refid="583" relation="include">
+        </childnode>
+        <childnode refid="584" relation="include">
+        </childnode>
+        <childnode refid="585" relation="include">
+        </childnode>
+        <childnode refid="586" relation="include">
+        </childnode>
+        <childnode refid="587" relation="include">
+        </childnode>
+        <childnode refid="588" relation="include">
+        </childnode>
+        <childnode refid="589" relation="include">
+        </childnode>
+      </node>
+      <node id="592">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="565" relation="include">
+        </childnode>
+        <childnode refid="590" relation="include">
+        </childnode>
+        <childnode refid="593" relation="include">
+        </childnode>
+        <childnode refid="594" relation="include">
+        </childnode>
+        <childnode refid="595" relation="include">
+        </childnode>
+        <childnode refid="596" relation="include">
+        </childnode>
+        <childnode refid="597" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+      </node>
+      <node id="596">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="576">
+        <label>ctime</label>
+      </node>
+      <node id="590">
+        <label>../Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="591" relation="include">
+        </childnode>
+        <childnode refid="592" relation="include">
+        </childnode>
+        <childnode refid="599" relation="include">
+        </childnode>
+      </node>
+      <node id="570">
+        <label>optional</label>
+      </node>
+      <node id="587">
+        <label>stack</label>
+      </node>
+      <node id="581">
+        <label>vector</label>
+      </node>
+      <node id="579">
+        <label>sstream</label>
+      </node>
+      <node id="586">
+        <label>unordered_map</label>
+      </node>
+      <node id="574">
+        <label>shared_mutex</label>
+      </node>
+      <node id="591">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="565" relation="include">
+        </childnode>
+      </node>
+      <node id="573">
+        <label>mutex</label>
+      </node>
+      <node id="575">
+        <label>chrono</label>
+      </node>
+      <node id="566">
+        <label>csignal</label>
+      </node>
+      <node id="563">
+        <label>Tarbora/Framework/MessageManager/MessageClient.cpp</label>
+        <link refid="MessageClient_8cpp"/>
+        <childnode refid="564" relation="include">
+        </childnode>
+        <childnode refid="600" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+      </node>
+      <node id="597">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="572">
+        <label>thread</label>
+      </node>
+      <node id="583">
+        <label>set</label>
+      </node>
+      <node id="595">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="589">
+        <label>algorithm</label>
+      </node>
+      <node id="599">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="567">
+        <label>stdio.h</label>
+      </node>
+      <node id="571">
+        <label>memory</label>
+      </node>
+      <node id="593">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/MessageManager/MessageClient.cpp"/>
+  </compounddef>
+</doxygen>

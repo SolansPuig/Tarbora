@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="AnimationController_8hpp" kind="file" language="C++">
+    <compoundname>AnimationController.hpp</compoundname>
+    <includes refid="Module_8hpp" local="yes">../../Framework/Module/Module.hpp</includes>
+    <includedby refid="ActorModel_8hpp" local="yes">Tarbora/Views/GraphicViews/ActorModel.hpp</includedby>
+    <includedby refid="AnimationController_8cpp" local="yes">Tarbora/Views/GraphicViews/AnimationController.cpp</includedby>
+    <incdepgraph>
+      <node id="2827">
+        <label>list</label>
+      </node>
+      <node id="2813">
+        <label>stdarg.h</label>
+      </node>
+      <node id="2850">
+        <label>../../Global.hpp</label>
+      </node>
+      <node id="2825">
+        <label>iomanip</label>
+      </node>
+      <node id="2814">
+        <label>functional</label>
+      </node>
+      <node id="2833">
+        <label>queue</label>
+      </node>
+      <node id="2846">
+        <label>MessageClient.hpp</label>
+        <link refid="MessageClient_8hpp_source"/>
+        <childnode refid="2810" relation="include">
+        </childnode>
+        <childnode refid="2835" relation="include">
+        </childnode>
+      </node>
+      <node id="2847">
+        <label>../ResourceManager/Resource.hpp</label>
+        <link refid="Resource_8hpp_source"/>
+        <childnode refid="2848" relation="include">
+        </childnode>
+      </node>
+      <node id="2809">
+        <label>AbstractModule.hpp</label>
+        <link refid="AbstractModule_8hpp"/>
+        <childnode refid="2810" relation="include">
+        </childnode>
+        <childnode refid="2835" relation="include">
+        </childnode>
+      </node>
+      <node id="2822">
+        <label>string</label>
+      </node>
+      <node id="2843">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="2830">
+        <label>map</label>
+      </node>
+      <node id="2829">
+        <label>unordered_set</label>
+      </node>
+      <node id="2848">
+        <label>ResourceManager.hpp</label>
+        <link refid="ResourceManager_8hpp_source"/>
+        <childnode refid="2849" relation="include">
+        </childnode>
+        <childnode refid="2850" relation="include">
+        </childnode>
+      </node>
+      <node id="2807">
+        <label>Tarbora/Views/GraphicViews/AnimationController.hpp</label>
+        <link refid="AnimationController_8hpp"/>
+        <childnode refid="2808" relation="include">
+        </childnode>
+      </node>
+      <node id="2823">
+        <label>fstream</label>
+      </node>
+      <node id="2839">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="2810">
+        <label>../CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="2811" relation="include">
+        </childnode>
+        <childnode refid="2812" relation="include">
+        </childnode>
+        <childnode refid="2813" relation="include">
+        </childnode>
+        <childnode refid="2814" relation="include">
+        </childnode>
+        <childnode refid="2815" relation="include">
+        </childnode>
+        <childnode refid="2816" relation="include">
+        </childnode>
+        <childnode refid="2817" relation="include">
+        </childnode>
+        <childnode refid="2818" relation="include">
+        </childnode>
+        <childnode refid="2819" relation="include">
+        </childnode>
+        <childnode refid="2820" relation="include">
+        </childnode>
+        <childnode refid="2821" relation="include">
+        </childnode>
+        <childnode refid="2822" relation="include">
+        </childnode>
+        <childnode refid="2823" relation="include">
+        </childnode>
+        <childnode refid="2824" relation="include">
+        </childnode>
+        <childnode refid="2825" relation="include">
+        </childnode>
+        <childnode refid="2826" relation="include">
+        </childnode>
+        <childnode refid="2827" relation="include">
+        </childnode>
+        <childnode refid="2828" relation="include">
+        </childnode>
+        <childnode refid="2829" relation="include">
+        </childnode>
+        <childnode refid="2830" relation="include">
+        </childnode>
+        <childnode refid="2831" relation="include">
+        </childnode>
+        <childnode refid="2832" relation="include">
+        </childnode>
+        <childnode refid="2833" relation="include">
+        </childnode>
+        <childnode refid="2834" relation="include">
+        </childnode>
+      </node>
+      <node id="2845">
+        <label>../MessageManager/MessageManager.hpp</label>
+        <link refid="MessageManager_8hpp"/>
+        <childnode refid="2846" relation="include">
+        </childnode>
+      </node>
+      <node id="2837">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="2810" relation="include">
+        </childnode>
+        <childnode refid="2835" relation="include">
+        </childnode>
+        <childnode refid="2838" relation="include">
+        </childnode>
+        <childnode refid="2839" relation="include">
+        </childnode>
+        <childnode refid="2840" relation="include">
+        </childnode>
+        <childnode refid="2841" relation="include">
+        </childnode>
+        <childnode refid="2842" relation="include">
+        </childnode>
+        <childnode refid="2843" relation="include">
+        </childnode>
+      </node>
+      <node id="2841">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="2821">
+        <label>ctime</label>
+      </node>
+      <node id="2835">
+        <label>../Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="2836" relation="include">
+        </childnode>
+        <childnode refid="2837" relation="include">
+        </childnode>
+        <childnode refid="2844" relation="include">
+        </childnode>
+      </node>
+      <node id="2815">
+        <label>optional</label>
+      </node>
+      <node id="2832">
+        <label>stack</label>
+      </node>
+      <node id="2826">
+        <label>vector</label>
+      </node>
+      <node id="2824">
+        <label>sstream</label>
+      </node>
+      <node id="2851">
+        <label>../ResourceManager/Lua.hpp</label>
+        <link refid="Lua_8hpp_source"/>
+        <childnode refid="2847" relation="include">
+        </childnode>
+        <childnode refid="2852" relation="include">
+        </childnode>
+      </node>
+      <node id="2849">
+        <label>../../CommonHeaders.hpp</label>
+      </node>
+      <node id="2831">
+        <label>unordered_map</label>
+      </node>
+      <node id="2819">
+        <label>shared_mutex</label>
+      </node>
+      <node id="2836">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="2810" relation="include">
+        </childnode>
+      </node>
+      <node id="2818">
+        <label>mutex</label>
+      </node>
+      <node id="2820">
+        <label>chrono</label>
+      </node>
+      <node id="2811">
+        <label>csignal</label>
+      </node>
+      <node id="2842">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="2817">
+        <label>thread</label>
+      </node>
+      <node id="2808">
+        <label>../../Framework/Module/Module.hpp</label>
+        <link refid="Module_8hpp"/>
+        <childnode refid="2809" relation="include">
+        </childnode>
+        <childnode refid="2845" relation="include">
+        </childnode>
+        <childnode refid="2847" relation="include">
+        </childnode>
+        <childnode refid="2851" relation="include">
+        </childnode>
+      </node>
+      <node id="2828">
+        <label>set</label>
+      </node>
+      <node id="2840">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="2834">
+        <label>algorithm</label>
+      </node>
+      <node id="2844">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="2812">
+        <label>stdio.h</label>
+      </node>
+      <node id="2852">
+        <label>sol/sol.hpp</label>
+      </node>
+      <node id="2816">
+        <label>memory</label>
+      </node>
+      <node id="2838">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2857">
+        <label>Tarbora/Views/GraphicViews/Skybox.hpp</label>
+        <link refid="Skybox_8hpp_source"/>
+        <childnode refid="2855" relation="include">
+        </childnode>
+      </node>
+      <node id="2853">
+        <label>Tarbora/Views/GraphicViews/AnimationController.hpp</label>
+        <link refid="AnimationController_8hpp"/>
+        <childnode refid="2854" relation="include">
+        </childnode>
+      </node>
+      <node id="2855">
+        <label>Tarbora/Views/GraphicViews/Scene.hpp</label>
+        <link refid="Scene_8hpp_source"/>
+        <childnode refid="2856" relation="include">
+        </childnode>
+        <childnode refid="2857" relation="include">
+        </childnode>
+      </node>
+      <node id="2854">
+        <label>Tarbora/Views/GraphicViews/ActorModel.hpp</label>
+        <link refid="ActorModel_8hpp_source"/>
+        <childnode refid="2855" relation="include">
+        </childnode>
+        <childnode refid="2854" relation="include">
+        </childnode>
+      </node>
+      <node id="2856">
+        <label>Tarbora/Views/GraphicViews/GameLayer.hpp</label>
+        <link refid="GameLayer_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTarbora_1_1Animation" prot="public">Tarbora::Animation</innerclass>
+    <innerclass refid="classTarbora_1_1AnimationController" prot="public">Tarbora::AnimationController</innerclass>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/AnimationController.hpp"/>
+  </compounddef>
+</doxygen>

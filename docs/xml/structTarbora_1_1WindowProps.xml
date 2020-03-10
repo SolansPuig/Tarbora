@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structTarbora_1_1WindowProps" kind="struct" language="C++" prot="public">
+    <compoundname>Tarbora::WindowProps</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTarbora_1_1WindowProps_1ab7ecd07ea6ad0bb15dc3aec6ffc7b5f5" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Tarbora::WindowProps::title</definition>
+        <argsstring></argsstring>
+        <name>title</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" line="14" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTarbora_1_1WindowProps_1aa95a93cc65364a483c4cb509d43e8fd8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Tarbora::WindowProps::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" line="15" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTarbora_1_1WindowProps_1a6896cbaf94f4aac92eeb8cb95291c67c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Tarbora::WindowProps::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" line="16" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTarbora_1_1WindowProps_1a57f0dee710d4838d5bbfb08245fe5654" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::WindowProps::ratio</definition>
+        <argsstring></argsstring>
+        <name>ratio</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" line="17" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTarbora_1_1WindowProps_1ac05b4951279ae357b09d539c4e6fdcd9" prot="public" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1GraphicsEngine" kindref="compound">GraphicsEngine</ref> *</type>
+        <definition>GraphicsEngine* Tarbora::WindowProps::graphics_engine</definition>
+        <argsstring></argsstring>
+        <name>graphics_engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" line="18" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTarbora_1_1WindowProps_1a6106ebcc781d54829b580e9e72d48f33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::WindowProps::WindowProps</definition>
+        <argsstring>(const std::string &amp;title, int width, int height, GraphicsEngine *graphics_engine)</argsstring>
+        <name>WindowProps</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type><ref refid="classTarbora_1_1GraphicsEngine" kindref="compound">GraphicsEngine</ref> *</type>
+          <declname>graphics_engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" line="20" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" bodystart="20" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="521">
+        <label>Tarbora::WindowProps</label>
+        <link refid="structTarbora_1_1WindowProps"/>
+        <childnode refid="522" relation="usage">
+          <edgelabel>graphics_engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="522">
+        <label>Tarbora::GraphicsEngine</label>
+        <link refid="classTarbora_1_1GraphicsEngine"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" line="13" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Window.hpp" bodystart="13" bodyend="22"/>
+    <listofallmembers>
+      <member refid="structTarbora_1_1WindowProps_1ac05b4951279ae357b09d539c4e6fdcd9" prot="public" virt="non-virtual"><scope>Tarbora::WindowProps</scope><name>graphics_engine</name></member>
+      <member refid="structTarbora_1_1WindowProps_1a6896cbaf94f4aac92eeb8cb95291c67c" prot="public" virt="non-virtual"><scope>Tarbora::WindowProps</scope><name>height</name></member>
+      <member refid="structTarbora_1_1WindowProps_1a57f0dee710d4838d5bbfb08245fe5654" prot="public" virt="non-virtual"><scope>Tarbora::WindowProps</scope><name>ratio</name></member>
+      <member refid="structTarbora_1_1WindowProps_1ab7ecd07ea6ad0bb15dc3aec6ffc7b5f5" prot="public" virt="non-virtual"><scope>Tarbora::WindowProps</scope><name>title</name></member>
+      <member refid="structTarbora_1_1WindowProps_1aa95a93cc65364a483c4cb509d43e8fd8" prot="public" virt="non-virtual"><scope>Tarbora::WindowProps</scope><name>width</name></member>
+      <member refid="structTarbora_1_1WindowProps_1a6106ebcc781d54829b580e9e72d48f33" prot="public" virt="non-virtual"><scope>Tarbora::WindowProps</scope><name>WindowProps</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

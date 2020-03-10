@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1MetricsGui" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::MetricsGui</compoundname>
+    <basecompoundref refid="classTarbora_1_1Layer" prot="public" virt="non-virtual">Tarbora::Layer</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1MetricsGui_1af2e84f7d9a975f0b117809688b66d8e9" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::MetricsGui::delta_time_</definition>
+        <argsstring></argsstring>
+        <name>delta_time_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/MetricsGui.hpp" line="43" column="1" bodyfile="Tarbora/Views/GraphicViews/MetricsGui.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1MetricsGui_1ac765e76dddb13b5caa1fb0037467ee45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::MetricsGui::MetricsGui</definition>
+        <argsstring>(GraphicView *view, bool start_active)</argsstring>
+        <name>MetricsGui</name>
+        <param>
+          <type><ref refid="classTarbora_1_1GraphicView" kindref="compound">GraphicView</ref> *</type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>start_active</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/MetricsGui.hpp" line="8" column="1" bodyfile="Tarbora/Views/GraphicViews/MetricsGui.hpp" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MetricsGui_1a6efa7ebc05866401aa96235e4d96feb6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::MetricsGui::getInput</definition>
+        <argsstring>() override</argsstring>
+        <name>getInput</name>
+        <reimplements refid="classTarbora_1_1Layer_1a6f06c6331635d6f29b6b711fecafc617">getInput</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/MetricsGui.hpp" line="12" column="1" bodyfile="Tarbora/Views/GraphicViews/MetricsGui.hpp" bodystart="12" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MetricsGui_1a16532223c4313a559e58b51a5af4cb62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::MetricsGui::update</definition>
+        <argsstring>(float delta_time) override</argsstring>
+        <name>update</name>
+        <reimplements refid="classTarbora_1_1Layer_1aa840eefc7b9a7fc08f6ca7ba14e219de">update</reimplements>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+<para>Perform the logic and the computations of the component. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child component, it will be called inside of <ref refid="classTarbora_1_1Module_1a9d7b1d6f34c2ed64f628d1c958ba1719" kindref="member">Module::update</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delta_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The elapsed time, in seconds, since the last iteration. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/MetricsGui.hpp" line="19" column="1" bodyfile="Tarbora/Views/GraphicViews/MetricsGui.hpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MetricsGui_1a2dc79e283aa20a6d0838f6edbb5fa701" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::MetricsGui::draw</definition>
+        <argsstring>() override</argsstring>
+        <name>draw</name>
+        <reimplements refid="classTarbora_1_1Layer_1a0744dccca287ad0100f688eba65c9d3f">draw</reimplements>
+        <briefdescription>
+<para>Render the data of the module. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child component, it will be called inside of <ref refid="classTarbora_1_1Module_1a9dfb5e4073e01bb09899a2001b6c65d0" kindref="member">Module::draw</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/MetricsGui.hpp" line="24" column="1" bodyfile="Tarbora/Views/GraphicViews/MetricsGui.hpp" bodystart="24" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1MetricsGui_1ae5d19518e7841b39e44f7b88c95f9d93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::MetricsGui::SetTime</definition>
+        <argsstring>(float delta_time)</argsstring>
+        <name>SetTime</name>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/MetricsGui.hpp" line="37" column="1" bodyfile="Tarbora/Views/GraphicViews/MetricsGui.hpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="262">
+        <label>Tarbora::MetricsGui</label>
+        <link refid="classTarbora_1_1MetricsGui"/>
+        <childnode refid="263" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="264">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+      </node>
+      <node id="263">
+        <label>Tarbora::Layer</label>
+        <link refid="classTarbora_1_1Layer"/>
+        <childnode refid="264" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="265">
+        <label>Tarbora::MetricsGui</label>
+        <link refid="classTarbora_1_1MetricsGui"/>
+        <childnode refid="266" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="267">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="268" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="266">
+        <label>Tarbora::Layer</label>
+        <link refid="classTarbora_1_1Layer"/>
+        <childnode refid="267" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="269" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="269">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/MetricsGui.hpp" line="6" column="1" bodyfile="Tarbora/Views/GraphicViews/MetricsGui.hpp" bodystart="5" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Layer_1a4d7fdc234d3b929bff31b80013355ddb" prot="protected" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>active_</name></member>
+      <member refid="classTarbora_1_1MetricsGui_1af2e84f7d9a975f0b117809688b66d8e9" prot="private" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>delta_time_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a06628e8d630f575630d88fe33815a9ed" prot="protected" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>desubscribe</name></member>
+      <member refid="classTarbora_1_1MetricsGui_1a2dc79e283aa20a6d0838f6edbb5fa701" prot="public" virt="virtual"><scope>Tarbora::MetricsGui</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1Layer_1a0c24802fe48c762c865fea4fa6357e04" prot="protected" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>event_blocking_</name></member>
+      <member refid="classTarbora_1_1MetricsGui_1a6efa7ebc05866401aa96235e4d96feb6" prot="public" virt="virtual"><scope>Tarbora::MetricsGui</scope><name>getInput</name></member>
+      <member refid="classTarbora_1_1Layer_1a6f787d1153bdbaf8066e2745d2faf86a" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>getInputManager</name></member>
+      <member refid="classTarbora_1_1Layer_1a606bb2b75b38acf75e5f4caabceedb97" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>isActive</name></member>
+      <member refid="classTarbora_1_1Layer_1a58106508db0aafaec0d5e9bbcf79e24f" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>Layer</name></member>
+      <member refid="classTarbora_1_1MetricsGui_1ac765e76dddb13b5caa1fb0037467ee45" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>MetricsGui</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a77fdd1e8ca1d2b9f72708a3aa127f0be" prot="protected" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>module_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1abf895d50857190a19b6879aeecc21668" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>ModuleComponent</name></member>
+      <member refid="classTarbora_1_1Layer_1aab6d82e0e2048dc50be2dc3d545c0e7f" prot="public" virt="virtual"><scope>Tarbora::MetricsGui</scope><name>onActivate</name></member>
+      <member refid="classTarbora_1_1Layer_1aaa4c828f3c6fb7ff42e5667805f650c0" prot="public" virt="virtual"><scope>Tarbora::MetricsGui</scope><name>onDeactivate</name></member>
+      <member refid="classTarbora_1_1Layer_1a246f85b37366ddf34b446331fe7a3447" prot="public" virt="virtual"><scope>Tarbora::MetricsGui</scope><name>onMessage</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b71373206a4a74318e5214bd8baf833" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>send</name></member>
+      <member refid="classTarbora_1_1Layer_1a4fc2a9f5064bbd6776bd1ae8398aa734" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>setActive</name></member>
+      <member refid="classTarbora_1_1MetricsGui_1ae5d19518e7841b39e44f7b88c95f9d93" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>SetTime</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b782690dc2819a2ba06ad72a64ee419" prot="protected" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>subscribe</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a9bfd9e0688f15c8c957d7e6b4aa55e02" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a352f36fb03dbcf383c4485a463515292" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>triggerLocal</name></member>
+      <member refid="classTarbora_1_1MetricsGui_1a16532223c4313a559e58b51a5af4cb62" prot="public" virt="virtual"><scope>Tarbora::MetricsGui</scope><name>update</name></member>
+      <member refid="classTarbora_1_1Layer_1abd00cce9dcd87190e69a66dfc6d8ef9a" prot="public" virt="virtual"><scope>Tarbora::MetricsGui</scope><name>~Layer</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a950d758fa03cf6d5dc24b4f48461454d" prot="public" virt="non-virtual"><scope>Tarbora::MetricsGui</scope><name>~ModuleComponent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -359,7 +359,7 @@ namespace Tarbora {
         auto_texture_size_ = false;
         if (auto node = node_.lock())
         {
-            if (node->getNodeType() == "MESH")
+            if (node->getNodeType() == "ANIMATED")
             {
                 auto mesh = std::static_pointer_cast<MeshNode>(node);
                 auto_texture_size_ = mesh->getTextureSize() == mesh->getScale();
@@ -402,7 +402,7 @@ namespace Tarbora {
                 {
                     glm::vec3 size = glm::make_vec3(scale)/100.f;
                     node->setScale(size);
-                    if (node->getNodeType() == "MESH")
+                    if (node->getNodeType() == "ANIMDATED")
                     {
                         auto mesh = std::static_pointer_cast<MeshNode>(node);
                         mesh->setMeshSize(size);
@@ -422,7 +422,7 @@ namespace Tarbora {
                     node->setOrigin(glm::make_vec3(origin));
             }
 
-            if (node->getNodeType() == "MESH")
+            if (node->getNodeType() == "ANIMATED")
             {
                 auto mesh = std::static_pointer_cast<MeshNode>(node);
                 ImGui::Spacing();
@@ -515,7 +515,7 @@ namespace Tarbora {
         if (node->getPosition() != glm::vec3(0.f)) saveVec3("position", node->getPosition() * 100.f);
         if (node->getRotation() != glm::vec3(0.f)) saveVec3("rotation", node->getRotation());
 
-        if (node->getNodeType() == "MESH")
+        if (node->getNodeType() == "ANIMATED")
         {
             auto mesh = std::static_pointer_cast<MeshNode>(node);
             if (mesh->getScale() != glm::vec3(0.f)) saveVec3("size", mesh->getScale() * 100.f);

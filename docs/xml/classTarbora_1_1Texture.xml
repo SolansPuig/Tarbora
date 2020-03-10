@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Texture" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Texture</compoundname>
+    <basecompoundref refid="classTarbora_1_1Resource" prot="public" virt="non-virtual">Tarbora::Resource</basecompoundref>
+    <basecompoundref refid="classTarbora_1_1TextureInternal" prot="public" virt="non-virtual">Tarbora::TextureInternal</basecompoundref>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classTarbora_1_1Texture_1a2894731fd152f0c4cbf3185a7212b8b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TextureResourceLoader</definition>
+        <argsstring></argsstring>
+        <name>TextureResourceLoader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Texture.hpp" line="8" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Texture.hpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTarbora_1_1Texture_1a80e8a3438d4f849747fc801d3a910d0c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Texture::Texture</definition>
+        <argsstring>(const std::string &amp;name, int width, int height, int components, void *data)</argsstring>
+        <name>Texture</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>components</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Texture.hpp" line="11" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Texture.hpp" bodystart="11" bodyend="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="471">
+        <label>Tarbora::TextureInternal</label>
+        <link refid="classTarbora_1_1TextureInternal"/>
+      </node>
+      <node id="469">
+        <label>Tarbora::Texture</label>
+        <link refid="classTarbora_1_1Texture"/>
+        <childnode refid="470" relation="public-inheritance">
+        </childnode>
+        <childnode refid="471" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="470">
+        <label>Tarbora::Resource</label>
+        <link refid="classTarbora_1_1Resource"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="474">
+        <label>Tarbora::TextureInternal</label>
+        <link refid="classTarbora_1_1TextureInternal"/>
+      </node>
+      <node id="472">
+        <label>Tarbora::Texture</label>
+        <link refid="classTarbora_1_1Texture"/>
+        <childnode refid="473" relation="public-inheritance">
+        </childnode>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="473">
+        <label>Tarbora::Resource</label>
+        <link refid="classTarbora_1_1Resource"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Texture.hpp" line="7" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Texture.hpp" bodystart="6" bodyend="13"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1TextureInternal_1a6743d488849f3caf3e706a58b9c0f871" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>bind</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a72283dbdc4e657d35fac942819d2998d" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>configure</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a0dd33b54224ca6df624e612a60454d27" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>configure</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a79c1e0e4834d16d2dfd609f7694cf9bb" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>getHeight</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1aed8a4573ee3ac8194fb0e4c4ea6b069a" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>getId</name></member>
+      <member refid="classTarbora_1_1Resource_1afc89548edc7c22bfe6c2270dd011d189" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>getName</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a495d050a9db1e3a9e271ac7f29320684" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>getWidth</name></member>
+      <member refid="classTarbora_1_1Resource_1a00dae18f7cf782dabaab704896c52069" prot="protected" virt="non-virtual"><scope>Tarbora::Texture</scope><name>name_</name></member>
+      <member refid="classTarbora_1_1Resource_1a7c37d25d519a673529cac26dc179b449" prot="protected" virt="non-virtual"><scope>Tarbora::Texture</scope><name>Resource</name></member>
+      <member refid="classTarbora_1_1Texture_1a80e8a3438d4f849747fc801d3a910d0c" prot="private" virt="non-virtual"><scope>Tarbora::Texture</scope><name>Texture</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a9f31699905bd381a5e6191fb33c4f8d4" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>TextureInternal</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a0b7549f45a39d4099998775c63ac0e26" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>TextureInternal</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a2cdcaccd4bc462ad759b35fabaf0dcb5" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>TextureInternal</name></member>
+      <member refid="classTarbora_1_1Texture_1a2894731fd152f0c4cbf3185a7212b8b7" prot="private" virt="non-virtual"><scope>Tarbora::Texture</scope><name>TextureResourceLoader</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a4bcc8973414f25ebbba1acfa3406c064" prot="public" virt="non-virtual"><scope>Tarbora::Texture</scope><name>~TextureInternal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1HumanView" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::HumanView</compoundname>
+    <basecompoundref refid="classTarbora_1_1GraphicView" prot="public" virt="non-virtual">Tarbora::GraphicView</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1HumanView_1aebc7f790077b586e0e9d747e2f307725" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1GameLayer" kindref="compound">GameLayer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GameLayer&gt; Tarbora::HumanView::game_layer_</definition>
+        <argsstring></argsstring>
+        <name>game_layer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="24" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1HumanView_1a9d28c640bcd6df8871dd4afafed7837f" prot="protected" static="no" mutable="no">
+        <type>std::list&lt; std::shared_ptr&lt; <ref refid="classTarbora_1_1Layer" kindref="compound">Layer</ref> &gt; &gt;</type>
+        <definition>std::list&lt;std::shared_ptr&lt;Layer&gt; &gt; Tarbora::HumanView::layers_</definition>
+        <argsstring></argsstring>
+        <name>layers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="25" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a924cbe94b80425de23f4c58c0727d1b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::HumanView::HumanView</definition>
+        <argsstring>()</argsstring>
+        <name>HumanView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="11" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.cpp" bodystart="7" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a04b1909fa4a71a8dbbf749e537614f03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::HumanView::~HumanView</definition>
+        <argsstring>()</argsstring>
+        <name>~HumanView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="12" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.cpp" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a75fa36692e1cb1b03cd2f29da3116030" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::HumanView::getInput</definition>
+        <argsstring>() override</argsstring>
+        <name>getInput</name>
+        <reimplements refid="classTarbora_1_1Module_1a72b275060190479d24616564384cb891">getInput</reimplements>
+        <briefdescription>
+<para>Read input, for example from keyboard and mouse. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child module, it will be called at the begginnig of each iteration. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="14" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.cpp" bodystart="34" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a190976e6f3a985e3cd0c26e0b4fbce9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::HumanView::update</definition>
+        <argsstring>(float delta_time) override</argsstring>
+        <name>update</name>
+        <reimplements refid="classTarbora_1_1Module_1a9d7b1d6f34c2ed64f628d1c958ba1719">update</reimplements>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+<para>Perform the logic and the computations of the module. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function must be overrided in every child module, it will be called after <ref refid="classTarbora_1_1Module_1a72b275060190479d24616564384cb891" kindref="member">Module::getInput</ref> at each iteration. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delta_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The elapsed time, in seconds, since the last iteration. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="15" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.cpp" bodystart="59" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a5c4dc7d8991c74d5938541e3f20a9577" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::HumanView::draw</definition>
+        <argsstring>() override</argsstring>
+        <name>draw</name>
+        <reimplements refid="classTarbora_1_1Module_1a9dfb5e4073e01bb09899a2001b6c65d0">draw</reimplements>
+        <briefdescription>
+<para>Render the data of the module. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child module, it will be called at the end of each iteration. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="16" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.cpp" bodystart="70" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a3a75c067960e76e0f93e38173207e1f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::HumanView::pushLayer</definition>
+        <argsstring>(std::shared_ptr&lt; Layer &gt; layer)</argsstring>
+        <name>pushLayer</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Layer" kindref="compound">Layer</ref> &gt;</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="18" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.cpp" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a99b7e8772da22b3fbc0838c2e60f0857" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::HumanView::removeLayer</definition>
+        <argsstring>(std::shared_ptr&lt; Layer &gt; layer)</argsstring>
+        <name>removeLayer</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Layer" kindref="compound">Layer</ref> &gt;</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="19" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.cpp" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1HumanView_1a98b69a9e17e670858771badd990a624a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1GameLayer" kindref="compound">GameLayer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GameLayer&gt; Tarbora::HumanView::getGameLayer</definition>
+        <argsstring>()</argsstring>
+        <name>getGameLayer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="21" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.hpp" bodystart="21" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="158">
+        <label>Tarbora::GraphicView</label>
+        <link refid="classTarbora_1_1GraphicView"/>
+        <childnode refid="159" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="159">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="160" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="157">
+        <label>Tarbora::HumanView</label>
+        <link refid="classTarbora_1_1HumanView"/>
+        <childnode refid="158" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="160">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="162">
+        <label>Tarbora::GraphicView</label>
+        <link refid="classTarbora_1_1GraphicView"/>
+        <childnode refid="163" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="163">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="164" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="161">
+        <label>Tarbora::HumanView</label>
+        <link refid="classTarbora_1_1HumanView"/>
+        <childnode refid="162" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="164">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/HumanView.hpp" line="9" column="1" bodyfile="Tarbora/Views/GraphicViews/HumanView.hpp" bodystart="8" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1AbstractModule_1ab1710750f89829ac441b4032a7d34580" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>AbstractModule</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1a3b1cc88ec4fc5c1351e5f4abe0e25948" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>close</name></member>
+      <member refid="classTarbora_1_1HumanView_1a5c4dc7d8991c74d5938541e3f20a9577" prot="public" virt="virtual"><scope>Tarbora::HumanView</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1HumanView_1aebc7f790077b586e0e9d747e2f307725" prot="protected" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>game_layer_</name></member>
+      <member refid="classTarbora_1_1HumanView_1a98b69a9e17e670858771badd990a624a" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>getGameLayer</name></member>
+      <member refid="classTarbora_1_1GraphicView_1ad070d4538da994ad77f8fbfc5bd39763" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>getGraphicsEngine</name></member>
+      <member refid="classTarbora_1_1HumanView_1a75fa36692e1cb1b03cd2f29da3116030" prot="public" virt="virtual"><scope>Tarbora::HumanView</scope><name>getInput</name></member>
+      <member refid="classTarbora_1_1Module_1a8e97a14fd27c595d1794ce859ae332b0" prot="protected" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>getMessageManager</name></member>
+      <member refid="classTarbora_1_1GraphicView_1aae376fc7aaccdad026f7c841f6577fa5" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>GraphicView</name></member>
+      <member refid="classTarbora_1_1HumanView_1a924cbe94b80425de23f4c58c0727d1b3" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>HumanView</name></member>
+      <member refid="classTarbora_1_1HumanView_1a9d28c640bcd6df8871dd4afafed7837f" prot="protected" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>layers_</name></member>
+      <member refid="classTarbora_1_1Module_1abc87fb2d39229905dfa1e8e4539f916c" prot="protected" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>max_fps_</name></member>
+      <member refid="classTarbora_1_1Module_1a9b8cd7c58bfdede1cfad00854dd4fa6b" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>Module</name></member>
+      <member refid="classTarbora_1_1HumanView_1a3a75c067960e76e0f93e38173207e1f9" prot="public" virt="virtual"><scope>Tarbora::HumanView</scope><name>pushLayer</name></member>
+      <member refid="classTarbora_1_1HumanView_1a99b7e8772da22b3fbc0838c2e60f0857" prot="public" virt="virtual"><scope>Tarbora::HumanView</scope><name>removeLayer</name></member>
+      <member refid="classTarbora_1_1Module_1a33668a78b4cd7a8d1adc0d221461b85c" prot="public" virt="virtual"><scope>Tarbora::HumanView</scope><name>run</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1a66ab779015a191a3188b1f91925e592b" prot="protected" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>run_</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1aca0e62a1ce7b61b06b7f60d841306380" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>runThread</name></member>
+      <member refid="classTarbora_1_1HumanView_1a190976e6f3a985e3cd0c26e0b4fbce9e" prot="public" virt="virtual"><scope>Tarbora::HumanView</scope><name>update</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1aa13dfaed16573bef7cce22a473616bd5" prot="protected" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>using_thread_</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1a9d0801567b76df2d51904e9e4c0d834e" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>~AbstractModule</name></member>
+      <member refid="classTarbora_1_1HumanView_1a04b1909fa4a71a8dbbf749e537614f03" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>~HumanView</name></member>
+      <member refid="classTarbora_1_1Module_1a1912e8c503a7d9cc0ad15578c284c56d" prot="public" virt="non-virtual"><scope>Tarbora::HumanView</scope><name>~Module</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

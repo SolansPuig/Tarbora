@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1LuaObject" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::LuaObject</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1LuaObject_1af5d876ddaca061c67dc63d41daf98c0a" prot="private" static="no" mutable="no">
+        <type>sol::state *</type>
+        <definition>sol::state* Tarbora::LuaObject::lua_</definition>
+        <argsstring></argsstring>
+        <name>lua_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="70" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1LuaObject_1a073c864d346987fbb186a056dc784767" prot="private" static="no" mutable="no">
+        <type>sol_object</type>
+        <definition>sol_object Tarbora::LuaObject::object_</definition>
+        <argsstring></argsstring>
+        <name>object_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="71" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1LuaObject_1a44c8a2080c4200ffeaf2f9bc69748abd" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tarbora::LuaObject::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="72" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1LuaObject_1a8dbbe376c1f64ac0d923950044c58b87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::LuaObject::LuaObject</definition>
+        <argsstring>()</argsstring>
+        <name>LuaObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="57" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1LuaObject_1a7d2994ebac8b53f5a13e7e8598052258" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::LuaObject::LuaObject</definition>
+        <argsstring>(sol::state *state, const sol_object &amp;obj, const std::string &amp;name)</argsstring>
+        <name>LuaObject</name>
+        <param>
+          <type>sol::state *</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const sol_object &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="58" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="58" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1LuaObject_1a4cfaccca4154cfa60447d3a4b7511819" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T Tarbora::LuaObject::getAs</definition>
+        <argsstring>(const T &amp;def, bool silent=false)</argsstring>
+        <name>getAs</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>def</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>silent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="61" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="642" bodyend="647"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1LuaObject_1a37572225ce07b19d0af2424bc8fe9888" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T Tarbora::LuaObject::getAs</definition>
+        <argsstring>(bool silent=false)</argsstring>
+        <name>getAs</name>
+        <param>
+          <type>bool</type>
+          <declname>silent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="63" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1LuaObject_1aa8c603f310becd90164522c9aa8f8969" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool Tarbora::LuaObject::is</definition>
+        <argsstring>() const</argsstring>
+        <name>is</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="65" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1LuaObject_1a5d3c5e80246a596d099f101bf42a1987" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::LuaObject::valid</definition>
+        <argsstring>() const</argsstring>
+        <name>valid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="67" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="67" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/ResourceManager/Lua.hpp" line="55" column="1" bodyfile="Tarbora/Framework/ResourceManager/Lua.hpp" bodystart="55" bodyend="73"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1LuaObject_1a4cfaccca4154cfa60447d3a4b7511819" prot="public" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>getAs</name></member>
+      <member refid="classTarbora_1_1LuaObject_1a37572225ce07b19d0af2424bc8fe9888" prot="public" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>getAs</name></member>
+      <member refid="classTarbora_1_1LuaObject_1aa8c603f310becd90164522c9aa8f8969" prot="public" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>is</name></member>
+      <member refid="classTarbora_1_1LuaObject_1af5d876ddaca061c67dc63d41daf98c0a" prot="private" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>lua_</name></member>
+      <member refid="classTarbora_1_1LuaObject_1a8dbbe376c1f64ac0d923950044c58b87" prot="public" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>LuaObject</name></member>
+      <member refid="classTarbora_1_1LuaObject_1a7d2994ebac8b53f5a13e7e8598052258" prot="public" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>LuaObject</name></member>
+      <member refid="classTarbora_1_1LuaObject_1a44c8a2080c4200ffeaf2f9bc69748abd" prot="private" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>name_</name></member>
+      <member refid="classTarbora_1_1LuaObject_1a073c864d346987fbb186a056dc784767" prot="private" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>object_</name></member>
+      <member refid="classTarbora_1_1LuaObject_1a5d3c5e80246a596d099f101bf42a1987" prot="public" virt="non-virtual"><scope>Tarbora::LuaObject</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

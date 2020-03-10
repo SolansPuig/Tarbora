@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="ImGuiBuild_8cpp" kind="file" language="C++">
+    <compoundname>ImGuiBuild.cpp</compoundname>
+    <includes local="yes">External/imgui/examples/imgui_impl_opengl3.cpp</includes>
+    <includes local="yes">External/imgui/examples/imgui_impl_glfw.cpp</includes>
+    <includes local="yes">External/imgui/misc/cpp/imgui_stdlib.cpp</includes>
+    <incdepgraph>
+      <node id="3297">
+        <label>External/imgui/misc/cpp/imgui_stdlib.cpp</label>
+      </node>
+      <node id="3295">
+        <label>External/imgui/examples/imgui_impl_opengl3.cpp</label>
+      </node>
+      <node id="3294">
+        <label>Tarbora/Views/GraphicViews/GraphicsEngine/ImGuiBuild.cpp</label>
+        <link refid="ImGuiBuild_8cpp"/>
+        <childnode refid="3295" relation="include">
+        </childnode>
+        <childnode refid="3296" relation="include">
+        </childnode>
+        <childnode refid="3297" relation="include">
+        </childnode>
+      </node>
+      <node id="3296">
+        <label>External/imgui/examples/imgui_impl_glfw.cpp</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ImGuiBuild_8cpp_1aff605cfb4a9f9d320685b2812e7e229f" prot="public" static="no">
+        <name>IMGUI_IMPL_OPENGL_LOADER_GLEW</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/ImGuiBuild.cpp" line="1" column="9" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/ImGuiBuild.cpp" bodystart="1" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/ImGuiBuild.cpp"/>
+  </compounddef>
+</doxygen>

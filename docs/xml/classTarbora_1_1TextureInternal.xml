@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1TextureInternal" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::TextureInternal</compoundname>
+    <derivedcompoundref refid="classTarbora_1_1Texture" prot="public" virt="non-virtual">Tarbora::Texture</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1TextureInternal_1abede44b6de2d0313f7fa7f82ef6f78c3" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::TextureInternal::id_</definition>
+        <argsstring></argsstring>
+        <name>id_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="28" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1TextureInternal_1afd2fac8e253ecb1c94c3ef9b27a04d60" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Tarbora::TextureInternal::width_</definition>
+        <argsstring></argsstring>
+        <name>width_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="29" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1TextureInternal_1a57ec32916eb52fbb559cf0033c3aeade" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Tarbora::TextureInternal::height_</definition>
+        <argsstring></argsstring>
+        <name>height_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="29" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a9f31699905bd381a5e6191fb33c4f8d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::TextureInternal::TextureInternal</definition>
+        <argsstring>(int width, int height, int components, void *data)</argsstring>
+        <name>TextureInternal</name>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>components</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="9" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="4" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a0b7549f45a39d4099998775c63ac0e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::TextureInternal::TextureInternal</definition>
+        <argsstring>(int width, int height, unsigned int format, unsigned int type=GL_UNSIGNED_BYTE, void *data=nullptr)</argsstring>
+        <name>TextureInternal</name>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>type</declname>
+          <defval>GL_UNSIGNED_BYTE</defval>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="10" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="24" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a2cdcaccd4bc462ad759b35fabaf0dcb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::TextureInternal::TextureInternal</definition>
+        <argsstring>(int width, int height, unsigned int internalFormat, unsigned int type, unsigned int format, void *data=nullptr)</argsstring>
+        <name>TextureInternal</name>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>internalFormat</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="11" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="32" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a4bcc8973414f25ebbba1acfa3406c064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::TextureInternal::~TextureInternal</definition>
+        <argsstring>()</argsstring>
+        <name>~TextureInternal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="12" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a72283dbdc4e657d35fac942819d2998d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TextureInternal::configure</definition>
+        <argsstring>(unsigned int min_filter, unsigned int mag_filter)</argsstring>
+        <name>configure</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>min_filter</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mag_filter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="14" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a0dd33b54224ca6df624e612a60454d27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TextureInternal::configure</definition>
+        <argsstring>(unsigned int min_filter, unsigned int mag_filter, unsigned int wrapS, unsigned int wrapT)</argsstring>
+        <name>configure</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>min_filter</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mag_filter</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>wrapS</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>wrapT</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="15" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="51" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a6743d488849f3caf3e706a58b9c0f871" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TextureInternal::bind</definition>
+        <argsstring>(unsigned int channel=0) const</argsstring>
+        <name>bind</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>channel</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="17" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1aed8a4573ee3ac8194fb0e4c4ea6b069a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::TextureInternal::getId</definition>
+        <argsstring>() const</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="19" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" bodystart="19" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a495d050a9db1e3a9e271ac7f29320684" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Tarbora::TextureInternal::getWidth</definition>
+        <argsstring>() const</argsstring>
+        <name>getWidth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="20" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" bodystart="20" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a79c1e0e4834d16d2dfd609f7694cf9bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Tarbora::TextureInternal::getHeight</definition>
+        <argsstring>() const</argsstring>
+        <name>getHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="21" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" bodystart="21" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a531fc967b24e86907d871f3c8d187d2a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TextureInternal::build</definition>
+        <argsstring>(void *data, unsigned int format, unsigned int type)</argsstring>
+        <name>build</name>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="24" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1ac2533450569d967310700d50d615c5a5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TextureInternal::build</definition>
+        <argsstring>(void *data, unsigned int internal_format, unsigned int type, unsigned int format)</argsstring>
+        <name>build</name>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>internal_format</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="25" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="71" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TextureInternal_1a45f05a58d86e92792b4f04f42fec6861" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TextureInternal::deleteTexture</definition>
+        <argsstring>()</argsstring>
+        <name>deleteTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="26" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="475">
+        <label>Tarbora::TextureInternal</label>
+        <link refid="classTarbora_1_1TextureInternal"/>
+      </node>
+      <node id="476">
+        <label>Tarbora::Texture</label>
+        <link refid="classTarbora_1_1Texture"/>
+        <childnode refid="475" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" line="7" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/TextureInternal.hpp" bodystart="6" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1TextureInternal_1a6743d488849f3caf3e706a58b9c0f871" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>bind</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a531fc967b24e86907d871f3c8d187d2a" prot="private" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>build</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1ac2533450569d967310700d50d615c5a5" prot="private" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>build</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a72283dbdc4e657d35fac942819d2998d" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>configure</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a0dd33b54224ca6df624e612a60454d27" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>configure</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a45f05a58d86e92792b4f04f42fec6861" prot="private" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>deleteTexture</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a79c1e0e4834d16d2dfd609f7694cf9bb" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>getHeight</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1aed8a4573ee3ac8194fb0e4c4ea6b069a" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>getId</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a495d050a9db1e3a9e271ac7f29320684" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>getWidth</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a57ec32916eb52fbb559cf0033c3aeade" prot="private" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>height_</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1abede44b6de2d0313f7fa7f82ef6f78c3" prot="private" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>id_</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a9f31699905bd381a5e6191fb33c4f8d4" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>TextureInternal</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a0b7549f45a39d4099998775c63ac0e26" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>TextureInternal</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a2cdcaccd4bc462ad759b35fabaf0dcb5" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>TextureInternal</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1afd2fac8e253ecb1c94c3ef9b27a04d60" prot="private" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>width_</name></member>
+      <member refid="classTarbora_1_1TextureInternal_1a4bcc8973414f25ebbba1acfa3406c064" prot="public" virt="non-virtual"><scope>Tarbora::TextureInternal</scope><name>~TextureInternal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

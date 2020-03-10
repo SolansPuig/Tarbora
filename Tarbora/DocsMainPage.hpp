@@ -7,38 +7,45 @@
     Windows isn't supported yet, but it will be very soon.
     \subsection linux On Linux
     Get the source code from GitHub:
+
     \code{.sh}
         git clone https://github.com/SolansPuig/Tarbora.git YourProject
         cd YourProject
     \endcode
 
     Initialize the submodules:
+
     \code{.sh}
         git submodule init
         git submodule update
     \endcode
+
     And modify the files "Tarbora/Framework/External/glm/CMakeLists.txt"
     and "Tarbora/Logic/PhysicsEngine/External/bullet3/CMakeLists.txt" to set OFF all
     the tests, examples and demos so you don't have to compile unnecessary code!
 
     Install the dependencies:
+
     \code{.sh}
         sudo apt install cmake g++ libglew-dev doxygen mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libprotobuf-dev protobuf-compiler
     \endcode
 
     Create the build directory:
+
     \code{.sh}
         mkdir build
         cd build
     \endcode
 
     Compile the source code (it will probabliy take several minutes):
+    
     \code{.sh}
         cmake ..
         make
     \endcode
 
     And test it!
+
     \code{.sh}
         ./tarbora
     \endcode
@@ -55,4 +62,12 @@
     Do not touch anything inside the folder Tarbora until you really
     know what you are doing, but if you mess something up, just delete everything
     and repeat the installation process.
+*/
+/**
+ * @namespace Tarbora
+ * @brief This Engine
+*/
+/**
+ * @dir Tarbora
+ * @brief The source of the Engine
 */

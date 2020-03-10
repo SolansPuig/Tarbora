@@ -1,0 +1,645 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Renderer" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Renderer</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1aa8b9562f9248e67bd6ad1c3f6abf49ca" prot="private" static="no" mutable="no">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Tarbora::Renderer::projection_</definition>
+        <argsstring></argsstring>
+        <name>projection_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="41" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a4ca9ece5918cdf961abd3ffb3e213a19" prot="private" static="no" mutable="no">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Tarbora::Renderer::view_</definition>
+        <argsstring></argsstring>
+        <name>view_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="42" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a4b9cb777745453c1ea22ac036b53d582" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Tarbora::Renderer::width_</definition>
+        <argsstring></argsstring>
+        <name>width_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="44" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1ad953f18184b5d2a445e860e888626e66" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Tarbora::Renderer::height_</definition>
+        <argsstring></argsstring>
+        <name>height_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="44" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a4ddc30f1ccee0eb57fd843ac2be98081" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::Renderer::g_buffer_</definition>
+        <argsstring></argsstring>
+        <name>g_buffer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="46" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1aa6315f8eb7010a415fd891728ed0128b" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::g_position_</definition>
+        <argsstring></argsstring>
+        <name>g_position_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="47" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a463c391f89e184c34ede60b210d99a9f" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::g_normal_</definition>
+        <argsstring></argsstring>
+        <name>g_normal_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="48" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a52890c7d2fc67e15f6e7b9e1485eb94a" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::g_color_spec_</definition>
+        <argsstring></argsstring>
+        <name>g_color_spec_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="49" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1ab93ed7a7d12f3a22a2b3660cb362b3e8" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::Renderer::ssao_buffer_</definition>
+        <argsstring></argsstring>
+        <name>ssao_buffer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="51" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a1f482c92cf4e4120578f76616ed34950" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::ssao_color_</definition>
+        <argsstring></argsstring>
+        <name>ssao_color_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="52" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a8c34ddaeb65b943294be38c99edd13e1" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::noise_texture_</definition>
+        <argsstring></argsstring>
+        <name>noise_texture_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="53" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1ae677ab2dd72c9cbee45de845332a6a7d" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Shader" kindref="compound">Shader</ref> &gt;</type>
+        <definition>ResourcePtr&lt;Shader&gt; Tarbora::Renderer::occlusion_shader_</definition>
+        <argsstring></argsstring>
+        <name>occlusion_shader_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="54" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a769f93a19d71def26940d889b55bc17b" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::Renderer::ssao_blur_buffer_</definition>
+        <argsstring></argsstring>
+        <name>ssao_blur_buffer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="56" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a80a9a7d253c4af7b56585c2981eaecf7" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::ssao_blur_color_</definition>
+        <argsstring></argsstring>
+        <name>ssao_blur_color_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="57" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a04cb914f0ae3257b27f4722a1cf01e64" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Shader" kindref="compound">Shader</ref> &gt;</type>
+        <definition>ResourcePtr&lt;Shader&gt; Tarbora::Renderer::occlusion_blur_shader_</definition>
+        <argsstring></argsstring>
+        <name>occlusion_blur_shader_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="58" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a431f8b49fbc6ef25aa50dd89e9dd2067" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::Renderer::lighting_buffer_</definition>
+        <argsstring></argsstring>
+        <name>lighting_buffer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="60" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a56f70189d33037fb97150a658ec8406c" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::lighting_color_</definition>
+        <argsstring></argsstring>
+        <name>lighting_color_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="61" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a29c4d33f3df4d5592e73cd6815a68ec2" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Shader" kindref="compound">Shader</ref> &gt;</type>
+        <definition>ResourcePtr&lt;Shader&gt; Tarbora::Renderer::lighting_shader_</definition>
+        <argsstring></argsstring>
+        <name>lighting_shader_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="62" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a281d8642f26fa548c7e781223bdf0716" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::Renderer::scene_buffer_</definition>
+        <argsstring></argsstring>
+        <name>scene_buffer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="64" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a76c253185d7d4859229f9a76c79a7eed" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTarbora_1_1TextureInternal" kindref="compound">TextureInternal</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TextureInternal&gt; Tarbora::Renderer::scene_color_</definition>
+        <argsstring></argsstring>
+        <name>scene_color_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="65" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a511e21cceeced229831624eddea57166" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Shader" kindref="compound">Shader</ref> &gt;</type>
+        <definition>ResourcePtr&lt;Shader&gt; Tarbora::Renderer::scene_shader_</definition>
+        <argsstring></argsstring>
+        <name>scene_shader_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="66" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a8b22b016c9eb9c1c50fe569cb1211404" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Mesh" kindref="compound">Mesh</ref> &gt;</type>
+        <definition>ResourcePtr&lt;Mesh&gt; Tarbora::Renderer::quad_mesh_</definition>
+        <argsstring></argsstring>
+        <name>quad_mesh_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="68" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1af359953da8b547b68a8558cc9f6f3f00" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tarbora::Renderer::postprocess_shader_name_</definition>
+        <argsstring></argsstring>
+        <name>postprocess_shader_name_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="69" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Renderer_1a6735312da8647a2ac24e7ee8f63bd6d0" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ResourcePtr" kindref="compound">ResourcePtr</ref>&lt; <ref refid="classTarbora_1_1Shader" kindref="compound">Shader</ref> &gt;</type>
+        <definition>ResourcePtr&lt;Shader&gt; Tarbora::Renderer::postprocess_shader_</definition>
+        <argsstring></argsstring>
+        <name>postprocess_shader_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="70" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a5f3e5a6d6e213a2bd06ed99fc9025159" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Renderer::Renderer</definition>
+        <argsstring>()</argsstring>
+        <name>Renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="14" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a6aca29b6ef5b0a744e2ad39363289dba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Renderer::~Renderer</definition>
+        <argsstring>()</argsstring>
+        <name>~Renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="15" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a29506f41efa278db8b669e210ed2581c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::init</definition>
+        <argsstring>(int width, int height)</argsstring>
+        <name>init</name>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="17" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="16" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a2310020440f65d8f63dba5489c1e2708" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::geometryPass</definition>
+        <argsstring>()</argsstring>
+        <name>geometryPass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="19" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="54" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1af2c2f997c48eef597bf85f44f5a3c336" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::occlusionPass</definition>
+        <argsstring>()</argsstring>
+        <name>occlusionPass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="20" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="60" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a6633815ba3aacbe52a22fff5a379215c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::lightingPass</definition>
+        <argsstring>()</argsstring>
+        <name>lightingPass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="21" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="83" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a558712318911bf9317027ae4dd67b7d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::scenePass</definition>
+        <argsstring>()</argsstring>
+        <name>scenePass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="22" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="98" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1af953e14785d313d69b6cf2cec5db1caa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::postprocess</definition>
+        <argsstring>()</argsstring>
+        <name>postprocess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="23" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="132" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a606cd2080268c69c9351be92edc1bfd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::sky</definition>
+        <argsstring>()</argsstring>
+        <name>sky</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="25" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1aba30e0b537de875b55563026c5bbc477" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::cleanSky</definition>
+        <argsstring>()</argsstring>
+        <name>cleanSky</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="26" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1af6db576c64c2307c0bde3d2f2fa37335" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setFaceCulling</definition>
+        <argsstring>(bool value)</argsstring>
+        <name>setFaceCulling</name>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="28" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="124" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1acfd82fbd8d6f3122c40f62e7d6af5aa6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setPostprocessShader</definition>
+        <argsstring>(const std::string &amp;shader)</argsstring>
+        <name>setPostprocessShader</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>shader</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="29" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a7ee6cbe4d810fabc69afddf5aa018ea5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setProjectionMatrix</definition>
+        <argsstring>(const glm::mat4 &amp;m)</argsstring>
+        <name>setProjectionMatrix</name>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="31" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a52ef995206977fa5d8fd955bc7698850" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setViewMatrix</definition>
+        <argsstring>(const glm::mat4 &amp;m)</argsstring>
+        <name>setViewMatrix</name>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="32" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1ae619236b2f2d4d0513686a0f237597ac" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setupGeometryPass</definition>
+        <argsstring>()</argsstring>
+        <name>setupGeometryPass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="35" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="144" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a11171149c4e8d97d98e7b7f4af70fbcb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setupOcclusionPass</definition>
+        <argsstring>()</argsstring>
+        <name>setupOcclusionPass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="36" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="184" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a9f894a7666b129620a9424dd5a2b22b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setupLightingPass</definition>
+        <argsstring>()</argsstring>
+        <name>setupLightingPass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="37" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="262" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1a8e09500ee3f9e04f3d5b0f2f3a3f1e15" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setupScenePass</definition>
+        <argsstring>()</argsstring>
+        <name>setupScenePass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="38" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="286" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Renderer_1ab8dcaadc6d93dd50a260619c6b874df2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Renderer::setupPostprocess</definition>
+        <argsstring>()</argsstring>
+        <name>setupPostprocess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="39" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.cpp" bodystart="314" bodyend="321"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" line="12" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Renderer.hpp" bodystart="12" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Renderer_1aba30e0b537de875b55563026c5bbc477" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>cleanSky</name></member>
+      <member refid="classTarbora_1_1Renderer_1a4ddc30f1ccee0eb57fd843ac2be98081" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>g_buffer_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a52890c7d2fc67e15f6e7b9e1485eb94a" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>g_color_spec_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a463c391f89e184c34ede60b210d99a9f" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>g_normal_</name></member>
+      <member refid="classTarbora_1_1Renderer_1aa6315f8eb7010a415fd891728ed0128b" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>g_position_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a2310020440f65d8f63dba5489c1e2708" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>geometryPass</name></member>
+      <member refid="classTarbora_1_1Renderer_1ad953f18184b5d2a445e860e888626e66" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>height_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a29506f41efa278db8b669e210ed2581c" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>init</name></member>
+      <member refid="classTarbora_1_1Renderer_1a431f8b49fbc6ef25aa50dd89e9dd2067" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>lighting_buffer_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a56f70189d33037fb97150a658ec8406c" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>lighting_color_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a29c4d33f3df4d5592e73cd6815a68ec2" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>lighting_shader_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a6633815ba3aacbe52a22fff5a379215c" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>lightingPass</name></member>
+      <member refid="classTarbora_1_1Renderer_1a8c34ddaeb65b943294be38c99edd13e1" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>noise_texture_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a04cb914f0ae3257b27f4722a1cf01e64" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>occlusion_blur_shader_</name></member>
+      <member refid="classTarbora_1_1Renderer_1ae677ab2dd72c9cbee45de845332a6a7d" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>occlusion_shader_</name></member>
+      <member refid="classTarbora_1_1Renderer_1af2c2f997c48eef597bf85f44f5a3c336" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>occlusionPass</name></member>
+      <member refid="classTarbora_1_1Renderer_1af953e14785d313d69b6cf2cec5db1caa" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>postprocess</name></member>
+      <member refid="classTarbora_1_1Renderer_1a6735312da8647a2ac24e7ee8f63bd6d0" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>postprocess_shader_</name></member>
+      <member refid="classTarbora_1_1Renderer_1af359953da8b547b68a8558cc9f6f3f00" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>postprocess_shader_name_</name></member>
+      <member refid="classTarbora_1_1Renderer_1aa8b9562f9248e67bd6ad1c3f6abf49ca" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>projection_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a8b22b016c9eb9c1c50fe569cb1211404" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>quad_mesh_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a5f3e5a6d6e213a2bd06ed99fc9025159" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>Renderer</name></member>
+      <member refid="classTarbora_1_1Renderer_1a281d8642f26fa548c7e781223bdf0716" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>scene_buffer_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a76c253185d7d4859229f9a76c79a7eed" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>scene_color_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a511e21cceeced229831624eddea57166" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>scene_shader_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a558712318911bf9317027ae4dd67b7d8" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>scenePass</name></member>
+      <member refid="classTarbora_1_1Renderer_1af6db576c64c2307c0bde3d2f2fa37335" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setFaceCulling</name></member>
+      <member refid="classTarbora_1_1Renderer_1acfd82fbd8d6f3122c40f62e7d6af5aa6" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setPostprocessShader</name></member>
+      <member refid="classTarbora_1_1Renderer_1a7ee6cbe4d810fabc69afddf5aa018ea5" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setProjectionMatrix</name></member>
+      <member refid="classTarbora_1_1Renderer_1ae619236b2f2d4d0513686a0f237597ac" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setupGeometryPass</name></member>
+      <member refid="classTarbora_1_1Renderer_1a9f894a7666b129620a9424dd5a2b22b7" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setupLightingPass</name></member>
+      <member refid="classTarbora_1_1Renderer_1a11171149c4e8d97d98e7b7f4af70fbcb" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setupOcclusionPass</name></member>
+      <member refid="classTarbora_1_1Renderer_1ab8dcaadc6d93dd50a260619c6b874df2" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setupPostprocess</name></member>
+      <member refid="classTarbora_1_1Renderer_1a8e09500ee3f9e04f3d5b0f2f3a3f1e15" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setupScenePass</name></member>
+      <member refid="classTarbora_1_1Renderer_1a52ef995206977fa5d8fd955bc7698850" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>setViewMatrix</name></member>
+      <member refid="classTarbora_1_1Renderer_1a606cd2080268c69c9351be92edc1bfd9" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>sky</name></member>
+      <member refid="classTarbora_1_1Renderer_1a769f93a19d71def26940d889b55bc17b" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>ssao_blur_buffer_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a80a9a7d253c4af7b56585c2981eaecf7" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>ssao_blur_color_</name></member>
+      <member refid="classTarbora_1_1Renderer_1ab93ed7a7d12f3a22a2b3660cb362b3e8" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>ssao_buffer_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a1f482c92cf4e4120578f76616ed34950" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>ssao_color_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a4ca9ece5918cdf961abd3ffb3e213a19" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>view_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a4b9cb777745453c1ea22ac036b53d582" prot="private" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>width_</name></member>
+      <member refid="classTarbora_1_1Renderer_1a6aca29b6ef5b0a744e2ad39363289dba" prot="public" virt="non-virtual"><scope>Tarbora::Renderer</scope><name>~Renderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

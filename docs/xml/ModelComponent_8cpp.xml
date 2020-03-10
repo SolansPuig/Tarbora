@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="ModelComponent_8cpp" kind="file" language="C++">
+    <compoundname>ModelComponent.cpp</compoundname>
+    <includes refid="ModelComponent_8hpp" local="yes">ModelComponent.hpp</includes>
+    <includes refid="InfoComponent_8hpp" local="yes">InfoComponent.hpp</includes>
+    <includes refid="TransformComponent_8hpp" local="yes">TransformComponent.hpp</includes>
+    <includes refid="BasicMessages_8hpp" local="yes">../Messages/BasicMessages.hpp</includes>
+    <incdepgraph>
+      <node id="1745">
+        <label>list</label>
+      </node>
+      <node id="1731">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1768">
+        <label>../../Global.hpp</label>
+      </node>
+      <node id="1743">
+        <label>iomanip</label>
+      </node>
+      <node id="1732">
+        <label>functional</label>
+      </node>
+      <node id="1751">
+        <label>queue</label>
+      </node>
+      <node id="1776">
+        <label>basic.pb.h</label>
+      </node>
+      <node id="1721">
+        <label>Component.hpp</label>
+        <link refid="Component_8hpp_source"/>
+        <childnode refid="1722" relation="include">
+        </childnode>
+      </node>
+      <node id="1764">
+        <label>MessageClient.hpp</label>
+        <link refid="MessageClient_8hpp_source"/>
+        <childnode refid="1728" relation="include">
+        </childnode>
+        <childnode refid="1753" relation="include">
+        </childnode>
+      </node>
+      <node id="1773">
+        <label>../Messages/BasicMessages.hpp</label>
+        <link refid="BasicMessages_8hpp_source"/>
+        <childnode refid="1774" relation="include">
+        </childnode>
+        <childnode refid="1776" relation="include">
+        </childnode>
+      </node>
+      <node id="1765">
+        <label>../ResourceManager/Resource.hpp</label>
+        <link refid="Resource_8hpp_source"/>
+        <childnode refid="1766" relation="include">
+        </childnode>
+      </node>
+      <node id="1775">
+        <label>math.pb.h</label>
+      </node>
+      <node id="1727">
+        <label>AbstractModule.hpp</label>
+        <link refid="AbstractModule_8hpp"/>
+        <childnode refid="1728" relation="include">
+        </childnode>
+        <childnode refid="1753" relation="include">
+        </childnode>
+      </node>
+      <node id="1740">
+        <label>string</label>
+      </node>
+      <node id="1761">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="1748">
+        <label>map</label>
+      </node>
+      <node id="1747">
+        <label>unordered_set</label>
+      </node>
+      <node id="1766">
+        <label>ResourceManager.hpp</label>
+        <link refid="ResourceManager_8hpp_source"/>
+        <childnode refid="1767" relation="include">
+        </childnode>
+        <childnode refid="1768" relation="include">
+        </childnode>
+      </node>
+      <node id="1741">
+        <label>fstream</label>
+      </node>
+      <node id="1757">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="1728">
+        <label>../CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="1729" relation="include">
+        </childnode>
+        <childnode refid="1730" relation="include">
+        </childnode>
+        <childnode refid="1731" relation="include">
+        </childnode>
+        <childnode refid="1732" relation="include">
+        </childnode>
+        <childnode refid="1733" relation="include">
+        </childnode>
+        <childnode refid="1734" relation="include">
+        </childnode>
+        <childnode refid="1735" relation="include">
+        </childnode>
+        <childnode refid="1736" relation="include">
+        </childnode>
+        <childnode refid="1737" relation="include">
+        </childnode>
+        <childnode refid="1738" relation="include">
+        </childnode>
+        <childnode refid="1739" relation="include">
+        </childnode>
+        <childnode refid="1740" relation="include">
+        </childnode>
+        <childnode refid="1741" relation="include">
+        </childnode>
+        <childnode refid="1742" relation="include">
+        </childnode>
+        <childnode refid="1743" relation="include">
+        </childnode>
+        <childnode refid="1744" relation="include">
+        </childnode>
+        <childnode refid="1745" relation="include">
+        </childnode>
+        <childnode refid="1746" relation="include">
+        </childnode>
+        <childnode refid="1747" relation="include">
+        </childnode>
+        <childnode refid="1748" relation="include">
+        </childnode>
+        <childnode refid="1749" relation="include">
+        </childnode>
+        <childnode refid="1750" relation="include">
+        </childnode>
+        <childnode refid="1751" relation="include">
+        </childnode>
+        <childnode refid="1752" relation="include">
+        </childnode>
+      </node>
+      <node id="1763">
+        <label>../MessageManager/MessageManager.hpp</label>
+        <link refid="MessageManager_8hpp"/>
+        <childnode refid="1764" relation="include">
+        </childnode>
+      </node>
+      <node id="1725">
+        <label>Module/ModuleComponent.hpp</label>
+        <link refid="ModuleComponent_8hpp"/>
+        <childnode refid="1726" relation="include">
+        </childnode>
+      </node>
+      <node id="1755">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="1728" relation="include">
+        </childnode>
+        <childnode refid="1753" relation="include">
+        </childnode>
+        <childnode refid="1756" relation="include">
+        </childnode>
+        <childnode refid="1757" relation="include">
+        </childnode>
+        <childnode refid="1758" relation="include">
+        </childnode>
+        <childnode refid="1759" relation="include">
+        </childnode>
+        <childnode refid="1760" relation="include">
+        </childnode>
+        <childnode refid="1761" relation="include">
+        </childnode>
+      </node>
+      <node id="1723">
+        <label>World.hpp</label>
+        <link refid="World_8hpp_source"/>
+        <childnode refid="1724" relation="include">
+        </childnode>
+      </node>
+      <node id="1722">
+        <label>System.hpp</label>
+        <link refid="System_8hpp_source"/>
+        <childnode refid="1723" relation="include">
+        </childnode>
+      </node>
+      <node id="1759">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="1739">
+        <label>ctime</label>
+      </node>
+      <node id="1719">
+        <label>Tarbora/Logic/ModelComponent.cpp</label>
+        <link refid="ModelComponent_8cpp"/>
+        <childnode refid="1720" relation="include">
+        </childnode>
+        <childnode refid="1771" relation="include">
+        </childnode>
+        <childnode refid="1772" relation="include">
+        </childnode>
+        <childnode refid="1773" relation="include">
+        </childnode>
+      </node>
+      <node id="1753">
+        <label>../Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="1754" relation="include">
+        </childnode>
+        <childnode refid="1755" relation="include">
+        </childnode>
+        <childnode refid="1762" relation="include">
+        </childnode>
+      </node>
+      <node id="1733">
+        <label>optional</label>
+      </node>
+      <node id="1750">
+        <label>stack</label>
+      </node>
+      <node id="1744">
+        <label>vector</label>
+      </node>
+      <node id="1724">
+        <label>../Framework/Framework.hpp</label>
+        <link refid="Framework_8hpp_source"/>
+        <childnode refid="1725" relation="include">
+        </childnode>
+      </node>
+      <node id="1742">
+        <label>sstream</label>
+      </node>
+      <node id="1771">
+        <label>InfoComponent.hpp</label>
+        <link refid="InfoComponent_8hpp_source"/>
+        <childnode refid="1721" relation="include">
+        </childnode>
+      </node>
+      <node id="1769">
+        <label>../ResourceManager/Lua.hpp</label>
+        <link refid="Lua_8hpp_source"/>
+        <childnode refid="1765" relation="include">
+        </childnode>
+        <childnode refid="1770" relation="include">
+        </childnode>
+      </node>
+      <node id="1767">
+        <label>../../CommonHeaders.hpp</label>
+      </node>
+      <node id="1749">
+        <label>unordered_map</label>
+      </node>
+      <node id="1737">
+        <label>shared_mutex</label>
+      </node>
+      <node id="1754">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="1728" relation="include">
+        </childnode>
+      </node>
+      <node id="1720">
+        <label>ModelComponent.hpp</label>
+        <link refid="ModelComponent_8hpp_source"/>
+        <childnode refid="1721" relation="include">
+        </childnode>
+      </node>
+      <node id="1736">
+        <label>mutex</label>
+      </node>
+      <node id="1738">
+        <label>chrono</label>
+      </node>
+      <node id="1729">
+        <label>csignal</label>
+      </node>
+      <node id="1760">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="1735">
+        <label>thread</label>
+      </node>
+      <node id="1726">
+        <label>Module.hpp</label>
+        <link refid="Module_8hpp"/>
+        <childnode refid="1727" relation="include">
+        </childnode>
+        <childnode refid="1763" relation="include">
+        </childnode>
+        <childnode refid="1765" relation="include">
+        </childnode>
+        <childnode refid="1769" relation="include">
+        </childnode>
+      </node>
+      <node id="1746">
+        <label>set</label>
+      </node>
+      <node id="1758">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="1752">
+        <label>algorithm</label>
+      </node>
+      <node id="1762">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="1730">
+        <label>stdio.h</label>
+      </node>
+      <node id="1772">
+        <label>TransformComponent.hpp</label>
+        <link refid="TransformComponent_8hpp_source"/>
+        <childnode refid="1721" relation="include">
+        </childnode>
+      </node>
+      <node id="1770">
+        <label>sol/sol.hpp</label>
+      </node>
+      <node id="1774">
+        <label>MathMessages.hpp</label>
+        <link refid="MathMessages_8hpp_source"/>
+        <childnode refid="1763" relation="include">
+        </childnode>
+        <childnode refid="1775" relation="include">
+        </childnode>
+      </node>
+      <node id="1734">
+        <label>memory</label>
+      </node>
+      <node id="1756">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Logic/ModelComponent.cpp"/>
+  </compounddef>
+</doxygen>

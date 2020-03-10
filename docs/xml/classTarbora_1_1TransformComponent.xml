@@ -1,0 +1,404 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1TransformComponent" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::TransformComponent</compoundname>
+    <basecompoundref refid="classTarbora_1_1Component" prot="public" virt="non-virtual">Tarbora::Component</basecompoundref>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classTarbora_1_1TransformComponent_1a318469cfd809ba3993eb0331cba48707" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TransformSystem</definition>
+        <argsstring></argsstring>
+        <name>TransformSystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="9" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1TransformComponent_1a96e1933211a6a3fdffeefd93cd1bd6fb" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1PhysicsComponent" kindref="compound">PhysicsComponent</ref> *</type>
+        <definition>PhysicsComponent* Tarbora::TransformComponent::controller_</definition>
+        <argsstring></argsstring>
+        <name>controller_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="28" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1TransformComponent_1a6537adc7d96fc475dc2bc0ce2d39f1aa" prot="private" static="no" mutable="no">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 Tarbora::TransformComponent::position_</definition>
+        <argsstring></argsstring>
+        <name>position_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="30" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1TransformComponent_1a185d998159bf267677fc559f30db0dd6" prot="private" static="no" mutable="no">
+        <type>glm::quat</type>
+        <definition>glm::quat Tarbora::TransformComponent::rotation_</definition>
+        <argsstring></argsstring>
+        <name>rotation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="31" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1TransformComponent_1a510017986cfefd7e2885bfd444a1bb92" prot="private" static="no" mutable="no">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 Tarbora::TransformComponent::origin_</definition>
+        <argsstring></argsstring>
+        <name>origin_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="32" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1TransformComponent_1a3c42bcea0ba19699cdb98ecc70e74eb6" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tarbora::TransformComponent::changed_</definition>
+        <argsstring></argsstring>
+        <name>changed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="33" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1af8e5da2b9ccc2bae161e326a3814c1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::TransformComponent::TransformComponent</definition>
+        <argsstring>(System *s, const ActorId &amp;id, const LuaTable &amp;table)</argsstring>
+        <name>TransformComponent</name>
+        <param>
+          <type><ref refid="classTarbora_1_1System" kindref="compound">System</ref> *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTarbora_1_1LuaTable" kindref="compound">LuaTable</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="11" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="6" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a76ea0d5430c91ebc1e0c2523edad45b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::setController</definition>
+        <argsstring>(PhysicsComponent *controller)</argsstring>
+        <name>setController</name>
+        <param>
+          <type><ref refid="classTarbora_1_1PhysicsComponent" kindref="compound">PhysicsComponent</ref> *</type>
+          <declname>controller</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="13" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a57b646968d1f68b337190fc3a25b097b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::setPosition</definition>
+        <argsstring>(const glm::vec3 &amp;position)</argsstring>
+        <name>setPosition</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="14" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="17" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a1aff5a9a89af7d0d10b3c965225100bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::setRotation</definition>
+        <argsstring>(const glm::vec3 &amp;rotation)</argsstring>
+        <name>setRotation</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="15" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a1045aecd38d4257b00d164682c4b42ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::setRotation</definition>
+        <argsstring>(const glm::quat &amp;rotation)</argsstring>
+        <name>setRotation</name>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="16" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a01333383d235e08fedf0294333578030" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::setOrigin</definition>
+        <argsstring>(const glm::vec3 &amp;origin)</argsstring>
+        <name>setOrigin</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>origin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="17" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a7f39e3a183fd0aa3a43ef525416187e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::move</definition>
+        <argsstring>(const glm::vec3 &amp;position)</argsstring>
+        <name>move</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="18" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="40" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1aa83be88569a1e5a46058f0927a28f627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::rotate</definition>
+        <argsstring>(const glm::vec3 &amp;rotation)</argsstring>
+        <name>rotate</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="19" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1aae022c45af98f996d64f75c2361c30ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::TransformComponent::rotate</definition>
+        <argsstring>(const glm::quat &amp;rotation)</argsstring>
+        <name>rotate</name>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="20" column="1" bodyfile="Tarbora/Logic/TransformComponent.cpp" bodystart="51" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a8a04684f317fe2c84503445516ac0720" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::vec3 &amp;</type>
+        <definition>const glm::vec3&amp; Tarbora::TransformComponent::getPosition</definition>
+        <argsstring>()</argsstring>
+        <name>getPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="22" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="22" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1ad4ff0d85f79e6339e2cae5c0577b59b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::quat &amp;</type>
+        <definition>const glm::quat&amp; Tarbora::TransformComponent::getRotation</definition>
+        <argsstring>()</argsstring>
+        <name>getRotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="23" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="23" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a7b280e2a6f5386f6971f6537a61fda01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 Tarbora::TransformComponent::getEulerRotation</definition>
+        <argsstring>()</argsstring>
+        <name>getEulerRotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="24" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="24" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1TransformComponent_1a65839e62d680fa9544afe6323bdef5da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const glm::vec3 &amp;</type>
+        <definition>const glm::vec3&amp; Tarbora::TransformComponent::getOrigin</definition>
+        <argsstring>()</argsstring>
+        <name>getOrigin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/TransformComponent.hpp" line="25" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="25" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="478">
+        <label>Tarbora::TransformComponent</label>
+        <link refid="classTarbora_1_1TransformComponent"/>
+        <childnode refid="479" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="479">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="483">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="484" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="482">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="483" relation="public-inheritance">
+        </childnode>
+        <childnode refid="486" relation="usage">
+          <edgelabel>world_</edgelabel>
+        </childnode>
+      </node>
+      <node id="484">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="485" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="480">
+        <label>Tarbora::TransformComponent</label>
+        <link refid="classTarbora_1_1TransformComponent"/>
+        <childnode refid="481" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="486">
+        <label>Tarbora::World</label>
+        <link refid="classTarbora_1_1World"/>
+        <childnode refid="484" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="485">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+      <node id="481">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+        <childnode refid="482" relation="usage">
+          <edgelabel>system_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Logic/TransformComponent.hpp" line="8" column="1" bodyfile="Tarbora/Logic/TransformComponent.hpp" bodystart="7" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1TransformComponent_1a3c42bcea0ba19699cdb98ecc70e74eb6" prot="private" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>changed_</name></member>
+      <member refid="classTarbora_1_1Component_1af131ce04afe7eadb2589afcec5fa52d8" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>Component</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a96e1933211a6a3fdffeefd93cd1bd6fb" prot="private" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>controller_</name></member>
+      <member refid="classTarbora_1_1Component_1a163aa5702b50ede0dddfe1f8620afca5" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>disable</name></member>
+      <member refid="classTarbora_1_1Component_1a856a0b9e17ccd0336f1a33cf2fd2ac20" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>enable</name></member>
+      <member refid="classTarbora_1_1Component_1ac5b26f24609f28419cf2a2e6065b17c8" prot="protected" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>enabled_</name></member>
+      <member refid="classTarbora_1_1Component_1ad8232ed039bec74c81fc7589ee34cbf7" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>error</name></member>
+      <member refid="classTarbora_1_1Component_1a7e022fe62bcf3c3781977ca972383c0d" prot="protected" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>error_</name></member>
+      <member refid="classTarbora_1_1Component_1a9b772f4d99f64b23685a58e7294ab981" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1Component_1abeeb3dba77af922915cbe9bc7d29d646" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a7b280e2a6f5386f6971f6537a61fda01" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>getEulerRotation</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a65839e62d680fa9544afe6323bdef5da" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>getOrigin</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a8a04684f317fe2c84503445516ac0720" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>getPosition</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1ad4ff0d85f79e6339e2cae5c0577b59b4" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>getRotation</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a7f39e3a183fd0aa3a43ef525416187e9" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>move</name></member>
+      <member refid="classTarbora_1_1Component_1a62150a85e0eb8f3601d211245ca08a2d" prot="protected" virt="virtual"><scope>Tarbora::TransformComponent</scope><name>onDisable</name></member>
+      <member refid="classTarbora_1_1Component_1a644061cabaf91ed54eae79ce616c25b9" prot="protected" virt="virtual"><scope>Tarbora::TransformComponent</scope><name>onEnable</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a510017986cfefd7e2885bfd444a1bb92" prot="private" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>origin_</name></member>
+      <member refid="classTarbora_1_1Component_1a4c2092ce4a44d193308669024867775c" prot="protected" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>owner_</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a6537adc7d96fc475dc2bc0ce2d39f1aa" prot="private" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>position_</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1aa83be88569a1e5a46058f0927a28f627" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>rotate</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1aae022c45af98f996d64f75c2361c30ca" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>rotate</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a185d998159bf267677fc559f30db0dd6" prot="private" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>rotation_</name></member>
+      <member refid="classTarbora_1_1Component_1a227a558106b74d4b8b0be7667c7610c5" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>send</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a76ea0d5430c91ebc1e0c2523edad45b3" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>setController</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a01333383d235e08fedf0294333578030" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>setOrigin</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a57b646968d1f68b337190fc3a25b097b" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>setPosition</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a1aff5a9a89af7d0d10b3c965225100bc" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>setRotation</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a1045aecd38d4257b00d164682c4b42ab" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>setRotation</name></member>
+      <member refid="classTarbora_1_1Component_1a19bde335970f5e3af9bc845122f28f3f" prot="protected" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>system_</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1af8e5da2b9ccc2bae161e326a3814c1eb" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>TransformComponent</name></member>
+      <member refid="classTarbora_1_1TransformComponent_1a318469cfd809ba3993eb0331cba48707" prot="private" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>TransformSystem</name></member>
+      <member refid="classTarbora_1_1Component_1a47985733836fce6b3cc5e0f77607d4e8" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1Component_1aa3eddb1cf4ba3fb1f0652d0c3aee07b6" prot="public" virt="non-virtual"><scope>Tarbora::TransformComponent</scope><name>triggerLocal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

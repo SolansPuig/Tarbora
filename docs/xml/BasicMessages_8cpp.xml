@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="BasicMessages_8cpp" kind="file" language="C++">
+    <compoundname>BasicMessages.cpp</compoundname>
+    <includes refid="BasicMessages_8hpp" local="yes">BasicMessages.hpp</includes>
+    <incdepgraph>
+      <node id="2484">
+        <label>list</label>
+      </node>
+      <node id="2470">
+        <label>stdarg.h</label>
+      </node>
+      <node id="2482">
+        <label>iomanip</label>
+      </node>
+      <node id="2471">
+        <label>functional</label>
+      </node>
+      <node id="2490">
+        <label>queue</label>
+      </node>
+      <node id="2503">
+        <label>basic.pb.h</label>
+      </node>
+      <node id="2466">
+        <label>MessageClient.hpp</label>
+        <link refid="MessageClient_8hpp_source"/>
+        <childnode refid="2467" relation="include">
+        </childnode>
+        <childnode refid="2492" relation="include">
+        </childnode>
+      </node>
+      <node id="2463">
+        <label>BasicMessages.hpp</label>
+        <link refid="BasicMessages_8hpp_source"/>
+        <childnode refid="2464" relation="include">
+        </childnode>
+        <childnode refid="2503" relation="include">
+        </childnode>
+      </node>
+      <node id="2502">
+        <label>math.pb.h</label>
+      </node>
+      <node id="2479">
+        <label>string</label>
+      </node>
+      <node id="2500">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="2487">
+        <label>map</label>
+      </node>
+      <node id="2486">
+        <label>unordered_set</label>
+      </node>
+      <node id="2480">
+        <label>fstream</label>
+      </node>
+      <node id="2496">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="2462">
+        <label>Tarbora/Messages/BasicMessages.cpp</label>
+        <link refid="BasicMessages_8cpp"/>
+        <childnode refid="2463" relation="include">
+        </childnode>
+      </node>
+      <node id="2467">
+        <label>../CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="2468" relation="include">
+        </childnode>
+        <childnode refid="2469" relation="include">
+        </childnode>
+        <childnode refid="2470" relation="include">
+        </childnode>
+        <childnode refid="2471" relation="include">
+        </childnode>
+        <childnode refid="2472" relation="include">
+        </childnode>
+        <childnode refid="2473" relation="include">
+        </childnode>
+        <childnode refid="2474" relation="include">
+        </childnode>
+        <childnode refid="2475" relation="include">
+        </childnode>
+        <childnode refid="2476" relation="include">
+        </childnode>
+        <childnode refid="2477" relation="include">
+        </childnode>
+        <childnode refid="2478" relation="include">
+        </childnode>
+        <childnode refid="2479" relation="include">
+        </childnode>
+        <childnode refid="2480" relation="include">
+        </childnode>
+        <childnode refid="2481" relation="include">
+        </childnode>
+        <childnode refid="2482" relation="include">
+        </childnode>
+        <childnode refid="2483" relation="include">
+        </childnode>
+        <childnode refid="2484" relation="include">
+        </childnode>
+        <childnode refid="2485" relation="include">
+        </childnode>
+        <childnode refid="2486" relation="include">
+        </childnode>
+        <childnode refid="2487" relation="include">
+        </childnode>
+        <childnode refid="2488" relation="include">
+        </childnode>
+        <childnode refid="2489" relation="include">
+        </childnode>
+        <childnode refid="2490" relation="include">
+        </childnode>
+        <childnode refid="2491" relation="include">
+        </childnode>
+      </node>
+      <node id="2465">
+        <label>../Framework/MessageManager/MessageManager.hpp</label>
+        <link refid="MessageManager_8hpp"/>
+        <childnode refid="2466" relation="include">
+        </childnode>
+      </node>
+      <node id="2494">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="2467" relation="include">
+        </childnode>
+        <childnode refid="2492" relation="include">
+        </childnode>
+        <childnode refid="2495" relation="include">
+        </childnode>
+        <childnode refid="2496" relation="include">
+        </childnode>
+        <childnode refid="2497" relation="include">
+        </childnode>
+        <childnode refid="2498" relation="include">
+        </childnode>
+        <childnode refid="2499" relation="include">
+        </childnode>
+        <childnode refid="2500" relation="include">
+        </childnode>
+      </node>
+      <node id="2498">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="2478">
+        <label>ctime</label>
+      </node>
+      <node id="2492">
+        <label>../Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="2493" relation="include">
+        </childnode>
+        <childnode refid="2494" relation="include">
+        </childnode>
+        <childnode refid="2501" relation="include">
+        </childnode>
+      </node>
+      <node id="2472">
+        <label>optional</label>
+      </node>
+      <node id="2489">
+        <label>stack</label>
+      </node>
+      <node id="2483">
+        <label>vector</label>
+      </node>
+      <node id="2481">
+        <label>sstream</label>
+      </node>
+      <node id="2488">
+        <label>unordered_map</label>
+      </node>
+      <node id="2476">
+        <label>shared_mutex</label>
+      </node>
+      <node id="2493">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="2467" relation="include">
+        </childnode>
+      </node>
+      <node id="2475">
+        <label>mutex</label>
+      </node>
+      <node id="2477">
+        <label>chrono</label>
+      </node>
+      <node id="2468">
+        <label>csignal</label>
+      </node>
+      <node id="2499">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="2474">
+        <label>thread</label>
+      </node>
+      <node id="2485">
+        <label>set</label>
+      </node>
+      <node id="2497">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="2491">
+        <label>algorithm</label>
+      </node>
+      <node id="2501">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="2469">
+        <label>stdio.h</label>
+      </node>
+      <node id="2464">
+        <label>MathMessages.hpp</label>
+        <link refid="MathMessages_8hpp_source"/>
+        <childnode refid="2465" relation="include">
+        </childnode>
+        <childnode refid="2502" relation="include">
+        </childnode>
+      </node>
+      <node id="2473">
+        <label>memory</label>
+      </node>
+      <node id="2495">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <innernamespace refid="namespaceTarbora_1_1Message">Tarbora::Message</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Messages/BasicMessages.cpp"/>
+  </compounddef>
+</doxygen>

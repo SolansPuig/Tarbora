@@ -1,0 +1,396 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1PhysicsComponent" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::PhysicsComponent</compoundname>
+    <basecompoundref refid="classTarbora_1_1Component" prot="public" virt="non-virtual">Tarbora::Component</basecompoundref>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classTarbora_1_1PhysicsComponent_1a6fb7520528fab4a670001f041b872bf2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class PhysicsSystem</definition>
+        <argsstring></argsstring>
+        <name>PhysicsSystem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="10" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsComponent_1a9f1a52cf645b9b82688b6403b57a1c3b" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;RigidBody&gt; Tarbora::PhysicsComponent::body_</definition>
+        <argsstring></argsstring>
+        <name>body_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="40" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsComponent_1a447c5c7187b9ec855e880e162c376ee3" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1TransformComponent" kindref="compound">TransformComponent</ref> *</type>
+        <definition>TransformComponent* Tarbora::PhysicsComponent::transform_</definition>
+        <argsstring></argsstring>
+        <name>transform_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="41" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsComponent_1a3b2f178bfa5a837a4eb9deecf252529b" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ActorMotionState" kindref="compound">ActorMotionState</ref> *</type>
+        <definition>ActorMotionState* Tarbora::PhysicsComponent::motion_state_</definition>
+        <argsstring></argsstring>
+        <name>motion_state_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="42" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsComponent_1aef72581bf1c4b79ae8f2c189e4e97797" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::PhysicsComponent::height_</definition>
+        <argsstring></argsstring>
+        <name>height_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="43" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1adcd3fe64e2bc064de0a6892f4d102b99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::PhysicsComponent::PhysicsComponent</definition>
+        <argsstring>(System *s, const ActorId &amp;id, const LuaTable &amp;table)</argsstring>
+        <name>PhysicsComponent</name>
+        <param>
+          <type><ref refid="classTarbora_1_1System" kindref="compound">System</ref> *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTarbora_1_1LuaTable" kindref="compound">LuaTable</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="12" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="6" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1a8874d33c4a057f8cc511c9a51cf34d38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::updateTransform</definition>
+        <argsstring>()</argsstring>
+        <name>updateTransform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="14" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="43" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1ac3f872ede813fed363bdc33b25299a54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::setAngularFactor</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>setAngularFactor</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="16" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1ab3b5bc3c5be6f23b660aa7436ace3551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::setLinearDamping</definition>
+        <argsstring>(float value)</argsstring>
+        <name>setLinearDamping</name>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="18" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="55" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1ace3b5c0be5b1591ebd42beae7f262555" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::setVelocity</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>setVelocity</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="20" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="61" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1ad6f45e2f3430f2f7291aee8345502cd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::setAngularVelocity</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>setAngularVelocity</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="22" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1a79b71671292aacad7a70091f60eb0705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::applyForce</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>applyForce</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="24" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="73" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1a939807ea8611effbe26f099a6625a4a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::applyTorque</definition>
+        <argsstring>(const glm::vec3 &amp;direction)</argsstring>
+        <name>applyTorque</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="26" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="79" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1a8222600edf6ea348ca313108d6fab96c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="28" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="85" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1a022f79441052ce75ae1a1c2b29ed36cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="structTarbora_1_1RayCastResult" kindref="compound">RayCastResult</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; RayCastResult &gt; Tarbora::PhysicsComponent::rayCast</definition>
+        <argsstring>(const glm::vec3 &amp;origin, const glm::quat &amp;direction, float length)</argsstring>
+        <name>rayCast</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>origin</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="30" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="91" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1a3e7abcc1f30026b578a88c3ad826af10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Tarbora::PhysicsComponent::getHeight</definition>
+        <argsstring>()</argsstring>
+        <name>getHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="32" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="32" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1a355824ebba674e1f8ff9c9069637f716" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::onEnable</definition>
+        <argsstring>()</argsstring>
+        <name>onEnable</name>
+        <reimplements refid="classTarbora_1_1Component_1a644061cabaf91ed54eae79ce616c25b9">onEnable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="37" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="99" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsComponent_1abc018dd64594397b5e40972fc4a94f22" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsComponent::onDisable</definition>
+        <argsstring>()</argsstring>
+        <name>onDisable</name>
+        <reimplements refid="classTarbora_1_1Component_1a62150a85e0eb8f3601d211245ca08a2d">onDisable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsComponent.hpp" line="38" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.cpp" bodystart="105" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="342">
+        <label>Tarbora::PhysicsComponent</label>
+        <link refid="classTarbora_1_1PhysicsComponent"/>
+        <childnode refid="343" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="343">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="347">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="348" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="344">
+        <label>Tarbora::PhysicsComponent</label>
+        <link refid="classTarbora_1_1PhysicsComponent"/>
+        <childnode refid="345" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="346">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="347" relation="public-inheritance">
+        </childnode>
+        <childnode refid="350" relation="usage">
+          <edgelabel>world_</edgelabel>
+        </childnode>
+      </node>
+      <node id="348">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="349" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="350">
+        <label>Tarbora::World</label>
+        <link refid="classTarbora_1_1World"/>
+        <childnode refid="348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="349">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+      <node id="345">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+        <childnode refid="346" relation="usage">
+          <edgelabel>system_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Logic/PhysicsComponent.hpp" line="9" column="1" bodyfile="Tarbora/Logic/PhysicsComponent.hpp" bodystart="8" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1PhysicsComponent_1a79b71671292aacad7a70091f60eb0705" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>applyForce</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a939807ea8611effbe26f099a6625a4a6" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>applyTorque</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a9f1a52cf645b9b82688b6403b57a1c3b" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>body_</name></member>
+      <member refid="classTarbora_1_1Component_1af131ce04afe7eadb2589afcec5fa52d8" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>Component</name></member>
+      <member refid="classTarbora_1_1Component_1a163aa5702b50ede0dddfe1f8620afca5" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>disable</name></member>
+      <member refid="classTarbora_1_1Component_1a856a0b9e17ccd0336f1a33cf2fd2ac20" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>enable</name></member>
+      <member refid="classTarbora_1_1Component_1ac5b26f24609f28419cf2a2e6065b17c8" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>enabled_</name></member>
+      <member refid="classTarbora_1_1Component_1ad8232ed039bec74c81fc7589ee34cbf7" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>error</name></member>
+      <member refid="classTarbora_1_1Component_1a7e022fe62bcf3c3781977ca972383c0d" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>error_</name></member>
+      <member refid="classTarbora_1_1Component_1a9b772f4d99f64b23685a58e7294ab981" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1Component_1abeeb3dba77af922915cbe9bc7d29d646" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a3e7abcc1f30026b578a88c3ad826af10" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>getHeight</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1aef72581bf1c4b79ae8f2c189e4e97797" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>height_</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a3b2f178bfa5a837a4eb9deecf252529b" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>motion_state_</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1abc018dd64594397b5e40972fc4a94f22" prot="private" virt="virtual"><scope>Tarbora::PhysicsComponent</scope><name>onDisable</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a355824ebba674e1f8ff9c9069637f716" prot="private" virt="virtual"><scope>Tarbora::PhysicsComponent</scope><name>onEnable</name></member>
+      <member refid="classTarbora_1_1Component_1a4c2092ce4a44d193308669024867775c" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>owner_</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1adcd3fe64e2bc064de0a6892f4d102b99" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>PhysicsComponent</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a6fb7520528fab4a670001f041b872bf2" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>PhysicsSystem</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a022f79441052ce75ae1a1c2b29ed36cd" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>rayCast</name></member>
+      <member refid="classTarbora_1_1Component_1a227a558106b74d4b8b0be7667c7610c5" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>send</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1ac3f872ede813fed363bdc33b25299a54" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>setAngularFactor</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1ad6f45e2f3430f2f7291aee8345502cd1" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>setAngularVelocity</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1ab3b5bc3c5be6f23b660aa7436ace3551" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>setLinearDamping</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1ace3b5c0be5b1591ebd42beae7f262555" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>setVelocity</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a8222600edf6ea348ca313108d6fab96c" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>stop</name></member>
+      <member refid="classTarbora_1_1Component_1a19bde335970f5e3af9bc845122f28f3f" prot="protected" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>system_</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a447c5c7187b9ec855e880e162c376ee3" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>transform_</name></member>
+      <member refid="classTarbora_1_1Component_1a47985733836fce6b3cc5e0f77607d4e8" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1Component_1aa3eddb1cf4ba3fb1f0652d0c3aee07b6" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>triggerLocal</name></member>
+      <member refid="classTarbora_1_1PhysicsComponent_1a8874d33c4a057f8cc511c9a51cf34d38" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsComponent</scope><name>updateTransform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

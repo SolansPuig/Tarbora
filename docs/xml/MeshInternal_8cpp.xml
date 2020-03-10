@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="MeshInternal_8cpp" kind="file" language="C++">
+    <compoundname>MeshInternal.cpp</compoundname>
+    <includes refid="MeshInternal_8hpp" local="yes">MeshInternal.hpp</includes>
+    <includes refid="Window_8hpp" local="yes">Window.hpp</includes>
+    <incdepgraph>
+      <node id="3694">
+        <label>list</label>
+      </node>
+      <node id="3680">
+        <label>stdarg.h</label>
+      </node>
+      <node id="3692">
+        <label>iomanip</label>
+      </node>
+      <node id="3681">
+        <label>functional</label>
+      </node>
+      <node id="3700">
+        <label>queue</label>
+      </node>
+      <node id="3689">
+        <label>string</label>
+      </node>
+      <node id="3708">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="3711">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="3697">
+        <label>map</label>
+      </node>
+      <node id="3713">
+        <label>External/glfw/include/GLFW/glfw3.h</label>
+      </node>
+      <node id="3696">
+        <label>unordered_set</label>
+      </node>
+      <node id="3690">
+        <label>fstream</label>
+      </node>
+      <node id="3704">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="3674">
+        <label>MeshInternal.hpp</label>
+        <link refid="MeshInternal_8hpp_source"/>
+        <childnode refid="3675" relation="include">
+        </childnode>
+      </node>
+      <node id="3677">
+        <label>CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="3678" relation="include">
+        </childnode>
+        <childnode refid="3679" relation="include">
+        </childnode>
+        <childnode refid="3680" relation="include">
+        </childnode>
+        <childnode refid="3681" relation="include">
+        </childnode>
+        <childnode refid="3682" relation="include">
+        </childnode>
+        <childnode refid="3683" relation="include">
+        </childnode>
+        <childnode refid="3684" relation="include">
+        </childnode>
+        <childnode refid="3685" relation="include">
+        </childnode>
+        <childnode refid="3686" relation="include">
+        </childnode>
+        <childnode refid="3687" relation="include">
+        </childnode>
+        <childnode refid="3688" relation="include">
+        </childnode>
+        <childnode refid="3689" relation="include">
+        </childnode>
+        <childnode refid="3690" relation="include">
+        </childnode>
+        <childnode refid="3691" relation="include">
+        </childnode>
+        <childnode refid="3692" relation="include">
+        </childnode>
+        <childnode refid="3693" relation="include">
+        </childnode>
+        <childnode refid="3694" relation="include">
+        </childnode>
+        <childnode refid="3695" relation="include">
+        </childnode>
+        <childnode refid="3696" relation="include">
+        </childnode>
+        <childnode refid="3697" relation="include">
+        </childnode>
+        <childnode refid="3698" relation="include">
+        </childnode>
+        <childnode refid="3699" relation="include">
+        </childnode>
+        <childnode refid="3700" relation="include">
+        </childnode>
+        <childnode refid="3701" relation="include">
+        </childnode>
+      </node>
+      <node id="3702">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="3677" relation="include">
+        </childnode>
+        <childnode refid="3675" relation="include">
+        </childnode>
+        <childnode refid="3703" relation="include">
+        </childnode>
+        <childnode refid="3704" relation="include">
+        </childnode>
+        <childnode refid="3705" relation="include">
+        </childnode>
+        <childnode refid="3706" relation="include">
+        </childnode>
+        <childnode refid="3707" relation="include">
+        </childnode>
+        <childnode refid="3708" relation="include">
+        </childnode>
+      </node>
+      <node id="3706">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="3688">
+        <label>ctime</label>
+      </node>
+      <node id="3675">
+        <label>../../../Framework/Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="3676" relation="include">
+        </childnode>
+        <childnode refid="3702" relation="include">
+        </childnode>
+        <childnode refid="3709" relation="include">
+        </childnode>
+      </node>
+      <node id="3682">
+        <label>optional</label>
+      </node>
+      <node id="3699">
+        <label>stack</label>
+      </node>
+      <node id="3693">
+        <label>vector</label>
+      </node>
+      <node id="3710">
+        <label>Window.hpp</label>
+        <link refid="Window_8hpp_source"/>
+        <childnode refid="3675" relation="include">
+        </childnode>
+        <childnode refid="3711" relation="include">
+        </childnode>
+        <childnode refid="3712" relation="include">
+        </childnode>
+        <childnode refid="3713" relation="include">
+        </childnode>
+      </node>
+      <node id="3691">
+        <label>sstream</label>
+      </node>
+      <node id="3673">
+        <label>Tarbora/Views/GraphicViews/GraphicsEngine/MeshInternal.cpp</label>
+        <link refid="MeshInternal_8cpp"/>
+        <childnode refid="3674" relation="include">
+        </childnode>
+        <childnode refid="3710" relation="include">
+        </childnode>
+      </node>
+      <node id="3698">
+        <label>unordered_map</label>
+      </node>
+      <node id="3686">
+        <label>shared_mutex</label>
+      </node>
+      <node id="3676">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="3677" relation="include">
+        </childnode>
+      </node>
+      <node id="3685">
+        <label>mutex</label>
+      </node>
+      <node id="3687">
+        <label>chrono</label>
+      </node>
+      <node id="3678">
+        <label>csignal</label>
+      </node>
+      <node id="3707">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="3684">
+        <label>thread</label>
+      </node>
+      <node id="3695">
+        <label>set</label>
+      </node>
+      <node id="3705">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="3701">
+        <label>algorithm</label>
+      </node>
+      <node id="3709">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="3712">
+        <label>GL/gl.h</label>
+      </node>
+      <node id="3679">
+        <label>stdio.h</label>
+      </node>
+      <node id="3683">
+        <label>memory</label>
+      </node>
+      <node id="3703">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/MeshInternal.cpp"/>
+  </compounddef>
+</doxygen>

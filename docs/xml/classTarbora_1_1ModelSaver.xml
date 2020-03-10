@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1ModelSaver" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::ModelSaver</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1ModelSaver_1a3a96e68e3bb30c7b0ca75296d27ca6d2" prot="private" static="no" mutable="no">
+        <type>std::ofstream</type>
+        <definition>std::ofstream Tarbora::ModelSaver::file_</definition>
+        <argsstring></argsstring>
+        <name>file_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="81" column="1" bodyfile="Tarbora/Editor/Editor.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1ModelSaver_1a42bbff6c78a13ee961a7c95223ff322f" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Tarbora::ModelSaver::indentation_</definition>
+        <argsstring></argsstring>
+        <name>indentation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="82" column="1" bodyfile="Tarbora/Editor/Editor.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1ModelSaver_1a112b8149e1bf569a62f4c7fbd74c283d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::ModelSaver::ModelSaver</definition>
+        <argsstring>(const std::string &amp;file, std::shared_ptr&lt; ActorModel &gt; model)</argsstring>
+        <name>ModelSaver</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1ActorModel" kindref="compound">ActorModel</ref> &gt;</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="72" column="1" bodyfile="Tarbora/Editor/ModelEditor.cpp" bodystart="492" bodyend="506"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTarbora_1_1ModelSaver_1a841ae9a5084998cf063a66628c5ce091" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ModelSaver::saveNode</definition>
+        <argsstring>(std::shared_ptr&lt; SceneNode &gt; node)</argsstring>
+        <name>saveNode</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1SceneNode" kindref="compound">SceneNode</ref> &gt;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="75" column="1" bodyfile="Tarbora/Editor/ModelEditor.cpp" bodystart="508" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ModelSaver_1a33b4b3126f05e33ab26276a8fc5fea39" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ModelSaver::saveVec3</definition>
+        <argsstring>(const std::string &amp;name, const glm::vec3 &amp;vector)</argsstring>
+        <name>saveVec3</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="76" column="1" bodyfile="Tarbora/Editor/ModelEditor.cpp" bodystart="552" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ModelSaver_1aa6fdeef373031eabd56491083dea6e38" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ModelSaver::saveVec2</definition>
+        <argsstring>(const std::string &amp;name, const glm::vec2 &amp;vector)</argsstring>
+        <name>saveVec2</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const glm::vec2 &amp;</type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="77" column="1" bodyfile="Tarbora/Editor/ModelEditor.cpp" bodystart="560" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ModelSaver_1a5b2c59314fba499f776aece7fb4ced53" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ModelSaver::saveVec3</definition>
+        <argsstring>(const std::string &amp;name, const glm::tvec3&lt; unsigned char &gt; &amp;vector)</argsstring>
+        <name>saveVec3</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const glm::tvec3&lt; unsigned char &gt; &amp;</type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="78" column="1" bodyfile="Tarbora/Editor/ModelEditor.cpp" bodystart="567" bodyend="572"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ModelSaver_1a1ad0665e972fa37b151b5db720623d53" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ModelSaver::saveVec2</definition>
+        <argsstring>(const std::string &amp;name, const glm::tvec2&lt; unsigned short &gt; &amp;vector)</argsstring>
+        <name>saveVec2</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const glm::tvec2&lt; unsigned short &gt; &amp;</type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Editor/Editor.hpp" line="79" column="1" bodyfile="Tarbora/Editor/ModelEditor.cpp" bodystart="574" bodyend="578"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Editor/Editor.hpp" line="70" column="1" bodyfile="Tarbora/Editor/Editor.hpp" bodystart="69" bodyend="83"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1ModelSaver_1a3a96e68e3bb30c7b0ca75296d27ca6d2" prot="private" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>file_</name></member>
+      <member refid="classTarbora_1_1ModelSaver_1a42bbff6c78a13ee961a7c95223ff322f" prot="private" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>indentation_</name></member>
+      <member refid="classTarbora_1_1ModelSaver_1a112b8149e1bf569a62f4c7fbd74c283d" prot="public" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>ModelSaver</name></member>
+      <member refid="classTarbora_1_1ModelSaver_1a841ae9a5084998cf063a66628c5ce091" prot="private" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>saveNode</name></member>
+      <member refid="classTarbora_1_1ModelSaver_1aa6fdeef373031eabd56491083dea6e38" prot="private" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>saveVec2</name></member>
+      <member refid="classTarbora_1_1ModelSaver_1a1ad0665e972fa37b151b5db720623d53" prot="private" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>saveVec2</name></member>
+      <member refid="classTarbora_1_1ModelSaver_1a33b4b3126f05e33ab26276a8fc5fea39" prot="private" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>saveVec3</name></member>
+      <member refid="classTarbora_1_1ModelSaver_1a5b2c59314fba499f776aece7fb4ced53" prot="private" virt="non-virtual"><scope>Tarbora::ModelSaver</scope><name>saveVec3</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

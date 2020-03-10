@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Message_1_1CreateActor" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Message::CreateActor</compoundname>
+    <basecompoundref refid="classTarbora_1_1Message_1_1Message" prot="public" virt="non-virtual">Tarbora::Message::Message&lt;::MessageContent::CreateActor &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a501ffd356544e55a1b9fb4e6f7620259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::CreateActor::CreateActor</definition>
+        <argsstring>(const MessageBody &amp;m)</argsstring>
+        <name>CreateActor</name>
+        <param>
+          <type>const <ref refid="classTarbora_1_1MessageBody" kindref="compound">MessageBody</ref> &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="51" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a21f3d9d4de2508519868d6b7db21e1a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::CreateActor::CreateActor</definition>
+        <argsstring>(const ActorId &amp;id, const std::string &amp;entity, const std::string &amp;variant)</argsstring>
+        <name>CreateActor</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>entity</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>variant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="53" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a19ba27e4e49e3c3546ece8abedd02649" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::CreateActor::CreateActor</definition>
+        <argsstring>(const ActorId &amp;id, const std::string &amp;entity, const std::string &amp;variant, const glm::vec3 &amp;position)</argsstring>
+        <name>CreateActor</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>entity</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>variant</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="55" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="35" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a61b1b77a3ee2eccd9b2938db1a6804ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::CreateActor::CreateActor</definition>
+        <argsstring>(const ActorId &amp;id, const std::string &amp;entity, const std::string &amp;variant, const glm::quat &amp;rotation)</argsstring>
+        <name>CreateActor</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>entity</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>variant</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="57" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="43" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a8e1d258d129e43403dacf00939cf19ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::CreateActor::CreateActor</definition>
+        <argsstring>(const ActorId &amp;id, const std::string &amp;entity, const std::string &amp;variant, const glm::vec3 &amp;position, const glm::quat &amp;rotation)</argsstring>
+        <name>CreateActor</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>entity</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>variant</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="59" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="51" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a945d190ee49b62ad72ea6a42874d924a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const ActorId &amp;</type>
+        <definition>const ActorId &amp; Tarbora::Message::CreateActor::getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="61" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a8afc9f7695e460c7307154509841c77a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Tarbora::Message::CreateActor::getEntity</definition>
+        <argsstring>()</argsstring>
+        <name>getEntity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="62" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1aa4ae5b20c334a946846bfbbf3dabde96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Tarbora::Message::CreateActor::getVariant</definition>
+        <argsstring>()</argsstring>
+        <name>getVariant</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="63" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1ada9e16bb08abadaf245c4993a8a588dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 Tarbora::Message::CreateActor::getPosition</definition>
+        <argsstring>()</argsstring>
+        <name>getPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="64" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1af7068fa52473ad3592038af0f8492905" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::quat</type>
+        <definition>glm::quat Tarbora::Message::CreateActor::getRotation</definition>
+        <argsstring>()</argsstring>
+        <name>getRotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="65" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1acf1b3e888fd715357d59e697e0d25caa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::Message::CreateActor::hasPosition</definition>
+        <argsstring>()</argsstring>
+        <name>hasPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="66" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1CreateActor_1a073fd44432d7db362801497af7af31d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::Message::CreateActor::hasRotation</definition>
+        <argsstring>()</argsstring>
+        <name>hasRotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="67" column="1" bodyfile="Tarbora/Messages/BasicMessages.cpp" bodystart="66" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="110">
+        <label>Tarbora::Message::CreateActor</label>
+        <link refid="classTarbora_1_1Message_1_1CreateActor"/>
+        <childnode refid="111" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>Tarbora::Message::Message&lt;::MessageContent::CreateActor &gt;</label>
+        <link refid="classTarbora_1_1Message_1_1Message"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="112">
+        <label>Tarbora::Message::CreateActor</label>
+        <link refid="classTarbora_1_1Message_1_1CreateActor"/>
+        <childnode refid="113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="113">
+        <label>Tarbora::Message::Message&lt;::MessageContent::CreateActor &gt;</label>
+        <link refid="classTarbora_1_1Message_1_1Message"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Messages/BasicMessages.hpp" line="49" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="48" bodyend="68"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a501ffd356544e55a1b9fb4e6f7620259" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>CreateActor</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a21f3d9d4de2508519868d6b7db21e1a5" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>CreateActor</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a19ba27e4e49e3c3546ece8abedd02649" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>CreateActor</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a61b1b77a3ee2eccd9b2938db1a6804ad" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>CreateActor</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a8e1d258d129e43403dacf00939cf19ea" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>CreateActor</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a8afc9f7695e460c7307154509841c77a" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>getEntity</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a945d190ee49b62ad72ea6a42874d924a" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>getId</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1ada9e16bb08abadaf245c4993a8a588dc" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>getPosition</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1af7068fa52473ad3592038af0f8492905" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>getRotation</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1aa4ae5b20c334a946846bfbbf3dabde96" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>getVariant</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1acf1b3e888fd715357d59e697e0d25caa" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>hasPosition</name></member>
+      <member refid="classTarbora_1_1Message_1_1CreateActor_1a073fd44432d7db362801497af7af31d7" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>hasRotation</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a7c69c0c47cea4eaf4b6bd31db8c800a4" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>Message</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a0c17b7278a56bc8793de569e5fc386b2" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>Message</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a31c0ef53411e867f140c66676673c2ab" prot="protected" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>message_</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1ae78ff052422996d5f310ca6253c2b0a5" prot="public" virt="non-virtual"><scope>Tarbora::Message::CreateActor</scope><name>operator MessageBody</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

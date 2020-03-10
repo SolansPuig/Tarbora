@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Message_1_1Message" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Message::Message</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1Message_1_1Message_1a31c0ef53411e867f140c66676673c2ab" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T Tarbora::Message::Message&lt; T &gt;::message_</definition>
+        <argsstring></argsstring>
+        <name>message_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="28" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1Message_1a7c69c0c47cea4eaf4b6bd31db8c800a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::Message&lt; T &gt;::Message</definition>
+        <argsstring>()</argsstring>
+        <name>Message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="13" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1Message_1a0c17b7278a56bc8793de569e5fc386b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::Message&lt; T &gt;::Message</definition>
+        <argsstring>(const MessageBody &amp;m)</argsstring>
+        <name>Message</name>
+        <param>
+          <type>const <ref refid="classTarbora_1_1MessageBody" kindref="compound">MessageBody</ref> &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="15" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1Message_1ae78ff052422996d5f310ca6253c2b0a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::Message&lt; T &gt;::operator MessageBody</definition>
+        <argsstring>()</argsstring>
+        <name>operator MessageBody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="20" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="20" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="255">
+        <label>T</label>
+      </node>
+      <node id="254">
+        <label>Tarbora::Message::Message&lt; T &gt;</label>
+        <link refid="classTarbora_1_1Message_1_1Message"/>
+        <childnode refid="255" relation="usage">
+          <edgelabel>message_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Messages/BasicMessages.hpp" line="11" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="10" bodyend="29"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Message_1_1Message_1a7c69c0c47cea4eaf4b6bd31db8c800a4" prot="public" virt="non-virtual"><scope>Tarbora::Message::Message</scope><name>Message</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a0c17b7278a56bc8793de569e5fc386b2" prot="public" virt="non-virtual"><scope>Tarbora::Message::Message</scope><name>Message</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a31c0ef53411e867f140c66676673c2ab" prot="protected" virt="non-virtual"><scope>Tarbora::Message::Message</scope><name>message_</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1ae78ff052422996d5f310ca6253c2b0a5" prot="public" virt="non-virtual"><scope>Tarbora::Message::Message</scope><name>operator MessageBody</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

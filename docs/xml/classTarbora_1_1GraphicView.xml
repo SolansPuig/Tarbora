@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1GraphicView" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::GraphicView</compoundname>
+    <basecompoundref refid="classTarbora_1_1Module" prot="public" virt="non-virtual">Tarbora::Module</basecompoundref>
+    <derivedcompoundref refid="classTarbora_1_1HumanView" prot="public" virt="non-virtual">Tarbora::HumanView</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1GraphicView_1af8e57c86da6639b6226acf94c7acd092" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1GraphicsEngine" kindref="compound">GraphicsEngine</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GraphicsEngine&gt; Tarbora::GraphicView::graphics_engine_</definition>
+        <argsstring></argsstring>
+        <name>graphics_engine_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicView.hpp" line="18" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicView.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1GraphicView_1aae376fc7aaccdad026f7c841f6577fa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::GraphicView::GraphicView</definition>
+        <argsstring>(const ClientId &amp;client_id, const std::string &amp;settings_file)</argsstring>
+        <name>GraphicView</name>
+        <param>
+          <type>const ClientId &amp;</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>settings_file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicView.hpp" line="9" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicView.hpp" bodystart="9" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1GraphicView_1ad070d4538da994ad77f8fbfc5bd39763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1GraphicsEngine" kindref="compound">GraphicsEngine</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GraphicsEngine&gt; Tarbora::GraphicView::getGraphicsEngine</definition>
+        <argsstring>()</argsstring>
+        <name>getGraphicsEngine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicView.hpp" line="15" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicView.hpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="148">
+        <label>Tarbora::GraphicView</label>
+        <link refid="classTarbora_1_1GraphicView"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="149">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="150" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>Tarbora::HumanView</label>
+        <link refid="classTarbora_1_1HumanView"/>
+        <childnode refid="148" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="150">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="152">
+        <label>Tarbora::GraphicView</label>
+        <link refid="classTarbora_1_1GraphicView"/>
+        <childnode refid="153" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="154" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/GraphicView.hpp" line="7" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicView.hpp" bodystart="6" bodyend="19"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1AbstractModule_1ab1710750f89829ac441b4032a7d34580" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>AbstractModule</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1a3b1cc88ec4fc5c1351e5f4abe0e25948" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>close</name></member>
+      <member refid="classTarbora_1_1Module_1a9dfb5e4073e01bb09899a2001b6c65d0" prot="public" virt="virtual"><scope>Tarbora::GraphicView</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1GraphicView_1ad070d4538da994ad77f8fbfc5bd39763" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>getGraphicsEngine</name></member>
+      <member refid="classTarbora_1_1Module_1a72b275060190479d24616564384cb891" prot="public" virt="virtual"><scope>Tarbora::GraphicView</scope><name>getInput</name></member>
+      <member refid="classTarbora_1_1Module_1a8e97a14fd27c595d1794ce859ae332b0" prot="protected" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>getMessageManager</name></member>
+      <member refid="classTarbora_1_1GraphicView_1af8e57c86da6639b6226acf94c7acd092" prot="private" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>graphics_engine_</name></member>
+      <member refid="classTarbora_1_1GraphicView_1aae376fc7aaccdad026f7c841f6577fa5" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>GraphicView</name></member>
+      <member refid="classTarbora_1_1Module_1abc87fb2d39229905dfa1e8e4539f916c" prot="protected" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>max_fps_</name></member>
+      <member refid="classTarbora_1_1Module_1a9b8cd7c58bfdede1cfad00854dd4fa6b" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>Module</name></member>
+      <member refid="classTarbora_1_1Module_1a33668a78b4cd7a8d1adc0d221461b85c" prot="public" virt="virtual"><scope>Tarbora::GraphicView</scope><name>run</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1a66ab779015a191a3188b1f91925e592b" prot="protected" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>run_</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1aca0e62a1ce7b61b06b7f60d841306380" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>runThread</name></member>
+      <member refid="classTarbora_1_1Module_1a9d7b1d6f34c2ed64f628d1c958ba1719" prot="public" virt="pure-virtual"><scope>Tarbora::GraphicView</scope><name>update</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1aa13dfaed16573bef7cce22a473616bd5" prot="protected" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>using_thread_</name></member>
+      <member refid="classTarbora_1_1AbstractModule_1a9d0801567b76df2d51904e9e4c0d834e" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>~AbstractModule</name></member>
+      <member refid="classTarbora_1_1Module_1a1912e8c503a7d9cc0ad15578c284c56d" prot="public" virt="non-virtual"><scope>Tarbora::GraphicView</scope><name>~Module</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

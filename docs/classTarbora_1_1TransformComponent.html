@@ -1,209 +1,187 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tarbora Game Engine: Tarbora::TransformComponent Class Reference</title>
-<link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
-<script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8" />
+  <title>Tarbora::TransformComponent class | Tarbora Game Engine The Game Engine for Makers</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
-<div id="titlearea">
-<table cellspacing="0" cellpadding="0">
- <tbody>
- <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.5-ALPHA</span>
-   </div>
-   <div id="projectbrief">The Game Engine for Makers</div>
-  </td>
- </tr>
- </tbody>
-</table>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="icon_small.png" />Tarbora Game Engine <span class="m-thin">The Game Engine for Makers</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespaceTarbora.html">Tarbora</a>::<wbr/></span>TransformComponent <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="TransformComponent_8hpp.html">&lt;Tarbora/Logic/TransformComponent.hpp&gt;</a></div>
+        </h1>
+        <p><span></span></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classTarbora_1_1Component.html" class="m-doc">Component</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="af8e5da2b9ccc2bae161e326a3814c1eb">
+              <span class="m-doc-wrap-bumper"><a href="#af8e5da2b9ccc2bae161e326a3814c1eb" class="m-doc-self">TransformComponent</a>(</span><span class="m-doc-wrap"><a href="classTarbora_1_1System.html" class="m-doc">System</a>* s,
+              const ActorId&amp; id,
+              const <a href="classTarbora_1_1LuaTable.html" class="m-doc">LuaTable</a>&amp; table)</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a76ea0d5430c91ebc1e0c2523edad45b3">
+              <span class="m-doc-wrap-bumper">void <a href="#a76ea0d5430c91ebc1e0c2523edad45b3" class="m-doc-self">setController</a>(</span><span class="m-doc-wrap"><a href="classTarbora_1_1PhysicsComponent.html" class="m-doc">PhysicsComponent</a>* controller)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a57b646968d1f68b337190fc3a25b097b">
+              <span class="m-doc-wrap-bumper">void <a href="#a57b646968d1f68b337190fc3a25b097b" class="m-doc-self">setPosition</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; position)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1aff5a9a89af7d0d10b3c965225100bc">
+              <span class="m-doc-wrap-bumper">void <a href="#a1aff5a9a89af7d0d10b3c965225100bc" class="m-doc-self">setRotation</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; rotation)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1045aecd38d4257b00d164682c4b42ab">
+              <span class="m-doc-wrap-bumper">void <a href="#a1045aecd38d4257b00d164682c4b42ab" class="m-doc-self">setRotation</a>(</span><span class="m-doc-wrap">const glm::quat&amp; rotation)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a01333383d235e08fedf0294333578030">
+              <span class="m-doc-wrap-bumper">void <a href="#a01333383d235e08fedf0294333578030" class="m-doc-self">setOrigin</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; origin)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a7f39e3a183fd0aa3a43ef525416187e9">
+              <span class="m-doc-wrap-bumper">void <a href="#a7f39e3a183fd0aa3a43ef525416187e9" class="m-doc-self">move</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; position)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa83be88569a1e5a46058f0927a28f627">
+              <span class="m-doc-wrap-bumper">void <a href="#aa83be88569a1e5a46058f0927a28f627" class="m-doc-self">rotate</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; rotation)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aae022c45af98f996d64f75c2361c30ca">
+              <span class="m-doc-wrap-bumper">void <a href="#aae022c45af98f996d64f75c2361c30ca" class="m-doc-self">rotate</a>(</span><span class="m-doc-wrap">const glm::quat&amp; rotation)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a8a04684f317fe2c84503445516ac0720">
+              <span class="m-doc-wrap-bumper">auto <a href="#a8a04684f317fe2c84503445516ac0720" class="m-doc-self">getPosition</a>(</span><span class="m-doc-wrap">) -&gt; const glm::vec3&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ad4ff0d85f79e6339e2cae5c0577b59b4">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad4ff0d85f79e6339e2cae5c0577b59b4" class="m-doc-self">getRotation</a>(</span><span class="m-doc-wrap">) -&gt; const glm::quat&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a7b280e2a6f5386f6971f6537a61fda01">
+              <span class="m-doc-wrap-bumper">auto <a href="#a7b280e2a6f5386f6971f6537a61fda01" class="m-doc-self">getEulerRotation</a>(</span><span class="m-doc-wrap">) -&gt; glm::vec3</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a65839e62d680fa9544afe6323bdef5da">
+              <span class="m-doc-wrap-bumper">auto <a href="#a65839e62d680fa9544afe6323bdef5da" class="m-doc-self">getOrigin</a>(</span><span class="m-doc-wrap">) -&gt; const glm::vec3&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- end header part -->
-<!-- Generated by Doxygen 1.8.13 -->
-<script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search",false,'Search');
-</script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Tarbora</b></li><li class="navelem"><a class="el" href="classTarbora_1_1TransformComponent.html">TransformComponent</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
-<a href="classTarbora_1_1TransformComponent-members.html">List of all members</a>  </div>
-  <div class="headertitle">
-<div class="title">Tarbora::TransformComponent Class Reference</div>  </div>
-</div><!--header-->
-<div class="contents">
-<div class="dynheader">
-Inheritance diagram for Tarbora::TransformComponent:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1TransformComponent__inherit__graph.png" border="0" usemap="#Tarbora_1_1TransformComponent_inherit__map" alt="Inheritance graph"/></div>
-<map name="Tarbora_1_1TransformComponent_inherit__map" id="Tarbora_1_1TransformComponent_inherit__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Component.html" title="Tarbora::Component" alt="" coords="35,5,176,32"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Tarbora::TransformComponent:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1TransformComponent__coll__graph.png" border="0" usemap="#Tarbora_1_1TransformComponent_coll__map" alt="Collaboration graph"/></div>
-<map name="Tarbora_1_1TransformComponent_coll__map" id="Tarbora_1_1TransformComponent_coll__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Component.html" title="Tarbora::Component" alt="" coords="110,349,251,376"/>
-<area shape="rect" id="node3" href="classTarbora_1_1System.html" title="Tarbora::System" alt="" coords="121,260,240,287"/>
-<area shape="rect" id="node4" href="classTarbora_1_1ModuleComponent.html" title="Tarbora::ModuleComponent" alt="" coords="5,171,188,197"/>
-<area shape="rect" id="node5" href="classTarbora_1_1Module.html" title="Tarbora::Module" alt="" coords="123,81,239,108"/>
-<area shape="rect" id="node7" href="classTarbora_1_1World.html" title="Tarbora::World" alt="" coords="212,171,320,197"/>
-<area shape="rect" id="node6" href="classTarbora_1_1AbstractModule.html" title="Each of the parts that compose the Engine. " alt="" coords="98,5,263,32"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:af8e5da2b9ccc2bae161e326a3814c1eb"><td class="memItemLeft" align="right" valign="top"><a id="af8e5da2b9ccc2bae161e326a3814c1eb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TransformComponent</b> (<a class="el" href="classTarbora_1_1System.html">System</a> *s, const ActorId &amp;id, const <a class="el" href="classTarbora_1_1LuaTable.html">LuaTable</a> &amp;table)</td></tr>
-<tr class="separator:af8e5da2b9ccc2bae161e326a3814c1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76ea0d5430c91ebc1e0c2523edad45b3"><td class="memItemLeft" align="right" valign="top"><a id="a76ea0d5430c91ebc1e0c2523edad45b3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setController</b> (<a class="el" href="classTarbora_1_1PhysicsComponent.html">PhysicsComponent</a> *controller)</td></tr>
-<tr class="separator:a76ea0d5430c91ebc1e0c2523edad45b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57b646968d1f68b337190fc3a25b097b"><td class="memItemLeft" align="right" valign="top"><a id="a57b646968d1f68b337190fc3a25b097b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPosition</b> (const glm::vec3 &amp;position)</td></tr>
-<tr class="separator:a57b646968d1f68b337190fc3a25b097b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1aff5a9a89af7d0d10b3c965225100bc"><td class="memItemLeft" align="right" valign="top"><a id="a1aff5a9a89af7d0d10b3c965225100bc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRotation</b> (const glm::vec3 &amp;rotation)</td></tr>
-<tr class="separator:a1aff5a9a89af7d0d10b3c965225100bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1045aecd38d4257b00d164682c4b42ab"><td class="memItemLeft" align="right" valign="top"><a id="a1045aecd38d4257b00d164682c4b42ab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRotation</b> (const glm::quat &amp;rotation)</td></tr>
-<tr class="separator:a1045aecd38d4257b00d164682c4b42ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01333383d235e08fedf0294333578030"><td class="memItemLeft" align="right" valign="top"><a id="a01333383d235e08fedf0294333578030"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOrigin</b> (const glm::vec3 &amp;origin)</td></tr>
-<tr class="separator:a01333383d235e08fedf0294333578030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f39e3a183fd0aa3a43ef525416187e9"><td class="memItemLeft" align="right" valign="top"><a id="a7f39e3a183fd0aa3a43ef525416187e9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>move</b> (const glm::vec3 &amp;position)</td></tr>
-<tr class="separator:a7f39e3a183fd0aa3a43ef525416187e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa83be88569a1e5a46058f0927a28f627"><td class="memItemLeft" align="right" valign="top"><a id="aa83be88569a1e5a46058f0927a28f627"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (const glm::vec3 &amp;rotation)</td></tr>
-<tr class="separator:aa83be88569a1e5a46058f0927a28f627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae022c45af98f996d64f75c2361c30ca"><td class="memItemLeft" align="right" valign="top"><a id="aae022c45af98f996d64f75c2361c30ca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (const glm::quat &amp;rotation)</td></tr>
-<tr class="separator:aae022c45af98f996d64f75c2361c30ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a04684f317fe2c84503445516ac0720"><td class="memItemLeft" align="right" valign="top"><a id="a8a04684f317fe2c84503445516ac0720"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPosition</b> ()</td></tr>
-<tr class="separator:a8a04684f317fe2c84503445516ac0720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4ff0d85f79e6339e2cae5c0577b59b4"><td class="memItemLeft" align="right" valign="top"><a id="ad4ff0d85f79e6339e2cae5c0577b59b4"></a>
-const glm::quat &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getRotation</b> ()</td></tr>
-<tr class="separator:ad4ff0d85f79e6339e2cae5c0577b59b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b280e2a6f5386f6971f6537a61fda01"><td class="memItemLeft" align="right" valign="top"><a id="a7b280e2a6f5386f6971f6537a61fda01"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getEulerRotation</b> ()</td></tr>
-<tr class="separator:a7b280e2a6f5386f6971f6537a61fda01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65839e62d680fa9544afe6323bdef5da"><td class="memItemLeft" align="right" valign="top"><a id="a65839e62d680fa9544afe6323bdef5da"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getOrigin</b> ()</td></tr>
-<tr class="separator:a65839e62d680fa9544afe6323bdef5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classTarbora_1_1Component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classTarbora_1_1Component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTarbora_1_1Component.html">Tarbora::Component</a></td></tr>
-<tr class="memitem:af131ce04afe7eadb2589afcec5fa52d8 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="af131ce04afe7eadb2589afcec5fa52d8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Component</b> (<a class="el" href="classTarbora_1_1System.html">System</a> *s, const ActorId &amp;id, const <a class="el" href="classTarbora_1_1LuaTable.html">LuaTable</a> &amp;table)</td></tr>
-<tr class="separator:af131ce04afe7eadb2589afcec5fa52d8 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b772f4d99f64b23685a58e7294ab981 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a9b772f4d99f64b23685a58e7294ab981"></a>
-<a class="el" href="classTarbora_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getComponent</b> (const ActorId &amp;id, const ComponentId &amp;component)</td></tr>
-<tr class="separator:a9b772f4d99f64b23685a58e7294ab981 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abeeb3dba77af922915cbe9bc7d29d646 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="abeeb3dba77af922915cbe9bc7d29d646"></a>
-<a class="el" href="classTarbora_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getComponent</b> (const ComponentId &amp;component)</td></tr>
-<tr class="separator:abeeb3dba77af922915cbe9bc7d29d646 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a856a0b9e17ccd0336f1a33cf2fd2ac20 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a856a0b9e17ccd0336f1a33cf2fd2ac20"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>enable</b> ()</td></tr>
-<tr class="separator:a856a0b9e17ccd0336f1a33cf2fd2ac20 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a163aa5702b50ede0dddfe1f8620afca5 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a163aa5702b50ede0dddfe1f8620afca5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>disable</b> ()</td></tr>
-<tr class="separator:a163aa5702b50ede0dddfe1f8620afca5 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a227a558106b74d4b8b0be7667c7610c5 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a227a558106b74d4b8b0be7667c7610c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (ClientId to, MessageSubject s, <a class="el" href="classTarbora_1_1MessageBody.html">MessageBody</a> b) const</td></tr>
-<tr class="separator:a227a558106b74d4b8b0be7667c7610c5 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47985733836fce6b3cc5e0f77607d4e8 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a47985733836fce6b3cc5e0f77607d4e8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>trigger</b> (MessageSubject s, <a class="el" href="classTarbora_1_1MessageBody.html">MessageBody</a> b) const</td></tr>
-<tr class="separator:a47985733836fce6b3cc5e0f77607d4e8 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3eddb1cf4ba3fb1f0652d0c3aee07b6 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="aa3eddb1cf4ba3fb1f0652d0c3aee07b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>triggerLocal</b> (MessageSubject s, <a class="el" href="classTarbora_1_1MessageBody.html">MessageBody</a> b) const</td></tr>
-<tr class="separator:aa3eddb1cf4ba3fb1f0652d0c3aee07b6 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8232ed039bec74c81fc7589ee34cbf7 inherit pub_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="ad8232ed039bec74c81fc7589ee34cbf7"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> ()</td></tr>
-<tr class="separator:ad8232ed039bec74c81fc7589ee34cbf7 inherit pub_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a318469cfd809ba3993eb0331cba48707"><td class="memItemLeft" align="right" valign="top"><a id="a318469cfd809ba3993eb0331cba48707"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>TransformSystem</b></td></tr>
-<tr class="separator:a318469cfd809ba3993eb0331cba48707"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_classTarbora_1_1Component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classTarbora_1_1Component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classTarbora_1_1Component.html">Tarbora::Component</a></td></tr>
-<tr class="memitem:a644061cabaf91ed54eae79ce616c25b9 inherit pro_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a644061cabaf91ed54eae79ce616c25b9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onEnable</b> ()</td></tr>
-<tr class="separator:a644061cabaf91ed54eae79ce616c25b9 inherit pro_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62150a85e0eb8f3601d211245ca08a2d inherit pro_methods_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a62150a85e0eb8f3601d211245ca08a2d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onDisable</b> ()</td></tr>
-<tr class="separator:a62150a85e0eb8f3601d211245ca08a2d inherit pro_methods_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classTarbora_1_1Component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classTarbora_1_1Component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classTarbora_1_1Component.html">Tarbora::Component</a></td></tr>
-<tr class="memitem:a19bde335970f5e3af9bc845122f28f3f inherit pro_attribs_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a19bde335970f5e3af9bc845122f28f3f"></a>
-<a class="el" href="classTarbora_1_1System.html">System</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>system_</b></td></tr>
-<tr class="separator:a19bde335970f5e3af9bc845122f28f3f inherit pro_attribs_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c2092ce4a44d193308669024867775c inherit pro_attribs_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a4c2092ce4a44d193308669024867775c"></a>
-ActorId&#160;</td><td class="memItemRight" valign="bottom"><b>owner_</b></td></tr>
-<tr class="separator:a4c2092ce4a44d193308669024867775c inherit pro_attribs_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5b26f24609f28419cf2a2e6065b17c8 inherit pro_attribs_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="ac5b26f24609f28419cf2a2e6065b17c8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled_</b></td></tr>
-<tr class="separator:ac5b26f24609f28419cf2a2e6065b17c8 inherit pro_attribs_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e022fe62bcf3c3781977ca972383c0d inherit pro_attribs_classTarbora_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a7e022fe62bcf3c3781977ca972383c0d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>error_</b></td></tr>
-<tr class="separator:a7e022fe62bcf3c3781977ca972383c0d inherit pro_attribs_classTarbora_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Logic/<a class="el" href="TransformComponent_8hpp_source.html">TransformComponent.hpp</a></li>
-<li>Tarbora/Logic/TransformComponent.cpp</li>
-</ul>
-</div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>Tarbora Game Engine The Game Engine for Makers. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
 </body>
 </html>

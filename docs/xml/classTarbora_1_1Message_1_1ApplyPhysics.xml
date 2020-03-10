@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Message_1_1ApplyPhysics" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Message::ApplyPhysics</compoundname>
+    <basecompoundref refid="classTarbora_1_1Message_1_1Message" prot="public" virt="non-virtual">Tarbora::Message::Message&lt;::MessageContent::ApplyPhysics &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1ApplyPhysics_1aaf094749948c404ccbcb22280f25c982" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::ApplyPhysics::ApplyPhysics</definition>
+        <argsstring>(const MessageBody &amp;m)</argsstring>
+        <name>ApplyPhysics</name>
+        <param>
+          <type>const <ref refid="classTarbora_1_1MessageBody" kindref="compound">MessageBody</ref> &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="231" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="231" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1ApplyPhysics_1a39dfe4cee807aaec0ff7bcac04536adf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Message::ApplyPhysics::ApplyPhysics</definition>
+        <argsstring>(const ActorId &amp;id, const glm::vec3 &amp;direction)</argsstring>
+        <name>ApplyPhysics</name>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="233" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="233" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1ApplyPhysics_1a716a5a031efecf77d7f47db3edf2955d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ActorId &amp;</type>
+        <definition>const ActorId&amp; Tarbora::Message::ApplyPhysics::getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="239" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="239" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1ApplyPhysics_1a80492a21ec96154ef77229d040de6d0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 Tarbora::Message::ApplyPhysics::getDirection</definition>
+        <argsstring>()</argsstring>
+        <name>getDirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="240" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="240" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Message_1_1ApplyPhysics_1a2f7b0de1155f888ae3ad29e28187280e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::Message::ApplyPhysics::hasDirection</definition>
+        <argsstring>()</argsstring>
+        <name>hasDirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Messages/BasicMessages.hpp" line="241" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="241" bodyend="241"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="54">
+        <label>Tarbora::Message::ApplyPhysics</label>
+        <link refid="classTarbora_1_1Message_1_1ApplyPhysics"/>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>Tarbora::Message::Message&lt;::MessageContent::ApplyPhysics &gt;</label>
+        <link refid="classTarbora_1_1Message_1_1Message"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="56">
+        <label>Tarbora::Message::ApplyPhysics</label>
+        <link refid="classTarbora_1_1Message_1_1ApplyPhysics"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>Tarbora::Message::Message&lt;::MessageContent::ApplyPhysics &gt;</label>
+        <link refid="classTarbora_1_1Message_1_1Message"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Messages/BasicMessages.hpp" line="229" column="1" bodyfile="Tarbora/Messages/BasicMessages.hpp" bodystart="228" bodyend="242"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Message_1_1ApplyPhysics_1aaf094749948c404ccbcb22280f25c982" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>ApplyPhysics</name></member>
+      <member refid="classTarbora_1_1Message_1_1ApplyPhysics_1a39dfe4cee807aaec0ff7bcac04536adf" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>ApplyPhysics</name></member>
+      <member refid="classTarbora_1_1Message_1_1ApplyPhysics_1a80492a21ec96154ef77229d040de6d0d" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>getDirection</name></member>
+      <member refid="classTarbora_1_1Message_1_1ApplyPhysics_1a716a5a031efecf77d7f47db3edf2955d" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>getId</name></member>
+      <member refid="classTarbora_1_1Message_1_1ApplyPhysics_1a2f7b0de1155f888ae3ad29e28187280e" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>hasDirection</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a7c69c0c47cea4eaf4b6bd31db8c800a4" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>Message</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a0c17b7278a56bc8793de569e5fc386b2" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>Message</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1a31c0ef53411e867f140c66676673c2ab" prot="protected" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>message_</name></member>
+      <member refid="classTarbora_1_1Message_1_1Message_1ae78ff052422996d5f310ca6253c2b0a5" prot="public" virt="non-virtual"><scope>Tarbora::Message::ApplyPhysics</scope><name>operator MessageBody</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1ResourceManager" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::ResourceManager</compoundname>
+    <includes refid="ResourceManager_8hpp" local="no">ResourceManager.hpp</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1ResourceManager_1a593cf2b2228c5bfba52b1fc109960b82" prot="private" static="yes" mutable="no">
+        <type>std::list&lt; std::shared_ptr&lt; <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> &gt; &gt;</type>
+        <definition>std::list&lt;std::shared_ptr&lt;Resource&gt; &gt; Tarbora::ResourceManager::resource_list_</definition>
+        <argsstring></argsstring>
+        <name>resource_list_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="76" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1ResourceManager_1a2e2465fc98f6604920f85405cf4e9d94" prot="private" static="yes" mutable="no">
+        <type>std::map&lt; std::string, std::shared_ptr&lt; <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> &gt; &gt;</type>
+        <definition>std::map&lt;std::string, std::shared_ptr&lt;Resource&gt; &gt; Tarbora::ResourceManager::resource_map_</definition>
+        <argsstring></argsstring>
+        <name>resource_map_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="77" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1ResourceManager_1a7518108836aec0bdef69ff17b051d587" prot="private" static="yes" mutable="no">
+        <type>std::list&lt; std::shared_ptr&lt; ResourceLoader &gt; &gt;</type>
+        <definition>std::list&lt;std::shared_ptr&lt;ResourceLoader&gt; &gt; Tarbora::ResourceManager::resource_loaders_</definition>
+        <argsstring></argsstring>
+        <name>resource_loaders_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="78" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1ResourceManager_1a1538bf98c3afa5a989f5dc7c829637a0" prot="private" static="yes" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tarbora::ResourceManager::folder_path_</definition>
+        <argsstring></argsstring>
+        <name>folder_path_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="79" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1a83f6083aa9a2c8331a0fd519b7d9f62d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ResourceManager::init</definition>
+        <argsstring>(const std::string &amp;folder_path)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>folder_path</declname>
+        </param>
+        <briefdescription>
+<para>Start the <ref refid="classTarbora_1_1ResourceManager" kindref="compound">ResourceManager</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resourceFolderPath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path to folder where all the resource files are be located at. It must be called on startup, before initializing any system that uses resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="22" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="7" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1ad1338ebabf7eea681140d78749789204" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ResourceManager::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="24" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1a16851fa61eb7b4c3db0d079ddb295080" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ResourceManager::registerLoader</definition>
+        <argsstring>(std::shared_ptr&lt; ResourceLoader &gt;)</argsstring>
+        <name>registerLoader</name>
+        <param>
+          <type>std::shared_ptr&lt; ResourceLoader &gt;</type>
+          <defname>loader</defname>
+        </param>
+        <briefdescription>
+<para>Register a <emphasis>ResourceLoader</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>loader</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the loader. See <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="30" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1a2c160dc338dfbfecc0b6f7d5a5da981e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Resource &gt; Tarbora::ResourceManager::getResource</definition>
+        <argsstring>(const std::string &amp;resource, bool *just_loaded=nullptr)</argsstring>
+        <name>getResource</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>just_loaded</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Get a <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> by name. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file name of the resource. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to a <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref>.</para></simplesect>
+The returned <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> must be casted to the required type, so a macro is provided to make Get easier, as it typecasts the result: <programlisting><codeline><highlight class="normal">GET_RESOURCE(TYPE,<sp/>NAME)</highlight></codeline>
+</programlisting></para><para>If the <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> isn&apos;t loaded yet, GetResource automatically finds the appropiate <emphasis>ResourceLoader</emphasis> (see <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref>) and loads it. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="46" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="27" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1a5a99005c26783713e6581d53a997020e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ResourceManager::freeResource</definition>
+        <argsstring>(std::shared_ptr&lt; Resource &gt; resource)</argsstring>
+        <name>freeResource</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> &gt;</type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+<para>Destroy a <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file name of the resource to destroy. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="53" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="91" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1afc7aaf81229d7ca40c25bde72ab36420" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::ResourceManager::flush</definition>
+        <argsstring>()</argsstring>
+        <name>flush</name>
+        <briefdescription>
+<para>Destroy all the Resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="56" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="100" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1ac557dc5499cc9bfd55fea10eaac0da5b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>static std::string&amp; Tarbora::ResourceManager::getResourceFolder</definition>
+        <argsstring>()</argsstring>
+        <name>getResourceFolder</name>
+        <briefdescription>
+<para>Get the path to folder where all the resource files are be located at. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="59" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.hpp" bodystart="59" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1a60776e019201c3e23706bfe3d0c36d14" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Resource &gt; Tarbora::ResourceManager::findResource</definition>
+        <argsstring>(const std::string &amp;resource)</argsstring>
+        <name>findResource</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+<para>Find a resource that is already loaded. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file name of the resource to find. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> or nullptr if not found. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="67" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="83" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1ResourceManager_1a5ebc310dc4c965990aa63202ed614d54" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Resource &gt; Tarbora::ResourceManager::loadResource</definition>
+        <argsstring>(const std::string &amp;resource)</argsstring>
+        <name>loadResource</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+<para>Load a resource from a file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file name of the resource to load. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> or nullptr if can&apos;t load. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="74" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.cpp" bodystart="43" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Load resources and make them available to all the systems. </para>    </briefdescription>
+    <detaileddescription>
+<para>See an example of usage in Json. <simplesect kind="see"><para><ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <location file="Tarbora/Framework/ResourceManager/ResourceManager.hpp" line="15" column="1" bodyfile="Tarbora/Framework/ResourceManager/ResourceManager.hpp" bodystart="14" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1ResourceManager_1ad1338ebabf7eea681140d78749789204" prot="public" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>close</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a60776e019201c3e23706bfe3d0c36d14" prot="private" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>findResource</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1afc7aaf81229d7ca40c25bde72ab36420" prot="public" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>flush</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a1538bf98c3afa5a989f5dc7c829637a0" prot="private" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>folder_path_</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a5a99005c26783713e6581d53a997020e" prot="public" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>freeResource</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a2c160dc338dfbfecc0b6f7d5a5da981e" prot="public" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>getResource</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1ac557dc5499cc9bfd55fea10eaac0da5b" prot="public" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>getResourceFolder</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a83f6083aa9a2c8331a0fd519b7d9f62d" prot="public" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>init</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a5ebc310dc4c965990aa63202ed614d54" prot="private" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>loadResource</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a16851fa61eb7b4c3db0d079ddb295080" prot="public" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>registerLoader</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a593cf2b2228c5bfba52b1fc109960b82" prot="private" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>resource_list_</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a7518108836aec0bdef69ff17b051d587" prot="private" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>resource_loaders_</name></member>
+      <member refid="classTarbora_1_1ResourceManager_1a2e2465fc98f6604920f85405cf4e9d94" prot="private" virt="non-virtual"><scope>Tarbora::ResourceManager</scope><name>resource_map_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_a5c464f3fa28b5ece6b6b5d7c088348c" kind="dir">
+    <compoundname>Tarbora/Framework/Math</compoundname>
+    <innerfile refid="Math_8cpp">Math.cpp</innerfile>
+    <innerfile refid="Math_8hpp">Math.hpp</innerfile>
+    <innerfile refid="Math2_8hpp">Math2.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/Math/"/>
+  </compounddef>
+</doxygen>

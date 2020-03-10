@@ -1,174 +1,240 @@
+local query = {
+    defaults = {
+        skin_color = {255, 255, 255},
+        shirt_color = {255, 255, 255},
+        shirt_detail_color = {255, 255, 255},
+        pants_color = {255, 255, 255},
+        shoes_color = {255, 255, 255},
+    }
+}
+setmetatable(query, {__index = query.defaults })
+
 scale = 1
 nodes = {
     {
         name = "body",
+        scale = 1.00,
+        size = {48.00, 26.00, 28.00},
         shape = "cube.mesh",
-        origin = {0, 0, 0},
-        position = {0, 0, 0},
-        rotation = {0, 0, 0},
-        size = {65, 82.5, 40},
-        uv_map = {0, 60},
+        uv_map = {0, 55},
+        color_primary = query.skin_color,
+        color_secondary = query.shirt_color,
+        color_detail1 = query.shirt_detail_color,
         nodes = {
             {
-                name = "neck",
-                shape = "cube.mesh",
-                origin = {0, 0, 0},
-                position = {0, 45, 0},
-                rotation = {0, 0, 0},
-                size = {30, 10, 30},
-                uv_map = {0, 44},
+                name = "arm_l",
+                scale = 1.00,
+                origin = {-0.50, -0.40, 0.00},
+                position = {38.00, 15.00, 0.00},
+                rotation = {0.00, 10.00, -85.00},
+                size = {30.00, 12.00, 12.00},
+                shape = "cube_mirror.mesh",
+                uv_map = {76, 0},
+                color_primary = query.skin_color,
+                color_secondary = query.shirt_color,
+                color_detail1 = query.shirt_detail_color,
                 nodes = {
                     {
-                        name = "head",
-                        shape = "cube.mesh",
-                        origin = {0, -0.5, 0},
-                        position = {0, 31, 0},
-                        rotation = {0, 0, 0},
-                        size = {55, 55, 55},
-                        uv_map = {0, 0},
+                        name = "forearm_l",
+                        scale = 1.00,
+                        origin = {-0.50, 0.00, 0.00},
+                        position = {27.00, 0.00, 0.00},
+                        rotation = {10.00, -20.00, -5.00},
+                        size = {30.00, 12.00, 12.00},
+                        shape = "cube_mirror.mesh",
+                        uv_map = {76, 12},
+                        color_primary = query.skin_color,
+                        color_secondary = query.shirt_color,
+                        color_detail1 = query.shirt_detail_color,
                         nodes = {
                             {
-                                type = "camera",
-                                name = "3rd_person",
-                                origin = {0, -120, 800},
-                                position = {0, 120, -800},
-                                rotation = {0, 0, 0}
+                                name = "hand_l",
+                                scale = 1.00,
+                                origin = {0.00, 0.00, -0.20},
+                                position = {15.00, -1.00, 0.00},
+                                rotation = {4.00, 0.00, -8.00},
+                                size = {14.00, 16.00, 16.00},
+                                shape = "cube_mirror.mesh",
+                                uv_map = {76, 24},
+                                color_primary = query.skin_color,
                             },
-                            {
-                                type = "camera",
-                                name = "1st_person",
-                                origin = {0, 0, 0},
-                                position = {0, 0, 0},
-                                rotation = {0, 0, 0}
-                            }
                         }
-                    }
+                    },
                 }
             },
             {
                 name = "arm_r",
+                scale = 1.00,
+                origin = {0.50, -0.40, 0.00},
+                position = {-38.00, 15.00, 0.00},
+                rotation = {0.00, -10.00, 85.00},
+                size = {30.00, 12.00, 12.00},
                 shape = "cube.mesh",
-                origin = {0.5, -0.25, 0},
-                position = {-46.5, 43.75, 0},
-                rotation = {0, 0, 0},
-                size = {32.5, 20, 20},
-                uv_map = {88, 85},
+                uv_map = {76, 0},
+                color_primary = query.skin_color,
+                color_secondary = query.shirt_color,
+                color_detail1 = query.shirt_detail_color,
                 nodes = {
                     {
                         name = "forearm_r",
+                        scale = 1.00,
+                        origin = {0.50, 0.00, 0.00},
+                        position = {-27.00, 0.00, 0.00},
+                        rotation = {10.00, 20.00, 5.00},
+                        size = {30.00, 12.00, 12.00},
                         shape = "cube.mesh",
-                        origin = {0.5, 0.25, 0},
-                        position = {-27.5, 0, 0},
-                        rotation = {0, 0, 0},
-                        size = {32.5, 20, 20},
-                        uv_map = {88, 101},
+                        uv_map = {76, 12},
+                        color_primary = query.skin_color,
+                        color_secondary = query.shirt_color,
+                        color_detail1 = query.shirt_detail_color,
                         nodes = {
                             {
                                 name = "hand_r",
+                                scale = 1.00,
+                                origin = {0.00, 0.00, -0.20},
+                                position = {-15.00, -1.00, 0.00},
+                                rotation = {4.00, -0.00, 8.00},
+                                size = {14.00, 16.00, 16.00},
                                 shape = "cube.mesh",
-                                origin = {0, 0, 0},
-                                position = {-27.25, -1.3, 0},
-                                rotation = {0, 0, 0},
-                                size = {22.5, 22.5, 25},
-                                uv_map = {88, 117}
-                            }
+                                uv_map = {76, 24},
+                                color_primary = query.skin_color,
+                            },
                         }
-                    }
+                    },
                 }
             },
             {
-                name = "arm_l",
-                shape = "cube_mirror.mesh",
-                origin = {-0.5, -0.25, 0},
-                position = {46.5, 43.75, 0},
-                rotation = {0, 0, 0},
-                size = {32.5, 20, 20},
-                uv_map = {88, 85},
-                nodes = {
-                    {
-                        name = "forearm_l",
-                        shape = "cube_mirror.mesh",
-                        origin = {-0.5, 0.25, 0},
-                        position = {27.5, 0, 0},
-                        rotation = {0, 0, 0},
-                        size = {32.5, 20, 20},
-                        uv_map = {88, 101},
-                        nodes = {
-                            {
-                                name = "hand_l",
-                                shape = "cube_mirror.mesh",
-                                origin = {0, 0, 0},
-                                position = {27.25, -1.3, 0},
-                                rotation = {0, 0, 0},
-                                size = {22.5, 22.5, 25},
-                                uv_map = {88, 117}
-                            }
-                        }
-                    }
-                }
-            },
-            {
-                name = "thig_r",
+                name = "belly",
+                scale = 1.00,
+                position = {0.00, -26.00, 0.00},
+                size = {44.00, 26.00, 26.00},
                 shape = "cube.mesh",
-                origin = {0, 0.5, 0},
-                position = {-17.5, -58, 0},
-                rotation = {0, 0, 0},
-                size = {25, 37.5, 30},
-                uv_map = {0, 109},
+                uv_map = {0, 82},
+                color_primary = query.skin_color,
+                color_secondary = query.shirt_color,
+                color_detail1 = query.shirt_detail_color,
                 nodes = {
                     {
-                        name = "leg_r",
+                        name = "hip",
+                        scale = 1.00,
+                        position = {0.00, -18.00, 0.00},
+                        size = {44.00, 10.00, 26.00},
                         shape = "cube.mesh",
-                        origin = {0, 0.5, 0},
-                        position = {0, -35.5, 0},
-                        rotation = {0, 0, 0},
-                        size = {25, 37.5, 25},
-                        uv_map = {44, 109},
+                        uv_map = {0, 108},
+                        color_primary = query.skin_color,
+                        color_secondary = query.pants_color,
                         nodes = {
                             {
-                                name = "foot_r",
+                                name = "thig_l",
+                                scale = 1.00,
+                                origin = {0.00, 0.40, 0.00},
+                                position = {11.00, -15.00, 0.00},
+                                size = {20.00, 36.00, 20.00},
                                 shape = "cube.mesh",
-                                origin = {0, 0, 0},
-                                position = {-1.25, -23.75, 4.3},
-                                rotation = {0, 0, 0},
-                                size = {30, 10, 40},
-                                uv_map = {68, 44}
-                            }
+                                uv_map = {76, 40},
+                                color_primary = query.skin_color,
+                                color_secondary = query.pants_color,
+                                nodes = {
+                                    {
+                                        name = "leg_l",
+                                        scale = 1.00,
+                                        origin = {0.00, 0.50, 0.50},
+                                        position = {0.00, -36.00, 0.00},
+                                        size = {18.00, 40.00, 18.00},
+                                        shape = "cube.mesh",
+                                        uv_map = {76, 68},
+                                        color_primary = query.skin_color,
+                                        color_secondary = query.pants_color,
+                                        nodes = {
+                                            {
+                                                name = "foot_l",
+                                                scale = 1.00,
+                                                origin = {0.00, 0.00, -0.30},
+                                                position = {0.00, -22.00, 4.00},
+                                                size = {22.00, 10.00, 32.00},
+                                                shape = "cube.mesh",
+                                                uv_map = {76, 97},
+                                                color_primary = query.skin_color,
+                                                color_secondary = query.shoes_color,
+                                            },
+                                        }
+                                    },
+                                }
+                            },
+                            {
+                                name = "thig_r",
+                                scale = 1.00,
+                                origin = {0.00, 0.40, 0.00},
+                                position = {-11.00, -15.00, 0.00},
+                                size = {20.00, 36.00, 20.00},
+                                shape = "cube.mesh",
+                                uv_map = {76, 40},
+                                color_primary = query.skin_color,
+                                color_secondary = query.pants_color,
+                                nodes = {
+                                    {
+                                        name = "leg_r",
+                                        scale = 1.00,
+                                        origin = {0.00, 0.50, 0.50},
+                                        position = {0.00, -36.00, 0.00},
+                                        size = {18.00, 40.00, 18.00},
+                                        shape = "cube.mesh",
+                                        uv_map = {76, 68},
+                                        color_primary = query.skin_color,
+                                        color_secondary = query.pants_color,
+                                        nodes = {
+                                            {
+                                                name = "foot_r",
+                                                scale = 1.00,
+                                                origin = {0.00, 0.00, -0.30},
+                                                position = {0.00, -22.00, 4.00},
+                                                size = {22.00, 10.00, 32.00},
+                                                shape = "cube.mesh",
+                                                uv_map = {76, 97},
+                                                color_primary = query.skin_color,
+                                                color_secondary = query.shoes_color,
+                                            },
+                                        }
+                                    },
+                                }
+                            },
                         }
-                    }
+                    },
                 }
             },
             {
-                name = "thig_l",
-                shape = "cube_mirror.mesh",
-                origin = {0, 0.5, 0},
-                position = {17.5, -58, 0},
-                rotation = {0, 0, 0},
-                size = {25, 37.5, 30},
-                uv_map = {0, 109},
+                name = "neck",
+                scale = 1.00,
+                position = {0.00, 14.00, 0.00},
+                size = {18.00, 16.00, 18.00},
+                shape = "cube.mesh",
+                uv_map = {0, 38},
                 nodes = {
                     {
-                        name = "leg_l",
-                        shape = "cube_mirror.mesh",
-                        origin = {0, 0.5, 0},
-                        position = {0, -35.5, 0},
-                        rotation = {0, 0, 0},
-                        size = {25, 37.5, 25},
-                        uv_map = {44, 109},
+                        name = "head",
+                        scale = 1.00,
+                        origin = {0.00, -0.50, 0.00},
+                        position = {0.00, 20.00, 0.00},
+                        size = {38.00, 38.00, 38.00},
+                        shape = "cube.mesh",
+                        uv_map = {0, 0},
                         nodes = {
                             {
-                                name = "foot_l",
-                                shape = "cube_mirror.mesh",
-                                origin = {0, 0, 0},
-                                position = {1.25, -23.75, 4.3},
-                                rotation = {0, 0, 0},
-                                size = {30, 10, 40},
-                                uv_map = {68, 44}
-                            }
+                                name = "1st_person",
+                                scale = 1.00,
+                                type = "camera"
+                            },
+                            {
+                                name = "3rd_person",
+                                scale = 1.00,
+                                origin = {0.00, -120.00, 800.00},
+                                position = {0.00, 120.00, -800.00},
+                                type = "camera"
+                            },
                         }
-                    }
+                    },
                 }
-            }
+            },
         }
-    }
+    },
 }

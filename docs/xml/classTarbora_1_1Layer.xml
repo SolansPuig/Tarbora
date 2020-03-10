@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Layer" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Layer</compoundname>
+    <basecompoundref refid="classTarbora_1_1ModuleComponent" prot="public" virt="non-virtual">Tarbora::ModuleComponent</basecompoundref>
+    <derivedcompoundref refid="classTarbora_1_1DemoWindow" prot="public" virt="non-virtual">Tarbora::DemoWindow</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1Editor" prot="public" virt="non-virtual">Tarbora::Editor</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1GameLayer" prot="public" virt="non-virtual">Tarbora::GameLayer</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1MetricsGui" prot="public" virt="non-virtual">Tarbora::MetricsGui</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1Layer_1a4d7fdc234d3b929bff31b80013355ddb" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tarbora::Layer::active_</definition>
+        <argsstring></argsstring>
+        <name>active_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="39" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1Layer_1a0c24802fe48c762c865fea4fa6357e04" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tarbora::Layer::event_blocking_</definition>
+        <argsstring></argsstring>
+        <name>event_blocking_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="40" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Layer_1a58106508db0aafaec0d5e9bbcf79e24f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Layer::Layer</definition>
+        <argsstring>(GraphicView *view, bool start_active=true)</argsstring>
+        <name>Layer</name>
+        <param>
+          <type><ref refid="classTarbora_1_1GraphicView" kindref="compound">GraphicView</ref> *</type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>start_active</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="9" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="9" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1abd00cce9dcd87190e69a66dfc6d8ef9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Tarbora::Layer::~Layer</definition>
+        <argsstring>()</argsstring>
+        <name>~Layer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="10" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="10" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1aab6d82e0e2048dc50be2dc3d545c0e7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::Layer::onActivate</definition>
+        <argsstring>()</argsstring>
+        <name>onActivate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="12" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1aaa4c828f3c6fb7ff42e5667805f650c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::Layer::onDeactivate</definition>
+        <argsstring>()</argsstring>
+        <name>onDeactivate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="13" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1a6f06c6331635d6f29b6b711fecafc617" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::Layer::getInput</definition>
+        <argsstring>()</argsstring>
+        <name>getInput</name>
+        <reimplementedby refid="classTarbora_1_1DemoWindow_1a8537497b035002c4adcf3c2ab97069f1">getInput</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1MetricsGui_1a6efa7ebc05866401aa96235e4d96feb6">getInput</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1GameLayer_1ad3a39e9730ea40ebee92a43e42e1a249">getInput</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1Editor_1abda8f6310f84da26b10e421e16824ca7">getInput</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="15" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1aa840eefc7b9a7fc08f6ca7ba14e219de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::Layer::update</definition>
+        <argsstring>(float delta_time)</argsstring>
+        <name>update</name>
+        <reimplements refid="classTarbora_1_1ModuleComponent_1aedb5e8927d2b169c89bb2d5b85bb205b">update</reimplements>
+        <reimplementedby refid="classTarbora_1_1GameLayer_1a20514f1a57bf8a3e3d4a74067d6f24dd">update</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1MetricsGui_1a16532223c4313a559e58b51a5af4cb62">update</reimplementedby>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+<para>Perform the logic and the computations of the component. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child component, it will be called inside of <ref refid="classTarbora_1_1Module_1a9d7b1d6f34c2ed64f628d1c958ba1719" kindref="member">Module::update</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delta_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The elapsed time, in seconds, since the last iteration. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="16" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1a0744dccca287ad0100f688eba65c9d3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Tarbora::Layer::draw</definition>
+        <argsstring>()</argsstring>
+        <name>draw</name>
+        <reimplements refid="classTarbora_1_1ModuleComponent_1adac1428851fc4c3b84fbda5fa81326f0">draw</reimplements>
+        <reimplementedby refid="classTarbora_1_1GameLayer_1ab4b1aabaca2dde69cdba47ff98657b69">draw</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1DemoWindow_1a88b0354686e440a7bd783ccf33dafe6a">draw</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1Editor_1a12c8f8675b4745e6a303ea1b6132766c">draw</reimplementedby>
+        <reimplementedby refid="classTarbora_1_1MetricsGui_1a2dc79e283aa20a6d0838f6edbb5fa701">draw</reimplementedby>
+        <briefdescription>
+<para>Render the data of the module. </para>        </briefdescription>
+        <detaileddescription>
+<para>When this function is overrided in a child component, it will be called inside of <ref refid="classTarbora_1_1Module_1a9dfb5e4073e01bb09899a2001b6c65d0" kindref="member">Module::draw</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="17" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1a246f85b37366ddf34b446331fe7a3447" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Tarbora::Layer::onMessage</definition>
+        <argsstring>(const MessageBody &amp;m)</argsstring>
+        <name>onMessage</name>
+        <reimplementedby refid="classTarbora_1_1GameLayer_1a1d70196a70ef9c1cc7acf7c5b908be02">onMessage</reimplementedby>
+        <param>
+          <type>const <ref refid="classTarbora_1_1MessageBody" kindref="compound">MessageBody</ref> &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="19" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="19" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1a4fc2a9f5064bbd6776bd1ae8398aa734" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Layer::setActive</definition>
+        <argsstring>(bool active)</argsstring>
+        <name>setActive</name>
+        <param>
+          <type>bool</type>
+          <declname>active</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="21" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1a606bb2b75b38acf75e5f4caabceedb97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::Layer::isActive</definition>
+        <argsstring>() const</argsstring>
+        <name>isActive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="28" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Layer_1a6f787d1153bdbaf8066e2745d2faf86a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTarbora_1_1Input" kindref="compound">Input</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Input&gt; Tarbora::Layer::getInputManager</definition>
+        <argsstring>()</argsstring>
+        <name>getInputManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="33" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="192">
+        <label>Tarbora::MetricsGui</label>
+        <link refid="classTarbora_1_1MetricsGui"/>
+        <childnode refid="187" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+      </node>
+      <node id="187">
+        <label>Tarbora::Layer</label>
+        <link refid="classTarbora_1_1Layer"/>
+        <childnode refid="188" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="191">
+        <label>Tarbora::GameLayer</label>
+        <link refid="classTarbora_1_1GameLayer"/>
+        <childnode refid="187" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="190">
+        <label>Tarbora::Editor</label>
+        <link refid="classTarbora_1_1Editor"/>
+        <childnode refid="187" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="189">
+        <label>Tarbora::DemoWindow</label>
+        <link refid="classTarbora_1_1DemoWindow"/>
+        <childnode refid="187" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="194">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="195" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="193">
+        <label>Tarbora::Layer</label>
+        <link refid="classTarbora_1_1Layer"/>
+        <childnode refid="194" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="196" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="196">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/Layer.hpp" line="7" column="1" bodyfile="Tarbora/Views/GraphicViews/Layer.hpp" bodystart="6" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Layer_1a4d7fdc234d3b929bff31b80013355ddb" prot="protected" virt="non-virtual"><scope>Tarbora::Layer</scope><name>active_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a06628e8d630f575630d88fe33815a9ed" prot="protected" virt="non-virtual"><scope>Tarbora::Layer</scope><name>desubscribe</name></member>
+      <member refid="classTarbora_1_1Layer_1a0744dccca287ad0100f688eba65c9d3f" prot="public" virt="virtual"><scope>Tarbora::Layer</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1Layer_1a0c24802fe48c762c865fea4fa6357e04" prot="protected" virt="non-virtual"><scope>Tarbora::Layer</scope><name>event_blocking_</name></member>
+      <member refid="classTarbora_1_1Layer_1a6f06c6331635d6f29b6b711fecafc617" prot="public" virt="virtual"><scope>Tarbora::Layer</scope><name>getInput</name></member>
+      <member refid="classTarbora_1_1Layer_1a6f787d1153bdbaf8066e2745d2faf86a" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>getInputManager</name></member>
+      <member refid="classTarbora_1_1Layer_1a606bb2b75b38acf75e5f4caabceedb97" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>isActive</name></member>
+      <member refid="classTarbora_1_1Layer_1a58106508db0aafaec0d5e9bbcf79e24f" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>Layer</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a77fdd1e8ca1d2b9f72708a3aa127f0be" prot="protected" virt="non-virtual"><scope>Tarbora::Layer</scope><name>module_</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1abf895d50857190a19b6879aeecc21668" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>ModuleComponent</name></member>
+      <member refid="classTarbora_1_1Layer_1aab6d82e0e2048dc50be2dc3d545c0e7f" prot="public" virt="virtual"><scope>Tarbora::Layer</scope><name>onActivate</name></member>
+      <member refid="classTarbora_1_1Layer_1aaa4c828f3c6fb7ff42e5667805f650c0" prot="public" virt="virtual"><scope>Tarbora::Layer</scope><name>onDeactivate</name></member>
+      <member refid="classTarbora_1_1Layer_1a246f85b37366ddf34b446331fe7a3447" prot="public" virt="virtual"><scope>Tarbora::Layer</scope><name>onMessage</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b71373206a4a74318e5214bd8baf833" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>send</name></member>
+      <member refid="classTarbora_1_1Layer_1a4fc2a9f5064bbd6776bd1ae8398aa734" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>setActive</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a6b782690dc2819a2ba06ad72a64ee419" prot="protected" virt="non-virtual"><scope>Tarbora::Layer</scope><name>subscribe</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a9bfd9e0688f15c8c957d7e6b4aa55e02" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a352f36fb03dbcf383c4485a463515292" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>triggerLocal</name></member>
+      <member refid="classTarbora_1_1Layer_1aa840eefc7b9a7fc08f6ca7ba14e219de" prot="public" virt="virtual"><scope>Tarbora::Layer</scope><name>update</name></member>
+      <member refid="classTarbora_1_1Layer_1abd00cce9dcd87190e69a66dfc6d8ef9a" prot="public" virt="virtual"><scope>Tarbora::Layer</scope><name>~Layer</name></member>
+      <member refid="classTarbora_1_1ModuleComponent_1a950d758fa03cf6d5dc24b4f48461454d" prot="public" virt="non-virtual"><scope>Tarbora::Layer</scope><name>~ModuleComponent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

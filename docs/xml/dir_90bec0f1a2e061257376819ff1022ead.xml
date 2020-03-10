@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_90bec0f1a2e061257376819ff1022ead" kind="dir">
+    <compoundname>Tarbora</compoundname>
+    <innerdir refid="dir_01e1b92788544abdcf2c03e4ef9bc298">Tarbora/Editor</innerdir>
+    <innerdir refid="dir_9e8866f215f78b7824a51e67e715cbd1">Tarbora/Framework</innerdir>
+    <innerdir refid="dir_b45d6b7b6045819ecaa7db9f0c9c0752">Tarbora/Logic</innerdir>
+    <innerdir refid="dir_62e979b57e4fbd686da3d104d9c379d0">Tarbora/Messages</innerdir>
+    <innerdir refid="dir_175e8222fd7f3f34d2c81ae6e2f15d0b">Tarbora/Views</innerdir>
+    <innerfile refid="DocsMainPage_8hpp">DocsMainPage.hpp</innerfile>
+    <briefdescription>
+<para>The source of the Engine. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/"/>
+  </compounddef>
+</doxygen>

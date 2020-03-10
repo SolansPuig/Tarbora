@@ -2,15 +2,33 @@
 
 #include "MessageClient.hpp"
 
+/** @dir MessageManager
+ * @brief The message distribution infrastructure
+*/
+/**
+ * @file
+ * @brief Class @ref Tarbora::MessageManager
+*/
+
+/*!
+    \page message_tutorial The Messaging System
+*/
+
 namespace Tarbora {
+    //! The base for all the messages.
+    /*!
+        See @ref message_tutorial
+    */
     class MessageBody
     {
     public:
+        //! Constructor from a parsed string
         MessageBody(const std::string &body)
             : body_(body) {}
 
         MessageBody() {}
 
+        //! Get the parsed string
         const std::string& getContent() const
         {
             return body_;
@@ -22,9 +40,17 @@ namespace Tarbora {
 
     typedef std::function<void(const MessageSubject&, const MessageBody&)> MessageFn;
 
+    //! The abstraction layer that manages all the messages from and for a module.
+    /*!
+        See @ref message_tutorial
+    */
     class MessageManager
     {
     public:
+        //! Constructor
+        /*!
+            \param id The id of the module that owns this.
+        */
         MessageManager(const ClientId &id);
         ~MessageManager();
 

@@ -1,8 +1,0 @@
-<map id="Tarbora::Module" name="Tarbora::Module">
-<area shape="rect" id="node3" href="$classTarbora_1_1ArduinoView.html" title="Tarbora::ArduinoView" alt="" coords="5,155,152,181"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="177,155,325,181"/>
-<area shape="rect" id="node6" href="$classTarbora_1_1SceneManager.html" title="Tarbora::SceneManager" alt="" coords="349,155,510,181"/>
-<area shape="rect" id="node7" href="$classTarbora_1_1World.html" title="Tarbora::World" alt="" coords="534,155,642,181"/>
-<area shape="rect" id="node2" href="$classTarbora_1_1AbstractModule.html" title="Each of the parts that compose the Engine. " alt="" coords="257,5,423,32"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1HumanView.html" title="Tarbora::HumanView" alt="" coords="178,229,323,256"/>
-</map>

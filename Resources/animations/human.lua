@@ -1,4 +1,4 @@
-query = {
+local query = {
     currentX = 0,
     currentY = 0,
     currentZ = 0,

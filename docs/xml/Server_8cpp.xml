@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="Server_8cpp" kind="file" language="C++">
+    <compoundname>Server.cpp</compoundname>
+    <includes refid="Server_8hpp" local="yes">Server.hpp</includes>
+    <incdepgraph>
+      <node id="857">
+        <label>Tarbora/Framework/MessageManager/Server.cpp</label>
+        <link refid="Server_8cpp"/>
+        <childnode refid="858" relation="include">
+        </childnode>
+      </node>
+      <node id="858">
+        <label>Server.hpp</label>
+        <link refid="Server_8hpp_source"/>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/MessageManager/Server.cpp"/>
+  </compounddef>
+</doxygen>

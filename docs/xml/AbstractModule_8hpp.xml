@@ -1,0 +1,398 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="AbstractModule_8hpp" kind="file" language="C++">
+    <compoundname>AbstractModule.hpp</compoundname>
+    <includes refid="CommonHeaders_8hpp" local="yes">../CommonHeaders.hpp</includes>
+    <includes refid="Global_8hpp" local="yes">../Global.hpp</includes>
+    <includedby refid="Module_8hpp" local="yes">Tarbora/Framework/Module/Module.hpp</includedby>
+    <includedby refid="AbstractModule_8cpp" local="yes">Tarbora/Framework/Module/AbstractModule.cpp</includedby>
+    <incdepgraph>
+      <node id="918">
+        <label>list</label>
+      </node>
+      <node id="904">
+        <label>stdarg.h</label>
+      </node>
+      <node id="916">
+        <label>iomanip</label>
+      </node>
+      <node id="905">
+        <label>functional</label>
+      </node>
+      <node id="924">
+        <label>queue</label>
+      </node>
+      <node id="900">
+        <label>Tarbora/Framework/Module/AbstractModule.hpp</label>
+        <link refid="AbstractModule_8hpp"/>
+        <childnode refid="901" relation="include">
+        </childnode>
+        <childnode refid="926" relation="include">
+        </childnode>
+      </node>
+      <node id="913">
+        <label>string</label>
+      </node>
+      <node id="934">
+        <label>glm/gtx/euler_angles.hpp</label>
+      </node>
+      <node id="921">
+        <label>map</label>
+      </node>
+      <node id="920">
+        <label>unordered_set</label>
+      </node>
+      <node id="914">
+        <label>fstream</label>
+      </node>
+      <node id="930">
+        <label>glm/gtx/string_cast.hpp</label>
+      </node>
+      <node id="901">
+        <label>../CommonHeaders.hpp</label>
+        <link refid="CommonHeaders_8hpp_source"/>
+        <childnode refid="902" relation="include">
+        </childnode>
+        <childnode refid="903" relation="include">
+        </childnode>
+        <childnode refid="904" relation="include">
+        </childnode>
+        <childnode refid="905" relation="include">
+        </childnode>
+        <childnode refid="906" relation="include">
+        </childnode>
+        <childnode refid="907" relation="include">
+        </childnode>
+        <childnode refid="908" relation="include">
+        </childnode>
+        <childnode refid="909" relation="include">
+        </childnode>
+        <childnode refid="910" relation="include">
+        </childnode>
+        <childnode refid="911" relation="include">
+        </childnode>
+        <childnode refid="912" relation="include">
+        </childnode>
+        <childnode refid="913" relation="include">
+        </childnode>
+        <childnode refid="914" relation="include">
+        </childnode>
+        <childnode refid="915" relation="include">
+        </childnode>
+        <childnode refid="916" relation="include">
+        </childnode>
+        <childnode refid="917" relation="include">
+        </childnode>
+        <childnode refid="918" relation="include">
+        </childnode>
+        <childnode refid="919" relation="include">
+        </childnode>
+        <childnode refid="920" relation="include">
+        </childnode>
+        <childnode refid="921" relation="include">
+        </childnode>
+        <childnode refid="922" relation="include">
+        </childnode>
+        <childnode refid="923" relation="include">
+        </childnode>
+        <childnode refid="924" relation="include">
+        </childnode>
+        <childnode refid="925" relation="include">
+        </childnode>
+      </node>
+      <node id="928">
+        <label>Math/Math.hpp</label>
+        <link refid="Math_8hpp_source"/>
+        <childnode refid="901" relation="include">
+        </childnode>
+        <childnode refid="926" relation="include">
+        </childnode>
+        <childnode refid="929" relation="include">
+        </childnode>
+        <childnode refid="930" relation="include">
+        </childnode>
+        <childnode refid="931" relation="include">
+        </childnode>
+        <childnode refid="932" relation="include">
+        </childnode>
+        <childnode refid="933" relation="include">
+        </childnode>
+        <childnode refid="934" relation="include">
+        </childnode>
+      </node>
+      <node id="932">
+        <label>glm/gtc/type_ptr.hpp</label>
+      </node>
+      <node id="912">
+        <label>ctime</label>
+      </node>
+      <node id="926">
+        <label>../Global.hpp</label>
+        <link refid="Global_8hpp_source"/>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="928" relation="include">
+        </childnode>
+        <childnode refid="935" relation="include">
+        </childnode>
+      </node>
+      <node id="906">
+        <label>optional</label>
+      </node>
+      <node id="923">
+        <label>stack</label>
+      </node>
+      <node id="917">
+        <label>vector</label>
+      </node>
+      <node id="915">
+        <label>sstream</label>
+      </node>
+      <node id="922">
+        <label>unordered_map</label>
+      </node>
+      <node id="910">
+        <label>shared_mutex</label>
+      </node>
+      <node id="927">
+        <label>Logger.hpp</label>
+        <link refid="Logger_8hpp_source"/>
+        <childnode refid="901" relation="include">
+        </childnode>
+      </node>
+      <node id="909">
+        <label>mutex</label>
+      </node>
+      <node id="911">
+        <label>chrono</label>
+      </node>
+      <node id="902">
+        <label>csignal</label>
+      </node>
+      <node id="933">
+        <label>glm/gtx/quaternion.hpp</label>
+      </node>
+      <node id="908">
+        <label>thread</label>
+      </node>
+      <node id="919">
+        <label>set</label>
+      </node>
+      <node id="931">
+        <label>glm/gtx/std_based_type.hpp</label>
+      </node>
+      <node id="925">
+        <label>algorithm</label>
+      </node>
+      <node id="935">
+        <label>Tracy.hpp</label>
+      </node>
+      <node id="903">
+        <label>stdio.h</label>
+      </node>
+      <node id="907">
+        <label>memory</label>
+      </node>
+      <node id="929">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="946">
+        <label>Tarbora/Views/GraphicViews/MetricsGui.hpp</label>
+        <link refid="MetricsGui_8hpp_source"/>
+      </node>
+      <node id="950">
+        <label>Tarbora/Logic/Component.hpp</label>
+        <link refid="Component_8hpp_source"/>
+        <childnode refid="951" relation="include">
+        </childnode>
+        <childnode refid="952" relation="include">
+        </childnode>
+        <childnode refid="953" relation="include">
+        </childnode>
+        <childnode refid="954" relation="include">
+        </childnode>
+        <childnode refid="955" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+        <childnode refid="957" relation="include">
+        </childnode>
+        <childnode refid="958" relation="include">
+        </childnode>
+      </node>
+      <node id="936">
+        <label>Tarbora/Framework/Module/AbstractModule.hpp</label>
+        <link refid="AbstractModule_8hpp"/>
+        <childnode refid="937" relation="include">
+        </childnode>
+      </node>
+      <node id="944">
+        <label>Tarbora/Views/GraphicViews/Skybox.hpp</label>
+        <link refid="Skybox_8hpp_source"/>
+        <childnode refid="942" relation="include">
+        </childnode>
+      </node>
+      <node id="958">
+        <label>Tarbora/Logic/TypeComponent.hpp</label>
+        <link refid="TypeComponent_8hpp_source"/>
+      </node>
+      <node id="962">
+        <label>Tarbora/Views/GraphicViews/AnimationController.hpp</label>
+        <link refid="AnimationController_8hpp_source"/>
+        <childnode refid="961" relation="include">
+        </childnode>
+      </node>
+      <node id="940">
+        <label>Tarbora/Editor/Editor.hpp</label>
+        <link refid="Editor_8hpp_source"/>
+      </node>
+      <node id="942">
+        <label>Tarbora/Views/GraphicViews/Scene.hpp</label>
+        <link refid="Scene_8hpp_source"/>
+        <childnode refid="943" relation="include">
+        </childnode>
+        <childnode refid="944" relation="include">
+        </childnode>
+      </node>
+      <node id="938">
+        <label>Tarbora/Framework/Module/ModuleComponent.hpp</label>
+        <link refid="ModuleComponent_8hpp"/>
+        <childnode refid="939" relation="include">
+        </childnode>
+        <childnode refid="947" relation="include">
+        </childnode>
+      </node>
+      <node id="948">
+        <label>Tarbora/Logic/World.hpp</label>
+        <link refid="World_8hpp_source"/>
+        <childnode refid="949" relation="include">
+        </childnode>
+        <childnode refid="955" relation="include">
+        </childnode>
+      </node>
+      <node id="949">
+        <label>Tarbora/Logic/System.hpp</label>
+        <link refid="System_8hpp_source"/>
+        <childnode refid="950" relation="include">
+        </childnode>
+        <childnode refid="955" relation="include">
+        </childnode>
+      </node>
+      <node id="945">
+        <label>Tarbora/Views/GraphicViews/DemoWindow.hpp</label>
+        <link refid="DemoWindow_8hpp_source"/>
+      </node>
+      <node id="947">
+        <label>Tarbora/Framework/Framework.hpp</label>
+        <link refid="Framework_8hpp_source"/>
+        <childnode refid="948" relation="include">
+        </childnode>
+      </node>
+      <node id="941">
+        <label>Tarbora/Views/GraphicViews/HumanView.hpp</label>
+        <link refid="HumanView_8hpp_source"/>
+        <childnode refid="942" relation="include">
+        </childnode>
+      </node>
+      <node id="952">
+        <label>Tarbora/Logic/ControllerComponent.hpp</label>
+        <link refid="ControllerComponent_8hpp_source"/>
+      </node>
+      <node id="956">
+        <label>Tarbora/Logic/InfoComponent.hpp</label>
+        <link refid="InfoComponent_8hpp_source"/>
+      </node>
+      <node id="951">
+        <label>Tarbora/Logic/AnimationComponent.hpp</label>
+        <link refid="AnimationComponent_8hpp_source"/>
+      </node>
+      <node id="963">
+        <label>Tarbora/Views/HardwareViews/inc/ArduinoView.hpp</label>
+        <link refid="ArduinoView_8hpp_source"/>
+      </node>
+      <node id="957">
+        <label>Tarbora/Logic/ModelComponent.hpp</label>
+        <link refid="ModelComponent_8hpp_source"/>
+      </node>
+      <node id="939">
+        <label>Tarbora/Views/GraphicViews/Layer.hpp</label>
+        <link refid="Layer_8hpp_source"/>
+        <childnode refid="940" relation="include">
+        </childnode>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="943" relation="include">
+        </childnode>
+        <childnode refid="945" relation="include">
+        </childnode>
+        <childnode refid="946" relation="include">
+        </childnode>
+      </node>
+      <node id="955">
+        <label>Tarbora/Logic/GameLogic.hpp</label>
+        <link refid="GameLogic_8hpp_source"/>
+      </node>
+      <node id="959">
+        <label>Tarbora/Views/GraphicViews/GraphicView.hpp</label>
+        <link refid="GraphicView_8hpp_source"/>
+        <childnode refid="939" relation="include">
+        </childnode>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="960" relation="include">
+        </childnode>
+      </node>
+      <node id="960">
+        <label>Tarbora/Views/GraphicViews/SceneNode.hpp</label>
+        <link refid="SceneNode_8hpp_source"/>
+        <childnode refid="942" relation="include">
+        </childnode>
+        <childnode refid="961" relation="include">
+        </childnode>
+      </node>
+      <node id="937">
+        <label>Tarbora/Framework/Module/Module.hpp</label>
+        <link refid="Module_8hpp"/>
+        <childnode refid="938" relation="include">
+        </childnode>
+        <childnode refid="959" relation="include">
+        </childnode>
+        <childnode refid="961" relation="include">
+        </childnode>
+        <childnode refid="962" relation="include">
+        </childnode>
+        <childnode refid="963" relation="include">
+        </childnode>
+      </node>
+      <node id="953">
+        <label>Tarbora/Logic/TransformComponent.hpp</label>
+        <link refid="TransformComponent_8hpp_source"/>
+      </node>
+      <node id="954">
+        <label>Tarbora/Logic/PhysicsComponent.hpp</label>
+        <link refid="PhysicsComponent_8hpp_source"/>
+      </node>
+      <node id="961">
+        <label>Tarbora/Views/GraphicViews/ActorModel.hpp</label>
+        <link refid="ActorModel_8hpp_source"/>
+        <childnode refid="942" relation="include">
+        </childnode>
+        <childnode refid="961" relation="include">
+        </childnode>
+      </node>
+      <node id="943">
+        <label>Tarbora/Views/GraphicViews/GameLayer.hpp</label>
+        <link refid="GameLayer_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classTarbora_1_1AbstractModule" prot="public">Tarbora::AbstractModule</innerclass>
+    <innernamespace refid="namespaceTarbora">Tarbora</innernamespace>
+    <briefdescription>
+<para>Class <ref refid="classTarbora_1_1AbstractModule" kindref="compound">Tarbora::AbstractModule</ref>. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Framework/Module/AbstractModule.hpp"/>
+  </compounddef>
+</doxygen>

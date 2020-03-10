@@ -1,5 +1,0 @@
-<map id="Tarbora::RigidBody" name="Tarbora::RigidBody">
-<area shape="rect" id="node2" href="$classTarbora_1_1BoxBody.html" title="A physics rigid body representing a cube. " alt="" coords="5,80,132,107"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1CapsuleBody.html" title="A physics rigid body representing an capsule shape. " alt="" coords="157,80,309,107"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1SphereBody.html" title="A physics rigid body representing an sphere. " alt="" coords="333,80,479,107"/>
-</map>

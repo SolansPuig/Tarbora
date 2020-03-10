@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_b45d6b7b6045819ecaa7db9f0c9c0752" kind="dir">
+    <compoundname>Tarbora/Logic</compoundname>
+    <innerdir refid="dir_b750d750471b92421b66b3b568015dca">Tarbora/Logic/PhysicsEngine</innerdir>
+    <innerfile refid="AnimationComponent_8cpp">AnimationComponent.cpp</innerfile>
+    <innerfile refid="AnimationComponent_8hpp">AnimationComponent.hpp</innerfile>
+    <innerfile refid="Component_8hpp">Component.hpp</innerfile>
+    <innerfile refid="ControllerComponent_8cpp">ControllerComponent.cpp</innerfile>
+    <innerfile refid="ControllerComponent_8hpp">ControllerComponent.hpp</innerfile>
+    <innerfile refid="GameLogic_8hpp">GameLogic.hpp</innerfile>
+    <innerfile refid="InfoComponent_8hpp">InfoComponent.hpp</innerfile>
+    <innerfile refid="ModelComponent_8cpp">ModelComponent.cpp</innerfile>
+    <innerfile refid="ModelComponent_8hpp">ModelComponent.hpp</innerfile>
+    <innerfile refid="PhysicsComponent_8cpp">PhysicsComponent.cpp</innerfile>
+    <innerfile refid="PhysicsComponent_8hpp">PhysicsComponent.hpp</innerfile>
+    <innerfile refid="System_8hpp">System.hpp</innerfile>
+    <innerfile refid="TransformComponent_8cpp">TransformComponent.cpp</innerfile>
+    <innerfile refid="TransformComponent_8hpp">TransformComponent.hpp</innerfile>
+    <innerfile refid="TypeComponent_8hpp">TypeComponent.hpp</innerfile>
+    <innerfile refid="World_8cpp">World.cpp</innerfile>
+    <innerfile refid="World_8hpp">World.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Logic/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Resource" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Resource</compoundname>
+    <derivedcompoundref refid="classTarbora_1_1LuaScript" prot="public" virt="non-virtual">Tarbora::LuaScript</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1Material" prot="public" virt="non-virtual">Tarbora::Material</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1Mesh" prot="public" virt="non-virtual">Tarbora::Mesh</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1Shader" prot="public" virt="non-virtual">Tarbora::Shader</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1Text" prot="public" virt="non-virtual">Tarbora::Text</derivedcompoundref>
+    <derivedcompoundref refid="classTarbora_1_1Texture" prot="public" virt="non-virtual">Tarbora::Texture</derivedcompoundref>
+    <includes refid="Resource_8hpp" local="no">Resource.hpp</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classTarbora_1_1Resource_1a685a33b83a13f36aceea3ff940994ac9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class ResourceLoader</definition>
+        <argsstring></argsstring>
+        <name>ResourceLoader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Resource.hpp" line="80" column="1" bodyfile="Tarbora/Framework/ResourceManager/Resource.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1Resource_1a00dae18f7cf782dabaab704896c52069" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tarbora::Resource::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <briefdescription>
+<para>The filename of the resource. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Resource.hpp" line="89" column="1" bodyfile="Tarbora/Framework/ResourceManager/Resource.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Resource_1afc89548edc7c22bfe6c2270dd011d189" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; Tarbora::Resource::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <briefdescription>
+<para>Returns the filename of the resource. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Resource.hpp" line="83" column="1" bodyfile="Tarbora/Framework/ResourceManager/Resource.hpp" bodystart="83" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classTarbora_1_1Resource_1a7c37d25d519a673529cac26dc179b449" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Resource::Resource</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>Resource</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Framework/ResourceManager/Resource.hpp" line="86" column="1" bodyfile="Tarbora/Framework/ResourceManager/Resource.hpp" bodystart="86" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract resource. </para>    </briefdescription>
+    <detaileddescription>
+<para>This resource will be shared between all the classes that use it, and loaded only once (probably in startup or level load).</para><para>If you want to implement your own resource, inherit from this class. Make sure your constructor calls the <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> constructor with the filename of the resource.</para><para>A resource constructor must be private, as it can only be created inside a <emphasis>ResourceLoader</emphasis>.</para><para>A ResourceLoader is also needed, it must inherit from <emphasis>ResourceLoader</emphasis>, be a friend of the class <ref refid="classTarbora_1_1ResourceManager" kindref="compound">ResourceManager</ref> and implement two private methods:</para><para><programlisting><codeline><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>getPattern();</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Resource&gt;<sp/>load(std::string<sp/>path);</highlight></codeline>
+</programlisting></para><para><emphasis>getPattern</emphasis> returns a regex, the files that match it will be loaded with that loader.</para><para><emphasis>Load</emphasis> loads the file in <emphasis>path</emphasis>, reading it from disk and parsing it or doing the needed conversions.</para><para>All ResourceLoaders need to be registered in <ref refid="classTarbora_1_1ResourceManager" kindref="compound">ResourceManager</ref> to work.</para><para>If a file would match the pattern of several ResourceLoaders, it will be loaded by the lastest registered one.</para><para>Here&apos;s an example of the implementation of a <ref refid="classTarbora_1_1Resource" kindref="compound">Resource</ref> and its <emphasis>ResourceLoader</emphasis> for txt files:</para><para><programlisting><codeline><highlight class="keyword">class<sp/></highlight><highlight class="normal">Text<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Resource</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TextResourceLoader;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>GetText()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_Text;<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Text(std::string<sp/>name,<sp/>std::string<sp/>text)<sp/>:<sp/>Resource(name),<sp/>m_Text(text)<sp/>{}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>m_Text;</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TextResourceLoader<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>ResourceLoader</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ResourceManager;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>getPattern()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;*.txt&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Resource&gt;<sp/>load(std::string<sp/>path)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
+<codeline><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>to<sp/>open<sp/>the<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ifstream<sp/>file;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file.open(path.c_str());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(file.fail())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Resource&gt;();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>contents<sp/>to<sp/>a<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>s<sp/>=<sp/>std::string(std::istreambuf_iterator&lt;char&gt;(file),<sp/>std::istreambuf_iterator&lt;char&gt;());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Resource&gt;<sp/>r<sp/>=<sp/>std::shared_ptr&lt;Resource&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Text(path,<sp/>s));<sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>Resource.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file.close();<sp/></highlight><highlight class="comment">//<sp/>Remember<sp/>to<sp/>close<sp/>the<sp/>file!</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para><para><simplesect kind="see"><para><ref refid="classTarbora_1_1ResourceManager" kindref="compound">ResourceManager</ref> </para></simplesect>
+<simplesect kind="see"><para>Json </para></simplesect>
+<simplesect kind="see"><para><ref refid="classTarbora_1_1Text" kindref="compound">Text</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="376">
+        <label>Tarbora::Shader</label>
+        <link refid="classTarbora_1_1Shader"/>
+        <childnode refid="372" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="374">
+        <label>Tarbora::Material</label>
+        <link refid="classTarbora_1_1Material"/>
+        <childnode refid="372" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="377">
+        <label>Tarbora::Text</label>
+        <link refid="classTarbora_1_1Text"/>
+        <childnode refid="372" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="378">
+        <label>Tarbora::Texture</label>
+        <link refid="classTarbora_1_1Texture"/>
+        <childnode refid="372" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="373">
+        <label>Tarbora::LuaScript</label>
+        <link refid="classTarbora_1_1LuaScript"/>
+        <childnode refid="372" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="372">
+        <label>Tarbora::Resource</label>
+        <link refid="classTarbora_1_1Resource"/>
+      </node>
+      <node id="375">
+        <label>Tarbora::Mesh</label>
+        <link refid="classTarbora_1_1Mesh"/>
+        <childnode refid="372" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Tarbora/Framework/ResourceManager/Resource.hpp" line="79" column="1" bodyfile="Tarbora/Framework/ResourceManager/Resource.hpp" bodystart="78" bodyend="90"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Resource_1afc89548edc7c22bfe6c2270dd011d189" prot="public" virt="non-virtual"><scope>Tarbora::Resource</scope><name>getName</name></member>
+      <member refid="classTarbora_1_1Resource_1a00dae18f7cf782dabaab704896c52069" prot="protected" virt="non-virtual"><scope>Tarbora::Resource</scope><name>name_</name></member>
+      <member refid="classTarbora_1_1Resource_1a7c37d25d519a673529cac26dc179b449" prot="protected" virt="non-virtual"><scope>Tarbora::Resource</scope><name>Resource</name></member>
+      <member refid="classTarbora_1_1Resource_1a685a33b83a13f36aceea3ff940994ac9" prot="private" virt="non-virtual"><scope>Tarbora::Resource</scope><name>ResourceLoader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

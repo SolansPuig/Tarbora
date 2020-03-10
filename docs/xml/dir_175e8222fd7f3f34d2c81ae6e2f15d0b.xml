@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_175e8222fd7f3f34d2c81ae6e2f15d0b" kind="dir">
+    <compoundname>Tarbora/Views</compoundname>
+    <innerdir refid="dir_26a75520c23e55d9adf97c16260feda1">Tarbora/Views/GraphicViews</innerdir>
+    <innerdir refid="dir_b21ba68102f117b5ef1f4e068dd840b3">Tarbora/Views/HardwareViews</innerdir>
+    <innerdir refid="dir_917997f98cb3c410638d433d024acef6">Tarbora/Views/SceneManager</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/"/>
+  </compounddef>
+</doxygen>

@@ -2,7 +2,7 @@ components = {
     type = {"human"},
     model = {
         render_pass = 1,
-        model = "human4.lua",
+        model = "human.lua",
         material = "human.mat.lua"
     },
     animation = {

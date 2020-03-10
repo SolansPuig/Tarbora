@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Gui" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Gui</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1Gui_1a2d83671941cb5b4f35e80266ff57109c" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1GraphicsEngine" kindref="compound">GraphicsEngine</ref> *</type>
+        <definition>GraphicsEngine* Tarbora::Gui::graphics_engine_</definition>
+        <argsstring></argsstring>
+        <name>graphics_engine_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" line="22" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1Gui_1ad1d1a0c9d0d8c43032e6d0935aa44358" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Gui::Gui</definition>
+        <argsstring>(GraphicsEngine *graphicsEngine)</argsstring>
+        <name>Gui</name>
+        <param>
+          <type><ref refid="classTarbora_1_1GraphicsEngine" kindref="compound">GraphicsEngine</ref> *</type>
+          <declname>graphicsEngine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" line="15" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.cpp" bodystart="6" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Gui_1a5dd7e4be0afc593eed24db593421e695" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Gui::~Gui</definition>
+        <argsstring>()</argsstring>
+        <name>~Gui</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" line="16" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.cpp" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Gui_1a222e2d46988ee41920484f107e2d4f51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Gui::beforeDraw</definition>
+        <argsstring>()</argsstring>
+        <name>beforeDraw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" line="18" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.cpp" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1Gui_1a7cc91a9d8cffac7a10f7d876b1a0017f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::Gui::afterDraw</definition>
+        <argsstring>()</argsstring>
+        <name>afterDraw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" line="19" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.cpp" bodystart="35" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" line="13" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Gui.hpp" bodystart="12" bodyend="23"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Gui_1a7cc91a9d8cffac7a10f7d876b1a0017f" prot="public" virt="non-virtual"><scope>Tarbora::Gui</scope><name>afterDraw</name></member>
+      <member refid="classTarbora_1_1Gui_1a222e2d46988ee41920484f107e2d4f51" prot="public" virt="non-virtual"><scope>Tarbora::Gui</scope><name>beforeDraw</name></member>
+      <member refid="classTarbora_1_1Gui_1a2d83671941cb5b4f35e80266ff57109c" prot="private" virt="non-virtual"><scope>Tarbora::Gui</scope><name>graphics_engine_</name></member>
+      <member refid="classTarbora_1_1Gui_1ad1d1a0c9d0d8c43032e6d0935aa44358" prot="public" virt="non-virtual"><scope>Tarbora::Gui</scope><name>Gui</name></member>
+      <member refid="classTarbora_1_1Gui_1a5dd7e4be0afc593eed24db593421e695" prot="public" virt="non-virtual"><scope>Tarbora::Gui</scope><name>~Gui</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

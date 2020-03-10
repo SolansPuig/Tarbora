@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1InfoComponent" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::InfoComponent</compoundname>
+    <basecompoundref refid="classTarbora_1_1Component" prot="public" virt="non-virtual">Tarbora::Component</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1InfoComponent_1acd24959677f8ed2d5900e4d3f0b7d4ed" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tarbora::InfoComponent::entity_</definition>
+        <argsstring></argsstring>
+        <name>entity_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/InfoComponent.hpp" line="19" column="1" bodyfile="Tarbora/Logic/InfoComponent.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1InfoComponent_1acd930fd7d2afdd26bd7ed44a9364aba9" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tarbora::InfoComponent::variant_</definition>
+        <argsstring></argsstring>
+        <name>variant_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/InfoComponent.hpp" line="20" column="1" bodyfile="Tarbora/Logic/InfoComponent.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1InfoComponent_1a02d7b59bac3005f9d64bf23ca9b355e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::InfoComponent::InfoComponent</definition>
+        <argsstring>(System *s, const ActorId &amp;id, const LuaTable &amp;table)</argsstring>
+        <name>InfoComponent</name>
+        <param>
+          <type><ref refid="classTarbora_1_1System" kindref="compound">System</ref> *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>const ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTarbora_1_1LuaTable" kindref="compound">LuaTable</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/InfoComponent.hpp" line="8" column="1" bodyfile="Tarbora/Logic/InfoComponent.hpp" bodystart="8" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1InfoComponent_1ac97874d9cab2a24cfc92a7d847614bd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; Tarbora::InfoComponent::getEntity</definition>
+        <argsstring>()</argsstring>
+        <name>getEntity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/InfoComponent.hpp" line="15" column="1" bodyfile="Tarbora/Logic/InfoComponent.hpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1InfoComponent_1a1aaab6d0d64bd6b5712a6ab887e4dc37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; Tarbora::InfoComponent::getVariant</definition>
+        <argsstring>()</argsstring>
+        <name>getVariant</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/InfoComponent.hpp" line="16" column="1" bodyfile="Tarbora/Logic/InfoComponent.hpp" bodystart="16" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="165">
+        <label>Tarbora::InfoComponent</label>
+        <link refid="classTarbora_1_1InfoComponent"/>
+        <childnode refid="166" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="166">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="170">
+        <label>Tarbora::ModuleComponent</label>
+        <link refid="classTarbora_1_1ModuleComponent"/>
+        <childnode refid="171" relation="usage">
+          <edgelabel>module_</edgelabel>
+        </childnode>
+      </node>
+      <node id="169">
+        <label>Tarbora::System</label>
+        <link refid="classTarbora_1_1System"/>
+        <childnode refid="170" relation="public-inheritance">
+        </childnode>
+        <childnode refid="173" relation="usage">
+          <edgelabel>world_</edgelabel>
+        </childnode>
+      </node>
+      <node id="171">
+        <label>Tarbora::Module</label>
+        <link refid="classTarbora_1_1Module"/>
+        <childnode refid="172" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>Tarbora::InfoComponent</label>
+        <link refid="classTarbora_1_1InfoComponent"/>
+        <childnode refid="168" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="173">
+        <label>Tarbora::World</label>
+        <link refid="classTarbora_1_1World"/>
+        <childnode refid="171" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>Tarbora::AbstractModule</label>
+        <link refid="classTarbora_1_1AbstractModule"/>
+      </node>
+      <node id="168">
+        <label>Tarbora::Component</label>
+        <link refid="classTarbora_1_1Component"/>
+        <childnode refid="169" relation="usage">
+          <edgelabel>system_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Logic/InfoComponent.hpp" line="6" column="1" bodyfile="Tarbora/Logic/InfoComponent.hpp" bodystart="5" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1Component_1af131ce04afe7eadb2589afcec5fa52d8" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>Component</name></member>
+      <member refid="classTarbora_1_1Component_1a163aa5702b50ede0dddfe1f8620afca5" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>disable</name></member>
+      <member refid="classTarbora_1_1Component_1a856a0b9e17ccd0336f1a33cf2fd2ac20" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>enable</name></member>
+      <member refid="classTarbora_1_1Component_1ac5b26f24609f28419cf2a2e6065b17c8" prot="protected" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>enabled_</name></member>
+      <member refid="classTarbora_1_1InfoComponent_1acd24959677f8ed2d5900e4d3f0b7d4ed" prot="private" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>entity_</name></member>
+      <member refid="classTarbora_1_1Component_1ad8232ed039bec74c81fc7589ee34cbf7" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>error</name></member>
+      <member refid="classTarbora_1_1Component_1a7e022fe62bcf3c3781977ca972383c0d" prot="protected" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>error_</name></member>
+      <member refid="classTarbora_1_1Component_1a9b772f4d99f64b23685a58e7294ab981" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1Component_1abeeb3dba77af922915cbe9bc7d29d646" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>getComponent</name></member>
+      <member refid="classTarbora_1_1InfoComponent_1ac97874d9cab2a24cfc92a7d847614bd0" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>getEntity</name></member>
+      <member refid="classTarbora_1_1InfoComponent_1a1aaab6d0d64bd6b5712a6ab887e4dc37" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>getVariant</name></member>
+      <member refid="classTarbora_1_1InfoComponent_1a02d7b59bac3005f9d64bf23ca9b355e6" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>InfoComponent</name></member>
+      <member refid="classTarbora_1_1Component_1a62150a85e0eb8f3601d211245ca08a2d" prot="protected" virt="virtual"><scope>Tarbora::InfoComponent</scope><name>onDisable</name></member>
+      <member refid="classTarbora_1_1Component_1a644061cabaf91ed54eae79ce616c25b9" prot="protected" virt="virtual"><scope>Tarbora::InfoComponent</scope><name>onEnable</name></member>
+      <member refid="classTarbora_1_1Component_1a4c2092ce4a44d193308669024867775c" prot="protected" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>owner_</name></member>
+      <member refid="classTarbora_1_1Component_1a227a558106b74d4b8b0be7667c7610c5" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>send</name></member>
+      <member refid="classTarbora_1_1Component_1a19bde335970f5e3af9bc845122f28f3f" prot="protected" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>system_</name></member>
+      <member refid="classTarbora_1_1Component_1a47985733836fce6b3cc5e0f77607d4e8" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>trigger</name></member>
+      <member refid="classTarbora_1_1Component_1aa3eddb1cf4ba3fb1f0652d0c3aee07b6" prot="public" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>triggerLocal</name></member>
+      <member refid="classTarbora_1_1InfoComponent_1acd930fd7d2afdd26bd7ed44a9364aba9" prot="private" virt="non-virtual"><scope>Tarbora::InfoComponent</scope><name>variant_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

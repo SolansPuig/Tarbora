@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1Mesh" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::Mesh</compoundname>
+    <basecompoundref refid="classTarbora_1_1Resource" prot="public" virt="non-virtual">Tarbora::Resource</basecompoundref>
+    <basecompoundref refid="classTarbora_1_1MeshInternal" prot="public" virt="non-virtual">Tarbora::MeshInternal</basecompoundref>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classTarbora_1_1Mesh_1a27c9226be711b1d4d1e81ab76c541bf2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class MeshResourceLoader</definition>
+        <argsstring></argsstring>
+        <name>MeshResourceLoader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Mesh.hpp" line="9" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Mesh.hpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTarbora_1_1Mesh_1a5f367007126958750eff3a9f55c44012" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::Mesh::Mesh</definition>
+        <argsstring>(const std::string &amp;name, const std::vector&lt; float &gt; &amp;data, unsigned int vertices)</argsstring>
+        <name>Mesh</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>vertices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Mesh.hpp" line="11" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Mesh.hpp" bodystart="11" bodyend="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="240">
+        <label>Tarbora::MeshInternal</label>
+        <link refid="classTarbora_1_1MeshInternal"/>
+      </node>
+      <node id="239">
+        <label>Tarbora::Resource</label>
+        <link refid="classTarbora_1_1Resource"/>
+      </node>
+      <node id="238">
+        <label>Tarbora::Mesh</label>
+        <link refid="classTarbora_1_1Mesh"/>
+        <childnode refid="239" relation="public-inheritance">
+        </childnode>
+        <childnode refid="240" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="243">
+        <label>Tarbora::MeshInternal</label>
+        <link refid="classTarbora_1_1MeshInternal"/>
+      </node>
+      <node id="242">
+        <label>Tarbora::Resource</label>
+        <link refid="classTarbora_1_1Resource"/>
+      </node>
+      <node id="241">
+        <label>Tarbora::Mesh</label>
+        <link refid="classTarbora_1_1Mesh"/>
+        <childnode refid="242" relation="public-inheritance">
+        </childnode>
+        <childnode refid="243" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Tarbora/Views/GraphicViews/GraphicsEngine/Mesh.hpp" line="8" column="1" bodyfile="Tarbora/Views/GraphicViews/GraphicsEngine/Mesh.hpp" bodystart="7" bodyend="13"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1MeshInternal_1a0e35f9d473c5057aca6abf446dea0844" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>addInstance</name></member>
+      <member refid="classTarbora_1_1MeshInternal_1a908f6cf466f05abf42b48b0188fd8e69" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>bind</name></member>
+      <member refid="classTarbora_1_1MeshInternal_1a1fb14a869b44cb50a9e018c248b117ec" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>draw</name></member>
+      <member refid="classTarbora_1_1MeshInternal_1aa75884c036e18012c159cc1b494fa2f1" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>drawInstanced</name></member>
+      <member refid="classTarbora_1_1MeshInternal_1a096d8136fe0beafc264e8d569f4b4d9b" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>getId</name></member>
+      <member refid="classTarbora_1_1Resource_1afc89548edc7c22bfe6c2270dd011d189" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>getName</name></member>
+      <member refid="classTarbora_1_1MeshInternal_1a40730404ec626f4471d098a3def8280b" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>getVertices</name></member>
+      <member refid="classTarbora_1_1Mesh_1a5f367007126958750eff3a9f55c44012" prot="private" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>Mesh</name></member>
+      <member refid="classTarbora_1_1MeshInternal_1ac8e4729cafca29f2c4a9b5fe66450521" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>MeshInternal</name></member>
+      <member refid="classTarbora_1_1Mesh_1a27c9226be711b1d4d1e81ab76c541bf2" prot="private" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>MeshResourceLoader</name></member>
+      <member refid="classTarbora_1_1Resource_1a00dae18f7cf782dabaab704896c52069" prot="protected" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>name_</name></member>
+      <member refid="classTarbora_1_1Resource_1a7c37d25d519a673529cac26dc179b449" prot="protected" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>Resource</name></member>
+      <member refid="classTarbora_1_1MeshInternal_1a604a4fc1060c4a318caa265963301c3e" prot="public" virt="non-virtual"><scope>Tarbora::Mesh</scope><name>~MeshInternal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

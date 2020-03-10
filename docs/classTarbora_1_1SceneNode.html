@@ -1,252 +1,331 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tarbora Game Engine: Tarbora::SceneNode Class Reference</title>
-<link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
-<script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8" />
+  <title>Tarbora::SceneNode class | Tarbora Game Engine The Game Engine for Makers</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
 </head>
 <body>
-<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
-<div id="titlearea">
-<table cellspacing="0" cellpadding="0">
- <tbody>
- <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="icon_small.png"/></td>
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Tarbora Game Engine
-   &#160;<span id="projectnumber">0.5-ALPHA</span>
-   </div>
-   <div id="projectbrief">The Game Engine for Makers</div>
-  </td>
- </tr>
- </tbody>
-</table>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="icon_small.png" />Tarbora Game Engine <span class="m-thin">The Game Engine for Makers</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespaceTarbora.html">Tarbora</a>::<wbr/></span>SceneNode <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="SceneNode_8hpp.html">&lt;Tarbora/Views/GraphicViews/SceneNode.hpp&gt;</a></div>
+        </h1>
+        <p><span></span></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classTarbora_1_1Camera.html" class="m-doc">Camera</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              class <a href="classTarbora_1_1MaterialNode.html" class="m-doc">MaterialNode</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              class <a href="classTarbora_1_1MeshNode.html" class="m-doc">MeshNode</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              class <a href="classTarbora_1_1RootNode.html" class="m-doc">RootNode</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a525d466d830ecdccc16173b3d0f9029e">
+              <span class="m-doc-wrap-bumper"><a href="#a525d466d830ecdccc16173b3d0f9029e" class="m-doc-self">SceneNode</a>(</span><span class="m-doc-wrap">const ActorId&amp; id,
+              const std::string&amp; name)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="afec9dce3f1e8574894488485c94fd9cb">
+              <span class="m-doc-wrap-bumper"><a href="#afec9dce3f1e8574894488485c94fd9cb" class="m-doc-self">~SceneNode</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a22e6aa370851aa4fe1ba409511c0bff1">
+              <span class="m-doc-wrap-bumper">auto <a href="#a22e6aa370851aa4fe1ba409511c0bff1" class="m-doc-self">getNodeType</a>(</span><span class="m-doc-wrap">) -&gt; const std::string <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4b3a843a9bcfcbbefd518a7a6f018c28">
+              <span class="m-doc-wrap-bumper">void <a href="#a4b3a843a9bcfcbbefd518a7a6f018c28" class="m-doc-self">update</a>(</span><span class="m-doc-wrap"><a href="classTarbora_1_1Scene.html" class="m-doc">Scene</a>* scene,
+              float delta_time) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aaf186e7334c6bd39b4d7c05e27760310">
+              <span class="m-doc-wrap-bumper">void <a href="#aaf186e7334c6bd39b4d7c05e27760310" class="m-doc-self">drawChildren</a>(</span><span class="m-doc-wrap"><a href="classTarbora_1_1Scene.html" class="m-doc">Scene</a>* scene,
+              const glm::mat4&amp; parent_transform) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1243ef3f82739b2420753eac8bf4ac71">
+              <span class="m-doc-wrap-bumper">void <a href="#a1243ef3f82739b2420753eac8bf4ac71" class="m-doc-self">draw</a>(</span><span class="m-doc-wrap"><a href="classTarbora_1_1Scene.html" class="m-doc">Scene</a>* scene,
+              const glm::mat4&amp; transform) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af3e0f513ce4f490dc385dc00d7c61a2c">
+              <span class="m-doc-wrap-bumper">void <a href="#af3e0f513ce4f490dc385dc00d7c61a2c" class="m-doc-self">afterDraw</a>(</span><span class="m-doc-wrap"><a href="classTarbora_1_1Scene.html" class="m-doc">Scene</a>* scene) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aca1275aac5f57efcb246bc49664c6381">
+              <span class="m-doc-wrap-bumper">auto <a href="#aca1275aac5f57efcb246bc49664c6381" class="m-doc-self">addChild</a>(</span><span class="m-doc-wrap">std::shared_ptr&lt;<a href="classTarbora_1_1SceneNode.html" class="m-doc">SceneNode</a>&gt; child) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a803d63c178c7a18e201c94abf523cb32">
+              <span class="m-doc-wrap-bumper">auto <a href="#a803d63c178c7a18e201c94abf523cb32" class="m-doc-self">getChild</a>(</span><span class="m-doc-wrap">const std::string&amp; name) -&gt; std::shared_ptr&lt;<a href="classTarbora_1_1SceneNode.html" class="m-doc">SceneNode</a>&gt; <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a8b95f1289055b031beeee3ff42879ce9">
+              <span class="m-doc-wrap-bumper">auto <a href="#a8b95f1289055b031beeee3ff42879ce9" class="m-doc-self">getParent</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classTarbora_1_1SceneNode.html" class="m-doc">SceneNode</a>*</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aff5f3858deb27da7584e1d83d5a0dd5c">
+              <span class="m-doc-wrap-bumper">auto <a href="#aff5f3858deb27da7584e1d83d5a0dd5c" class="m-doc-self">removeChild</a>(</span><span class="m-doc-wrap">const std::string&amp; name) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a962a27c04440caf98356eca8c270c5d1">
+              <span class="m-doc-wrap-bumper">auto <a href="#a962a27c04440caf98356eca8c270c5d1" class="m-doc-self">isVisible</a>(</span><span class="m-doc-wrap"><a href="classTarbora_1_1Scene.html" class="m-doc">Scene</a>* scene) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac5286baceec7d660738d82737e2845e1">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac5286baceec7d660738d82737e2845e1" class="m-doc-self">getActorId</a>(</span><span class="m-doc-wrap">) const -&gt; const ActorId&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab110073c6c0f97013b9df24bb18514be">
+              <span class="m-doc-wrap-bumper">auto <a href="#ab110073c6c0f97013b9df24bb18514be" class="m-doc-self">getName</a>(</span><span class="m-doc-wrap">) const -&gt; const std::string&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a295afaee0c2b91631e12bdbb5a7da4ea">
+              <span class="m-doc-wrap-bumper">void <a href="#a295afaee0c2b91631e12bdbb5a7da4ea" class="m-doc-self">setPosition</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; position)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0baf3d85a731703d536183ab4be0a802">
+              <span class="m-doc-wrap-bumper">void <a href="#a0baf3d85a731703d536183ab4be0a802" class="m-doc-self">setRotation</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; rotation)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af8033a1185542cf5567b9105aec7f4ba">
+              <span class="m-doc-wrap-bumper">void <a href="#af8033a1185542cf5567b9105aec7f4ba" class="m-doc-self">setRotation</a>(</span><span class="m-doc-wrap">const glm::quat&amp; rotation)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac098d121c3ea7d52d35467089c3e4bb8">
+              <span class="m-doc-wrap-bumper">void <a href="#ac098d121c3ea7d52d35467089c3e4bb8" class="m-doc-self">setScale</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; scale)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a115945c69b88fb376c7c918dca6fba3a">
+              <span class="m-doc-wrap-bumper">void <a href="#a115945c69b88fb376c7c918dca6fba3a" class="m-doc-self">setGlobalScale</a>(</span><span class="m-doc-wrap">float scale)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a98dfaf7374e49ac5bd0c72e499364b4a">
+              <span class="m-doc-wrap-bumper">void <a href="#a98dfaf7374e49ac5bd0c72e499364b4a" class="m-doc-self">setOrigin</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; origin)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af674e2d2672fcee77ef2f942da30a255">
+              <span class="m-doc-wrap-bumper">auto <a href="#af674e2d2672fcee77ef2f942da30a255" class="m-doc-self">getPosition</a>(</span><span class="m-doc-wrap">) -&gt; const glm::vec3&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aaf391946c2b5bf3c6622192d00a3002b">
+              <span class="m-doc-wrap-bumper">auto <a href="#aaf391946c2b5bf3c6622192d00a3002b" class="m-doc-self">getRotation</a>(</span><span class="m-doc-wrap">) -&gt; glm::vec3</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae99b5787d214c2a490f555f7b6e1046c">
+              <span class="m-doc-wrap-bumper">auto <a href="#ae99b5787d214c2a490f555f7b6e1046c" class="m-doc-self">getRotationQuat</a>(</span><span class="m-doc-wrap">) -&gt; const glm::quat&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aec0945771093c2b01e41442c32170053">
+              <span class="m-doc-wrap-bumper">auto <a href="#aec0945771093c2b01e41442c32170053" class="m-doc-self">getScale</a>(</span><span class="m-doc-wrap">) -&gt; const glm::vec3&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa90970fd5157deaa0e79eb0c80d81bbb">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa90970fd5157deaa0e79eb0c80d81bbb" class="m-doc-self">getGlobalScale</a>(</span><span class="m-doc-wrap">) -&gt; float</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="afe8d5ea5c9ee9f9c427595fb19404873">
+              <span class="m-doc-wrap-bumper">auto <a href="#afe8d5ea5c9ee9f9c427595fb19404873" class="m-doc-self">getOrigin</a>(</span><span class="m-doc-wrap">) -&gt; glm::vec3</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="afac714f06014bdcb93a57a57cdf87bca">
+              <span class="m-doc-wrap-bumper">auto <a href="#afac714f06014bdcb93a57a57cdf87bca" class="m-doc-self">getGlobalTransform</a>(</span><span class="m-doc-wrap">) -&gt; glm::mat4</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4144df0e04e1d70c6b53323c86b6fe21">
+              <span class="m-doc-wrap-bumper">auto <a href="#a4144df0e04e1d70c6b53323c86b6fe21" class="m-doc-self">getLocalTransform</a>(</span><span class="m-doc-wrap">) -&gt; glm::mat4 <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aceecd2ee682d39fbc0c38d0907043b2a">
+              <span class="m-doc-wrap-bumper">auto <a href="#aceecd2ee682d39fbc0c38d0907043b2a" class="m-doc-self">getDeform</a>(</span><span class="m-doc-wrap">) -&gt; glm::mat4 <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a62f0f6876882a058a013a998b6bfaf42">
+              <span class="m-doc-wrap-bumper">void <a href="#a62f0f6876882a058a013a998b6bfaf42" class="m-doc-self">setRadius</a>(</span><span class="m-doc-wrap">float radius)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ad14d66d3d3aeb879791b3bbbe1dd8387">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad14d66d3d3aeb879791b3bbbe1dd8387" class="m-doc-self">getRadius</a>(</span><span class="m-doc-wrap">) const -&gt; float</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af7665fb94e484e19896499299d577fa5">
+              <span class="m-doc-wrap-bumper">auto <a href="#af7665fb94e484e19896499299d577fa5" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2303eceadaa9782d33fcd2529297c127">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2303eceadaa9782d33fcd2529297c127" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) -&gt; auto</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a87132c6b69eca517e9f7e5587397a722">
+              <span class="m-doc-wrap-bumper">auto <a href="#a87132c6b69eca517e9f7e5587397a722" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) -&gt; auto</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a9432d7afb4256f34d05a947d73fd36a5">
+              ActorId <a href="#a9432d7afb4256f34d05a947d73fd36a5" class="m-doc-self">id_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a73e6fbba6218f5b3f739b74fd36a1490">
+              std::string <a href="#a73e6fbba6218f5b3f739b74fd36a1490" class="m-doc-self">name_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a023b1ecdc817d49475003b6c18e8340d">
+              std::map&lt;std::string, std::shared_ptr&lt;<a href="classTarbora_1_1SceneNode.html" class="m-doc">SceneNode</a>&gt;&gt; <a href="#a023b1ecdc817d49475003b6c18e8340d" class="m-doc-self">children_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="adaa560b8bcf270c2b443f8f8c7cdaa35">
+              <a href="classTarbora_1_1SceneNode.html" class="m-doc">SceneNode</a>* <a href="#adaa560b8bcf270c2b443f8f8c7cdaa35" class="m-doc-self">parent_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab70a006bc1c86995ebb2e657c9a45ee9">
+              glm::vec3 <a href="#ab70a006bc1c86995ebb2e657c9a45ee9" class="m-doc-self">position_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a75263c64acd53e86dcecc6a5b3165835">
+              glm::quat <a href="#a75263c64acd53e86dcecc6a5b3165835" class="m-doc-self">rotation_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a50fe08135eb77ca0583a72402a16cbbe">
+              glm::vec3 <a href="#a50fe08135eb77ca0583a72402a16cbbe" class="m-doc-self">scale_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="afba9afc0d19c85bef4de320d8f05be5c">
+              float <a href="#afba9afc0d19c85bef4de320d8f05be5c" class="m-doc-self">global_scale_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a5946ac3c4bcb661acf4d0e429e2532b1">
+              glm::vec3 <a href="#a5946ac3c4bcb661acf4d0e429e2532b1" class="m-doc-self">origin_</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af86fdbfafb4b4c212ebd3b9fd1ab3835">
+              float <a href="#af86fdbfafb4b4c212ebd3b9fd1ab3835" class="m-doc-self">radius_</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- end header part -->
-<!-- Generated by Doxygen 1.8.13 -->
-<script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search",false,'Search');
-</script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Tarbora</b></li><li class="navelem"><a class="el" href="classTarbora_1_1SceneNode.html">SceneNode</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
-<a href="classTarbora_1_1SceneNode-members.html">List of all members</a>  </div>
-  <div class="headertitle">
-<div class="title">Tarbora::SceneNode Class Reference</div>  </div>
-</div><!--header-->
-<div class="contents">
-<div class="dynheader">
-Inheritance diagram for Tarbora::SceneNode:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1SceneNode__inherit__graph.png" border="0" usemap="#Tarbora_1_1SceneNode_inherit__map" alt="Inheritance graph"/></div>
-<map name="Tarbora_1_1SceneNode_inherit__map" id="Tarbora_1_1SceneNode_inherit__map">
-<area shape="rect" id="node2" href="classTarbora_1_1Camera.html" title="Tarbora::Camera" alt="" coords="6,80,126,107"/>
-<area shape="rect" id="node3" href="classTarbora_1_1MaterialNode.html" title="Tarbora::MaterialNode" alt="" coords="151,80,301,107"/>
-<area shape="rect" id="node6" href="classTarbora_1_1MeshNode.html" title="Tarbora::MeshNode" alt="" coords="325,80,463,107"/>
-<area shape="rect" id="node8" href="classTarbora_1_1RootNode.html" title="Tarbora::RootNode" alt="" coords="487,80,621,107"/>
-<area shape="rect" id="node4" href="classTarbora_1_1ActorModel.html" title="Tarbora::ActorModel" alt="" coords="5,155,145,181"/>
-<area shape="rect" id="node5" href="classTarbora_1_1Skybox.html" title="Tarbora::Skybox" alt="" coords="169,155,288,181"/>
-<area shape="rect" id="node7" href="classTarbora_1_1AnimatedNode.html" title="Tarbora::AnimatedNode" alt="" coords="314,155,474,181"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Tarbora::SceneNode:</div>
-<div class="dyncontent">
-<div class="center"><img src="classTarbora_1_1SceneNode__coll__graph.png" border="0" usemap="#Tarbora_1_1SceneNode_coll__map" alt="Collaboration graph"/></div>
-<map name="Tarbora_1_1SceneNode_coll__map" id="Tarbora_1_1SceneNode_coll__map">
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a525d466d830ecdccc16173b3d0f9029e"><td class="memItemLeft" align="right" valign="top"><a id="a525d466d830ecdccc16173b3d0f9029e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SceneNode</b> (const ActorId &amp;id, const std::string &amp;name)</td></tr>
-<tr class="separator:a525d466d830ecdccc16173b3d0f9029e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22e6aa370851aa4fe1ba409511c0bff1"><td class="memItemLeft" align="right" valign="top"><a id="a22e6aa370851aa4fe1ba409511c0bff1"></a>
-virtual const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getNodeType</b> ()</td></tr>
-<tr class="separator:a22e6aa370851aa4fe1ba409511c0bff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b3a843a9bcfcbbefd518a7a6f018c28"><td class="memItemLeft" align="right" valign="top"><a id="a4b3a843a9bcfcbbefd518a7a6f018c28"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (<a class="el" href="classTarbora_1_1Scene.html">Scene</a> *scene, float delta_time)</td></tr>
-<tr class="separator:a4b3a843a9bcfcbbefd518a7a6f018c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf186e7334c6bd39b4d7c05e27760310"><td class="memItemLeft" align="right" valign="top"><a id="aaf186e7334c6bd39b4d7c05e27760310"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>drawChildren</b> (<a class="el" href="classTarbora_1_1Scene.html">Scene</a> *scene, const glm::mat4 &amp;parent_transform)</td></tr>
-<tr class="separator:aaf186e7334c6bd39b4d7c05e27760310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1243ef3f82739b2420753eac8bf4ac71"><td class="memItemLeft" align="right" valign="top"><a id="a1243ef3f82739b2420753eac8bf4ac71"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (<a class="el" href="classTarbora_1_1Scene.html">Scene</a> *scene, const glm::mat4 &amp;transform)</td></tr>
-<tr class="separator:a1243ef3f82739b2420753eac8bf4ac71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3e0f513ce4f490dc385dc00d7c61a2c"><td class="memItemLeft" align="right" valign="top"><a id="af3e0f513ce4f490dc385dc00d7c61a2c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>afterDraw</b> (<a class="el" href="classTarbora_1_1Scene.html">Scene</a> *scene)</td></tr>
-<tr class="separator:af3e0f513ce4f490dc385dc00d7c61a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca1275aac5f57efcb246bc49664c6381"><td class="memItemLeft" align="right" valign="top"><a id="aca1275aac5f57efcb246bc49664c6381"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addChild</b> (std::shared_ptr&lt; <a class="el" href="classTarbora_1_1SceneNode.html">SceneNode</a> &gt; child)</td></tr>
-<tr class="separator:aca1275aac5f57efcb246bc49664c6381"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a803d63c178c7a18e201c94abf523cb32"><td class="memItemLeft" align="right" valign="top"><a id="a803d63c178c7a18e201c94abf523cb32"></a>
-virtual std::shared_ptr&lt; <a class="el" href="classTarbora_1_1SceneNode.html">SceneNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getChild</b> (const std::string &amp;name)</td></tr>
-<tr class="separator:a803d63c178c7a18e201c94abf523cb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b95f1289055b031beeee3ff42879ce9"><td class="memItemLeft" align="right" valign="top"><a id="a8b95f1289055b031beeee3ff42879ce9"></a>
-<a class="el" href="classTarbora_1_1SceneNode.html">SceneNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getParent</b> ()</td></tr>
-<tr class="separator:a8b95f1289055b031beeee3ff42879ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff5f3858deb27da7584e1d83d5a0dd5c"><td class="memItemLeft" align="right" valign="top"><a id="aff5f3858deb27da7584e1d83d5a0dd5c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeChild</b> (const std::string &amp;name)</td></tr>
-<tr class="separator:aff5f3858deb27da7584e1d83d5a0dd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a962a27c04440caf98356eca8c270c5d1"><td class="memItemLeft" align="right" valign="top"><a id="a962a27c04440caf98356eca8c270c5d1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isVisible</b> (<a class="el" href="classTarbora_1_1Scene.html">Scene</a> *scene)</td></tr>
-<tr class="separator:a962a27c04440caf98356eca8c270c5d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5286baceec7d660738d82737e2845e1"><td class="memItemLeft" align="right" valign="top"><a id="ac5286baceec7d660738d82737e2845e1"></a>
-const ActorId &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getActorId</b> () const</td></tr>
-<tr class="separator:ac5286baceec7d660738d82737e2845e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab110073c6c0f97013b9df24bb18514be"><td class="memItemLeft" align="right" valign="top"><a id="ab110073c6c0f97013b9df24bb18514be"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> () const</td></tr>
-<tr class="separator:ab110073c6c0f97013b9df24bb18514be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a295afaee0c2b91631e12bdbb5a7da4ea"><td class="memItemLeft" align="right" valign="top"><a id="a295afaee0c2b91631e12bdbb5a7da4ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPosition</b> (const glm::vec3 &amp;position)</td></tr>
-<tr class="separator:a295afaee0c2b91631e12bdbb5a7da4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0baf3d85a731703d536183ab4be0a802"><td class="memItemLeft" align="right" valign="top"><a id="a0baf3d85a731703d536183ab4be0a802"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRotation</b> (const glm::vec3 &amp;rotation)</td></tr>
-<tr class="separator:a0baf3d85a731703d536183ab4be0a802"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8033a1185542cf5567b9105aec7f4ba"><td class="memItemLeft" align="right" valign="top"><a id="af8033a1185542cf5567b9105aec7f4ba"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRotation</b> (const glm::quat &amp;rotation)</td></tr>
-<tr class="separator:af8033a1185542cf5567b9105aec7f4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac098d121c3ea7d52d35467089c3e4bb8"><td class="memItemLeft" align="right" valign="top"><a id="ac098d121c3ea7d52d35467089c3e4bb8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setScale</b> (const glm::vec3 &amp;scale)</td></tr>
-<tr class="separator:ac098d121c3ea7d52d35467089c3e4bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a115945c69b88fb376c7c918dca6fba3a"><td class="memItemLeft" align="right" valign="top"><a id="a115945c69b88fb376c7c918dca6fba3a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setGlobalScale</b> (float scale)</td></tr>
-<tr class="separator:a115945c69b88fb376c7c918dca6fba3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98dfaf7374e49ac5bd0c72e499364b4a"><td class="memItemLeft" align="right" valign="top"><a id="a98dfaf7374e49ac5bd0c72e499364b4a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOrigin</b> (const glm::vec3 &amp;origin)</td></tr>
-<tr class="separator:a98dfaf7374e49ac5bd0c72e499364b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af674e2d2672fcee77ef2f942da30a255"><td class="memItemLeft" align="right" valign="top"><a id="af674e2d2672fcee77ef2f942da30a255"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPosition</b> ()</td></tr>
-<tr class="separator:af674e2d2672fcee77ef2f942da30a255"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf391946c2b5bf3c6622192d00a3002b"><td class="memItemLeft" align="right" valign="top"><a id="aaf391946c2b5bf3c6622192d00a3002b"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getRotation</b> ()</td></tr>
-<tr class="separator:aaf391946c2b5bf3c6622192d00a3002b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae99b5787d214c2a490f555f7b6e1046c"><td class="memItemLeft" align="right" valign="top"><a id="ae99b5787d214c2a490f555f7b6e1046c"></a>
-const glm::quat &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getRotationQuat</b> ()</td></tr>
-<tr class="separator:ae99b5787d214c2a490f555f7b6e1046c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec0945771093c2b01e41442c32170053"><td class="memItemLeft" align="right" valign="top"><a id="aec0945771093c2b01e41442c32170053"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getScale</b> ()</td></tr>
-<tr class="separator:aec0945771093c2b01e41442c32170053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa90970fd5157deaa0e79eb0c80d81bbb"><td class="memItemLeft" align="right" valign="top"><a id="aa90970fd5157deaa0e79eb0c80d81bbb"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getGlobalScale</b> ()</td></tr>
-<tr class="separator:aa90970fd5157deaa0e79eb0c80d81bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe8d5ea5c9ee9f9c427595fb19404873"><td class="memItemLeft" align="right" valign="top"><a id="afe8d5ea5c9ee9f9c427595fb19404873"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getOrigin</b> ()</td></tr>
-<tr class="separator:afe8d5ea5c9ee9f9c427595fb19404873"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afac714f06014bdcb93a57a57cdf87bca"><td class="memItemLeft" align="right" valign="top"><a id="afac714f06014bdcb93a57a57cdf87bca"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getGlobalTransform</b> ()</td></tr>
-<tr class="separator:afac714f06014bdcb93a57a57cdf87bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4144df0e04e1d70c6b53323c86b6fe21"><td class="memItemLeft" align="right" valign="top"><a id="a4144df0e04e1d70c6b53323c86b6fe21"></a>
-virtual glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalTransform</b> ()</td></tr>
-<tr class="separator:a4144df0e04e1d70c6b53323c86b6fe21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceecd2ee682d39fbc0c38d0907043b2a"><td class="memItemLeft" align="right" valign="top"><a id="aceecd2ee682d39fbc0c38d0907043b2a"></a>
-virtual glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getDeform</b> ()</td></tr>
-<tr class="separator:aceecd2ee682d39fbc0c38d0907043b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62f0f6876882a058a013a998b6bfaf42"><td class="memItemLeft" align="right" valign="top"><a id="a62f0f6876882a058a013a998b6bfaf42"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRadius</b> (float radius)</td></tr>
-<tr class="separator:a62f0f6876882a058a013a998b6bfaf42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad14d66d3d3aeb879791b3bbbe1dd8387"><td class="memItemLeft" align="right" valign="top"><a id="ad14d66d3d3aeb879791b3bbbe1dd8387"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getRadius</b> () const</td></tr>
-<tr class="separator:ad14d66d3d3aeb879791b3bbbe1dd8387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7665fb94e484e19896499299d577fa5"><td class="memItemLeft" align="right" valign="top"><a id="af7665fb94e484e19896499299d577fa5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> ()</td></tr>
-<tr class="separator:af7665fb94e484e19896499299d577fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2303eceadaa9782d33fcd2529297c127"><td class="memItemLeft" align="right" valign="top"><a id="a2303eceadaa9782d33fcd2529297c127"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
-<tr class="separator:a2303eceadaa9782d33fcd2529297c127"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87132c6b69eca517e9f7e5587397a722"><td class="memItemLeft" align="right" valign="top"><a id="a87132c6b69eca517e9f7e5587397a722"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
-<tr class="separator:a87132c6b69eca517e9f7e5587397a722"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a9432d7afb4256f34d05a947d73fd36a5"><td class="memItemLeft" align="right" valign="top"><a id="a9432d7afb4256f34d05a947d73fd36a5"></a>
-ActorId&#160;</td><td class="memItemRight" valign="bottom"><b>id_</b></td></tr>
-<tr class="separator:a9432d7afb4256f34d05a947d73fd36a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73e6fbba6218f5b3f739b74fd36a1490"><td class="memItemLeft" align="right" valign="top"><a id="a73e6fbba6218f5b3f739b74fd36a1490"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name_</b></td></tr>
-<tr class="separator:a73e6fbba6218f5b3f739b74fd36a1490"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a023b1ecdc817d49475003b6c18e8340d"><td class="memItemLeft" align="right" valign="top"><a id="a023b1ecdc817d49475003b6c18e8340d"></a>
-std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classTarbora_1_1SceneNode.html">SceneNode</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>children_</b></td></tr>
-<tr class="separator:a023b1ecdc817d49475003b6c18e8340d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaa560b8bcf270c2b443f8f8c7cdaa35"><td class="memItemLeft" align="right" valign="top"><a id="adaa560b8bcf270c2b443f8f8c7cdaa35"></a>
-<a class="el" href="classTarbora_1_1SceneNode.html">SceneNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>parent_</b></td></tr>
-<tr class="separator:adaa560b8bcf270c2b443f8f8c7cdaa35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab70a006bc1c86995ebb2e657c9a45ee9"><td class="memItemLeft" align="right" valign="top"><a id="ab70a006bc1c86995ebb2e657c9a45ee9"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position_</b></td></tr>
-<tr class="separator:ab70a006bc1c86995ebb2e657c9a45ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75263c64acd53e86dcecc6a5b3165835"><td class="memItemLeft" align="right" valign="top"><a id="a75263c64acd53e86dcecc6a5b3165835"></a>
-glm::quat&#160;</td><td class="memItemRight" valign="bottom"><b>rotation_</b></td></tr>
-<tr class="separator:a75263c64acd53e86dcecc6a5b3165835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50fe08135eb77ca0583a72402a16cbbe"><td class="memItemLeft" align="right" valign="top"><a id="a50fe08135eb77ca0583a72402a16cbbe"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>scale_</b></td></tr>
-<tr class="separator:a50fe08135eb77ca0583a72402a16cbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afba9afc0d19c85bef4de320d8f05be5c"><td class="memItemLeft" align="right" valign="top"><a id="afba9afc0d19c85bef4de320d8f05be5c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>global_scale_</b></td></tr>
-<tr class="separator:afba9afc0d19c85bef4de320d8f05be5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5946ac3c4bcb661acf4d0e429e2532b1"><td class="memItemLeft" align="right" valign="top"><a id="a5946ac3c4bcb661acf4d0e429e2532b1"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>origin_</b></td></tr>
-<tr class="separator:a5946ac3c4bcb661acf4d0e429e2532b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af86fdbfafb4b4c212ebd3b9fd1ab3835"><td class="memItemLeft" align="right" valign="top"><a id="af86fdbfafb4b4c212ebd3b9fd1ab3835"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>radius_</b></td></tr>
-<tr class="separator:af86fdbfafb4b4c212ebd3b9fd1ab3835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a032858ae1fe02d2d1170981c2af2d67c"><td class="memItemLeft" align="right" valign="top"><a id="a032858ae1fe02d2d1170981c2af2d67c"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>Scene</b></td></tr>
-<tr class="separator:a032858ae1fe02d2d1170981c2af2d67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tarbora/Views/GraphicViews/<a class="el" href="SceneNode_8hpp_source.html">SceneNode.hpp</a></li>
-<li>Tarbora/Views/GraphicViews/SceneNode.cpp</li>
-</ul>
-</div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>Tarbora Game Engine The Game Engine for Makers. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
 </body>
 </html>

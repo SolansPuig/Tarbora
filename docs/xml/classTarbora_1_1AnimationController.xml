@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1AnimationController" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::AnimationController</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1AnimationController_1a6255b2774acad8ba14b552cdd22654fe" prot="private" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="structTarbora_1_1Animation" kindref="compound">Animation</ref> &gt;</type>
+        <definition>std::list&lt;Animation&gt; Tarbora::AnimationController::animations_</definition>
+        <argsstring></argsstring>
+        <name>animations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="80" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimationController_1a9ba0f46cb2c2f910f18f49a8c04517b8" prot="private" static="no" mutable="no">
+        <type><ref refid="classTarbora_1_1ActorModel" kindref="compound">ActorModel</ref> *</type>
+        <definition>ActorModel* Tarbora::AnimationController::actor_model_</definition>
+        <argsstring></argsstring>
+        <name>actor_model_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="82" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1AnimationController_1af239b4492bd66b189a2b288b141cccd1" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Tarbora::AnimationController::global_timer_</definition>
+        <argsstring></argsstring>
+        <name>global_timer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="83" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTarbora_1_1AnimationController_1a35d1dd8f3c358e32593c20b1e26fa292" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tarbora::AnimationController::AnimationController</definition>
+        <argsstring>(ActorModel *actor)</argsstring>
+        <name>AnimationController</name>
+        <param>
+          <type><ref refid="classTarbora_1_1ActorModel" kindref="compound">ActorModel</ref> *</type>
+          <declname>actor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="44" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.cpp" bodystart="5" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimationController_1a82a408fc56cacb9acb994ac9636a9de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimationController::update</definition>
+        <argsstring>(float delta_time)</argsstring>
+        <name>update</name>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="46" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.cpp" bodystart="11" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimationController_1a1cab86996cf0427bbabaaabe720ca460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimationController::startAnimation</definition>
+        <argsstring>(Animation animation, bool background=false)</argsstring>
+        <name>startAnimation</name>
+        <param>
+          <type><ref refid="structTarbora_1_1Animation" kindref="compound">Animation</ref></type>
+          <declname>animation</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>background</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="48" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.cpp" bodystart="27" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimationController_1aeee9f8cf647d1916e82f61f39346a849" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimationController::endAnimation</definition>
+        <argsstring>(const std::string &amp;name, StopMode mode, float fade_out_timer)</argsstring>
+        <name>endAnimation</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>StopMode</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>fade_out_timer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="50" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.cpp" bodystart="37" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTarbora_1_1AnimationController_1adb1f5f93497464e44504979bd7437784" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::AnimationController::updateAnimation</definition>
+        <argsstring>(float delta_time)</argsstring>
+        <name>updateAnimation</name>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1AnimationController_1a710655136171b97d40abd1bf63ffe663" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T Tarbora::AnimationController::blendProperty</definition>
+        <argsstring>(T value, T old_value, const Animation *animation)</argsstring>
+        <name>blendProperty</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>old_value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTarbora_1_1Animation" kindref="compound">Animation</ref> *</type>
+          <declname>animation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="56" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.hpp" bodystart="56" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Tarbora/Views/GraphicViews/AnimationController.hpp" line="42" column="1" bodyfile="Tarbora/Views/GraphicViews/AnimationController.hpp" bodystart="41" bodyend="84"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1AnimationController_1a9ba0f46cb2c2f910f18f49a8c04517b8" prot="private" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>actor_model_</name></member>
+      <member refid="classTarbora_1_1AnimationController_1a35d1dd8f3c358e32593c20b1e26fa292" prot="public" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>AnimationController</name></member>
+      <member refid="classTarbora_1_1AnimationController_1a6255b2774acad8ba14b552cdd22654fe" prot="private" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>animations_</name></member>
+      <member refid="classTarbora_1_1AnimationController_1a710655136171b97d40abd1bf63ffe663" prot="private" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>blendProperty</name></member>
+      <member refid="classTarbora_1_1AnimationController_1aeee9f8cf647d1916e82f61f39346a849" prot="public" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>endAnimation</name></member>
+      <member refid="classTarbora_1_1AnimationController_1af239b4492bd66b189a2b288b141cccd1" prot="private" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>global_timer_</name></member>
+      <member refid="classTarbora_1_1AnimationController_1a1cab86996cf0427bbabaaabe720ca460" prot="public" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>startAnimation</name></member>
+      <member refid="classTarbora_1_1AnimationController_1a82a408fc56cacb9acb994ac9636a9de9" prot="public" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>update</name></member>
+      <member refid="classTarbora_1_1AnimationController_1adb1f5f93497464e44504979bd7437784" prot="private" virt="non-virtual"><scope>Tarbora::AnimationController</scope><name>updateAnimation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

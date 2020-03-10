@@ -1,0 +1,713 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classTarbora_1_1PhysicsEngine" kind="class" language="C++" prot="public">
+    <compoundname>Tarbora::PhysicsEngine</compoundname>
+    <includes refid="PhysicsEngine_8hpp" local="no">PhysicsEngine.hpp</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classTarbora_1_1PhysicsEngine_1a4f1d409d44b0a7cde617d3a30ed02b02" prot="private" static="no">
+        <type>std::pair&lt; btRigidBody const *, btRigidBody const * &gt;</type>
+        <definition>typedef std::pair&lt;btRigidBody const *, btRigidBody const *&gt; Tarbora::PhysicsEngine::CollisionPair</definition>
+        <argsstring></argsstring>
+        <name>CollisionPair</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="158" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsEngine_1ac952bde5659a6c745cda7394f56d6710" prot="private" static="yes" mutable="no">
+        <type>btDynamicsWorld *</type>
+        <definition>btDynamicsWorld* Tarbora::PhysicsEngine::dynamics_world_</definition>
+        <argsstring></argsstring>
+        <name>dynamics_world_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="150" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsEngine_1a7e0de162ffecf7f7c510aa75df54d4d1" prot="private" static="yes" mutable="no">
+        <type>btBroadphaseInterface *</type>
+        <definition>btBroadphaseInterface* Tarbora::PhysicsEngine::broadphase_</definition>
+        <argsstring></argsstring>
+        <name>broadphase_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="151" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsEngine_1abf20cbf39d01cf8e56bd347c8631c686" prot="private" static="yes" mutable="no">
+        <type>btCollisionDispatcher *</type>
+        <definition>btCollisionDispatcher* Tarbora::PhysicsEngine::dispatcher_</definition>
+        <argsstring></argsstring>
+        <name>dispatcher_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="152" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsEngine_1a502ded6bd18e390b636563f30308f9a3" prot="private" static="yes" mutable="no">
+        <type>btConstraintSolver *</type>
+        <definition>btConstraintSolver* Tarbora::PhysicsEngine::solver_</definition>
+        <argsstring></argsstring>
+        <name>solver_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="153" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsEngine_1a5c7a9a02bdfaee7ac0299c2f49904677" prot="private" static="yes" mutable="no">
+        <type>btDefaultCollisionConfiguration *</type>
+        <definition>btDefaultCollisionConfiguration* Tarbora::PhysicsEngine::collision_configuration_</definition>
+        <argsstring></argsstring>
+        <name>collision_configuration_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="154" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTarbora_1_1PhysicsEngine_1a43fe887315151370062bbb0bd431481f" prot="private" static="yes" mutable="no">
+        <type>std::set&lt; CollisionPair &gt;</type>
+        <definition>std::set&lt;CollisionPair&gt; Tarbora::PhysicsEngine::previous_tick_collisions_</definition>
+        <argsstring></argsstring>
+        <name>previous_tick_collisions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="159" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a964f0a4c51a88137fe063d5297829b00" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tarbora::PhysicsEngine::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+<para>Start the Physics Engine. </para>        </briefdescription>
+        <detaileddescription>
+<para>It must be called on startup. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="34" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="4" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1af8cf9d828f681eb00f0a7f8304c51800" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsEngine::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <briefdescription>
+<para>Stop the Physics Engine. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="37" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="27" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1afac87332294916fff850683856640a6d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsEngine::update</definition>
+        <argsstring>(float delta_time)</argsstring>
+        <name>update</name>
+        <param>
+          <type>float</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+<para>Update the Physics Engine. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="40" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a2e17e513d5f43612b30c5c6b6a5d6ef1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>btRigidBody *</type>
+        <definition>btRigidBody * Tarbora::PhysicsEngine::addSphere</definition>
+        <argsstring>(ActorId &amp;id, float radius, float mass, float friction, float restitution, const glm::vec3 &amp;position, const glm::quat &amp;rotation)</argsstring>
+        <name>addSphere</name>
+        <param>
+          <type>ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>mass</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+<para>Register an sphere shaped rigid body. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The id of the actor that owns that rigid body. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The radius of the sphere. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mass (&quot;weight&quot;) of the sphere. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>friction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See <ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> SetFriction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>restitution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See <ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> SetRestitution </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transform matrix of the actor. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A Bullet3&apos;s rigid body. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="52" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="50" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a82787c2e79bbf802c6b6acbc828fbad8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>btRigidBody *</type>
+        <definition>btRigidBody * Tarbora::PhysicsEngine::addCapsule</definition>
+        <argsstring>(ActorId &amp;id, float radius, float height, float mass, float friction, float restitution, const glm::vec3 &amp;position, const glm::quat &amp;rotation)</argsstring>
+        <name>addCapsule</name>
+        <param>
+          <type>ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>mass</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+<para>Register an capsule shaped rigid body. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The id of the actor that owns that rigid body. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The radius of the capsule. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The height of the capsule. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mass (&quot;weight&quot;) of the capsule. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>friction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See <ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> SetFriction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>restitution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See <ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> SetRestitution </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transform matrix of the actor. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A Bullet3&apos;s rigid body. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="65" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="56" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a91b5135f470a3648242224fa34358d71" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>btRigidBody *</type>
+        <definition>btRigidBody * Tarbora::PhysicsEngine::addBox</definition>
+        <argsstring>(ActorId &amp;id, const glm::vec3 &amp;dimensions, float mass, float friction, float restitution, const glm::vec3 &amp;position, const glm::quat &amp;rotation)</argsstring>
+        <name>addBox</name>
+        <param>
+          <type>ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>dimensions</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>mass</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+<para>Register a cube shaped rigid body. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The id of the actor that owns that rigid body. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dimensions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector representing the dimensions of that box, used to calculate the volume and the mass. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mass (&quot;weight&quot;) of the box. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>friction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See <ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> SetFriction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>restitution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See <ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> SetRestitution </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transform matrix of the actor. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A Bullet3&apos;s rigid body. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="77" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a107e09ad38a63f9ced3f4fcec7669e2a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsEngine::removeObject</definition>
+        <argsstring>(btCollisionObject *object)</argsstring>
+        <name>removeObject</name>
+        <param>
+          <type>btCollisionObject *</type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+<para>Destroy and unregister a rigid body. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the object to destroy. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="83" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="85" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1aa8a52fabbe34b050ff53a28313425edd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="structTarbora_1_1RayCastResult" kindref="compound">RayCastResult</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; RayCastResult &gt; Tarbora::PhysicsEngine::rayCast</definition>
+        <argsstring>(const glm::vec3 &amp;origin, const glm::vec3 &amp;end)</argsstring>
+        <name>rayCast</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>origin</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+<para>Perform a raycast test. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>origin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin point of the ray. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum end point of the ray. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>See <ref refid="structTarbora_1_1RayCastResult" kindref="compound">RayCastResult</ref>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="95" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="119" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1ae2613d9746a42a760f3cd71c1d59c3e6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>glm::vec3</type>
+        <definition>static glm::vec3 Tarbora::PhysicsEngine::toGLM</definition>
+        <argsstring>(const btVector3 &amp;v)</argsstring>
+        <name>toGLM</name>
+        <param>
+          <type>const btVector3 &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="99" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a587267088b97751dc8eb7d1f4683ce0f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>glm::vec4</type>
+        <definition>static glm::vec4 Tarbora::PhysicsEngine::toGLM</definition>
+        <argsstring>(const btVector4 &amp;v)</argsstring>
+        <name>toGLM</name>
+        <param>
+          <type>const btVector4 &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="104" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="104" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a5ed0379e3da6a98bfe096eb250889227" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>glm::quat</type>
+        <definition>static glm::quat Tarbora::PhysicsEngine::toGLM</definition>
+        <argsstring>(const btQuaternion &amp;q)</argsstring>
+        <name>toGLM</name>
+        <param>
+          <type>const btQuaternion &amp;</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="109" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a82edb7f2720d79f13933ce60a4a708b2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>btVector3</type>
+        <definition>static btVector3 Tarbora::PhysicsEngine::toBullet</definition>
+        <argsstring>(const glm::vec3 &amp;v)</argsstring>
+        <name>toBullet</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="114" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a88846e206c0cffd9e2f9e6917da4001c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>btVector4</type>
+        <definition>static btVector4 Tarbora::PhysicsEngine::toBullet</definition>
+        <argsstring>(const glm::vec4 &amp;v)</argsstring>
+        <name>toBullet</name>
+        <param>
+          <type>const glm::vec4 &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="119" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1ab42d49722aca9b372579d0bc9562c0ee" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>btQuaternion</type>
+        <definition>static btQuaternion Tarbora::PhysicsEngine::toBullet</definition>
+        <argsstring>(const glm::quat &amp;q)</argsstring>
+        <name>toBullet</name>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="124" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="124" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a630504e05b5323e1d8d14fc91356f301" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>btMatrix3x3</type>
+        <definition>static btMatrix3x3 Tarbora::PhysicsEngine::toBullet</definition>
+        <argsstring>(const glm::mat3 &amp;m)</argsstring>
+        <name>toBullet</name>
+        <param>
+          <type>const glm::mat3 &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="129" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="129" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1ad66248f29d0ecf1504e5ca69b6e9d5ce" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>btTransform</type>
+        <definition>static btTransform Tarbora::PhysicsEngine::toBullet</definition>
+        <argsstring>(const glm::vec3 &amp;position, const glm::quat &amp;rotation)</argsstring>
+        <name>toBullet</name>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="137" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="137" bodyend="140"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1a2afd71870151ed90cc1f11fda2eca811" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tarbora::PhysicsEngine::bulletInternalTickCallback</definition>
+        <argsstring>(btDynamicsWorld *world, const btScalar delta_time)</argsstring>
+        <name>bulletInternalTickCallback</name>
+        <param>
+          <type>btDynamicsWorld *</type>
+          <declname>world</declname>
+        </param>
+        <param>
+          <type>const btScalar</type>
+          <declname>delta_time</declname>
+        </param>
+        <briefdescription>
+<para>This gets called every physics update. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="144" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="147" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classTarbora_1_1PhysicsEngine_1afe8eda53fb810bc9e6bf01cca216e0bd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>btRigidBody *</type>
+        <definition>btRigidBody * Tarbora::PhysicsEngine::addShape</definition>
+        <argsstring>(ActorId &amp;id, btCollisionShape *shape, float mass, float friction, float restitution, const glm::vec3 &amp;position, const glm::quat &amp;rotation)</argsstring>
+        <name>addShape</name>
+        <param>
+          <type>ActorId &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>btCollisionShape *</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>mass</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const glm::quat &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+<para>Register a rigid body. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="147" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp" bodystart="68" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The system that manages the movement and the collisions of all the actors. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classTarbora_1_1RigidBody" kindref="compound">RigidBody</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classTarbora_1_1ActorMotionState" kindref="compound">ActorMotionState</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <location file="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" line="28" column="1" bodyfile="Tarbora/Logic/PhysicsEngine/PhysicsEngine.hpp" bodystart="28" bodyend="162"/>
+    <listofallmembers>
+      <member refid="classTarbora_1_1PhysicsEngine_1a91b5135f470a3648242224fa34358d71" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>addBox</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a82787c2e79bbf802c6b6acbc828fbad8" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>addCapsule</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1afe8eda53fb810bc9e6bf01cca216e0bd" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>addShape</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a2e17e513d5f43612b30c5c6b6a5d6ef1" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>addSphere</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a7e0de162ffecf7f7c510aa75df54d4d1" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>broadphase_</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a2afd71870151ed90cc1f11fda2eca811" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>bulletInternalTickCallback</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1af8cf9d828f681eb00f0a7f8304c51800" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>close</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a5c7a9a02bdfaee7ac0299c2f49904677" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>collision_configuration_</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a4f1d409d44b0a7cde617d3a30ed02b02" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>CollisionPair</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1abf20cbf39d01cf8e56bd347c8631c686" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>dispatcher_</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1ac952bde5659a6c745cda7394f56d6710" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>dynamics_world_</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a964f0a4c51a88137fe063d5297829b00" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>init</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a43fe887315151370062bbb0bd431481f" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>previous_tick_collisions_</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1aa8a52fabbe34b050ff53a28313425edd" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>rayCast</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a107e09ad38a63f9ced3f4fcec7669e2a" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>removeObject</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a502ded6bd18e390b636563f30308f9a3" prot="private" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>solver_</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a82edb7f2720d79f13933ce60a4a708b2" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toBullet</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a88846e206c0cffd9e2f9e6917da4001c" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toBullet</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1ab42d49722aca9b372579d0bc9562c0ee" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toBullet</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a630504e05b5323e1d8d14fc91356f301" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toBullet</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1ad66248f29d0ecf1504e5ca69b6e9d5ce" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toBullet</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1ae2613d9746a42a760f3cd71c1d59c3e6" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toGLM</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a587267088b97751dc8eb7d1f4683ce0f" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toGLM</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1a5ed0379e3da6a98bfe096eb250889227" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>toGLM</name></member>
+      <member refid="classTarbora_1_1PhysicsEngine_1afac87332294916fff850683856640a6d" prot="public" virt="non-virtual"><scope>Tarbora::PhysicsEngine</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
