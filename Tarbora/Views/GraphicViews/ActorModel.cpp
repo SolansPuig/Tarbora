@@ -26,9 +26,15 @@ namespace Tarbora {
         // Read all the parameters for the node
         const std::string name = table.get<std::string>("name");
         const std::string shape = table.get<std::string>("shape");
+        const bool animated = table.get<bool>("animated", false, true);
 
         // Create the node
-        std::shared_ptr<AnimatedNode> node = std::shared_ptr<AnimatedNode>(new AnimatedNode(id, name, render_pass, shape));
+        std::shared_ptr<MeshNode> node;
+        if (animated)
+            node = std::shared_ptr<AnimatedNode>(new AnimatedNode(id, name, render_pass, shape));
+        else
+            node = std::shared_ptr<MeshNode>(new MeshNode(id, name, render_pass, shape));
+
         node->setGlobalScale(table.get<float>("scale", 1.f, true));
         node->setOrigin(table.get<glm::vec3>("origin", true));
         node->setPosition(table.get<glm::vec3>("position", true)/100.f);
@@ -111,6 +117,18 @@ namespace Tarbora {
         if (animation_controller_)
         {
             animation_controller_->endAnimation(name, mode, fade_out_timer);
+        }
+    }
+
+    void ActorModel::setOutline(bool outline, const glm::tvec3<unsigned char> &color, float thickness)
+    {
+        for (auto node : nodes_)
+        {
+            if (node.second->getNodeType() == "MESH" || node.second->getNodeType() == "ANIMATED")
+            {
+                auto mesh = std::static_pointer_cast<MeshNode>(node.second);
+                mesh->setOutline(outline, color, thickness);
+            }
         }
     }
 }

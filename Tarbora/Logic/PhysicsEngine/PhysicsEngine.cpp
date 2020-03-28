@@ -116,6 +116,16 @@ namespace Tarbora {
         delete object;
     }
 
+    void PhysicsEngine::addConstraint(btTypedConstraint *constraint)
+    {
+        dynamics_world_->addConstraint(constraint, true);
+    }
+
+    void PhysicsEngine::removeConstraint(btTypedConstraint *constraint)
+    {
+        dynamics_world_->removeConstraint(constraint);
+    }
+
     std::shared_ptr<RayCastResult> PhysicsEngine::rayCast(const glm::vec3 &origin, const glm::vec3 &end)
     {
         btVector3 ray_origin = btVector3(origin.x, origin.y, origin.z);

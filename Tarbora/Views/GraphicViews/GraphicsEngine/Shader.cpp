@@ -71,12 +71,12 @@ namespace Tarbora {
                 file.close();
                 return compileShaderFile(type, code);
             }
-            LOG_ERR("ShaderCompiler: Failed to load file %s for shader type %s.", path.c_str(), type.c_str());
+            LOG_ERR("Shader %s: Failed to load file %s for shader type %s.", name_.c_str(), path.c_str(), type.c_str());
         }
         else
         {
             if (type == "vertex" || type == "fragment")
-                LOG_ERR("ShaderCompiler: Shader type %s is required.", type.c_str());
+                LOG_ERR("Shader %s: Shader type %s is required.", name_.c_str(), type.c_str());
         }
 
         return 0;
@@ -94,7 +94,7 @@ namespace Tarbora {
         else if (type == "geometry") id = glCreateShader(GL_GEOMETRY_SHADER);
         else if (type == "fragment") id = glCreateShader(GL_FRAGMENT_SHADER);
         else if (type == "compute") id = glCreateShader(GL_COMPUTE_SHADER);
-        else LOG_ERR("ShaderCompiler: Shader type %s not recognized", type.c_str());
+        else LOG_ERR("Shader %s: Shader type %s not recognized", name_.c_str(), type.c_str());
         const char *c = code.c_str();
         glShaderSource(id, 1, &c, NULL);
         glCompileShader(id);
@@ -104,7 +104,7 @@ namespace Tarbora {
         glGetShaderiv(id, GL_COMPILE_STATUS, &success);
         if (!success) {
             glGetShaderInfoLog(id, 512, NULL, infoLog);
-            LOG_ERR("ShaderCompiler: Error while compiling %s shader. \n %s", type.c_str(), infoLog);
+            LOG_ERR("Shader %s: Error while compiling %s shader. \n %s", name_.c_str(), type.c_str(), infoLog);
         }
 
         return id;
@@ -127,7 +127,7 @@ namespace Tarbora {
         glGetProgramiv(id, GL_LINK_STATUS, &success);
         if (!success) {
             glGetProgramInfoLog(id, 512, NULL, infoLog);
-            LOG_ERR("ShaderCompiler: Error while linking program. \n %s", infoLog);
+            LOG_ERR("Shader %s: Error while linking program. \n %s", name_.c_str(), infoLog);
         }
 
         // Delete all the shaders, as they are linked to the program and no longer needed

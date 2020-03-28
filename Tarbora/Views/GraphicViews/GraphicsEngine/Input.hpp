@@ -30,11 +30,19 @@ namespace Tarbora {
         glm::vec2 getMousePosition();
         glm::vec2 getMouseDelta();
 
+        void setScroll(float scroll);
+        float getScroll();
+        float getScrollDelta();
+        bool mouseScrolled();
+
     private:
         std::shared_ptr<Window> window_;
 
         std::vector<State> key_state_;
         std::vector<State> button_state_;
-        glm::vec2 last_mouse_position_;
+        glm::vec2 last_mouse_position_{glm::vec2(0.f, 0.f)};
+        bool mouse_scrolled_{false};
+        float mouse_scroll_{0.f};
+        float mouse_scroll_delta_{0.f};
     };
 }

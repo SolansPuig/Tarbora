@@ -6,6 +6,14 @@ namespace Tarbora {
     class PhysicsComponent;
     class AnimationComponent;
 
+    struct LookAt
+    {
+        ActorId target;
+        float distance;
+        glm::quat direction;
+        glm::vec3 position;
+    };
+
     class ControllerComponent : public Component
     {
         friend class ControllerSystem;
@@ -16,6 +24,10 @@ namespace Tarbora {
 
         void setLookDirection(const glm::vec3 &direction);
 
+        const glm::quat& getLookDirection() { return look_direction_; }
+
+        LookAt getLookAt() { return LookAt{target_, target_distance_, look_direction_, target_position_}; }
+
     private:
         void checkGround();
         void checkLookAt();
@@ -25,13 +37,14 @@ namespace Tarbora {
         AnimationComponent *animation_;
         float speed_;
         float run_speed_;
-        glm::vec3 movement_;
-        glm::vec3 facing_;
-        glm::quat look_direction_;
+        glm::vec3 movement_{glm::vec3(0.f)};
+        glm::vec3 facing_{glm::vec3(0.f)};
+        glm::quat look_direction_{glm::quat()};
+        glm::vec3 target_position_{glm::vec3(0.f)};
         bool on_ground_;
 
         ActorId target_;
-        int target_distance_;
+        float target_distance_;
     };
 
     class ControllerSystem : public SystemImpl<ControllerComponent>

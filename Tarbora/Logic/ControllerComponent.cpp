@@ -10,10 +10,6 @@ namespace Tarbora {
     {
         speed_ = table.get<float>("speed", 5.f);
         run_speed_ = table.get<float>("run_speed", 8.f);
-        look_direction_ = glm::quat(glm::vec3(0.f, 0.f, 1.f));
-        movement_ = glm::vec3(0.f);
-        facing_ = glm::vec3(0.f);
-        look_direction_ = glm::quat();
     }
 
     void ControllerComponent::setMovement(const glm::vec3 &direction)
@@ -92,6 +88,7 @@ namespace Tarbora {
         {
             target = result->hit_id;
             target_distance_ = result->distance;
+            target_position_ = result->hit_position;
         }
 
         if (target_ != target)

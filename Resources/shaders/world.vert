@@ -3,7 +3,7 @@ layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in float aVertex;
 layout (location = 3) in mat4 aTransform;
-layout (location = 7) in vec2 aUv;
+layout (location = 7) in vec2 aUV;
 layout (location = 8) in vec3 aMeshSize;
 layout (location = 9) in vec3 aTexSize;
 layout (location = 10) in vec3 aPrimary;
@@ -42,7 +42,7 @@ void main()
     gl_Position = projection * pos;
 
     vec3 texSize = aTexSize * pixelDensity;
-    vec2 uv = aUv;
+    vec2 uv = aUV * pixelDensity / 100.0;
 
     vec3 TexCoords = vec3(aTransform * vec4(aPos, 1.0f)).xyz * pixelDensity;
     TexNormal =  vec3(transpose(inverse(aTransform)) * vec4(aNormal, 0.0));

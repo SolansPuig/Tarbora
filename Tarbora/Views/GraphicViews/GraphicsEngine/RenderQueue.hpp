@@ -44,6 +44,13 @@ namespace Tarbora {
             const glm::tvec3<unsigned char> &detail2
         );
 
+        void drawOutline(
+            ResourcePtr<Mesh> mesh,
+            const glm::mat4 &transform,
+            const glm::tvec3<unsigned char> &color,
+            float thickness
+        );
+
         void draw();
 
         void pushMaterial(ResourcePtr<Material> material);

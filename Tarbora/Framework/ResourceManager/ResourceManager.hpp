@@ -78,6 +78,4 @@ namespace Tarbora {
         inline static std::list<std::shared_ptr<ResourceLoader>> resource_loaders_; // List of all the registered Resource Loaders, sorted by the most specidic first.
         inline static std::string folder_path_; // The path to folder where all the resource files are be located at.
     };
-
-    #define GET_RESOURCE(TYPE, NAME) std::static_pointer_cast<TYPE>(::Tarbora::ResourceManager::getResource(NAME))
 }

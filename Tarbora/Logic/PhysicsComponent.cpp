@@ -40,10 +40,10 @@ namespace Tarbora {
         );
     }
 
-    void PhysicsComponent::updateTransform()
+    void PhysicsComponent::setTransform(const glm::vec3 &position, const glm::quat &rotation)
     {
         if (enabled_)
-            body_->setTransform(transform_->getPosition(), transform_->getRotation());
+            body_->setTransform(position, rotation);
     }
 
     void PhysicsComponent::setAngularFactor(const glm::vec3 &direction)
@@ -108,19 +108,34 @@ namespace Tarbora {
             transform_->setController(nullptr);
     }
 
+    void PhysicsComponent::pick()
+    {
+        if (body_)
+            body_->pick();
+    }
+
+    void PhysicsComponent::pick(const glm::vec3 &position)
+    {
+        if (body_)
+            body_->pick(position);
+    }
+
+    void PhysicsComponent::movePicked(const glm::vec3 &position)
+    {
+        if (body_)
+            body_->movePicked(position);
+    }
+
+    void PhysicsComponent::unpick()
+    {
+        if (body_)
+            body_->unpick();
+    }
+
     PhysicsSystem::PhysicsSystem(World *w) :
         SystemImpl<PhysicsComponent>(w)
     {
         PhysicsEngine::init();
-
-        subscribe("update_transform", [this](const MessageSubject &subject, const MessageBody &body)
-        {
-            UNUSED(subject);
-            Message::Actor m(body);
-            PhysicsComponent *physics = static_cast<PhysicsComponent*>(get(m.getId()));
-            if (physics)
-                physics->updateTransform();
-        });
 
         subscribe("apply_force", [this](const MessageSubject &subject, const MessageBody &body)
         {

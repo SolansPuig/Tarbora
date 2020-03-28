@@ -7,6 +7,7 @@ add_library (Logic SHARED
     PhysicsComponent.cpp
     ControllerComponent.cpp
     AnimationComponent.cpp
+    PickupComponent.cpp
 )
 add_dependencies (Logic Messages)
 target_link_libraries (Logic Messages)

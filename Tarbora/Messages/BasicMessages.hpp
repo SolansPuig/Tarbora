@@ -265,6 +265,12 @@ namespace Tarbora {
                 message_.set_distance(distance);
             }
 
+            LookAt(const ActorId &id, float distance)
+            {
+                message_.set_id(id);
+                message_.set_distance(distance);
+            }
+
             const ActorId& getId() { return message_.id(); }
             const ActorId& getTarget() { return message_.target(); }
             float getDistance() { return message_.distance(); }

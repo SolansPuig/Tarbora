@@ -29,5 +29,6 @@ namespace Tarbora {
         glm::vec3 movement_;
         bool jump_;
         bool freeze_mouse_;
+        bool pick_object_{false};
     };
 }

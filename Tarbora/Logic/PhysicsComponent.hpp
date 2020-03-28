@@ -11,8 +11,8 @@ namespace Tarbora {
     public:
         PhysicsComponent(System *s, const ActorId &id, const LuaTable &table);
 
-        void updateTransform();
-
+        void setTransform(const glm::vec3 &position, const glm::quat &rotation);
+       
         void setAngularFactor(const glm::vec3 &direction);
 
         void setLinearDamping(float value);
@@ -30,6 +30,14 @@ namespace Tarbora {
         std::shared_ptr<RayCastResult> rayCast(const glm::vec3 &origin, const glm::quat &direction, float length);
 
         float getHeight() { return height_; }
+
+        void pick();
+        
+        void pick(const glm::vec3 &position);
+
+        void movePicked(const glm::vec3 &position);
+
+        void unpick();
 
 
 

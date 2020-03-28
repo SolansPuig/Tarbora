@@ -4,15 +4,12 @@
 namespace Tarbora {
     Input::Input(GraphicsEngine *graphicsEngine) :
         key_state_(KEY_LAST, State::UNCHANGED),
-        button_state_(MOUSE_BUTTON_LAST, State::UNCHANGED),
-        last_mouse_position_(glm::vec2(0.f, 0.f))
+        button_state_(MOUSE_BUTTON_LAST, State::UNCHANGED)
     {
         window_ = graphicsEngine->getWindow();
 
-        glfwSetKeyCallback(window_->getRawWindow(), [](GLFWwindow* window, int key, int scancode, int action, int mods)
+        glfwSetKeyCallback(window_->getRawWindow(), [](GLFWwindow* window, int key, int, int action, int)
         {
-            UNUSED(scancode); UNUSED(mods);
-
             WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
 
             switch (action) {
@@ -25,10 +22,8 @@ namespace Tarbora {
             }
         });
 
-        glfwSetMouseButtonCallback(window_->getRawWindow(), [](GLFWwindow* window, int button, int action, int mods)
+        glfwSetMouseButtonCallback(window_->getRawWindow(), [](GLFWwindow* window, int button, int action, int)
         {
-            UNUSED(mods);
-
             WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
 
             switch (action) {
@@ -39,6 +34,12 @@ namespace Tarbora {
                     data.graphics_engine->getInputManager()->setButtonState(button, State::DOWN);
                     break;
             }
+        });
+
+        glfwSetScrollCallback(window_->getRawWindow(), [](GLFWwindow* window, double, double yoffset)
+        {
+            WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
+            data.graphics_engine->getInputManager()->setScroll(yoffset);
         });
     }
 
@@ -130,5 +131,31 @@ namespace Tarbora {
         double xpos, ypos;
         glfwGetCursorPos(window_->getRawWindow(), &xpos, &ypos);
         return glm::vec2(xpos, ypos);
+    }
+
+    void Input::setScroll(float scroll)
+    {
+        mouse_scrolled_ = true;
+        mouse_scroll_ += scroll;
+        mouse_scroll_delta_ = scroll;
+    }
+
+    float Input::getScroll()
+    {
+        mouse_scrolled_ = false;
+        return mouse_scroll_;
+    }
+
+    float Input::getScrollDelta()
+    {
+        mouse_scrolled_ = false;
+        return mouse_scroll_delta_;
+    }
+
+    bool Input::mouseScrolled()
+    {
+        bool r = mouse_scrolled_;
+        mouse_scrolled_ = false;
+        return r;
     }
 }

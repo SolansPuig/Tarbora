@@ -17,7 +17,7 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string getPattern() override { return "*.png"; };
+        virtual const std::string getPattern() override { return ".png"; };
         virtual std::shared_ptr<Resource> load(const std::string &path) override;
     };
     //! \endcond

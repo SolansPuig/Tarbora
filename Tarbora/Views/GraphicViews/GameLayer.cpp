@@ -145,6 +145,19 @@ namespace Tarbora {
             LOG_DEBUG("Set camera %s", camera_mode.c_str());
             scene_->setCamera(target_id_, camera_mode);
         }
+        if (getInputManager()->getKeyDown(KEY_P))
+        {
+            pick_object_ = !pick_object_;
+           
+            if (pick_object_)
+                send(1, "pick_object", Message::Actor(target_id_));
+            else
+                send(1, "unpick_object", Message::Actor(target_id_));
+        }
+        if (pick_object_ && getInputManager()->mouseScrolled())
+        {
+            send(1, "pick_distance", Message::LookAt(target_id_, getInputManager()->getScrollDelta()));
+        }
 
         glm::vec2 last_look_direction_ = look_direction_;
         float sensibility = 0.04; // TODO: Change this to a config file

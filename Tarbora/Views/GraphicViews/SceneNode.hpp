@@ -13,11 +13,13 @@ namespace Tarbora {
         ~SceneNode();
 
         virtual const std::string getNodeType() { return "SCENE"; }
+        const std::string& getNewNodeType() { return new_node_type_; }
+        void setNewNodeType(const std::string &type) { new_node_type_ = type; }
 
         virtual void update(Scene *scene, float delta_time);
         virtual void drawChildren(Scene *scene, const glm::mat4 &parent_transform);
-        virtual void draw(Scene *scene, const glm::mat4 &transform) { UNUSED(scene); UNUSED(transform); }
-        virtual void afterDraw(Scene *scene) { UNUSED(scene); }
+        virtual void draw(Scene *, const glm::mat4 &) {};
+        virtual void afterDraw(Scene *) {}
 
         bool addChild(std::shared_ptr<SceneNode> child);
         virtual std::shared_ptr<SceneNode> getChild(const std::string &name);
@@ -57,6 +59,7 @@ namespace Tarbora {
     protected:
         ActorId id_;
         std::string name_;
+        std::string new_node_type_{""};
 
         std::map<std::string, std::shared_ptr<SceneNode>> children_;
         SceneNode *parent_;
@@ -75,7 +78,7 @@ namespace Tarbora {
     public:
         RootNode() : SceneNode("", "Root") {}
         virtual const std::string getNodeType() { return "ROOT"; }
-        virtual bool isVisible(Scene *scene) const { UNUSED(scene); return true; }
+        virtual bool isVisible(Scene *) const { return true; }
     };
 
     class Camera : public SceneNode
@@ -120,6 +123,8 @@ namespace Tarbora {
         void setColorDetail(const glm::tvec3<unsigned char> &color) { color_detail_ = color; }
         void setColorDetail2(const glm::tvec3<unsigned char> &color) { color_detail2_ = color; }
 
+        void setOutline(bool outline, const glm::tvec3<unsigned char> &color, float thickness);
+       
         const glm::tvec2<unsigned short>& getUvMap() { return uv_map_; }
         const glm::vec3& getMeshSize() { return mesh_size_; }
         const glm::vec3& getTextureSize() { return texture_size_; }
@@ -135,13 +140,17 @@ namespace Tarbora {
         ResourcePtr<Mesh> mesh_;
         std::string mesh_name_;
 
-        glm::tvec2<unsigned short> uv_map_;
-        glm::vec3 mesh_size_;
-        glm::vec3 texture_size_;
-        glm::tvec3<unsigned char> color_primary_;
-        glm::tvec3<unsigned char> color_secondary_;
-        glm::tvec3<unsigned char> color_detail_;
-        glm::tvec3<unsigned char> color_detail2_;
+        glm::tvec2<unsigned short> uv_map_{0};
+        glm::vec3 mesh_size_{0.f};
+        glm::vec3 texture_size_{0.f};
+        glm::tvec3<unsigned char> color_primary_{255};
+        glm::tvec3<unsigned char> color_secondary_{255};
+        glm::tvec3<unsigned char> color_detail_{255};
+        glm::tvec3<unsigned char> color_detail2_{255};
+
+        bool outline_{false};
+        glm::tvec3<unsigned char> outline_color_{0};
+        float outline_thickness_{2.f};
     };
 
     class AnimatedNode : public MeshNode

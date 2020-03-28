@@ -28,8 +28,10 @@ namespace Tarbora {
         const std::string& getModel() { return model_; }
         RenderPass getRenderPass() { return render_pass_; }
 
+        void setOutline(bool outline, const glm::tvec3<unsigned char> &color=glm::tvec3<unsigned char>(0), float thickness=2.f);
+
     private:
-        std::map<std::string, std::shared_ptr<SceneNode>> nodes_;
+        std::unordered_map<std::string, std::shared_ptr<SceneNode>> nodes_;
         std::unique_ptr<AnimationController> animation_controller_;
         RenderPass render_pass_;
         std::string model_;

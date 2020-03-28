@@ -7,7 +7,8 @@ nodes = {
         position = {0, 0, 0},
         rotation = {0, 0, 0},
         size = {10000, 100, 10000},
-        texture_size = {100, 100, 100},
-        uv_map = {0, 512}
+        texture_size = {100, 0, 100},
+        uv_map = {0, 0},
+        color_primary = {148, 238, 95}
     }
 }

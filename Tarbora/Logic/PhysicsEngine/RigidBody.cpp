@@ -13,10 +13,13 @@ namespace Tarbora {
     {
         if (body_)
         {
-            body_->setWorldTransform(btTransform(
+            btTransform transform(
                 PhysicsEngine::toBullet(rotation),
                 PhysicsEngine::toBullet(position)
-            ));
+            );
+            body_->setWorldTransform(transform);
+            body_->getMotionState()->setWorldTransform(transform);
+            body_->activate();
         }
     }
 
@@ -89,13 +92,80 @@ namespace Tarbora {
     void RigidBody::setAngularFactor(const glm::vec3 &axis)
     {
         if (body_)
+        {
+            angular_factor_ = axis;
             body_->setAngularFactor(PhysicsEngine::toBullet(axis));
+        }
     }
 
     void RigidBody::setLinearDamping(float damping)
     {
         if (body_)
             body_->setDamping(damping, 0.f);
+    }
+
+    void RigidBody::pick()
+    {
+        if (body_)
+        {
+
+            pick_position_ = PhysicsEngine::toBullet(glm::vec3(0.f, 0.f, 0.f));
+            if (!body_->isStaticOrKinematicObject())
+            {
+                body_->setActivationState(DISABLE_DEACTIVATION);
+                picked_constraint_ = new btPoint2PointConstraint(*body_, pick_position_);
+                PhysicsEngine::addConstraint(picked_constraint_);
+                picked_constraint_->m_setting.m_impulseClamp = 300.f;
+                picked_constraint_->m_setting.m_tau = 0.5f;
+                body_->setAngularFactor(PhysicsEngine::toBullet(glm::vec3(0.f, 0.f, 0.f)));
+            }
+        }
+    }
+
+    void RigidBody::pick(const glm::vec3 &position)
+    {
+        if (body_)
+        {
+            pick_position_ = body_->getWorldTransform().inverse() * PhysicsEngine::toBullet(position);
+            if (!body_->isStaticOrKinematicObject())
+            {
+                body_->setActivationState(DISABLE_DEACTIVATION);
+                picked_constraint_ = new btPoint2PointConstraint(*body_, pick_position_);
+                PhysicsEngine::addConstraint(picked_constraint_);
+                picked_constraint_->m_setting.m_impulseClamp = 300.f;
+                picked_constraint_->m_setting.m_tau = 0.5f;
+                body_->setAngularFactor(PhysicsEngine::toBullet(glm::vec3(0.f, 0.f, 0.f)));
+            }
+        }
+    }
+
+    void RigidBody::movePicked(const glm::vec3 &position)
+    {
+        if (picked_constraint_)
+        {
+            picked_constraint_->setPivotB(PhysicsEngine::toBullet(position));
+        }
+        else if (body_)
+        {
+            btTransform transform = body_->getWorldTransform();
+            transform.setOrigin(transform * (transform.inverse() * PhysicsEngine::toBullet(position) - pick_position_));
+            body_->setWorldTransform(transform);
+            body_->getMotionState()->setWorldTransform(transform);
+        }
+    }
+
+    void RigidBody::unpick()
+    {
+        if (picked_constraint_)
+        {
+            PhysicsEngine::removeConstraint(picked_constraint_);
+            body_->forceActivationState(ACTIVE_TAG);
+            body_->activate(true);
+
+            delete picked_constraint_;
+            picked_constraint_ = nullptr;
+            body_->setAngularFactor(PhysicsEngine::toBullet(angular_factor_));
+        }
     }
 
     std::shared_ptr<RayCastResult> RigidBody::rayCast(const glm::vec3 &origin, const glm::quat &direction, float distance)

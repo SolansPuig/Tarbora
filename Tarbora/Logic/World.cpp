@@ -6,6 +6,7 @@
 #include "PhysicsComponent.hpp"
 #include "ControllerComponent.hpp"
 #include "AnimationComponent.hpp"
+#include "PickupComponent.hpp"
 #include "../Messages/BasicMessages.hpp"
 
 #define REGISTER_SYSTEM(T) \
@@ -20,6 +21,7 @@ namespace Tarbora {
         next_id_ = 0;
 
         REGISTER_SYSTEM(InfoSystem);
+        REGISTER_SYSTEM(PickupSystem);
         REGISTER_SYSTEM(TypeSystem);
         REGISTER_SYSTEM(ControllerSystem);
         REGISTER_SYSTEM(AnimationSystem);

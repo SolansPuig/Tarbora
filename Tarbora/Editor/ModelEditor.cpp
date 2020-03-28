@@ -51,8 +51,12 @@ namespace Tarbora {
         {
             if (actor_id_ != id)
             {
+                // Remove the outline for the old actor
+                //auto old_actor = std::static_pointer_cast<ActorModel>(scene_->getActor(actor_id_));
+                //if (old_actor) old_actor->setOutline(false);
                 actor_id_ = id;
                 model_ = std::static_pointer_cast<ActorModel>(scene_->getActor(actor_id_));
+                if (auto model = model_.lock()) model->setOutline(true);
                 editor_->node_editor->setTarget("", std::shared_ptr<SceneNode>());
             }
 
@@ -359,7 +363,7 @@ namespace Tarbora {
         auto_texture_size_ = false;
         if (auto node = node_.lock())
         {
-            if (node->getNodeType() == "ANIMATED")
+            if (node->getNodeType() == "ANIMATED" || node->getNodeType() == "MESH")
             {
                 auto mesh = std::static_pointer_cast<MeshNode>(node);
                 auto_texture_size_ = mesh->getTextureSize() == mesh->getScale();
@@ -402,7 +406,7 @@ namespace Tarbora {
                 {
                     glm::vec3 size = glm::make_vec3(scale)/100.f;
                     node->setScale(size);
-                    if (node->getNodeType() == "ANIMDATED")
+                    if (node->getNodeType() == "ANIMATED" || node->getNodeType() == "MESH")
                     {
                         auto mesh = std::static_pointer_cast<MeshNode>(node);
                         mesh->setMeshSize(size);
@@ -422,7 +426,23 @@ namespace Tarbora {
                     node->setOrigin(glm::make_vec3(origin));
             }
 
-            if (node->getNodeType() == "ANIMATED")
+
+            if (node->getNodeType() == "ANIMATED" || node->getNodeType() == "MESH")
+            {
+                ImGui::Spacing();
+
+                // Properties of the node
+                if (ImGui::CollapsingHeader("Properties"))
+                {
+                    ImGui::Spacing();
+                    bool animated = (node->getNodeType() == "ANIMATED" && node->getNewNodeType() == "") || node->getNewNodeType() == "ANIMATED";
+                    if (ImGui::Checkbox("Animated", &animated))
+                    {
+                        node->setNewNodeType(animated ? "ANIMATED" : "MESH");
+                    }
+                }
+            }
+            if (node->getNodeType() == "ANIMATED" || node->getNodeType() == "MESH")
             {
                 auto mesh = std::static_pointer_cast<MeshNode>(node);
                 ImGui::Spacing();
@@ -515,7 +535,7 @@ namespace Tarbora {
         if (node->getPosition() != glm::vec3(0.f)) saveVec3("position", node->getPosition() * 100.f);
         if (node->getRotation() != glm::vec3(0.f)) saveVec3("rotation", node->getRotation());
 
-        if (node->getNodeType() == "ANIMATED")
+        if (node->getNodeType() == "ANIMATED" || node->getNodeType() == "MESH")
         {
             auto mesh = std::static_pointer_cast<MeshNode>(node);
             if (mesh->getScale() != glm::vec3(0.f)) saveVec3("size", mesh->getScale() * 100.f);
@@ -526,6 +546,8 @@ namespace Tarbora {
             if (mesh->getColorSecondary() != glm::tvec3<unsigned char>(255)) saveVec3("color_secondary", mesh->getColorSecondary());
             if (mesh->getColorDetail() != glm::tvec3<unsigned char>(255)) saveVec3("color_detail", mesh->getColorDetail());
             if (mesh->getColorDetail2() != glm::tvec3<unsigned char>(255)) saveVec3("color_detail2", mesh->getColorDetail2());
+            if ((mesh->getNodeType() == "ANIMATED" && mesh->getNewNodeType() == "") || mesh->getNewNodeType() == "ANIMATED")
+                file_ << std::string(indentation_, ' ') << "animated = true," << std::endl;
         }
         else if (node->getNodeType() == "CAMERA")
         {

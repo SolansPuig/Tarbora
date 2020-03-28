@@ -130,7 +130,7 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string getPattern() override { return "*.txt"; }
+        virtual const std::string getPattern() override { return ".txt"; }
         virtual std::shared_ptr<Resource> load(const std::string &path) override;
     };
     //! \endcond

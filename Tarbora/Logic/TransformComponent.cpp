@@ -54,6 +54,12 @@ namespace Tarbora {
         rotation_ *= rotation;
     }
 
+    void TransformComponent::updateTransform()
+    {
+        if (controller_)
+            controller_->setTransform(position_, rotation_);
+    }
+
     TransformSystem::TransformSystem(World *w) :
         SystemImpl<TransformComponent>(w)
     {
@@ -63,7 +69,10 @@ namespace Tarbora {
             Message::ApplyPhysics m(body);
             TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
+            {
                 transform->setPosition(m.getDirection());
+                transform->updateTransform();
+            }
         });
 
         subscribe("move", [this](const MessageSubject &subject, const MessageBody &body)
@@ -72,7 +81,10 @@ namespace Tarbora {
             Message::ApplyPhysics m(body);
             TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
+            {
                 transform->move(m.getDirection());
+                transform->updateTransform();
+            }
         });
 
         subscribe("set_rotation", [this](const MessageSubject &subject, const MessageBody &body)
@@ -81,7 +93,10 @@ namespace Tarbora {
             Message::ApplyPhysics m(body);
             TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
+            {
                 transform->setRotation(m.getDirection());
+                transform->updateTransform();
+            }
         });
 
         subscribe("rotate", [this](const MessageSubject &subject, const MessageBody &body)
@@ -90,13 +105,15 @@ namespace Tarbora {
             Message::ApplyPhysics m(body);
             TransformComponent *transform = static_cast<TransformComponent*>(get(m.getId()));
             if (transform)
+            {
                 transform->rotate(m.getDirection());
+                transform->updateTransform();
+            }
         });
     }
 
-    void TransformSystem::update(float delta_time)
+    void TransformSystem::update(float)
     {
-        UNUSED(delta_time);
         for (auto &component : components_)
         {
             TransformComponent *transform = &component.second;

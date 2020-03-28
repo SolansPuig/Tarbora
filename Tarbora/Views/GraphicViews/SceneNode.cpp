@@ -182,14 +182,13 @@ namespace Tarbora {
     {
         mesh_ = ResourcePtr<Mesh>("meshes/" + mesh, "meshes/cube.mesh");
         mesh_name_ = mesh;
+    }
 
-        uv_map_ = glm::tvec2<unsigned short>(0);
-        mesh_size_ = glm::vec3(0.f);
-        texture_size_ = glm::vec3(0.f);
-        color_primary_ = glm::tvec3<unsigned char>(255);
-        color_secondary_ = glm::tvec3<unsigned char>(255);
-        color_detail_ = glm::tvec3<unsigned char>(255);
-        color_detail2_ = glm::tvec3<unsigned char>(255);
+    void MeshNode::setOutline(bool outline, const glm::tvec3<unsigned char> &color, float thickness)
+    {
+        outline_ = outline;
+        outline_color_ = color;
+        outline_thickness_ = thickness;
     }
 
     void MeshNode::draw(Scene *scene, const glm::mat4 &transform)
@@ -208,6 +207,15 @@ namespace Tarbora {
                 color_detail_,
                 color_detail2_
             );
+            if (outline_)
+            {
+                scene->getRenderQueue()->drawOutline(
+                    mesh_,
+                    transform,
+                    outline_color_,
+                    outline_thickness_
+                );
+            }
         }
     }
 
@@ -261,6 +269,15 @@ namespace Tarbora {
                 color_detail_ + color_detail_anim_,
                 color_detail2_ + color_detail2_anim_
             );
+            if (outline_)
+            {
+                scene->getRenderQueue()->drawOutline(
+                    mesh_,
+                    transform,
+                    outline_color_,
+                    outline_thickness_
+                );
+            }
         }
 
         resetAll();

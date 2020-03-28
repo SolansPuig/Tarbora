@@ -24,6 +24,7 @@ namespace Tarbora {
         glm::vec3 getEulerRotation() { return glm::eulerAngles(rotation_); }
         const glm::vec3& getOrigin() { return origin_; }
 
+        void updateTransform();
     private:
         PhysicsComponent *controller_;
 

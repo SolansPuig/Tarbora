@@ -201,7 +201,7 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string getPattern() override { return "*.lua"; };
+        virtual const std::string getPattern() override { return ".lua"; };
         virtual std::shared_ptr<Resource> load(const std::string &path) override
         {
             {

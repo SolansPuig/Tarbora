@@ -3,7 +3,7 @@ components = {
     model = {
         render_pass = 0,
         model = "ground.lua",
-        material = "terrain.mat.lua"
+        material = "grass.mat.lua"
     },
     physics = {
         shape = "box",

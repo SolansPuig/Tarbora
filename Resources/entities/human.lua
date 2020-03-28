@@ -17,7 +17,8 @@ components = {
     controller = {
         speed = 4.0,
         run_speed = 9.0,
-    }
+    },
+    pickup = {},
 }
 
 animation_controller = {

@@ -1,7 +1,6 @@
 #include "ResourceManager.hpp"
 #include "Resource.hpp"
 #include "Lua.hpp"
-#include <fnmatch.h>
 
 namespace Tarbora {
     void ResourceManager::init(const std::string &folder_path)
@@ -48,15 +47,18 @@ namespace Tarbora {
         std::shared_ptr<ResourceLoader> loader;
         for (auto resource_loader : resource_loaders_)
         {
-            // This will not work on windows.
-            if (fnmatch(resource_loader->getPattern().c_str(), name.c_str(), FNM_CASEFOLD) == 0)
+            const std::string pattern = resource_loader->getPattern();
+            if (pattern.length() < name.length())
             {
-                loader = resource_loader;
-                break;
+                if (0 == name.compare(name.length() - pattern.length(), pattern.length(), pattern))
+                {
+                    loader = resource_loader;
+                    break;
+                }
             }
         }
 
-        // If no loader is found, that means that not event the default loaders are registered.
+        // If no loader is found, that means that not even the default loaders are registered.
         // This should never happen.
         if (!loader)
         {

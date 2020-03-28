@@ -29,6 +29,20 @@ namespace Tarbora {
         render_list_[render_pass][material][mesh].emplace_back(data);
     }
 
+    void RenderQueue::drawOutline(
+        ResourcePtr<Mesh> mesh,
+        const glm::mat4 &transform,
+        const glm::tvec3<unsigned char> &color,
+        float thickness
+    )
+    {
+        RenderElementData data;
+        data.transform = transform;
+        data.mesh_size.x = thickness; // To avoid creating a new struct or adding mostly useless data to RenderElementData
+        data.color_primary = color;
+        render_list_[Transparent][ResourcePtr<Material>("materials/outline.mat.lua")][mesh].emplace_back(data);
+    }
+
     void RenderQueue::draw()
     {
         for (unsigned int pass = RenderPass::Zero; pass < RenderPass::Last; ++pass)
