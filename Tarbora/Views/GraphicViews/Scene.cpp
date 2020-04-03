@@ -6,7 +6,6 @@ namespace Tarbora {
         view_(view)
     {
         root_ = std::shared_ptr<RootNode>(new RootNode());
-        projection_ = glm::perspective(glm::radians(45.0f), getGraphicsEngine()->getWindow()->getRatio(), 0.1f, 100.0f);
     }
 
     void Scene::update(float delta_time)
@@ -17,6 +16,7 @@ namespace Tarbora {
 
     void Scene::draw()
     {
+        projection_ = glm::perspective(glm::radians(45.0f), getGraphicsEngine()->getWindow()->getRatio(), 0.1f, 100.0f);
         getRenderQueue()->setProjectionMatrix(projection_);
         getRenderQueue()->setViewMatrix(camera_->getView());
 

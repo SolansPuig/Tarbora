@@ -10,6 +10,7 @@ namespace Tarbora {
     public:
         Scene(HumanView *view);
 
+        void setWindowRatio(float ratio);
         void update(float delta_time);
         void draw();
 

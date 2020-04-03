@@ -15,6 +15,7 @@ namespace Tarbora {
         ~Renderer();
 
         void init(int width, int height);
+        void resize(int width, int height);
 
         void geometryPass();
         void occlusionPass();
@@ -38,12 +39,18 @@ namespace Tarbora {
         void setupScenePass();
         void setupPostprocess();
 
+        void deleteGeometryPass();
+        void deleteOcclusionPass();
+        void deleteLightingPass();
+        void deleteScenePass();
+
         glm::mat4 projection_;
         glm::mat4 view_;
 
         int width_, height_;
 
         unsigned int g_buffer_;
+        unsigned int rbo_;
         std::unique_ptr<TextureInternal> g_position_;
         std::unique_ptr<TextureInternal> g_normal_;
         std::unique_ptr<TextureInternal> g_color_spec_;
@@ -62,6 +69,7 @@ namespace Tarbora {
         ResourcePtr<Shader> lighting_shader_;
 
         unsigned int scene_buffer_;
+        unsigned int rbo_scene_;
         std::unique_ptr<TextureInternal> scene_color_;
         ResourcePtr<Shader> scene_shader_;
 

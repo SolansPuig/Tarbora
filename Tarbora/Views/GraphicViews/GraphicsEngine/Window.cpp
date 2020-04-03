@@ -32,6 +32,7 @@ namespace Tarbora {
 			data.width = width;
 			data.height = height;
             data.ratio = (float)width / (float)height;
+            data.graphics_engine->getRenderer()->resize(width, height);
 
             glViewport(0, 0, width, height);
         });

@@ -21,6 +21,7 @@ namespace Tarbora {
         void afterDraw();
 
         std::shared_ptr<Window> getWindow() { return window_; }
+        std::shared_ptr<Renderer> getRenderer() { return renderer_; }
         std::shared_ptr<RenderQueue> getRenderQueue() { return render_queue_; }
         std::shared_ptr<Input> getInputManager() { return input_manager_; }
         Module *getModule() { return module_; }

@@ -36,8 +36,30 @@ namespace Tarbora {
         setupPostprocess();
     }
 
+    void Renderer::resize(int width, int height)
+    {
+        width_ = width;
+        height_ = height;
+        glViewport(0, 0, width_, height_);
+
+        deleteGeometryPass();
+        deleteOcclusionPass();
+        deleteLightingPass();
+        deleteScenePass();
+
+        setupGeometryPass();
+        setupOcclusionPass();
+        setupLightingPass();
+        setupScenePass();
+        setupPostprocess();
+    }
+
     Renderer::~Renderer()
     {
+        deleteGeometryPass();
+        deleteOcclusionPass();
+        deleteLightingPass();
+        deleteScenePass();
         glfwTerminate();
     }
 
@@ -59,25 +81,25 @@ namespace Tarbora {
 
     void Renderer::occlusionPass()
     {
-        glBindFramebuffer(GL_FRAMEBUFFER, ssao_buffer_);
-        glClear(GL_COLOR_BUFFER_BIT);
-        occlusion_shader_->use();
-        occlusion_shader_->set("projection", projection_);
-        occlusion_shader_->set("view", view_);
-        g_position_->bind(0);
-        g_normal_->bind(1);
-        noise_texture_->bind(2);
-        glBindVertexArray(quad_mesh_->getId());
-        glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
+       // glBindFramebuffer(GL_FRAMEBUFFER, ssao_buffer_);
+       // glClear(GL_COLOR_BUFFER_BIT);
+       // occlusion_shader_->use();
+       // occlusion_shader_->set("projection", projection_);
+       // occlusion_shader_->set("view", view_);
+       // g_position_->bind(0);
+       // g_normal_->bind(1);
+       // noise_texture_->bind(2);
+       // glBindVertexArray(quad_mesh_->getId());
+       // glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
 
-        glBindFramebuffer(GL_FRAMEBUFFER, ssao_blur_buffer_);
-        glClear(GL_COLOR_BUFFER_BIT);
-        occlusion_blur_shader_->use();
-        occlusion_blur_shader_->set("projection", projection_);
-        occlusion_blur_shader_->set("view", view_);
-        ssao_color_->bind();
-        glBindVertexArray(quad_mesh_->getId());
-        glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
+       // glBindFramebuffer(GL_FRAMEBUFFER, ssao_blur_buffer_);
+       // glClear(GL_COLOR_BUFFER_BIT);
+       // occlusion_blur_shader_->use();
+       // occlusion_blur_shader_->set("projection", projection_);
+       // occlusion_blur_shader_->set("view", view_);
+       // ssao_color_->bind();
+       // glBindVertexArray(quad_mesh_->getId());
+       // glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
     }
 
     void Renderer::lightingPass()
@@ -165,15 +187,24 @@ namespace Tarbora {
         unsigned int attachments[3] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
         glDrawBuffers(3, attachments);
 
-        unsigned int rbo;
-        glGenRenderbuffers(1, &rbo);
-        glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+        glGenRenderbuffers(1, &rbo_);
+        glBindRenderbuffer(GL_RENDERBUFFER, rbo_);
         glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width_, height_);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo_);
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             LOG_ERR("G Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
+
+    void Renderer::deleteGeometryPass()
+    {
+        glDeleteRenderbuffers(1, &rbo_);
+        g_position_.reset(nullptr);
+        g_normal_.reset(nullptr);
+        g_color_spec_.reset(nullptr);
+        glDeleteFramebuffers(1, &g_buffer_);
+    }
+        
 
 
     float lerp(float a, float b, float f)
@@ -259,6 +290,14 @@ namespace Tarbora {
         });
     }
 
+    void Renderer::deleteOcclusionPass()
+    {
+        ssao_blur_color_.reset(nullptr);
+        noise_texture_.reset(nullptr);
+        ssao_color_.reset(nullptr);
+        glDeleteFramebuffers(1, &ssao_buffer_);
+    }
+
     void Renderer::setupLightingPass()
     {
         // Generate the lighting buffer
@@ -283,6 +322,12 @@ namespace Tarbora {
         });
     }
 
+    void Renderer::deleteLightingPass()
+    {
+        lighting_color_.reset(nullptr);
+        glDeleteFramebuffers(1, &lighting_buffer_);
+    }
+
     void Renderer::setupScenePass()
     {
         // Generate the scene buffer
@@ -295,11 +340,10 @@ namespace Tarbora {
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, scene_color_->getId(), 0);
 
         // Render buffer
-        unsigned int rbo;
-        glGenRenderbuffers(1, &rbo);
-        glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+        glGenRenderbuffers(1, &rbo_scene_);
+        glBindRenderbuffer(GL_RENDERBUFFER, rbo_scene_);
         glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width_, height_);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo_scene_);
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             LOG_ERR("Scene Framebuffer not complete!");
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -309,6 +353,13 @@ namespace Tarbora {
             shader->use();
             shader->set("tex", 0);
         });
+    }
+
+    void Renderer::deleteScenePass()
+    {
+        glDeleteRenderbuffers(1, &rbo_scene_);
+        scene_color_.reset(nullptr);
+        glDeleteFramebuffers(1, &scene_buffer_);
     }
 
     void Renderer::setupPostprocess()

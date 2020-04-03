@@ -31,14 +31,14 @@ void main()
     vec3 Normal = texture(gNormal, TexCoords).rgb;
     vec3 Albedo = pow(texture(gColorSpec, TexCoords).rgb, vec3(gamma));
     float Specular = texture(gColorSpec, TexCoords).a;
-    float AmbientOcclusion = pow(texture(ssao, TexCoords).r, gamma);
+//    float AmbientOcclusion = pow(texture(ssao, TexCoords).r, gamma);
 
     // if (Albedo == vec3(0.0f)) discard;
 
     vec3 lightDir = (view * vec4(normalize(-light.direction), 0.0f)).xyz;
     vec3 viewDir = normalize(-FragPos);
 
-    vec3 ambient = light.ambient * AmbientOcclusion;
+    vec3 ambient = light.ambient; // * AmbientOcclusion;
     vec3 diffuse = max(dot(Normal, lightDir), 0.0) * light.diffuse;
     vec3 halfwayDir = reflect(-lightDir, Normal);
     vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) * light.specular * Specular;
