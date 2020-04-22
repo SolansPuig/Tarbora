@@ -1,0 +1,5 @@
+<map id="Tarbora::HumanView" name="Tarbora::HumanView">
+<area shape="rect" id="node2" href="$classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="14,155,162,181"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from. " alt="" coords="30,80,146,107"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads. " alt="" coords="5,5,171,32"/>
+</map>

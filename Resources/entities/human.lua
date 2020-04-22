@@ -15,10 +15,11 @@ components = {
         density = 2
     },
     controller = {
-        speed = 4.0,
+        speed = 10.0,
         run_speed = 9.0,
     },
-    pickup = {},
+    sight = {},
+    grab = {},
 }
 
 animation_controller = {

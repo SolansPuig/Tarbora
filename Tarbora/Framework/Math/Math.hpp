@@ -3,12 +3,12 @@
 #include "../CommonHeaders.hpp"
 #include "../Global.hpp"
 
-#include "glm/glm.hpp"
-#include "glm/gtx/string_cast.hpp"
-#include "glm/gtx/std_based_type.hpp"
-#include "glm/gtc/type_ptr.hpp"
-#include "glm/gtx/quaternion.hpp"
-#include "glm/gtx/euler_angles.hpp"
+#include "../External/glm/glm/glm.hpp"
+#include "../External/glm/glm/gtx/string_cast.hpp"
+#include "../External/glm/glm/gtx/std_based_type.hpp"
+#include "../External/glm/glm/gtc/type_ptr.hpp"
+#include "../External/glm/glm/gtx/quaternion.hpp"
+#include "../External/glm/glm/gtx/euler_angles.hpp"
 
 // inline glm::u8vec3 operator*(const glm::u8vec3 &a, char b) { return glm::u8vec3(b * a.x, b * a.y, b * a.z); }
 // inline glm::u8vec3 operator*(char a, const glm::u8vec3 &b) { return b * a; }

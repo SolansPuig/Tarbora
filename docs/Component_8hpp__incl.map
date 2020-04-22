@@ -1,0 +1,18 @@
+<map id="Tarbora/Logic/Component.hpp" name="Tarbora/Logic/Component.hpp">
+<area shape="rect" id="node2" href="$System_8hpp.html" title="Class Tarbora::System. " alt="" coords="1133,80,1225,107"/>
+<area shape="rect" id="node3" href="$Framework_8hpp_source.html" title="../Framework/Framework.hpp" alt="" coords="1197,155,1391,181"/>
+<area shape="rect" id="node47" href="$BasicMessages_8hpp_source.html" title="../Messages/BasicMessages.hpp" alt="" coords="957,155,1173,181"/>
+<area shape="rect" id="node4" href="$ModuleComponent_8hpp.html" title="Class Tarbora::ModuleComponent. " alt="" coords="1193,229,1395,256"/>
+<area shape="rect" id="node5" href="$Module_8hpp.html" title="Class Tarbora::Module. " alt="" coords="1233,304,1323,331"/>
+<area shape="rect" id="node6" href="$AbstractModule_8hpp.html" title="Class Tarbora::AbstractModule. " alt="" coords="1114,557,1253,584"/>
+<area shape="rect" id="node41" href="$MessageManager_8hpp.html" title="Class Tarbora::MessageManager. " alt="" coords="925,379,1119,420"/>
+<area shape="rect" id="node43" href="$Resource_8hpp_source.html" title="../ResourceManager\l/Resource.hpp" alt="" coords="1317,468,1457,509"/>
+<area shape="rect" id="node45" href="$Lua_8hpp_source.html" title="../ResourceManager\l/Lua.hpp" alt="" coords="1208,379,1348,420"/>
+<area shape="rect" id="node7" href="$CommonHeaders_8hpp_source.html" title="../CommonHeaders.hpp" alt="" coords="1007,789,1168,815"/>
+<area shape="rect" id="node32" href="$Global_8hpp_source.html" title="../Global.hpp" alt="" coords="1217,632,1313,659"/>
+<area shape="rect" id="node33" href="$Logger_8hpp_source.html" title="Logger.hpp" alt="" coords="1121,707,1208,733"/>
+<area shape="rect" id="node34" href="$Math_8hpp_source.html" title="Math/Math.hpp" alt="" coords="1387,707,1497,733"/>
+<area shape="rect" id="node42" href="$MessageClient_8hpp_source.html" title="MessageClient.hpp" alt="" coords="955,557,1089,584"/>
+<area shape="rect" id="node44" href="$ResourceManager_8hpp_source.html" title="ResourceManager.hpp" alt="" coords="1277,557,1431,584"/>
+<area shape="rect" id="node48" href="$MathMessages_8hpp_source.html" title="MathMessages.hpp" alt="" coords="926,229,1062,256"/>
+</map>

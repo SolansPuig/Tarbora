@@ -1,6 +1,6 @@
 #pragma once
-#include "../../CommonHeaders.hpp"
-#include "../../Global.hpp"
+#include "../CommonHeaders.hpp"
+#include "../Global.hpp"
 
 namespace Tarbora {
     class Resource;

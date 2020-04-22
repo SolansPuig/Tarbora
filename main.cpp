@@ -11,7 +11,7 @@ int main() {
     ZoneScoped;
     LOG_LEVEL(DEBUG);
     ResourceManager::init("../Resources/");
-
+    
     // std::shared_ptr<MessageBus> messageBus(new MessageBus("0.0.0.0:50051"));
     // messageBus->RunThread("Message Bus");
 

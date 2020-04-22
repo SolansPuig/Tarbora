@@ -1,0 +1,11 @@
+<map id="Tarbora::Component" name="Tarbora::Component">
+<area shape="rect" id="node2" href="$classTarbora_1_1AnimationComponent.html" title="Tarbora::AnimationComponent" alt="" coords="195,5,394,32"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1ControllerComponent.html" title="The component that stores all the info about the actor movement and related. " alt="" coords="196,56,393,83"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1GrabComponent.html" title="Tarbora::GrabComponent" alt="" coords="210,107,379,133"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1InfoComponent.html" title="The component that stores the basic info of an actor. " alt="" coords="213,157,376,184"/>
+<area shape="rect" id="node6" href="$classTarbora_1_1ModelComponent.html" title="The component that stores the info about rendering. " alt="" coords="207,208,383,235"/>
+<area shape="rect" id="node7" href="$classTarbora_1_1PhysicsComponent.html" title="The component that stores the info about a physics&#39; Tarbora::Rigidbody. " alt="" coords="201,259,389,285"/>
+<area shape="rect" id="node8" href="$classTarbora_1_1SightComponent.html" title="Tarbora::SightComponent" alt="" coords="209,309,380,336"/>
+<area shape="rect" id="node9" href="$classTarbora_1_1TransformComponent.html" title="The component that stores the current position and orientation of an actor. " alt="" coords="195,360,395,387"/>
+<area shape="rect" id="node10" href="$classTarbora_1_1TypeComponent.html" title="The component that stores the list of types of an actor. " alt="" coords="209,411,380,437"/>
+</map>

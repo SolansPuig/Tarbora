@@ -17,14 +17,13 @@ namespace Tarbora {
 
     void SceneManager::loadActor(LuaTable actor)
     {
-        getMessageManager()->send(1, "create_actor",
-            Message::CreateActor(
-                actor.get<std::string>("id", true),
-                actor.get<std::string>("name"),
-                actor.get<std::string>("variant", true),
-                actor.get<glm::vec3>("position"),
-                glm::quat(glm::radians(actor.get<glm::vec3>("rotation", true)))
-            )
+        Message::CreateActor msg(
+            actor.get<std::string>("id", true),
+            actor.get<std::string>("name")
         );
+        msg.setVariant(actor.get<std::string>("variant", true));
+        msg.setPosition(actor.get<glm::vec3>("position"));
+        msg.setOrientation(glm::radians(actor.get<glm::vec3>("rotation", true)));
+        getMessageManager()->send(1, "create_actor", msg);
     }
 }

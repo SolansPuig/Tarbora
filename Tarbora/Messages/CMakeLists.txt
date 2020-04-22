@@ -5,6 +5,5 @@ protobuf_generate_cpp(ProtoSources ProtoHeaders math.proto basic.proto lua.proto
 add_library (Messages STATIC
     ${ProtoSources}
     ${ProtoHeaders}
-    BasicMessages.cpp
 )
 add_dependencies (Messages TarboraCore)

@@ -1,0 +1,7 @@
+<map id="Tarbora::System" name="Tarbora::System">
+<area shape="rect" id="node2" href="$classTarbora_1_1ModuleComponent.html" title="A part of a module with a defined function. " alt="" coords="5,171,188,197"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from. " alt="" coords="123,81,239,108"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1World.html" title="The module that controls the logics of the engine. " alt="" coords="212,171,320,197"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads. " alt="" coords="98,5,263,32"/>
+<area shape="rect" id="node6" href="$classTarbora_1_1ComponentManager.html" title="The class that stores all the components. See Entity_Component_System. " alt="" coords="344,171,535,197"/>
+</map>

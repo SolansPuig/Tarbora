@@ -17,7 +17,7 @@ namespace Tarbora {
     {
         const MessageBody b(m.body());
 
-        // First execute the callback for the listeners subscribed to all msgs
+        //  First execute the callback for the listeners subscribed to all msgs
         auto all_listeners = listeners_.find("all");
         if (all_listeners != listeners_.end())
         {

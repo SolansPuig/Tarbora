@@ -290,7 +290,7 @@ namespace Tarbora {
     class LuaFunction<std::vector<T>> {
     public:
         LuaFunction() {}
-        LuaFunction(sol::state *state, const sol::protected_function &function, const std::string &name, bool silent)
+        LuaFunction(sol::state *state, const sol::protected_function &function, const std::string &name, bool)
             : lua_(state), function_(function), name_(name)
         {
             function_.error_handler = (*lua_)["error_handler"];

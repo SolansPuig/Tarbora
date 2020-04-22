@@ -41,7 +41,7 @@ namespace Tarbora {
             if (actor)
             {
                 actor->setPosition(m.getPosition());
-                actor->setRotation(m.getRotation());
+                actor->setRotation(m.getOrientation());
             }
         });
 
@@ -57,8 +57,8 @@ namespace Tarbora {
                 {
                     if (m.hasPosition())
                         node->setPosition(m.getPosition());
-                    if (m.hasRotation())
-                        node->setRotation(m.getRotation());
+                    if (m.hasOrientation())
+                        node->setRotation(m.getOrientation());
                 }
             }
         });
@@ -74,28 +74,34 @@ namespace Tarbora {
         {
             UNUSED(subject);
             Message::StartAnimation m(body);
-            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->startAnimation(
-                Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()}
-            );
+            auto actor = std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()));
+            if (actor)
+            {
+                actor->startAnimation(Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()});
+            }
+
         });
 
         subscribe("start_base_animation", [this](const MessageSubject &subject, const MessageBody &body)
         {
             UNUSED(subject);
             Message::StartAnimation m(body);
-            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->startAnimation(
-                Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()},
-                true
-            );
+            auto actor = std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()));
+            if (actor)
+            {
+                actor->startAnimation(Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()}, true);
+            }
         });
 
         subscribe("end_animation", [this](const MessageSubject &subject, const MessageBody &body)
         {
             UNUSED(subject);
             Message::EndAnimation m(body);
-            std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()))->endAnimation(
-                m.getAnimation(), (StopMode)m.getStopMode(), m.getFadeOutTimer()
-            );
+            auto actor = std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()));
+            if (actor)
+            {
+                actor->endAnimation(m.getAnimation(), (StopMode)m.getStopMode(), m.getFadeOutTimer());
+            }
         });
 
 
@@ -134,7 +140,9 @@ namespace Tarbora {
 
         if (getInputManager()->getKeyDown(KEY_X))
         {
-            send(1, "create_actor", Message::CreateActor("", "cube.lua", "", glm::vec3(0.f, 1.f, -5.f)));
+            Message::CreateActor msg("", "cube.lua");
+            msg.setPosition(glm::vec3(0.f, 1.f, -5.f));
+            send(1, "create_actor", msg);
         }
         if (getInputManager()->getKeyDown(KEY_Y))
         {
@@ -150,13 +158,13 @@ namespace Tarbora {
             pick_object_ = !pick_object_;
            
             if (pick_object_)
-                send(1, "pick_object", Message::Actor(target_id_));
+                send(1, "grab", Message::Actor(target_id_));
             else
-                send(1, "unpick_object", Message::Actor(target_id_));
+                send(1, "release", Message::Actor(target_id_));
         }
         if (pick_object_ && getInputManager()->mouseScrolled())
         {
-            send(1, "pick_distance", Message::LookAt(target_id_, getInputManager()->getScrollDelta()));
+            send(1, "grab_distance", Message::LookAt(target_id_, getInputManager()->getScrollDelta()));
         }
 
         glm::vec2 last_look_direction_ = look_direction_;
@@ -172,8 +180,14 @@ namespace Tarbora {
         }
         if (look_direction_ != last_look_direction_)
         {
-            send(1, "set_angular_velocity", Message::ApplyPhysics(target_id_, glm::vec3(0.f, look_direction_.x, 0.f)));
-            send(1, "look_direction", Message::LookAt(target_id_, glm::vec3(0.f, look_direction_.y, 0.f)));
+            send(1, "set_rotation", Message::ApplyPhysics(
+                     target_id_,
+                     glm::vec3(0.f, look_direction_.x, 0.f)
+                 ));
+            send(1, "set_facing", Message::ApplyPhysics(
+                     target_id_,
+                     glm::vec3(-look_direction_.y, 0.f, 0.f)
+                 ));
         }
         if (jump_)
         {

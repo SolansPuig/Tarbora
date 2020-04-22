@@ -18,7 +18,7 @@ message CreateActor {
     string entity = 2;
     string variant = 3;
     MathMessage.Vector position = 4;
-    MathMessage.Quaternion rotation = 5;
+    MathMessage.Quaternion orientation = 5;
 }
 
 message CreateActorModel {
@@ -31,14 +31,14 @@ message CreateActorModel {
 message MoveActor {
     string id = 1;
     MathMessage.Vector position = 2;
-    MathMessage.Quaternion rotation = 3;
+    MathMessage.Quaternion orientation = 3;
 }
 
 message MoveNode {
     string id = 1;
     string name = 2;
     MathMessage.Vector position = 3;
-    MathMessage.Quaternion rotation = 4;
+    MathMessage.Quaternion orientation = 4;
 }
 
 message StartAnimation {
@@ -69,4 +69,10 @@ message LookAt {
     string target = 2;
     float distance = 3;
     MathMessage.Vector direction = 4;
+    MathMessage.Vector position = 5;
+}
+
+message Event {
+    string id = 1;
+    string name = 2;
 }

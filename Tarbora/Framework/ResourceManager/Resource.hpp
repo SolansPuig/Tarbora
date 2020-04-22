@@ -107,7 +107,7 @@ namespace Tarbora {
     {
         friend class ResourceManager;
     private:
-        virtual const std::string getPattern() override { return "*"; }
+        virtual const std::string getPattern() override { return ""; }
         virtual std::shared_ptr<Resource> load(const std::string &path) override { (void)(path); return std::shared_ptr<Resource>(); }
     };
     //! \endcond
@@ -139,6 +139,7 @@ namespace Tarbora {
     class ResourcePtr
     {
     public:
+        ResourcePtr(const ResourcePtr &r) = default;
         ResourcePtr() : initial_config_(nullptr) {}
         ResourcePtr(const std::string &name, const std::string &fallback_name="")
             : name_(name), fallback_name_(fallback_name), initial_config_(nullptr) {}

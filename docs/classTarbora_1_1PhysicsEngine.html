@@ -1,388 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tarbora::PhysicsEngine class | Tarbora The Game Engine for Makers</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
-  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
-  <link rel="icon" href="favicon-dark.png" type="image/png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#22272e" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tarbora: Tarbora::PhysicsEngine Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<header><nav id="navigation">
-  <div class="m-container">
-    <div class="m-row">
-      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="icon_white.png" />Tarbora <span class="m-thin">The Game Engine for Makers</span></a>
-      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
-        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
-          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
-        </svg></a>
-        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
-        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
-      </div>
-      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
-        <div class="m-row">
-          <ol class="m-col-t-6 m-col-m-none">
-            <li><a href="pages.html">Pages</a></li>
-            <li><a href="namespaces.html">Namespaces</a></li>
-          </ol>
-          <ol class="m-col-t-6 m-col-m-none" start="3">
-            <li><a href="annotated.html">Classes</a></li>
-            <li><a href="files.html">Files</a></li>
-            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
-              <use href="#m-doc-search-icon-path" />
-            </svg></a></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav></header>
-<main><article>
-  <div class="m-container m-container-inflatable">
-    <div class="m-row">
-      <div class="m-col-l-10 m-push-l-1">
-        <h1>
-          <span class="m-breadcrumb"><a href="namespaceTarbora.html">Tarbora</a>::<wbr/></span>PhysicsEngine <span class="m-thin">class</span>
-        </h1>
-        <p>The system that manages the movement and the collisions of all the actors.</p>
-        <div class="m-block m-default">
-          <h3>Contents</h3>
-          <ul>
-            <li>
-              Reference
-              <ul>
-                <li><a href="#pub-static-methods">Public static functions</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-<aside class="m-note m-default"><h4>See also</h4><p><a href="classTarbora_1_1RigidBody.html" class="m-doc">RigidBody</a></p><p><a href="classTarbora_1_1ActorMotionState.html" class="m-doc">ActorMotionState</a></p></aside>
-        <section id="pub-static-methods">
-          <h2><a href="#pub-static-methods">Public static functions</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a964f0a4c51a88137fe063d5297829b00" class="m-doc">init</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
-            </dt>
-            <dd>Start the Physics Engine.</dd>
-            <dt id="af8cf9d828f681eb00f0a7f8304c51800">
-              <span class="m-doc-wrap-bumper">static void <a href="#af8cf9d828f681eb00f0a7f8304c51800" class="m-doc-self">close</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd>Stop the Physics Engine.</dd>
-            <dt id="afac87332294916fff850683856640a6d">
-              <span class="m-doc-wrap-bumper">static void <a href="#afac87332294916fff850683856640a6d" class="m-doc-self">update</a>(</span><span class="m-doc-wrap">float delta_time)</span>
-            </dt>
-            <dd>Update the Physics Engine.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a2e17e513d5f43612b30c5c6b6a5d6ef1" class="m-doc">addSphere</a>(</span><span class="m-doc-wrap">ActorId&amp; id,
-              float radius,
-              float mass,
-              float friction,
-              float restitution,
-              const glm::vec3&amp; position,
-              const glm::quat&amp; rotation) -&gt; btRigidBody*</span>
-            </dt>
-            <dd>Register an sphere shaped rigid body.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a82787c2e79bbf802c6b6acbc828fbad8" class="m-doc">addCapsule</a>(</span><span class="m-doc-wrap">ActorId&amp; id,
-              float radius,
-              float height,
-              float mass,
-              float friction,
-              float restitution,
-              const glm::vec3&amp; position,
-              const glm::quat&amp; rotation) -&gt; btRigidBody*</span>
-            </dt>
-            <dd>Register an capsule shaped rigid body.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a91b5135f470a3648242224fa34358d71" class="m-doc">addBox</a>(</span><span class="m-doc-wrap">ActorId&amp; id,
-              const glm::vec3&amp; dimensions,
-              float mass,
-              float friction,
-              float restitution,
-              const glm::vec3&amp; position,
-              const glm::quat&amp; rotation) -&gt; btRigidBody*</span>
-            </dt>
-            <dd>Register a cube shaped rigid body.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a107e09ad38a63f9ced3f4fcec7669e2a" class="m-doc">removeObject</a>(</span><span class="m-doc-wrap">btCollisionObject* object)</span>
-            </dt>
-            <dd>Destroy and unregister a rigid body.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#aa8a52fabbe34b050ff53a28313425edd" class="m-doc">rayCast</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; origin,
-              const glm::vec3&amp; end) -&gt; std::shared_ptr&lt;<a href="structTarbora_1_1RayCastResult.html" class="m-doc">RayCastResult</a>&gt;</span>
-            </dt>
-            <dd>Perform a raycast test.</dd>
-          </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a964f0a4c51a88137fe063d5297829b00"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static bool Tarbora::<wbr />PhysicsEngine::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a964f0a4c51a88137fe063d5297829b00" class="m-doc-self">init</a>(</span><span class="m-doc-wrap">)</span></span>
-            </h3>
-            <p>Start the Physics Engine.</p>
-<p>It must be called on startup.</p>
-          </div></section>
-          <section class="m-doc-details" id="a2e17e513d5f43612b30c5c6b6a5d6ef1"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static btRigidBody* Tarbora::<wbr />PhysicsEngine::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2e17e513d5f43612b30c5c6b6a5d6ef1" class="m-doc-self">addSphere</a>(</span><span class="m-doc-wrap">ActorId&amp; id,
-              float radius,
-              float mass,
-              float friction,
-              float restitution,
-              const glm::vec3&amp; position,
-              const glm::quat&amp; rotation)</span></span>
-            </h3>
-            <p>Register an sphere shaped rigid body.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">id</td>
-                  <td>The id of the actor that owns that rigid body.</td>
-                </tr>
-                <tr>
-                  <td>radius</td>
-                  <td>The radius of the sphere.</td>
-                </tr>
-                <tr>
-                  <td>mass</td>
-                  <td>The mass (&quot;weight&quot;) of the sphere.</td>
-                </tr>
-                <tr>
-                  <td>friction</td>
-                  <td>See <a href="classTarbora_1_1RigidBody.html" class="m-doc">RigidBody</a> SetFriction</td>
-                </tr>
-                <tr>
-                  <td>restitution</td>
-                  <td>See <a href="classTarbora_1_1RigidBody.html" class="m-doc">RigidBody</a> SetRestitution</td>
-                </tr>
-                <tr>
-                  <td>position</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>rotation</td>
-                  <td></td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>A Bullet3&#x27;s rigid body.</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a82787c2e79bbf802c6b6acbc828fbad8"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static btRigidBody* Tarbora::<wbr />PhysicsEngine::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a82787c2e79bbf802c6b6acbc828fbad8" class="m-doc-self">addCapsule</a>(</span><span class="m-doc-wrap">ActorId&amp; id,
-              float radius,
-              float height,
-              float mass,
-              float friction,
-              float restitution,
-              const glm::vec3&amp; position,
-              const glm::quat&amp; rotation)</span></span>
-            </h3>
-            <p>Register an capsule shaped rigid body.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">id</td>
-                  <td>The id of the actor that owns that rigid body.</td>
-                </tr>
-                <tr>
-                  <td>radius</td>
-                  <td>The radius of the capsule.</td>
-                </tr>
-                <tr>
-                  <td>height</td>
-                  <td>The height of the capsule.</td>
-                </tr>
-                <tr>
-                  <td>mass</td>
-                  <td>The mass (&quot;weight&quot;) of the capsule.</td>
-                </tr>
-                <tr>
-                  <td>friction</td>
-                  <td>See <a href="classTarbora_1_1RigidBody.html" class="m-doc">RigidBody</a> SetFriction</td>
-                </tr>
-                <tr>
-                  <td>restitution</td>
-                  <td>See <a href="classTarbora_1_1RigidBody.html" class="m-doc">RigidBody</a> SetRestitution</td>
-                </tr>
-                <tr>
-                  <td>position</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>rotation</td>
-                  <td></td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>A Bullet3&#x27;s rigid body.</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a91b5135f470a3648242224fa34358d71"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static btRigidBody* Tarbora::<wbr />PhysicsEngine::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a91b5135f470a3648242224fa34358d71" class="m-doc-self">addBox</a>(</span><span class="m-doc-wrap">ActorId&amp; id,
-              const glm::vec3&amp; dimensions,
-              float mass,
-              float friction,
-              float restitution,
-              const glm::vec3&amp; position,
-              const glm::quat&amp; rotation)</span></span>
-            </h3>
-            <p>Register a cube shaped rigid body.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">id</td>
-                  <td>The id of the actor that owns that rigid body.</td>
-                </tr>
-                <tr>
-                  <td>dimensions</td>
-                  <td>A vector representing the dimensions of that box, used to calculate the volume and the mass.</td>
-                </tr>
-                <tr>
-                  <td>mass</td>
-                  <td>The mass (&quot;weight&quot;) of the box.</td>
-                </tr>
-                <tr>
-                  <td>friction</td>
-                  <td>See <a href="classTarbora_1_1RigidBody.html" class="m-doc">RigidBody</a> SetFriction</td>
-                </tr>
-                <tr>
-                  <td>restitution</td>
-                  <td>See <a href="classTarbora_1_1RigidBody.html" class="m-doc">RigidBody</a> SetRestitution</td>
-                </tr>
-                <tr>
-                  <td>position</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>rotation</td>
-                  <td></td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>A Bullet3&#x27;s rigid body.</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a107e09ad38a63f9ced3f4fcec7669e2a"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void Tarbora::<wbr />PhysicsEngine::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a107e09ad38a63f9ced3f4fcec7669e2a" class="m-doc-self">removeObject</a>(</span><span class="m-doc-wrap">btCollisionObject* object)</span></span>
-            </h3>
-            <p>Destroy and unregister a rigid body.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">object</td>
-                  <td>A pointer to the object to destroy.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="aa8a52fabbe34b050ff53a28313425edd"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static std::shared_ptr&lt;<a href="structTarbora_1_1RayCastResult.html" class="m-doc">RayCastResult</a>&gt; Tarbora::<wbr />PhysicsEngine::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa8a52fabbe34b050ff53a28313425edd" class="m-doc-self">rayCast</a>(</span><span class="m-doc-wrap">const glm::vec3&amp; origin,
-              const glm::vec3&amp; end)</span></span>
-            </h3>
-            <p>Perform a raycast test.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">origin</td>
-                  <td>The origin point of the ray.</td>
-                </tr>
-                <tr>
-                  <td>end</td>
-                  <td>The maximum end point of the ray.</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>See <a href="structTarbora_1_1RayCastResult.html" class="m-doc">RayCastResult</a>.</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-        </section>
-      </div>
-    </div>
-  </div>
-</article></main>
-<div class="m-doc-search" id="search">
-  <a href="#!" onclick="return hideSearch()"></a>
-  <div class="m-container">
-    <div class="m-row">
-      <div class="m-col-m-8 m-push-m-2">
-        <div class="m-doc-search-header m-text m-small">
-          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
-          <div id="search-symbolcount">&hellip;</div>
-        </div>
-        <div class="m-doc-search-content">
-          <form>
-            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
-          </form>
-          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
-          <div id="search-help" class="m-text m-dim m-text-center">
-            <p class="m-noindent">Search for symbols, directories, files, pages or
-            modules. You can omit any prefix from the symbol or file path; adding a
-            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
-            directory.</p>
-            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
-            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
-            <span class="m-label m-dim">Enter</span> to go.
-            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
-            copy a link to the result using <span class="m-label m-dim">⌘</span>
-            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
-            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
-          </div>
-          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
-          <ul id="search-results"></ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon_white.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tarbora
+   &#160;<span id="projectnumber">0.5-ALPHA</span>
+   </div>
+   <div id="projectbrief">The Game Engine for Makers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
 </div>
-<script src="search-v1.js"></script>
-<script src="searchdata-v1.js" async="async"></script>
-<footer><nav>
-  <div class="m-container">
-    <div class="m-row">
-      <div class="m-col-l-10 m-push-l-1">
-        <p>Tarbora The Game Engine for Makers. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
-      </div>
-    </div>
-  </div>
-</nav></footer>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceTarbora.html">Tarbora</a></li><li class="navelem"><a class="el" href="classTarbora_1_1PhysicsEngine.html">PhysicsEngine</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classTarbora_1_1PhysicsEngine-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">Tarbora::PhysicsEngine Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a964f0a4c51a88137fe063d5297829b00"><td class="memItemLeft" align="right" valign="top"><a id="a964f0a4c51a88137fe063d5297829b00"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="separator:a964f0a4c51a88137fe063d5297829b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8cf9d828f681eb00f0a7f8304c51800"><td class="memItemLeft" align="right" valign="top"><a id="af8cf9d828f681eb00f0a7f8304c51800"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="separator:af8cf9d828f681eb00f0a7f8304c51800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afac87332294916fff850683856640a6d"><td class="memItemLeft" align="right" valign="top"><a id="afac87332294916fff850683856640a6d"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (float delta_time)</td></tr>
+<tr class="separator:afac87332294916fff850683856640a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5262be6d2c26dd9521da0632567494"><td class="memItemLeft" align="right" valign="top"><a id="ada5262be6d2c26dd9521da0632567494"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>registerRigidbody</b> (<a class="el" href="classTarbora_1_1Rigidbody.html">Rigidbody</a> *body)</td></tr>
+<tr class="separator:ada5262be6d2c26dd9521da0632567494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdebf3b012ae345e8c81ddbaca84f0df"><td class="memItemLeft" align="right" valign="top"><a id="abdebf3b012ae345e8c81ddbaca84f0df"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteRigidbody</b> (<a class="el" href="classTarbora_1_1Rigidbody.html">Rigidbody</a> *body)</td></tr>
+<tr class="separator:abdebf3b012ae345e8c81ddbaca84f0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae57aab8019980c75dd9dd3905d7bf97b"><td class="memItemLeft" align="right" valign="top"><a id="ae57aab8019980c75dd9dd3905d7bf97b"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>registerConstraint</b> (<a class="el" href="classTarbora_1_1Constraint.html">Constraint</a> *constraint)</td></tr>
+<tr class="separator:ae57aab8019980c75dd9dd3905d7bf97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa72f1dfeb1c4e331bc59b3d38180c1f"><td class="memItemLeft" align="right" valign="top"><a id="afa72f1dfeb1c4e331bc59b3d38180c1f"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteConstraint</b> (<a class="el" href="classTarbora_1_1Constraint.html">Constraint</a> *constraint)</td></tr>
+<tr class="separator:afa72f1dfeb1c4e331bc59b3d38180c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b414fbe507cd625b413195aae93406"><td class="memItemLeft" align="right" valign="top"><a id="ae9b414fbe507cd625b413195aae93406"></a>
+static <a class="el" href="structTarbora_1_1RaycastResult.html">RaycastResult</a>&#160;</td><td class="memItemRight" valign="bottom"><b>raycast</b> (const glm::vec3 &amp;origin, const glm::vec3 &amp;end)</td></tr>
+<tr class="separator:ae9b414fbe507cd625b413195aae93406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6655c35e99b27dce2517700d0d24413d"><td class="memItemLeft" align="right" valign="top"><a id="a6655c35e99b27dce2517700d0d24413d"></a>
+static <a class="el" href="structTarbora_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><b>genSphere</b> (float radius)</td></tr>
+<tr class="separator:a6655c35e99b27dce2517700d0d24413d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b3e1bfb8a50109871f8a30c7b730d1"><td class="memItemLeft" align="right" valign="top"><a id="a31b3e1bfb8a50109871f8a30c7b730d1"></a>
+static <a class="el" href="structTarbora_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><b>genBox</b> (const glm::vec3 &amp;dimensions)</td></tr>
+<tr class="separator:a31b3e1bfb8a50109871f8a30c7b730d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0024346716a202ad8d3df5d81dc4f44f"><td class="memItemLeft" align="right" valign="top"><a id="a0024346716a202ad8d3df5d81dc4f44f"></a>
+static <a class="el" href="structTarbora_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><b>genCapsule</b> (float radius, float height)</td></tr>
+<tr class="separator:a0024346716a202ad8d3df5d81dc4f44f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2613d9746a42a760f3cd71c1d59c3e6"><td class="memItemLeft" align="right" valign="top"><a id="ae2613d9746a42a760f3cd71c1d59c3e6"></a>
+static glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>toGLM</b> (const btVector3 &amp;v)</td></tr>
+<tr class="separator:ae2613d9746a42a760f3cd71c1d59c3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a587267088b97751dc8eb7d1f4683ce0f"><td class="memItemLeft" align="right" valign="top"><a id="a587267088b97751dc8eb7d1f4683ce0f"></a>
+static glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>toGLM</b> (const btVector4 &amp;v)</td></tr>
+<tr class="separator:a587267088b97751dc8eb7d1f4683ce0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ed0379e3da6a98bfe096eb250889227"><td class="memItemLeft" align="right" valign="top"><a id="a5ed0379e3da6a98bfe096eb250889227"></a>
+static glm::quat&#160;</td><td class="memItemRight" valign="bottom"><b>toGLM</b> (const btQuaternion &amp;q)</td></tr>
+<tr class="separator:a5ed0379e3da6a98bfe096eb250889227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dad8210d3ac6c17a5499b103348d984"><td class="memItemLeft" align="right" valign="top"><a id="a9dad8210d3ac6c17a5499b103348d984"></a>
+static glm::mat3&#160;</td><td class="memItemRight" valign="bottom"><b>toGLM</b> (const btMatrix3x3 &amp;m)</td></tr>
+<tr class="separator:a9dad8210d3ac6c17a5499b103348d984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81597730ab05f83396ffa959a808c980"><td class="memItemLeft" align="right" valign="top"><a id="a81597730ab05f83396ffa959a808c980"></a>
+static glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>toGLM</b> (const btTransform &amp;m)</td></tr>
+<tr class="separator:a81597730ab05f83396ffa959a808c980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82edb7f2720d79f13933ce60a4a708b2"><td class="memItemLeft" align="right" valign="top"><a id="a82edb7f2720d79f13933ce60a4a708b2"></a>
+static btVector3&#160;</td><td class="memItemRight" valign="bottom"><b>toBullet</b> (const glm::vec3 &amp;v)</td></tr>
+<tr class="separator:a82edb7f2720d79f13933ce60a4a708b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88846e206c0cffd9e2f9e6917da4001c"><td class="memItemLeft" align="right" valign="top"><a id="a88846e206c0cffd9e2f9e6917da4001c"></a>
+static btVector4&#160;</td><td class="memItemRight" valign="bottom"><b>toBullet</b> (const glm::vec4 &amp;v)</td></tr>
+<tr class="separator:a88846e206c0cffd9e2f9e6917da4001c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab42d49722aca9b372579d0bc9562c0ee"><td class="memItemLeft" align="right" valign="top"><a id="ab42d49722aca9b372579d0bc9562c0ee"></a>
+static btQuaternion&#160;</td><td class="memItemRight" valign="bottom"><b>toBullet</b> (const glm::quat &amp;q)</td></tr>
+<tr class="separator:ab42d49722aca9b372579d0bc9562c0ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630504e05b5323e1d8d14fc91356f301"><td class="memItemLeft" align="right" valign="top"><a id="a630504e05b5323e1d8d14fc91356f301"></a>
+static btMatrix3x3&#160;</td><td class="memItemRight" valign="bottom"><b>toBullet</b> (const glm::mat3 &amp;m)</td></tr>
+<tr class="separator:a630504e05b5323e1d8d14fc91356f301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad66248f29d0ecf1504e5ca69b6e9d5ce"><td class="memItemLeft" align="right" valign="top"><a id="ad66248f29d0ecf1504e5ca69b6e9d5ce"></a>
+static btTransform&#160;</td><td class="memItemRight" valign="bottom"><b>toBullet</b> (const glm::vec3 &amp;position, const glm::quat &amp;rotation)</td></tr>
+<tr class="separator:ad66248f29d0ecf1504e5ca69b6e9d5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>Tarbora/Logic/PhysicsEngine/<a class="el" href="PhysicsEngine_8hpp_source.html">PhysicsEngine.hpp</a></li>
+<li>Tarbora/Logic/PhysicsEngine/PhysicsEngine.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
 </body>
 </html>

@@ -1,13 +1,14 @@
 add_subdirectory (PhysicsEngine)
 
 add_library (Logic SHARED
+    System.cpp
     World.cpp
-    ModelComponent.cpp
-    TransformComponent.cpp
-    PhysicsComponent.cpp
-    ControllerComponent.cpp
-    AnimationComponent.cpp
-    PickupComponent.cpp
+    AnimationSystem.cpp
+    Component.cpp
+    ControllerSystem.cpp
+    EntitySystem.cpp
+    PhysicsSystem.cpp
+    RenderSystem.cpp
 )
 add_dependencies (Logic Messages)
 target_link_libraries (Logic Messages)

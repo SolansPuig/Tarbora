@@ -32,7 +32,7 @@ namespace Tarbora {
 
     private:
         std::unordered_map<std::string, std::shared_ptr<SceneNode>> nodes_;
-        std::unique_ptr<AnimationController> animation_controller_;
+        std::shared_ptr<AnimationController> animation_controller_;
         RenderPass render_pass_;
         std::string model_;
     };

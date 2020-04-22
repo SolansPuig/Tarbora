@@ -1,127 +1,78 @@
-#include "World.hpp"
-#include "InfoComponent.hpp"
-#include "TransformComponent.hpp"
-#include "TypeComponent.hpp"
-#include "ModelComponent.hpp"
-#include "PhysicsComponent.hpp"
-#include "ControllerComponent.hpp"
-#include "AnimationComponent.hpp"
-#include "PickupComponent.hpp"
-#include "../Messages/BasicMessages.hpp"
+/*********************************************************************
+ * Copyright (C) 2020 Roger Solans Puig
+ * Email: roger@solanspuig.cat
+ *
+ * This file is part of Tarbora. You can obtain a copy at
+ * https://github.com/SolansPuig/Tarbora
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *********************************************************************/
 
-#define REGISTER_SYSTEM(T) \
-    systems_.emplace(T::getName(), std::shared_ptr<T>(new T(this)));\
-    systems_order_.push_back(T::getName())
+#include "World.hpp"
+#include "../Messages/BasicMessages.hpp"
+#include "EntitySystem.hpp"
+#include "PhysicsSystem.hpp"
+#include "ControllerSystem.hpp"
+#include "RenderSystem.hpp"
+#include "AnimationSystem.hpp"
 
 namespace Tarbora {
-    World::World() :
-        Module(1)
+  World::World() :
+    Module(1), entity_system_(this), render_system_(this), animation_system_(this),
+    controller_system_(this), physics_system_(this)
+  {
+    max_fps_ = 60;
+
+    getMessageManager()->subscribe("create_actor", MSGBIND(&World::createActor));
+  }
+
+  void World::createActor(const MessageSubject &, const MessageBody &body)
+  {
+    Message::CreateActor m(body);
+    ActorId id = m.getId();
+    std::string entity = m.getEntity();
+
+    ResourcePtr<LuaScript> resource("entities/" + entity);
+    if (resource == nullptr)
+      return;
+
+    glm::vec3 position = m.getPosition();
+    glm::vec3 orientation = glm::degrees(glm::eulerAngles(m.getOrientation()));
+
+    //  If it doesn't have an id, set is as a unique number
+    if (id == "")
+      id = std::to_string(next_id_++);
+
+    // Everything has an info component
+    LuaTable info = resource->createTable("info");
+    info.set<std::string>("entity", entity);
+    info.set<std::string>("variant", "");
+    components_.createComponent(id, "info", info);
+
+    // Everything has a transform component
+    LuaTable transform = resource->createTable("transform");
+    transform.set<glm::vec3>("position", position);
+    transform.set<glm::vec3>("orientation", orientation);
+    components_.createComponent(id, "transform", transform);
+
+    // Create the other components
+    LuaTable components = resource->get("components", true);
+    for (auto component : components)
     {
-        max_fps_ = 60;
-        next_id_ = 0;
-
-        REGISTER_SYSTEM(InfoSystem);
-        REGISTER_SYSTEM(PickupSystem);
-        REGISTER_SYSTEM(TypeSystem);
-        REGISTER_SYSTEM(ControllerSystem);
-        REGISTER_SYSTEM(AnimationSystem);
-        REGISTER_SYSTEM(ModelSystem);
-        REGISTER_SYSTEM(PhysicsSystem);
-        REGISTER_SYSTEM(TransformSystem);
-
-        getMessageManager()->subscribe("create_actor", [this](const MessageSubject &subject, const MessageBody &body)
-        {
-            UNUSED(subject);
-            Message::CreateActor m(body);
-            createActor(m.getId(), m.getEntity(), m.getPosition(), m.getRotation());
-        });
+      std::string name = component.first.getAs<std::string>();
+      LuaTable value = component.second.getAs<LuaTable>();
+      components_.createComponent(id, name, value);
     }
+  }
 
-    ActorId World::createActor(ActorId id, const std::string &entity, const glm::vec3 &position, const glm::quat &rotation)
-    {
-        ResourcePtr<LuaScript> resource("entities/" + entity);
-        if (resource != nullptr)
-        {
-            // If it doesn't have an id, set is as a unique number
-            if (id == "")
-                id = std::to_string(next_id_++);
-
-            // Everything has an info component
-            LuaTable info = resource->createTable("info");
-            info.set<std::string>("entity", entity);
-            info.set<std::string>("variant", "");
-            addComponent(id, "info", info);
-
-            // Everything has a transform component
-            LuaTable transform = resource->createTable("transform");
-            transform.set<glm::vec3>("position", position);
-            transform.set<glm::vec3>("rotation", glm::degrees(glm::eulerAngles(rotation)));
-            addComponent(id, "transform", transform);
-
-            // Create the components
-            LuaTable components = resource->get("components", true);
-            for (auto component : components)
-            {
-                std::string name = component.first.getAs<std::string>();
-                LuaTable value = component.second.getAs<LuaTable>();
-
-                addComponent(id, name, value);
-            }
-
-            // Initialize all the components
-            for (auto sys = systems_order_.rbegin(); sys != systems_order_.rend(); ++sys)
-            {
-                systems_[*sys]->init(id);
-            }
-        }
-
-        return id;
-    }
-
-    void World::update(float delta_time)
-    {
-        for (auto sys : systems_order_)
-        {
-            systems_[sys]->update(delta_time);
-        }
-    }
-
-    void World::addComponent(const ActorId &id, const ComponentId &component, const LuaTable &t)
-    {
-        auto itr = systems_.find(component);
-        if (itr != systems_.end())
-        {
-            itr->second->add(id, t);
-        }
-        else
-        {
-            LOG_WARN("World: Couldn't find system named %s.", component.c_str());
-        }
-    }
-
-    Component *World::getComponent(const ActorId &id, const ComponentId &component)
-    {
-        auto itr = systems_.find(component);
-        if (itr != systems_.end())
-        {
-            return itr->second->get(id);
-        }
-        return nullptr;
-    }
-
-    void World::enableActor(const ActorId &id)
-    {
-        for (auto sys : systems_)
-        {
-            sys.second->enable(id);
-        }
-    }
-
-    void World::disableActor(const ActorId &id)
-    {
-        for (auto sys : systems_)
-        {
-            sys.second->disable(id);
-        }
-    }
+  void World::update(float delta_time)
+  {
+    controller_system_.update(delta_time);
+    physics_system_.update(delta_time);
+    render_system_.update(delta_time);
+    animation_system_.update(delta_time);
+    entity_system_.update(delta_time);
+  }
 }

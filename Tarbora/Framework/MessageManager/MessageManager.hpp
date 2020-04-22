@@ -13,6 +13,7 @@
 /*!
     \page message_tutorial The Messaging System
 */
+#define MSGBIND(T) (std::bind(T, this, std::placeholders::_1, std::placeholders::_2))
 
 namespace Tarbora {
     //! The base for all the messages.
