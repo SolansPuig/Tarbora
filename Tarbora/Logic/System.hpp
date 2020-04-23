@@ -35,15 +35,14 @@ namespace Tarbora {
   public:
     System(World *w);
 
+    World *world;
+    ComponentManager *components;
   protected:
     //! Perform all the actions for the components related to that system.
     /*!
      * \param delta_time The time, in seconds, since the last update.
      */
     virtual void update(float delta_time) = 0;
-
-    World *world_;
-    ComponentManager *components_;
   };
 }
 

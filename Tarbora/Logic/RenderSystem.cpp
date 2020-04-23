@@ -14,37 +14,56 @@
 #include "EntitySystem.hpp"
 
 namespace Tarbora {
+  ModelComponent::ModelComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
+  {
+    render_pass = table.get<int>("render_pass", 1);
+    model = table.get<std::string>("model", "cube");
+    material = table.get<std::string>("material", "white");
+
+    if (start_enabled_)
+      enabled_ = true;
+  }
+
   ComponentPtr RenderSystem::modelFactory(const ActorId &id, const LuaTable &table)
   {
-    auto comp = std::make_shared<ModelComponent>(id);
-    comp->render_pass = table.get<int>("render_pass", 1);
-    comp->model = table.get<std::string>("model", "cube");
-    comp->material = table.get<std::string>("material", "white");
-
-    trigger("create_actor_model", Message::CreateActorModel(
-              id,
-              comp->model,
-              comp->material,
-              comp->render_pass
-            ));
-
-    auto transform = components_->getComponent<TransformComponent>(id);
-    if (transform && transform->enabled())
-    {
-      Message::MoveActor msg(id);
-      msg.setPosition(transform->position);
-      msg.setOrientation(transform->orientation);
-      trigger("move_actor", msg);
-    }
-
-    comp->enable();
-    return comp;
+    return std::make_shared<ModelComponent>(id, table);
   }
 
   RenderSystem::RenderSystem(World *w) :
     System(w)
   {
-    components_->registerFactory("model", FCTBIND(&RenderSystem::modelFactory));
+    components->registerFactory("model", FCTBIND(&RenderSystem::modelFactory));
+
+    subscribe("init_event", MSGBIND(&RenderSystem::init));
+  }
+
+  void RenderSystem::init(const MessageSubject &, const MessageBody &body)
+  {
+    Message::Actor m(body);
+    ActorId id = m.getId();
+
+    auto model = components->getComponent<ModelComponent>(id);
+    auto transform = components->getComponent<TransformComponent>(id);
+
+    if (model && model->enabled() && transform && transform->enabled())
+    {
+      trigger("create_actor_model", Message::CreateActorModel(
+                id,
+                model->model,
+                model->material,
+                model->render_pass
+              ));
+
+      Message::MoveActor msg(id);
+      msg.setPosition(transform->position);
+      msg.setOrientation(transform->orientation);
+      trigger("move_actor", msg);
+    }
+    else
+    {
+      LOG_WARN("Entity %s has a model but no transform component.", id.c_str());
+    }
   }
 
   void RenderSystem::update(float)

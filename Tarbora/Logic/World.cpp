@@ -65,6 +65,8 @@ namespace Tarbora {
       LuaTable value = component.second.getAs<LuaTable>();
       components_.createComponent(id, name, value);
     }
+
+    getMessageManager()->triggerLocal("init_event", Message::Actor(id));
   }
 
   void World::update(float delta_time)

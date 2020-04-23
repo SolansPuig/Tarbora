@@ -15,45 +15,58 @@
 #include "EntitySystem.hpp"
 
 namespace Tarbora {
+  ControllerComponent::ControllerComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
+  {
+    speed = table.get<float>("speed", 5.f, true);
+    run_speed = table.get<float>("run_speed", 8.f, true);
+    rotation_speed = table.get<float>("rotation_speed", 1.f, true);
+    facing_clamp = table.get<glm::vec3>("facing_clamp", {70.f, 70.f, 70.f}, true);
+
+    if (start_enabled_)
+      enable();
+  }
+
   ComponentPtr ControllerSystem::controllerFactory(
     const ActorId &id, const LuaTable &table)
   {
-    auto comp = std::make_shared<ControllerComponent>(id);
-    comp->speed = table.get<float>("speed", 5.f, true);
-    comp->run_speed = table.get<float>("run_speed", 8.f, true);
-    comp->rotation_speed = table.get<float>("rotation_speed", 1.f, true);
-    comp->facing_clamp = table.get<glm::vec3>("facing_clamp", {70.f, 70.f, 70.f}, true);
+    return std::make_shared<ControllerComponent>(id, table);
+  }
 
-    comp->enable();
-    return comp;
+  SightComponent::SightComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
+  {
+    eye_position = table.get<glm::vec3>("eye_position", glm::vec3(0.f), true);
+    look_distance = table.get<float>("look_distance", 10.f, true);
+
+    if (start_enabled_)
+      enable();
   }
 
   ComponentPtr ControllerSystem::sightFactory(const ActorId &id, const LuaTable &table)
   {
-    auto comp = std::make_shared<SightComponent>(id);
-    comp->eye_position = table.get<glm::vec3>("eye_position", glm::vec3(0.f), true);
-    comp->look_distance = table.get<float>("look_distance", 10.f, true);
-
-    comp->enable();
-    return comp;
+    return std::make_shared<SightComponent>(id, table);
   }
 
-  ComponentPtr ControllerSystem::grabFactory(const ActorId &id, const LuaTable &)
+  GrabComponent::GrabComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
   {
-    auto comp = std::make_shared<GrabComponent>(id);
-    //  TODO: Entity types allowed to grab
+    if (start_enabled_)
+      enable();
+  }
 
-    comp->enable();
-    return comp;
+  ComponentPtr ControllerSystem::grabFactory(const ActorId &id, const LuaTable &table)
+  {
+    return std::make_shared<GrabComponent>(id, table);
   }
 
   ControllerSystem::ControllerSystem(World *world) :
     System(world)
   {
-    components_->registerFactory(
+    components->registerFactory(
       "controller", FCTBIND(&ControllerSystem::controllerFactory));
-    components_->registerFactory("sight", FCTBIND(&ControllerSystem::sightFactory));
-    components_->registerFactory("grab", FCTBIND(&ControllerSystem::grabFactory));
+    components->registerFactory("sight", FCTBIND(&ControllerSystem::sightFactory));
+    components->registerFactory("grab", FCTBIND(&ControllerSystem::grabFactory));
        
     subscribe("set_movement", MSGBIND(&ControllerSystem::setMovement));
     subscribe("set_rotation", MSGBIND(&ControllerSystem::setRotation));
@@ -68,7 +81,7 @@ namespace Tarbora {
     Message::ApplyPhysics m(body);
     ActorId id = m.getId();
 
-    auto controller = components_->getComponent<ControllerComponent>(id);
+    auto controller = components->getComponent<ControllerComponent>(id);
 
     if (controller && controller->enabled())
     {
@@ -93,7 +106,7 @@ namespace Tarbora {
     Message::ApplyPhysics m(body);
     ActorId id = m.getId();
 
-    auto controller = components_->getComponent<ControllerComponent>(id);
+    auto controller = components->getComponent<ControllerComponent>(id);
     if (controller && controller->enabled())
     {
       controller->rotation = controller->rotation_speed * m.getDirection();
@@ -105,8 +118,8 @@ namespace Tarbora {
     Message::ApplyPhysics m(body);
     ActorId id = m.getId();
 
-    auto sight = components_->getComponent<SightComponent>(id);
-    auto controller = components_->getComponent<ControllerComponent>(id);
+    auto sight = components->getComponent<SightComponent>(id);
+    auto controller = components->getComponent<ControllerComponent>(id);
 
     if (controller && controller->enabled())
     {
@@ -132,19 +145,19 @@ namespace Tarbora {
     Message::Actor m(body);
     ActorId id = m.getId();
 
-    auto sight = components_->getComponent<SightComponent>(id);
-    auto grab = components_->getComponent<GrabComponent>(id);
+    auto sight = components->getComponent<SightComponent>(id);
+    auto grab = components->getComponent<GrabComponent>(id);
 
     if (grab && sight && grab->enabled() && sight->enabled())
     {
       grab->target = sight->target;
       grab->distance = sight->target_distance;
 
-      auto target = components_->getComponent<PhysicsComponent>(grab->target);
+      auto target = components->getComponent<PhysicsComponent>(grab->target);
       if (target && target->enabled())
       {
         glm::mat4 local = target->body.getLocalTransform();
-        grab->position = local * glm::vec4(sight->target_position, 1.f);
+        grab->pivot = local * glm::vec4(sight->target_position, 1.f);
       }
     }
   }
@@ -154,7 +167,7 @@ namespace Tarbora {
     Message::Actor m(body);
     ActorId id = m.getId();
 
-    auto grab = components_->getComponent<GrabComponent>(id);
+    auto grab = components->getComponent<GrabComponent>(id);
 
     if (grab && grab->enabled())
     {
@@ -167,7 +180,7 @@ namespace Tarbora {
     Message::LookAt m(body);
     ActorId id = m.getId();
 
-    auto grab = components_->getComponent<GrabComponent>(id);
+    auto grab = components->getComponent<GrabComponent>(id);
 
     if (grab && grab->enabled())
     {
@@ -177,17 +190,17 @@ namespace Tarbora {
 
   void ControllerSystem::update(float)
   {
-    auto comps = components_->getComponents<ControllerComponent>();
+    auto comps = components->getComponents<ControllerComponent>();
     for (auto component : comps)
     {
       // Get the necessary components
       auto controller = std::static_pointer_cast<ControllerComponent>(component);
       const ActorId &id = controller->owner;
 
-      auto transform = components_->getComponent<TransformComponent>(id);
-      auto physics = components_->getComponent<PhysicsComponent>(id);
-      auto sight = components_->getComponent<SightComponent>(id);
-      auto grab = components_->getComponent<GrabComponent>(id);
+      auto transform = components->getComponent<TransformComponent>(id);
+      auto physics = components->getComponent<PhysicsComponent>(id);
+      auto sight = components->getComponent<SightComponent>(id);
+      auto grab = components->getComponent<GrabComponent>(id);
 
       if (controller->enabled() && physics && physics->enabled() && transform)
       {
@@ -255,7 +268,7 @@ namespace Tarbora {
         {
           if (grab->target != "") // Has a target
           {
-            auto target = components_->getComponent<PhysicsComponent>(grab->target);
+            auto target = components->getComponent<PhysicsComponent>(grab->target);
             if (target && target->enabled())
             {
               bool static_target = target->body.isStatic();

@@ -13,31 +13,49 @@
 #include "AnimationSystem.hpp"
 
 namespace Tarbora {
+  AnimationComponent::AnimationComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
+  {
+    animation_controller_path = table.get<std::string>("file");
+
+    ResourcePtr<LuaScript> res(animation_controller_path);
+    if (res != nullptr && start_enabled_)
+      enable();
+  }
+
   ComponentPtr AnimationSystem::animationFactory(
     const ActorId &id, const LuaTable &table)
   {
-    auto comp = std::make_shared<AnimationComponent>(id);
-    comp->animation_controller_path = table.get<std::string>("file");
-
-    ResourcePtr<LuaScript> res(comp->animation_controller_path);
-    if (res == nullptr)
-      return ComponentPtr();
-
-    LuaTable start = res->get("animation_controller").get("start");
-    parseEvent(comp.get(), "", start);
-    comp->playing_animations.erase("start");
-
-    comp->enable();
-    return comp;
+    return std::make_shared<AnimationComponent>(id, table);
   }
 
   AnimationSystem::AnimationSystem(World *w) :
     System(w)
   {
-    components_->registerFactory(
+    components->registerFactory(
       "animation", FCTBIND(&AnimationSystem::animationFactory));
 
+    subscribe("init_event", MSGBIND(&AnimationSystem::init));
     subscribe("move_event", MSGBIND(&AnimationSystem::event));
+  }
+
+  void AnimationSystem::init(const MessageSubject &, const MessageBody &body)
+  {
+    Message::Actor m(body);
+    ActorId id = m.getId();
+
+    auto anim = components->getComponent<AnimationComponent>(id);
+
+    if (anim && anim->enabled())
+    {
+      ResourcePtr<LuaScript> res(anim->animation_controller_path);
+      if (res != nullptr)
+      {
+        LuaTable start = res->get("animation_controller").get("start");
+        parseEvent(anim.get(), "", start);
+        anim->playing_animations.erase("start");
+      }
+    }
   }
 
   void AnimationSystem::event(const MessageSubject &, const MessageBody &body)
@@ -45,7 +63,7 @@ namespace Tarbora {
     Message::Event m(body);
     ActorId id = m.getId();
 
-    auto anim = components_->getComponent<AnimationComponent>(id);
+    auto anim = components->getComponent<AnimationComponent>(id);
 
     if (anim && anim->enabled())
     {

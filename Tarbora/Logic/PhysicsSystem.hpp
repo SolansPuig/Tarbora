@@ -22,6 +22,8 @@
  */
 
 namespace Tarbora {
+  class PhysicsSystem;
+ 
   /**
    * \brief The component that stores the info about a physics' \ref Tarbora::Rigidbody.
    *
@@ -29,7 +31,7 @@ namespace Tarbora {
    */
   class PhysicsComponent : public Component {
   public:
-    PhysicsComponent(const ActorId &id) : Component(id) {}
+    PhysicsComponent(const ActorId &id, const LuaTable &table);
     virtual ~PhysicsComponent() {}
 
     //! Return the type name of the component, "physics". For internal use only.

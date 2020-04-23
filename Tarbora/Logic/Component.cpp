@@ -13,6 +13,12 @@
 #include "Component.hpp"
 
 namespace Tarbora {
+  Component::Component(const ActorId &id, const LuaTable &table) :
+    owner(id)
+  {
+    start_enabled_ = table.get<bool>("start_enabled", true, true);
+  }
+
   ComponentPtr ComponentManager::createComponent(
     const ActorId &id,
     const ComponentId &component,

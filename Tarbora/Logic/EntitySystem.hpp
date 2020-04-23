@@ -22,6 +22,8 @@
  */
 
 namespace Tarbora {
+  class EntitySystem;
+ 
   /**
    * \brief The component that stores the list of types of an actor.
    *
@@ -32,7 +34,7 @@ namespace Tarbora {
    */
   class TypeComponent : public Component {
   public:
-    TypeComponent(const ActorId &id) : Component(id) {}
+    TypeComponent(const ActorId &id, const LuaTable &table);
     virtual ~TypeComponent() {}
 
     //! Return the type name of that component, "type". For internal use only.
@@ -57,7 +59,7 @@ namespace Tarbora {
    */
   class InfoComponent : public Component {
   public:
-    InfoComponent(const ActorId &id) : Component(id) {}
+    InfoComponent(const ActorId &id, const LuaTable &table);
     virtual ~InfoComponent() {}
 
     //! Return the type name of that component, "info". For internal use only.
@@ -81,7 +83,7 @@ namespace Tarbora {
      *
      * \param id The id of the actor that owns that component.
      */
-    TransformComponent(const ActorId &id) : Component(id) {}
+    TransformComponent(const ActorId &id, const LuaTable &table);
     virtual ~TransformComponent() {}
 
     //! Return the type name of that component, "transform". For internal use only.

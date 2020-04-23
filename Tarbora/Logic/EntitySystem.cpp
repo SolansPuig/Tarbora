@@ -13,16 +13,21 @@
 #include "EntitySystem.hpp"
 
 namespace Tarbora {
-  ComponentPtr EntitySystem::typeFactory(const ActorId &id, const LuaTable &table)
+  TypeComponent::TypeComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
   {
-    auto comp = std::make_shared<TypeComponent>(id);
     for (auto type : table)
     {
-      comp->add(type.second.getAs<std::string>());
+      add(type.second.getAs<std::string>());
     }
 
-    comp->enable();
-    return comp;
+    if (start_enabled_)
+      enable();
+  }
+
+  ComponentPtr EntitySystem::typeFactory(const ActorId &id, const LuaTable &table)
+  {
+    return std::make_shared<TypeComponent>(id, table);
   }
 
   void TypeComponent::add(const std::string &type)
@@ -35,32 +40,42 @@ namespace Tarbora {
     return count(types.begin(), types.end(), type) > 0;
   }
 
+  InfoComponent::InfoComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
+  {
+    entity = table.get<std::string>("entity");
+    variant = table.get<std::string>("variant");
+
+    if (start_enabled_)
+      enable();
+  }
+
   ComponentPtr EntitySystem::infoFactory(const ActorId &id, const LuaTable &table)
   {
-    auto comp = std::make_shared<InfoComponent>(id);
-    comp->entity = table.get<std::string>("entity");
-    comp->variant = table.get<std::string>("variant");
+    return std::make_shared<InfoComponent>(id, table);
+  }
 
-    comp->enable();
-    return comp;
+  TransformComponent::TransformComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
+  {
+    position = table.get<glm::vec3>("position");
+    orientation = glm::quat(glm::radians(table.get<glm::vec3>("orientation")));
+
+    if (start_enabled_)
+      enable();
   }
 
   ComponentPtr EntitySystem::transformFactory(const ActorId &id, const LuaTable &table)
   {
-    auto comp = std::make_shared<TransformComponent>(id);
-    comp->position = table.get<glm::vec3>("position");
-    comp->orientation = glm::quat(glm::radians(table.get<glm::vec3>("orientation")));
-
-    comp->enable();
-    return comp;
+    return std::make_shared<TransformComponent>(id, table);
   }
 
   EntitySystem::EntitySystem(World *w) :
     System(w)
   {
-    components_->registerFactory("type", FCTBIND(&EntitySystem::typeFactory));
-    components_->registerFactory("info", FCTBIND(&EntitySystem::infoFactory));
-    components_->registerFactory("transform", FCTBIND(&EntitySystem::transformFactory));
+    components->registerFactory("type", FCTBIND(&EntitySystem::typeFactory));
+    components->registerFactory("info", FCTBIND(&EntitySystem::infoFactory));
+    components->registerFactory("transform", FCTBIND(&EntitySystem::transformFactory));
 
     subscribe("set_position", MSGBIND(&EntitySystem::setPosition));
     subscribe("set_orientation", MSGBIND(&EntitySystem::setOrientation));
@@ -71,7 +86,7 @@ namespace Tarbora {
   void EntitySystem::setPosition(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto transform = components_->getComponent<TransformComponent>(m.getId());
+    auto transform = components->getComponent<TransformComponent>(m.getId());
     if (transform && transform->enabled())
     {
       transform->position = m.getDirection();
@@ -82,7 +97,7 @@ namespace Tarbora {
   void EntitySystem::setOrientation(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto transform = components_->getComponent<TransformComponent>(m.getId());
+    auto transform = components->getComponent<TransformComponent>(m.getId());
     if (transform && transform->enabled())
     {
       transform->orientation = glm::quat(glm::radians(m.getDirection()));
@@ -93,7 +108,7 @@ namespace Tarbora {
   void EntitySystem::move(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto transform = components_->getComponent<TransformComponent>(m.getId());
+    auto transform = components->getComponent<TransformComponent>(m.getId());
     if (transform && transform->enabled())
     {
       transform->position += m.getDirection();
@@ -104,7 +119,7 @@ namespace Tarbora {
   void EntitySystem::rotate(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto transform = components_->getComponent<TransformComponent>(m.getId());
+    auto transform = components->getComponent<TransformComponent>(m.getId());
     if (transform && transform->enabled())
     {
       transform->orientation *= glm::quat(glm::radians(m.getDirection()));
@@ -114,7 +129,7 @@ namespace Tarbora {
 
   void EntitySystem::update(float)
   {
-    auto comps = components_->getComponents<TransformComponent>();
+    auto comps = components->getComponents<TransformComponent>();
     for (auto component : comps)
     {
       auto transform = std::static_pointer_cast<TransformComponent>(component);

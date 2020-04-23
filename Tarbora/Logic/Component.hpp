@@ -46,7 +46,7 @@ namespace Tarbora {
      *
      * See also \ref Tarbora::ComponentManager.
      */
-    Component (const ActorId &id) : owner(id) {}
+    Component (const ActorId &id, const LuaTable &table);
 
     //! Enable the component. This won't work if it has errors.
     void enable() { enabled_ = !error_; }
@@ -70,6 +70,7 @@ namespace Tarbora {
 
   protected:
     bool enabled_{false};
+    bool start_enabled_{true};
     bool error_{false};
   };
 

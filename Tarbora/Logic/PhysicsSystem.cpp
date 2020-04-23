@@ -14,18 +14,25 @@
 #include "EntitySystem.hpp"
 
 namespace Tarbora {
+  PhysicsComponent::PhysicsComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table)
+  {
+
+  }
+
   ComponentPtr PhysicsSystem::physicsFactory(const ActorId &id, const LuaTable &table)
   {
+    auto component = std::make_shared<PhysicsComponent>(id, table);
+
     std::string s = table.get<std::string>("shape", "null");
 
     float friction = table.get<float>("friction", 0.f, true);
     float density = table.get<float>("density", 1.f, true);
     float restitution = table.get<float>("restitution", 0.f, true);
 
-    auto transform = components_->getComponent<TransformComponent>(id);
+    auto transform = components->getComponent<TransformComponent>(id);
 
-    auto component = std::make_shared<PhysicsComponent>(id);
-       
+
     Shape shape;
 
     if (s == "sphere")
@@ -69,7 +76,7 @@ namespace Tarbora {
   PhysicsSystem::PhysicsSystem(World *world) :
     System(world)
   {
-    components_->registerFactory("physics", FCTBIND(&PhysicsSystem::physicsFactory));
+    components->registerFactory("physics", FCTBIND(&PhysicsSystem::physicsFactory));
 
     PhysicsEngine::init();
 
@@ -87,7 +94,7 @@ namespace Tarbora {
   void PhysicsSystem::setPosition(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
       physics->body.setPosition(m.getDirection());
   }
@@ -95,7 +102,7 @@ namespace Tarbora {
   void PhysicsSystem::setOrientation(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
       physics->body.setOrientation(glm::quat(glm::radians(m.getDirection())));
   }
@@ -103,7 +110,7 @@ namespace Tarbora {
   void PhysicsSystem::move(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
     {
       auto position = physics->body.getPosition() + m.getDirection();
@@ -114,7 +121,7 @@ namespace Tarbora {
   void PhysicsSystem::rotate(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
     {
       auto old = glm::quat(glm::radians(m.getDirection()));
@@ -126,7 +133,7 @@ namespace Tarbora {
   void PhysicsSystem::applyForce(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
       physics->body.applyForce(m.getDirection());
   }
@@ -134,7 +141,7 @@ namespace Tarbora {
   void PhysicsSystem::applyTorque(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
       physics->body.applyTorque(m.getDirection());
   }
@@ -142,7 +149,7 @@ namespace Tarbora {
   void PhysicsSystem::setVelocity(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
       physics->body.setVelocity(m.getDirection());
   }
@@ -150,7 +157,7 @@ namespace Tarbora {
   void PhysicsSystem::setAngularVel(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
       physics->body.setRotation(m.getDirection());
   }
@@ -158,7 +165,7 @@ namespace Tarbora {
   void PhysicsSystem::stop(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components_->getComponent<PhysicsComponent>(m.getId());
+    auto physics = components->getComponent<PhysicsComponent>(m.getId());
     if (physics && physics->enabled())
       physics->body.setVelocity({0.f, 0.f, 0.f});
   }
@@ -171,7 +178,7 @@ namespace Tarbora {
     PhysicsEngine::update(delta_time);
 
     // After updating the physics engine
-    auto comps = components_->getComponents<PhysicsComponent>();
+    auto comps = components->getComponents<PhysicsComponent>();
     for (auto component : comps)
     {
       auto physics = std::static_pointer_cast<PhysicsComponent>(component);
@@ -183,7 +190,7 @@ namespace Tarbora {
         glm::quat orientation = physics->body.getOrientation();
 
         //  Update the transform
-        auto transform = components_->getComponent<TransformComponent>(id);
+        auto transform = components->getComponent<TransformComponent>(id);
         if (transform->position != position)
         {
           transform->position = position;

@@ -15,8 +15,8 @@
 
 namespace Tarbora {
   System::System(World *w) :
-    ModuleComponent(w), world_(w)
+    ModuleComponent(w), world(w)
   {
-    components_ = world_->getComponentManager();
+    components = world->getComponentManager();
   }
 }

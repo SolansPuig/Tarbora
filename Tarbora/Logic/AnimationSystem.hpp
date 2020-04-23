@@ -19,7 +19,7 @@ namespace Tarbora {
   class AnimationComponent : public Component {
     friend class AnimationSystem;
   public:
-    AnimationComponent(const ActorId &id) : Component(id) {}
+    AnimationComponent(const ActorId &id, const LuaTable &table);
     virtual ~AnimationComponent() {}
 
     static ComponentId getStaticType() { return "animation"; }
@@ -39,6 +39,7 @@ namespace Tarbora {
     ComponentPtr animationFactory(const ActorId &id, const LuaTable &table);
 
     // Message subscriptions
+    void init(const MessageSubject &, const MessageBody &body);
     void event(const MessageSubject &, const MessageBody &body);
 
     // Internal functions

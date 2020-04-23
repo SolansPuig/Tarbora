@@ -23,6 +23,8 @@
  */
 
 namespace Tarbora {
+  class ControllerSystem;
+ 
   /**
    * \brief The component that stores all the info about the actor movement and related.
    *
@@ -33,7 +35,7 @@ namespace Tarbora {
    * */
   class ControllerComponent : public Component {
   public:
-    ControllerComponent(const ActorId &id) : Component(id) {}
+    ControllerComponent(const ActorId &id, const LuaTable &table);
     virtual ~ControllerComponent() {}
 
     //! Return the type name of that component, "controller". For internal use only.
@@ -75,7 +77,7 @@ namespace Tarbora {
    */
   class SightComponent : public Component {
   public:
-    SightComponent(const ActorId &id) : Component(id) {}
+    SightComponent(const ActorId &id, const LuaTable &table);
     virtual ~SightComponent() {}
 
     //! Return the type name of that component, "sight". For internal use only.
@@ -111,7 +113,7 @@ namespace Tarbora {
    */
   class GrabComponent : public Component {
   public:
-    GrabComponent(const ActorId &id) : Component(id) {}
+    GrabComponent(const ActorId &id, const LuaTable &table);
     virtual ~GrabComponent() {}
 
     //! Return the type name of that component, "grab". For internal use only.
@@ -128,7 +130,7 @@ namespace Tarbora {
      */
     float distance{1.f};
     //! \brief The local position where the target is grabbed.
-    glm::vec3 position{glm::vec3(0.f)};
+    glm::vec3 pivot{glm::vec3(0.f)};
     float grid{0.f};
     bool enable_grid{false};
 

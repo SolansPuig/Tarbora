@@ -28,7 +28,7 @@ namespace Tarbora {
    * */
   class ModelComponent : public Component {
   public:
-    ModelComponent(const ActorId &id) : Component(id) {}
+    ModelComponent(const ActorId &id, const LuaTable &table);
     virtual ~ModelComponent() {}
 
     //! Return the type name of the component, "model". For internal use only.
@@ -63,6 +63,9 @@ namespace Tarbora {
   private:
     // Factories
     ComponentPtr modelFactory(const ActorId &id, const LuaTable &table);
+
+    // Message subscriptions
+    void init(const MessageSubject &, const MessageBody &body);
 
     virtual void update(float delta_time) override;
   };
