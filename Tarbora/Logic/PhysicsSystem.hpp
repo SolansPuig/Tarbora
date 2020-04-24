@@ -29,19 +29,15 @@ namespace Tarbora {
    *
    * It is created by \ref Tarbora::PhysicsSystem.
    */
-  class PhysicsComponent : public Component {
+  class RigidbodyComponent : public Component, public Rigidbody {
   public:
-    PhysicsComponent(const ActorId &id, const LuaTable &table);
-    virtual ~PhysicsComponent() {}
+    RigidbodyComponent(const ActorId &id, const LuaTable &table);
+    virtual ~RigidbodyComponent() {}
 
-    //! Return the type name of the component, "physics". For internal use only.
-    static ComponentId getStaticType() { return "physics"; }
-    //! Return the type name of the component, "physics". For internal use only.
-    virtual ComponentId getType() const override { return "physics"; }
-
-    Rigidbody body;
-    //! The height, in meters, of the rigidbody.
-    float height;
+    //! Return the type name of the component, "rigidboy". For internal use only.
+    static ComponentId getStaticType() { return "rigidbody"; }
+    //! Return the type name of the component, "rigidboy". For internal use only.
+    virtual ComponentId getType() const override { return "rigidbody"; }
   };
 
   /**
@@ -89,6 +85,7 @@ namespace Tarbora {
     ComponentPtr physicsFactory(const ActorId &id, const LuaTable &table);
 
     // Message subscriptions
+    void init(const MessageSubject &, const MessageBody &body);
     void setPosition(const MessageSubject &, const MessageBody &body);
     void setOrientation(const MessageSubject &, const MessageBody &body);
     void move(const MessageSubject &, const MessageBody &body);

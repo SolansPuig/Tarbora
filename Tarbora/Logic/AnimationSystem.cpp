@@ -72,8 +72,11 @@ namespace Tarbora {
         return;
 
       LuaTable controller = res->get("animation_controller");
-      for (auto animation : anim->playing_animations)
+
+      auto it = anim->playing_animations.begin();
+      while (it != anim->playing_animations.end())
       {
+        std::string animation = *(it++);
         LuaTable event = controller.get(animation).get("events").get(m.getName(), true);
         if (event.valid())
         {
@@ -81,7 +84,6 @@ namespace Tarbora {
         }
       }
     }
-
   }
 
 

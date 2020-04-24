@@ -5,7 +5,7 @@ components = {
         model = "ground.lua",
         material = "grass.mat.lua"
     },
-    physics = {
+    rigidbody = {
         shape = "box",
         size = {100, 1, 100},
         density = 0,

@@ -5,7 +5,7 @@ components = {
         model = "birch.lua",
         material = "birch.mat.lua"
     },
-    physics = {
+    rigidbody = {
         shape = "box",
         size = {0.75, 2.25, 0.75},
         density = 0,

@@ -8,7 +8,7 @@ components = {
     animation = {
         file = "entities/human.lua"
     },
-    physics = {
+    rigidbody = {
         shape = "capsule",
         height = 1.4,
         radius = 0.5,

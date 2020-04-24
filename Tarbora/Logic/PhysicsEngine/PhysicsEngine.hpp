@@ -24,11 +24,6 @@ namespace Tarbora {
     float distance{0.f};
   };
 
-  struct Shape {
-    float volume;
-    btCollisionShape *shape;
-  };
-
   class PhysicsEngine {
   public:
     static bool init();

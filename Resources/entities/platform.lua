@@ -5,7 +5,7 @@ components = {
         model = "platform.lua",
         material = "terrain2.mat.lua"
     },
-    physics = {
+    rigidbody = {
         shape = "box",
         size = {2, 2, 2},
         density = 0,

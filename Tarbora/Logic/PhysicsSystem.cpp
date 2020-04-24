@@ -14,72 +14,60 @@
 #include "EntitySystem.hpp"
 
 namespace Tarbora {
-  PhysicsComponent::PhysicsComponent(const ActorId &id, const LuaTable &table) :
-    Component(id, table)
+  RigidbodyComponent::RigidbodyComponent(const ActorId &id, const LuaTable &table) :
+    Component(id, table), Rigidbody(id)
   {
-
-  }
-
-  ComponentPtr PhysicsSystem::physicsFactory(const ActorId &id, const LuaTable &table)
-  {
-    auto component = std::make_shared<PhysicsComponent>(id, table);
-
     std::string s = table.get<std::string>("shape", "null");
 
-    float friction = table.get<float>("friction", 0.f, true);
-    float density = table.get<float>("density", 1.f, true);
-    float restitution = table.get<float>("restitution", 0.f, true);
+    friction = table.get<float>("friction", 0.f, true);
+    density = table.get<float>("density", 1.f, true);
+    restitution = table.get<float>("restitution", 0.f, true);
 
-    auto transform = components->getComponent<TransformComponent>(id);
-
-
-    Shape shape;
+    if (start_enabled_)
+      enabled_ = true;
 
     if (s == "sphere")
     {
       float radius = table.get<float>("radius");
       shape = PhysicsEngine::genSphere(radius);
-      component->height = 2 * radius;
+      height = 2 * radius;
     }
     else if (s == "capsule")
     {
       float radius = table.get<float>("radius");
-      float height = table.get<float>("height");
-      shape = PhysicsEngine::genCapsule(radius, height);
-      component->height = 2 * radius + height;
+      float h = table.get<float>("height");
+      shape = PhysicsEngine::genCapsule(radius, h);
+      height = 2 * radius + h;
     }
     else if (s == "box")
     {
       glm::vec3 size = table.get<glm::vec3>("size");
       shape = PhysicsEngine::genBox(size);
-      component->height = size.y;
+      height = size.y;
     }
     else
     {
       LOG_ERR(
-        "PhysicsComponent: \"%s\" is not a valid character controller shape.",
+        "RigidbodyComponent: \"%s\" is not a valid character controller shape.",
         s.c_str());
-      return ComponentPtr();
+      enabled_ = false;
+      error_ = true;
     }
-
-    component->body.init(
-      id, shape, friction, density, restitution,
-      transform->position,
-      transform->orientation
-    );
-
-    component->enable();
-    return component;
   }
 
+  ComponentPtr PhysicsSystem::physicsFactory(const ActorId &id, const LuaTable &table)
+  {
+    return std::make_shared<RigidbodyComponent>(id, table);
+  }
 
   PhysicsSystem::PhysicsSystem(World *world) :
     System(world)
   {
-    components->registerFactory("physics", FCTBIND(&PhysicsSystem::physicsFactory));
+    components->registerFactory("rigidbody", FCTBIND(&PhysicsSystem::physicsFactory));
 
     PhysicsEngine::init();
 
+    subscribe("init_event", MSGBIND(&PhysicsSystem::init));
     subscribe("set_position", MSGBIND(&PhysicsSystem::setPosition));
     subscribe("set_orientation", MSGBIND(&PhysicsSystem::setOrientation));
     subscribe("move", MSGBIND(&PhysicsSystem::move));
@@ -91,83 +79,95 @@ namespace Tarbora {
     subscribe("stop", MSGBIND(&PhysicsSystem::stop));
   }
 
+  void PhysicsSystem::init(const MessageSubject &, const MessageBody &body)
+  {
+    Message::Actor m(body);
+    ActorId id = m.getId();
+
+    auto rb = components->getComponent<RigidbodyComponent>(id);
+    auto transform = components->getComponent<TransformComponent>(id);
+
+    if (rb && rb->enabled() && transform && transform->enabled())
+      rb->init(transform->position, transform->orientation);
+  }
+
   void PhysicsSystem::setPosition(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
-      physics->body.setPosition(m.getDirection());
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->setPosition(m.getDirection());
   }
 
   void PhysicsSystem::setOrientation(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
-      physics->body.setOrientation(glm::quat(glm::radians(m.getDirection())));
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->setOrientation(glm::quat(glm::radians(m.getDirection())));
   }
 
   void PhysicsSystem::move(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
     {
-      auto position = physics->body.getPosition() + m.getDirection();
-      physics->body.setPosition(position);
+      auto position = rb->getPosition() + m.getDirection();
+      rb->setPosition(position);
     }
   }
 
   void PhysicsSystem::rotate(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
     {
       auto old = glm::quat(glm::radians(m.getDirection()));
-      auto orientation = physics->body.getOrientation() + old;
-      physics->body.setOrientation(orientation);
+      auto orientation = rb->getOrientation() + old;
+      rb->setOrientation(orientation);
     }
   }
 
   void PhysicsSystem::applyForce(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
-      physics->body.applyForce(m.getDirection());
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->applyForce(m.getDirection());
   }
 
   void PhysicsSystem::applyTorque(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
-      physics->body.applyTorque(m.getDirection());
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->applyTorque(m.getDirection());
   }
 
   void PhysicsSystem::setVelocity(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
-      physics->body.setVelocity(m.getDirection());
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->setVelocity(m.getDirection());
   }
 
   void PhysicsSystem::setAngularVel(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
-      physics->body.setRotation(m.getDirection());
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->setRotation(m.getDirection());
   }
 
   void PhysicsSystem::stop(const MessageSubject &, const MessageBody &body)
   {
     Message::ApplyPhysics m(body);
-    auto physics = components->getComponent<PhysicsComponent>(m.getId());
-    if (physics && physics->enabled())
-      physics->body.setVelocity({0.f, 0.f, 0.f});
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->setVelocity({0.f, 0.f, 0.f});
   }
 
   void PhysicsSystem::update(float delta_time)
@@ -178,16 +178,16 @@ namespace Tarbora {
     PhysicsEngine::update(delta_time);
 
     // After updating the physics engine
-    auto comps = components->getComponents<PhysicsComponent>();
+    auto comps = components->getComponents<RigidbodyComponent>();
     for (auto component : comps)
     {
-      auto physics = std::static_pointer_cast<PhysicsComponent>(component);
-      if (physics->enabled())
+      auto rb = std::static_pointer_cast<RigidbodyComponent>(component);
+      if (rb->enabled())
       {
-        ActorId &id = physics->owner;
+        ActorId &id = rb->owner;
 
-        glm::vec3 position = physics->body.getPosition();
-        glm::quat orientation = physics->body.getOrientation();
+        glm::vec3 position = rb->getPosition();
+        glm::quat orientation = rb->getOrientation();
 
         //  Update the transform
         auto transform = components->getComponent<TransformComponent>(id);

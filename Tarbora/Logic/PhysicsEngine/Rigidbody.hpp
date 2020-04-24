@@ -18,8 +18,12 @@
 #include "Bullet.hpp"
 
 namespace Tarbora {
-  struct Shape;
   struct RaycastResult;
+
+  struct Shape {
+    float volume;
+    btCollisionShape *shape;
+  };
 
   class Rigidbody {
     friend class PhysicsEngine;
@@ -27,18 +31,10 @@ namespace Tarbora {
     friend class PointConstraint;
 
   public:
-    Rigidbody() {}
+    Rigidbody(const ActorId &id);
     ~Rigidbody();
 
-    void init(
-      ActorId id,
-      Shape shape,
-      float friction,
-      float density,
-      float restitution,
-      const glm::vec3 &position,
-      const glm::quat &orientation
-    );
+    void init(const glm::vec3 &position, const glm::quat &orientation);
 
     void setTransform(const glm::vec3 &position, const glm::quat &orientation);
     void setPosition(const glm::vec3 &position);
@@ -74,6 +70,20 @@ namespace Tarbora {
     bool isStatic();
 
     void alwaysActive(bool always);
+
+    //! The shape of the rigidbody.
+    Shape shape;
+    //! The height, in meters, of the rigidbody.
+    float height;
+    //! The friction between the body and other objects.
+    float friction;
+    //! The density, which will be used to calculate the mass.
+    float density;
+    //! The mass of the rigidbody.
+    float mass;
+    // The bounciness of the rigidbody.
+    float restitution;
+
   private:
     ActorId user_pointer_;
     std::shared_ptr<btRigidBody> body_;

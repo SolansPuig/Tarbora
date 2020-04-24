@@ -5,7 +5,7 @@ components = {
         model = "cube.lua",
         material = "container.mat.lua"
     },
-    physics = {
+    rigidbody= {
         shape = "box",
         size = {1, 1, 1},
         density = 90,

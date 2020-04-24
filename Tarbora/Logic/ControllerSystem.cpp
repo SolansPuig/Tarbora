@@ -85,7 +85,7 @@ namespace Tarbora {
 
     if (controller && controller->enabled())
     {
-      // Set movement
+      //  Set movement
       controller->movement = controller->speed * m.getDirection();
       bool walking_old = controller->walking;
       controller->walking = glm::length(controller->movement) != 0.f;
@@ -153,10 +153,10 @@ namespace Tarbora {
       grab->target = sight->target;
       grab->distance = sight->target_distance;
 
-      auto target = components->getComponent<PhysicsComponent>(grab->target);
+      auto target = components->getComponent<RigidbodyComponent>(grab->target);
       if (target && target->enabled())
       {
-        glm::mat4 local = target->body.getLocalTransform();
+        glm::mat4 local = target->getLocalTransform();
         grab->pivot = local * glm::vec4(sight->target_position, 1.f);
       }
     }
@@ -198,20 +198,22 @@ namespace Tarbora {
       const ActorId &id = controller->owner;
 
       auto transform = components->getComponent<TransformComponent>(id);
-      auto physics = components->getComponent<PhysicsComponent>(id);
+      auto rb = components->getComponent<RigidbodyComponent>(id);
       auto sight = components->getComponent<SightComponent>(id);
       auto grab = components->getComponent<GrabComponent>(id);
 
-      if (controller->enabled() && physics && physics->enabled() && transform)
+
+      if (controller->enabled() && rb && rb->enabled() && transform)
       {
         // TODO: This should happen on initalization, not here
-        physics->body.setAngularFactor({0.f, 1.f, 0.f});
-               
+        rb->setAngularFactor({0.f, 1.f, 0.f});
+
+
         // Check if the entity is on the ground or falling
-        auto ray = physics->body.raycast(
+        auto ray = rb->raycast(
           glm::vec3(0.f),            // From the center
           glm::vec3(0.f, -1.f, 0.f), // Point down
-          physics->height/2.f        // To the feet
+          rb->height/2.f        // To the feet
         );
 
         if (ray.hit_id != "")
@@ -219,7 +221,7 @@ namespace Tarbora {
           // Is falling / flying
           if (!controller->on_ground)
           {
-            physics->body.setDamping(0.9999999f, 0.f);
+            rb->setDamping(0.9999999f, 0.f);
             // TODO: Just hit the ground... Do something!
           }
           controller->on_ground = true;
@@ -229,7 +231,7 @@ namespace Tarbora {
           // Is on the ground
           if (controller->on_ground)
           {
-            physics->body.setDamping(0.f, 0.f);
+            rb->setDamping(0.f, 0.f);
             // TODO: Is falling... Do something!
           }
           controller->on_ground = false;
@@ -238,7 +240,7 @@ namespace Tarbora {
         // Check where the entity is looking at
         if (sight && sight->enabled())
         {
-          auto ray = physics->body.raycast(
+          auto ray = rb->raycast(
             sight->eye_position,
             sight->look_direction * glm::vec3(0.f, 0.f, 1.f),
             sight->look_distance
@@ -262,24 +264,23 @@ namespace Tarbora {
           }
         }
 
-
         // Move the grabbed object (if any)
         if (grab && grab->enabled())
         {
           if (grab->target != "") // Has a target
           {
-            auto target = components->getComponent<PhysicsComponent>(grab->target);
+            auto target = components->getComponent<RigidbodyComponent>(grab->target);
             if (target && target->enabled())
             {
-              bool static_target = target->body.isStatic();
+              bool static_target = target->isStatic();
 
               // If no constraint is created, create one
               // Static targets don't need a constraint
               if (!grab->constraint && !static_target)
               {
-                target->body.alwaysActive(true);
+                target->alwaysActive(true);
                 grab->constraint = std::make_shared<PointConstraint>(
-                  &target->body,
+                  target.get(),
                   grab->pivot
                 );
                 grab->constraint->setAngularFactor({0.f, 0.f, 0.f});
@@ -288,7 +289,7 @@ namespace Tarbora {
               // Now move it
               if (sight && sight->enabled())
               {
-                glm::mat4 world = physics->body.getWorldTransform();
+                glm::mat4 world = rb->getWorldTransform();
                 glm::vec3 direction = sight->look_direction * glm::vec3(0.f, 0.f, 1.f);
                 glm::vec3 pos = world * glm::vec4(direction * grab->distance, 1.f);
 
@@ -297,15 +298,15 @@ namespace Tarbora {
                 else
                 {
                   // Doesn't have constraint, so must be static. Just move it's transform
-                  glm::mat4 tworld = target->body.getWorldTransform();
-                  glm::mat4 tlocal = target->body.getLocalTransform();
+                  glm::mat4 tworld = target->getWorldTransform();
+                  glm::mat4 tlocal = target->getLocalTransform();
                   glm::vec3 lpos = tlocal * glm::vec4(pos, 1.f);
                   glm::vec3 center = tworld * glm::vec4(lpos - grab->pivot, 1.f);
 
                   if (grab->enable_grid && grab->grid != 0.0f)
-                    target->body.setPosition(glm::round(center/grab->grid) * grab->grid);
+                    target->setPosition(glm::round(center/grab->grid) * grab->grid);
                   else
-                    target->body.setPosition(center);
+                    target->setPosition(center);
                 }
               }
             }
@@ -316,9 +317,9 @@ namespace Tarbora {
           }
         }
 
-        // Update the physics component
-        physics->body.applyImpulse(controller->movement);
-        physics->body.setRotation(controller->rotation);
+        // Update the rigidbody component
+        rb->applyImpulse(controller->movement);
+        rb->setRotation(controller->rotation);
 
         // Update the animation of the head and neck
         glm::vec3 head(controller->facing.x, 0.f, controller->facing.z);
