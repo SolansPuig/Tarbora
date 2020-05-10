@@ -108,6 +108,28 @@ namespace Tarbora {
     glm::vec3 target_position{glm::vec3(0.f)};
   };
 
+  class RigidbodyComponent;
+
+  class ControllerSystem : public System {
+    friend class World;
+  public:
+    ControllerSystem(World *w);
+
+  private:
+    // Message subscriptions for controller
+    void setMovement(const MessageSubject &, const MessageBody &body);
+    void setRotation(const MessageSubject &, const MessageBody &body);
+    void setFacing(const MessageSubject &, const MessageBody &body);
+
+    void checkGround(
+      std::shared_ptr<ControllerComponent> controller,
+      std::shared_ptr<RigidbodyComponent> rb
+    );
+    void checkSight(std::shared_ptr<RigidbodyComponent> rb);
+
+    virtual void update(float delta_time) override;
+  };
+
   /**
    * \brief This component allows the actor to grab and move another actor.
    */
@@ -131,32 +153,18 @@ namespace Tarbora {
     float distance{1.f};
     //! \brief The local position where the target is grabbed.
     glm::vec3 pivot{glm::vec3(0.f)};
-    float grid{0.f};
+    float grid{0.1f};
     bool enable_grid{false};
 
     std::shared_ptr<PointConstraint> constraint;
   };
 
-  class ControllerSystem : public System {
+  class GrabSystem : public System {
     friend class World;
   public:
-    ControllerSystem(World *w);
+    GrabSystem(World *w);
 
   private:
-    // Factories
-    ComponentPtr controllerFactory(const ActorId &id, const LuaTable &table);
-    ComponentPtr sightFactory(const ActorId &id, const LuaTable &table);
-    ComponentPtr grabFactory(const ActorId &id, const LuaTable &table);
-
-    // Message subscriptions for controller
-    void setMovement(const MessageSubject &, const MessageBody &body);
-    void setRotation(const MessageSubject &, const MessageBody &body);
-    void setFacing(const MessageSubject &, const MessageBody &body);
-    // Message subscriptiosn for grab
-    void grabObject(const MessageSubject &, const MessageBody &body);
-    void releaseObject(const MessageSubject &, const MessageBody &body);
-    void grabDistance(const MessageSubject &, const MessageBody &body);
-
     virtual void update(float delta_time) override;
   };
 }

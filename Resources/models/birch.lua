@@ -1,61 +1,21 @@
+function gen_branch(nname, n, pos, size, rot)
+  branch = {
+    name = nname,
+    shape = "cube.mesh",
+    position = {pos.x, pos.y, pos.z},
+    rotation = {rot.x, rot.y, rot.z},
+    size = {size.x, size.y, size.x}
+  }
+  return branch
+end
+
 scale = 1
 nodes = {
-    {
-        name = "body",
-        shape = "cube.mesh",
-        origin = {0, 0, 0},
-        position = {0, 0, 0},
-        rotation = {0, 0, 0},
-        size = {33, 225, 33},
-        texture_size = {75, 225, 75},
-        uv_map = {0, 0},
-        nodes = {
-            {
-                name = "trunk2",
-                shape = "cube.mesh",
-                origin = {0, 0, 0},
-                position = {0, 225, 0},
-                rotation = {0, 0, 0},
-                size = {33, 225, 33},
-                texture_size = {75, 225, 75},
-                uv_map = {0, 0},
-                nodes = {
-                    {
-                        name = "trunk3",
-                        shape = "cube.mesh",
-                        origin = {0, 0, 0},
-                        position = {0, 225, 0},
-                        rotation = {0, 0, 0},
-                        size = {33, 225, 33},
-                        texture_size = {75, 225, 75},
-                        uv_map = {0, 0},
-                        nodes = {
-                            {
-                                name = "trunk4",
-                                shape = "cube.mesh",
-                                origin = {0, 0, 0},
-                                position = {0, 225, 0},
-                                rotation = {0, 0, 0},
-                                size = {29, 225, 29},
-                                texture_size = {75, 225, 75},
-                                uv_map = {0, 0},
-                                nodes = {
-                                    {
-                                        name = "trunk4",
-                                        shape = "cube.mesh",
-                                        origin = {0, 0, 0},
-                                        position = {0, 225, 0},
-                                        rotation = {0, 0, 0},
-                                        size = {29, 225, 29},
-                                        texture_size = {75, 225, 75},
-                                        uv_map = {0, 0}
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-            }
-        },
-    }
+  gen_branch(
+    "body",
+    0,
+    {x = 0, y = 0, z = 0},
+    {x = 33, y = function() return math.random(250, 350) end},
+    { x = math.random(-10, 10), y = math.random(-10, 10), z = math.random(-10, 10) }
+  )
 }

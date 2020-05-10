@@ -81,11 +81,7 @@ namespace Tarbora {
     PhysicsSystem(World *w);
 
   private:
-    // Factories
-    ComponentPtr physicsFactory(const ActorId &id, const LuaTable &table);
-
     // Message subscriptions
-    void init(const MessageSubject &, const MessageBody &body);
     void setPosition(const MessageSubject &, const MessageBody &body);
     void setOrientation(const MessageSubject &, const MessageBody &body);
     void move(const MessageSubject &, const MessageBody &body);

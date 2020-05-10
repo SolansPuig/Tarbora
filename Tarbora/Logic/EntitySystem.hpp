@@ -123,11 +123,6 @@ namespace Tarbora {
     EntitySystem(World *w);
 
   private:
-    // Factories
-    ComponentPtr typeFactory(const ActorId &id, const LuaTable &table);
-    ComponentPtr transformFactory(const ActorId &id, const LuaTable &table);
-    ComponentPtr infoFactory(const ActorId &id, const LuaTable &table);
-
     // Message subscriptions for transform
     void setPosition(const MessageSubject &, const MessageBody &body);
     void setOrientation(const MessageSubject &, const MessageBody &body);

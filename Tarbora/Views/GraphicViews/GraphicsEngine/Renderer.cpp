@@ -81,25 +81,25 @@ namespace Tarbora {
 
     void Renderer::occlusionPass()
     {
-       // glBindFramebuffer(GL_FRAMEBUFFER, ssao_buffer_);
-       // glClear(GL_COLOR_BUFFER_BIT);
-       // occlusion_shader_->use();
-       // occlusion_shader_->set("projection", projection_);
-       // occlusion_shader_->set("view", view_);
-       // g_position_->bind(0);
-       // g_normal_->bind(1);
-       // noise_texture_->bind(2);
-       // glBindVertexArray(quad_mesh_->getId());
-       // glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
+        glBindFramebuffer(GL_FRAMEBUFFER, ssao_buffer_);
+        glClear(GL_COLOR_BUFFER_BIT);
+        occlusion_shader_->use();
+        occlusion_shader_->set("projection", projection_);
+        occlusion_shader_->set("view", view_);
+        g_position_->bind(0);
+        g_normal_->bind(1);
+        noise_texture_->bind(2);
+        glBindVertexArray(quad_mesh_->getId());
+        glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
 
-       // glBindFramebuffer(GL_FRAMEBUFFER, ssao_blur_buffer_);
-       // glClear(GL_COLOR_BUFFER_BIT);
-       // occlusion_blur_shader_->use();
-       // occlusion_blur_shader_->set("projection", projection_);
-       // occlusion_blur_shader_->set("view", view_);
-       // ssao_color_->bind();
-       // glBindVertexArray(quad_mesh_->getId());
-       // glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
+        glBindFramebuffer(GL_FRAMEBUFFER, ssao_blur_buffer_);
+        glClear(GL_COLOR_BUFFER_BIT);
+        occlusion_blur_shader_->use();
+        occlusion_blur_shader_->set("projection", projection_);
+        occlusion_blur_shader_->set("view", view_);
+        ssao_color_->bind();
+        glBindVertexArray(quad_mesh_->getId());
+        glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
     }
 
     void Renderer::lightingPass()

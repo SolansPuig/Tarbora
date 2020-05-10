@@ -2,6 +2,7 @@
 #include "DemoWindow.hpp"
 #include "GameLayer.hpp"
 #include "MetricsGui.hpp"
+#include "InventoryLayer.hpp"
 
 namespace Tarbora {
     HumanView::HumanView() :
@@ -20,6 +21,9 @@ namespace Tarbora {
 
         std::shared_ptr<DemoWindow> demo_gui(new DemoWindow(this, false));
         pushLayer(demo_gui);
+
+        std::shared_ptr<InventoryLayer> inventory(new InventoryLayer(this));
+        pushLayer(inventory);
 
         getGraphicsEngine()->getWindow()->captureMouse(true);
 

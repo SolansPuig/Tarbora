@@ -1,3 +1,15 @@
+/*********************************************************************
+ * Copyright (C) 2020 Roger Solans Puig
+ * Email: roger@solanspuig.cat
+ *
+ * This file is part of Tarbora. You can obtain a copy at
+ * https://github.com/SolansPuig/Tarbora
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *********************************************************************/
+
 syntax = "proto3";
 
 package MessageContent;
@@ -5,74 +17,94 @@ package MessageContent;
 import "math.proto";
 
 message Actor {
-    string id = 1;
+  string id = 1;
 }
 
 message Node {
-    string id = 1;
-    string name = 2;
+  string id = 1;
+  string name = 2;
 }
 
 message CreateActor {
-    string id = 1;
-    string entity = 2;
-    string variant = 3;
-    MathMessage.Vector position = 4;
-    MathMessage.Quaternion orientation = 5;
+  string id = 1;
+  string entity = 2;
+  string variant = 3;
+  MathMessage.Vector position = 4;
+  MathMessage.Quaternion orientation = 5;
 }
 
 message CreateActorModel {
-    string id = 1;
-    string model = 2;
-    string material = 3;
-    uint32 render_pass = 4;
+  string id = 1;
+  string model = 2;
+  string material = 3;
+  uint32 render_pass = 4;
 }
 
 message MoveActor {
-    string id = 1;
-    MathMessage.Vector position = 2;
-    MathMessage.Quaternion orientation = 3;
+  string id = 1;
+  MathMessage.Vector position = 2;
+  MathMessage.Quaternion orientation = 3;
+  string parent = 4;
+  string parent_node = 5;
 }
 
 message MoveNode {
-    string id = 1;
-    string name = 2;
-    MathMessage.Vector position = 3;
-    MathMessage.Quaternion orientation = 4;
+  string id = 1;
+  string name = 2;
+  MathMessage.Vector position = 3;
+  MathMessage.Quaternion orientation = 4;
 }
 
 message StartAnimation {
-    string id = 1;
-    string animation = 2;
-    string file = 3;
-    float speed = 4;
-    uint32 blend_mode = 5;
-    float blend_factor = 6;
-    float fade_in_timer = 7;
-    bool loop = 8;
+  string id = 1;
+  string animation = 2;
+  string file = 3;
+  float speed = 4;
+  uint32 blend_mode = 5;
+  float blend_factor = 6;
+  float fade_in_timer = 7;
+  bool loop = 8;
 }
 
 message EndAnimation {
-    string id = 1;
-    string animation = 2;
-    uint32 stop_mode = 5;
-    float fade_out_timer = 7;
+  string id = 1;
+  string animation = 2;
+  uint32 stop_mode = 5;
+  float fade_out_timer = 7;
 }
 
 message ApplyPhysics {
-    string id = 1;
-    MathMessage.Vector direction = 2;
+  string id = 1;
+  MathMessage.Vector direction = 2;
 }
 
 message LookAt {
-    string id = 1;
-    string target = 2;
-    float distance = 3;
-    MathMessage.Vector direction = 4;
-    MathMessage.Vector position = 5;
+  string id = 1;
+  string target = 2;
+  float distance = 3;
+  MathMessage.Vector direction = 4;
+  MathMessage.Vector position = 5;
 }
 
 message Event {
-    string id = 1;
-    string name = 2;
+  string id = 1;
+  string name = 2;
+}
+
+message Item {
+  string name = 1;
+  string description = 2;
+  uint32 quantity = 3;
+  string owner = 4;
+  string inv_group = 5;
+  uint32 slot = 6;
+}
+
+message Group {
+  repeated Item slots = 1;
+}
+
+message Inventory {
+  string id = 1;
+  map<string, Group> inventory = 2;
 }

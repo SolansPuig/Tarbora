@@ -44,6 +44,29 @@ namespace Tarbora {
      */
     virtual void update(float delta_time) = 0;
   };
+
+  //! The class that stores all the systems. See \ref Entity_Component_System
+  class SystemManager {
+  public:
+
+    //! Register a system.
+    /*!
+     * \return A pointer to the system.
+     */
+    template <class T>
+    void registerSystem(std::shared_ptr<T> system);
+
+  protected:
+    std::vector<std::shared_ptr<System>> systems_;
+  };
+
+  // Implementation of SystemManager
+
+  template <class T>
+  inline void SystemManager::registerSystem(std::shared_ptr<T> system)
+  {
+    systems_.push_back(system);
+  }
 }
 
 #endif

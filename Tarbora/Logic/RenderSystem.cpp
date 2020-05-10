@@ -20,50 +20,58 @@ namespace Tarbora {
     render_pass = table.get<int>("render_pass", 1);
     model = table.get<std::string>("model", "cube");
     material = table.get<std::string>("material", "white");
-
-    if (start_enabled_)
-      enabled_ = true;
-  }
-
-  ComponentPtr RenderSystem::modelFactory(const ActorId &id, const LuaTable &table)
-  {
-    return std::make_shared<ModelComponent>(id, table);
   }
 
   RenderSystem::RenderSystem(World *w) :
     System(w)
   {
-    components->registerFactory("model", FCTBIND(&RenderSystem::modelFactory));
-
-    subscribe("init_event", MSGBIND(&RenderSystem::init));
+    components->registerFactory("model", [&](auto id, auto table)
+    {
+      return std::make_shared<ModelComponent>(id, table);
+    });
+    components->onEnable("model", ENBIND(&RenderSystem::enableModel));
+    components->onDisable("model", ENBIND(&RenderSystem::disableModel));
   }
 
-  void RenderSystem::init(const MessageSubject &, const MessageBody &body)
+  bool RenderSystem::enableModel(std::shared_ptr<Component> comp)
   {
-    Message::Actor m(body);
-    ActorId id = m.getId();
+    auto model = std::static_pointer_cast<ModelComponent>(comp);
+    auto transform = components->getComponent<TransformComponent>(model->owner);
 
-    auto model = components->getComponent<ModelComponent>(id);
-    auto transform = components->getComponent<TransformComponent>(id);
-
-    if (model && model->enabled() && transform && transform->enabled())
+    if (transform)
     {
       trigger("create_actor_model", Message::CreateActorModel(
-                id,
+                model->owner,
                 model->model,
                 model->material,
                 model->render_pass
               ));
 
-      Message::MoveActor msg(id);
-      msg.setPosition(transform->position);
-      msg.setOrientation(transform->orientation);
+      Message::MoveActor msg(model->owner);
+
+      if (model->parent == "")
+      {
+        msg.setPosition(transform->position);
+        msg.setOrientation(transform->orientation);
+      }
+      else
+      {
+        msg->set_parent(model->parent);
+        msg->set_parent_node(model->parent_node);
+        msg.setPosition(model->offset);
+      }
       trigger("move_actor", msg);
+
+      return true;
     }
-    else
-    {
-      LOG_WARN("Entity %s has a model but no transform component.", id.c_str());
-    }
+    return false;
+  }
+
+  bool RenderSystem::disableModel(std::shared_ptr<Component> comp)
+  {
+    auto model = std::static_pointer_cast<ModelComponent>(comp);
+    trigger("delete_actor_model", Message::Actor(comp->owner));
+    return true;
   }
 
   void RenderSystem::update(float)

@@ -16,6 +16,7 @@
 #include "System.hpp"
 
 #define FCTBIND(T) (std::bind(T, this, std::placeholders::_1, std::placeholders::_2))
+#define ENBIND(T) (std::bind(T, this, std::placeholders::_1))
 
 /**
  * \file
@@ -77,8 +78,9 @@ namespace Tarbora {
   typedef std::shared_ptr<Component> ComponentPtr;
   typedef std::pair<const ComponentId, ComponentPtr> ComponentPair;
   typedef std::function<ComponentPtr(const ActorId&, const LuaTable&)> ComponentFactory;
+  typedef std::function<bool(ComponentPtr)> ComponentOnEnable;
   typedef std::unordered_map<ComponentId, ComponentPtr> ComponentMap;
-  typedef std::list<ComponentPtr> ComponentList;
+  typedef std::list<std::weak_ptr<Component>> ComponentList;
 
   //! Just an iterator for \ref Tarbora::Component lists.
   class ComponentIterator {
@@ -113,22 +115,6 @@ namespace Tarbora {
   //! The class that stores all the components. See \ref Entity_Component_System.
   class ComponentManager {
   public:
-    //! Create a new component of type T for an actor.
-    /*!
-     * If this actor already has a component of that type, this won't create a new
-     * one, just return a pointer to the old.
-     *
-     * \param id The id of the actor that owns that component.
-     * \param table A Lua Table containing the configuration data for the component.
-     * \return A pointer to the newly created component.
-     */
-    template <class T>
-    std::shared_ptr<T> createComponent(const ActorId &id, const LuaTable &table)
-    {
-      return std::static_pointer_cast<T>(
-        createComponent(id, T::getStaticType(), table));
-    }
-
     //! Create a new component of type \c component for an actor.
     /*!
      * If this actor already has a component of that type, this won't create a new
@@ -163,6 +149,9 @@ namespace Tarbora {
     //! Get a \ref Tarbora::ComponentIterator to all of the components of an entity.
     ComponentMapIterator getEntityComponents(const ActorId &id);
 
+    //! Delete all the components of an actor.
+    void deleteEntityComponents(const ActorId &id);
+
     //! Register a new component creator function
     /*!
      * \param id The id of the component type.
@@ -170,10 +159,54 @@ namespace Tarbora {
      */
     void registerFactory(const ComponentId &id, ComponentFactory factory);
 
+    //! Enable the component of type T of an actor.
+    template <class T>
+    ComponentPtr enableComponent(const ActorId &id);
+
+    //! Disable the component of type T of an actor.
+    template <class T>
+    ComponentPtr disableComponent(const ActorId &id);
+
+    //! Require the component of type T to be enabled.
+    template <class T>
+    std::shared_ptr<T> require(const ActorId &id);
+
+    //! Enable all the components of an actor.
+    bool enableEntityComponents(const ActorId &id);
+    //! Disable all the components of an actor.
+    bool disableEntityComponents(const ActorId &id);
+
+
+    //! Register an enable callback.
+    /*!
+     * \param id The id of the component type.
+     * \param callback The callback function that will be called before enabling
+     * that component.
+     */
+    void onEnable(const ComponentId &id, ComponentOnEnable callback);
+    //! Register a disable callback.
+    /*!
+     * \param id The id of the component type.
+     * \param callback The callback function that will be called before disabling
+     * that component.
+     */
+    void onDisable(const ComponentId &id, ComponentOnEnable callback);
+
+    /*! Delete entities marked for deletion. Not thread safe, cannot be called during a
+     * system update.
+     */
+    void clean();
+
   private:
+    bool enableComponent(std::shared_ptr<Component> comp);
+    bool disableComponent(std::shared_ptr<Component> comp);
+
     std::unordered_map<ComponentId, ComponentList>  components_;
     std::unordered_map<ActorId, ComponentMap> entities_;
     std::unordered_map<ComponentId, ComponentFactory> component_factory_;
+    std::unordered_map<ComponentId, ComponentOnEnable> component_enablers_;
+    std::unordered_map<ComponentId, ComponentOnEnable> component_disablers_;
+    std::list<ActorId> entities_to_delete_;
   };
 
 
@@ -182,11 +215,11 @@ namespace Tarbora {
   template <class T>
   std::shared_ptr<T> ComponentManager::getComponent(const ActorId &id)
   {
-    auto entity_components = entities_.find(id);
-    if (entity_components != entities_.end())
+    auto entity = entities_.find(id);
+    if (entity != entities_.end())
     {
-      auto component = entity_components->second.find(T::getStaticType());
-      if (component != entity_components->second.end())
+      auto component = entity->second.find(T::getStaticType());
+      if (component != entity->second.end())
       {
         return std::static_pointer_cast<T>(component->second);
       }
@@ -199,10 +232,10 @@ namespace Tarbora {
   void ComponentManager::deleteComponent(const ActorId &id)
   {
     // Delete from entity
-    auto entity_components = entities_.find(id);
-    if (entity_components != entities_.end())
+    auto entity = entities_.find(id);
+    if (entity != entities_.end())
     {
-      entity_components->second.erase(T::getStaticType());
+      entity->second.erase(T::getStaticType());
     }
 
     // Delete from components list
@@ -234,6 +267,30 @@ namespace Tarbora {
     }
 
     return iter;
+  }
+
+  template <class T>
+  ComponentPtr ComponentManager::enableComponent(const ActorId &id)
+  {
+    std::shared_ptr<T> comp = getComponent<T>(id);
+    if(enableComponent(comp))
+      return comp;
+    return ComponentPtr();
+  }
+
+  template <class T>
+  ComponentPtr ComponentManager::disableComponent(const ActorId &id)
+  {
+    std::shared_ptr<T> comp = getComponent<T>(id);
+    if (disableComponent(comp))
+      return comp;
+    return ComponentPtr();
+  }
+
+  template <class T>
+  std::shared_ptr<T> ComponentManager::require(const ActorId &id)
+  {
+    return std::static_pointer_cast<T>(enableComponent<T>(id));
   }
 }
 

@@ -19,7 +19,7 @@ namespace Tarbora {
     user_pointer_ = id;
   }
 
-  void Rigidbody::init(const glm::vec3 &position, const glm::quat &orientation)
+  void Rigidbody::create(const glm::vec3 &position, const glm::quat &orientation)
   {
     mass = shape.volume * density;
 
@@ -37,14 +37,28 @@ namespace Tarbora {
     body_->setUserPointer(&user_pointer_);
 
     PhysicsEngine::registerRigidbody(this);
+
+    enabled_ = true;
+  }
+
+  void Rigidbody::destroy()
+  {
+    PhysicsEngine::deleteRigidbody(this);
+    enabled_ = false;
   }
 
   Rigidbody::~Rigidbody()
   {
-    PhysicsEngine::deleteRigidbody(this);
+    if (enabled_)
+    {
+      PhysicsEngine::deleteRigidbody(this);
+    }
 
-    delete body_->getMotionState();
-    delete body_->getCollisionShape();
+    if (body_)
+    {
+      delete body_->getMotionState();
+      delete body_->getCollisionShape();
+    }
   }
 
   void Rigidbody::setTransform(const glm::vec3 &position, const glm::quat &rotation)

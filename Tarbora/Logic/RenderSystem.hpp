@@ -42,6 +42,12 @@ namespace Tarbora {
     std::string model;
     //! The file name of the material.
     std::string material;
+    //! The id of the parent of this model, if any.
+    ActorId parent{""};
+    //! The node where this model is attached, if it has a parent.
+    std::string parent_node{""};
+    //! The offset between the center of this model and the parent's node center.
+    glm::vec3 offset{glm::vec3(0.f)};
   };
 
   /**
@@ -61,11 +67,8 @@ namespace Tarbora {
     RenderSystem(World *w);
 
   private:
-    // Factories
-    ComponentPtr modelFactory(const ActorId &id, const LuaTable &table);
-
-    // Message subscriptions
-    void init(const MessageSubject &, const MessageBody &body);
+    bool enableModel(std::shared_ptr<Component> comp);
+    bool disableModel(std::shared_ptr<Component> comp);
 
     virtual void update(float delta_time) override;
   };

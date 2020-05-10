@@ -23,9 +23,6 @@ namespace Tarbora {
     density = table.get<float>("density", 1.f, true);
     restitution = table.get<float>("restitution", 0.f, true);
 
-    if (start_enabled_)
-      enabled_ = true;
-
     if (s == "sphere")
     {
       float radius = table.get<float>("radius");
@@ -50,24 +47,38 @@ namespace Tarbora {
       LOG_ERR(
         "RigidbodyComponent: \"%s\" is not a valid character controller shape.",
         s.c_str());
-      enabled_ = false;
       error_ = true;
     }
-  }
-
-  ComponentPtr PhysicsSystem::physicsFactory(const ActorId &id, const LuaTable &table)
-  {
-    return std::make_shared<RigidbodyComponent>(id, table);
   }
 
   PhysicsSystem::PhysicsSystem(World *world) :
     System(world)
   {
-    components->registerFactory("rigidbody", FCTBIND(&PhysicsSystem::physicsFactory));
+    components->registerFactory("rigidbody", [&](auto id, auto table)
+    {
+      return std::make_shared<RigidbodyComponent>(id, table);
+    });
+    components->onEnable("rigidbody", [&](auto comp)
+    {
+      auto rb = std::static_pointer_cast<RigidbodyComponent>(comp);
+      auto transform = components->getComponent<TransformComponent>(rb->owner);
+
+      if (transform)
+      {
+        rb->create(transform->position, transform->orientation);
+        return true;
+      }
+      return false;
+    });
+    components->onDisable("rigidbody", [&](auto comp)
+    {
+      auto rb = std::static_pointer_cast<RigidbodyComponent>(comp);
+      rb->destroy();
+      return true;
+    });
 
     PhysicsEngine::init();
 
-    subscribe("init_event", MSGBIND(&PhysicsSystem::init));
     subscribe("set_position", MSGBIND(&PhysicsSystem::setPosition));
     subscribe("set_orientation", MSGBIND(&PhysicsSystem::setOrientation));
     subscribe("move", MSGBIND(&PhysicsSystem::move));
@@ -77,18 +88,6 @@ namespace Tarbora {
     subscribe("set_velocity", MSGBIND(&PhysicsSystem::setVelocity));
     subscribe("set_angular_vel", MSGBIND(&PhysicsSystem::setAngularVel));
     subscribe("stop", MSGBIND(&PhysicsSystem::stop));
-  }
-
-  void PhysicsSystem::init(const MessageSubject &, const MessageBody &body)
-  {
-    Message::Actor m(body);
-    ActorId id = m.getId();
-
-    auto rb = components->getComponent<RigidbodyComponent>(id);
-    auto transform = components->getComponent<TransformComponent>(id);
-
-    if (rb && rb->enabled() && transform && transform->enabled())
-      rb->init(transform->position, transform->orientation);
   }
 
   void PhysicsSystem::setPosition(const MessageSubject &, const MessageBody &body)
@@ -181,8 +180,8 @@ namespace Tarbora {
     auto comps = components->getComponents<RigidbodyComponent>();
     for (auto component : comps)
     {
-      auto rb = std::static_pointer_cast<RigidbodyComponent>(component);
-      if (rb->enabled())
+      auto rb = std::static_pointer_cast<RigidbodyComponent>(component.lock());
+      if (rb && rb->enabled())
       {
         ActorId &id = rb->owner;
 

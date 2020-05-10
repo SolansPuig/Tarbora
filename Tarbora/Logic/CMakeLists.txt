@@ -9,6 +9,7 @@ add_library (Logic SHARED
     EntitySystem.cpp
     PhysicsSystem.cpp
     RenderSystem.cpp
+    InventorySystem.cpp
 )
 add_dependencies (Logic Messages)
 target_link_libraries (Logic Messages)

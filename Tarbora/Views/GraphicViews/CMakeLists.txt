@@ -7,6 +7,7 @@ add_library (GraphicViews SHARED
     GameLayer.cpp
     ActorModel.cpp
     AnimationController.cpp
+    InventoryLayer.cpp
 )
 add_dependencies (GraphicViews Messages)
 target_compile_options(GraphicViews PRIVATE -Werror -Wall -Wextra -Wpedantic)

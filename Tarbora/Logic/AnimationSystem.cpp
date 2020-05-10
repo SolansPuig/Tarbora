@@ -11,6 +11,7 @@
  *********************************************************************/
 
 #include "AnimationSystem.hpp"
+#include "RenderSystem.hpp"
 
 namespace Tarbora {
   AnimationComponent::AnimationComponent(const ActorId &id, const LuaTable &table) :
@@ -19,52 +20,53 @@ namespace Tarbora {
     animation_controller_path = table.get<std::string>("file");
 
     ResourcePtr<LuaScript> res(animation_controller_path);
-    if (res != nullptr && start_enabled_)
-      enable();
-  }
-
-  ComponentPtr AnimationSystem::animationFactory(
-    const ActorId &id, const LuaTable &table)
-  {
-    return std::make_shared<AnimationComponent>(id, table);
+    if (res == nullptr)
+      error_ = true;
   }
 
   AnimationSystem::AnimationSystem(World *w) :
     System(w)
   {
-    components->registerFactory(
-      "animation", FCTBIND(&AnimationSystem::animationFactory));
-
-    subscribe("init_event", MSGBIND(&AnimationSystem::init));
+    components->registerFactory("animation", [&](auto id, auto table)
+    {
+      return std::make_shared<AnimationComponent>(id, table);
+    });
+    components->onEnable("animation", ENBIND(&AnimationSystem::enableAnimation));
     subscribe("move_event", MSGBIND(&AnimationSystem::event));
   }
 
-  void AnimationSystem::init(const MessageSubject &, const MessageBody &body)
+  bool AnimationSystem::enableAnimation(std::shared_ptr<Component> comp)
   {
-    Message::Actor m(body);
-    ActorId id = m.getId();
+    auto anim = std::static_pointer_cast<AnimationComponent>(comp);
 
-    auto anim = components->getComponent<AnimationComponent>(id);
-
-    if (anim && anim->enabled())
+    if (!components->require<ModelComponent>(comp->owner))
     {
-      ResourcePtr<LuaScript> res(anim->animation_controller_path);
-      if (res != nullptr)
+      LOG_ERR("Animation component, for actor %s, requires a valid Model Component",
+              comp->owner.c_str());
+      return false;
+    }
+
+    ResourcePtr<LuaScript> res(anim->animation_controller_path);
+    if (res != nullptr)
+    {
+      LuaTable start = res->get("animation_controller").get("start");
+      if (start.valid())
       {
-        LuaTable start = res->get("animation_controller").get("start");
         parseEvent(anim.get(), "", start);
         anim->playing_animations.erase("start");
+
+        return true;
       }
     }
+
+    return false;
   }
 
   void AnimationSystem::event(const MessageSubject &, const MessageBody &body)
   {
     Message::Event m(body);
-    ActorId id = m.getId();
 
-    auto anim = components->getComponent<AnimationComponent>(id);
-
+    auto anim = components->getComponent<AnimationComponent>(m->id());
     if (anim && anim->enabled())
     {
       ResourcePtr<LuaScript> res(anim->animation_controller_path);
@@ -77,7 +79,7 @@ namespace Tarbora {
       while (it != anim->playing_animations.end())
       {
         std::string animation = *(it++);
-        LuaTable event = controller.get(animation).get("events").get(m.getName(), true);
+        LuaTable event = controller.get(animation).get("events").get(m->name(), true);
         if (event.valid())
         {
           parseEvent(anim.get(), animation, event);

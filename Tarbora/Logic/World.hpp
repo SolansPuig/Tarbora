@@ -14,13 +14,6 @@
 #define __WORLD_H_
 
 #include "Component.hpp"
-#include "../Framework/Framework.hpp"
-
-#include "EntitySystem.hpp"
-#include "RenderSystem.hpp"
-#include "AnimationSystem.hpp"
-#include "ControllerSystem.hpp"
-#include "PhysicsSystem.hpp"
 
 /**
  * \file
@@ -37,7 +30,7 @@ namespace Tarbora {
    * type and variant. If no id is provided, uses a unique number.
    * The entity will be created on the specified position and orientation, if any.
    */
-  class World : public Module
+  class World : public Module, public SystemManager
   {
   public:
     World();
@@ -51,19 +44,25 @@ namespace Tarbora {
 
     ComponentManager* getComponentManager() { return &components_; }
 
-  private:
-    // Message subscriptions
-    void createActor(const MessageSubject &, const MessageBody &body);
+    ActorId createActor(
+      const ActorId &id,
+      const std::string &entity,
+      const glm::vec3 &position,
+      const glm::quat &orientation
+    );
 
+    //! Delete all the components of an actor.
+    void deleteActor(const ActorId &id);
+
+    //! Enable all the components of an actor.
+    void enableActor(const ActorId &id);
+
+    //! Disable all the components of an actor.
+    void disableActor(const ActorId &id);
+
+  private:
     ComponentManager components_;
     long next_id_{0};
-
-    // Systems
-    EntitySystem entity_system_;
-    RenderSystem render_system_;
-    AnimationSystem animation_system_;
-    ControllerSystem controller_system_;
-    PhysicsSystem physics_system_;
   };
 }
 

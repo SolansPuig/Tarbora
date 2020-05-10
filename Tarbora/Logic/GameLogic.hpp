@@ -14,5 +14,11 @@
 #define __GAMELOGIC_H_
 
 #include "World.hpp"
+#include "EntitySystem.hpp"
+#include "PhysicsSystem.hpp"
+#include "ControllerSystem.hpp"
+#include "RenderSystem.hpp"
+#include "AnimationSystem.hpp"
+#include "InventorySystem.hpp"
 
 #endif // __GAMELOGIC_H_

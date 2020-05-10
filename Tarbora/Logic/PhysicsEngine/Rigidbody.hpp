@@ -34,7 +34,8 @@ namespace Tarbora {
     Rigidbody(const ActorId &id);
     ~Rigidbody();
 
-    void init(const glm::vec3 &position, const glm::quat &orientation);
+    void create(const glm::vec3 &position, const glm::quat &orientation);
+    void destroy();
 
     void setTransform(const glm::vec3 &position, const glm::quat &orientation);
     void setPosition(const glm::vec3 &position);
@@ -87,6 +88,7 @@ namespace Tarbora {
   private:
     ActorId user_pointer_;
     std::shared_ptr<btRigidBody> body_;
+    bool enabled_{false};
   };
 }
 

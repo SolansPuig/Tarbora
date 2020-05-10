@@ -12,50 +12,49 @@
 
 #include "World.hpp"
 #include "../Messages/BasicMessages.hpp"
-#include "EntitySystem.hpp"
-#include "PhysicsSystem.hpp"
-#include "ControllerSystem.hpp"
-#include "RenderSystem.hpp"
-#include "AnimationSystem.hpp"
 
 namespace Tarbora {
   World::World() :
-    Module(1), entity_system_(this), render_system_(this), animation_system_(this),
-    controller_system_(this), physics_system_(this)
+    Module(1)
   {
     max_fps_ = 60;
 
-    getMessageManager()->subscribe("create_actor", MSGBIND(&World::createActor));
+    getMessageManager()->subscribe("create_actor", [&](auto, auto body)
+    {
+      Message::CreateActor m(body);
+      createActor(m->id(), m->entity(), m.getPosition(),  m.getOrientation());
+    });
   }
 
-  void World::createActor(const MessageSubject &, const MessageBody &body)
+  ActorId World::createActor(
+    const ActorId &id,
+    const std::string &entity,
+    const glm::vec3 &position,
+    const glm::quat &orientation
+  )
   {
-    Message::CreateActor m(body);
-    ActorId id = m.getId();
-    std::string entity = m.getEntity();
-
     ResourcePtr<LuaScript> resource("entities/" + entity);
     if (resource == nullptr)
-      return;
+      return "";
 
-    glm::vec3 position = m.getPosition();
-    glm::vec3 orientation = glm::degrees(glm::eulerAngles(m.getOrientation()));
+    //  If it doesn't have an id, set it as a unique number
+    ActorId new_id = id;
+    if (new_id == "")
+      new_id = std::to_string(next_id_++);
 
-    //  If it doesn't have an id, set is as a unique number
-    if (id == "")
-      id = std::to_string(next_id_++);
 
     // Everything has an info component
     LuaTable info = resource->createTable("info");
     info.set<std::string>("entity", entity);
     info.set<std::string>("variant", "");
-    components_.createComponent(id, "info", info);
+    components_.createComponent(new_id, "info", info);
 
     // Everything has a transform component
+    glm::vec3 orientation_euler = glm::degrees(glm::eulerAngles(orientation));
     LuaTable transform = resource->createTable("transform");
     transform.set<glm::vec3>("position", position);
-    transform.set<glm::vec3>("orientation", orientation);
-    components_.createComponent(id, "transform", transform);
+    transform.set<glm::vec3>("orientation", orientation_euler);
+    components_.createComponent(new_id, "transform", transform);
 
     // Create the other components
     LuaTable components = resource->get("components", true);
@@ -63,18 +62,36 @@ namespace Tarbora {
     {
       std::string name = component.first.getAs<std::string>();
       LuaTable value = component.second.getAs<LuaTable>();
-      components_.createComponent(id, name, value);
+      components_.createComponent(new_id, name, value);
     }
 
-    getMessageManager()->triggerLocal("init_event", Message::Actor(id));
+    enableActor(new_id);
+    return new_id;
+  }
+
+  void World::deleteActor(const ActorId &id)
+  {
+    disableActor(id);
+    components_.deleteEntityComponents(id);
+  }
+
+  void World::enableActor(const ActorId &id)
+  {
+    components_.enableEntityComponents(id);
+  }
+
+  void World::disableActor(const ActorId &id)
+  {
+    components_.disableEntityComponents(id);
   }
 
   void World::update(float delta_time)
   {
-    controller_system_.update(delta_time);
-    physics_system_.update(delta_time);
-    render_system_.update(delta_time);
-    animation_system_.update(delta_time);
-    entity_system_.update(delta_time);
+    for (auto itr = systems_.rbegin(); itr != systems_.rend(); itr++)
+    {
+      (*itr)->update(delta_time);
+    }
+
+    components_.clean();
   }
 }

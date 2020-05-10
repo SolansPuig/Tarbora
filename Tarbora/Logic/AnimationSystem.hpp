@@ -35,12 +35,10 @@ namespace Tarbora {
     AnimationSystem(World *w);
 
   private:
-    // Factories
-    ComponentPtr animationFactory(const ActorId &id, const LuaTable &table);
-
     // Message subscriptions
-    void init(const MessageSubject &, const MessageBody &body);
     void event(const MessageSubject &, const MessageBody &body);
+    // onEnable callbacks
+    bool enableAnimation(std::shared_ptr<Component> comp);
 
     // Internal functions
     void parseEvent(
