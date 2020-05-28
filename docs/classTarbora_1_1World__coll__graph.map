@@ -1,4 +1,6 @@
 <map id="Tarbora::World" name="Tarbora::World">
-<area shape="rect" id="node2" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from. " alt="" coords="30,80,146,107"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads. " alt="" coords="5,5,171,32"/>
+<area shape="rect" id="node1" title="The module that controls the logics of the engine." alt="" coords="127,155,242,181"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from." alt="" coords="32,80,159,107"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads." alt="" coords="5,5,185,32"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1SystemManager.html" title="The class that stores all the systems. See Entity_Component_System." alt="" coords="183,80,367,107"/>
 </map>

@@ -1,6 +1,7 @@
 <map id="Tarbora::Editor" name="Tarbora::Editor">
-<area shape="rect" id="node2" href="$classTarbora_1_1Layer.html" title="Tarbora::Layer" alt="" coords="43,247,150,273"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1ModuleComponent.html" title="A part of a module with a defined function. " alt="" coords="5,171,188,197"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from. " alt="" coords="39,81,155,108"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads. " alt="" coords="14,5,179,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="48,323,164,349"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Layer.html" title=" " alt="" coords="49,247,163,273"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1ModuleComponent.html" title="A part of a module with a defined function." alt="" coords="5,171,207,197"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from." alt="" coords="43,81,169,108"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads." alt="" coords="16,5,196,32"/>
 </map>

@@ -59,6 +59,7 @@ namespace Tarbora {
         msg->set_parent(model->parent);
         msg->set_parent_node(model->parent_node);
         msg.setPosition(model->offset);
+        msg.setOrientation(model->orientation);
       }
       trigger("move_actor", msg);
 

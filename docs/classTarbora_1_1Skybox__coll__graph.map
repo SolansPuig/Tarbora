@@ -1,5 +1,7 @@
 <map id="Tarbora::Skybox" name="Tarbora::Skybox">
-<area shape="rect" id="node2" href="$classTarbora_1_1MaterialNode.html" title="Tarbora::MaterialNode" alt="" coords="121,109,272,136"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1SceneNode.html" title="Tarbora::SceneNode" alt="" coords="5,13,148,39"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1ResourcePtr.html" title="Tarbora::ResourcePtr\l\&lt; Tarbora::Material \&gt;" alt="" coords="245,5,391,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="226,199,351,225"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1MaterialNode.html" title=" " alt="" coords="127,109,293,136"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1SceneNode.html" title=" " alt="" coords="5,13,156,39"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1ResourcePtr.html" title=" " alt="" coords="258,5,421,47"/>
+<area shape="rect" id="node5" href="$structTarbora_1_1Sun.html" title=" " alt="" coords="317,109,420,136"/>
 </map>

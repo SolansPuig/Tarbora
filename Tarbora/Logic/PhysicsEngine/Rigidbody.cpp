@@ -127,6 +127,15 @@ namespace Tarbora {
     body_->activate();
   }
 
+  void Rigidbody::applyImpulse(const glm::vec3 &vector, const glm::vec3 &position)
+  {
+    body_->applyImpulse(
+      PhysicsEngine::toBullet(vector),
+      PhysicsEngine::toBullet(position) - body_->getCenterOfMassPosition()
+    );
+    body_->activate();
+  }
+
   void Rigidbody::applyTorque(const glm::vec3 &vector)
   {
     body_->applyTorqueImpulse(PhysicsEngine::toBullet(vector));
@@ -148,6 +157,7 @@ namespace Tarbora {
   void Rigidbody::setGravity(const glm::vec3 &vector)
   {
     body_->setGravity(PhysicsEngine::toBullet(vector));
+    body_->activate();
   }
 
   RaycastResult Rigidbody::raycast(

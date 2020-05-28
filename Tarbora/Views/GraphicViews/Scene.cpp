@@ -1,4 +1,5 @@
 #include "Scene.hpp"
+#include "HumanView.hpp"
 #include <utility>
 
 namespace Tarbora {
@@ -18,7 +19,8 @@ namespace Tarbora {
     {
         projection_ = glm::perspective(glm::radians(45.0f), getGraphicsEngine()->getWindow()->getRatio(), 0.1f, 100.0f);
         getRenderQueue()->setProjectionMatrix(projection_);
-        getRenderQueue()->setViewMatrix(camera_->getView());
+        view_matrix_ = camera_->getView();
+        getRenderQueue()->setViewMatrix(view_matrix_);
 
         if (root_)
         {

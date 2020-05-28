@@ -1,0 +1,6 @@
+vertex = "shaders/external_model.vert"
+tes_control = ""
+tes_eval = ""
+geometry = ""
+fragment = "shaders/external_model.frag"
+compute = ""

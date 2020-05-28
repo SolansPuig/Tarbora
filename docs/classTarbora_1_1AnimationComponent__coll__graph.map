@@ -1,3 +1,4 @@
 <map id="Tarbora::AnimationComponent" name="Tarbora::AnimationComponent">
-<area shape="rect" id="node2" href="$classTarbora_1_1Component.html" title="A virtual component for the Entity_Component_System. " alt="" coords="34,5,175,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,225,107"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Component.html" title="A virtual component for the Entity_Component_System." alt="" coords="39,5,192,32"/>
 </map>

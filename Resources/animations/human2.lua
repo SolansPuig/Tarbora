@@ -3,10 +3,20 @@ query = {
     speed = 4,
 }
 
+cast = {
+  duration = 0.25,
+  step = 1,
+
+  nodes = {
+    arm_r = {
+      rotation = function() return { 0, -5 * math.sin(math.pi/2 * 8 * query.time), 0 } end
+    }
+  }
+}
+
 walk = {
     duration = function () return (4)/(query.speed) end,
     step = 1,
-    loop = true,
 
     nodes = {
         body = {
@@ -31,7 +41,7 @@ walk = {
             rotation = function () return {-10 * math.sin(math.pi/2 * query.speed * query.time), 0, 2} end,
         },
         arm_r = {
-            rotation = function() return {0, -10 * math.sin(math.pi/2 * query.speed * query.time), 0} end,
+            rotation = function() return {0, -0.3 * math.sin(math.pi/2 * query.speed * query.time), 0} end,
         },
         arm_l = {
             rotation = function() return {0, -10 * math.sin(math.pi/2 * query.speed * query.time), 0} end,
@@ -48,7 +58,6 @@ walk = {
 idle = {
     duration = 2,
     step = 2,
-    loop = true,
 
     nodes = {
         arm_l = {
@@ -59,8 +68,8 @@ idle = {
         },
         arm_r = {
             rotation = {
-                [0] = {1, -1, 1},
-                [1] = {-1, 1, -1},
+                [0] = {0.2, -0.2, 0.2},
+                [1] = {-0.2, 0.2, -0.2},
             }
         },
         belly = {

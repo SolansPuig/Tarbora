@@ -1,4 +1,6 @@
 #include "GameLayer.hpp"
+#include "Layer.hpp"
+#include "HumanView.hpp"
 #include "../../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
@@ -172,8 +174,6 @@ namespace Tarbora {
       movement_.x -= 1;
     if (getInputManager()->getKeyUp(KEY_D))
       movement_.x += 1;
-    if (getInputManager()->getKeyDown(KEY_SPACE))
-      if (!jump_) jump_ = true;
 
     if (getInputManager()->getKeyDown(KEY_X))
     {
@@ -194,7 +194,7 @@ namespace Tarbora {
       LOG_DEBUG("Set camera %s", camera_mode.c_str());
       scene_->setCamera(target_id_, camera_mode);
     }
-    if (getInputManager()->getKeyDown(KEY_P))
+    if (getInputManager()->getKeyDown(KEY_G))
     {
       pick_object_ = !pick_object_;
            
@@ -202,6 +202,10 @@ namespace Tarbora {
         send(1, "grab", Message::Actor(target_id_));
       else
         send(1, "release", Message::Actor(target_id_));
+    }
+    if (getInputManager()->getButtonDown(MOUSE_BUTTON_1))
+    {
+      send(1, "cast", Message::Actor(target_id_));
     }
     if (pick_object_ && getInputManager()->mouseScrolled())
     {
@@ -229,11 +233,6 @@ namespace Tarbora {
              target_id_,
              glm::vec3(-look_direction_.y, 0.f, 0.f)
            ));
-    }
-    if (jump_)
-    {
-      send(1, "apply_force", Message::ApplyPhysics(target_id_, glm::vec3(0.f, 1.f, 0.f)));
-      jump_ = false;
     }
   }
 

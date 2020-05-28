@@ -1,4 +1,5 @@
 <map id="Tarbora::MeshNode" name="Tarbora::MeshNode">
-<area shape="rect" id="node2" href="$classTarbora_1_1SceneNode.html" title="Tarbora::SceneNode" alt="" coords="5,13,148,39"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1ResourcePtr.html" title="Tarbora::ResourcePtr\l\&lt; Tarbora::Mesh \&gt;" alt="" coords="245,5,391,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="198,109,345,136"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1SceneNode.html" title=" " alt="" coords="5,13,156,39"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1ResourcePtr.html" title=" " alt="" coords="257,5,413,47"/>
 </map>

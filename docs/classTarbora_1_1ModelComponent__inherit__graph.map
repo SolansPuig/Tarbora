@@ -1,3 +1,4 @@
 <map id="Tarbora::ModelComponent" name="Tarbora::ModelComponent">
-<area shape="rect" id="node2" href="$classTarbora_1_1Component.html" title="A virtual component for the Entity_Component_System. " alt="" coords="23,5,164,32"/>
+<area shape="rect" id="node1" title="The component that stores the info about rendering." alt="" coords="5,80,199,107"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Component.html" title="A virtual component for the Entity_Component_System." alt="" coords="25,5,179,32"/>
 </map>

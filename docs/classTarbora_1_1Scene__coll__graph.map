@@ -1,5 +1,6 @@
 <map id="Tarbora::Scene" name="Tarbora::Scene">
-<area shape="rect" id="node2" href="$classTarbora_1_1GraphicView.html" title="Tarbora::GraphicView" alt="" coords="14,157,162,184"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from. " alt="" coords="30,81,146,108"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads. " alt="" coords="5,5,171,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="37,247,154,273"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1GraphicView.html" title=" " alt="" coords="15,157,175,184"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1Module.html" title="The class that most modules inherit from." alt="" coords="32,81,159,108"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1AbstractModule.html" title="An abstract module that allows all modules to run as threads." alt="" coords="5,5,185,32"/>
 </map>

@@ -98,6 +98,7 @@ message Item {
   string owner = 4;
   string inv_group = 5;
   uint32 slot = 6;
+  string target = 7;
 }
 
 message Group {

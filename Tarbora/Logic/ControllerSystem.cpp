@@ -229,6 +229,7 @@ namespace Tarbora {
         // Update the animation of the head and neck
         glm::vec3 head(controller->facing.x, 0.f, controller->facing.z);
         glm::vec3 neck(0.f, controller->facing.y, 0.f);
+        glm::vec3 arm(-20.f, -controller->facing.x + 70.f, 80.f);
 
         Message::MoveNode msg1(id, "head");
         msg1.setOrientation(glm::quat(glm::radians(head)));
@@ -237,6 +238,10 @@ namespace Tarbora {
         Message::MoveNode msg2(id, "neck");
         msg2.setOrientation(glm::quat(glm::radians(neck)));
         trigger("move_node", msg2);
+
+        Message::MoveNode msg3(id, "arm_r");
+        msg3.setOrientation(glm::quat(glm::radians(arm)));
+        trigger("move_node", msg3);
       }
     }
   }
@@ -272,7 +277,9 @@ namespace Tarbora {
         if (target && target->enabled())
         {
           glm::mat4 local = target->getLocalTransform();
-          grab->pivot = local * glm::vec4(sight->target_position, 1.f);
+          grab->pivot = local * glm::vec4(
+            sight->target_position, 1.f
+          );
         }
       }
     });
@@ -368,7 +375,8 @@ namespace Tarbora {
             // Calculate the wanted position
             glm::mat4 cworld = crb->getWorldTransform();
             glm::vec3 dir = sight->look_direction * glm::vec3(0.f, 0.f, 1.f);
-            glm::vec3 pos = cworld * glm::vec4(dir * grab->distance, 1.f);
+            glm::vec3 pos = cworld *
+              glm::vec4(sight->eye_position + dir * grab->distance, 1.f);
 
             if(!is_static)
             {

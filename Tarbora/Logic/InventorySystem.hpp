@@ -37,18 +37,26 @@ namespace Tarbora {
     std::string description;
     unsigned int max_quantity;
     std::vector<std::string> valid_groups;
+    glm::vec3 offset;
+    glm::quat orientation;
   };
 
   typedef std::shared_ptr<ItemComponent> ItemComponentPtr;
 
   struct InventorySlot
   {
-    InventorySlot (ItemComponentPtr item, unsigned int quantity, const glm::vec3 &offset)
-      : item(item), quantity(quantity), offset(offset) {}
+    InventorySlot (
+      ItemComponentPtr item,
+      unsigned int quantity,
+      const glm::vec3 &offset,
+      const glm::quat &orientation
+    )
+      : item(item), quantity(quantity), offset(offset), orientation(orientation) {}
   
     ItemComponentPtr item;
     unsigned int quantity;
     glm::vec3 offset;
+    glm::quat orientation;
   };
 
   struct InventoryGroup
@@ -57,7 +65,8 @@ namespace Tarbora {
       unsigned int max_slots,
       bool visible,
       const std::string &node,
-      const LuaTable &offsets
+      const LuaTable &offsets,
+      const LuaTable &orientations
     );
 
     std::vector<InventorySlot> slots;

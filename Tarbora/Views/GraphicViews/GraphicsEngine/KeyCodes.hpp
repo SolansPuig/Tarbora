@@ -1,4 +1,17 @@
-#pragma once
+/*********************************************************************
+ * Copyright (C) 2020 Roger Solans Puig
+ * Email: roger@solanspuig.cat
+ *
+ * This file is part of Tarbora. You can obtain a copy at
+ * https://github.com/SolansPuig/Tarbora
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *********************************************************************/
+
+#ifndef __KEY_CODES_H_
+#define __KEY_CODES_H_
 
 #define KEY_UNKNOWN   -1
 #define KEY_SPACE   32
@@ -140,3 +153,5 @@
 #define MOD_CONTROL   0x0002
 #define MOD_ALT   0x0004
 #define MOD_SUPER   0x0008
+
+#endif// __KEY_CODES_H_

@@ -155,14 +155,23 @@ namespace Tarbora {
     if (comp->enabled())
       return true;
 
+    if (comp->enabling)
+    {
+      LOG_ERR("Found circular dependency while enabling %s", comp->getType().c_str());
+      return false;
+    }
+
     if (!comp->error())
     {
+      comp->enabling = true;
       auto enabler = component_enablers_.find(comp->getType());
       if (enabler == component_enablers_.end() || enabler->second(comp))
       {
         comp->enable();
+        comp->enabling = false;
         return true;
       }
+      comp->enabling = false;
     }
 
     return false;
@@ -173,13 +182,22 @@ namespace Tarbora {
     if (!comp->enabled())
       return true;
 
+    if (comp->enabling)
+    {
+      LOG_ERR("Found circular dependency while disabling %s", comp->getType().c_str());
+      return false;
+    }
+
+    comp->enabling = true;
     auto disabler = component_disablers_.find(comp->getType());
     if (disabler == component_disablers_.end() || disabler->second(comp))
     {
       comp->disable();
+      comp->enabling = false;
       return true;
     }
 
+    comp->enabling = false;
     return false;
   }
 

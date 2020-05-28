@@ -1,7 +1,7 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
-layout (location = 2) in float aVertex;
+layout (location = 2) in vec2 aVertex;
 layout (location = 3) in mat4 aTransform;
 layout (location = 7) in vec2 aUV;
 layout (location = 8) in vec3 aMeshSize;
@@ -55,8 +55,8 @@ void main()
     TexCoordX.y *= -1;
     TexCoordY.x *= sign(TexNormal.y);
 
-    float face = floor(aVertex / 4);
-    float v = int(aVertex) % 4;
+    float face = aVertex.x;
+    float v = aVertex.y;
 
     switch (int(face)) {
         case 0:

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['transformcomponent',['TransformComponent',['../classTarbora_1_1TransformComponent.html#ae0f99b76d01205f6780e58f1080972bb',1,'Tarbora::TransformComponent']]]
+  ['setlevel_405',['setLevel',['../classTarbora_1_1Logger.html#a2641541068ea40f58ae52defcad4caea',1,'Tarbora::Logger']]]
 ];

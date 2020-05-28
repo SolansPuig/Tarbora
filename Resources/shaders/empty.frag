@@ -17,6 +17,7 @@ void main()
     vec4 colorTintTexture = texture(colorTint, TexCoord);
     if (fragTexture.a == 0.0){
         discard;
+        return;
     }
 
     vec3 primary = colorPrimary * colorTintTexture.r + (1. - colorTintTexture.r);

@@ -7,7 +7,7 @@ out vec2 TexCoords;
 void main()
 {
     gl_Position = vec4(aPos, 1.0);
-    float vertex = int(aVertex) % 4;
+    float vertex = aVertex.y;
     TexCoords.x = (vertex == 0 || vertex == 3) ? 0 : 1;
     TexCoords.y = (vertex == 0 || vertex == 1) ? 0 : 1;
 }

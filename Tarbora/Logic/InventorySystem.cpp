@@ -15,6 +15,7 @@
 #include "ControllerSystem.hpp"
 #include "PhysicsSystem.hpp"
 #include "RenderSystem.hpp"
+#include "AnimationSystem.hpp"
 #include "EntitySystem.hpp"
 
 namespace Tarbora {
@@ -22,13 +23,19 @@ namespace Tarbora {
     unsigned int max_slots,
     bool visible,
     const std::string &node,
-    const LuaTable &offsets
+    const LuaTable &offsets,
+    const LuaTable &orientations
   ) : visible(visible), node(node)
   {
-    for (unsigned int i = 0; i < max_slots; i++)
+    for (unsigned int i = 1; i <= max_slots; i++)
     {
-      auto offset = offsets.get(i+1, glm::vec3(0.f), true);
-      slots.emplace_back(InventorySlot(ItemComponentPtr(), 0, offset));
+      auto offset = offsets.get(i, glm::vec3(0.f), true);
+      auto orientation = orientations.get(i, glm::vec3(0.f), true);
+      slots.emplace_back(
+        InventorySlot(
+          ItemComponentPtr(), 0, offset, glm::quat(glm::radians(orientation))
+        )
+      );
     }
   }
 
@@ -42,7 +49,11 @@ namespace Tarbora {
       unsigned int slots = group.get<unsigned int>("slots", 1, true);
       std::string node = group.get<std::string>("node", "", true);
       LuaTable offsets = group.get("offset", true);
-      inventory.emplace(name, InventoryGroup(slots, node != "", node, offsets));
+      LuaTable orientations = group.get("orientation", true);
+      inventory.emplace(
+        name,
+        InventoryGroup(slots, node != "", node, offsets, orientations)
+      );
     }
   }
 
@@ -52,6 +63,8 @@ namespace Tarbora {
     name = table.get<std::string>("name", "");
     description = table.get<std::string>("description", "", true);
     max_quantity = table.get<int>("max_quantity", 1, true);
+    offset = table.get<glm::vec3>("offset", true);
+    orientation = glm::quat(glm::radians(table.get<glm::vec3>("orientation", true)));
 
     for (auto group : table.get("valid_groups", true))
     {
@@ -162,10 +175,11 @@ namespace Tarbora {
                 {
                   model->parent = id;
                   model->parent_node = group->second.node;
-                  model->offset = slot->offset;
-                  LOG_DEBUG("%s", glm::to_string(slot->offset).c_str());
+                  model->offset = slot->offset + slot->orientation * item->offset;
+                  model->orientation = slot->orientation * item->orientation;
                 }
                 components->enableComponent<ModelComponent>(item->owner);
+                components->enableComponent<AnimationComponent>(item->owner);
               }
             }
 
@@ -173,6 +187,7 @@ namespace Tarbora {
             {
               // The item was picked. Send the message.
               Message::Item msg(id, group->first, slot_number, slot->quantity);
+              msg->set_target(item->owner);
               msg->set_name(slot->item->name);
               msg->set_description(slot->item->name);
               trigger("picked_item", msg);
@@ -259,6 +274,7 @@ namespace Tarbora {
         if (target != "")
         {
           Message::Item msg(id, m->inv_group(), m->slot(), slot->quantity);
+          msg->set_target(target);
           msg->set_name(slot->item ? slot->item->name : "");
           msg->set_description(slot->item ? slot->item->description : "");
           trigger("dropped_item", msg);

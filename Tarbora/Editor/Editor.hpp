@@ -3,82 +3,83 @@
 #include <ctime>
 
 namespace Tarbora {
-    class HumanView;
-    class ActorModel;
-    class Scene;
-    class SceneNode;
-    class ModelEditor;
-    class NodeEditor;
+  class HumanView;
+  class ActorModel;
+  class Scene;
+  class SceneNode;
+  class ModelEditor;
+  class NodeEditor;
 
-    class Editor : public Layer
-    {
-    public:
-        Editor(HumanView *view, bool startActive);
+  class Editor : public Layer
+  {
+  public:
+    Editor(HumanView *view, bool startActive);
 
-        virtual void getInput();
+    virtual void getInput();
 
-        virtual void draw();
+    virtual void draw();
 
-        std::shared_ptr<ModelEditor> model_editor;
-        std::shared_ptr<NodeEditor> node_editor;
+    std::shared_ptr<ModelEditor> model_editor;
+    std::shared_ptr<NodeEditor> node_editor;
 
-    private:
-        std::shared_ptr<Scene> scene_;
-    };
+  private:
+    std::shared_ptr<Scene> scene_;
+  };
 
-    class ModelEditor
-    {
-    public:
-        ModelEditor(Editor *editor, std::shared_ptr<Scene> scene);
+  class ModelEditor
+  {
+  public:
+    ModelEditor(Editor *editor, std::shared_ptr<Scene> scene);
 
-        void setTarget(const ActorId &id);
+    void setTarget(const ActorId &id);
 
-        void draw(bool *active);
+    void draw(bool *active);
 
-        void nodeInspector(std::shared_ptr<SceneNode> node);
+    void nodeInspector(std::shared_ptr<SceneNode> node);
 
-    private:
-        Editor *editor_;
-        std::shared_ptr<Scene> scene_;
+  private:
+    Editor *editor_;
+    std::shared_ptr<Scene> scene_;
 
-        ActorId actor_id_;
-        bool captured_;
-        std::weak_ptr<ActorModel> model_;
-        std::weak_ptr<SceneNode> selected_node_;
+    ActorId actor_id_;
+    bool captured_;
+    std::weak_ptr<ActorModel> model_;
+    std::weak_ptr<SceneNode> selected_node_;
 
-        std::weak_ptr<SceneNode> edited_node_;
-    };
+    std::weak_ptr<SceneNode> edited_node_;
+  };
 
-    class NodeEditor
-    {
-    public:
-        NodeEditor(Editor *editor);
+  class NodeEditor
+  {
+  public:
+    NodeEditor(Editor *editor, std::shared_ptr<Scene> scene);
 
-        void setTarget(const std::string &name, std::shared_ptr<SceneNode> node);
+    void setTarget(const std::string &name, std::shared_ptr<SceneNode> node);
 
-        void draw(bool *active);
+    void draw(bool *active);
 
-    private:
-        Editor *editor_;
+  private:
+    Editor *editor_;
+    std::shared_ptr<Scene> scene_;
 
-        std::string node_name_;
-        std::weak_ptr<SceneNode> node_;
-        bool auto_texture_size_;
-    };
+    std::string node_name_;
+    std::weak_ptr<SceneNode> node_;
+    bool auto_texture_size_;
+  };
 
-    class ModelSaver
-    {
-    public:
-        ModelSaver(const std::string &file, std::shared_ptr<ActorModel> model);
+  class ModelSaver
+  {
+  public:
+    ModelSaver(const std::string &file, std::shared_ptr<ActorModel> model);
 
-    private:
-        void saveNode(std::shared_ptr<SceneNode> node);
-        void saveVec3(const std::string &name, const glm::vec3 &vector);
-        void saveVec2(const std::string &name, const glm::vec2 &vector);
-        void saveVec3(const std::string &name, const glm::tvec3<unsigned char> &vector);
-        void saveVec2(const std::string &name, const glm::tvec2<unsigned short> &vector);
+  private:
+    void saveNode(std::shared_ptr<SceneNode> node);
+    void saveVec3(const std::string &name, const glm::vec3 &vector);
+    void saveVec2(const std::string &name, const glm::vec2 &vector);
+    void saveVec3(const std::string &name, const glm::tvec3<unsigned char> &vector);
+    void saveVec2(const std::string &name, const glm::tvec2<unsigned short> &vector);
 
-        std::ofstream file_;
-        unsigned int indentation_;
-    };
+    std::ofstream file_;
+    unsigned int indentation_;
+  };
 }

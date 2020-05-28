@@ -68,6 +68,7 @@ namespace Tarbora {
 
     //! The id of the entity that owns that component.
     ActorId owner;
+    bool enabling{false};
 
   protected:
     bool enabled_{false};
@@ -237,20 +238,6 @@ namespace Tarbora {
     {
       entity->second.erase(T::getStaticType());
     }
-
-    // Delete from components list
-    auto list = components_.find(T::getStaticType());
-    if (list != components_.end())
-    {
-      for (auto component : list)
-      {
-        if (component->owner == id)
-        {
-          list.erase(component);
-          break;
-        }
-      }
-    }
   }
 
   template <class T>
@@ -273,7 +260,7 @@ namespace Tarbora {
   ComponentPtr ComponentManager::enableComponent(const ActorId &id)
   {
     std::shared_ptr<T> comp = getComponent<T>(id);
-    if(enableComponent(comp))
+    if(comp && enableComponent(comp))
       return comp;
     return ComponentPtr();
   }
@@ -282,7 +269,7 @@ namespace Tarbora {
   ComponentPtr ComponentManager::disableComponent(const ActorId &id)
   {
     std::shared_ptr<T> comp = getComponent<T>(id);
-    if (disableComponent(comp))
+    if (comp && disableComponent(comp))
       return comp;
     return ComponentPtr();
   }
@@ -294,4 +281,4 @@ namespace Tarbora {
   }
 }
 
-#endif // __PHYSICSSYSTEM_H_
+#endif // __COMPONENTMANAGER_H_

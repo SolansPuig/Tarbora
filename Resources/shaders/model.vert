@@ -1,7 +1,7 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
-layout (location = 2) in float aVertex;
+layout (location = 2) in vec2 aVertex;
 layout (location = 3) in mat4 aTransform;
 layout (location = 7) in vec2 aUV;
 layout (location = 8) in vec3 aMeshSize;
@@ -41,8 +41,8 @@ void main()
     vec3 meshSize = aMeshSize * pixelDensity;
     vec3 texSize = aTexSize * pixelDensity;
     vec2 uv = aUV * pixelDensity / 100.0;
-    float face = floor(aVertex / 4);
-    float vertex = int(aVertex) % 4;
+    float face = aVertex.x;
+    float vertex = aVertex.y;
     bool vertexX = (vertex == 0 || vertex == 3) ? true : false; // The vertex is on the left side?
     bool vertexY = (vertex == 0 || vertex == 1) ? true : false; // The vertex is on the up side?
 

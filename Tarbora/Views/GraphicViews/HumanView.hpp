@@ -1,10 +1,9 @@
 #pragma once
 #include "Layer.hpp"
 #include "GraphicView.hpp"
+#include "GameLayer.hpp"
 
 namespace Tarbora {
-    class GameLayer;
-
     class HumanView : public GraphicView
     {
     public:

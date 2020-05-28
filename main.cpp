@@ -1,9 +1,13 @@
 #include "Tarbora/Views/GraphicViews/HumanView.hpp"
 #include "Tarbora/Views/SceneManager/SceneManager.hpp"
-#include "Tarbora/Views/HardwareViews/inc/ArduinoView.hpp"
 #include "Tarbora/Logic/GameLogic.hpp"
 #include "Tarbora/Messages/BasicMessages.hpp"
 #include "Tarbora/Editor/Editor.hpp"
+#include "Tarbora/Views/HardwareViews/ArduinoView.hpp"
+
+#include "Demo/GravityRandomizerSystem.hpp"
+#include "Demo/KnockbackSystem.hpp"
+#include "Demo/ThrowSystem.hpp"
 
 using namespace Tarbora;
 
@@ -24,14 +28,25 @@ int main() {
     logic->registerSystem(std::make_shared<PhysicsSystem>(logic.get()));
     logic->registerSystem(std::make_shared<ControllerSystem>(logic.get()));
     logic->registerSystem(std::make_shared<GrabSystem>(logic.get()));
+    logic->registerSystem(std::make_shared<GravityRandomizerSystem>(logic.get()));
+    logic->registerSystem(std::make_shared<KnockbackSystem>(logic.get()));
+    logic->registerSystem(std::make_shared<ThrowSystem>(logic.get()));
 
     logic->runThread("Logic");
 
-    // auto arduino = std::make_shared<ArduinoView>();
-    // arduino->runThread("Arduino");
+    auto arduino = std::make_shared<ArduinoView>();
+    arduino->runThread("Arduino");
 
     auto human_view = std::make_shared<HumanView>();
     human_view->pushLayer(std::make_shared<Editor>(human_view.get(), false));
+
+    // Draw the Sun
+    auto sky = human_view->getGameLayer()->getScene()->getSkybox();
+    sky->sun[0].color = {255, 247, 232};
+    sky->sun[0].position = {-0.3f, 0.41f, -1.f};
+    sky->sun[0].size = 4;
+    sky->sun[0].sharpness = 18;
+    sky->direction = glm::normalize(-sky->sun[0].position);
 
     auto scene_manager = std::make_shared<SceneManager>();
     scene_manager->load("test.lua");

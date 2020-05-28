@@ -1,0 +1,5 @@
+<map id="Tarbora::InventorySystem" name="Tarbora::InventorySystem">
+<area shape="rect" id="node1" title=" " alt="" coords="11,155,201,181"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1System.html" title="A pure virtual system for the Entity_Component_System." alt="" coords="43,80,169,107"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1ModuleComponent.html" title="A part of a module with a defined function." alt="" coords="5,5,207,32"/>
+</map>

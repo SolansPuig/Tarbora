@@ -3,7 +3,7 @@ project (Tarbora)
 
 set (CMAKE_BUILD_TYPE Debug)
 if (CMAKE_COMPILER_IS_GNUCXX)
-    set (CMAKE_CXX_FLAGS "-Ofast -DTRACY_ENABLE -fPIC")
+    set (CMAKE_CXX_FLAGS "-Ofast -DTRACY_ENABLE -fPIC -Wall -Wextra")
     set (CMAKE_CXX_FLAGS_DEBUG "-g -D DEBUG_MODE=true")
     set (CMAKE_CXX_FLAGS_RELEASE "-D DEBUG_MODE=false")
     set (CMAKE_CXX_STANDARD_LIBRARIES "-lGL -lGLU -lX11 -lpthread -lXrandr -ldl -lGLEW")
@@ -24,6 +24,7 @@ include_directories(SYSTEM Tarbora/Views/GraphicViews/GraphicsEngine/External/im
 include_directories(SYSTEM Tarbora/Views/GraphicViews/GraphicsEngine/External/glfw/include)
 
 add_subdirectory (Tarbora)
+add_subdirectory (Demo)
 
 add_executable (tarbora main.cpp)
 
@@ -37,4 +38,5 @@ target_link_libraries (tarbora
     PhysicsEngine
     GraphicsEngine
     Editor
+    Demo
 )

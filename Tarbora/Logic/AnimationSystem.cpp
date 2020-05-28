@@ -79,7 +79,8 @@ namespace Tarbora {
       while (it != anim->playing_animations.end())
       {
         std::string animation = *(it++);
-        LuaTable event = controller.get(animation).get("events").get(m->name(), true);
+        LuaTable event = controller.get(animation).get("events", true)
+          .get(m->name(), true);
         if (event.valid())
         {
           parseEvent(anim.get(), animation, event);

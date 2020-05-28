@@ -84,6 +84,7 @@ namespace Tarbora {
     subscribe("move", MSGBIND(&PhysicsSystem::move));
     subscribe("rotate", MSGBIND(&PhysicsSystem::rotate));
     subscribe("apply_force", MSGBIND(&PhysicsSystem::applyForce));
+    subscribe("apply_impulse", MSGBIND(&PhysicsSystem::applyImpulse));
     subscribe("apply_torque", MSGBIND(&PhysicsSystem::applyTorque));
     subscribe("set_velocity", MSGBIND(&PhysicsSystem::setVelocity));
     subscribe("set_angular_vel", MSGBIND(&PhysicsSystem::setAngularVel));
@@ -135,6 +136,14 @@ namespace Tarbora {
     auto rb = components->getComponent<RigidbodyComponent>(m.getId());
     if (rb && rb->enabled())
       rb->applyForce(m.getDirection());
+  }
+
+  void PhysicsSystem::applyImpulse(const MessageSubject &, const MessageBody &body)
+  {
+    Message::ApplyPhysics m(body);
+    auto rb = components->getComponent<RigidbodyComponent>(m.getId());
+    if (rb && rb->enabled())
+      rb->applyImpulse(m.getDirection());
   }
 
   void PhysicsSystem::applyTorque(const MessageSubject &, const MessageBody &body)

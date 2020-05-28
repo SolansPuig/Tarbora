@@ -14,7 +14,7 @@ uniform vec2 screenSize;
 uniform mat4 projection;
 uniform mat4 view;
 
-const float radius = 0.25;
+const float radius = 0.05;
 const float bias = 0.015;
 const float rayThreshold = 0.15;
 

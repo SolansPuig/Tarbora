@@ -1,3 +1,15 @@
+/*********************************************************************
+ * Copyright (C) 2020 Roger Solans Puig
+ * Email: roger@solanspuig.cat
+ *
+ * This file is part of Tarbora. You can obtain a copy at
+ * https://github.com/SolansPuig/Tarbora
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *********************************************************************/
+
 #include "GraphicsEngine.hpp"
 #include "../../../Framework/Module/Module.hpp"
 #include <time.h>
@@ -6,97 +18,111 @@
 #include "../../../Framework/External/tracy/TracyOpenGL.hpp"
 
 namespace Tarbora {
-    Window::Window(const std::string &title, int width, int height, GraphicsEngine *graphics_engine) :
-        props_(WindowProps(title, width, height, graphics_engine))
-    {
-        LOG_DEBUG("Creating window with title: %s, width: %d and height: %d", props_.title.c_str(), props_.width, props_.height);
+  Window::Window(
+    const std::string &title,
+    int width, int height,
+    GraphicsEngine *graphics_engine
+  ) :
+    props_(WindowProps(title, width, height, graphics_engine))
+  {
+    LOG_DEBUG(
+      "Creating window with title: %s, width: %d and height: %d",
+      props_.title.c_str(), props_.width, props_.height
+    );
 
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        window_ = glfwCreateWindow(props_.width, props_.height, props_.title.c_str(), NULL, NULL);
-        if (window_ == NULL) {
-            LOG_ERR("Failed to create GLFW window");
-            glfwTerminate();
-            return;
-        }
+    window_ = glfwCreateWindow(
+      props_.width, props_.height,
+      props_.title.c_str(),
+      NULL, NULL
+    );
 
-        glfwMakeContextCurrent(window_);
+    if (window_ == NULL) {
+      LOG_ERR("Failed to create GLFW window");
+      glfwTerminate();
+      return;
+    }
 
-        glfwSetWindowUserPointer(window_, &props_);
+    glfwMakeContextCurrent(window_);
 
-        glfwSetWindowSizeCallback(window_, [](GLFWwindow* window, int width, int height)
+    glfwSetWindowUserPointer(window_, &props_);
+
+    glfwSetWindowSizeCallback(window_, [](GLFWwindow* window, int width, int height)
 		{
 			WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
 			data.width = width;
 			data.height = height;
-            data.ratio = (float)width / (float)height;
-            data.graphics_engine->getRenderer()->resize(width, height);
+      data.ratio = (float)width / (float)height;
+      data.graphics_engine->getRenderer()->resize(width, height);
 
-            glViewport(0, 0, width, height);
-        });
+      glViewport(0, 0, width, height);
+    });
 
-        glfwSetWindowCloseCallback(window_, [](GLFWwindow* window)
+    glfwSetWindowCloseCallback(window_, [](GLFWwindow* window)
 		{
-            WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
-            data.graphics_engine->getModule()->close();
-        });
+      WindowProps& data = *(WindowProps*)glfwGetWindowUserPointer(window);
+      data.graphics_engine->getModule()->close();
+    });
 
-        stbi_flip_vertically_on_write(1);
-    }
+    stbi_flip_vertically_on_write(1);
+  }
 
-    Window::~Window()
-    {
-        if (window_)
-            glfwDestroyWindow(window_);
-    }
+  Window::~Window()
+  {
+    if (window_)
+      glfwDestroyWindow(window_);
+  }
 
-    void Window::close()
-    {
-        if (window_)
-            glfwDestroyWindow(window_);
-        else
-            LOG_ERR("Trying to close an unexisting GLFW window");
-    }
+  void Window::close()
+  {
+    if (window_)
+      glfwDestroyWindow(window_);
+    else
+      LOG_ERR("Trying to close an unexisting GLFW window");
+  }
 
-    void Window::update()
-    {
-        glfwPollEvents();
-        glfwSwapBuffers(window_);
-    }
+  void Window::update()
+  {
+    glfwPollEvents();
+    glfwSwapBuffers(window_);
+  }
 
-    void Window::captureMouse(bool capture)
-    {
-        glfwSetInputMode(window_, GLFW_CURSOR, (capture ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL));
-    }
+  void Window::captureMouse(bool capture)
+  {
+    glfwSetInputMode(
+      window_, GLFW_CURSOR, (capture ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL)
+    );
+  }
 
-    void Window::setTitle(const std::string &title)
-    {
-        glfwSetWindowTitle(window_, title.c_str());
-    }
+  void Window::setTitle(const std::string &title)
+  {
+    glfwSetWindowTitle(window_, title.c_str());
+  }
 
-    int Window::takeScreenshot(const std::string &filename)
-    {
-        // Get the window width and height and reserve memory
-        int width = props_.width;
-        int height = props_.height;
-        char *data = (char*) malloc((size_t) (width * height * 3));
+  int Window::takeScreenshot(const std::string &filename)
+  {
+    // Get the window width and height and reserve memory
+    int width = props_.width;
+    int height = props_.height;
+    char *data = (char*) malloc((size_t) (width * height * 3));
 
-        // Configure the format for storing the pixels and read them
-        glPixelStorei(GL_PACK_ALIGNMENT, 1);
-        glReadPixels(0, 0, width, height,  GL_RGB, GL_UNSIGNED_BYTE, data);
+    // Configure the format for storing the pixels and read them
+    glPixelStorei(GL_PACK_ALIGNMENT, 1);
+    glReadPixels(0, 0, width, height,  GL_RGB, GL_UNSIGNED_BYTE, data);
 
-        // Generate the timestamp for the name
-        time_t t = time(NULL);
-        char buffer[30];
-        strftime(buffer, 30, "_%Y%m%d_%H%M%S.png", localtime(&t));
+    // Generate the timestamp for the name
+    time_t t = time(NULL);
+    char buffer[30];
+    strftime(buffer, 30, "_%Y%m%d_%H%M%S.png", localtime(&t));
 
-        // Store the screnshoot and free the reserved memory
-        int saved = stbi_write_png((filename + buffer).c_str(), width, height, 3, data, 0);
-        free(data);
+    // Store the screnshoot and free the reserved memory
+    int saved = stbi_write_png((filename + buffer).c_str(), width, height, 3, data, 0);
+    free(data);
 
-        LOG_INFO("Window: Saved screenshot %s", (filename + buffer).c_str());
-        return saved;
-    }
+    LOG_INFO("Window: Saved screenshot %s", (filename + buffer).c_str());
+    return saved;
+  }
 }

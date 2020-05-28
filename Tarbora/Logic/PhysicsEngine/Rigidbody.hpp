@@ -50,6 +50,7 @@ namespace Tarbora {
     void applyForce(const glm::vec3 &vector);
     void applyTorque(const glm::vec3 &vector);
     void applyImpulse(const glm::vec3 &impulse);
+    void applyImpulse(const glm::vec3 &impulse, const glm::vec3 &position);
     void setVelocity(const glm::vec3 &vector);
     void setRotation(const glm::vec3 &vector);
 

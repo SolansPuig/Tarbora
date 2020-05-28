@@ -8,9 +8,9 @@ components = {
     rigidbody= {
         shape = "box",
         size = {1, 1, 1},
-        density = 90,
-        friction = 0.3,
-        restitution = 0.9
+        density = 100,
+        friction = 0.7,
+        restitution = 0.1
     },
     item = {
       name = "cube",

@@ -20,10 +20,6 @@
         git submodule update
     \endcode
 
-    And modify the files "Tarbora/Framework/External/glm/CMakeLists.txt"
-    and "Tarbora/Logic/PhysicsEngine/External/bullet3/CMakeLists.txt" to set OFF all
-    the tests, examples and demos so you don't have to compile unnecessary code!
-
     Install the dependencies:
 
     \code{.sh}

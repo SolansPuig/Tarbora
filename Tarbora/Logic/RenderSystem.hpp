@@ -48,6 +48,8 @@ namespace Tarbora {
     std::string parent_node{""};
     //! The offset between the center of this model and the parent's node center.
     glm::vec3 offset{glm::vec3(0.f)};
+    //! The orientation of the model relative to the parent's.
+    glm::quat orientation{glm::vec3(0.f)};
   };
 
   /**

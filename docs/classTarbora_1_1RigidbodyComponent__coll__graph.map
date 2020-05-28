@@ -1,0 +1,6 @@
+<map id="Tarbora::RigidbodyComponent" name="Tarbora::RigidbodyComponent">
+<area shape="rect" id="node1" title="The component that stores the info about a physics&#39; Tarbora::Rigidbody." alt="" coords="23,171,242,197"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Component.html" title="A virtual component for the Entity_Component_System." alt="" coords="5,95,159,121"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1Rigidbody.html" title=" " alt="" coords="183,95,325,121"/>
+<area shape="rect" id="node4" href="$structTarbora_1_1Shape.html" title=" " alt="" coords="195,5,313,32"/>
+</map>

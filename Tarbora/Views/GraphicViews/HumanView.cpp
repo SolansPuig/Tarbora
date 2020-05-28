@@ -1,6 +1,5 @@
 #include "HumanView.hpp"
 #include "DemoWindow.hpp"
-#include "GameLayer.hpp"
 #include "MetricsGui.hpp"
 #include "InventoryLayer.hpp"
 
@@ -42,7 +41,7 @@ namespace Tarbora {
         if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_ESCAPE)) {
             static bool capture = true;
             capture = !capture;
-            getGraphicsEngine()->getWindow()->captureMouse(capture);
+            getGraphicsEngine()->getInputManager()->captureMouse(capture);
             game_layer_->freezeMouse(!capture);
         }
 

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['material',['material',['../classTarbora_1_1ModelComponent.html#a9db8d458810aab5c0bcbc023ea18ea96',1,'Tarbora::ModelComponent']]],
-  ['model',['model',['../classTarbora_1_1ModelComponent.html#a48209f200e31009094a4fc8b2bc1aeed',1,'Tarbora::ModelComponent']]],
-  ['movement',['movement',['../classTarbora_1_1ControllerComponent.html#a861aa136c4a5c51238ccbf5d2ebdba81',1,'Tarbora::ControllerComponent']]]
+  ['facing_411',['facing',['../classTarbora_1_1ControllerComponent.html#a07a89d21a6a5ca4688356822161349db',1,'Tarbora::ControllerComponent']]],
+  ['facing_5fclamp_412',['facing_clamp',['../classTarbora_1_1ControllerComponent.html#a3584edf881f58cf6ec9004e96d293953',1,'Tarbora::ControllerComponent']]],
+  ['friction_413',['friction',['../classTarbora_1_1Rigidbody.html#a8c6173e267725780e9f9e15b3b351c24',1,'Tarbora::Rigidbody']]]
 ];

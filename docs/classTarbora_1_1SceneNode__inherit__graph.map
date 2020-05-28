@@ -1,9 +1,10 @@
 <map id="Tarbora::SceneNode" name="Tarbora::SceneNode">
-<area shape="rect" id="node2" href="$classTarbora_1_1Camera.html" title="Tarbora::Camera" alt="" coords="6,80,126,107"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1MaterialNode.html" title="Tarbora::MaterialNode" alt="" coords="151,80,301,107"/>
-<area shape="rect" id="node6" href="$classTarbora_1_1MeshNode.html" title="Tarbora::MeshNode" alt="" coords="325,80,463,107"/>
-<area shape="rect" id="node8" href="$classTarbora_1_1RootNode.html" title="Tarbora::RootNode" alt="" coords="487,80,621,107"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1ActorModel.html" title="Tarbora::ActorModel" alt="" coords="5,155,145,181"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1Skybox.html" title="Tarbora::Skybox" alt="" coords="169,155,288,181"/>
-<area shape="rect" id="node7" href="$classTarbora_1_1AnimatedNode.html" title="Tarbora::AnimatedNode" alt="" coords="314,155,474,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="257,5,408,32"/>
+<area shape="rect" id="node2" href="$classTarbora_1_1Camera.html" title=" " alt="" coords="5,80,135,107"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1MaterialNode.html" title=" " alt="" coords="159,80,325,107"/>
+<area shape="rect" id="node6" href="$classTarbora_1_1MeshNode.html" title=" " alt="" coords="350,80,497,107"/>
+<area shape="rect" id="node8" href="$classTarbora_1_1RootNode.html" title=" " alt="" coords="521,80,664,107"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1ActorModel.html" title=" " alt="" coords="7,155,159,181"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1Skybox.html" title=" " alt="" coords="183,155,309,181"/>
+<area shape="rect" id="node7" href="$classTarbora_1_1AnimatedNode.html" title=" " alt="" coords="336,155,511,181"/>
 </map>

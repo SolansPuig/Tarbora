@@ -87,6 +87,7 @@ namespace Tarbora {
     void move(const MessageSubject &, const MessageBody &body);
     void rotate(const MessageSubject &, const MessageBody &body);
     void applyForce(const MessageSubject &, const MessageBody &body);
+    void applyImpulse(const MessageSubject &, const MessageBody &body);
     void applyTorque(const MessageSubject &, const MessageBody &body);
     void setVelocity(const MessageSubject &, const MessageBody &body);
     void setAngularVel(const MessageSubject &, const MessageBody &body);

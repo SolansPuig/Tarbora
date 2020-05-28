@@ -14,6 +14,7 @@
 #define __LAYER_H_
 
 #include "../../Framework/Module/ModuleComponent.hpp"
+
 #include "GraphicView.hpp"
 
 namespace Tarbora {

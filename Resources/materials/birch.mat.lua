@@ -1,4 +1,5 @@
 shader = "model.shader.lua"
-albedo = "birch.png"
+albedo = "birch2.png"
 specular = "black.png"
-pixel_density = 100
+color_tint = "white.png"
+pixel_density = 500
