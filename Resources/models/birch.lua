@@ -1,3 +1,15 @@
+--[===================================================================[
+  * Copyright (C) 2020 Roger Solans Puig
+  * Email: roger@solanspuig.cat
+  *
+  * This file is part of Tarbora. You can obtain a copy at
+  * https://github.com/SolansPuig/Tarbora
+  *
+  * This Source Code Form is subject to the terms of the Mozilla Public
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+--]===================================================================]
+
 function gen_leaf(nname, pos, size, rot)
   local leaf = {
     name = nname,
@@ -54,11 +66,6 @@ function gen_branch(nname, n, pos, size, rot)
   if (n < 1) then
     -- Always a child branch
     nsize = math.random(700, 900)
-    nrot = {
-      x = math.random(math.min(-rot.x, -2 * rot.x), math.max(-rot.x, -2 * rot.x)),
-      y = math.random(math.min(-rot.y, -2 * rot.y), math.max(-rot.y, -2 * rot.y)),
-      z = math.random(math.min(-rot.z, -2 * rot.z), math.max(-rot.z, -2 * rot.z))
-    }
     table.insert(
       branch.nodes,
       gen_branch(
@@ -66,7 +73,20 @@ function gen_branch(nname, n, pos, size, rot)
         n + 1,
         {x = 0, y = (size.y + nsize)/2, z = 0},
         {x = 43, y = nsize},
-        nrot
+        {
+          x = math.random(
+            math.min(-rot.x, -2 * rot.x),
+            math.max(-rot.x, -2 * rot.x)
+          ),
+          y = math.random(
+            math.min(-rot.y, -2 * rot.y),
+            math.max(-rot.y, -2 * rot.y)
+          ),
+          z = math.random(
+            math.min(-rot.z, -2 * rot.z),
+            math.max(-rot.z, -2 * rot.z)
+          )
+        }
       )
     )
 
@@ -81,9 +101,9 @@ function gen_branch(nname, n, pos, size, rot)
           {x = 0, y = (size.y + nsize)/2, z = 0},
           {x = 33, y = nsize},
           {
-            x = math.random(-3, 3)^3,
-            y = math.random(-3, 3)^3,
-            z = math.random(-3, 3)^3
+            x = math.random(-15, 15),
+            y = math.random(-15, 15),
+            z = math.random(-15, 15)
           }
         )
       )
@@ -100,9 +120,9 @@ function gen_branch(nname, n, pos, size, rot)
           {x = 0, y = (size.y + nsize)/2 + math.random(50, 100), z = 0},
           {x = 29, y = nsize},
           {
-            x = math.random(-4, 4)^3,
-            y = math.random(-4, 4)^3,
-            z = math.random(-4, 4)^3
+            x = math.random(-25, 25),
+            y = math.random(-25, 25),
+            z = math.random(-25, 25)
           }
         )
       )
@@ -152,9 +172,9 @@ function gen_branch(nname, n, pos, size, rot)
       gen_leaf(
         "leaf4",
         {
-          x = math.random(-200, 200),
-          y = math.random(-200, 200),
-          z = math.random(-200, 200)
+          x = math.random(-100, 100),
+          y = math.random(-100, 200),
+          z = math.random(-100, 100)
         },
         {x = math.random(100, 200), y = math.random(100, 200)},
         {
@@ -169,9 +189,9 @@ function gen_branch(nname, n, pos, size, rot)
       gen_leaf(
         "leaf5",
         {
-          x = math.random(-200, 200),
-          y = math.random(-200, 200),
-          z = math.random(-200, 200)
+          x = math.random(-100, 100),
+          y = math.random(-100, 200),
+          z = math.random(-100, 100)
         },
         {x = math.random(100, 200), y = math.random(100, 200)},
         {

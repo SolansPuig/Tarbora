@@ -10,11 +10,10 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  *********************************************************************/
 
-#ifndef __ACTOR_MODEL_H_
-#define __ACTOR_MODEL_H_
+#ifndef __ACTORMODEL_H_
+#define __ACTORMODEL_H_
 
 #include "../../Framework/Module/Module.hpp"
-#include "ActorModel.hpp"
 #include "SceneNode.hpp"
 #include "AnimationController.hpp"
 
@@ -22,7 +21,7 @@ namespace Tarbora {
   class ActorModel : public MaterialNode
   {
     friend class AnimationController;
-    friend class Animation;
+    friend struct Animation;
   public:
     ActorModel(
       const ActorId &id, RenderPass render_pass,
@@ -55,4 +54,4 @@ namespace Tarbora {
   };
 }
 
-#endif // __ACTOR_MODEL_H_
+#endif // __ACTORMODEL_H_

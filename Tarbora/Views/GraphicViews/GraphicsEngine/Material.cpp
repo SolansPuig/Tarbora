@@ -20,6 +20,7 @@ namespace Tarbora {
     shader_->set("pixelDensity", pixel_density_);
     shader_->set("projection", projection);
     shader_->set("view", view);
+    shader_->set("screenSize", size_);
     albedo_->bind(0);
     specular_->bind(1);
     color_tint_->bind(2);
@@ -61,6 +62,7 @@ namespace Tarbora {
       shader->set("albedo", 0);
       shader->set("specular", 1);
       shader->set("colorTint", 2);
+      shader->set("gPosition", 3);
     });
 
     return mat;

@@ -1,7 +1,19 @@
-#pragma once
+/*********************************************************************
+ * Copyright (C) 2020 Roger Solans Puig
+ * Email: roger@solanspuig.cat
+ *
+ * This file is part of Tarbora. You can obtain a copy at
+ * https://github.com/SolansPuig/Tarbora
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *********************************************************************/
+
+#ifndef __MATH_H_
+#define __MATH_H_
 
 #include "../CommonHeaders.hpp"
-#include "../Global.hpp"
 
 #include "../External/glm/glm/glm.hpp"
 #include "../External/glm/glm/gtx/string_cast.hpp"
@@ -9,6 +21,8 @@
 #include "../External/glm/glm/gtc/type_ptr.hpp"
 #include "../External/glm/glm/gtx/quaternion.hpp"
 #include "../External/glm/glm/gtx/euler_angles.hpp"
+
+#endif // __MATH_H_
 
 // inline glm::u8vec3 operator*(const glm::u8vec3 &a, char b) { return glm::u8vec3(b * a.x, b * a.y, b * a.z); }
 // inline glm::u8vec3 operator*(char a, const glm::u8vec3 &b) { return b * a; }

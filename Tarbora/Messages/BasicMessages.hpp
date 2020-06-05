@@ -10,8 +10,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  *********************************************************************/
 
-#ifndef __BASIC_MESSAGES_H_
-#define __BASIC_MESSAGES_H_
+#ifndef __BASICMESSAGES_H_
+#define __BASICMESSAGES_H_
 
 #include "MathMessages.hpp"
 #include "basic.pb.h"

@@ -45,6 +45,10 @@ namespace Tarbora {
 
   struct InventorySlot
   {
+    InventorySlot () :
+      item(ItemComponentPtr()), quantity(0), offset({0.f, 0.f, 0.f}),
+      orientation({0.f, 0.f, 0.f, 1.f}) {}
+
     InventorySlot (
       ItemComponentPtr item,
       unsigned int quantity,

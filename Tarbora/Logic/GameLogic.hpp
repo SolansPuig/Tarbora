@@ -20,5 +20,6 @@
 #include "RenderSystem.hpp"
 #include "AnimationSystem.hpp"
 #include "InventorySystem.hpp"
+#include "ItemDisplaySystem.hpp"
 
 #endif // __GAMELOGIC_H_

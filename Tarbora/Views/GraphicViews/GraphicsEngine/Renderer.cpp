@@ -38,7 +38,8 @@ namespace Tarbora {
     }
 
     glEnable(GL_DEPTH_TEST);
-    glClearColor(1.f, 0.f, 0.f, 0.f);
+    glClearColor(0.f, 0.f, 0.f, 0.f);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     quad_mesh_ = ResourcePtr<Mesh>("meshes/plane.mesh");
     setupGeometryPass();
@@ -114,9 +115,9 @@ namespace Tarbora {
     occlusion_shader_->use();
     occlusion_shader_->set("projection", projection_);
     occlusion_shader_->set("view", view_);
-    g_position_->bind(0);
-    g_normal_->bind(1);
-    noise_texture_->bind(2);
+    g_position_->bind(3);
+    g_normal_->bind(0);
+    noise_texture_->bind(1);
     glBindVertexArray(quad_mesh_->getId());
     glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
 
@@ -125,7 +126,7 @@ namespace Tarbora {
     occlusion_blur_shader_->use();
     occlusion_blur_shader_->set("projection", projection_);
     occlusion_blur_shader_->set("view", view_);
-    ssao_color_->bind();
+    ssao_color_->bind(0);
     glBindVertexArray(quad_mesh_->getId());
     glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
   }
@@ -137,10 +138,9 @@ namespace Tarbora {
     lighting_shader_->use();
     lighting_shader_->set("projection", projection_);
     lighting_shader_->set("view", view_);
-    g_position_->bind(0);
-    g_normal_->bind(1);
-    g_color_spec_->bind(2);
-    ssao_blur_color_->bind(3);
+    g_normal_->bind(0);
+    g_color_spec_->bind(1);
+    ssao_blur_color_->bind(2);
     glBindVertexArray(quad_mesh_->getId());
     glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
 
@@ -158,7 +158,7 @@ namespace Tarbora {
     scene_shader_->use();
     scene_shader_->set("projection", projection_);
     scene_shader_->set("view", view_);
-    lighting_color_->bind();
+    lighting_color_->bind(0);
     glBindVertexArray(quad_mesh_->getId());
     glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
     glBindFramebuffer(GL_READ_FRAMEBUFFER, g_buffer_);
@@ -185,6 +185,14 @@ namespace Tarbora {
       glEnable(GL_CULL_FACE);
     else
       glDisable(GL_CULL_FACE);
+  }
+
+  void Renderer::setAlpha(bool value)
+  {
+    if (value)
+      glEnable(GL_BLEND);
+    else
+      glDisable(GL_BLEND);
   }
 
   void Renderer::postprocess()
@@ -328,9 +336,9 @@ namespace Tarbora {
     occlusion_shader_.setInitialConfig([&, ssaoKernel](auto shader){
       LOG_DEBUG("Initializing occlusion shader %d %d", width_, height_);
       shader->use();
-      shader->set("gPosition", 0);
-      shader->set("gNormal", 1);
-      shader->set("texNoise", 2);
+      shader->set("gPosition", 3);
+      shader->set("gNormal", 0);
+      shader->set("texNoise", 1);
       shader->set("screenSize", glm::vec2(width_, height_));
       for (unsigned int i = 0; i < KERNEL_SIZE; ++i)
         shader->set("samples[" + std::to_string(i) + "]", ssaoKernel[i]);
@@ -394,10 +402,10 @@ namespace Tarbora {
     lighting_shader_ = ResourcePtr<Shader>("shaders/lighting.shader.lua");
     lighting_shader_.setInitialConfig([](auto shader){
       shader->use();
-      shader->set("gPosition", 0);
-      shader->set("gNormal", 1);
-      shader->set("gColorSpec", 2);
-      shader->set("ssao", 3);
+      shader->set("gPosition", 3);
+      shader->set("gNormal", 0);
+      shader->set("gColorSpec", 1);
+      shader->set("ssao", 2);
     });
   }
 

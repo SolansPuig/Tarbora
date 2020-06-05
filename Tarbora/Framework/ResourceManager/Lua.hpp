@@ -10,8 +10,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  *********************************************************************/
 
-#ifndef __TARBORA_LUA_H_
-#define __TARBORA_LUA_H_
+#ifndef __TARBORALUA_H_
+#define __TARBORALUA_H_
 
 #include "Resource.hpp"
 #define SOL_ALL_SAFETIES_ON 1
@@ -255,6 +255,8 @@ namespace Tarbora {
   class LuaLoader : public ResourceLoader
   {
     friend class ResourceManager;
+  public:
+    virtual ~LuaLoader() {}
   private:
     virtual const std::string getPattern() override { return ".lua"; };
     virtual std::shared_ptr<Resource> load(const std::string &path) override

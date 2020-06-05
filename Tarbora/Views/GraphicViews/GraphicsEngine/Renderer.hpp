@@ -31,6 +31,8 @@ namespace Tarbora {
     void init(int width, int height);
     void resize(int width, int height);
 
+    glm::vec2 getSize() { return glm::vec2(width_, height_); }
+
     void geometryPass();
     void occlusionPass();
     void lightingPass();
@@ -41,6 +43,7 @@ namespace Tarbora {
     void cleanSky();
 
     void setFaceCulling(bool value);
+    void setAlpha(bool value);
     void setPostprocessShader(const std::string &shader)
     {
       postprocess_shader_name_ = shader;

@@ -23,7 +23,7 @@ namespace Tarbora {
     MetricsGui(GraphicView *view, bool start_active)
       : Layer(view, start_active)
     {
-      subscribe("look_at", [&](const MessageSubject, const MessageBody &body)
+      subscribe("look_at", [&](const MessageSubject &, const MessageBody &body)
       {
         Message::LookAt m(body);
         if (m->id() == "player")

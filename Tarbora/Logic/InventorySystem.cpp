@@ -48,8 +48,8 @@ namespace Tarbora {
       std::string name = group.get<std::string>("name");
       unsigned int slots = group.get<unsigned int>("slots", 1, true);
       std::string node = group.get<std::string>("node", "", true);
-      LuaTable offsets = group.get("offset", true);
-      LuaTable orientations = group.get("orientation", true);
+      LuaTable offsets = group.get("offsets", true);
+      LuaTable orientations = group.get("orientations", true);
       inventory.emplace(
         name,
         InventoryGroup(slots, node != "", node, offsets, orientations)
@@ -254,6 +254,7 @@ namespace Tarbora {
                 model->offset = glm::vec3(0.f);
               }
               components->disableComponent<ModelComponent>(target);
+              components->disableComponent<AnimationComponent>(target);
             }
 
             world->enableActor(target);

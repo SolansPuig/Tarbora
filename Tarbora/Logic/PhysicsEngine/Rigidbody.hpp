@@ -77,6 +77,8 @@ namespace Tarbora {
     Shape shape;
     //! The height, in meters, of the rigidbody.
     float height;
+    //! The width, in meters, of the rigidbody.
+    float width;
     //! The friction between the body and other objects.
     float friction;
     //! The density, which will be used to calculate the mass.

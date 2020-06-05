@@ -86,6 +86,7 @@ namespace Tarbora {
       switch (pass)
       {
         case Static:
+          renderer_->setAlpha(false);
           renderer_->geometryPass();
           renderer_->setFaceCulling(true);
           break;
@@ -107,6 +108,7 @@ namespace Tarbora {
           break;
         case Transparent:
           renderer_->cleanSky();
+          renderer_->setAlpha(true);
           break;
         default:
           break;
@@ -114,6 +116,7 @@ namespace Tarbora {
 
       for (auto material : render_list_[pass])
       {
+        material.first->setScreenSize(renderer_->getSize());
         material.first->bind(projection_, view_);
         for (auto mesh : material.second)
         {

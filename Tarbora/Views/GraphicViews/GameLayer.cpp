@@ -1,3 +1,15 @@
+/*********************************************************************
+ * Copyright (C) 2020 Roger Solans Puig
+ * Email: roger@solanspuig.cat
+ *
+ * This file is part of Tarbora. You can obtain a copy at
+ * https://github.com/SolansPuig/Tarbora
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *********************************************************************/
+
 #include "GameLayer.hpp"
 #include "Layer.hpp"
 #include "HumanView.hpp"
@@ -21,23 +33,22 @@ namespace Tarbora {
 
     scene_->createSkybox("sky.mat.lua");
 
-    subscribe("create_actor_model", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("create_actor_model", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::CreateActorModel m(body);
-      scene_->createActorModel(m.getId(), (RenderPass)m.getRenderPass(), m.getModel(), m.getMaterial());
+      scene_->createActorModel(
+        m.getId(), (RenderPass)m.getRenderPass(), m.getModel(), m.getMaterial()
+      );
     });
 
-    subscribe("set_camera", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("set_camera", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::Node m(body);
       scene_->setCamera(m.getId(), m.getName());
     });
 
-    subscribe("move_actor", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("move_actor", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::MoveActor m(body);
       std::shared_ptr<SceneNode> actor = scene_->getActor(m.getId());
       if (actor)
@@ -72,9 +83,8 @@ namespace Tarbora {
       }
     });
 
-    subscribe("move_node", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("move_node", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::MoveNode m(body);
       std::shared_ptr<SceneNode> actor = scene_->getActor(m.getId());
       if (actor)
@@ -90,9 +100,8 @@ namespace Tarbora {
       }
     });
 
-    subscribe("delete_actor_model", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("delete_actor_model", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::Actor m(body);
       std::shared_ptr<SceneNode> actor = scene_->getActor(m.getId());
       if (actor)
@@ -109,37 +118,46 @@ namespace Tarbora {
       }
     });
 
-    subscribe("start_animation", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("start_animation", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::StartAnimation m(body);
       auto actor = std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()));
       if (actor)
       {
-        actor->startAnimation(Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()});
+        actor->startAnimation(
+          Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(),
+                    m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()
+          }
+        );
       }
 
     });
 
-    subscribe("start_base_animation", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("start_base_animation", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::StartAnimation m(body);
       auto actor = std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()));
       if (actor)
       {
-        actor->startAnimation(Animation{m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(), m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()}, true);
+        actor->startAnimation(
+          Animation{
+            m.getAnimation(), m.getFile(), (BlendMode)m.getBlendMode(),
+            m.getBlendFactor(), m.getFadeInTimer(), m.getLoop()
+          },
+          true
+        );
       }
     });
 
-    subscribe("end_animation", [this](const MessageSubject &subject, const MessageBody &body)
+    subscribe("end_animation", [this](auto &, auto &body)
     {
-      UNUSED(subject);
       Message::EndAnimation m(body);
       auto actor = std::static_pointer_cast<ActorModel>(scene_->getActor(m.getId()));
       if (actor)
       {
-        actor->endAnimation(m.getAnimation(), (StopMode)m.getStopMode(), m.getFadeOutTimer());
+        actor->endAnimation(
+          m.getAnimation(), (StopMode)m.getStopMode(), m.getFadeOutTimer()
+        );
       }
     });
 
@@ -209,7 +227,9 @@ namespace Tarbora {
     }
     if (pick_object_ && getInputManager()->mouseScrolled())
     {
-      send(1, "grab_distance", Message::LookAt(target_id_, getInputManager()->getScrollDelta()));
+      send(1, "grab_distance",
+           Message::LookAt(target_id_, getInputManager()->getScrollDelta())
+      );
     }
 
     glm::vec2 last_look_direction_ = look_direction_;
@@ -221,7 +241,9 @@ namespace Tarbora {
     }
     if (movement_ != last_movement)
     {
-      send(1, "set_movement", Message::ApplyPhysics(target_id_, glm::normalize(movement_)));
+      send(1, "set_movement",
+           Message::ApplyPhysics(target_id_, glm::normalize(movement_))
+      );
     }
     if (look_direction_ != last_look_direction_)
     {

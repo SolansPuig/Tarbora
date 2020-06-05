@@ -1,105 +1,121 @@
+/*********************************************************************
+ * Copyright (C) 2020 Roger Solans Puig
+ * Email: roger@solanspuig.cat
+ *
+ * This file is part of Tarbora. You can obtain a copy at
+ * https://github.com/SolansPuig/Tarbora
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *********************************************************************/
+
 #include "MessageManager.hpp"
 #include "messages.pb.h"
 
 namespace Tarbora {
-    MessageManager::MessageManager(const ClientId &id)
+  MessageManager::MessageManager(const ClientId &id)
+  {
+    message_client_ = std::unique_ptr<MessageClient>(new MessageClient(id));
+    message_client_->connect();
+  }
+
+  MessageManager::~MessageManager()
+  {
+    message_client_->disconnect();
+  }
+
+  void MessageManager::readMessage(const Message::Message &m)
+  {
+    const MessageBody b(m.body());
+
+    //  First execute the callback for the listeners subscribed to all msgs
+    auto all_listeners = listeners_.find("all");
+    if (all_listeners != listeners_.end())
     {
-        message_client_ = std::unique_ptr<MessageClient>(new MessageClient(id));
-        message_client_->connect();
+      for (auto listener : all_listeners->second)
+      {
+        listener(m.subject(), b);
+      }
     }
 
-    MessageManager::~MessageManager()
+    // Now execute the callback for the listeners subscribed to this msg
+    auto subject_listeners = listeners_.find(m.subject());
+    if (subject_listeners != listeners_.end())
     {
-        message_client_->disconnect();
+      for (auto listener : subject_listeners->second)
+      {
+        listener(m.subject(), b);
+      }
+    }
+  }
+
+  void MessageManager::readMessages()
+  {
+    Message::Message m;
+    while (message_client_->getMessage(&m))
+    {
+      readMessage(m);
+    }
+  }
+
+  SubscriptorId MessageManager::subscribe(
+    const MessageSubject &s, MessageFn func, bool local
+  )
+  {
+    // If this module was still not subscribed to this msg, do it
+    const auto subject_listeners = listeners_.find(s);
+    if (!local && subject_listeners == listeners_.end())
+    {
+      message_client_->subscribe(s);
     }
 
-    void MessageManager::readMessage(const Message::Message &m)
+    // Anyways, register a new callback function
+    listeners_[s].push_back(func);
+    return listeners_[s].size() - 1;
+  }
+
+  void MessageManager::desubscribe(const MessageSubject &s, const SubscriptorId &id)
+  {
+    listeners_[s].erase(listeners_[s].begin() + id);
+    if (listeners_[s].size() == 0)
     {
-        const MessageBody b(m.body());
-
-        //  First execute the callback for the listeners subscribed to all msgs
-        auto all_listeners = listeners_.find("all");
-        if (all_listeners != listeners_.end())
-        {
-            for (auto listener : all_listeners->second)
-            {
-                listener(m.subject(), b);
-            }
-        }
-
-        // Now execute the callback for the listeners subscribed to this msg
-        auto subject_listeners = listeners_.find(m.subject());
-        if (subject_listeners != listeners_.end())
-        {
-            for (auto listener : subject_listeners->second)
-            {
-                listener(m.subject(), b);
-            }
-        }
+      message_client_->desubscribe(s);
     }
+  }
 
-    void MessageManager::readMessages()
-    {
-        Message::Message m;
-        while (message_client_->getMessage(&m))
-        {
-            readMessage(m);
-        }
-    }
+  void MessageManager::trigger(const MessageSubject &s, const MessageBody &b)
+  {
+    Message::Message message;
+    message.set_type(Message::MessageType::EVENT);
+    message.set_subject(s);
+    message.set_body(b.getContent());
 
-    SubscriptorId MessageManager::subscribe(const MessageSubject &s, MessageFn func, bool local)
-    {
-        // If this module was still not subscribed to this msg, do it
-        const auto subject_listeners = listeners_.find(s);
-        if (!local && subject_listeners == listeners_.end())
-        {
-            message_client_->subscribe(s);
-        }
+    message_client_->send(message);
+  }
 
-        // Anyways, register a new callback function
-        listeners_[s].push_back(func);
-        return listeners_[s].size() - 1;
-    }
+  void MessageManager::send(
+    const ClientId &to, const MessageSubject &s, const MessageBody &b
+  )
+  {
+    Message::Message message;
+    message.set_type(Message::MessageType::COMMAND);
+    message.set_to(to);
+    message.set_subject(s);
+    message.set_body(b.getContent());
 
-    void MessageManager::desubscribe(const MessageSubject &s, const SubscriptorId &id)
-    {
-        listeners_[s].erase(listeners_[s].begin() + id);
-        if (listeners_[s].size() == 0)
-        {
-            message_client_->desubscribe(s);
-        }
-    }
+    message_client_->send(message);
+  }
 
-    void MessageManager::trigger(const MessageSubject &s, const MessageBody &b)
-    {
-        Message::Message message;
-        message.set_type(Message::MessageType::EVENT);
-        message.set_subject(s);
-        message.set_body(b.getContent());
+  void MessageManager::triggerLocal(const MessageSubject &s, const MessageBody &b)
+  {
+    Message::Message message;
+    message.set_type(Message::MessageType::LOCAL);
+    message.set_subject(s);
+    message.set_body(b.getContent());
 
-        message_client_->send(message);
-    }
-
-    void MessageManager::send(const ClientId &to, const MessageSubject &s, const MessageBody &b)
-    {
-        Message::Message message;
-        message.set_type(Message::MessageType::COMMAND);
-        message.set_to(to);
-        message.set_subject(s);
-        message.set_body(b.getContent());
-
-        message_client_->send(message);
-    }
-
-    void MessageManager::triggerLocal(const MessageSubject &s, const MessageBody &b)
-    {
-        Message::Message message;
-        message.set_type(Message::MessageType::LOCAL);
-        message.set_subject(s);
-        message.set_body(b.getContent());
-
-        // It's local, so there's no need to send it to the server. Also,
-        // this way its execution is immediate (important!)
-        readMessage(message);
-    }
+    // It's local, so there's no need to send it to the server. Also,
+    // this way its execution is immediate (important!)
+    readMessage(message);
+  }
 }

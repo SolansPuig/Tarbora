@@ -28,6 +28,7 @@ namespace Tarbora {
       float radius = table.get<float>("radius");
       shape = PhysicsEngine::genSphere(radius);
       height = 2 * radius;
+      width = 2 * radius;
     }
     else if (s == "capsule")
     {
@@ -35,12 +36,14 @@ namespace Tarbora {
       float h = table.get<float>("height");
       shape = PhysicsEngine::genCapsule(radius, h);
       height = 2 * radius + h;
+      width = 2 * radius;
     }
     else if (s == "box")
     {
       glm::vec3 size = table.get<glm::vec3>("size");
       shape = PhysicsEngine::genBox(size);
       height = size.y;
+      width = size.x;
     }
     else
     {

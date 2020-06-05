@@ -163,7 +163,7 @@ namespace Tarbora {
       // Is on the ground
       if (controller->on_ground)
       {
-        rb->setDamping(0.f, 0.f);
+        //rb->setDamping(0.f, 0.f);
         triggerLocal("falling_event", Message::Event(controller->owner, "falling"));
       }
       controller->on_ground = false;
