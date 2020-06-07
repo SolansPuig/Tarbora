@@ -1,12 +1,12 @@
 <map id="Tarbora::System" name="Tarbora::System">
 <area shape="rect" id="node1" title="A pure virtual system for the Entity_Component_System." alt="" coords="255,183,381,209"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1AnimationSystem.html" title=" " alt="" coords="444,5,639,32"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1ControllerSystem.html" title=" " alt="" coords="446,56,637,83"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1EntitySystem.html" title="The system that manages the basic info about actors." alt="" coords="459,107,624,133"/>
-<area shape="rect" id="node6" href="$classTarbora_1_1GrabSystem.html" title=" " alt="" coords="462,157,621,184"/>
-<area shape="rect" id="node7" href="$classTarbora_1_1GravityCannonSystem.html" title=" " alt="" coords="429,208,653,235"/>
-<area shape="rect" id="node8" href="$classTarbora_1_1InventorySystem.html" title=" " alt="" coords="447,259,636,285"/>
-<area shape="rect" id="node9" href="$classTarbora_1_1PhysicsSystem.html" title="The system that manages physics." alt="" coords="453,309,629,336"/>
-<area shape="rect" id="node10" href="$classTarbora_1_1RenderSystem.html" title="The system that manages rendering." alt="" coords="455,360,628,387"/>
+<area shape="rect" id="node3" href="$classTarbora_1_1AnimationSystem.html" title=" " alt="" coords="435,5,630,32"/>
+<area shape="rect" id="node4" href="$classTarbora_1_1ControllerSystem.html" title=" " alt="" coords="437,56,628,83"/>
+<area shape="rect" id="node5" href="$classTarbora_1_1EntitySystem.html" title="The system that manages the basic info about actors." alt="" coords="450,107,615,133"/>
+<area shape="rect" id="node6" href="$classTarbora_1_1GrabSystem.html" title=" " alt="" coords="453,157,612,184"/>
+<area shape="rect" id="node7" href="$classTarbora_1_1InventorySystem.html" title=" " alt="" coords="438,208,627,235"/>
+<area shape="rect" id="node8" href="$classTarbora_1_1ItemDisplaySystem.html" title=" " alt="" coords="429,259,636,285"/>
+<area shape="rect" id="node9" href="$classTarbora_1_1PhysicsSystem.html" title="The system that manages physics." alt="" coords="445,309,621,336"/>
+<area shape="rect" id="node10" href="$classTarbora_1_1RenderSystem.html" title="The system that manages rendering." alt="" coords="446,360,619,387"/>
 <area shape="rect" id="node2" href="$classTarbora_1_1ModuleComponent.html" title="A part of a module with a defined function." alt="" coords="5,183,207,209"/>
 </map>

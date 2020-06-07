@@ -20,7 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="docs_icon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora
    &#160;<span id="projectnumber">0.6-ALPHA</span>
@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    MetricsGui(GraphicView *view, <span class="keywordtype">bool</span> start_active)</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      : Layer(view, start_active)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      subscribe(<span class="stringliteral">&quot;look_at&quot;</span>, [&amp;](<span class="keyword">const</span> MessageSubject, <span class="keyword">const</span> MessageBody &amp;body)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      subscribe(<span class="stringliteral">&quot;look_at&quot;</span>, [&amp;](<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> MessageBody &amp;body)</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        Message::LookAt m(body);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">if</span> (m-&gt;id() == <span class="stringliteral">&quot;player&quot;</span>)</div>
@@ -121,11 +121,11 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">    </span>{</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">float</span> DISTANCE = 10.f;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      ImVec2 window_pos = ImVec2(</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <a class="code" href="structImVec2.html">ImVec2</a> window_pos = <a class="code" href="structImVec2.html">ImVec2</a>(</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        ImGui::GetWindowPos().x + DISTANCE,</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        ImGui::GetWindowPos().y + DISTANCE</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      );</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      ImVec2 window_pos_pivot = ImVec2(0.0f, 0.0f);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <a class="code" href="structImVec2.html">ImVec2</a> window_pos_pivot = <a class="code" href="structImVec2.html">ImVec2</a>(0.0f, 0.0f);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      ImGui::SetNextWindowBgAlpha(0.3f);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      ImGui::Begin(</div>
@@ -154,6 +154,7 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif // __METRICS_GUI_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassTarbora_1_1MetricsGui_html_a2dc79e283aa20a6d0838f6edbb5fa701"><div class="ttname"><a href="classTarbora_1_1MetricsGui.html#a2dc79e283aa20a6d0838f6edbb5fa701">Tarbora::MetricsGui::draw</a></div><div class="ttdeci">void draw() override</div><div class="ttdoc">Render the data of the module.</div><div class="ttdef"><b>Definition:</b> MetricsGui.hpp:66</div></div>
+<div class="ttc" id="astructImVec2_html"><div class="ttname"><a href="structImVec2.html">ImVec2</a></div><div class="ttdef"><b>Definition:</b> imgui.h:174</div></div>
 <div class="ttc" id="anamespaceTarbora_html"><div class="ttname"><a href="namespaceTarbora.html">Tarbora</a></div><div class="ttdoc">This Engine.</div></div>
 <div class="ttc" id="aclassTarbora_1_1MetricsGui_html_a16532223c4313a559e58b51a5af4cb62"><div class="ttname"><a href="classTarbora_1_1MetricsGui.html#a16532223c4313a559e58b51a5af4cb62">Tarbora::MetricsGui::update</a></div><div class="ttdeci">void update(float delta_time) override</div><div class="ttdoc">Perform the logic and the computations of the component.</div><div class="ttdef"><b>Definition:</b> MetricsGui.hpp:61</div></div>
 <!-- start footer part -->

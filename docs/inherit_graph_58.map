@@ -1,17 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classTarbora_1_1Component.html" title="A virtual component for the Entity_Component_System." alt="" coords="5,325,159,352"/>
-<area shape="rect" id="node2" href="$classTarbora_1_1AnimationComponent.html" title=" " alt="" coords="222,5,442,32"/>
-<area shape="rect" id="node3" href="$classTarbora_1_1ControllerComponent.html" title="The component that stores all the info about the actor movement and related." alt="" coords="223,56,441,83"/>
-<area shape="rect" id="node4" href="$classTarbora_1_1GrabComponent.html" title="This component allows the actor to grab and move another actor." alt="" coords="240,107,424,133"/>
-<area shape="rect" id="node5" href="$classTarbora_1_1GravityCannonComponent.html" title=" " alt="" coords="207,157,457,184"/>
-<area shape="rect" id="node6" href="$classTarbora_1_1GravityCannonUserComponent.html" title=" " alt="" coords="229,209,435,250"/>
-<area shape="rect" id="node7" href="$classTarbora_1_1InfoComponent.html" title="The component that stores the basic info of an actor." alt="" coords="243,275,421,301"/>
-<area shape="rect" id="node8" href="$classTarbora_1_1InventoryComponent.html" title=" " alt="" coords="225,325,439,352"/>
-<area shape="rect" id="node9" href="$classTarbora_1_1ItemComponent.html" title=" " alt="" coords="241,376,423,403"/>
-<area shape="rect" id="node10" href="$classTarbora_1_1ModelComponent.html" title="The component that stores the info about rendering." alt="" coords="235,427,429,453"/>
-<area shape="rect" id="node11" href="$classTarbora_1_1RigidbodyComponent.html" title="The component that stores the info about a physics&#39; Tarbora::Rigidbody." alt="" coords="223,629,441,656"/>
-<area shape="rect" id="node12" href="$classTarbora_1_1SightComponent.html" title="This component checks and stores where the actor is looking at." alt="" coords="239,477,425,504"/>
-<area shape="rect" id="node13" href="$classTarbora_1_1TransformComponent.html" title="The component that stores the current position and orientation of an actor." alt="" coords="223,528,441,555"/>
-<area shape="rect" id="node14" href="$classTarbora_1_1TypeComponent.html" title="The component that stores the list of types of an actor." alt="" coords="241,579,423,605"/>
-<area shape="rect" id="node15" href="$classTarbora_1_1Rigidbody.html" title=" " alt="" coords="11,629,153,656"/>
+<area shape="rect" id="node1" href="$structImGuiWindowTempData.html" title=" " alt="" coords="5,5,184,32"/>
 </map>

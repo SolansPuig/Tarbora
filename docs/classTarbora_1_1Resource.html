@@ -20,7 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="docs_icon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora
    &#160;<span id="projectnumber">0.6-ALPHA</span>
@@ -139,34 +139,34 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceLoader</b></
 <p>Here's an example of the implementation of a <a class="el" href="classTarbora_1_1Resource.html" title="An abstract resource.">Resource</a> and its <em>ResourceLoader</em> for txt files:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Text : <span class="keyword">public</span> Resource</div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">friend</span> <span class="keyword">class </span>TextResourceLoader;</div>
+<div class="line"><span class="keyword">friend</span> <span class="keyword">class </span>TextResourceLoader;</div>
 <div class="line"><span class="keyword">public</span>:</div>
-<div class="line">    <span class="keyword">const</span> std::string GetText()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Text; }</div>
+<div class="line"><span class="keyword">const</span> std::string GetText()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Text; }</div>
 <div class="line"><span class="keyword">private</span>:</div>
-<div class="line">    Text(std::string name, std::string text) : Resource(name), m_Text(text) {}</div>
+<div class="line">Text(std::string name, std::string text) : Resource(name), m_Text(text) {}</div>
 <div class="line"> </div>
-<div class="line">    std::string m_Text;</div>
+<div class="line">std::string m_Text;</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">class </span>TextResourceLoader : <span class="keyword">public</span> ResourceLoader</div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">friend</span> <span class="keyword">class </span>ResourceManager;</div>
+<div class="line"><span class="keyword">friend</span> <span class="keyword">class </span>ResourceManager;</div>
 <div class="line"><span class="keyword">private</span>:</div>
-<div class="line">    <span class="keyword">virtual</span> <span class="keyword">const</span> std::string getPattern()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;*.txt&quot;</span>; }</div>
-<div class="line">    <span class="keyword">virtual</span> std::shared_ptr&lt;Resource&gt; load(std::string path)<span class="keyword"> override</span></div>
-<div class="line"><span class="keyword">    </span>{</div>
-<div class="line">        <span class="comment">// Try to open the file.</span></div>
-<div class="line">        std::ifstream file;</div>
-<div class="line">        file.open(path.c_str());</div>
-<div class="line">        <span class="keywordflow">if</span> (file.fail())</div>
-<div class="line">            <span class="keywordflow">return</span> std::shared_ptr&lt;Resource&gt;();</div>
+<div class="line"><span class="keyword">virtual</span> <span class="keyword">const</span> std::string getPattern()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;*.txt&quot;</span>; }</div>
+<div class="line"><span class="keyword">virtual</span> std::shared_ptr&lt;Resource&gt; load(std::string path)<span class="keyword"> override</span></div>
+<div class="line"><span class="keyword"></span>{</div>
+<div class="line"><span class="comment">// Try to open the file.</span></div>
+<div class="line">std::ifstream file;</div>
+<div class="line">file.open(path.c_str());</div>
+<div class="line"><span class="keywordflow">if</span> (file.fail())</div>
+<div class="line"><span class="keywordflow">return</span> std::shared_ptr&lt;Resource&gt;();</div>
 <div class="line"> </div>
-<div class="line">        <span class="comment">// Parse the contents to a string.</span></div>
-<div class="line">        std::string s = std::string(std::istreambuf_iterator&lt;char&gt;(file), std::istreambuf_iterator&lt;char&gt;());</div>
-<div class="line">        std::shared_ptr&lt;Resource&gt; r = std::shared_ptr&lt;Resource&gt;(<span class="keyword">new</span> Text(path, s)); <span class="comment">// Create the Resource.</span></div>
-<div class="line">        file.close(); <span class="comment">// Remember to close the file!</span></div>
-<div class="line">        <span class="keywordflow">return</span> r;</div>
-<div class="line">    }</div>
+<div class="line"><span class="comment">// Parse the contents to a string.</span></div>
+<div class="line">std::string s = std::string(std::istreambuf_iterator&lt;char&gt;(file), std::istreambuf_iterator&lt;char&gt;());</div>
+<div class="line">std::shared_ptr&lt;Resource&gt; r = std::shared_ptr&lt;Resource&gt;(<span class="keyword">new</span> Text(path, s)); <span class="comment">// Create the Resource.</span></div>
+<div class="line">file.close(); <span class="comment">// Remember to close the file!</span></div>
+<div class="line"><span class="keywordflow">return</span> r;</div>
+<div class="line">}</div>
 <div class="line">};</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classTarbora_1_1ResourceManager.html" title="Load resources and make them available to all the systems.">ResourceManager</a> </dd>
 <dd>

@@ -1,13 +1,13 @@
 <map id="Tarbora/Logic/System.hpp" name="Tarbora/Logic/System.hpp">
-<area shape="rect" id="node1" title="Class Tarbora::System." alt="" coords="897,5,1087,32"/>
-<area shape="rect" id="node2" href="$Component_8hpp.html" title="Classes Tarbora::Component, Tarbora::ComponentIterator and Tarbora::ComponentManager." alt="" coords="885,80,1099,107"/>
-<area shape="rect" id="node3" href="$AnimationSystem_8hpp_source.html" title=" " alt="" coords="5,162,261,189"/>
-<area shape="rect" id="node5" href="$RenderSystem_8hpp.html" title="Classes Tarbora::RenderSystem and Tarbora::ModelComponent." alt="" coords="285,162,520,189"/>
-<area shape="rect" id="node6" href="$ControllerSystem_8hpp.html" title="Classes Tarbora::ControllerSystem, Tarbora::ControllerComponent, Tarbora::SightComponent and Tarbora:..." alt="" coords="544,155,720,196"/>
-<area shape="rect" id="node7" href="$PhysicsSystem_8hpp.html" title="Classes Tarbora::PhysicsSystem and Tarbora::PhysicsComponent." alt="" coords="745,162,983,189"/>
-<area shape="rect" id="node8" href="$EntitySystem_8hpp.html" title="Classes Tarbora::EntitySystem, Tarbora::TypeComponent, Tarbora::InfoComponent and Tarbora::TransformC..." alt="" coords="1008,162,1235,189"/>
-<area shape="rect" id="node9" href="$World_8hpp.html" title="Class Tarbora::World." alt="" coords="1259,162,1437,189"/>
-<area shape="rect" id="node10" href="$InventorySystem_8hpp.html" title="Classes Tarbora::InventoryComponent, Tarbora::ItemComponent, Tarbora::InventorySystem." alt="" coords="1461,162,1712,189"/>
-<area shape="rect" id="node11" href="$GravityCannonSystem_8hpp_source.html" title=" " alt="" coords="1737,155,1946,196"/>
-<area shape="rect" id="node4" href="$GameLogic_8hpp_source.html" title=" " alt="" coords="757,244,971,271"/>
+<area shape="rect" id="node1" title="Class Tarbora::System." alt="" coords="544,5,733,32"/>
+<area shape="rect" id="node2" href="$Component_8hpp.html" title="Classes Tarbora::Component, Tarbora::ComponentIterator and Tarbora::ComponentManager." alt="" coords="531,80,746,107"/>
+<area shape="rect" id="node3" href="$AnimationSystem_8hpp_source.html" title=" " alt="" coords="5,237,261,263"/>
+<area shape="rect" id="node5" href="$RenderSystem_8hpp.html" title="Classes Tarbora::RenderSystem and Tarbora::ModelComponent." alt="" coords="285,237,520,263"/>
+<area shape="rect" id="node6" href="$ControllerSystem_8hpp.html" title="Classes Tarbora::ControllerSystem, Tarbora::ControllerComponent, Tarbora::SightComponent and Tarbora:..." alt="" coords="544,229,720,271"/>
+<area shape="rect" id="node7" href="$PhysicsSystem_8hpp.html" title="Classes Tarbora::PhysicsSystem and Tarbora::PhysicsComponent." alt="" coords="391,155,630,181"/>
+<area shape="rect" id="node8" href="$EntitySystem_8hpp.html" title="Classes Tarbora::EntitySystem, Tarbora::TypeComponent, Tarbora::InfoComponent and Tarbora::TransformC..." alt="" coords="655,155,881,181"/>
+<area shape="rect" id="node9" href="$World_8hpp.html" title="Class Tarbora::World." alt="" coords="906,155,1083,181"/>
+<area shape="rect" id="node10" href="$InventorySystem_8hpp.html" title="Classes Tarbora::InventoryComponent, Tarbora::ItemComponent, Tarbora::InventorySystem." alt="" coords="1108,155,1359,181"/>
+<area shape="rect" id="node11" href="$ItemDisplaySystem_8hpp.html" title="Classes Tarbora::ItemDisplayComponent, Tarbora::ItemDisplaySystem." alt="" coords="1138,229,1329,271"/>
+<area shape="rect" id="node4" href="$GameLogic_8hpp_source.html" title=" " alt="" coords="676,319,889,345"/>
 </map>

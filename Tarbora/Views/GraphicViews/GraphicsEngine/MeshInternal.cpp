@@ -49,7 +49,7 @@ namespace Tarbora {
       GL_ARRAY_BUFFER,
       amount * sizeof(RenderElementData),
       &instance_data_[0],
-      GL_STATIC_DRAW
+      GL_DYNAMIC_DRAW
     );
     glBindVertexArray(vao_);
     glDrawArraysInstanced(GL_TRIANGLES, 0, vertices_, amount);

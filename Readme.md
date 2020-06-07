@@ -41,20 +41,3 @@ At the moment, I'm a solo developer building that engine, but you can help me. Y
 friends. You can try to build a simple game with the tools that are already there (although you might have a hard time as
 the documentation is not finished and things are prone to change...). And you can donate to help
 me be able to spend more hours working in that project and maybe hire someone to help me.
-
-
-## Gallery
-
-### Early stages of development:
-
-![Screenshot during the development of lighting and SSAO](Resources/lighting_example.png)
-*Screenshot during the development of lighting and SSAO*
-
-![Another screenshot during the development of lighting and SSAO 2](Resources/lighting_example3.png)
-*Another screenshot during the development of lighting and SSAO*
-
-![Screenshot after implementing custom colors](Resources/custom_color_example.png)
-*Screenshot after implementing custom colors*
-
-![Screenshot after implementing atlas tiling and triplanar mapping](Resources/improved_textures.png)
-*Screenshot after implementing atlas tiling and triplanar mapping*

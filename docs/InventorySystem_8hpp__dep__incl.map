@@ -1,4 +1,5 @@
 <map id="Tarbora/Logic/InventorySystem.hpp" name="Tarbora/Logic/InventorySystem.hpp">
 <area shape="rect" id="node1" title="Classes Tarbora::InventoryComponent, Tarbora::ItemComponent, Tarbora::InventorySystem." alt="" coords="5,5,256,32"/>
-<area shape="rect" id="node2" href="$GameLogic_8hpp_source.html" title=" " alt="" coords="24,80,237,107"/>
+<area shape="rect" id="node2" href="$GameLogic_8hpp_source.html" title=" " alt="" coords="24,169,237,196"/>
+<area shape="rect" id="node3" href="$ItemDisplaySystem_8hpp.html" title="Classes Tarbora::ItemDisplayComponent, Tarbora::ItemDisplaySystem." alt="" coords="102,80,293,121"/>
 </map>

@@ -1,12 +1,12 @@
 <map id="Tarbora/Framework/Module/ModuleComponent.hpp" name="Tarbora/Framework/Module/ModuleComponent.hpp">
-<area shape="rect" id="node1" title="Class Tarbora::ModuleComponent." alt="" coords="1151,5,1349,47"/>
-<area shape="rect" id="node2" href="$Module_8hpp.html" title="Class Tarbora::Module." alt="" coords="1201,95,1299,121"/>
-<area shape="rect" id="node3" href="$AbstractModule_8hpp.html" title="Class Tarbora::AbstractModule." alt="" coords="1201,348,1353,375"/>
-<area shape="rect" id="node39" href="$MessageManager_8hpp.html" title="Class Tarbora::MessageManager." alt="" coords="1345,169,1555,211"/>
-<area shape="rect" id="node41" href="$Resource_8hpp_source.html" title=" " alt="" coords="1003,259,1153,300"/>
-<area shape="rect" id="node43" href="$Lua_8hpp_source.html" title=" " alt="" coords="1119,169,1269,211"/>
+<area shape="rect" id="node1" title="Class Tarbora::ModuleComponent." alt="" coords="1249,5,1448,47"/>
+<area shape="rect" id="node2" href="$Module_8hpp.html" title="Class Tarbora::Module." alt="" coords="1299,95,1398,121"/>
+<area shape="rect" id="node3" href="$AbstractModule_8hpp.html" title="Class Tarbora::AbstractModule." alt="" coords="1027,348,1179,375"/>
+<area shape="rect" id="node39" href="$MessageManager_8hpp.html" title="Class Tarbora::MessageManager." alt="" coords="1141,169,1351,211"/>
+<area shape="rect" id="node41" href="$Resource_8hpp_source.html" title=" " alt="" coords="1459,259,1609,300"/>
+<area shape="rect" id="node43" href="$Lua_8hpp_source.html" title=" " alt="" coords="1376,169,1527,211"/>
 <area shape="rect" id="node4" href="$CommonHeaders_8hpp_source.html" title=" " alt="" coords="1075,579,1249,606"/>
-<area shape="rect" id="node29" href="$Global_8hpp_source.html" title=" " alt="" coords="1303,423,1407,449"/>
+<area shape="rect" id="node29" href="$Global_8hpp_source.html" title=" " alt="" coords="1265,423,1369,449"/>
 <area shape="rect" id="node5" title=" " alt="" coords="5,661,73,688"/>
 <area shape="rect" id="node6" title=" " alt="" coords="98,661,165,688"/>
 <area shape="rect" id="node7" title=" " alt="" coords="189,661,263,688"/>
@@ -32,7 +32,7 @@
 <area shape="rect" id="node27" title=" " alt="" coords="2131,661,2193,688"/>
 <area shape="rect" id="node28" title=" " alt="" coords="2218,661,2303,688"/>
 <area shape="rect" id="node30" href="$Logger_8hpp_source.html" title=" " alt="" coords="1199,497,1293,524"/>
-<area shape="rect" id="node31" href="$Math_8hpp_source.html" title=" " alt="" coords="1482,497,1602,524"/>
+<area shape="rect" id="node31" href="$Math_8hpp_source.html" title=" " alt="" coords="1491,497,1611,524"/>
 <area shape="rect" id="node38" title=" " alt="" coords="1317,497,1399,524"/>
 <area shape="rect" id="node32" title=" " alt="" coords="2185,572,2331,613"/>
 <area shape="rect" id="node33" title=" " alt="" coords="1273,572,1424,613"/>
@@ -40,7 +40,7 @@
 <area shape="rect" id="node35" title=" " alt="" coords="1654,572,1801,613"/>
 <area shape="rect" id="node36" title=" " alt="" coords="1825,572,1974,613"/>
 <area shape="rect" id="node37" title=" " alt="" coords="1998,572,2161,613"/>
-<area shape="rect" id="node40" href="$MessageClient_8hpp_source.html" title=" " alt="" coords="1377,348,1523,375"/>
-<area shape="rect" id="node42" href="$ResourceManager_8hpp_source.html" title=" " alt="" coords="1009,348,1176,375"/>
-<area shape="rect" id="node44" title=" " alt="" coords="1177,266,1269,293"/>
+<area shape="rect" id="node40" href="$MessageClient_8hpp_source.html" title=" " alt="" coords="1203,348,1350,375"/>
+<area shape="rect" id="node42" href="$ResourceManager_8hpp_source.html" title=" " alt="" coords="1375,348,1541,375"/>
+<area shape="rect" id="node44" title=" " alt="" coords="1343,266,1435,293"/>
 </map>

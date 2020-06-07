@@ -20,7 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="docs_icon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Tarbora
    &#160;<span id="projectnumber">0.6-ALPHA</span>
@@ -114,22 +114,23 @@ $(function() {
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> move(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> rotate(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> applyForce(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> applyTorque(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> setVelocity(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> setAngularVel(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> stop(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> update(<span class="keywordtype">float</span> delta_time) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  };</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif // __PHYSICSSYSTEM_H_</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> applyImpulse(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> applyTorque(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> setVelocity(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> setAngularVel(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> stop(<span class="keyword">const</span> MessageSubject &amp;, <span class="keyword">const</span> <a class="code" href="classTarbora_1_1MessageBody.html">MessageBody</a> &amp;body);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> update(<span class="keywordtype">float</span> delta_time) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  };</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif // __PHYSICSSYSTEM_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassTarbora_1_1Rigidbody_html"><div class="ttname"><a href="classTarbora_1_1Rigidbody.html">Tarbora::Rigidbody</a></div><div class="ttdef"><b>Definition:</b> Rigidbody.hpp:38</div></div>
-<div class="ttc" id="aclassTarbora_1_1LuaTable_html"><div class="ttname"><a href="classTarbora_1_1LuaTable.html">Tarbora::LuaTable</a></div><div class="ttdef"><b>Definition:</b> Lua.hpp:122</div></div>
+<div class="ttc" id="aclassTarbora_1_1LuaTable_html"><div class="ttname"><a href="classTarbora_1_1LuaTable.html">Tarbora::LuaTable</a></div><div class="ttdef"><b>Definition:</b> Lua.hpp:124</div></div>
 <div class="ttc" id="aclassTarbora_1_1RigidbodyComponent_html_acf0b5a63f9335ed25c3e6d4d8608ee32"><div class="ttname"><a href="classTarbora_1_1RigidbodyComponent.html#acf0b5a63f9335ed25c3e6d4d8608ee32">Tarbora::RigidbodyComponent::getStaticType</a></div><div class="ttdeci">static ComponentId getStaticType()</div><div class="ttdoc">Return the type name of the component, &quot;rigidboy&quot;. For internal use only.</div><div class="ttdef"><b>Definition:</b> PhysicsSystem.hpp:38</div></div>
 <div class="ttc" id="aclassTarbora_1_1RigidbodyComponent_html_a54cced3c965f1a7b53f088f64c12e4db"><div class="ttname"><a href="classTarbora_1_1RigidbodyComponent.html#a54cced3c965f1a7b53f088f64c12e4db">Tarbora::RigidbodyComponent::getType</a></div><div class="ttdeci">virtual ComponentId getType() const override</div><div class="ttdoc">Return the type name of the component, &quot;rigidboy&quot;. For internal use only.</div><div class="ttdef"><b>Definition:</b> PhysicsSystem.hpp:40</div></div>
-<div class="ttc" id="aclassTarbora_1_1MessageBody_html"><div class="ttname"><a href="classTarbora_1_1MessageBody.html">Tarbora::MessageBody</a></div><div class="ttdoc">The base for all the messages.</div><div class="ttdef"><b>Definition:</b> MessageManager.hpp:24</div></div>
+<div class="ttc" id="aclassTarbora_1_1MessageBody_html"><div class="ttname"><a href="classTarbora_1_1MessageBody.html">Tarbora::MessageBody</a></div><div class="ttdoc">The base for all the messages.</div><div class="ttdef"><b>Definition:</b> MessageManager.hpp:37</div></div>
 <div class="ttc" id="aclassTarbora_1_1World_html"><div class="ttname"><a href="classTarbora_1_1World.html">Tarbora::World</a></div><div class="ttdoc">The module that controls the logics of the engine.</div><div class="ttdef"><b>Definition:</b> World.hpp:34</div></div>
 <div class="ttc" id="aComponent_8hpp_html"><div class="ttname"><a href="Component_8hpp.html">Component.hpp</a></div><div class="ttdoc">Classes Tarbora::Component, Tarbora::ComponentIterator and Tarbora::ComponentManager.</div></div>
 <div class="ttc" id="aclassTarbora_1_1Component_html"><div class="ttname"><a href="classTarbora_1_1Component.html">Tarbora::Component</a></div><div class="ttdoc">A virtual component for the Entity_Component_System.</div><div class="ttdef"><b>Definition:</b> Component.hpp:35</div></div>
