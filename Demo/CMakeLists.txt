@@ -3,4 +3,5 @@ add_library(Demo SHARED
   KnockbackSystem.cpp
   ThrowSystem.cpp
 )
+target_link_libraries(Demo Messages)
 target_compile_options(Demo PRIVATE -Werror -Wall -Wextra -Wpedantic)
