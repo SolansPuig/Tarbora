@@ -280,6 +280,7 @@ namespace Tarbora {
           grab->pivot = local * glm::vec4(
             sight->target_position, 1.f
           );
+          trigger("move_event", Message::Event(grab->target, "grabbed"));
         }
       }
     });
@@ -293,6 +294,7 @@ namespace Tarbora {
 
       if (grab && grab->enabled())
       {
+        trigger("move_event", Message::Event(grab->target, "ungrabbed"));
         grab->target = "";
       }
     });

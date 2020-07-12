@@ -22,6 +22,15 @@ namespace Tarbora {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     io.Fonts->AddFontFromFileTTF("../Resources/fonts/Roboto-Medium.ttf", 16.0f);
+    static const ImWchar icons_ranges[] = { ICON_MIN_FK, ICON_MAX_FK, 0 };
+    ImFontConfig icons_config;
+    icons_config.MergeMode = true;
+    icons_config.PixelSnapH = true;
+
+    io.Fonts->AddFontFromFileTTF(
+      "../Resources/fonts/forkawesome-webfont.ttf", 16.0f, &icons_config, icons_ranges
+    );
+
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     ImGui::StyleColorsDark();
     // ImGuiStyle& style = ImGui::GetStyle();

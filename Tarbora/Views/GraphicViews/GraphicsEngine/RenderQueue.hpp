@@ -23,14 +23,15 @@
 namespace Tarbora {
   enum RenderPass
   {
-    Zero,
-    Static = Zero,
+    Null = 0,
+    Begin,
+    Static = Begin,
     Actor,
     NoCulling,
     Sky,
     Transparent,
     NotRendered,
-    Last
+    End
   };
 
   struct RenderLightData
@@ -70,6 +71,7 @@ namespace Tarbora {
 
     void drawLight(
       ResourcePtr<Mesh> mesh,
+      ResourcePtr<Shader> shader,
       const glm::mat4 &transform,
       const glm::vec3 &ambient,
       const glm::vec3 &diffuse,

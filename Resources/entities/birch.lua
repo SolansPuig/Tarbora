@@ -13,7 +13,7 @@
 components = {
   type = {"tree"},
   model = {
-    render_pass = 2,
+    render_pass = 1,
     model = "birch.lua",
     material = "birch.mat.lua"
   },

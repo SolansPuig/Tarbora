@@ -13,7 +13,7 @@
 components = {
   type = {"liquid", "water"},
   model = {
-    render_pass = 4,
+    render_pass = 5,
     model = "plane.lua",
     material = "water.mat.lua"
   }

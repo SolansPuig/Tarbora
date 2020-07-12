@@ -21,6 +21,7 @@
 #include "../External/glm/glm/gtc/type_ptr.hpp"
 #include "../External/glm/glm/gtx/quaternion.hpp"
 #include "../External/glm/glm/gtx/euler_angles.hpp"
+#include "../External/glm/glm/gtx/matrix_decompose.hpp"
 
 #endif // __MATH_H_
 

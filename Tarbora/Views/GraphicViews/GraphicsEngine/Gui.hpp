@@ -22,6 +22,8 @@
 #include "External/ImGuizmo/ImGuizmo.h"
 #pragma GCC diagnostic pop
 
+#include "External/ForkAwesome.h"
+
 namespace Tarbora {
   class GraphicsEngine;
 

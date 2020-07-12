@@ -12,6 +12,8 @@
 
 #include "Scene.hpp"
 #include "HumanView.hpp"
+#include "Skybox.hpp"
+#include "ActorModel.hpp"
 #include <utility>
 
 namespace Tarbora {
@@ -38,14 +40,14 @@ namespace Tarbora {
 
     if (root_)
     {
-      root_->drawChildren(this, glm::mat4(1.0f));
+      root_->drawChildren(this);
       getRenderQueue()->draw();
     }
   }
 
   std::shared_ptr<Skybox> Scene::createSkybox(const std::string &material)
   {
-    skybox_ = std::shared_ptr<Skybox>(new Skybox(material));
+    skybox_ = std::make_shared<Skybox>(material);
     addActor(skybox_);
     return skybox_;
   }
@@ -86,7 +88,7 @@ namespace Tarbora {
 
   void Scene::addActor(std::shared_ptr<SceneNode> actor)
   {
-    const ActorId &id = actor->getActorId();
+    const ActorId &id = actor->owner;
     if (id != "")
       actor_map_[id] = actor;
     root_->addChild(actor);

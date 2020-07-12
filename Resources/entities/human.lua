@@ -13,7 +13,7 @@
 components = {
   type = {"human"},
   model = {
-    render_pass = 1,
+    render_pass = 2,
     model = "human.lua",
     material = "human.mat.lua"
   },
@@ -49,7 +49,7 @@ animation_controller = {
   idle = {
     file = "human2.lua", loop = true, base = true,
     events = {
-      walk = { stop = {}, play = {{ name = "walk" }} },
+      walk = { stop = {}, play = {{ name = "walk", fade_in = 0.5 }} },
       cast = { play = {{ name = "cast" }} }
     }
   },

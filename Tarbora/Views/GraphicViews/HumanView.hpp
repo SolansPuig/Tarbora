@@ -16,6 +16,8 @@
 #include "Layer.hpp"
 #include "GraphicView.hpp"
 #include "GameLayer.hpp"
+#include "Skybox.hpp"
+#include "ActorModel.hpp"
 
 namespace Tarbora {
   class HumanView : public GraphicView

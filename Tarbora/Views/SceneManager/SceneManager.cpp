@@ -35,7 +35,7 @@ namespace Tarbora {
     );
     msg.setVariant(actor.get<std::string>("variant", true));
     msg.setPosition(actor.get<glm::vec3>("position"));
-    msg.setOrientation(glm::radians(actor.get<glm::vec3>("rotation", true)));
+    msg.setOrientation(glm::radians(actor.get<glm::vec3>("orientation", true)));
     getMessageManager()->send(1, "create_actor", msg);
   }
 }

@@ -22,22 +22,19 @@ namespace Tarbora {
   {
     friend class AnimationController;
     friend struct Animation;
+
   public:
     ActorModel(
       const ActorId &id, RenderPass render_pass,
       const std::string &model, const std::string &material
     );
-    ~ActorModel();
+    virtual ~ActorModel();
 
-    std::shared_ptr<MeshNode> createNode(
-      const ActorId &id, RenderPass render_pass, LuaTable table
-    );
-
-    std::shared_ptr<Camera> createCamera(const ActorId &id, LuaTable table);
+    virtual void load(const LuaTable &table, NodeMap *map) override;
 
     virtual void update(Scene *scene, float delta_time) override;
 
-    virtual std::shared_ptr<SceneNode> getChild(const std::string &name) override;
+    virtual SceneNodePtr getChild(const std::string &name) override;
 
     void startAnimation(Animation animation, bool background=false);
 
@@ -47,9 +44,8 @@ namespace Tarbora {
     RenderPass getRenderPass() { return render_pass_; }
 
   private:
-    std::unordered_map<std::string, std::shared_ptr<SceneNode>> nodes_;
+    NodeMap nodes_;
     std::shared_ptr<AnimationController> animation_controller_;
-    RenderPass render_pass_;
     std::string model_;
   };
 }

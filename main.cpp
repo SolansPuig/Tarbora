@@ -20,10 +20,12 @@
 #include "Demo/GravityRandomizerSystem.hpp"
 #include "Demo/KnockbackSystem.hpp"
 #include "Demo/ThrowSystem.hpp"
+#include "Demo/Cockatiel.hpp"
 
 using namespace Tarbora;
 
-int main() {
+int main()
+{
   ZoneScoped;
   LOG_LEVEL(DEBUG);
 
@@ -62,7 +64,10 @@ int main() {
   sky->direction = glm::normalize(-sky->sun[0].position);
 
   auto scene_manager = std::make_shared<SceneManager>();
-  scene_manager->load("test.lua");
+  scene_manager->load("dolmen.lua");
+
+  auto cockatielIA = std::make_shared<CockatielIA>();
+  cockatielIA->runThread("Cockatiel");
 
   human_view->run("Human View");
 

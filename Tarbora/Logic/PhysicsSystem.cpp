@@ -202,7 +202,7 @@ namespace Tarbora {
 
         //  Update the transform
         auto transform = components->getComponent<TransformComponent>(id);
-        if (transform->position != position)
+        if (glm::length(transform->position - position) > 0.0001f) // Avoid small updates
         {
           transform->position = position;
           transform->update = true;

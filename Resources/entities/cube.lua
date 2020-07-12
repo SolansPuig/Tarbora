@@ -13,7 +13,7 @@
 components = {
   type = {"ground"},
   model = {
-    render_pass = 1,
+    render_pass = 2,
     model = "cube.lua",
     material = "container.mat.lua"
   },

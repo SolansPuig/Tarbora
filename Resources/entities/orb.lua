@@ -13,7 +13,7 @@
 components = {
   type = {"magic", "projectile", "arcane"},
   model = {
-    render_pass = 1,
+    render_pass = 2,
     model = "orb.lua",
     material = "mage_wand.mat.lua"
   },

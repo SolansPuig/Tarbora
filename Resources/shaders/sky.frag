@@ -21,11 +21,6 @@ uniform vec3 skyColor;
 uniform float horizonHeight;
 uniform float exponent;
 
-// vec3 skyColor = vec3(158, 215, 255)/255;
-// vec3 horizonColor = vec3(255, 131, 112)/255;
-// float horizonHeight = 1.0;
-// float exponent = 3;
-
 struct Sun {
     vec3 color;
     vec3 pos;
@@ -38,7 +33,7 @@ uniform Sun sun[5];
 void main()
 {
   vec3 p = normalize(pos);
-  float height = pow(min(1.0, horizonHeight - p.y), exponent);
+  float height = pow(clamp(horizonHeight - p.y, 0.0, 1.0), exponent);
   vec3 color = mix(skyColor/255.0, horizonColor/255.0, height);
 
   for (int i = 0; i < 5; ++i)

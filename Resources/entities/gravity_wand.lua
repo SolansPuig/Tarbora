@@ -13,7 +13,7 @@
 components = {
   type = {"weapon", "gravity", "magic"},
   model = {
-    render_pass = 1,
+    render_pass = 2,
     model = "mage_wand.lua",
     material = "mage_wand.mat.lua"
   },

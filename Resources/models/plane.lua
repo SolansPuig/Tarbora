@@ -10,15 +10,17 @@
   * file, You can obtain one at https://mozilla.org/MPL/2.0/.
 --]===================================================================]
 
-scale = 1
-nodes = {
-  {
-    name = "body",
-    shape = "plane.mesh",
-    size = {10000, 10000, 1000},
-    texture_size = {100, 100, 100},
-    rotation = {90, 0, 0},
-    uv_map = {0, 0},
-    color_primary = {0, 255, 255}
+actor = {
+  scale = 1,
+  nodes = {
+    {
+      name = "body",
+      shape = "plane.mesh",
+      size = {10000, 10000, 1000},
+      texture_size = {100, 100, 100},
+      rotation = {90, 0, 0},
+      uv_map = {0, 0},
+      color_primary = {0, 255, 255}
+    }
   }
 }

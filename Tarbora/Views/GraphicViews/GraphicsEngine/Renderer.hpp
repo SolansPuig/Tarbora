@@ -52,10 +52,6 @@ namespace Tarbora {
     void setProjectionMatrix(const glm::mat4 &m);
     void setViewMatrix(const glm::mat4 &m);
 
-    void setDirecitonalLight(
-      const glm::vec3 &ambient, const glm::vec3 &diffuse,
-      const glm::vec3 &specular, const glm::vec3 &direction
-    );
     void setAmbientLight(const glm::vec3 &ambient);
 
   private:

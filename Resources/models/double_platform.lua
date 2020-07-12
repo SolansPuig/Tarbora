@@ -10,16 +10,18 @@
   * file, You can obtain one at https://mozilla.org/MPL/2.0/.
 --]===================================================================]
 
-scale = 1
-nodes = {
-  {
-    name = "body",
-    shape = "cube.mesh",
-    origin = {0, 0, 0},
-    position = {0, 0, 0},
-    rotation = {0, 0, 0},
-    size = {200, 400, 400},
-    texture_size = {200, 200, 200},
-    uv_map = {0, 0}
+actor = {
+  scale = 1,
+  nodes = {
+    {
+      name = "body",
+      shape = "cube.mesh",
+      origin = {0, 0, 0},
+      position = {0, 0, 0},
+      rotation = {0, 0, 0},
+      size = {200, 400, 400},
+      texture_size = {200, 200, 200},
+      uv_map = {0, 0}
+    }
   }
 }

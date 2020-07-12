@@ -23,25 +23,25 @@ function gen_leaf(nname, pos, size, rot)
     nodes = {
       {
         name = nname .. "1",
-        shape = "plane.mesh",
+        shape = "double_plane.mesh",
         position = {0, 0, 0},
         rotation = {0, 45, 0},
-        size = {size.x, size.y, size.x},
-        texture_size = {200, 200, 200},
-        mesh_size = {200, 200, 200},
+        size = {2*size.x, 2*size.y, 2*size.x},
+        texture_size = {200, 200, 1},
+        mesh_size = {200, 200, 1},
         color_primary= {157, 214, 85},
-        uv_map = {0, 200}
+        uv_map = {0, 443}
       },
       {
         name = nname .. "2",
-        shape = "plane.mesh",
+        shape = "double_plane.mesh",
         position = {0, 0, 0},
         rotation = {0, -45, 0},
-        size = {size.x, size.y, size.x},
-        texture_size = {200, 200, 200},
-        mesh_size = {200, 200, 200},
+        size = {2*size.x, 2*size.y, 2*size.x},
+        texture_size = {200, 200, 1},
+        mesh_size = {200, 200, 1},
         color_primary= {157, 214, 85},
-        uv_map = {0, 200}
+        uv_map = {0, 443}
       }
     }
   }
@@ -206,19 +206,21 @@ function gen_branch(nname, n, pos, size, rot)
   return branch
 end
 
-scale = 1
-nodes = function()
-  local nsize = math.random(200, 1000)
-  return {
-    gen_branch(
-      "body",
-      0,
-      {x = 0, y = 0, z = 0},
-      {x = 43, y = nsize},
-      {
-        x = math.random(-3, 3),
-        y = math.random(-3, 3),
-        z = math.random(-3, 3)
-      }
+actor = {
+  scale = 1,
+  nodes = function()
+    local nsize = math.random(200, 1000)
+    return {
+      gen_branch(
+        "body",
+        0,
+        {x = 0, y = 0, z = 0},
+        {x = 43, y = nsize},
+        {
+          x = math.random(-3, 3),
+          y = math.random(-3, 3),
+          z = math.random(-3, 3)
+        }
     )}
-end
+  end
+}

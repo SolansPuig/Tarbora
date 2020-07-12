@@ -112,7 +112,7 @@ namespace Tarbora {
         LuaTable node_lua = itr.second.getAs<LuaTable>();
         std::shared_ptr<SceneNode> n = actor->nodes_[node_name];
 
-        if (n->getNodeType() == "ANIMATED")
+        if (n->getType() == "animated")
         {
           auto node = std::static_pointer_cast<AnimatedNode>(n);
 
@@ -185,9 +185,9 @@ namespace Tarbora {
             }
             else if (name == "rotation")
             {
-              auto old_value = node->getRotationAnimation();
+              auto old_value = node->getOrientationAnimation();
               auto value = blendProperty(new_quat, old_value, this);
-              node->setRotationAnimation(value);
+              node->setOrientationAnimation(value);
             }
             else if (name == "scale")
             {

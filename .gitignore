@@ -1,0 +1,11 @@
+build/
+*~
+\#*\#
+.\#*
+/.projectile
+/.dir-locals.el
+/Resources/textures/rect13696.png
+/compile_commands.json
+/Resources/fonts/RobotoMono.zip
+/Resources/fonts/FontAwesome.ttf
+/Resources/fonts/icons.yml

@@ -14,6 +14,8 @@
 #include "Layer.hpp"
 #include "HumanView.hpp"
 #include "../../Messages/BasicMessages.hpp"
+#include "Skybox.hpp"
+#include "ActorModel.hpp"
 
 namespace Tarbora {
   GameLayer::GameLayer(HumanView *view, bool start_active) :
@@ -27,7 +29,7 @@ namespace Tarbora {
     freeze_mouse_ = false;
 
     std::shared_ptr<Camera> camera = scene_->createCamera("main_camera");
-    camera->setRotation(glm::vec3(-1.0f, 180.0f, 0.0f));
+    camera->setOrientation(glm::vec3(-1.0f, 180.0f, 0.0f));
     camera->setPosition(glm::vec3(-3.0f, -1.5f, 10.0f));
     scene_->setCamera(camera);
 
@@ -64,11 +66,11 @@ namespace Tarbora {
               auto old_parent = actor->getParent();
               if (old_parent)
               {
-                old_parent->removeChild(actor->getActorId());
+                old_parent->removeChild(actor->owner);
               }
               else
               {
-                scene_->removeActor(actor->getActorId());
+                scene_->removeActor(actor->owner);
               }
 
               node->addChild(actor);
@@ -79,7 +81,7 @@ namespace Tarbora {
         if (m.hasPosition())
           actor->setPosition(m.getPosition());
         if (m.hasOrientation())
-          actor->setRotation(m.getOrientation());
+          actor->setOrientation(m.getOrientation());
       }
     });
 
@@ -95,7 +97,7 @@ namespace Tarbora {
           if (m.hasPosition())
             node->setPosition(m.getPosition());
           if (m.hasOrientation())
-            node->setRotation(m.getOrientation());
+            node->setOrientation(m.getOrientation());
         }
       }
     });
@@ -109,11 +111,11 @@ namespace Tarbora {
         auto parent = actor->getParent();
         if (parent)
         {
-          parent->removeChild(actor->getActorId());
+          parent->removeChild(actor->owner);
         }
         else
         {
-          scene_->removeActor(actor->getActorId());
+          scene_->removeActor(actor->owner);
         }
       }
     });

@@ -14,11 +14,11 @@
 #define __SCENE_H_
 
 #include "SceneNode.hpp"
-#include "ActorModel.hpp"
-#include "Skybox.hpp"
 
 namespace Tarbora {
   class HumanView;
+  class ActorModel;
+  class Skybox;
 
   class Scene
   {

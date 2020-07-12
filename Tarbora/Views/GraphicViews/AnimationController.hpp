@@ -66,31 +66,6 @@ namespace Tarbora {
   private:
     void updateAnimation(float delta_time);
 
-    template <class T>
-    T blendProperty(T value, T old_value, const Animation *animation)
-    {
-      // Fade-in or fade-out if required
-      float blend = animation->blend_factor;
-      if (animation->fade_in_timer > 0.f)
-        blend = glm::lerp(blend, 0.f, animation->fade_in_timer);
-      if (animation->fade_out_timer > 0.f)
-        blend = glm::lerp(0.f, blend, animation->fade_in_timer);
-
-      // Blend the property
-      switch (animation->blend_mode)
-      {
-        case Override:
-          return value;
-        case Add:
-          if (animation->fade_in_timer > 0.f || animation->fade_out_timer > 0.f)
-            return glm::lerp(T(0.f), value, blend) + old_value;
-          return value + old_value;
-        case Mix:
-          return glm::lerp(old_value, value, blend);
-      }
-      return value;
-    }
-
     std::list<Animation> animations_;
 
     ActorModel *actor_model_;
@@ -111,6 +86,8 @@ namespace Tarbora {
     switch (animation->blend_mode)
     {
       case Override:
+        if (animation->fade_in_timer > 0.f || animation->fade_out_timer > 0.f)
+          return glm::lerp(T(0.f), value, blend);
         return value;
       case Add:
         if (animation->fade_in_timer > 0.f || animation->fade_out_timer > 0.f)
@@ -139,6 +116,8 @@ namespace Tarbora {
     switch (animation->blend_mode)
     {
       case Override:
+        if (animation->fade_in_timer > 0.f || animation->fade_out_timer > 0.f)
+          return glm::lerp(glm::quat(1.f, 0.f, 0.f, 0.f), value, blend);
         return value;
       case Add:
         if (animation->fade_in_timer > 0.f || animation->fade_out_timer > 0.f)

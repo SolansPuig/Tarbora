@@ -18,19 +18,7 @@ in vec2 TexCoords;
 uniform sampler2D gPosition;
 uniform sampler2D gNormal;
 uniform sampler2D gColorSpec;
-uniform sampler2D ssao;
-
-uniform mat4 view;
-
-struct DirectionalLight {
-    vec3 direction;
-    vec3 ambient;
-    vec3 diffuse;
-    vec3 specular;
-};
-
-uniform DirectionalLight dir_light;
-uniform vec3 ambient_light;
+uniform sampler2D light;
 
 void main()
 {
@@ -38,23 +26,9 @@ void main()
 
   vec3 FragPos = texture(gPosition, TexCoords).rgb;
   vec3 Normal = texture(gNormal, TexCoords).rgb;
-  vec3 Albedo = pow(texture(gColorSpec, TexCoords).rgb, vec3(gamma));
-  float Specular = texture(gColorSpec, TexCoords).a;
-  float AmbientOcclusion = pow(texture(ssao, TexCoords).r, gamma);
-
-  vec3 lightDir = (view * vec4(normalize(-dir_light.direction), 0.0f)).xyz;
-  vec3 viewDir = normalize(-FragPos);
-  vec3 halfwayDir = reflect(-lightDir, Normal);
-
-  vec3 ambient = (ambient_light + dir_light.ambient) * AmbientOcclusion;
-  vec3 diffuse = max(dot(Normal, lightDir), 0.0) * dir_light.diffuse;
-  vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) *
-    dir_light.specular * Specular;
-  vec3 lighting = Albedo * (ambient + diffuse + specular);
+  vec3 Albedo = pow(texture(gColorSpec, TexCoords).rgb, gamma);
+  vec3 Light = pow(texture(light, TexCoords).rgb, gamma);
 
   FragColor = vec4(
-    pow(vec3(Albedo * (ambient + diffuse + specular)), vec3(1.0/gamma)),
-    1.0
-  );
-  //FragColor = vec4(Albedo, 1.0);
+    pow(vec3(Albedo * Light), vec3(1.0/gamma), 1.0));
 }

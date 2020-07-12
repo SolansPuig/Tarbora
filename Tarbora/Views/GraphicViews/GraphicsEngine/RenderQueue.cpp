@@ -43,6 +43,7 @@ namespace Tarbora {
 
   void RenderQueue::drawLight(
     ResourcePtr<Mesh> mesh,
+    ResourcePtr<Shader> shader,
     const glm::mat4 &transform,
     const glm::vec3 &ambient,
     const glm::vec3 &diffuse,
@@ -53,13 +54,14 @@ namespace Tarbora {
   {
     RenderLightData data;
     data.mesh = mesh;
+    data.shader = shader;
     data.transform = transform;
     data.diffuse = diffuse;
     data.specular = specular;
     data.direction = direction;
     data.size = size;
 
-    ambient_light_ = ambient;
+    ambient_light_ += ambient;
     lights_.emplace_back(data);
   }
 
@@ -81,7 +83,7 @@ namespace Tarbora {
 
   void RenderQueue::draw()
   {
-    for (unsigned int pass = RenderPass::Zero; pass < RenderPass::Last; ++pass)
+    for (unsigned int pass = RenderPass::Begin; pass < RenderPass::End; ++pass)
     {
       switch (pass)
       {

@@ -17,7 +17,7 @@ namespace Tarbora {
   ModelComponent::ModelComponent(const ActorId &id, const LuaTable &table) :
     Component(id, table)
   {
-    render_pass = table.get<int>("render_pass", 1);
+    render_pass = table.get<unsigned int>("render_pass", 2);
     model = table.get<std::string>("model", "cube");
     material = table.get<std::string>("material", "white");
   }

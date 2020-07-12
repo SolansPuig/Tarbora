@@ -13,7 +13,7 @@
 components = {
   type = {"ground"},
   model = {
-    render_pass = 0,
+    render_pass = 1,
     model = "ground.lua",
     material = "grass.mat.lua"
   },

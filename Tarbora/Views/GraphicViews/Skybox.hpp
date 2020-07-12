@@ -13,11 +13,9 @@
 #ifndef __SKYBOX_H_
 #define __SKYBOX_H_
 
-#include "SceneNode.hpp"
+#include "Scene.hpp"
 
 namespace Tarbora {
-  class Scene;
-
   struct Sun
   {
     glm::tvec3<unsigned char> color;
@@ -30,16 +28,20 @@ namespace Tarbora {
   {
   public:
     Skybox(const std::string &material);
+    virtual ~Skybox() {}
 
+    virtual const std::string getType() const { return "skybox"; }
+
+    virtual void drawGuiEditor();
     virtual void update(Scene *scene, float);
 
-    glm::vec3 ambient{glm::vec3(0.6f, 0.5f, 0.5f)};
-    glm::vec3 diffuse{glm::vec3(0.4f, 0.4f, 0.4f)};
-    glm::vec3 specular{glm::vec3(2.0f, 1.0f, 0.8f)};
-    glm::vec3 direction{glm::vec3(-1.0f, -4.0f, 6.0f)};
+    glm::vec3 ambient{0.6f, 0.5f, 0.5f};
+    glm::vec3 diffuse{0.4f, 0.4f, 0.4f};
+    glm::vec3 specular{2.0f, 1.0f, 0.8f};
+    glm::vec3 direction{-1.0f, -4.0f, 6.0f};
 
-    glm::tvec3<unsigned char> sky_color{glm::tvec3<unsigned char>(150, 222, 255)};
-    glm::tvec3<unsigned char> horizon_color{glm::tvec3<unsigned char>(204, 204, 204)};
+    glm::vec3 sky_color{150.f, 222.f, 255.f};
+    glm::vec3 horizon_color{204.f, 204.f, 204.f};
     float horizon_height{1.f};
     float exponent{20};
 

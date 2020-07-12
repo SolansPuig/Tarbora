@@ -86,19 +86,9 @@ namespace Tarbora {
     view_ = m;
   }
 
-  void Renderer::setDirecitonalLight(
-    const glm::vec3 &ambient, const glm::vec3 &diffuse,
-    const glm::vec3 &specular, const glm::vec3 &direction
-  )
-  {
-    lighting_shader_->set("dir_light.ambient", ambient);
-    lighting_shader_->set("dir_light.diffuse", diffuse);
-    lighting_shader_->set("dir_light.specular", specular);
-    lighting_shader_->set("dir_light.direction", direction);
-  }
-
   void Renderer::setAmbientLight(const glm::vec3 &ambient)
   {
+    lighting_shader_->use();
     lighting_shader_->set("ambient_light", ambient);
   }
 
