@@ -13,16 +13,18 @@
 #version 330 core
 out vec4 FragColor;
 
-uniform sampler2D tex;
+uniform sampler2D albedo;
+uniform sampler2D light;
 
 in vec2 TexCoords;
 
 void main()
 {
-  vec4 color = texture(tex, TexCoords);
-  if (color.a == 0.0)
-  {
-    discard;
-  }
-  FragColor = color;
+  float gamma = 2.2;
+
+  vec3 Albedo = pow(texture(albedo, TexCoords).rgb, vec3(gamma));
+  vec3 Light = texture(light, TexCoords).rgb;
+
+  FragColor = vec4(pow(vec3(Albedo * Light), vec3(1.0/gamma)), 1.0);
+  //FragColor = vec4(Light, 1.0);
 }

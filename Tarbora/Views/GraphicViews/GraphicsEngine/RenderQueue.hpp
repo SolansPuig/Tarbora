@@ -39,6 +39,7 @@ namespace Tarbora {
     ResourcePtr<Mesh> mesh;
     ResourcePtr<Shader> shader;
     glm::mat4 transform;
+    glm::vec3 ambient;
     glm::vec3 diffuse;
     glm::vec3 specular;
     glm::vec3 direction;

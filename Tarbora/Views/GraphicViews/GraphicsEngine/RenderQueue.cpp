@@ -56,12 +56,12 @@ namespace Tarbora {
     data.mesh = mesh;
     data.shader = shader;
     data.transform = transform;
+    data.ambient = ambient;
     data.diffuse = diffuse;
     data.specular = specular;
     data.direction = direction;
     data.size = size;
 
-    ambient_light_ += ambient;
     lights_.emplace_back(data);
   }
 
@@ -99,10 +99,6 @@ namespace Tarbora {
           break;
         case Sky:
           renderer_->occlusionPass();
-          if (lights_.size() > 0)
-            renderer_->setAmbientLight(ambient_light_/float(lights_.size()));
-          else
-            renderer_->setAmbientLight(ambient_light_);
           renderer_->lightingPass();
           drawLights();
           renderer_->scenePass();
@@ -132,7 +128,6 @@ namespace Tarbora {
       }
     }
     render_list_.clear();
-    ambient_light_ = {0.f, 0.f, 0.f};
     lights_.clear();
   }
 
@@ -142,10 +137,12 @@ namespace Tarbora {
     {
       light.mesh->bind();
       light.shader->use();
+      light.shader->set("ambient", light.ambient);
       light.shader->set("diffuse", light.diffuse);
       light.shader->set("specular", light.specular);
       light.shader->set("direction", light.direction);
       light.shader->set("size", light.size);
+      light.shader->set("view", view_);
       light.mesh->draw();
     }
   }

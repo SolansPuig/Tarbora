@@ -86,12 +86,6 @@ namespace Tarbora {
     view_ = m;
   }
 
-  void Renderer::setAmbientLight(const glm::vec3 &ambient)
-  {
-    lighting_shader_->use();
-    lighting_shader_->set("ambient_light", ambient);
-  }
-
   void Renderer::geometryPass()
   {
     glBindFramebuffer(GL_FRAMEBUFFER, g_buffer_);
@@ -125,14 +119,10 @@ namespace Tarbora {
   {
     glBindFramebuffer(GL_FRAMEBUFFER, lighting_buffer_);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    lighting_shader_->use();
-    lighting_shader_->set("projection", projection_);
-    lighting_shader_->set("view", view_);
+    g_position_->bind(3);
     g_normal_->bind(0);
     g_color_spec_->bind(1);
     ssao_blur_color_->bind(2);
-    glBindVertexArray(quad_mesh_->getId());
-    glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
 
     glEnable(GL_BLEND);
     glCullFace(GL_FRONT);
@@ -148,7 +138,8 @@ namespace Tarbora {
     scene_shader_->use();
     scene_shader_->set("projection", projection_);
     scene_shader_->set("view", view_);
-    lighting_color_->bind(0);
+    g_color_spec_->bind(0);
+    lighting_color_->bind(1);
     glBindVertexArray(quad_mesh_->getId());
     glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
     glBindFramebuffer(GL_READ_FRAMEBUFFER, g_buffer_);
@@ -377,8 +368,8 @@ namespace Tarbora {
     glFramebufferTexture2D(
       GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, lighting_color_->getId(), 0
     );
-    //
-    //  Render buffer
+   
+    //    Render buffer
     glGenRenderbuffers(1, &rbo_light_);
     glBindRenderbuffer(GL_RENDERBUFFER, rbo_light_);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width_, height_);
@@ -388,15 +379,6 @@ namespace Tarbora {
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
       LOG_ERR("Lighting Framebuffer not complete!");
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    lighting_shader_ = ResourcePtr<Shader>("shaders/lighting.shader.lua");
-    lighting_shader_.setInitialConfig([](auto shader){
-      shader->use();
-      shader->set("gPosition", 3);
-      shader->set("gNormal", 0);
-      shader->set("gColorSpec", 1);
-      shader->set("ssao", 2);
-    });
   }
 
   void Renderer::deleteLightingPass()
@@ -432,7 +414,8 @@ namespace Tarbora {
     scene_shader_ = ResourcePtr<Shader>("shaders/scene.shader.lua");
     scene_shader_.setInitialConfig([](auto shader){
       shader->use();
-      shader->set("tex", 0);
+      shader->set("albedo", 0);
+      shader->set("light", 1);
     });
   }
 

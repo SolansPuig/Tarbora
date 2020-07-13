@@ -22,6 +22,7 @@ uniform sampler2D ssao;
 
 uniform mat4 view;
 
+uniform vec3 ambient;
 uniform vec3 diffuse;
 uniform vec3 specular;
 uniform vec3 direction;
@@ -32,18 +33,17 @@ void main()
 
   vec3 FragPos = texture(gPosition, TexCoords).rgb;
   vec3 Normal = texture(gNormal, TexCoords).rgb;
-  vec3 Albedo = pow(texture(gColorSpec, TexCoords).rgb, vec3(gamma));
   float Specular = texture(gColorSpec, TexCoords).a;
-  float AmbientOcclusion = pow(texture(ssao, TexCoords).r, gamma);
+  float AmbientOcclusion = texture(ssao, TexCoords).r;
 
-  vec3 lightDir = (view * vec4(normalize(-direction), 0.0f)).xyz;
+  vec3 lightDir = (view * vec4(normalize(-direction), 0.0)).xyz;
   vec3 viewDir = normalize(-FragPos);
   vec3 halfwayDir = reflect(-lightDir, Normal);
 
-  vec3 ambient = ambient_light * AmbientOcclusion;
-  vec3 diffuse = max(dot(Normal, lightDir), 0.0) * dir_light.diffuse;
+  vec3 ambient = ambient * AmbientOcclusion;
+  vec3 diffuse = max(dot(Normal, lightDir), 0.0) * diffuse;
   vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) *
-    dir_light.specular * Specular;
+    specular * Specular;
 
   FragColor = vec4(ambient + diffuse + specular, 1.0);
 }

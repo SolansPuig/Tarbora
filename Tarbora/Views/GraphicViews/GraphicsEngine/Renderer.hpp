@@ -52,8 +52,6 @@ namespace Tarbora {
     void setProjectionMatrix(const glm::mat4 &m);
     void setViewMatrix(const glm::mat4 &m);
 
-    void setAmbientLight(const glm::vec3 &ambient);
-
   private:
     void setupGeometryPass();
     void setupOcclusionPass();
@@ -89,7 +87,6 @@ namespace Tarbora {
     unsigned int lighting_buffer_;
     unsigned int rbo_light_;
     std::unique_ptr<TextureInternal> lighting_color_;
-    ResourcePtr<Shader> lighting_shader_;
 
     unsigned int scene_buffer_;
     unsigned int rbo_scene_;

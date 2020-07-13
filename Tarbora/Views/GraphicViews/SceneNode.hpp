@@ -276,12 +276,16 @@ namespace Tarbora {
     void setDiffuse(const glm::vec3 &diffuse);
     void setSpecular(const glm::vec3 &specular);
 
+    void setDirection(const glm::vec3 &direction);
+
     const std::string& getShape();
     const std::string& getShader();
 
     const glm::vec3& getAmbient();
     const glm::vec3& getDiffuse();
     const glm::vec3& getSpecular();
+
+    const glm::vec3& getDirection();
 
   protected:
     ResourcePtr<Mesh> mesh_;
@@ -293,6 +297,8 @@ namespace Tarbora {
     glm::vec3 ambient_{1.f, 1.f, 1.f};
     glm::vec3 diffuse_{1.f, 1.f, 1.f};
     glm::vec3 specular_{1.f, 1.f, 1.f};
+
+    glm::vec3 direction_{1.f, 1.f, 1.f};
   };
 }
 

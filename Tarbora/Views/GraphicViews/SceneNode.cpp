@@ -758,7 +758,7 @@ namespace Tarbora {
         ambient_,
         diffuse_,
         specular_,
-        {0.f, 0.f, 0.f},
+        direction_,
         {0.f, 0.f, 0.f, 0.f}
       );
     }
@@ -774,6 +774,8 @@ namespace Tarbora {
     setAmbient(table.get<glm::vec3>("ambient", glm::vec3(1.f), true));
     setDiffuse(table.get<glm::vec3>("diffuse", glm::vec3(1.f), true));
     setSpecular(table.get<glm::vec3>("specular", glm::vec3(1.f), true));
+
+    setDirection(table.get<glm::vec3>("direction", glm::vec3(1.f), true));
   }
 
   void LightNode::drawGuiEditor()
@@ -783,6 +785,12 @@ namespace Tarbora {
 
     if (ImGui::CollapsingHeader("Light"))
     {
+      ImGui::Spacing();
+      glm::vec3 d = getDirection();
+      float dir[3] = {d.x, d.y, d.z};
+      if (ImGui::DragFloat3("Direction", dir, .1f))
+        setDirection(glm::make_vec3(dir));
+
       ImGui::Spacing();
       glm::vec3 c1 = getAmbient();
       float amb[3] = {c1.x, c1.y, c1.z};
@@ -818,6 +826,7 @@ namespace Tarbora {
       shader->set("gPosition", 3);
       shader->set("gNormal", 0);
       shader->set("gColorSpec", 1);
+      shader->set("ssao", 2);
     });
   }
 
@@ -834,6 +843,11 @@ namespace Tarbora {
   void LightNode::setSpecular(const glm::vec3 &specular)
   {
     specular_ = specular;
+  }
+
+  void LightNode::setDirection(const glm::vec3 &direction)
+  {
+    direction_ = direction;
   }
 
   const std::string& LightNode::getShape()
@@ -859,5 +873,10 @@ namespace Tarbora {
   const glm::vec3& LightNode::getSpecular()
   {
     return specular_;
+  }
+
+  const glm::vec3& LightNode::getDirection()
+  {
+    return direction_;
   }
 }
