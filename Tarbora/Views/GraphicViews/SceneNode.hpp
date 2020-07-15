@@ -277,6 +277,7 @@ namespace Tarbora {
     void setSpecular(const glm::vec3 &specular);
 
     void setDirection(const glm::vec3 &direction);
+    void setAttenuation(const glm::vec2 &attenuation);
 
     const std::string& getShape();
     const std::string& getShader();
@@ -286,6 +287,7 @@ namespace Tarbora {
     const glm::vec3& getSpecular();
 
     const glm::vec3& getDirection();
+    glm::vec2 getAttenuation();
 
   protected:
     ResourcePtr<Mesh> mesh_;
@@ -299,6 +301,11 @@ namespace Tarbora {
     glm::vec3 specular_{1.f, 1.f, 1.f};
 
     glm::vec3 direction_{1.f, 1.f, 1.f};
+
+    float l_att_{1.f}; // Linear attenuation
+    float q_att_{1.f}; // Quadratic attenuation
+
+    void calcRadius();
   };
 }
 

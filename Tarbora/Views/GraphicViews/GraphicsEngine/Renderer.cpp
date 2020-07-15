@@ -39,7 +39,6 @@ namespace Tarbora {
 
     glEnable(GL_DEPTH_TEST);
     glClearColor(0.f, 0.f, 0.f, 0.f);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     quad_mesh_ = ResourcePtr<Mesh>("meshes/plane.mesh");
     setupGeometryPass();
@@ -124,7 +123,9 @@ namespace Tarbora {
     g_color_spec_->bind(1);
     ssao_blur_color_->bind(2);
 
+    glDepthFunc(GL_ALWAYS);
     glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE);
     glCullFace(GL_FRONT);
   }
 
@@ -132,6 +133,7 @@ namespace Tarbora {
   {
     glCullFace(GL_BACK);
     glDisable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glBindFramebuffer(GL_FRAMEBUFFER, scene_buffer_);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -152,11 +154,13 @@ namespace Tarbora {
 
   void Renderer::sky()
   {
+    glCullFace(GL_FRONT);
     glDepthFunc(GL_LEQUAL);
   }
 
   void Renderer::cleanSky()
   {
+    glCullFace(GL_BACK);
     glDepthFunc(GL_LESS);
   }
 
@@ -361,7 +365,9 @@ namespace Tarbora {
     glBindFramebuffer(GL_FRAMEBUFFER, lighting_buffer_);
 
     // Color buffer
-    lighting_color_ = std::make_unique<TextureInternal>(width_, height_, GL_RGBA);
+    lighting_color_ = std::make_unique<TextureInternal>(
+      width_, height_, GL_R11F_G11F_B10F, GL_UNSIGNED_BYTE, GL_RGB
+    );
     lighting_color_->configure(
       GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE
     );
@@ -383,6 +389,7 @@ namespace Tarbora {
 
   void Renderer::deleteLightingPass()
   {
+    glDeleteRenderbuffers(1, &rbo_light_);
     lighting_color_.reset(nullptr);
     glDeleteFramebuffers(1, &lighting_buffer_);
   }

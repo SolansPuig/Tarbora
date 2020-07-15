@@ -13,17 +13,15 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
-layout (location = 3) in mat4 aTransform;
 
 uniform mat4 projection;
 uniform mat4 view;
-
-out vec3 pos;
+uniform mat4 transform;
 
 void main()
 {
+
   mat4 skyView = view;
   skyView[3] = vec4(0.f);
-  gl_Position = (projection * skyView * vec4(aPos, 1.0f)).xyww;
-  pos = aPos;
+  gl_Position = (projection * skyView * vec4(aPos, 1.0)).xyww;
 }

@@ -38,7 +38,20 @@ actor = {
       color_primary = {255, 255, 255},
       color_secondary = {0, 255, 255},
       color_detail1 = {255, 0, 255},
-      uv_map = {0, 0}
+      uv_map = {0, 0},
+      nodes = {
+        {
+          name = "light",
+          type = "light",
+          shape = "sphere.mesh",
+          shader = "point_light.shader.lua",
+          position = {0, 0, 154},
+          attenuation = {1.43, 0.246, 0},
+          ambient = {14, 0, 0},
+          diffuse = {137, 0, 0},
+          specular = {34, 33, 0}
+        }
+      }
     }
   }
 }

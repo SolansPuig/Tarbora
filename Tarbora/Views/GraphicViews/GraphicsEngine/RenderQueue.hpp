@@ -43,7 +43,8 @@ namespace Tarbora {
     glm::vec3 diffuse;
     glm::vec3 specular;
     glm::vec3 direction;
-    glm::vec4 size;
+    float linear;
+    float quadratic;
   };
 
   typedef std::vector<RenderElementData> InstanceList;
@@ -78,7 +79,8 @@ namespace Tarbora {
       const glm::vec3 &diffuse,
       const glm::vec3 &specular,
       const glm::vec3 &direction,
-      const glm::vec4 &size
+      float linear_attenuation,
+      float quadratic_attenuation
     );
 
     void drawOutline(

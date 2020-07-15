@@ -49,7 +49,8 @@ namespace Tarbora {
     const glm::vec3 &diffuse,
     const glm::vec3 &specular,
     const glm::vec3 &direction,
-    const glm::vec4 &size
+    float linear_attenuation,
+    float quadratic_attenuation
   )
   {
     RenderLightData data;
@@ -60,7 +61,8 @@ namespace Tarbora {
     data.diffuse = diffuse;
     data.specular = specular;
     data.direction = direction;
-    data.size = size;
+    data.linear = linear_attenuation;
+    data.quadratic = quadratic_attenuation;
 
     lights_.emplace_back(data);
   }
@@ -98,6 +100,7 @@ namespace Tarbora {
           renderer_->setFaceCulling(false);
           break;
         case Sky:
+          renderer_->setFaceCulling(true);
           renderer_->occlusionPass();
           renderer_->lightingPass();
           drawLights();
@@ -105,6 +108,7 @@ namespace Tarbora {
           renderer_->sky();
           break;
         case Transparent:
+          renderer_->setFaceCulling(false);
           renderer_->cleanSky();
           renderer_->setAlpha(true);
           break;
@@ -141,8 +145,12 @@ namespace Tarbora {
       light.shader->set("diffuse", light.diffuse);
       light.shader->set("specular", light.specular);
       light.shader->set("direction", light.direction);
-      light.shader->set("size", light.size);
+      light.shader->set("linear", light.linear);
+      light.shader->set("quadratic", light.quadratic);
+      light.shader->set("transform", light.transform);
       light.shader->set("view", view_);
+      light.shader->set("screen", glm::vec2(renderer_->getSize()));
+      light.shader->set("projection", projection_);
       light.mesh->draw();
     }
   }

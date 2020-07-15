@@ -24,7 +24,7 @@ namespace Tarbora {
     addChild(mesh);
 
     auto light = std::make_shared<LightNode>("sky", "light");
-    light->setShape("plane.mesh");
+    light->setShape("cube.mesh");
     light->setShader("dir_light.shader.lua");
     light->setDirection(glm::normalize(glm::vec3(0.f) - glm::vec3(-0.3f, 0.41f, -1.f)));
     light->setAmbient(ambient);

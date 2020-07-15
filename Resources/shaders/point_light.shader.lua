@@ -10,9 +10,9 @@
   * file, You can obtain one at https://mozilla.org/MPL/2.0/.
 --]===================================================================]
 
-vertex = "shaders/dir_light.vert"
+vertex = "shaders/point_light.vert"
 tes_control = ""
 tes_eval = ""
 geometry = ""
-fragment = "shaders/dir_light.frag"
+fragment = "shaders/point_light.frag"
 compute = ""

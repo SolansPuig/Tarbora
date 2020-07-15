@@ -759,7 +759,8 @@ namespace Tarbora {
         diffuse_,
         specular_,
         direction_,
-        {0.f, 0.f, 0.f, 0.f}
+        l_att_,
+        q_att_
       );
     }
   }
@@ -771,11 +772,13 @@ namespace Tarbora {
     setShape(table.get<std::string>("shape"));
     setShader(table.get<std::string>("shader"));
 
-    setAmbient(table.get<glm::vec3>("ambient", glm::vec3(1.f), true));
-    setDiffuse(table.get<glm::vec3>("diffuse", glm::vec3(1.f), true));
-    setSpecular(table.get<glm::vec3>("specular", glm::vec3(1.f), true));
+    setAmbient(table.get<glm::vec3>("ambient", glm::vec3(1.f), true)/255.f);
+    setDiffuse(table.get<glm::vec3>("diffuse", glm::vec3(1.f), true)/255.f);
+    setSpecular(table.get<glm::vec3>("specular", glm::vec3(1.f), true)/255.f);
 
     setDirection(table.get<glm::vec3>("direction", glm::vec3(1.f), true));
+
+    setAttenuation(table.get<glm::vec3>("attenuation", glm::vec3(1.f), true));
   }
 
   void LightNode::drawGuiEditor()
@@ -792,21 +795,28 @@ namespace Tarbora {
         setDirection(glm::make_vec3(dir));
 
       ImGui::Spacing();
+      glm::vec2 a = getAttenuation();
+      float att[2] = {a.x, a.y};
+      if (ImGui::DragFloat2("Attenuation", att, .001f, .001f, 2.f))
+        setAttenuation(glm::make_vec2(att));
+
+      ImGui::Spacing();
+      ImGui::Spacing();
       glm::vec3 c1 = getAmbient();
       float amb[3] = {c1.x, c1.y, c1.z};
-      if (ImGui::ColorEdit3("Ambient Color", &amb[0]))
+      if (ImGui::ColorEdit3("Ambient Color", amb))
         setAmbient(glm::make_vec3(amb));
 
       ImGui::Spacing();
       glm::vec3 c2 = getDiffuse();
       float diff[3] = {c2.x, c2.y, c2.z};
-      if (ImGui::ColorEdit3("Diffuse Color", &diff[0]))
+      if (ImGui::ColorEdit3("Diffuse Color", diff))
         setDiffuse(glm::make_vec3(diff));
 
       ImGui::Spacing();
       glm::vec3 c3 = getSpecular();
       float spec[3] = {c3.x, c3.y, c3.z};
-      if (ImGui::ColorEdit3("Specular Color", &spec[0]))
+      if (ImGui::ColorEdit3("Specular Color", spec))
         setSpecular(glm::make_vec3(spec));
     }
   }
@@ -850,6 +860,14 @@ namespace Tarbora {
     direction_ = direction;
   }
 
+  void LightNode::setAttenuation(const glm::vec2 &attenuation)
+  {
+    l_att_ = attenuation.x;
+    q_att_ = attenuation.y;
+
+    calcRadius();
+  }
+
   const std::string& LightNode::getShape()
   {
     return mesh_name_;
@@ -878,5 +896,23 @@ namespace Tarbora {
   const glm::vec3& LightNode::getDirection()
   {
     return direction_;
+  }
+
+  glm::vec2 LightNode::getAttenuation()
+  {
+    return glm::vec2(l_att_, q_att_);
+  }
+
+  void LightNode::calcRadius()
+  {
+    glm::vec3 light = glm::max(glm::max(ambient_, specular_), diffuse_);
+    float lmax = 255.f * std::fmaxf(std::fmaxf(light.r, light.g), light.b);
+
+    // Calculate the mesh scale from the attenuation and the maximum light
+    float scale =
+      (-l_att_ + std::sqrt(l_att_ * l_att_ - 4 * q_att_ * (1.f - lmax * (256.f / 5.f))))
+      / (2 * q_att_);
+
+    setGlobalScale(2 * scale);
   }
 }
