@@ -20,6 +20,7 @@ uniform vec3 horizonColor;
 uniform vec3 skyColor;
 uniform float horizonHeight;
 uniform float exponent;
+uniform int n_suns;
 
 struct Sun {
     vec3 color;
@@ -36,7 +37,7 @@ void main()
   float height = pow(clamp(horizonHeight - p.y, 0.0, 1.0), exponent);
   vec3 color = mix(skyColor/255.0, horizonColor/255.0, height);
 
-  for (int i = 0; i < 5; ++i)
+  for (int i = 0; i < n_suns; ++i)
   {
     float d = clamp(
       pow(abs(distance(p, normalize(sun[i].pos)))*128/sun[i].size, sun[i].sharpness),

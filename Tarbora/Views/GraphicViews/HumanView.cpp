@@ -11,9 +11,6 @@
  *********************************************************************/
 
 #include "HumanView.hpp"
-#include "DemoWindow.hpp"
-#include "MetricsGui.hpp"
-#include "InventoryLayer.hpp"
 
 namespace Tarbora {
   HumanView::HumanView() :
@@ -23,20 +20,13 @@ namespace Tarbora {
 
     max_fps_ = 60;
 
-    game_layer_ = std::shared_ptr<GameLayer>(new GameLayer(this, true));
-    game_layer_->setTargetId("player");
-    pushLayer(game_layer_);
+    getGraphicsEngine()->getInputManager()->captureMouse(true);
 
-    std::shared_ptr<MetricsGui> metrics(new MetricsGui(this, false));
+    metrics = std::make_shared<MetricsGui>(this, false);
     pushLayer(metrics);
 
-    std::shared_ptr<DemoWindow> demo_gui(new DemoWindow(this, false));
+    demo_gui = std::make_shared<DemoWindow>(this, false);
     pushLayer(demo_gui);
-
-    std::shared_ptr<InventoryLayer> inventory(new InventoryLayer(this));
-    pushLayer(inventory);
-
-    getGraphicsEngine()->getWindow()->captureMouse(true);
 
     LOG_DEBUG("Created");
   }
@@ -50,24 +40,37 @@ namespace Tarbora {
   {
     ZoneScoped;
 
-    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_ESCAPE)) {
+    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_ESCAPE))
+    {
       static bool capture = true;
       capture = !capture;
       getGraphicsEngine()->getInputManager()->captureMouse(capture);
-      game_layer_->freezeMouse(!capture);
     }
 
-    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F2)) {
+    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F2))
+    {
       getGraphicsEngine()->getWindow()->takeScreenshot("/home/roger/Imatges/test");
     }
 
-    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F5)) {
+    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F3))
+    {
+      metrics->toggleActive();
+    }
+
+    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F5))
+    {
       ResourceManager::flush();
+    }
+
+    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F6))
+    {
+      demo_gui->toggleActive();
     }
 
     for (auto itr = layers_.rbegin(); itr != layers_.rend(); itr++)
     {
-      (*itr)->getInput();
+      if ((*itr)->isActive() && (*itr)->getInput())
+        break;
     }
   }
 

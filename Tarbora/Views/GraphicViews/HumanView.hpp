@@ -18,6 +18,8 @@
 #include "GameLayer.hpp"
 #include "Skybox.hpp"
 #include "ActorModel.hpp"
+#include "DemoWindow.hpp"
+#include "MetricsGui.hpp"
 
 namespace Tarbora {
   class HumanView : public GraphicView
@@ -33,11 +35,11 @@ namespace Tarbora {
     virtual void pushLayer(std::shared_ptr<Layer> layer);
     virtual void removeLayer(std::shared_ptr<Layer> layer);
 
-    std::shared_ptr<GameLayer> getGameLayer() { return game_layer_; }
-
   protected:
-    std::shared_ptr<GameLayer> game_layer_;
     std::list<std::shared_ptr<Layer>> layers_;
+
+    std::shared_ptr<MetricsGui> metrics;
+    std::shared_ptr<DemoWindow> demo_gui;
   };
 }
 

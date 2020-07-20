@@ -13,7 +13,7 @@
 #ifndef __INVENTORYLAYER_H_
 #define __INVENTORYLAYER_H_
 
-#include "Layer.hpp"
+#include "../Tarbora/Views/GraphicViews/HumanView.hpp"
 
 namespace Tarbora {
   struct Item
@@ -70,10 +70,10 @@ namespace Tarbora {
   class InventoryLayer : public Layer
   {
   public:
-    InventoryLayer(GraphicView *view);
+    InventoryLayer(HumanView *view);
     virtual ~InventoryLayer() {}
 
-    virtual void getInput() override;
+    virtual bool getInput() override;
     virtual void update(float delta_time) override;
     virtual void draw() override;
 

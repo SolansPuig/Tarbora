@@ -17,21 +17,20 @@
 #include "GraphicView.hpp"
 
 namespace Tarbora {
+  class HumanView;
+ 
   class Layer : public ModuleComponent
   {
   public:
-    Layer(GraphicView *view, bool start_active = true) :
-      ModuleComponent(view), active_(start_active) {}
+    Layer(HumanView *view, bool start_active = true);
     virtual ~Layer() {}
 
     virtual void onActivate() {}
     virtual void onDeactivate() {}
 
-    virtual void getInput() {}
+    virtual bool getInput() { return false; }
     virtual void update(float delta_time) { (void)(delta_time); }
     virtual void draw() {}
-
-    virtual bool onMessage(const MessageBody &m) { (void)(m); return false; }
 
     void setActive(bool active)
     {
@@ -40,12 +39,17 @@ namespace Tarbora {
       else onDeactivate();
     }
 
+    void toggleActive()
+    {
+      setActive(!active_);
+    }
+
     bool isActive() const
     {
       return active_;
     }
 
-    std::shared_ptr<Input> getInputManager()
+    inline std::shared_ptr<Input> getInputManager()
     {
       return static_cast<GraphicView*>(module_)->getGraphicsEngine()->getInputManager();
     }
@@ -53,6 +57,8 @@ namespace Tarbora {
   protected:
     bool active_;
     bool event_blocking_;
+
+    HumanView *view_;
   };
 }
 

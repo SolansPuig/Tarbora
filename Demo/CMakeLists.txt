@@ -1,4 +1,6 @@
 add_library(Demo SHARED
+  DemoLayer.cpp
+  InventoryLayer.cpp
   GravityRandomizerSystem.cpp
   KnockbackSystem.cpp
   ThrowSystem.cpp

@@ -19,10 +19,10 @@
 #include "../Messages/BasicMessages.hpp"
 
 namespace Tarbora {
-  Editor::Editor(HumanView *view, bool start_active)
+  Editor::Editor(HumanView *view, bool start_active, GameLayer *layer)
     : Layer(view, start_active)
   {
-    scene_ = view->getGameLayer()->getScene();
+    scene_ = layer->getScene();
 
     model_editor = std::shared_ptr<ModelEditor>(new ModelEditor(this, scene_));
     node_editor = std::shared_ptr<NodeEditor>(new NodeEditor(this, scene_));
@@ -37,11 +37,13 @@ namespace Tarbora {
     });
   }
 
-  void Editor::getInput()
+  bool Editor::getInput()
   {
     if (getInputManager()->getKeyDown(KEY_F4)) {
       active_ = !active_;
     }
+
+    return true;
   }
 
   void Editor::draw()

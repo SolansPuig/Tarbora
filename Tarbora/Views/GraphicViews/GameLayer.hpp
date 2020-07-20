@@ -23,9 +23,7 @@ namespace Tarbora {
     GameLayer(HumanView *view, bool start_active=true);
     ~GameLayer() {}
 
-    virtual bool onMessage(const MessageBody &m) override;
-
-    virtual void getInput() override;
+    virtual bool getInput() override;
     virtual void update(float delta_time) override;
     virtual void draw() override;
 
@@ -34,16 +32,10 @@ namespace Tarbora {
 
     std::shared_ptr<Scene> getScene() { return scene_; }
 
-    void freezeMouse(bool freeze) {freeze_mouse_ = freeze; }
-  private:
+  protected:
     std::shared_ptr<Scene> scene_;
 
     ActorId target_id_;
-    glm::vec2 look_direction_;
-    glm::vec3 movement_;
-    bool jump_;
-    bool freeze_mouse_;
-    bool pick_object_{false};
   };
 }
 

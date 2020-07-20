@@ -162,7 +162,12 @@ namespace Tarbora {
     last_mouse_position_ = getMousePosition();
   }
 
-  glm::vec2 Input::getMouseDelta()
+  void Input::toggleCaptureMouse()
+  {
+    captureMouse(!capture_mouse_);
+  }
+
+  glm::vec2 Input::forceGetMouseDelta()
   {
     glm::vec2 mouse_position = getMousePosition();
     glm::vec2 delta =  last_mouse_position_ - mouse_position;
@@ -170,11 +175,27 @@ namespace Tarbora {
     return delta;
   }
 
-  glm::vec2 Input::getMousePosition()
+  glm::vec2 Input::forceGetMousePosition()
   {
     double xpos, ypos;
     glfwGetCursorPos(window_->getRawWindow(), &xpos, &ypos);
     return glm::vec2(xpos, ypos);
+  }
+
+  glm::vec2 Input::getMouseDelta()
+  {
+    if (capture_mouse_)
+      return forceGetMouseDelta();
+    else
+      return glm::vec2(0.f);
+  }
+
+  glm::vec2 Input::getMousePosition()
+  {
+    if (capture_mouse_)
+      return forceGetMousePosition();
+    else
+      return last_mouse_position_;
   }
 
   void Input::setScroll(float scroll)

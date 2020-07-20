@@ -23,13 +23,14 @@ namespace Tarbora {
   class SceneNode;
   class ModelEditor;
   class NodeEditor;
+  class GameLayer;
 
   class Editor : public Layer
   {
   public:
-    Editor(HumanView *view, bool startActive);
+    Editor(HumanView *view, bool startActive, GameLayer *layer);
 
-    virtual void getInput();
+    virtual bool getInput();
 
     virtual void draw();
 

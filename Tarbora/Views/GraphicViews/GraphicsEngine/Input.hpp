@@ -42,6 +42,9 @@ namespace Tarbora {
     void setButtonState(int button, State state) { button_state_[button] = state; }
 
     void captureMouse(bool capture);
+    void toggleCaptureMouse();
+    glm::vec2 forceGetMousePosition();
+    glm::vec2 forceGetMouseDelta();
     glm::vec2 getMousePosition();
     glm::vec2 getMouseDelta();
 

@@ -10,32 +10,31 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  *********************************************************************/
 
-#ifndef __DEMOWINDOW_H_
-#define __DEMOWINDOW_H_
+#ifndef __DEMOLAYER_H_
+#define __DEMOLAYER_H_
 
-#include "Layer.hpp"
+#include "../Tarbora/Views/GraphicViews/HumanView.hpp"
 
 namespace Tarbora {
-  class DemoWindow : public Layer
+  class InventoryLayer;
+
+  class DemoLayer : public GameLayer
   {
   public:
-    DemoWindow(HumanView *view, bool start_active) : Layer(view, start_active)
-    {}
+    DemoLayer(HumanView *view);
+    ~DemoLayer() {}
 
-    bool getInput() override
-    {
-      if (getInputManager()->getKeyDown(KEY_F6)) {
-        active_ = !active_;
-      }
+    virtual bool getInput();
 
-      return false;
-    }
+  private:
+    std::shared_ptr<InventoryLayer> inventory_layer_;
 
-    void draw() override
-    {
-      ImGui::ShowDemoWindow(&active_);
-    }
+    glm::vec3 movement_{0.f, 0.f, 0.f};
+    glm::vec2 look_direction_{0.f, 0.f};
+    bool jump_{false};
+    bool pick_object_{false};
   };
 }
 
-#endif // __DEMOWINDOW_H_
+
+#endif // __DEMOLAYER_H_

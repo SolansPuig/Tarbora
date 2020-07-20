@@ -10,32 +10,10 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  *********************************************************************/
 
-#ifndef __DEMOWINDOW_H_
-#define __DEMOWINDOW_H_
-
 #include "Layer.hpp"
+#include "HumanView.hpp"
 
 namespace Tarbora {
-  class DemoWindow : public Layer
-  {
-  public:
-    DemoWindow(HumanView *view, bool start_active) : Layer(view, start_active)
-    {}
-
-    bool getInput() override
-    {
-      if (getInputManager()->getKeyDown(KEY_F6)) {
-        active_ = !active_;
-      }
-
-      return false;
-    }
-
-    void draw() override
-    {
-      ImGui::ShowDemoWindow(&active_);
-    }
-  };
+  Layer::Layer(HumanView *view, bool start_active) :
+    ModuleComponent(view), active_(start_active), view_(view) {}
 }
-
-#endif // __DEMOWINDOW_H_

@@ -17,6 +17,7 @@
 #include "Tarbora/Editor/Editor.hpp"
 #include "Tarbora/Views/HardwareViews/ArduinoView.hpp"
 
+#include "Demo/DemoLayer.hpp"
 #include "Demo/GravityRandomizerSystem.hpp"
 #include "Demo/KnockbackSystem.hpp"
 #include "Demo/ThrowSystem.hpp"
@@ -53,10 +54,14 @@ int main()
   arduino->runThread("Arduino");
 
   auto human_view = std::make_shared<HumanView>();
-  human_view->pushLayer(std::make_shared<Editor>(human_view.get(), false));
+  auto demo = std::make_shared<DemoLayer>(human_view.get());
+  demo->setTargetId("player");
+  human_view->pushLayer(demo);
+  human_view->pushLayer(std::make_shared<Editor>(human_view.get(), false, demo.get()));
+
 
   // Draw the Sun
-  auto sky = human_view->getGameLayer()->getScene()->getSkybox();
+  auto sky = demo->getScene()->getSkybox();
   sky->sun[0].color = {255, 247, 232};
   sky->sun[0].position = {-0.3f, 0.41f, -1.f};
   sky->sun[0].size = 4;

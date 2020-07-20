@@ -11,8 +11,7 @@
  *********************************************************************/
 
 #include "InventoryLayer.hpp"
-#include "../../Messages/BasicMessages.hpp"
-#include "GraphicView.hpp"
+#include "../Tarbora/Messages/BasicMessages.hpp"
 
 namespace Tarbora {
   Inventory::Inventory() {}
@@ -41,7 +40,7 @@ namespace Tarbora {
     }
   }
 
-  InventoryLayer::InventoryLayer(GraphicView *view) :
+  InventoryLayer::InventoryLayer(HumanView *view) :
     Layer(view, false)
   {
     subscribe("inventory_enable", [&](const MessageSubject &, const MessageBody &body)
@@ -98,12 +97,14 @@ namespace Tarbora {
     });
   }
 
-  void InventoryLayer::getInput()
+  bool InventoryLayer::getInput()
   {
     if (getInputManager()->getKeyDown(KEY_I))
     {
       active_ = enabled_ && !active_;
     }
+
+    return true;
   }
 
   void InventoryLayer::update(float delta_time)

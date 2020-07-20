@@ -101,7 +101,7 @@ namespace Tarbora {
     shader->set("horizonColor", horizon_color);
     shader->set("horizonHeight", horizon_height);
     shader->set("exponent", exponent);
-    shader->set("n_suns", 0);
+    shader->set("n_suns", 1);
 
     for (int i = 0; i < 5; i++)
     {

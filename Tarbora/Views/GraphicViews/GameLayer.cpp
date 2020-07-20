@@ -14,26 +14,13 @@
 #include "Layer.hpp"
 #include "HumanView.hpp"
 #include "../../Messages/BasicMessages.hpp"
-#include "Skybox.hpp"
 #include "ActorModel.hpp"
 
 namespace Tarbora {
   GameLayer::GameLayer(HumanView *view, bool start_active) :
     Layer(view, start_active)
   {
-    scene_ = std::shared_ptr<Scene>(new Scene(view));
-
-    movement_ = glm::vec3(0.0f, 0.0f, 0.0f);
-    look_direction_ = glm::vec2(0.0f, 0.0f);
-    jump_ = false;
-    freeze_mouse_ = false;
-
-    std::shared_ptr<Camera> camera = scene_->createCamera("main_camera");
-    camera->setOrientation(glm::vec3(-1.0f, 180.0f, 0.0f));
-    camera->setPosition(glm::vec3(-3.0f, -1.5f, 10.0f));
-    scene_->setCamera(camera);
-
-    scene_->createSkybox("sky.mat.lua");
+    scene_ = std::make_shared<Scene>(view);
 
     subscribe("create_actor_model", [this](auto &, auto &body)
     {
@@ -132,7 +119,6 @@ namespace Tarbora {
           }
         );
       }
-
     });
 
     subscribe("start_base_animation", [this](auto &, auto &body)
@@ -162,102 +148,11 @@ namespace Tarbora {
         );
       }
     });
-
-
-    scene_->setCamera(target_id_, "1st_person");
   }
 
-  bool GameLayer::onMessage(const MessageBody &body)
+  bool GameLayer::getInput()
   {
-    // TODO
-    UNUSED(body);
     return false;
-  }
-
-  void GameLayer::getInput()
-  {
-    glm::vec3 last_movement = movement_;
-
-    if (getInputManager()->getKeyDown(KEY_W))
-      movement_.z += 1;
-    if (getInputManager()->getKeyUp(KEY_W))
-      movement_.z -= 1;
-    if (getInputManager()->getKeyDown(KEY_S))
-      movement_.z -= 1;
-    if (getInputManager()->getKeyUp(KEY_S))
-      movement_.z += 1;
-    if (getInputManager()->getKeyDown(KEY_A))
-      movement_.x += 1;
-    if (getInputManager()->getKeyUp(KEY_A))
-      movement_.x -= 1;
-    if (getInputManager()->getKeyDown(KEY_D))
-      movement_.x -= 1;
-    if (getInputManager()->getKeyUp(KEY_D))
-      movement_.x += 1;
-
-    if (getInputManager()->getKeyDown(KEY_X))
-    {
-      Message::CreateActor msg("", "cube.lua");
-      msg.setPosition(glm::vec3(0.f, 1.f, -5.f));
-      send(1, "create_actor", msg);
-    }
-    if (getInputManager()->getKeyDown(KEY_E))
-    {
-      send(1, "pick_item", Message::Actor(target_id_));
-    }
-    if (getInputManager()->getKeyDown(KEY_Y))
-    {
-      static bool third_person = true;
-      third_person = !third_person;
-      const std::string camera_mode = (third_person ? "3rd_person" : "1st_person");
-
-      LOG_DEBUG("Set camera %s", camera_mode.c_str());
-      scene_->setCamera(target_id_, camera_mode);
-    }
-    if (getInputManager()->getKeyDown(KEY_G))
-    {
-      pick_object_ = !pick_object_;
-           
-      if (pick_object_)
-        send(1, "grab", Message::Actor(target_id_));
-      else
-        send(1, "release", Message::Actor(target_id_));
-    }
-    if (getInputManager()->getButtonDown(MOUSE_BUTTON_1))
-    {
-      send(1, "cast", Message::Actor(target_id_));
-    }
-    if (pick_object_ && getInputManager()->mouseScrolled())
-    {
-      send(1, "grab_distance",
-           Message::LookAt(target_id_, getInputManager()->getScrollDelta())
-      );
-    }
-
-    glm::vec2 last_look_direction_ = look_direction_;
-    float sensibility = 0.04; // TODO: Change this to a config file
-
-    if (!freeze_mouse_)
-    {
-      look_direction_ = sensibility * getInputManager()->getMouseDelta();
-    }
-    if (movement_ != last_movement)
-    {
-      send(1, "set_movement",
-           Message::ApplyPhysics(target_id_, glm::normalize(movement_))
-      );
-    }
-    if (look_direction_ != last_look_direction_)
-    {
-      send(1, "set_rotation", Message::ApplyPhysics(
-             target_id_,
-             glm::vec3(0.f, look_direction_.x, 0.f)
-           ));
-      send(1, "set_facing", Message::ApplyPhysics(
-             target_id_,
-             glm::vec3(-look_direction_.y, 0.f, 0.f)
-           ));
-    }
   }
 
   void GameLayer::update(float delta_time)

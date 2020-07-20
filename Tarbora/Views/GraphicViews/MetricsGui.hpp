@@ -20,7 +20,7 @@ namespace Tarbora {
   class MetricsGui : public Layer
   {
   public:
-    MetricsGui(GraphicView *view, bool start_active)
+    MetricsGui(HumanView *view, bool start_active)
       : Layer(view, start_active)
     {
       subscribe("look_at", [&](const MessageSubject &, const MessageBody &body)
@@ -31,11 +31,13 @@ namespace Tarbora {
       });
     }
 
-    void getInput() override
+    bool getInput() override
     {
       if (getInputManager()->getKeyDown(KEY_F3)) {
         active_ = !active_;
       }
+
+      return true;
     }
 
     void update(float delta_time) override
