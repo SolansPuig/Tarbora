@@ -21,6 +21,8 @@ namespace Tarbora {
 
   void SceneNode::update(Scene *scene, float delta_time)
   {
+    scene_ = scene;
+
     for (auto child : children_)
       child.second->update(scene, delta_time);
   }
@@ -42,42 +44,159 @@ namespace Tarbora {
 
   void SceneNode::drawGuiEditor()
   {
-    ImGui::Text("Target: %s", name.c_str());
-    ImGui::SameLine(400.f);
-    ImGui::Text("Actor: %s", owner.c_str());
-    ImGui::Separator();
+    guiTransformFixedSize();
+  }
+
+  void SceneNode::guiTransform(bool fixedSize)
+  {
+    static short current_guizmo_mode_ = 0;
+    static ImGuizmo::OPERATION current_guizmo_op_(ImGuizmo::TRANSLATE);
 
     if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
     {
-        ImGui::Spacing();
-        glm::vec3 p = getPosition()*100.f;
-        float position[3] = {p.x, p.y, p.z};
-        if (ImGui::DragFloat3("Position", position, 1.f, 0.f, 0.f, "%.2f cm"))
-          setPosition(glm::make_vec3(position)/100.f);
+      ImGuizmo::Enable(true);
 
-        ImGui::Spacing();
-        glm::vec3 r = getEulerOrientation();
-        float rotation[3] = {r.x, r.y, r.z};
-        if (ImGui::DragFloat3("Orientation", rotation, 1.f, -180.f, 180.f, "%.2f°"))
-          setOrientation(glm::make_vec3(rotation));
+      ImGui::Spacing();
+      if (ImGui::RadioButton("Local", current_guizmo_mode_ == 0))
+        current_guizmo_mode_ = 0;
 
+      if (!fixedSize && current_guizmo_op_ == ImGuizmo::SCALE)
+        current_guizmo_mode_ = 0;
+      else
+      {
+        //ImGui::SameLine();
+        //if (ImGui::RadioButton("Parent", current_guizmo_mode_ == 1))
+        //  current_guizmo_mode_ = 1;
+
+        ImGui::SameLine();
+        if (ImGui::RadioButton("World", current_guizmo_mode_ == 2))
+          current_guizmo_mode_ = 2;
+      }
+
+      if (ImGui::RadioButton("Translate", current_guizmo_op_ == ImGuizmo::TRANSLATE))
+        current_guizmo_op_ = ImGuizmo::TRANSLATE;
+
+      ImGui::SameLine();
+      if (ImGui::RadioButton("Rotate", current_guizmo_op_ == ImGuizmo::ROTATE))
+        current_guizmo_op_ = ImGuizmo::ROTATE;
+
+      if (!fixedSize)
+      {
+        ImGui::SameLine();
+        if (ImGui::RadioButton("Scale", current_guizmo_op_ == ImGuizmo::SCALE))
+          current_guizmo_op_ = ImGuizmo::SCALE;
+      }
+
+      ImGui::Spacing();
+      glm::vec3 p = getPosition()*100.f;
+      float position[3] = {p.x, p.y, p.z};
+      if (ImGui::DragFloat3("Position", position, 1.f, 0.f, 0.f, "%.2f cm"))
+        setPosition(glm::make_vec3(position)/100.f);
+
+      ImGui::Spacing();
+      glm::vec3 r = getEulerOrientation();
+      float rotation[3] = {r.x, r.y, r.z};
+      if (ImGui::DragFloat3("Orientation", rotation, 1.f, -180.f, 180.f, "%.2f°"))
+        setOrientation(glm::make_vec3(rotation));
+
+      if (!fixedSize)
+      {
         ImGui::Spacing();
         glm::vec3 s = getScale()*100.f;
         float scale[3] = {s.x, s.y, s.z};
         if (ImGui::DragFloat3("Scale", scale, 1.f, 1.f, 1000.f, "%.2f cm"))
           setScale(glm::make_vec3(scale)/100.f);
+      }
 
-        ImGui::Spacing();
+      ImGui::Spacing();
+
+      if (!fixedSize)
+      {
         ImGui::Spacing();
         float g_scale = getGlobalScale();
         if (ImGui::DragFloat("Global Scale", &g_scale, 0.1f, 0.1f, 1000.f, "%.2f"))
           setGlobalScale(g_scale);
+      }
 
-        ImGui::Spacing();
-        glm::vec3 o = getOrigin();
-        float origin[3] = {o.x, o.y, o.z};
-        if (ImGui::DragFloat3("Origin", origin, 0.01f, -0.5f, 0.5f, "%.2f"))
-          setOrigin(glm::make_vec3(origin));
+      ImGui::Spacing();
+      glm::vec3 o = getOrigin();
+      float origin[3] = {o.x, o.y, o.z};
+      if (ImGui::DragFloat3("Origin", origin, 0.01f, -0.5f, 0.5f, "%.2f"))
+        setOrigin(glm::make_vec3(origin));
+
+      ImGui::Spacing();
+
+      fixDirty();
+
+      glm::mat4 t;
+
+      if (current_guizmo_mode_ == 1)
+      {
+        t = (current_guizmo_op_ == ImGuizmo::SCALE) ?
+          parent_->world_ : glm::translate(parent_->world_, getOrigin());
+        t = glm::translate(t, getPosition());
+      }
+      else
+      {
+        t = (current_guizmo_op_ == ImGuizmo::SCALE) ?
+          transform_ : glm::translate(transform_, getOrigin());
+      }
+
+      float transform[] = {
+        t[0][0], t[0][1], t[0][2], t[0][3],
+        t[1][0], t[1][1], t[1][2], t[1][3],
+        t[2][0], t[2][1], t[2][2], t[2][3],
+        t[3][0], t[3][1], t[3][2], t[3][3]
+      };
+
+      ImGuizmo::Manipulate(
+        glm::value_ptr(scene_->getView()), glm::value_ptr(scene_->getProjection()),
+        current_guizmo_op_, current_guizmo_mode_ == 2 ? ImGuizmo::WORLD : ImGuizmo::LOCAL,
+        transform
+      );
+
+      float pos[3], rot[3], sca[3];
+      glm::vec3 gpos, grot, gsca;
+
+      if (current_guizmo_op_ == ImGuizmo::SCALE)
+      {
+        ImGuizmo::DecomposeMatrixToComponents(transform, pos, rot, sca);
+        gsca = glm::make_vec3(sca);
+
+        if (glm::abs(glm::length(gsca - getScale())) > 0.001f)
+          setScale(gsca);
+      }
+      else
+      {
+        glm::vec3 origin = getRawOrigin();
+        t = glm::make_mat4(transform);
+        if (current_guizmo_mode_ == 1)
+        {
+          t = glm::translate(t, -getPosition());
+          t = t * local_;
+          //origin = glm::vec3(0.f);
+        }
+        t = glm::inverse(parent_->world_) * t;
+
+        float transform2[] = {
+          t[0][0], t[0][1], t[0][2], t[0][3],
+          t[1][0], t[1][1], t[1][2], t[1][3],
+          t[2][0], t[2][1], t[2][2], t[2][3],
+          t[3][0], t[3][1], t[3][2], t[3][3]
+        };
+
+        ImGuizmo::DecomposeMatrixToComponents(transform2, pos, rot, sca);
+        gpos = glm::make_vec3(pos) - origin;
+        grot = glm::make_vec3(rot);
+
+        LOG_DEBUG("%s", glm::to_string(gpos).c_str());
+
+        if (glm::abs(glm::length(gpos - getPosition())) > 0.001f)
+          setPosition(gpos);
+
+        if (glm::abs(glm::length(grot - getEulerOrientation())) > 0.1f)
+          setOrientation(grot);
+      }
     }
   }
 
@@ -254,6 +373,11 @@ namespace Tarbora {
     return origin_ / global_scale_ / scale_;
   }
 
+  glm::vec3 SceneNode::getRawOrigin()
+  {
+    return origin_;
+  }
+
   void SceneNode::setLocal(const TransformProps &props)
   {
     position_ = props.position;
@@ -408,9 +532,17 @@ namespace Tarbora {
 
   void MeshNode::drawGuiEditor()
   {
-    SceneNode::drawGuiEditor();
+    guiTransform();
     ImGui::Spacing();
+    guiProperties();
+    ImGui::Spacing();
+    guiColors();
+    ImGui::Spacing();
+    guiTexture();
+  }
 
+  void MeshNode::guiProperties()
+  {
     if (ImGui::CollapsingHeader("Properties"))
     {
       ImGui::Spacing();
@@ -420,9 +552,13 @@ namespace Tarbora {
       {
         new_type_ = animated ? "animated" : "mesh";
       }
-    }
-    ImGui::Spacing();
 
+      ImGui::Spacing();
+    }
+  }
+
+  void MeshNode::guiColors()
+  {
     if (ImGui::CollapsingHeader("Colors"))
     {
       ImGui::Spacing();
@@ -452,9 +588,13 @@ namespace Tarbora {
       float detail2[3] = {c4.x, c4.y, c4.z};
       if (ImGui::ColorEdit3("Color Detail 2", &detail2[0]))
         setColorDetail2(glm::make_vec3(detail2)*255.f);
-    }
-    ImGui::Spacing();
 
+      ImGui::Spacing();
+    }
+  }
+
+  void MeshNode::guiTexture()
+  {
     if (ImGui::CollapsingHeader("Texture"))
     {
       ImGui::Spacing();
@@ -468,6 +608,7 @@ namespace Tarbora {
 
       if (!auto_texture_size_)
       {
+        ImGui::Spacing();
         glm::vec3 ts = getTextureSize()*100.f;
         float texture_size[3] = {ts.x, ts.y, ts.z};
         if (ImGui::DragFloat3("Texture Size", texture_size, 1.f, 1.f, 1000.f, "%.2f cm"))
@@ -479,6 +620,8 @@ namespace Tarbora {
         if (ImGui::DragFloat3("Mesh Size", mesh_size, 1.f, 1.f, 1000.f, "%.2f cm"))
           setMeshSize(glm::make_vec3(mesh_size)/100.f);
       }
+
+      ImGui::Spacing();
     }
   }
 
@@ -783,9 +926,13 @@ namespace Tarbora {
 
   void LightNode::drawGuiEditor()
   {
-    SceneNode::drawGuiEditor();
+    guiTransformFixedSize();
     ImGui::Spacing();
+    guiLight();
+  }
 
+  void LightNode::guiLight()
+  {
     if (ImGui::CollapsingHeader("Light"))
     {
       ImGui::Spacing();
@@ -801,6 +948,7 @@ namespace Tarbora {
         setAttenuation(glm::make_vec2(att));
 
       ImGui::Spacing();
+
       ImGui::Spacing();
       glm::vec3 c1 = getAmbient();
       float amb[3] = {c1.x, c1.y, c1.z};
@@ -818,6 +966,8 @@ namespace Tarbora {
       float spec[3] = {c3.x, c3.y, c3.z};
       if (ImGui::ColorEdit3("Specular Color", spec))
         setSpecular(glm::make_vec3(spec));
+
+      ImGui::Spacing();
     }
   }
 
@@ -843,16 +993,19 @@ namespace Tarbora {
   void LightNode::setAmbient(const glm::vec3 &ambient)
   {
     ambient_ = ambient;
+    calcRadius();
   }
 
   void LightNode::setDiffuse(const glm::vec3 &diffuse)
   {
     diffuse_ = diffuse;
+    calcRadius();
   }
 
   void LightNode::setSpecular(const glm::vec3 &specular)
   {
     specular_ = specular;
+    calcRadius();
   }
 
   void LightNode::setDirection(const glm::vec3 &direction)

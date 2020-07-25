@@ -31,6 +31,8 @@ namespace Tarbora {
       });
     }
 
+    virtual std::string getType() override { return "metrics_gui"; }
+
     bool getInput() override
     {
       if (getInputManager()->getKeyDown(KEY_F3)) {

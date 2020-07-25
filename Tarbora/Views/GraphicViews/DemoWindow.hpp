@@ -22,6 +22,8 @@ namespace Tarbora {
     DemoWindow(HumanView *view, bool start_active) : Layer(view, start_active)
     {}
 
+    virtual std::string getType() override { return "demo_gui"; }
+
     bool getInput() override
     {
       if (getInputManager()->getKeyDown(KEY_F6)) {

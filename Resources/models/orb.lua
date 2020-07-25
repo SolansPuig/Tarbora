@@ -36,6 +36,16 @@ actor = {
           texture_size = {10, 10, 10},
           color_primary = {255, 235, 0},
           uv_map = {20, 30}
+        },
+        {
+          name = "light",
+          type = "light",
+          shader = "point_light.shader.lua",
+          shape = "sphere.mesh",
+          ambient = {40, 40, 0},
+          diffuse = {255, 255, 0},
+          specular = {255, 255, 0},
+          attenuation = {1.43, 0.5}
         }
       }
     }

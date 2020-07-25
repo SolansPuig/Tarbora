@@ -42,9 +42,7 @@ namespace Tarbora {
 
     if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_ESCAPE))
     {
-      static bool capture = true;
-      capture = !capture;
-      getGraphicsEngine()->getInputManager()->captureMouse(capture);
+      getGraphicsEngine()->getInputManager()->toggleCaptureMouse();
     }
 
     if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F2))
@@ -55,6 +53,11 @@ namespace Tarbora {
     if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F3))
     {
       metrics->toggleActive();
+    }
+
+    if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F4))
+    {
+      getLayer("editor")->toggleActive();
     }
 
     if (getGraphicsEngine()->getInputManager()->getKeyDown(KEY_F5))
@@ -72,6 +75,8 @@ namespace Tarbora {
       if ((*itr)->isActive() && (*itr)->getInput())
         break;
     }
+
+    getGraphicsEngine()->getInputManager()->update();
   }
 
   void HumanView::update(float delta_time)
@@ -108,10 +113,21 @@ namespace Tarbora {
   void HumanView::pushLayer(std::shared_ptr<Layer> layer)
   {
     layers_.push_back(layer);
+    layer_map_.emplace(layer->getType(), layer);
   }
 
   void HumanView::removeLayer(std::shared_ptr<Layer> layer)
   {
     layers_.remove(layer);
+    layer_map_.erase(layer->getType());
+  }
+
+  std::shared_ptr<Layer> HumanView::getLayer(const std::string &type)
+  {
+    auto itr = layer_map_.find(type);
+    if (itr != layer_map_.end())
+      return itr->second;
+    else
+      return std::shared_ptr<Layer>();
   }
 }

@@ -73,6 +73,8 @@ namespace Tarbora {
     InventoryLayer(HumanView *view);
     virtual ~InventoryLayer() {}
 
+    virtual std::string getType() override { return "inventory"; }
+
     virtual bool getInput() override;
     virtual void update(float delta_time) override;
     virtual void draw() override;

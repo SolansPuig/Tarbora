@@ -24,7 +24,9 @@ namespace Tarbora {
     DemoLayer(HumanView *view);
     ~DemoLayer() {}
 
-    virtual bool getInput();
+    virtual std::string getType() override { return "game"; }
+
+    virtual bool getInput() override;
 
   private:
     std::shared_ptr<InventoryLayer> inventory_layer_;

@@ -73,6 +73,18 @@ namespace Tarbora {
 
   }
 
+  void Input::update()
+  {
+    for (auto key = key_state_.begin(); key != key_state_.end(); key++)
+      *key = State::UNCHANGED;
+
+    for (auto button = button_state_.begin(); button != button_state_.end(); button++)
+      *button = State::UNCHANGED;
+
+    mouse_scrolled_ = false;
+    mouse_scroll_delta_ = 0.f;
+  }
+
   bool Input::getKey(int keycode)
   {
     if (!enabled_) return false;

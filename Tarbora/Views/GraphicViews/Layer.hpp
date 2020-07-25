@@ -25,6 +25,8 @@ namespace Tarbora {
     Layer(HumanView *view, bool start_active = true);
     virtual ~Layer() {}
 
+    virtual std::string getType() { return "empty"; }
+   
     virtual void onActivate() {}
     virtual void onDeactivate() {}
 

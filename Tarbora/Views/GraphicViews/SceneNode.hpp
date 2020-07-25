@@ -42,6 +42,9 @@ namespace Tarbora {
     virtual void afterDraw(Scene *) {}
 
     virtual void drawGuiEditor();
+    void guiTransform(bool fixedSize=false);
+    inline void guiTransformFixedSize() { guiTransform(true); }
+
     virtual void load(const LuaTable &table, NodeMap *map=nullptr);
     // virtual void save() {}
 
@@ -69,6 +72,7 @@ namespace Tarbora {
     const glm::vec3& getScale();
     float getGlobalScale();
     glm::vec3 getOrigin();
+    glm::vec3 getRawOrigin();
 
 
     void setLocal(const TransformProps &props);
@@ -84,7 +88,9 @@ namespace Tarbora {
     void setNewNodeType(const std::string &type) { new_type_ = type; }
     const std::string& getNewNodeType() { return new_type_; }
 
+
   protected:
+    Scene *scene_{nullptr};
     SceneNode *parent_{nullptr};
     NodeMap children_;
 
@@ -170,6 +176,9 @@ namespace Tarbora {
     virtual void draw(Scene *scene);
 
     virtual void drawGuiEditor();
+    void guiProperties();
+    void guiColors();
+    void guiTexture();
     virtual void load(const LuaTable &table, NodeMap *map);
 
     void setShape(const std::string &mesh);
@@ -267,6 +276,7 @@ namespace Tarbora {
     virtual void draw(Scene *scene);
 
     virtual void drawGuiEditor();
+    void guiLight();
     virtual void load(const LuaTable &table, NodeMap *map);
 
     void setShape(const std::string &mesh);

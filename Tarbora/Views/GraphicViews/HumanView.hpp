@@ -34,9 +34,11 @@ namespace Tarbora {
 
     virtual void pushLayer(std::shared_ptr<Layer> layer);
     virtual void removeLayer(std::shared_ptr<Layer> layer);
+    std::shared_ptr<Layer> getLayer(const std::string &type);
 
   protected:
     std::list<std::shared_ptr<Layer>> layers_;
+    std::unordered_map<std::string, std::shared_ptr<Layer>> layer_map_;
 
     std::shared_ptr<MetricsGui> metrics;
     std::shared_ptr<DemoWindow> demo_gui;

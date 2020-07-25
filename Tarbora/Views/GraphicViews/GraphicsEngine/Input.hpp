@@ -27,6 +27,8 @@ namespace Tarbora {
     Input(GraphicsEngine *graphicsEngine);
     ~Input();
 
+    void update();
+
     bool getKey(int keycode);
     bool getKeyDown(int keycode);
     bool getKeyUp(int keycode);

@@ -30,6 +30,11 @@ namespace Tarbora {
   public:
     Editor(HumanView *view, bool startActive, GameLayer *layer);
 
+    virtual std::string getType() { return "editor"; }
+
+    virtual void onActivate();
+    virtual void onDeactivate();
+
     virtual bool getInput();
 
     virtual void draw();

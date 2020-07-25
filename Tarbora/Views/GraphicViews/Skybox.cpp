@@ -88,7 +88,7 @@ namespace Tarbora {
     }
   }
 
-  void Skybox::update(Scene *, float)
+  void Skybox::update(Scene *scene, float delta_time)
   {
     //scene->getGraphicsEngine()->getRenderer()->setDirecitonalLight(
     //  ambient, diffuse, specular, direction
@@ -110,5 +110,7 @@ namespace Tarbora {
       shader->set("sun[" + std::to_string(i) + "].size", sun[i].size);
       shader->set("sun[" + std::to_string(i) + "].sharpness", sun[i].sharpness);
     }
+
+    MaterialNode::update(scene, delta_time);
   }
 }

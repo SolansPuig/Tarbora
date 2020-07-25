@@ -37,12 +37,18 @@ namespace Tarbora {
     });
   }
 
+  void Editor::onActivate()
+  {
+    getInputManager()->captureMouse(false);
+  }
+
+  void Editor::onDeactivate()
+  {
+    getInputManager()->captureMouse(true);
+  }
+
   bool Editor::getInput()
   {
-    if (getInputManager()->getKeyDown(KEY_F4)) {
-      active_ = !active_;
-    }
-
     return true;
   }
 
