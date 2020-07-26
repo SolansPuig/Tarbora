@@ -30,6 +30,11 @@ namespace Tarbora {
     Skybox(const std::string &material);
     virtual ~Skybox() {}
 
+    virtual SceneNodePtr clone() const
+    {
+      return std::make_shared<Skybox>(*this);
+    }
+
     virtual const std::string getType() const { return "skybox"; }
 
     virtual void drawGuiEditor();

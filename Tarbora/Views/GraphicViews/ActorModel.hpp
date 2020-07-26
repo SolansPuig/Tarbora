@@ -30,7 +30,13 @@ namespace Tarbora {
     );
     virtual ~ActorModel();
 
+    virtual SceneNodePtr clone() const override
+    {
+      return std::make_shared<ActorModel>(*this);
+    }
+
     virtual void load(const LuaTable &table, NodeMap *map) override;
+    virtual void write(LuaFile *file) override;
 
     virtual void update(Scene *scene, float delta_time) override;
 

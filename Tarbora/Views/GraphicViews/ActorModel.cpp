@@ -41,6 +41,14 @@ namespace Tarbora {
     setGlobalScale(table.get<float>("scale", 1.f, true));
   }
 
+  void ActorModel::write(LuaFile *file)
+  {
+    file->beginGlobalTable("actor");
+    file->write("scale", getGlobalScale());
+    writeChildren(file);
+    file->closeGlobalTable();
+  }
+
   void ActorModel::update(Scene *scene, float delta_time)
   {
     if (animation_controller_)

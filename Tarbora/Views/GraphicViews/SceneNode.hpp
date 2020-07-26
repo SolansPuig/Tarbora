@@ -32,6 +32,7 @@ namespace Tarbora {
   {
   public:
     SceneNode(const ActorId &id, const std::string &name) : owner(id), name(name) {}
+    SceneNode(const SceneNode &other);
     ~SceneNode();
 
     virtual const std::string getType() const = 0;
@@ -41,12 +42,19 @@ namespace Tarbora {
     virtual void draw(Scene *) {};
     virtual void afterDraw(Scene *) {}
 
+    virtual SceneNodePtr clone() const = 0;
+
     virtual void drawGuiEditor();
+    void guiName();
     void guiTransform(bool fixedSize=false);
     inline void guiTransformFixedSize() { guiTransform(true); }
 
     virtual void load(const LuaTable &table, NodeMap *map=nullptr);
-    // virtual void save() {}
+    virtual void write(LuaFile *file);
+    virtual void writeName(LuaFile *file);
+    virtual void writeTransform(LuaFile *file, bool fixedSize=false);
+    virtual void writeTransformFixedSize(LuaFile *file) { writeTransform(file, true); }
+    virtual void writeChildren(LuaFile *file);
 
     SceneNodePtr addChild(SceneNodePtr child);
     virtual SceneNodePtr getChild(const std::string &name);
@@ -94,7 +102,7 @@ namespace Tarbora {
     SceneNode *parent_{nullptr};
     NodeMap children_;
 
-    RenderPass render_pass_;
+    RenderPass render_pass_{RenderPass::Static};
 
     glm::vec3 origin_{0.f, 0.f, 0.f};
     glm::vec3 position_{0.f, 0.f, 0.f};
@@ -125,6 +133,11 @@ namespace Tarbora {
     RootNode() : SceneNode("", "Root") {}
     virtual ~RootNode() {}
 
+    virtual SceneNodePtr clone() const
+    {
+      return std::make_shared<RootNode>(*this);
+    }
+
     virtual const std::string getType() const { return "root"; }
   };
 
@@ -133,6 +146,11 @@ namespace Tarbora {
   public:
     Camera(const ActorId &id, const std::string &name) : SceneNode(id, name) {}
     virtual ~Camera() {}
+
+    virtual SceneNodePtr clone() const
+    {
+      return std::make_shared<Camera>(*this);
+    }
    
     virtual const std::string getType() const { return "camera"; }
 
@@ -148,28 +166,44 @@ namespace Tarbora {
   {
   public:
     MaterialNode(const ActorId &id, const std::string &name) : SceneNode(id, name) {}
+    MaterialNode(const MaterialNode &other);
     virtual ~MaterialNode() {}
+
+    virtual SceneNodePtr clone() const
+    {
+      return std::make_shared<MaterialNode>(*this);
+    }
 
     virtual const std::string getType() const { return "material"; }
 
     virtual void draw(Scene *scene);
     virtual void afterDraw(Scene *scene);
 
+    virtual void drawGuiEditor();
+    void guiProperties();
     virtual void load(const LuaTable &table, NodeMap *map);
+    virtual void write(LuaFile *file);
+    void writeProperties(LuaFile *file);
 
     void setMaterial(const std::string &name);
     const std::string& getMaterial() { return material_name_; }
 
   protected:
-    ResourcePtr<Material> material_;
-    std::string material_name_;
+    ResourcePtr<Material> material_{"materials/white.mat.lua"};
+    std::string material_name_{"white.mat.lua"};
   };
 
   class MeshNode : public SceneNode
   {
   public:
     MeshNode(const ActorId &id, const std::string &name) : SceneNode(id, name) {}
+    MeshNode(const MeshNode &other);
     virtual ~MeshNode() {}
+
+    virtual SceneNodePtr clone() const
+    {
+      return std::make_shared<MeshNode>(*this);
+    }
 
     virtual const std::string getType() const { return "mesh"; }
 
@@ -180,6 +214,8 @@ namespace Tarbora {
     void guiColors();
     void guiTexture();
     virtual void load(const LuaTable &table, NodeMap *map);
+    virtual void write(LuaFile *file);
+    void writeMesh(LuaFile *file);
 
     void setShape(const std::string &mesh);
 
@@ -203,8 +239,8 @@ namespace Tarbora {
     const glm::tvec3<unsigned char>& getColorDetail2();
 
   protected:
-    ResourcePtr<Mesh> mesh_;
-    std::string mesh_name_;
+    ResourcePtr<Mesh> mesh_{"meshes/cube.mesh"};
+    std::string mesh_name_{"cube.mesh"};
 
     glm::tvec2<unsigned short> uv_map_{0};
     glm::vec3 mesh_size_{0.f};
@@ -222,6 +258,11 @@ namespace Tarbora {
   public:
     AnimatedNode(const ActorId &id, const std::string &name) : MeshNode(id, name) {}
     virtual ~AnimatedNode() {}
+
+    virtual SceneNodePtr clone() const
+    {
+      return std::make_shared<AnimatedNode>(*this);
+    }
 
     virtual const std::string getType() const { return "animated"; }
 
@@ -269,15 +310,24 @@ namespace Tarbora {
   {
   public:
     LightNode(const ActorId &id, const std::string &name) : SceneNode(id, name) {}
+    LightNode(const LightNode &other);
     virtual ~LightNode() {}
+
+    virtual SceneNodePtr clone() const
+    {
+      return std::make_shared<LightNode>(*this);
+    }
 
     virtual const std::string getType() const { return "light"; }
 
     virtual void draw(Scene *scene);
 
     virtual void drawGuiEditor();
+    void guiProperties();
     void guiLight();
     virtual void load(const LuaTable &table, NodeMap *map);
+    virtual void write(LuaFile *file);
+    void writeLight(LuaFile *file);
 
     void setShape(const std::string &mesh);
     void setShader(const std::string &shader);
@@ -300,11 +350,11 @@ namespace Tarbora {
     glm::vec2 getAttenuation();
 
   protected:
-    ResourcePtr<Mesh> mesh_;
-    std::string mesh_name_;
+    ResourcePtr<Mesh> mesh_{"meshes/sphere.mesh"};
+    std::string mesh_name_{"sphere.mesh"};
 
-    ResourcePtr<Shader> shader_;
-    std::string shader_name_;
+    ResourcePtr<Shader> shader_{"shaders/point_light.shader.lua"};
+    std::string shader_name_{"point_light.shader.lua"};
 
     glm::vec3 ambient_{1.f, 1.f, 1.f};
     glm::vec3 diffuse_{1.f, 1.f, 1.f};

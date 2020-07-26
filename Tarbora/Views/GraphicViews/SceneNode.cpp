@@ -14,6 +14,20 @@
 #include "Scene.hpp"
 
 namespace Tarbora {
+  SceneNode::SceneNode(const SceneNode &other)
+  {
+    owner = other.owner;
+    name = other.name;
+    origin_ = other.origin_;
+    position_ = other.position_;
+    orientation_ = other.orientation_;
+    scale_ = other.scale_;
+    global_scale_ = other.global_scale_;
+
+    for (auto child : other.children_)
+      addChild(child.second->clone());
+  }
+
   SceneNode::~SceneNode()
   {
     children_.clear();
@@ -44,7 +58,14 @@ namespace Tarbora {
 
   void SceneNode::drawGuiEditor()
   {
+    guiName();
+    ImGui::Spacing();
     guiTransformFixedSize();
+  }
+
+  void SceneNode::guiName()
+  {
+    ImGui::InputText("Name", &name);
   }
 
   void SceneNode::guiTransform(bool fixedSize)
@@ -149,11 +170,15 @@ namespace Tarbora {
         t[3][0], t[3][1], t[3][2], t[3][3]
       };
 
-      ImGuizmo::Manipulate(
-        glm::value_ptr(scene_->getView()), glm::value_ptr(scene_->getProjection()),
-        current_guizmo_op_, current_guizmo_mode_ == 2 ? ImGuizmo::WORLD : ImGuizmo::LOCAL,
-        transform
-      );
+      if (scene_)
+      {
+        ImGuizmo::Manipulate(
+          glm::value_ptr(scene_->getView()), glm::value_ptr(scene_->getProjection()),
+          current_guizmo_op_,
+          current_guizmo_mode_ == 2 ? ImGuizmo::WORLD : ImGuizmo::LOCAL,
+          transform
+        );
+      }
 
       float pos[3], rot[3], sca[3];
       glm::vec3 gpos, grot, gsca;
@@ -188,8 +213,6 @@ namespace Tarbora {
         ImGuizmo::DecomposeMatrixToComponents(transform2, pos, rot, sca);
         gpos = glm::make_vec3(pos) - origin;
         grot = glm::make_vec3(rot);
-
-        LOG_DEBUG("%s", glm::to_string(gpos).c_str());
 
         if (glm::abs(glm::length(gpos - getPosition())) > 0.001f)
           setPosition(gpos);
@@ -258,6 +281,56 @@ namespace Tarbora {
       {
         map->emplace(n, new_node);
       }
+    }
+  }
+
+  void SceneNode::write(LuaFile *file)
+  {
+    writeName(file);
+    writeTransformFixedSize(file);
+    writeChildren(file);
+  }
+
+  void SceneNode::writeName(LuaFile *file)
+  {
+    file->write("name", name);
+    if (getType() != "mesh")
+    {
+      if (getType() == "animated")
+        file->write("animated", true);
+      else
+        file->write("type", getType());
+    }
+    if (parent_ && getRenderPass() != parent_->getRenderPass())
+      file->write("render_pass", getRenderPass());
+  }
+
+  void SceneNode::writeTransform(LuaFile *file, bool fixedSize)
+  {
+    if (getPosition() != glm::vec3(0.f))
+      file->write("position", getPosition() * 100.f);
+    if (getOrientation() != glm::quat(glm::vec3(0.f)))
+      file->write("rotation", getEulerOrientation());
+    if (!fixedSize && getScale() != glm::vec3(1.f))
+      file->write("size", getScale() * 100.f);
+    if (!fixedSize && getGlobalScale() != 1.f)
+      file->write("global_scale", getGlobalScale());
+    if (getOrigin() != glm::vec3(0.f))
+      file->write("origin", getOrigin());
+  }
+
+  void SceneNode::writeChildren(LuaFile *file)
+  {
+    if (!children_.empty())
+    {
+      file->beginTable("nodes");
+      for (auto child : children_)
+      {
+        file->beginTable();
+        child.second->write(file);
+        file->closeTable();
+      }
+      file->closeTable();
     }
   }
 
@@ -484,14 +557,42 @@ namespace Tarbora {
     view_ = glm::lookAt(position, position + front, glm::vec3(0.f, 1.f, 0.f));
   }
 
+  MaterialNode::MaterialNode(const MaterialNode &other) : SceneNode(other)
+  {
+    material_ = other.material_;
+    material_name_ = other.material_name_;
+  }
+
   void MaterialNode::draw(Scene *scene)
   {
-    scene->getRenderQueue()->pushMaterial(material_);
+    if (material_ != nullptr)
+      scene->getRenderQueue()->pushMaterial(material_);
+  }
+
+  void MaterialNode::drawGuiEditor()
+  {
+    guiName();
+    guiProperties();
+    ImGui::Spacing();
+    guiTransformFixedSize();
+  }
+
+  void MaterialNode::guiProperties()
+  {
+    ImGui::Spacing();
+    std::string material = getMaterial();
+    auto pos = material.find(".");
+    material = material.substr(0, pos);
+    if (ImGui::InputText("Material", &material))
+      setMaterial(material + ".mat.lua");
+
+    ImGui::Spacing();
   }
 
   void MaterialNode::afterDraw(Scene *scene)
   {
-    scene->getRenderQueue()->popMaterial();
+    if (material_ != nullptr)
+      scene->getRenderQueue()->popMaterial();
   }
 
   void MaterialNode::load(const LuaTable &table, NodeMap *map)
@@ -500,12 +601,39 @@ namespace Tarbora {
     setMaterial(table.get<std::string>("material"));
   }
 
+  void MaterialNode::write(LuaFile *file)
+  {
+    writeName(file);
+    writeProperties(file);
+    writeTransformFixedSize(file);
+    writeChildren(file);
+  }
+
+  void MaterialNode::writeProperties(LuaFile *file)
+  {
+    file->write("material", getMaterial());
+  }
+
   void MaterialNode::setMaterial(const std::string &name)
   {
     material_ = ResourcePtr<Material>(
       "materials/" + name,
       "materials/missing.mat.lua");
     material_name_ = name;
+  }
+
+  MeshNode::MeshNode(const MeshNode &other) : SceneNode(other)
+  {
+    mesh_ = other.mesh_;
+    mesh_name_ = other.mesh_name_;
+    uv_map_ = other.uv_map_;
+    mesh_size_ = other.mesh_size_;
+    texture_size_ = other.texture_size_;
+    auto_texture_size_ = other.auto_texture_size_;
+    color_primary_ = other.color_primary_;
+    color_secondary_ = other.color_secondary_;
+    color_detail_ = other.color_detail_;
+    color_detail2_ = other.color_detail2_;
   }
 
   void MeshNode::draw(Scene *scene)
@@ -532,9 +660,10 @@ namespace Tarbora {
 
   void MeshNode::drawGuiEditor()
   {
-    guiTransform();
-    ImGui::Spacing();
+    guiName();
     guiProperties();
+    ImGui::Spacing();
+    guiTransform();
     ImGui::Spacing();
     guiColors();
     ImGui::Spacing();
@@ -543,18 +672,43 @@ namespace Tarbora {
 
   void MeshNode::guiProperties()
   {
-    if (ImGui::CollapsingHeader("Properties"))
-    {
-      ImGui::Spacing();
-      bool animated = (getType() == "animated" && new_type_ == "") ||
-        new_type_ == "animated";
-      if (ImGui::Checkbox("Animated", &animated))
-      {
-        new_type_ = animated ? "animated" : "mesh";
-      }
+    ImGui::Spacing();
+    std::string shape = getShape();
+    auto pos = shape.find(".");
+    shape = shape.substr(0, pos);
+    if (ImGui::InputText("Shape", &shape))
+      setShape(shape + ".mesh");
 
-      ImGui::Spacing();
+    ImGui::Spacing();
+    const char* passes[] = {
+      "Static", "Actor", "No-Culling", "Sky", "Transparent", "Invisible"
+    };
+    int render_pass = getRenderPass();
+    if (ImGui::BeginCombo("Render Pass", passes[render_pass]))
+    {
+      for (int i = 0; i < IM_ARRAYSIZE(passes); i++)
+      {
+        bool is_selected = (render_pass == i);
+        if (ImGui::Selectable(passes[i], is_selected))
+        {
+          render_pass = i;
+          setRenderPass((RenderPass)i);
+        }
+        if (is_selected)
+          ImGui::SetItemDefaultFocus();
+      }
+      ImGui::EndCombo();
     }
+
+    ImGui::Spacing();
+    bool animated = (getType() == "animated" && new_type_ == "") ||
+      new_type_ == "animated";
+    if (ImGui::Checkbox("Animated", &animated))
+    {
+      new_type_ = animated ? "animated" : "mesh";
+    }
+
+    ImGui::Spacing();
   }
 
   void MeshNode::guiColors()
@@ -641,11 +795,37 @@ namespace Tarbora {
       texture_size = scale_;
     setTextureSize(texture_size);
 
-    setUvMap(table.get<glm::vec3>("uv_map", true));
+    setUvMap(table.get<glm::vec2>("uv_map", true));
     setColorPrimary(table.get<glm::vec3>("color_primary", glm::vec3(255.f), true));
     setColorSecondary(table.get<glm::vec3>("color_secondary", glm::vec3(255.f), true));
     setColorDetail(table.get<glm::vec3>("color_detail1", glm::vec3(255.f), true));
     setColorDetail2(table.get<glm::vec3>("color_detail2", glm::vec3(255.f), true));
+  }
+
+  void MeshNode::write(LuaFile *file)
+  {
+    writeName(file);
+    writeTransform(file);
+    writeMesh(file);
+    writeChildren(file);
+  }
+
+  void MeshNode::writeMesh(LuaFile *file)
+  {
+    file->write("shape", getShape());
+    file->write("uv_map", glm::vec2(getUvMap()));
+    if (getTextureSize() != getScale())
+      file->write("texture_size", getTextureSize() * 100.f);
+    if (getMeshSize() != getScale())
+      file->write("mesh_size", getMeshSize() * 100.f);
+    if (getColorPrimary() != glm::tvec3<unsigned char>(255))
+      file->write("color_primary", glm::vec3(getColorPrimary()));
+    if (getColorSecondary() != glm::tvec3<unsigned char>(255))
+      file->write("color_secondary", glm::vec3(getColorSecondary()));
+    if (getColorDetail() != glm::tvec3<unsigned char>(255))
+      file->write("color_detail1", glm::vec3(getColorDetail()));
+    if (getColorDetail2() != glm::tvec3<unsigned char>(255))
+      file->write("color_detail2", glm::vec3(getColorDetail2()));
   }
 
   void MeshNode::setShape(const std::string &mesh)
@@ -887,6 +1067,20 @@ namespace Tarbora {
     transform_ = glm::scale(world_, scale_ + scale_anim_);
   }
 
+  LightNode::LightNode(const LightNode &other) : SceneNode(other)
+  {
+    mesh_ = other.mesh_;
+    mesh_name_ = other.mesh_name_;
+    shader_ = other.shader_;
+    shader_name_ = other.shader_name_;
+    ambient_ = other.ambient_;
+    diffuse_ = other.diffuse_;
+    specular_ = other.specular_;
+    direction_ = other.direction_;
+    l_att_ = other.l_att_;
+    q_att_ = other.q_att_;
+  }
+
   void LightNode::draw(Scene *scene)
   {
     if (dirty_)
@@ -921,14 +1115,54 @@ namespace Tarbora {
 
     setDirection(table.get<glm::vec3>("direction", glm::vec3(1.f), true));
 
-    setAttenuation(table.get<glm::vec3>("attenuation", glm::vec3(1.f), true));
+    setAttenuation(table.get<glm::vec2>("attenuation", glm::vec2(1.f), true));
+  }
+
+  void LightNode::write(LuaFile *file)
+  {
+    writeName(file);
+    writeTransformFixedSize(file);
+    writeLight(file);
+  }
+
+  void LightNode::writeLight(LuaFile *file)
+  {
+    file->write("shape", getShape());
+    file->write("shader", getShader());
+    file->write("ambient", getAmbient()*255.f);
+    file->write("diffuse", getDiffuse()*255.f);
+    file->write("specular", getSpecular()*255.f);
+    file->write("direction", getDirection());
+    file->write("attenuation", getAttenuation());
   }
 
   void LightNode::drawGuiEditor()
   {
+    guiName();
+    guiProperties();
+    ImGui::Spacing();
     guiTransformFixedSize();
     ImGui::Spacing();
     guiLight();
+  }
+
+  void LightNode::guiProperties()
+  {
+    ImGui::Spacing();
+    std::string shape = getShape();
+    auto pos = shape.find(".");
+    shape = shape.substr(0, pos);
+    if (ImGui::InputText("Shape", &shape))
+      setShape(shape + ".mesh");
+
+    ImGui::Spacing();
+    std::string shader = getShader();
+    pos = shader.find(".");
+    shader = shader.substr(0, pos);
+    if (ImGui::InputText("Shader", &shader))
+      setShader(shader + ".shader.lua");
+
+    ImGui::Spacing();
   }
 
   void LightNode::guiLight()

@@ -170,22 +170,22 @@ namespace Tarbora {
         {
           editor_->getInputManager()->enableInput(false);
           ImGui::TextUnformatted("Caution! This function could overwrite files that have extended functionality, losing it. Always keep a copy!");
-          static std::string file = "example.lua";
-          ImGui::InputText("File Name", &file);
+          static std::string file_name = "example.lua";
+          ImGui::InputText("File Name", &file_name);
 
           ImGui::Separator();
 
           // Submit or cancel the modal
           if (ImGui::Button("Cancel", ImVec2(120, 0)))
           {
-            file = "example.lua";
             ImGui::CloseCurrentPopup();
           }
           ImGui::SameLine();
-          if (ImGui::Button("Ok", ImVec2(120, 0)) && file != "")
+          if (ImGui::Button("Ok", ImVec2(120, 0)) && file_name != "")
           {
-            ModelSaver saver("../Resources/models/" + file, model);
-            file = "example.lua";
+            LuaFile file("../Resources/models/" + file_name);
+            model->write(&file);
+
             ImGui::CloseCurrentPopup();
             editor_->getInputManager()->enableInput(true);
           }
@@ -263,25 +263,70 @@ namespace Tarbora {
     }
 
     // Open dialog menu if right-clicked
-    unsigned int menu_action = 0;
-    if (ImGui::BeginPopupContextItem(node->name.c_str()))
+    if (ImGui::BeginPopupContextItem((node->name + "popup").c_str()))
     {
       edited_node_ = node;
-
-      if (ImGui::BeginMenu("New node")) // Create a new node
+      if (auto edited = edited_node_.lock())
       {
-        if (ImGui::MenuItem("Mesh")) menu_action = 1;
-        if (ImGui::MenuItem("Material")) menu_action = 2;
-        if (ImGui::MenuItem("Camera")) menu_action = 3;
-        if (ImGui::MenuItem("Light")) menu_action = 6;
-        ImGui::EndMenu();
+        if (ImGui::BeginMenu("New node")) // Create a new node
+        {
+          if (ImGui::MenuItem("Mesh"))
+          {
+            static unsigned int num = 1;
+            std::string name = std::string("mesh_") + std::to_string(num++);
+            auto n = std::make_shared<MeshNode>(edited->owner, name);
+            edited->addChild(n);
+            selected_node_ = n;
+            editor_->node_editor->setTarget(n->name, n);
+            //open = true;
+          }
+          if (ImGui::MenuItem("Material"))
+          {
+            static unsigned int num = 1;
+            std::string name = std::string("material_") + std::to_string(num++);
+            auto n = std::make_shared<MaterialNode>(edited->owner, name);
+            edited->addChild(n);
+            selected_node_ = n;
+            editor_->node_editor->setTarget(n->name, n);
+            //open = true;
+          }
+          if (ImGui::MenuItem("Camera"))
+          {
+            static unsigned int num = 1;
+            std::string name = std::string("camera_") + std::to_string(num++);
+            auto n = std::make_shared<Camera>(edited->owner, name);
+            edited->addChild(n);
+            selected_node_ = n;
+            editor_->node_editor->setTarget(n->name, n);
+            //open = true;
+          }
+          if (ImGui::MenuItem("Light"))
+          {
+            static unsigned int num = 1;
+            std::string name = std::string("light_") + std::to_string(num++);
+            auto n = std::make_shared<LightNode>(edited->owner, name);
+            edited->addChild(n);
+            selected_node_ = n;
+            editor_->node_editor->setTarget(n->name, n);
+            //open = true;
+          }
+          ImGui::EndMenu();
+        }
+        if (ImGui::MenuItem("Duplicate node"))
+        {
+          auto n = edited->clone();
+          n->name += "_copy";
+          edited->getParent()->addChild(n);
+        }
+        if (ImGui::MenuItem("Delete node"))
+        {
+          edited->getParent()->removeChild(edited->name);
+        }
+        ImGui::EndPopup();
       }
-      if (ImGui::MenuItem("Delete node")) menu_action = 4;
-      if (ImGui::MenuItem("Rename")) menu_action = 5;
-      ImGui::EndPopup();
     }
 
-    // Inspect children
+    //  Inspect children
     if (open)
     {
       for (auto child : *node)
@@ -289,136 +334,6 @@ namespace Tarbora {
         nodeInspector(child.second);
       }
       ImGui::TreePop();
-    }
-
-    if (auto edited = edited_node_.lock())
-    {
-      // Perform the menu actions
-      if (menu_action == 1) ImGui::OpenPopup("New Mesh");
-      if (menu_action == 2) ImGui::OpenPopup("New Material");
-      if (menu_action == 3) ImGui::OpenPopup("New Camera");
-      if (menu_action == 6) ImGui::OpenPopup("New Light");
-      if (menu_action == 4) edited->getParent()->removeChild(edited->name);
-      if (menu_action == 5) ImGui::OpenPopup("Rename");
-
-      if (ImGui::BeginPopupModal("New Mesh", NULL, ImGuiWindowFlags_AlwaysAutoResize))
-      {
-        editor_->getInputManager()->enableInput(false);
-        static std::string name = "";
-        ImGui::InputText("Name", &name);
-
-        static std::string shape = "cube.mesh";
-        ImGui::InputText("Shape", &shape); // TODO: Show a selector with all the available files
-
-        // Pick a render pass
-        static unsigned int render_pass = model_.lock()->getRenderPass();
-        const char* passes[] =
-          { "Static", "Actor", "No-Culling", "Sky", "Transparent", "Invisible" };
-        if (ImGui::Button("Render Pass"))
-        {
-          ImGui::CloseCurrentPopup();
-          editor_->getInputManager()->enableInput(true);
-        }
-        ImGui::SameLine();
-        ImGui::TextUnformatted(passes[render_pass]);
-        if (ImGui::BeginPopup("Render Pass Popup"))
-        {
-          ImGui::Text("Render Pass");
-          ImGui::Separator();
-          for (int i = 0; i < IM_ARRAYSIZE(passes); i++)
-            if (ImGui::Selectable(passes[i]))
-              render_pass = i;
-          ImGui::EndPopup();
-        }
-
-        ImGui::Separator();
-
-        // Submit or cancel the modal
-        if (ImGui::Button("Cancel", ImVec2(120, 0)))
-        {
-          ImGui::CloseCurrentPopup();
-          editor_->getInputManager()->enableInput(true);
-        }
-        ImGui::SameLine();
-        if (ImGui::Button("Ok", ImVec2(120, 0)) && name != "")
-        {
-          auto n = std::make_shared<MeshNode>(edited->owner, name);
-          n->setRenderPass((RenderPass)render_pass);
-          n->setShape(shape);
-          edited->addChild(n);
-
-          ImGui::CloseCurrentPopup();
-          editor_->getInputManager()->enableInput(true);
-        }
-
-        ImGui::EndPopup();
-      }
-
-      if (ImGui::BeginPopupModal("New Material", NULL, ImGuiWindowFlags_AlwaysAutoResize))
-      {
-        editor_->getInputManager()->enableInput(false);
-        static std::string name = "";
-        ImGui::InputText("Name", &name);
-
-        static std::string material = "white.mat.lua";
-        ImGui::InputText("Material", &material); // TODO: Show a selector with all the available files
-
-        ImGui::Separator();
-
-        // Submit or cancel the modal
-        if (ImGui::Button("Cancel", ImVec2(120, 0)))
-        {
-          ImGui::CloseCurrentPopup();
-          editor_->getInputManager()->enableInput(true);
-        }
-        ImGui::SameLine();
-        if (ImGui::Button("Ok", ImVec2(120, 0)) && name != "")
-        {
-          auto n = std::make_shared<MaterialNode>(edited->owner, name);
-          n->setMaterial(material);
-          edited->addChild(n);
-
-          ImGui::CloseCurrentPopup();
-          editor_->getInputManager()->enableInput(true);
-        }
-
-        ImGui::EndPopup();
-      }
-
-      if (ImGui::BeginPopupModal("New Light", NULL, ImGuiWindowFlags_AlwaysAutoResize))
-      {
-        editor_->getInputManager()->enableInput(false);
-        static std::string name = "";
-        ImGui::InputText("Name", &name);
-
-        static std::string shape = "sphere.mesh";
-        ImGui::InputText("Shape", &shape); // TODO: Show a selector with all the available files
-
-        static std::string shader = "empty.shader.lua";
-        ImGui::InputText("Shader", &shader); // TODO: Show a selector with all the available files
-
-        ImGui::Separator();
-
-        // Submit or cancel the modal
-        if (ImGui::Button("Cancel", ImVec2(120, 0)))
-        {
-          ImGui::CloseCurrentPopup();
-          editor_->getInputManager()->enableInput(true);
-        }
-        ImGui::SameLine();
-        if (ImGui::Button("Ok", ImVec2(120, 0)) && name != "")
-        {
-          auto n = std::make_shared<LightNode>(edited->owner, name);
-          n->setShape(shape);
-          n->setShader(shader);
-          edited->addChild(n);
-
-          ImGui::CloseCurrentPopup();
-          editor_->getInputManager()->enableInput(true);
-        }
-
-        ImGui::EndPopup();
-      }
     }
   }
 

@@ -19,6 +19,7 @@
 
 namespace Tarbora {
   class LuaTable;
+  class LuaFile;
 
   typedef const sol::basic_object<sol::basic_reference<false>> sol_object;
   typedef sol::basic_table_core<false, sol::basic_reference<false> >::iterator sol_iterator;
@@ -47,6 +48,9 @@ namespace Tarbora {
       std::shared_ptr<sol::state> state, const sol_object &object,
       const std::string &name, const T &def, bool silent
     );
+
+    static void write(LuaFile *file, const std::string &name, const T &value, bool comma);
+    static void write(LuaFile *file, const T &value, bool comma);
   };
 
   template <class T>
@@ -72,6 +76,68 @@ namespace Tarbora {
     sol::protected_function function_;
     std::string name_;
     bool silent_;
+  };
+
+  class LuaFile {
+  public:
+    LuaFile(const std::string &path)
+    {
+      file.open(path.c_str());
+    }
+
+    void indent() { indentation += tab_width; }
+    void unindent() { indentation -= tab_width; }
+
+    template <class T>
+    void writeGlobal(const std::string &name, const T &value)
+    {
+      LuaType<T>::write(this, name, value, false);
+    }
+
+    template <class T>
+    void writeGlobal(const T &value)
+    {
+      LuaType<T>::write(this, value, false);
+    }
+
+    template <class T>
+    void write(const std::string &name, const T &value)
+    {
+      LuaType<T>::write(this, name, value, true);
+    }
+
+    template <class T>
+    void write(const T &value)
+    {
+      LuaType<T>::write(this, value, true);
+    }
+
+    void beginTable(const std::string &name)
+    {
+      file << std::string(indentation, ' ') << name << " = {" << std::endl;
+      indent();
+    }
+
+    void beginTable()
+    {
+      file << std::string(indentation, ' ') << "{" << std::endl;
+      indent();
+    }
+
+    void closeTable(bool comma=true)
+    {
+      unindent();
+      file << std::string(indentation, ' ') << (comma ? "}," : "}") << std::endl;
+    }
+
+    inline void beginGlobalTable(const std::string &name) { beginTable(name); }
+    inline void beginGlobalTable() { beginTable(); }
+    inline void closeGlobalTable() { closeTable(false); }
+
+    std::ofstream file;
+    unsigned int indentation{0};
+    unsigned int tab_width{2};
+
   };
 
   class LuaObject {
@@ -294,6 +360,10 @@ namespace Tarbora {
   template <>
   inline const std::string LuaType<LuaObject>::getErrorName() { return "Not an object"; }
   template <>
+  inline const glm::vec2 LuaType<glm::vec2>::getDefault() { return glm::vec2(0.0f); }
+  template <>
+  inline const std::string LuaType<glm::vec2>::getErrorName() { return "Not a vec2"; }
+  template <>
   inline const glm::vec3 LuaType<glm::vec3>::getDefault() { return glm::vec3(0.0f); }
   template <>
   inline const std::string LuaType<glm::vec3>::getErrorName() { return "Not a vec3"; }
@@ -310,6 +380,81 @@ namespace Tarbora {
   template <>
   inline const std::string LuaType<glm::mat4>::getErrorName() { return "Not a mat4"; }
 
+  template <class T>
+  void LuaType<T>::write(LuaFile *, const std::string &, const T &, bool)
+  {}
+
+  template <class T>
+  void LuaType<T>::write(LuaFile *, const T &, bool)
+  {}
+
+  template <>
+  inline void LuaType<bool>::write(
+    LuaFile *file, const std::string &name, const bool &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << name << " = "
+      << (value ? "true" : "false") << (comma ? "," : "") << std::endl;
+  }
+
+  template <>
+  inline void LuaType<bool>::write(LuaFile *file, const bool &value, bool comma)
+  {
+    file->file << std::string(file->indentation, ' ')
+      << (value ? "true" : "false") << (comma ? "," : "") << std::endl;
+  }
+
+  template <>
+  inline void LuaType<int>::write(
+    LuaFile *file, const std::string &name, const int &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << name << " = "
+      << std::to_string(value) << (comma ? "," : "") << std::endl;
+  }
+
+  template <>
+  inline void LuaType<int>::write(LuaFile *file, const int &value, bool comma)
+  {
+    file->file << std::string(file->indentation, ' ')
+      << std::to_string(value) << (comma ? "," : "") << std::endl;
+  }
+
+  template <>
+  inline void LuaType<float>::write(
+    LuaFile *file, const std::string &name, const float &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << name << " = "
+      << std::fixed << std::setprecision(2) << value << (comma ? "," : "") << std::endl;
+  }
+
+  template <>
+  inline void LuaType<float>::write(
+    LuaFile *file, const float &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ')
+      << std::fixed << std::setprecision(2) << value << (comma ? "," : "") << std::endl;
+  }
+
+  template <>
+  inline void LuaType<std::string>::write(
+    LuaFile *file, const std::string &name, const std::string &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << name << " = \""
+      << value << (comma ? "\"," : "\"") << std::endl;
+  }
+
+  template <>
+  inline void LuaType<std::string>::write(
+    LuaFile *file, const std::string &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << "\""
+      << value << (comma ? "\"," : "\"") << std::endl;
+  }
 
   template <class T>
   template <class... Args>
@@ -579,6 +724,35 @@ namespace Tarbora {
   }
 
   template <>
+  inline LuaTable& LuaType<glm::vec2>::set(
+    LuaTable *table, const std::string &name, const glm::vec2 &value
+  )
+  {
+    if (table->table_)
+    {
+      LuaTable t = table->createTable(name);
+      for (unsigned int i = 0; i < 2; i++)
+        t.set(i+1, value[i]);
+    }
+    return *table;
+  }
+
+  template <>
+  inline LuaTable& LuaType<glm::vec2>::set(
+    LuaTable *table, unsigned int index, const glm::vec2 &value
+  )
+  {
+    if (table->table_)
+    {
+      LuaTable t = table->createTable(index);
+      for (unsigned int i = 0; i < 2; i++)
+        t.set(i+1, value[i]);
+    }
+    return *table;
+  }
+
+
+  template <>
   inline LuaTable& LuaType<glm::vec3>::set(
     LuaTable *table, const std::string &name, const glm::vec3 &value
   )
@@ -635,6 +809,12 @@ namespace Tarbora {
   }
 
   template <>
+  inline bool LuaType<glm::vec2>::is(const sol_object &object)
+  {
+    return object.is<sol::table>();
+  }
+
+  template <>
   inline bool LuaType<glm::vec3>::is(const sol_object &object)
   {
     return object.is<sol::table>();
@@ -644,6 +824,19 @@ namespace Tarbora {
   inline bool LuaType<glm::vec4>::is(const sol_object &object)
   {
     return object.is<sol::table>();
+  }
+
+  template <>
+  inline glm::vec2 LuaType<glm::vec2>::as(
+    std::shared_ptr<sol::state> state, const sol_object &object, const std::string &name,
+    const glm::vec2 &def, bool silent
+  )
+  {
+    LuaTable table = LuaType<LuaTable>::as(state, object, name, LuaTable(), silent);
+    glm::vec2 vec;
+    for (int i = 0; i < 2; i++)
+      vec[i] = table.get<float>(i+1, def[i], silent);
+    return vec;
   }
 
   template <>
@@ -682,6 +875,79 @@ namespace Tarbora {
     UNUSED(silent);
     return LuaObject(state, object, name);
   }
+
+  template <>
+  inline void LuaType<glm::vec2>::write(
+    LuaFile *file, const std::string &name, const glm::vec2 &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << name << " = {"
+      << std::fixed << std::setprecision(2) << value.x << ", "
+      << std::fixed << std::setprecision(2) << value.y << (comma ? "}," : "}")
+      << std::endl;
+  }
+
+  template <>
+  inline void LuaType<glm::vec2>::write(
+    LuaFile *file, const glm::vec2 &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << "{"
+      << std::fixed << std::setprecision(2) << value.x << ", "
+      << std::fixed << std::setprecision(2) << value.y << (comma ? "}," : "}")
+      << std::endl;
+  }
+
+  template <>
+  inline void LuaType<glm::vec3>::write(
+    LuaFile *file, const std::string &name, const glm::vec3 &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << name << " = {"
+      << std::fixed << std::setprecision(2) << value.x << ", "
+      << std::fixed << std::setprecision(2) << value.y << ", "
+      << std::fixed << std::setprecision(2) << value.z << (comma ? "}," : "}")
+      << std::endl;
+  }
+
+  template <>
+  inline void LuaType<glm::vec3>::write(
+    LuaFile *file, const glm::vec3 &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << "{"
+      << std::fixed << std::setprecision(2) << value.x << ", "
+      << std::fixed << std::setprecision(2) << value.y << ", "
+      << std::fixed << std::setprecision(2) << value.z << (comma ? "}," : "}")
+      << std::endl;
+  }
+
+  template <>
+  inline void LuaType<glm::vec4>::write(
+    LuaFile *file, const std::string &name, const glm::vec4 &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << name << " = {"
+      << std::fixed << std::setprecision(2) << value.x << ", "
+      << std::fixed << std::setprecision(2) << value.y << ", "
+      << std::fixed << std::setprecision(2) << value.z << ", "
+      << std::fixed << std::setprecision(2) << value.w << (comma ? "}," : "}")
+      << std::endl;
+  }
+
+  template <>
+  inline void LuaType<glm::vec4>::write(
+    LuaFile *file, const glm::vec4 &value, bool comma
+  )
+  {
+    file->file << std::string(file->indentation, ' ') << "{"
+      << std::fixed << std::setprecision(2) << value.x << ", "
+      << std::fixed << std::setprecision(2) << value.y << ", "
+      << std::fixed << std::setprecision(2) << value.z << ", "
+      << std::fixed << std::setprecision(2) << value.w << (comma ? "}," : "}")
+      << std::endl;
+  }
+
 
   template <class T>
   class LuaType<std::vector<T>>
@@ -762,6 +1028,32 @@ namespace Tarbora {
         return vec;
       }
       return def;
+    }
+
+    static void write(LuaFile *file, const std::vector<T> &value, bool comma)
+    {
+      file->beginTable();
+      for (auto v : value)
+      {
+        file->beginTable();
+        file->write(v.second);
+        file->closeTable();
+      }
+      file->closeTable(comma);
+    }
+
+    static void write(
+      LuaFile *file, const std::string &name, const std::vector<T> &value, bool comma
+    )
+    {
+      file->beginTable(name);
+      for (auto v : value)
+      {
+        file->beginTable();
+        file->write(v.second);
+        file->closeTable();
+      }
+      file->closeTable(comma);
     }
   };
 
