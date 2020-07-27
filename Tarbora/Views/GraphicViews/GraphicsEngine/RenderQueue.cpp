@@ -49,6 +49,7 @@ namespace Tarbora {
     const glm::vec3 &diffuse,
     const glm::vec3 &specular,
     const glm::vec3 &direction,
+    float intensity,
     float linear_attenuation,
     float quadratic_attenuation
   )
@@ -61,6 +62,7 @@ namespace Tarbora {
     data.diffuse = diffuse;
     data.specular = specular;
     data.direction = direction;
+    data.intensity = intensity;
     data.linear = linear_attenuation;
     data.quadratic = quadratic_attenuation;
 
@@ -145,6 +147,7 @@ namespace Tarbora {
       light.shader->set("diffuse", light.diffuse);
       light.shader->set("specular", light.specular);
       light.shader->set("direction", light.direction);
+      light.shader->set("intensity", light.intensity);
       light.shader->set("linear", light.linear);
       light.shader->set("quadratic", light.quadratic);
       light.shader->set("transform", light.transform);

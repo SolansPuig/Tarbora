@@ -27,6 +27,8 @@ uniform vec3 specular;
 
 uniform vec3 direction;
 
+uniform float intensity;
+
 void main()
 {
   vec2 TexCoords = gl_FragCoord.xy / screen.xy;
@@ -45,5 +47,5 @@ void main()
   vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) *
     specular * Specular;
 
-  FragColor = vec4(ambient + diffuse + specular, 1.0);
+  FragColor = vec4(intensity * (ambient + diffuse + specular), 1.0);
 }

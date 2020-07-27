@@ -28,6 +28,7 @@ uniform vec3 ambient;
 uniform vec3 diffuse;
 uniform vec3 specular;
 
+uniform float intensity;
 uniform float linear;
 uniform float quadratic;
 
@@ -49,7 +50,7 @@ void main()
   vec3 specular = pow(max(dot(viewDir, halfwayDir), 0.0), 16.0) * specular * Specular;
 
   float dist = length(Position - FragPos);
-  float attenuation = 1.0 / (1.0 + linear * dist + quadratic * (dist * dist));
+  float attenuation = intensity / (1.0 + linear * dist + quadratic * (dist * dist));
 
   vec3 light = attenuation * (ambient + diffuse + specular);
 

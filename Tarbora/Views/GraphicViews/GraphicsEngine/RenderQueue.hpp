@@ -43,6 +43,7 @@ namespace Tarbora {
     glm::vec3 diffuse;
     glm::vec3 specular;
     glm::vec3 direction;
+    float intensity;
     float linear;
     float quadratic;
   };
@@ -79,6 +80,7 @@ namespace Tarbora {
       const glm::vec3 &diffuse,
       const glm::vec3 &specular,
       const glm::vec3 &direction,
+      float intensity,
       float linear_attenuation,
       float quadratic_attenuation
     );

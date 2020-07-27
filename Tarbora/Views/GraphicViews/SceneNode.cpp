@@ -1096,6 +1096,7 @@ namespace Tarbora {
         diffuse_,
         specular_,
         direction_,
+        intensity_,
         l_att_,
         q_att_
       );
@@ -1115,6 +1116,7 @@ namespace Tarbora {
 
     setDirection(table.get<glm::vec3>("direction", glm::vec3(1.f), true));
 
+    setIntensity(table.get<float>("intensity", 1.f, true));
     setAttenuation(table.get<glm::vec2>("attenuation", glm::vec2(1.f), true));
   }
 
@@ -1133,6 +1135,7 @@ namespace Tarbora {
     file->write("diffuse", getDiffuse()*255.f);
     file->write("specular", getSpecular()*255.f);
     file->write("direction", getDirection());
+    file->write("intensity", getIntensity());
     file->write("attenuation", getAttenuation());
   }
 
@@ -1176,6 +1179,10 @@ namespace Tarbora {
         setDirection(glm::make_vec3(dir));
 
       ImGui::Spacing();
+      float i = getIntensity();
+      if (ImGui::DragFloat("Intensity", &i, .01f, .001f, 10.f))
+        setIntensity(i);
+     
       glm::vec2 a = getAttenuation();
       float att[2] = {a.x, a.y};
       if (ImGui::DragFloat2("Attenuation", att, .001f, .001f, 2.f))
@@ -1247,11 +1254,16 @@ namespace Tarbora {
     direction_ = direction;
   }
 
+  void LightNode::setIntensity(float intensity)
+  {
+    intensity_ = intensity;
+    calcRadius();
+  }
+
   void LightNode::setAttenuation(const glm::vec2 &attenuation)
   {
     l_att_ = attenuation.x;
     q_att_ = attenuation.y;
-
     calcRadius();
   }
 
@@ -1285,6 +1297,11 @@ namespace Tarbora {
     return direction_;
   }
 
+  float LightNode::getIntensity()
+  {
+    return intensity_;
+  }
+
   glm::vec2 LightNode::getAttenuation()
   {
     return glm::vec2(l_att_, q_att_);
@@ -1293,7 +1310,7 @@ namespace Tarbora {
   void LightNode::calcRadius()
   {
     glm::vec3 light = glm::max(glm::max(ambient_, specular_), diffuse_);
-    float lmax = 255.f * std::fmaxf(std::fmaxf(light.r, light.g), light.b);
+    float lmax = 255.f * intensity_ * std::fmaxf(std::fmaxf(light.r, light.g), light.b);
 
     // Calculate the mesh scale from the attenuation and the maximum light
     float scale =
