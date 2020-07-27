@@ -101,117 +101,118 @@ namespace Tarbora {
     ImGui::BeginChild("Inspector", ImVec2(0, -footer_height), false, ImGuiWindowFlags_HorizontalScrollbar);
     if (auto model = model_.lock())
     {
-      // Options
-      if (ImGui::CollapsingHeader("Options"))
-      {
-        ImGui::Spacing();
+      if (ImGui::Button("Reload"))
+        reloadFile(model);
+     
+      ImGui::SameLine();
 
-        if (ImGui::Button("Reload"))
-        {
-          // TODO: Change that
-          glm::vec3 position = model->getPosition();
-          glm::quat rotation = model->getOrientation();
-          ResourceManager::flush();
-          model_ = scene_->createActorModel(actor_id_, model->getRenderPass(), model->getModel(), model->getMaterial());
-          model = model_.lock();
-          model->setPosition(position);
-          model->setOrientation(rotation);
-        }
+      if (ImGui::Button("Load from..."))
+        ImGui::OpenPopup("Select File");
 
-        ImGui::SameLine();
+      ImGui::SameLine();
 
-        if (ImGui::Button("Load from..."))
-        {
-          ImGui::OpenPopup("Select File");
-        }
+      if (ImGui::Button("Save"))
+        ImGui::OpenPopup("Save to File");
 
-        ImGui::SameLine();
+      if (ImGui::BeginPopupModal("Select File", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+        loadFile(model);
 
-        if (ImGui::Button("Save"))
-        {
-          ImGui::OpenPopup("Save to File");
-        }
-
-        if (ImGui::BeginPopupModal("Select File", NULL, ImGuiWindowFlags_AlwaysAutoResize))
-        {
-          editor_->getInputManager()->enableInput(false);
-          static std::string file = "example.lua";
-          ImGui::InputText("File Name", &file);
-
-          ImGui::Separator();
-
-          // Submit or cancel the modal
-          if (ImGui::Button("Cancel", ImVec2(120, 0)))
-          {
-            file = "example.lua";
-            editor_->getInputManager()->enableInput(true);
-            ImGui::CloseCurrentPopup();
-          }
-          ImGui::SameLine();
-          if (ImGui::Button("Ok", ImVec2(120, 0)) && file != "")
-          {
-            // TODO: Change that
-            glm::vec3 position = model->getPosition();
-            glm::quat rotation = model->getOrientation();
-            ResourceManager::flush();
-            model_ = scene_->createActorModel(actor_id_, model->getRenderPass(), file, model->getMaterial());
-            model = model_.lock();
-            model->setPosition(position);
-            model->setOrientation(rotation);
-
-            file = "example.lua";
-            ImGui::CloseCurrentPopup();
-            editor_->getInputManager()->enableInput(true);
-          }
-          ImGui::EndPopup();
-        }
-
-        if (ImGui::BeginPopupModal("Save to File", NULL, ImGuiWindowFlags_AlwaysAutoResize))
-        {
-          editor_->getInputManager()->enableInput(false);
-          ImGui::TextUnformatted("Caution! This function could overwrite files that have extended functionality, losing it. Always keep a copy!");
-          static std::string file_name = "example.lua";
-          ImGui::InputText("File Name", &file_name);
-
-          ImGui::Separator();
-
-          // Submit or cancel the modal
-          if (ImGui::Button("Cancel", ImVec2(120, 0)))
-          {
-            ImGui::CloseCurrentPopup();
-          }
-          ImGui::SameLine();
-          if (ImGui::Button("Ok", ImVec2(120, 0)) && file_name != "")
-          {
-            LuaFile file("../Resources/models/" + file_name);
-            model->write(&file);
-
-            ImGui::CloseCurrentPopup();
-            editor_->getInputManager()->enableInput(true);
-          }
-          ImGui::EndPopup();
-        }
-
-        ImGui::Spacing();
-
-        const float step = 0.1f;
-        float scale = model->getGlobalScale();
-        if (ImGui::InputScalar("Global Scale", ImGuiDataType_Float, &scale, &step))
-          model->setGlobalScale(scale);
-      }
+      if (ImGui::BeginPopupModal("Save to File", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+        saveFile(model);
 
       ImGui::Spacing();
 
-      // Nodes
       if (ImGui::CollapsingHeader("Nodes"))
-      {
         nodeInspector(model);
-      }
     }
 
     ImGui::EndChild();
     ImGui::SetItemDefaultFocus();
     ImGui::End();
+  }
+
+  void ModelEditor::saveFile(std::shared_ptr<ActorModel> model)
+  {
+    editor_->getInputManager()->enableInput(false);
+    static std::string file_name = "example.lua";
+    ImGui::InputText("File Name", &file_name);
+
+    ImGui::Separator();
+
+    // Submit or cancel the modal
+    if (ImGui::Button("Cancel", ImVec2(120, 0)))
+    {
+      ImGui::CloseCurrentPopup();
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Ok", ImVec2(120, 0)) && file_name != "")
+    {
+      LuaFile file("../Resources/models/" + file_name);
+      file.writeCommentBlock(
+        "Copyright (C) 2020 Roger Solans Puig\n"
+        "Email: roger@solanspuig.cat\n"
+        "\n"
+        "This file is part of Tarbora. You can download the project at\n"
+        "https://github.com/SolansPuig/Tarbora \n"
+        "\n"
+        "This Source Code Form is subject to the terms of the Mozilla Public\n"
+        "License, v. 2.0. If a copy of the MPL was not distributed with this\n"
+        "file, You can obtain one at https://mozilla.org/MPL/2.0/. \n"
+      );
+
+      model->write(&file);
+
+      ImGui::CloseCurrentPopup();
+      editor_->getInputManager()->enableInput(true);
+    }
+    ImGui::EndPopup();
+  }
+
+  void ModelEditor::reloadFile(std::shared_ptr<ActorModel> model)
+  {
+    glm::vec3 position = model->getPosition();
+    glm::quat rotation = model->getOrientation();
+    ResourceManager::flush();
+    model_ = scene_->createActorModel(
+      actor_id_, model->getRenderPass(), model->getModel(), model->getMaterial()
+    );
+    model = model_.lock();
+    model->setPosition(position);
+    model->setOrientation(rotation);
+  }
+
+  void ModelEditor::loadFile(std::shared_ptr<ActorModel> model)
+  {
+    editor_->getInputManager()->enableInput(false);
+    static std::string file = "example.lua";
+    ImGui::InputText("File Name", &file);
+
+    ImGui::Separator();
+
+    // Submit or cancel the modal
+    if (ImGui::Button("Cancel", ImVec2(120, 0)))
+    {
+      editor_->getInputManager()->enableInput(true);
+      ImGui::CloseCurrentPopup();
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Ok", ImVec2(120, 0)) && file != "")
+    {
+      // TODO: Change that
+      glm::vec3 position = model->getPosition();
+      glm::quat rotation = model->getOrientation();
+      ResourceManager::flush();
+      model_ = scene_->createActorModel(
+        actor_id_, model->getRenderPass(), file, model->getMaterial()
+      );
+      model = model_.lock();
+      model->setPosition(position);
+      model->setOrientation(rotation);
+
+      ImGui::CloseCurrentPopup();
+      editor_->getInputManager()->enableInput(true);
+    }
+    ImGui::EndPopup();
   }
 
   void ModelEditor::nodeInspector(std::shared_ptr<SceneNode> node)
@@ -312,13 +313,30 @@ namespace Tarbora {
           }
           ImGui::EndMenu();
         }
-        if (ImGui::MenuItem("Duplicate node"))
+        if (ImGui::MenuItem("Copy"))
+        {
+          clipboard_ = edited;
+          n_copy_ = 0;
+        }
+        if (ImGui::MenuItem("Paste"))
+        {
+          auto n = clipboard_->clone();
+          n->name += "_copy" + std::to_string(n_copy_++);
+          edited->addChild(n);
+        }
+        if (ImGui::MenuItem("Cut"))
+        {
+          clipboard_ = edited;
+          edited->getParent()->removeChild(edited->name);
+          n_copy_ = 0;
+        }
+        if (ImGui::MenuItem("Duplicate"))
         {
           auto n = edited->clone();
           n->name += "_copy";
           edited->getParent()->addChild(n);
         }
-        if (ImGui::MenuItem("Delete node"))
+        if (ImGui::MenuItem("Delete"))
         {
           edited->getParent()->removeChild(edited->name);
         }
@@ -360,95 +378,5 @@ namespace Tarbora {
     }
 
     ImGui::End();
-  }
-
-  ModelSaver::ModelSaver(const std::string &file, std::shared_ptr<ActorModel> model)
-  {
-    file_.open(file.c_str());
-    indentation_ = 0;
-
-    if (file_.is_open())
-    {
-      file_ << "scale = " << model->getGlobalScale() << std::endl;
-      file_ << "nodes = {" << std::endl;
-      indentation_ += 4;
-      for (auto n : *model)
-        saveNode(n.second);
-      file_ << "}" << std::endl;
-    }
-  }
-
-  void ModelSaver::saveNode(std::shared_ptr<SceneNode> node)
-  {
-    file_ << std::string(indentation_, ' ') << "{" << std::endl;
-    indentation_ += 4;
-    file_ << std::string(indentation_, ' ') << "name = \"" << node->name << "\"," << std::endl;
-    file_ << std::string(indentation_, ' ') << "scale = " << std::fixed << std::setprecision(2) << node->getGlobalScale() << "," << std::endl;
-    if (node->getOrigin() != glm::vec3(0.f)) saveVec3("origin", node->getOrigin());
-    if (node->getPosition() != glm::vec3(0.f)) saveVec3("position", node->getPosition() * 100.f);
-    if (node->getEulerOrientation() != glm::vec3(0.f)) saveVec3("rotation", node->getEulerOrientation());
-
-    if (node->getType() == "animated" || node->getType() == "mesh")
-    {
-      auto mesh = std::static_pointer_cast<MeshNode>(node);
-      if (mesh->getScale() != glm::vec3(0.f)) saveVec3("size", mesh->getScale() * 100.f);
-      file_ << std::string(indentation_, ' ') << "shape = \"" << mesh->getShape() << "\"," << std::endl;
-      saveVec2("uv_map", mesh->getUvMap());
-      if (mesh->getTextureSize() != mesh->getScale()) saveVec3("texture_size", mesh->getTextureSize() * 100.f);
-      if (mesh->getColorPrimary() != glm::tvec3<unsigned char>(255)) saveVec3("color_primary", mesh->getColorPrimary());
-      if (mesh->getColorSecondary() != glm::tvec3<unsigned char>(255)) saveVec3("color_secondary", mesh->getColorSecondary());
-      if (mesh->getColorDetail() != glm::tvec3<unsigned char>(255)) saveVec3("color_detail", mesh->getColorDetail());
-      if (mesh->getColorDetail2() != glm::tvec3<unsigned char>(255)) saveVec3("color_detail2", mesh->getColorDetail2());
-      if ((mesh->getType() == "animated" && mesh->getNewNodeType() == "") || mesh->getNewNodeType() == "animated")
-        file_ << std::string(indentation_, ' ') << "animated = true," << std::endl;
-    }
-    else if (node->getType() == "camera")
-    {
-      file_ << std::string(indentation_, ' ') << "type = \"camera\"" << std::endl;
-    }
-    else if (node->getType() == "material")
-    {
-      file_ << std::string(indentation_, ' ') << "type = \"material\"" << std::endl;
-    }
-
-    if (node->size() > 0)
-    {
-      file_ << std::string(indentation_, ' ') << "nodes = {" << std::endl;
-      indentation_ += 4;
-      for (auto n : *node)
-        saveNode(n.second);
-      indentation_ -= 4;
-      file_ << std::string(indentation_, ' ') << "}" << std::endl;
-    }
-    indentation_ -= 4;
-    file_ << std::string(indentation_, ' ') << "}," << std::endl;
-  }
-
-  void ModelSaver::saveVec3(const std::string &name, const glm::vec3 &vector)
-  {
-    file_ << std::string(indentation_, ' ') << name << " = "
-          << "{" << std::fixed << std::setprecision(2) << vector.x << ", "
-          << std::fixed << std::setprecision(2) << vector.y << ", "
-          << std::fixed << std::setprecision(2) << vector.z << "}," << std::endl;
-  }
-
-  void ModelSaver::saveVec2(const std::string &name, const glm::vec2 &vector)
-  {
-    file_ << std::string(indentation_, ' ') << name << " = "
-          << "{" << std::fixed << std::setprecision(2) << vector.x << ", "
-          << std::fixed << std::setprecision(2) << "}," << std::endl;
-  }
-
-  void ModelSaver::saveVec3(const std::string &name, const glm::tvec3<unsigned char> &vector)
-  {
-    file_ << std::string(indentation_, ' ') << name << " = "
-          << "{" << (unsigned int)vector.x << ", " << (unsigned int)vector.y << ", "
-          << (unsigned int)vector.z << "}," << std::endl;
-  }
-
-  void ModelSaver::saveVec2(const std::string &name, const glm::tvec2<unsigned short> &vector)
-  {
-    file_ << std::string(indentation_, ' ') << name << " = "
-          << "{" << vector.x << ", " << vector.y << "}," << std::endl;
   }
 }

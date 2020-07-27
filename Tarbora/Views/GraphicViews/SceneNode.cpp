@@ -94,7 +94,7 @@ namespace Tarbora {
           current_guizmo_mode_ = 2;
       }
 
-      if (ImGui::RadioButton("Translate", current_guizmo_op_ == ImGuizmo::TRANSLATE))
+      if (ImGui::RadioButton("Move", current_guizmo_op_ == ImGuizmo::TRANSLATE))
         current_guizmo_op_ = ImGuizmo::TRANSLATE;
 
       ImGui::SameLine();
@@ -681,12 +681,12 @@ namespace Tarbora {
 
     ImGui::Spacing();
     const char* passes[] = {
-      "Static", "Actor", "No-Culling", "Sky", "Transparent", "Invisible"
+      "Null", "Static", "Actor", "No-Culling", "Sky", "Transparent", "Invisible"
     };
     int render_pass = getRenderPass();
     if (ImGui::BeginCombo("Render Pass", passes[render_pass]))
     {
-      for (int i = 0; i < IM_ARRAYSIZE(passes); i++)
+      for (int i = 1; i < IM_ARRAYSIZE(passes); i++)
       {
         bool is_selected = (render_pass == i);
         if (ImGui::Selectable(passes[i], is_selected))

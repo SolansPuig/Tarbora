@@ -88,6 +88,26 @@ namespace Tarbora {
     void indent() { indentation += tab_width; }
     void unindent() { indentation -= tab_width; }
 
+    void writeComment(const std::string &comment)
+    {
+      file << std::string(indentation, ' ') << comment << std::endl;
+    }
+
+    void writeCommentBlock(const std::string &comment)
+    {
+      file << "--[===================================================================["
+        << std::endl;
+
+      std::stringstream ss(comment);
+      std::string to;
+      while (std::getline(ss, to, '\n'))
+        file << std::string(tab_width, ' ') << "* " << to << std::endl;
+
+      file << "--]===================================================================]"
+        << std::endl;
+      file << std::endl;
+    }
+
     template <class T>
     void writeGlobal(const std::string &name, const T &value)
     {
