@@ -40,6 +40,7 @@ namespace Tarbora {
     ResourcePtr<Texture> albedo_;
     ResourcePtr<Texture> specular_;
     ResourcePtr<Texture> color_tint_;
+    ResourcePtr<Texture> emissive_;
     ResourcePtr<Shader> shader_;
     int pixel_density_;
     glm::vec2 size_;

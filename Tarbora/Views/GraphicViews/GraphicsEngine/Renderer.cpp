@@ -142,14 +142,44 @@ namespace Tarbora {
     scene_shader_->set("view", view_);
     g_color_spec_->bind(0);
     lighting_color_->bind(1);
+    g_emissive_->bind(2);
+    glBindVertexArray(quad_mesh_->getId());
+    glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
+
+    bool horizontal = true, first_iteration = true;
+    unsigned int amount = 10;
+    bloom_shader_->use();
+    for (unsigned int i = 0; i < amount; i++)
+    {
+      bloom_shader_->set("horizontal", horizontal);
+      glBindFramebuffer(GL_FRAMEBUFFER, bloom_buffer_[horizontal]);
+      if (first_iteration)
+        scene_hdr_->bind(0);
+      else
+        bloom_texture_[!horizontal]->bind(0);
+      glBindVertexArray(quad_mesh_->getId());
+      glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
+
+      horizontal = !horizontal;
+      if (first_iteration)
+        first_iteration = false;
+    }
+
+
+    glBindFramebuffer(GL_FRAMEBUFFER, final_buffer_);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    final_shader_->use();
+    final_shader_->set("exposure", 1.f);
+    scene_color_->bind(0);
+    bloom_texture_[!horizontal]->bind(1);
     glBindVertexArray(quad_mesh_->getId());
     glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
     glBindFramebuffer(GL_READ_FRAMEBUFFER, g_buffer_);
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, scene_buffer_); // write to default framebuffer
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, final_buffer_); // write to default framebuffer
     glBlitFramebuffer(
       0, 0, width_, height_, 0, 0, width_, height_, GL_DEPTH_BUFFER_BIT, GL_NEAREST
     );
-    glBindFramebuffer(GL_FRAMEBUFFER, scene_buffer_);
+    glBindFramebuffer(GL_FRAMEBUFFER, final_buffer_);
   }
 
   void Renderer::sky()
@@ -187,7 +217,7 @@ namespace Tarbora {
     postprocess_shader_->use();
     postprocess_shader_->set("projection", projection_);
     postprocess_shader_->set("view", view_);
-    scene_color_->bind();
+    final_texture_->bind(0);
     glBindVertexArray(quad_mesh_->getId());
     glDrawArrays(GL_TRIANGLES, 0, quad_mesh_->getVertices());
   }
@@ -223,10 +253,18 @@ namespace Tarbora {
       GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT2, GL_TEXTURE_2D, g_color_spec_->getId(), 0
     );
 
-    unsigned int attachments[3] = {
-      GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2
+    // Emissive color buffer
+    g_emissive_ = std::make_unique<TextureInternal>(width_, height_, GL_RGBA);
+    g_emissive_->configure(GL_LINEAR, GL_NEAREST);
+    glFramebufferTexture2D(
+      GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT3, GL_TEXTURE_2D, g_emissive_->getId(), 0
+    );
+
+    unsigned int attachments[4] = {
+      GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1,
+      GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3
     };
-    glDrawBuffers(3, attachments);
+    glDrawBuffers(4, attachments);
 
     glGenRenderbuffers(1, &rbo_);
     glBindRenderbuffer(GL_RENDERBUFFER, rbo_);
@@ -366,7 +404,7 @@ namespace Tarbora {
 
     // Color buffer
     lighting_color_ = std::make_unique<TextureInternal>(
-      width_, height_, GL_R11F_G11F_B10F, GL_UNSIGNED_BYTE, GL_RGB
+      width_, height_, GL_RGB16F, GL_FLOAT, GL_RGB
     );
     lighting_color_->configure(
       GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE
@@ -401,10 +439,78 @@ namespace Tarbora {
     glBindFramebuffer(GL_FRAMEBUFFER, scene_buffer_);
 
     // Color buffer
-    scene_color_ = std::make_unique<TextureInternal>(width_, height_, GL_RGBA);
+    scene_color_ = std::make_unique<TextureInternal>(
+      width_, height_, GL_RGBA16F, GL_FLOAT, GL_RGBA
+    );
     scene_color_->configure(GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
     glFramebufferTexture2D(
       GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, scene_color_->getId(), 0
+    );
+
+    // HDR buffer
+    scene_hdr_ = std::make_unique<TextureInternal>(
+      width_, height_, GL_RGB16F, GL_FLOAT, GL_RGB
+    );
+    scene_hdr_->configure(GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
+    glFramebufferTexture2D(
+      GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, scene_hdr_->getId(), 0
+    );
+
+    unsigned int attachments[2] = {
+      GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1
+    };
+    glDrawBuffers(2, attachments);
+
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+      LOG_ERR("Scene Framebuffer not complete!");
+
+    scene_shader_ = ResourcePtr<Shader>("shaders/scene.shader.lua");
+    scene_shader_.setInitialConfig([](auto shader){
+      shader->use();
+      shader->set("albedo", 0);
+      shader->set("light", 1);
+      shader->set("emissive", 2);
+    });
+
+    // Generate the bloom buffer
+    glGenFramebuffers(2, bloom_buffer_);
+
+    // Color buffer
+
+    for (unsigned int i = 0; i < 2; i++)
+    {
+      glBindFramebuffer(GL_FRAMEBUFFER, bloom_buffer_[i]);
+      bloom_texture_[i] = std::make_unique<TextureInternal>(
+        width_, height_, GL_RGBA16F, GL_FLOAT, GL_RGBA
+      );
+      bloom_texture_[i]->configure(
+        GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE
+      );
+      glFramebufferTexture2D(
+        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, bloom_texture_[i]->getId(), 0
+      );
+
+      if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+        LOG_ERR("Bloom Framebuffer not complete!");
+    }
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    bloom_shader_ = ResourcePtr<Shader>("shaders/bloom.shader.lua");
+    bloom_shader_.setInitialConfig([](auto shader){
+      shader->use();
+      shader->set("bloom", 0);
+    });
+
+    // Generate the final buffer
+    glGenFramebuffers(1, &final_buffer_);
+    glBindFramebuffer(GL_FRAMEBUFFER, final_buffer_);
+
+    // Color buffer
+    final_texture_ = std::make_unique<TextureInternal>(width_, height_, GL_RGB);
+    final_texture_->configure(GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
+    glFramebufferTexture2D(
+      GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, final_texture_->getId(), 0
     );
 
     // Render buffer
@@ -414,15 +520,16 @@ namespace Tarbora {
     glFramebufferRenderbuffer(
       GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo_scene_
     );
+
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-      LOG_ERR("Scene Framebuffer not complete!");
+      LOG_ERR("Final Framebuffer not complete!");
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    scene_shader_ = ResourcePtr<Shader>("shaders/scene.shader.lua");
-    scene_shader_.setInitialConfig([](auto shader){
+    final_shader_ = ResourcePtr<Shader>("shaders/final.shader.lua");
+    final_shader_.setInitialConfig([](auto shader){
       shader->use();
-      shader->set("albedo", 0);
-      shader->set("light", 1);
+      shader->set("scene", 0);
+      shader->set("bloom", 1);
     });
   }
 

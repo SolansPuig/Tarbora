@@ -11,12 +11,12 @@
  *********************************************************************/
 
 #version 330 core
-layout (location = 0) out vec4 FragColor;
-layout (location = 1) out vec3 BloomColor;
+out vec4 FragColor;
 
-uniform sampler2D albedo;
-uniform sampler2D light;
-uniform sampler2D emissive;
+uniform sampler2D scene;
+uniform sampler2D bloom;
+
+uniform float exposure;
 
 in vec2 TexCoords;
 
@@ -24,17 +24,14 @@ void main()
 {
   const float gamma = 2.2;
 
-  vec3 Albedo = pow(texture(albedo, TexCoords).rgb, vec3(gamma));
-  vec3 Light = texture(light, TexCoords).rgb;
-  vec3 Emissive = texture(emissive, TexCoords).rgb;
+  vec3 Scene = texture(scene, TexCoords).rgb;
+  vec3 Bloom = texture(bloom, TexCoords).rgb;
 
-  vec3 hdrColor = Albedo * (Light + Emissive);
+  Scene += Bloom;
 
-  FragColor = vec4(hdrColor, 1.0);
+  //vec3 mapped = Scene / (Scene + vec3(1.0));
+  vec3 mapped = vec3(1.0) - exp(-Scene * exposure);
+  mapped = pow(mapped, vec3(1.0 / gamma));
 
-  float brightness = dot(hdrColor + Emissive, vec3(0.2126, 0.7152, 0.0722));
-  if (brightness > 1.0)
-    BloomColor = FragColor.rgb;
-  else
-    BloomColor = vec3(0.0, 0.0, 0.0);
+  FragColor = vec4(mapped, 1.0);
 }

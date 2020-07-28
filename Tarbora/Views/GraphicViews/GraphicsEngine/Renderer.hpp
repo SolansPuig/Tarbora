@@ -74,6 +74,7 @@ namespace Tarbora {
     std::unique_ptr<TextureInternal> g_position_;
     std::unique_ptr<TextureInternal> g_normal_;
     std::unique_ptr<TextureInternal> g_color_spec_;
+    std::unique_ptr<TextureInternal> g_emissive_;
 
     unsigned int ssao_buffer_;
     std::unique_ptr<TextureInternal> ssao_color_;
@@ -91,7 +92,16 @@ namespace Tarbora {
     unsigned int scene_buffer_;
     unsigned int rbo_scene_;
     std::unique_ptr<TextureInternal> scene_color_;
+    std::unique_ptr<TextureInternal> scene_hdr_;
     ResourcePtr<Shader> scene_shader_;
+
+    unsigned int bloom_buffer_[2];
+    std::unique_ptr<TextureInternal> bloom_texture_[2];
+    ResourcePtr<Shader> bloom_shader_;
+
+    unsigned int final_buffer_;
+    std::unique_ptr<TextureInternal> final_texture_;
+    ResourcePtr<Shader> final_shader_;
 
     ResourcePtr<Mesh> quad_mesh_;
     std::string postprocess_shader_name_;

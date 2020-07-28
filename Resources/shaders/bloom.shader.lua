@@ -10,9 +10,9 @@
   * file, You can obtain one at https://mozilla.org/MPL/2.0/.
 --]===================================================================]
 
-shader = "model.shader.lua"
-albedo = "mage_wand_white.png"
-specular = "mage_wand_white_specular.png"
-emissive = "mage_wand_white_emissive.png"
-color_tint = "red.png"
-pixel_density = 500
+vertex = "shaders/empty.vert"
+tes_control = ""
+tes_eval = ""
+geometry = ""
+fragment = "shaders/bloom.frag"
+compute = ""

@@ -25,6 +25,11 @@ namespace Tarbora {
     glUseProgram(id_);
   }
 
+  void Shader::set(const std::string &name, bool value)
+  {
+    glUniform1i(glGetUniformLocation(id_, name.c_str()), value);
+  }
+
   void Shader::set(const std::string &name, int value)
   {
     glUniform1i(glGetUniformLocation(id_, name.c_str()), value);

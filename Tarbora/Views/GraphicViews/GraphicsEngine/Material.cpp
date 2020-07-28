@@ -24,6 +24,7 @@ namespace Tarbora {
     albedo_->bind(0);
     specular_->bind(1);
     color_tint_->bind(2);
+    emissive_->bind(4);
   }
 
   std::shared_ptr<Resource> MaterialResourceLoader::load(const std::string &path)
@@ -33,6 +34,7 @@ namespace Tarbora {
     std::string albedo = "missing.png";
     std::string specular = "grey.png";
     std::string color_tint = "generic_mask.png";
+    std::string emissive = "black.png";
     std::string shader = "model.shader.lua";
     int pixel_density = 100;
 
@@ -43,6 +45,7 @@ namespace Tarbora {
         albedo = resource.get<std::string>("albedo");
         specular = resource.get<std::string>("specular", specular, true);
         color_tint = resource.get<std::string>("color_tint", color_tint, true);
+        emissive = resource.get<std::string>("emissive", emissive, true);
         shader = resource.get<std::string>("shader", shader, true);
         pixel_density = resource.get<int>("pixel_density", pixel_density, true);
       }
@@ -55,6 +58,7 @@ namespace Tarbora {
     mat->color_tint_ = ResourcePtr<Texture>(
       "textures/" + color_tint, "textures/generic_mask.png"
     );
+    mat->emissive_ = ResourcePtr<Texture>("textures/" + emissive, "textures/black.png");
     mat->pixel_density_ = pixel_density;
     mat->shader_ = ResourcePtr<Shader>("shaders/" + shader, "shaders/model.shader.lua");
     mat->shader_.setInitialConfig([](auto shader){
@@ -63,6 +67,7 @@ namespace Tarbora {
       shader->set("specular", 1);
       shader->set("colorTint", 2);
       shader->set("gPosition", 3);
+      shader->set("emissive", 4);
     });
 
     return mat;

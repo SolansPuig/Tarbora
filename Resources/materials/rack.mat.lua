@@ -13,4 +13,5 @@
 shader = "model.shader.lua"
 albedo = "rack.png"
 specular = "rack_spec.png"
+emissive = "rack_emissive.png"
 pixel_density = 500
