@@ -46,7 +46,7 @@ actor = {
           uv_map = {152, 0},
           color_primary = query.skin_color,
           color_secondary = query.shirt_color,
-          color_detail1 = query.shirt_detail_color,
+          color_detail = query.shirt_detail_color,
           animated = true,
           nodes = {
             {
@@ -60,7 +60,7 @@ actor = {
               uv_map = {152, 24},
               color_primary = query.skin_color,
               color_secondary = query.shirt_color,
-              color_detail1 = query.shirt_detail_color,
+              color_detail = query.shirt_detail_color,
               animated = true,
               nodes = {
                 {
@@ -90,7 +90,7 @@ actor = {
           uv_map = {152, 0},
           color_primary = query.skin_color,
           color_secondary = query.shirt_color,
-          color_detail1 = query.shirt_detail_color,
+          color_detail = query.shirt_detail_color,
           animated = true,
           nodes = {
             {
@@ -104,7 +104,7 @@ actor = {
               uv_map = {152, 24},
               color_primary = query.skin_color,
               color_secondary = query.shirt_color,
-              color_detail1 = query.shirt_detail_color,
+              color_detail = query.shirt_detail_color,
               animated = true,
               nodes = {
                 {
@@ -132,7 +132,7 @@ actor = {
           uv_map = {0, 164},
           color_primary = query.skin_color,
           color_secondary = query.shirt_color,
-          color_detail1 = query.shirt_detail_color,
+          color_detail = query.shirt_detail_color,
           animated = true,
           nodes = {
             {

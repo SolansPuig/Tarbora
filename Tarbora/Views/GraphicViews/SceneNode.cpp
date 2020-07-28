@@ -633,7 +633,7 @@ namespace Tarbora {
     color_primary_ = other.color_primary_;
     color_secondary_ = other.color_secondary_;
     color_detail_ = other.color_detail_;
-    color_detail2_ = other.color_detail2_;
+    color_emissive_ = other.color_emissive_;
   }
 
   void MeshNode::draw(Scene *scene)
@@ -653,7 +653,7 @@ namespace Tarbora {
         color_primary_,
         color_secondary_,
         color_detail_,
-        color_detail2_
+        color_emissive_
       );
     }
   }
@@ -737,11 +737,11 @@ namespace Tarbora {
         setColorDetail(glm::make_vec3(detail)*255.f);
 
       ImGui::Spacing();
-      glm::vec3 c4 = getColorDetail2();
+      glm::vec3 c4 = getColorEmissive();
       c4 /= 255.f;
-      float detail2[3] = {c4.x, c4.y, c4.z};
-      if (ImGui::ColorEdit3("Color Detail 2", &detail2[0]))
-        setColorDetail2(glm::make_vec3(detail2)*255.f);
+      float emissive[3] = {c4.x, c4.y, c4.z};
+      if (ImGui::ColorEdit3("Color Emissive", &emissive[0]))
+        setColorEmissive(glm::make_vec3(emissive)*255.f);
 
       ImGui::Spacing();
     }
@@ -798,8 +798,8 @@ namespace Tarbora {
     setUvMap(table.get<glm::vec2>("uv_map", true));
     setColorPrimary(table.get<glm::vec3>("color_primary", glm::vec3(255.f), true));
     setColorSecondary(table.get<glm::vec3>("color_secondary", glm::vec3(255.f), true));
-    setColorDetail(table.get<glm::vec3>("color_detail1", glm::vec3(255.f), true));
-    setColorDetail2(table.get<glm::vec3>("color_detail2", glm::vec3(255.f), true));
+    setColorDetail(table.get<glm::vec3>("color_detail", glm::vec3(255.f), true));
+    setColorEmissive(table.get<glm::vec3>("color_emissive", glm::vec3(255.f), true));
   }
 
   void MeshNode::write(LuaFile *file)
@@ -823,9 +823,9 @@ namespace Tarbora {
     if (getColorSecondary() != glm::tvec3<unsigned char>(255))
       file->write("color_secondary", glm::vec3(getColorSecondary()));
     if (getColorDetail() != glm::tvec3<unsigned char>(255))
-      file->write("color_detail1", glm::vec3(getColorDetail()));
-    if (getColorDetail2() != glm::tvec3<unsigned char>(255))
-      file->write("color_detail2", glm::vec3(getColorDetail2()));
+      file->write("color_detail", glm::vec3(getColorDetail()));
+    if (getColorEmissive() != glm::tvec3<unsigned char>(255))
+      file->write("color_emissive", glm::vec3(getColorEmissive()));
   }
 
   void MeshNode::setShape(const std::string &mesh)
@@ -866,9 +866,9 @@ namespace Tarbora {
     color_detail_ = color;
   }
 
-  void MeshNode::setColorDetail2(const glm::tvec3<unsigned char> &color)
+  void MeshNode::setColorEmissive(const glm::tvec3<unsigned char> &color)
   {
-    color_detail2_ = color;
+    color_emissive_ = color;
   }
 
   const std::string& MeshNode::getShape()
@@ -911,9 +911,9 @@ namespace Tarbora {
     return color_detail_;
   }
 
-  const glm::tvec3<unsigned char>& MeshNode::getColorDetail2()
+  const glm::tvec3<unsigned char>& MeshNode::getColorEmissive()
   {
-    return color_detail2_;
+    return color_emissive_;
   }
 
   void AnimatedNode::resetAll()
@@ -926,7 +926,7 @@ namespace Tarbora {
     color_primary_anim_ = glm::tvec3<unsigned char>(0);
     color_secondary_anim_ = glm::tvec3<unsigned char>(0);
     color_detail_anim_ = glm::tvec3<unsigned char>(0);
-    color_detail2_anim_ = glm::tvec3<unsigned char>(0);
+    color_emissive_anim_ = glm::tvec3<unsigned char>(0);
   }
 
   void AnimatedNode::draw(Scene *scene)
@@ -946,7 +946,7 @@ namespace Tarbora {
         color_primary_ + color_primary_anim_,
         color_secondary_ + color_secondary_anim_,
         color_detail_ + color_detail_anim_,
-        color_detail2_ + color_detail2_anim_
+        color_emissive_ + color_emissive_anim_
       );
     }
 
@@ -1003,9 +1003,9 @@ namespace Tarbora {
     color_detail_anim_ = color;
   }
 
-  void AnimatedNode::setColorDetail2Animation(const glm::tvec3<unsigned char> &color)
+  void AnimatedNode::setColorEmissiveAnimation(const glm::tvec3<unsigned char> &color)
   {
-    color_detail2_anim_ = color;
+    color_emissive_anim_ = color;
   }
 
   const glm::vec3& AnimatedNode::getPositionAnimation()
@@ -1048,9 +1048,9 @@ namespace Tarbora {
     return color_detail_anim_;
   }
 
-  const glm::tvec3<unsigned char>& AnimatedNode::getColorDetail2Animation()
+  const glm::tvec3<unsigned char>& AnimatedNode::getColorEmissiveAnimation()
   {
-    return color_detail2_anim_;
+    return color_emissive_anim_;
   }
 
   void AnimatedNode::fixLocal()

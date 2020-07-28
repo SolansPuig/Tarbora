@@ -69,7 +69,7 @@ namespace Tarbora {
       const glm::tvec3<unsigned char> &primary,
       const glm::tvec3<unsigned char> &secondary,
       const glm::tvec3<unsigned char> &detail,
-      const glm::tvec3<unsigned char> &detail2
+      const glm::tvec3<unsigned char> &emissive
     );
 
     void drawLight(

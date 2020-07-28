@@ -27,7 +27,7 @@ namespace Tarbora {
     glm::tvec3<unsigned char> color_primary;
     glm::tvec3<unsigned char> color_secondary;
     glm::tvec3<unsigned char> color_detail;
-    glm::tvec3<unsigned char> color_detail2;
+    glm::tvec3<unsigned char> color_emissive;
   };
 
   class MeshInternal

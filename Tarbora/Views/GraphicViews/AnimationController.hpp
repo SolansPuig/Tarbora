@@ -118,6 +118,7 @@ namespace Tarbora {
       case Override:
         if (animation->fade_in_timer > 0.f || animation->fade_out_timer > 0.f)
           return glm::lerp(glm::quat(1.f, 0.f, 0.f, 0.f), value, blend);
+
         return value;
       case Add:
         if (animation->fade_in_timer > 0.f || animation->fade_out_timer > 0.f)

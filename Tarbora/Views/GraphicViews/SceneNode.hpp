@@ -225,7 +225,7 @@ namespace Tarbora {
     void setColorPrimary(const glm::tvec3<unsigned char> &color);
     void setColorSecondary(const glm::tvec3<unsigned char> &color);
     void setColorDetail(const glm::tvec3<unsigned char> &color);
-    void setColorDetail2(const glm::tvec3<unsigned char> &color);
+    void setColorEmissive(const glm::tvec3<unsigned char> &color);
 
     const std::string& getShape();
 
@@ -236,7 +236,7 @@ namespace Tarbora {
     const glm::tvec3<unsigned char>& getColorPrimary();
     const glm::tvec3<unsigned char>& getColorSecondary();
     const glm::tvec3<unsigned char>& getColorDetail();
-    const glm::tvec3<unsigned char>& getColorDetail2();
+    const glm::tvec3<unsigned char>& getColorEmissive();
 
   protected:
     ResourcePtr<Mesh> mesh_{"meshes/cube.mesh"};
@@ -250,7 +250,7 @@ namespace Tarbora {
     glm::tvec3<unsigned char> color_primary_{255};
     glm::tvec3<unsigned char> color_secondary_{255};
     glm::tvec3<unsigned char> color_detail_{255};
-    glm::tvec3<unsigned char> color_detail2_{255};
+    glm::tvec3<unsigned char> color_emissive_{255};
   };
 
   class AnimatedNode : public MeshNode
@@ -279,7 +279,7 @@ namespace Tarbora {
     void setColorPrimaryAnimation(const glm::tvec3<unsigned char> &color);
     void setColorSecondaryAnimation(const glm::tvec3<unsigned char> &color);
     void setColorDetailAnimation(const glm::tvec3<unsigned char> &color);
-    void setColorDetail2Animation(const glm::tvec3<unsigned char> &color);
+    void setColorEmissiveAnimation(const glm::tvec3<unsigned char> &color);
 
     const glm::vec3& getPositionAnimation();
     const glm::quat& getOrientationAnimation();
@@ -289,7 +289,7 @@ namespace Tarbora {
     const glm::tvec3<unsigned char>& getColorPrimaryAnimation();
     const glm::tvec3<unsigned char>& getColorSecondaryAnimation();
     const glm::tvec3<unsigned char>& getColorDetailAnimation();
-    const glm::tvec3<unsigned char>& getColorDetail2Animation();
+    const glm::tvec3<unsigned char>& getColorEmissiveAnimation();
 
   protected:
     glm::vec3 position_anim_{0.f, 0.f, 0.f};
@@ -300,7 +300,7 @@ namespace Tarbora {
     glm::tvec3<unsigned char> color_primary_anim_{0};
     glm::tvec3<unsigned char> color_secondary_anim_{0};
     glm::tvec3<unsigned char> color_detail_anim_{0};
-    glm::tvec3<unsigned char> color_detail2_anim_{0};
+    glm::tvec3<unsigned char> color_emissive_anim_{0};
 
     virtual void fixLocal();
     virtual void fixTransform();

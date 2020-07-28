@@ -32,7 +32,7 @@ void main()
 
   FragColor = vec4(hdrColor, 1.0);
 
-  float brightness = dot(hdrColor + Emissive, vec3(0.2126, 0.7152, 0.0722));
+  float brightness = dot(hdrColor + 10.0 * Emissive, vec3(0.2126, 0.7152, 0.0722));
   if (brightness > 1.0)
     BloomColor = FragColor.rgb;
   else

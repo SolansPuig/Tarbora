@@ -21,7 +21,7 @@ layout (location = 9) in vec3 aTexSize;
 layout (location = 10) in vec3 aPrimary;
 layout (location = 11) in vec3 aSecondary;
 layout (location = 12) in vec3 aDetail;
-layout (location = 13) in vec3 aDetail2;
+layout (location = 13) in vec3 aEmissive;
 
 uniform mat4 projection;
 uniform mat4 view;
@@ -34,14 +34,14 @@ out vec3 Normal;
 out vec3 colorPrimary;
 out vec3 colorSecondary;
 out vec3 colorDetail;
-out vec3 colorDetail2;
+out vec3 colorEmissive;
 
 void main()
 {
   colorPrimary = aPrimary;
   colorSecondary = aSecondary;
   colorDetail = aDetail;
-  colorDetail2 = aDetail2;
+  colorEmissive = aEmissive;
 
   vec4 pos = view * aTransform * vec4(aPos, 1.0f);
   FragPos = pos.xyz;

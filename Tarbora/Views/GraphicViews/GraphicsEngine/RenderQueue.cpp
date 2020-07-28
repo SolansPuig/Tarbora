@@ -23,7 +23,7 @@ namespace Tarbora {
     const glm::tvec3<unsigned char> &primary,
     const glm::tvec3<unsigned char> &secondary,
     const glm::tvec3<unsigned char> &detail,
-    const glm::tvec3<unsigned char> &detail2
+    const glm::tvec3<unsigned char> &emissive
   )
   {
     ResourcePtr<Material> material = material_stack_.top();
@@ -36,7 +36,7 @@ namespace Tarbora {
     data.color_primary = primary;
     data.color_secondary = secondary;
     data.color_detail = detail;
-    data.color_detail2 = detail2;
+    data.color_emissive = emissive;
 
     render_list_[render_pass][material][mesh].emplace_back(data);
   }

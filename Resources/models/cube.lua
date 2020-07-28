@@ -30,14 +30,14 @@ actor = {
       --     function() return math.random(0, 255) end,
       --     function() return math.random(0, 255) end
       -- },
-      -- color_detail1 = {
+      -- color_detail = {
       --     function() return math.random(0, 255) end,
       --     function() return math.random(0, 255) end,
       --     function() return math.random(0, 255) end
       -- },
       color_primary = {255, 255, 255},
       color_secondary = {0, 255, 255},
-      color_detail1 = {255, 0, 255},
+      color_detail = {255, 0, 255},
       uv_map = {0, 0},
       nodes = {
         {

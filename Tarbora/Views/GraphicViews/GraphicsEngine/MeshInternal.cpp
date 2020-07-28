@@ -104,9 +104,9 @@ namespace Tarbora {
     glVertexAttribPointer(10, 3, GL_UNSIGNED_BYTE, GL_TRUE, 104, (void*)92);
     glEnableVertexAttribArray(11); // Color secondary
     glVertexAttribPointer(11, 3, GL_UNSIGNED_BYTE, GL_TRUE, 104, (void*)95);
-    glEnableVertexAttribArray(12); // Color detail 1
+    glEnableVertexAttribArray(12); // Color detail
     glVertexAttribPointer(12, 3, GL_UNSIGNED_BYTE, GL_TRUE, 104, (void*)98);
-    glEnableVertexAttribArray(13); // Color detail 2
+    glEnableVertexAttribArray(13); // Color emissive
     glVertexAttribPointer(13, 3, GL_UNSIGNED_BYTE, GL_TRUE, 104, (void*)101);
 
     glVertexAttribDivisor(3, 1);

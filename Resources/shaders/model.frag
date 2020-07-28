@@ -24,7 +24,7 @@ in vec3 Normal;
 in vec3 colorPrimary;
 in vec3 colorSecondary;
 in vec3 colorDetail;
-in vec3 colorDetail2;
+in vec3 colorEmissive;
 
 uniform sampler2D albedo;
 uniform sampler2D specular;
@@ -48,9 +48,9 @@ void main()
   vec3 primary = colorPrimary * mask.r + (1. - mask.r);
   vec3 secondary = colorSecondary * mask.g + (1. - mask.g);
   vec3 detail = colorDetail * mask.b + (1. - mask.b);
-  vec3 detail2 = colorDetail2 * mask.a + (1. - mask.a);
+  vec3 em = colorEmissive * mask.a + (1. - mask.a);
 
-  gColorSpec.rgb = fragTexture.rgb * primary * secondary * detail * detail2;
+  gColorSpec.rgb = fragTexture.rgb * primary * secondary * detail * em;
   gColorSpec.a = specularTexture.r;
-  gEmissive = Emissive;
+  gEmissive = Emissive * vec4(colorEmissive, 1.0);
 }
