@@ -97,8 +97,13 @@ namespace Tarbora {
     ImGui::Separator();
 
     // Inspector
-    const float footer_height = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
-    ImGui::BeginChild("Inspector", ImVec2(0, -footer_height), false, ImGuiWindowFlags_HorizontalScrollbar);
+    const float footer_height =
+      ImGui::GetStyle().ItemSpacing.y +
+      ImGui::GetFrameHeightWithSpacing();
+    ImGui::BeginChild(
+      "Inspector", ImVec2(0, -footer_height), false, ImGuiWindowFlags_HorizontalScrollbar
+    );
+
     if (auto model = model_.lock())
     {
       if (ImGui::Button("Reload"))

@@ -209,27 +209,27 @@ namespace Tarbora {
             }
             else if (name == "color_primary")
             {
-              glm::vec3 old_value = node->getColorPrimaryAnimation();
+              glm::vec3 old_value = node->getColorAnimation(0);
               auto value = blendProperty(new_value/255.f, old_value, this);
-              node->setColorPrimaryAnimation(value);
+              node->setColorAnimation(0, value);
             }
             else if (name == "color_secondary")
             {
-              glm::vec3 old_value = node->getColorSecondaryAnimation();
+              glm::vec3 old_value = node->getColorAnimation(1);
               auto value = blendProperty(new_value/255.f, old_value, this);
-              node->setColorSecondaryAnimation(value);
+              node->setColorAnimation(1, value);
             }
             else if (name == "color_detail")
             {
-              glm::vec3 old_value = node->getColorDetailAnimation();
+              glm::vec3 old_value = node->getColorAnimation(2);
               auto value = blendProperty(new_value/255.f, old_value, this);
-              node->setColorDetailAnimation(value);
+              node->setColorAnimation(2, value);
             }
             else if (name == "color_emissive")
             {
-              glm::vec3 old_value = node->getColorEmissiveAnimation();
+              glm::vec3 old_value = node->getColorAnimation(3);
               auto value = blendProperty(new_value/255.f, old_value, this);
-              node->setColorEmissiveAnimation(value);
+              node->setColorAnimation(3, value);
             }
           }
         }

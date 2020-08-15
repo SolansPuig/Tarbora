@@ -12,13 +12,17 @@
 
 actor = {
   scale = 1.00,
+  colors = {
+    ["Runes"] = {255.00, 225.00, 0.00},
+    ["Wood"] = {148.00, 130.00, 82.00},
+  },
   nodes = {
     {
       name = "body",
       rotation = {180.00, -0.00, 180.00},
       shape = "cube.mesh",
       uv_map = {200.00, 100.00},
-      color_primary = {148.00, 130.00, 82.00},
+      color_primary = "Wood",
       nodes = {
         {
           name = "support3",
@@ -27,7 +31,7 @@ actor = {
           size = {5.00, 150.00, 5.00},
           shape = "cube.mesh",
           uv_map = {132.00, 0.00},
-          color_primary = {148.00, 130.00, 82.00},
+          color_primary = "Wood",
         },
         {
           name = "support2",
@@ -36,7 +40,7 @@ actor = {
           size = {5.00, 150.00, 5.00},
           shape = "cube.mesh",
           uv_map = {132.00, 0.00},
-          color_primary = {148.00, 130.00, 82.00},
+          color_primary = "Wood",
         },
         {
           name = "support1",
@@ -45,7 +49,7 @@ actor = {
           size = {5.00, 150.00, 5.00},
           shape = "cube.mesh",
           uv_map = {132.00, 0.00},
-          color_primary = {148.00, 130.00, 82.00},
+          color_primary = "Wood",
         },
         {
           name = "leg2",
@@ -55,8 +59,8 @@ actor = {
           origin = {0.00, -0.50, 0.00},
           shape = "cube.mesh",
           uv_map = {0.00, 0.00},
-          color_primary = {148.00, 130.00, 82.00},
-          color_emissive = {32.00, 255.00, 0.00},
+          color_primary = "Wood",
+          color_emissive = "Runes",
           nodes = {
             {
               name = "leg23",
@@ -65,7 +69,7 @@ actor = {
               size = {8.00, 77.00, 18.00},
               shape = "cube.mesh",
               uv_map = {80.00, 0.00},
-              color_primary = {148.00, 130.00, 82.00},
+              color_primary = "Wood",
             },
             {
               name = "leg22",
@@ -77,8 +81,8 @@ actor = {
               uv_map = {0.00, 0.00},
               texture_size = {20.00, 111.00, 20.00},
               mesh_size = {20.00, 111.00, 20.00},
-              color_primary = {148.00, 130.00, 82.00},
-              color_emissive = {32.00, 255.00, 0.00},
+              color_primary = "Wood",
+              color_emissive = "Runes",
             },
           },
         },
@@ -90,8 +94,8 @@ actor = {
           origin = {0.00, -0.50, 0.00},
           shape = "cube.mesh",
           uv_map = {0.00, 0.00},
-          color_primary = {148.00, 130.00, 82.00},
-          color_emissive = {32.00, 255.00, 0.00},
+          color_primary = "Wood",
+          color_emissive = "Runes",
           nodes = {
             {
               name = "leg13",
@@ -100,7 +104,7 @@ actor = {
               size = {8.00, 77.00, 18.00},
               shape = "cube.mesh",
               uv_map = {80.00, 0.00},
-              color_primary = {148.00, 130.00, 82.00},
+              color_primary = "Wood",
             },
             {
               name = "leg12",
@@ -112,8 +116,8 @@ actor = {
               uv_map = {0.00, 0.00},
               texture_size = {20.00, 111.00, 20.00},
               mesh_size = {20.00, 111.00, 20.00},
-              color_primary = {148.00, 130.00, 82.00},
-              color_emissive = {32.00, 255.00, 0.00},
+              color_primary = "Wood",
+              color_emissive = "Runes",
             },
           },
         },

@@ -20,8 +20,6 @@ actor = {
       size = {28.00, 2.00, 2.00},
       shape = "cube.mesh",
       uv_map = {28, 64},
-      color_primary = {255, 254, 254},
-      color_secondary = {254, 255, 255},
       texture_size = {14.00, 2.00, 2.00},
       nodes = {
         {
@@ -202,7 +200,6 @@ actor = {
           shape = "cube.mesh",
           uv_map = {60, 0},
           texture_size = {3.00, 60.00, 3.00},
-          color_primary = {255, 254, 254},
         },
       }
     },

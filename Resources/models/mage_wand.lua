@@ -12,14 +12,17 @@
 
 actor = {
   scale = 1.00,
+  colors = {
+    ["Wand"] = {233, 233, 233},
+    ["Magic Stone"] = {0.00, 255.00, 180.00}
+  },
   nodes = {
     {
       name = "body",
       size = {5.00, 160.00, 5.00},
       shape = "cube.mesh",
       uv_map = {0.00, 0.00},
-      color_primary = {233.00, 233.00, 233.00},
-      color_secondary = {254.00, 255.00, 255.00},
+      color_primary = "Wand",
       nodes = {
         {
           name = "wand",
@@ -29,7 +32,7 @@ actor = {
           origin = {0.00, -0.50, -0.50},
           shape = "cube.mesh",
           uv_map = {20.00, 0.00},
-          color_primary = {233.00, 233.00, 233.00},
+          color_primary = "Wand",
           nodes = {
             {
               name = "wand2",
@@ -39,7 +42,7 @@ actor = {
               origin = {0.00, -0.50, 0.50},
               shape = "cube.mesh",
               uv_map = {20.00, 0.00},
-              color_primary = {233.00, 233.00, 233.00},
+              color_primary = "Wand",
               nodes = {
                 {
                   name = "wand3",
@@ -49,7 +52,7 @@ actor = {
                   origin = {0.00, -0.50, 0.00},
                   shape = "cube.mesh",
                   uv_map = {20.00, 0.00},
-                  color_primary = {233.00, 233.00, 233.00},
+                  color_primary = "Wand",
                   nodes = {
                     {
                       name = "magic_ball",
@@ -59,7 +62,7 @@ actor = {
                       size = {10.00, 10.00, 10.00},
                       shape = "cube.mesh",
                       uv_map = {20.00, 30.00},
-                      color_primary = {0.00, 255.00, 180.00},
+                      color_primary = "Magic Stone",
                       nodes = {
                         {
                           name = "light_5",

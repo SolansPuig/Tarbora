@@ -20,7 +20,6 @@ actor = {
       texture_size = {100, 100, 100},
       rotation = {90, 0, 0},
       uv_map = {0, 0},
-      color_primary = {0, 255, 255}
     }
   }
 }

@@ -12,6 +12,7 @@
 
 #include "SceneNode.hpp"
 #include "Scene.hpp"
+#include "ActorModel.hpp"
 
 namespace Tarbora {
   SceneNode::SceneNode(const SceneNode &other)
@@ -338,6 +339,7 @@ namespace Tarbora {
   {
     children_[child->name] = child;
     child->parent_ = this;
+    if (child->model_ == nullptr) child->model_ = model_;
     child->setDirty();
     return child;
   }
@@ -630,10 +632,8 @@ namespace Tarbora {
     mesh_size_ = other.mesh_size_;
     texture_size_ = other.texture_size_;
     auto_texture_size_ = other.auto_texture_size_;
-    color_primary_ = other.color_primary_;
-    color_secondary_ = other.color_secondary_;
-    color_detail_ = other.color_detail_;
-    color_emissive_ = other.color_emissive_;
+    for (unsigned int i = 0; i < 4; i++)
+      color_[i] = other.color_[i];
   }
 
   void MeshNode::draw(Scene *scene)
@@ -650,10 +650,10 @@ namespace Tarbora {
         uv_map_,
         auto_texture_size_ ? scale_ : mesh_size_,
         auto_texture_size_ ? scale_ : texture_size_,
-        color_primary_,
-        color_secondary_,
-        color_detail_,
-        color_emissive_
+        getColor(0)->second,
+        getColor(1)->second,
+        getColor(2)->second,
+        getColor(3)->second
       );
     }
   }
@@ -716,32 +716,56 @@ namespace Tarbora {
     if (ImGui::CollapsingHeader("Colors"))
     {
       ImGui::Spacing();
-      glm::vec3 c1 = getColorPrimary();
-      c1 /= 255.f;
-      float primary[3] = {c1.x, c1.y, c1.z};
-      if (ImGui::ColorEdit3("Color Primary", &primary[0]))
-        setColorPrimary(glm::make_vec3(primary)*255.f);
+      auto c1 = getColor(0);
+      if (ImGui::BeginCombo("Color Primary", c1->first.c_str()))
+      {
+        for (auto c : *(model_->getColors()))
+        {
+          bool is_selected = (c->first == c1->first);
+          if (ImGui::Selectable(c->first.c_str(), is_selected))
+            setColor(0, c->first);
+        }
+        ImGui::EndCombo();
+      }
 
       ImGui::Spacing();
-      glm::vec3 c2 = getColorSecondary();
-      c2 /= 255.f;
-      float secondary[3] = {c2.x, c2.y, c2.z};
-      if (ImGui::ColorEdit3("Color Secondary", &secondary[0]))
-        setColorSecondary(glm::make_vec3(secondary)*255.f);
+      auto c2 = getColor(1);
+      if (ImGui::BeginCombo("Color Secondary", c2->first.c_str()))
+      {
+        for (auto c : *(model_->getColors()))
+        {
+          bool is_selected = (c->first == c2->first);
+          if (ImGui::Selectable(c->first.c_str(), is_selected))
+            setColor(1, c->first);
+        }
+        ImGui::EndCombo();
+      }
 
       ImGui::Spacing();
-      glm::vec3 c3 = getColorDetail();
-      c3 /= 255.f;
-      float detail[3] = {c3.x, c3.y, c3.z};
-      if (ImGui::ColorEdit3("Color Detail", &detail[0]))
-        setColorDetail(glm::make_vec3(detail)*255.f);
+      auto c3 = getColor(2);
+      if (ImGui::BeginCombo("Color Detail", c3->first.c_str()))
+      {
+        for (auto c : *(model_->getColors()))
+        {
+          bool is_selected = (c->first == c3->first);
+          if (ImGui::Selectable(c->first.c_str(), is_selected))
+            setColor(2, c->first);
+        }
+        ImGui::EndCombo();
+      }
 
       ImGui::Spacing();
-      glm::vec3 c4 = getColorEmissive();
-      c4 /= 255.f;
-      float emissive[3] = {c4.x, c4.y, c4.z};
-      if (ImGui::ColorEdit3("Color Emissive", &emissive[0]))
-        setColorEmissive(glm::make_vec3(emissive)*255.f);
+      auto c4 = getColor(3);
+      if (ImGui::BeginCombo("Color Emissive", c4->first.c_str()))
+      {
+        for (auto c : *(model_->getColors()))
+        {
+          bool is_selected = (c->first == c4->first);
+          if (ImGui::Selectable(c->first.c_str(), is_selected))
+            setColor(3, c->first);
+        }
+        ImGui::EndCombo();
+      }
 
       ImGui::Spacing();
     }
@@ -796,10 +820,10 @@ namespace Tarbora {
     setTextureSize(texture_size);
 
     setUvMap(table.get<glm::vec2>("uv_map", true));
-    setColorPrimary(table.get<glm::vec3>("color_primary", glm::vec3(255.f), true));
-    setColorSecondary(table.get<glm::vec3>("color_secondary", glm::vec3(255.f), true));
-    setColorDetail(table.get<glm::vec3>("color_detail", glm::vec3(255.f), true));
-    setColorEmissive(table.get<glm::vec3>("color_emissive", glm::vec3(255.f), true));
+    setColor(0, table.get<std::string>("color_primary", "White", true));
+    setColor(1, table.get<std::string>("color_secondary", "White", true));
+    setColor(2, table.get<std::string>("color_detail", "White", true));
+    setColor(3, table.get<std::string>("color_emissive", "White", true));
   }
 
   void MeshNode::write(LuaFile *file)
@@ -818,14 +842,14 @@ namespace Tarbora {
       file->write("texture_size", getTextureSize() * 100.f);
     if (getMeshSize() != getScale())
       file->write("mesh_size", getMeshSize() * 100.f);
-    if (getColorPrimary() != glm::tvec3<unsigned char>(255))
-      file->write("color_primary", glm::vec3(getColorPrimary()));
-    if (getColorSecondary() != glm::tvec3<unsigned char>(255))
-      file->write("color_secondary", glm::vec3(getColorSecondary()));
-    if (getColorDetail() != glm::tvec3<unsigned char>(255))
-      file->write("color_detail", glm::vec3(getColorDetail()));
-    if (getColorEmissive() != glm::tvec3<unsigned char>(255))
-      file->write("color_emissive", glm::vec3(getColorEmissive()));
+    if (getColor(0)->first != "White")
+      file->write("color_primary", getColor(0)->first);
+    if (getColor(1)->first != "White")
+      file->write("color_secondary", getColor(1)->first);
+    if (getColor(2)->first != "White")
+      file->write("color_detail", getColor(2)->first);
+    if (getColor(3)->first != "White")
+      file->write("color_emissive", getColor(3)->first);
   }
 
   void MeshNode::setShape(const std::string &mesh)
@@ -851,24 +875,9 @@ namespace Tarbora {
     auto_texture_size_ = (texture_size_ == scale_ && mesh_size_ == scale_);
   }
 
-  void MeshNode::setColorPrimary(const glm::tvec3<unsigned char> &color)
+  void MeshNode::setColor(unsigned int i, const std::string &color)
   {
-    color_primary_ = color;
-  }
-
-  void MeshNode::setColorSecondary(const glm::tvec3<unsigned char> &color)
-  {
-    color_secondary_ = color;
-  }
-
-  void MeshNode::setColorDetail(const glm::tvec3<unsigned char> &color)
-  {
-    color_detail_ = color;
-  }
-
-  void MeshNode::setColorEmissive(const glm::tvec3<unsigned char> &color)
-  {
-    color_emissive_ = color;
+    color_[i] = model_->getColor(color);
   }
 
   const std::string& MeshNode::getShape()
@@ -896,24 +905,15 @@ namespace Tarbora {
     return auto_texture_size_;
   }
 
-  const glm::tvec3<unsigned char>& MeshNode::getColorPrimary()
+  const std::shared_ptr<NamedColor> MeshNode::getColor(unsigned int i)
   {
-    return color_primary_;
-  }
-
-  const glm::tvec3<unsigned char>& MeshNode::getColorSecondary()
-  {
-    return color_secondary_;
-  }
-
-  const glm::tvec3<unsigned char>& MeshNode::getColorDetail()
-  {
-    return color_detail_;
-  }
-
-  const glm::tvec3<unsigned char>& MeshNode::getColorEmissive()
-  {
-    return color_emissive_;
+    if (auto color = color_[i].lock())
+      return color;
+    else
+    {
+      setColor(i, "White");
+      return getColor(i);
+    }
   }
 
   void AnimatedNode::resetAll()
@@ -923,10 +923,8 @@ namespace Tarbora {
     scale_anim_ = glm::vec3(0.f);
     global_scale_anim_ = 1.f;
     uv_map_anim_ = glm::tvec2<unsigned short>(0);
-    color_primary_anim_ = glm::tvec3<unsigned char>(0);
-    color_secondary_anim_ = glm::tvec3<unsigned char>(0);
-    color_detail_anim_ = glm::tvec3<unsigned char>(0);
-    color_emissive_anim_ = glm::tvec3<unsigned char>(0);
+    for (unsigned int i = 0; i < 4; i++)
+      color_anim_[i] = Color(0);
   }
 
   void AnimatedNode::draw(Scene *scene)
@@ -943,10 +941,10 @@ namespace Tarbora {
         uv_map_ + uv_map_anim_,
         auto_texture_size_ ? scale_ : mesh_size_,
         auto_texture_size_ ? scale_ : texture_size_,
-        color_primary_ + color_primary_anim_,
-        color_secondary_ + color_secondary_anim_,
-        color_detail_ + color_detail_anim_,
-        color_emissive_ + color_emissive_anim_
+        getColor(0)->second + color_anim_[0],
+        getColor(1)->second + color_anim_[1],
+        getColor(2)->second + color_anim_[2],
+        getColor(3)->second + color_anim_[3]
       );
     }
 
@@ -988,24 +986,10 @@ namespace Tarbora {
     uv_map_anim_ = uv;
   }
 
-  void AnimatedNode::setColorPrimaryAnimation(const glm::tvec3<unsigned char> &color)
+  void AnimatedNode::setColorAnimation(unsigned int i, const Color &color)
   {
-    color_primary_anim_ = color;
-  }
-
-  void AnimatedNode::setColorSecondaryAnimation(const glm::tvec3<unsigned char> &color)
-  {
-    color_secondary_anim_ = color;
-  }
-
-  void AnimatedNode::setColorDetailAnimation(const glm::tvec3<unsigned char> &color)
-  {
-    color_detail_anim_ = color;
-  }
-
-  void AnimatedNode::setColorEmissiveAnimation(const glm::tvec3<unsigned char> &color)
-  {
-    color_emissive_anim_ = color;
+    if (i < 4)
+      color_anim_[i] = color;
   }
 
   const glm::vec3& AnimatedNode::getPositionAnimation()
@@ -1033,24 +1017,9 @@ namespace Tarbora {
     return uv_map_anim_;
   }
 
-  const glm::tvec3<unsigned char>& AnimatedNode::getColorPrimaryAnimation()
+  const glm::tvec3<unsigned char>& AnimatedNode::getColorAnimation(unsigned int i)
   {
-    return color_primary_anim_;
-  }
-
-  const glm::tvec3<unsigned char>& AnimatedNode::getColorSecondaryAnimation()
-  {
-    return color_secondary_anim_;
-  }
-
-  const glm::tvec3<unsigned char>& AnimatedNode::getColorDetailAnimation()
-  {
-    return color_detail_anim_;
-  }
-
-  const glm::tvec3<unsigned char>& AnimatedNode::getColorEmissiveAnimation()
-  {
-    return color_emissive_anim_;
+    return (i < 4) ? color_anim_[i] : color_anim_[0];
   }
 
   void AnimatedNode::fixLocal()

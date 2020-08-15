@@ -18,7 +18,7 @@ function gen_leaf(nname, pos, size, rot)
     rotation = {rot.x, rot.y, rot.z},
     size = {size.x, size.y, size.x},
     texture_size = {100, 100, 100},
-    color_primary= {157, 214, 85},
+    color_primary= "Leafs",
     mesh_size = {size.x/2, size.y/2, size.x/2},
     nodes = {
       {
@@ -29,7 +29,7 @@ function gen_leaf(nname, pos, size, rot)
         size = {2*size.x, 2*size.y, 2*size.x},
         texture_size = {200, 200, 1},
         mesh_size = {200, 200, 1},
-        color_primary= {157, 214, 85},
+        color_primary= "Leafs",
         uv_map = {0, 443}
       },
       {
@@ -40,7 +40,7 @@ function gen_leaf(nname, pos, size, rot)
         size = {2*size.x, 2*size.y, 2*size.x},
         texture_size = {200, 200, 1},
         mesh_size = {200, 200, 1},
-        color_primary= {157, 214, 85},
+        color_primary= "Leafs",
         uv_map = {0, 443}
       }
     }
@@ -208,6 +208,9 @@ end
 
 actor = {
   scale = 1,
+  colors = {
+    ["Leafs"] = {157, 214, 85},
+  },
   nodes = function()
     local nsize = math.random(200, 1000)
     return {

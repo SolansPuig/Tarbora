@@ -18,10 +18,7 @@ namespace Tarbora {
   {
     setMaterial(material);
 
-    auto mesh = std::make_shared<MeshNode>("sky", "sky_box");
-    mesh->setRenderPass(RenderPass::Sky);
-    mesh->setShape("cube.mesh");
-    addChild(mesh);
+    mesh_ = ResourcePtr<Mesh>("meshes/cube.mesh");
 
     auto light = std::make_shared<LightNode>("sky", "light");
     light->setShape("cube.mesh");
@@ -30,7 +27,7 @@ namespace Tarbora {
     light->setAmbient(ambient);
     light->setDiffuse(diffuse);
     light->setSpecular(specular);
-    mesh->addChild(light);
+    addChild(light);
   }
 
   void Skybox::drawGuiEditor()
@@ -88,12 +85,8 @@ namespace Tarbora {
     }
   }
 
-  void Skybox::update(Scene *scene, float delta_time)
+  void Skybox::draw(Scene *scene)
   {
-    //scene->getGraphicsEngine()->getRenderer()->setDirecitonalLight(
-    //  ambient, diffuse, specular, direction
-    //);
-
     auto shader = material_->getShader();
 
     shader->use();
@@ -111,6 +104,25 @@ namespace Tarbora {
       shader->set("sun[" + std::to_string(i) + "].sharpness", sun[i].sharpness);
     }
 
-    MaterialNode::update(scene, delta_time);
+    MaterialNode::draw(scene);
+
+    if (dirty_)
+      fixDirty();
+
+    if (mesh_ != nullptr)
+    {
+      scene->getRenderQueue()->drawMesh(
+        RenderPass::Sky,
+        mesh_,
+        transform_,
+        {0.f, 0.f},
+        {1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f},
+        Color(255, 255, 255),
+        Color(255, 255, 255),
+        Color(255, 255, 255),
+        Color(255, 255, 255)
+      );
+    }
   }
 }

@@ -38,7 +38,7 @@ namespace Tarbora {
     virtual const std::string getType() const { return "skybox"; }
 
     virtual void drawGuiEditor();
-    virtual void update(Scene *scene, float);
+    virtual void draw(Scene *scene);
 
     glm::vec3 ambient{0.6f, 0.5f, 0.5f};
     glm::vec3 diffuse{0.4f, 0.4f, 0.4f};
@@ -51,6 +51,9 @@ namespace Tarbora {
     float exponent{20};
 
     Sun sun[5];
+
+  private:
+    ResourcePtr<Mesh> mesh_;
   };
 }
 

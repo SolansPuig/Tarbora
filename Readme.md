@@ -4,6 +4,12 @@ Check out the docs at https://solanspuig.github.io/Tarbora
 
 Check out my Patreon at https://www.patreon.com/tarbora
 
+## Some pictures
+
+![Test with lights and emissive materials](Resources/light.png?raw=true "Test with lights and emissive materials.")
+
+![The in-game model editor](Resources/editor.png?raw=true "THe in-game model editor.")
+
 
 ## What is Tarbora?
 

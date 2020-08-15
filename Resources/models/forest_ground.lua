@@ -12,6 +12,9 @@
 
 actor = {
   scale = 1,
+  colors = {
+    ["Grass"] = {181, 255, 101}
+  },
   nodes = {
     {
       name = "body",
@@ -22,7 +25,7 @@ actor = {
       size = {3400, 100, 3400},
       texture_size = {100, 0, 100},
       uv_map = {0, 0},
-      color_primary = {181, 255, 101}
+      color_primary = "Grass"
     }
   }
 }

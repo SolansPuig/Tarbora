@@ -10,19 +10,15 @@
   * file, You can obtain one at https://mozilla.org/MPL/2.0/.
 --]===================================================================]
 
-local query = {
-  defaults = {
-    skin_color = {255, 255, 255},
-    shirt_color = {255, 255, 255},
-    shirt_detail_color = {255, 255, 255},
-    pants_color = {255, 255, 255},
-    shoes_color = {255, 255, 255},
-  }
-}
-setmetatable(query, {__index = query.defaults })
-
 actor = {
   scale = 1,
+  colors = {
+    ["Skin"] = {255, 255, 255},
+    ["Shirt"] = {255, 255, 255},
+    ["Shirt Detials"] = {255, 255, 255},
+    ["Pants"] = {255, 255, 255},
+    ["Shoes"] = {255, 255, 255}
+  },
   nodes = {
     {
       name = "body",
@@ -30,9 +26,9 @@ actor = {
       size = {48.00, 26.00, 28.00},
       shape = "cube.mesh",
       uv_map = {0, 110},
-      color_primary = query.skin_color,
-      color_secondary = query.shirt_color,
-      color_detail1 = query.shirt_detail_color,
+      color_primary = "Skin",
+      color_secondary = "Shirt",
+      color_detail1 = "Shirt Detials",
       animated = true,
       nodes = {
         {
@@ -44,9 +40,9 @@ actor = {
           size = {30.00, 12.00, 12.00},
           shape = "cube_mirror.mesh",
           uv_map = {152, 0},
-          color_primary = query.skin_color,
-          color_secondary = query.shirt_color,
-          color_detail = query.shirt_detail_color,
+          color_primary = "Skin",
+          color_secondary = "Shirt",
+          color_detail = "Shirt Detials",
           animated = true,
           nodes = {
             {
@@ -58,9 +54,9 @@ actor = {
               size = {30.00, 12.00, 12.00},
               shape = "cube_mirror.mesh",
               uv_map = {152, 24},
-              color_primary = query.skin_color,
-              color_secondary = query.shirt_color,
-              color_detail = query.shirt_detail_color,
+              color_primary = "Skin",
+              color_secondary = "Shirt",
+              color_detail = "Shirt Details",
               animated = true,
               nodes = {
                 {
@@ -72,7 +68,7 @@ actor = {
                   size = {14.00, 16.00, 16.00},
                   shape = "cube_mirror.mesh",
                   uv_map = {152, 48},
-                  color_primary = query.skin_color,
+                  color_primary = "Skin",
                   animated = true,
                 },
               }
@@ -88,9 +84,9 @@ actor = {
           size = {30.00, 12.00, 12.00},
           shape = "cube.mesh",
           uv_map = {152, 0},
-          color_primary = query.skin_color,
-          color_secondary = query.shirt_color,
-          color_detail = query.shirt_detail_color,
+          color_primary = "Skin",
+          color_secondary = "Shirt",
+          color_detail = "Shirt Details",
           animated = true,
           nodes = {
             {
@@ -102,9 +98,9 @@ actor = {
               size = {30.00, 12.00, 12.00},
               shape = "cube.mesh",
               uv_map = {152, 24},
-              color_primary = query.skin_color,
-              color_secondary = query.shirt_color,
-              color_detail = query.shirt_detail_color,
+              color_primary = "Skin",
+              color_secondary = "Shirt",
+              color_detail = "Shirt Detials",
               animated = true,
               nodes = {
                 {
@@ -117,7 +113,7 @@ actor = {
                   shape = "cube.mesh",
                   uv_map = {152, 48},
                   animated = true,
-                  color_primary = query.skin_color,
+                  color_primary = "Skin",
                 },
               }
             },
@@ -130,9 +126,9 @@ actor = {
           size = {44.00, 26.00, 26.00},
           shape = "cube.mesh",
           uv_map = {0, 164},
-          color_primary = query.skin_color,
-          color_secondary = query.shirt_color,
-          color_detail = query.shirt_detail_color,
+          color_primary = "Skin",
+          color_secondary = "Shirt",
+          color_detail = "Shirt Details",
           animated = true,
           nodes = {
             {
@@ -142,8 +138,8 @@ actor = {
               size = {44.00, 10.00, 26.00},
               shape = "cube.mesh",
               uv_map = {0, 216},
-              color_primary = query.skin_color,
-              color_secondary = query.pants_color,
+              color_primary = "Skin",
+              color_secondary = "Pants",
               animated = true,
               nodes = {
                 {
@@ -154,8 +150,8 @@ actor = {
                   size = {20.00, 36.00, 20.00},
                   shape = "cube.mesh",
                   uv_map = {152, 80},
-                  color_primary = query.skin_color,
-                  color_secondary = query.pants_color,
+                  color_primary = "Skin",
+                  color_secondary = "Pants",
                   animated = true,
                   nodes = {
                     {
@@ -166,8 +162,8 @@ actor = {
                       size = {18.00, 40.00, 18.00},
                       shape = "cube.mesh",
                       uv_map = {152, 136},
-                      color_primary = query.skin_color,
-                      color_secondary = query.pants_color,
+                      color_primary = "Skin",
+                      color_secondary = "Pants",
                       animated = true,
                       nodes = {
                         {
@@ -178,8 +174,8 @@ actor = {
                           size = {22.00, 10.00, 32.00},
                           shape = "cube.mesh",
                           uv_map = {140, 194},
-                          color_primary = query.skin_color,
-                          color_secondary = query.shoes_color,
+                          color_primary = "Skin",
+                          color_secondary = "Shoes",
                           animated = true,
                         },
                       }
@@ -194,8 +190,8 @@ actor = {
                   size = {20.00, 36.00, 20.00},
                   shape = "cube.mesh",
                   uv_map = {152, 80},
-                  color_primary = query.skin_color,
-                  color_secondary = query.pants_color,
+                  color_primary = "Skin",
+                  color_secondary = "Pants",
                   animated = true,
                   nodes = {
                     {
@@ -206,8 +202,8 @@ actor = {
                       size = {18.00, 40.00, 18.00},
                       shape = "cube.mesh",
                       uv_map = {152, 136},
-                      color_primary = query.skin_color,
-                      color_secondary = query.pants_color,
+                      color_primary = "Skin",
+                      color_secondary = "Pants",
                       animated = true,
                       nodes = {
                         {
@@ -218,8 +214,8 @@ actor = {
                           size = {22.00, 10.00, 32.00},
                           shape = "cube.mesh",
                           uv_map = {140, 194},
-                          color_primary = query.skin_color,
-                          color_secondary = query.shoes_color,
+                          color_primary = "Skin",
+                          color_secondary = "Shoes",
                           animated = true,
                         },
                       }

@@ -12,14 +12,17 @@
 
 actor = {
   scale = 1.00,
+  colors = {
+    ["Wand"] = {61.00, 61.00, 61.00},
+    ["Magic Stone"] = {243.00, 55.00, 0.00}
+  },
   nodes = {
     {
       name = "body",
       size = {5.00, 156.00, 5.00},
       shape = "cube.mesh",
       uv_map = {0.00, 0.00},
-      color_primary = {61.00, 61.00, 61.00},
-      color_secondary = {254.00, 255.00, 255.00},
+      color_primary = "Wand",
       nodes = {
         {
           name = "magic_ball",
@@ -31,7 +34,7 @@ actor = {
           uv_map = {20.00, 30.00},
           texture_size = {10.00, 10.00, 10.00},
           mesh_size = {10.00, 10.00, 10.00},
-          color_primary = {243.00, 55.00, 0.00},
+          color_primary = "Magic Stone",
           nodes = {
             {
               name = "light_4",
@@ -55,7 +58,7 @@ actor = {
           origin = {-0.50, -0.50, -0.50},
           shape = "cube.mesh",
           uv_map = {20.00, 0.00},
-          color_primary = {61.00, 61.00, 61.00},
+          color_primary = "Wand",
           nodes = {
             {
               name = "wand6",
@@ -65,7 +68,7 @@ actor = {
               origin = {-0.50, -0.50, 0.00},
               shape = "cube.mesh",
               uv_map = {20.00, 0.00},
-              color_primary = {61.00, 61.00, 61.00},
+              color_primary = "Wand",
             },
           },
         },
@@ -77,7 +80,7 @@ actor = {
           origin = {0.00, -0.50, 0.50},
           shape = "cube.mesh",
           uv_map = {20.00, 0.00},
-          color_primary = {61.00, 61.00, 61.00},
+          color_primary = "Wand",
           nodes = {
             {
               name = "wand2",
@@ -87,7 +90,7 @@ actor = {
               origin = {0.00, -0.50, 0.50},
               shape = "cube.mesh",
               uv_map = {20.00, 0.00},
-              color_primary = {61.00, 61.00, 61.00},
+              color_primary = "Wand",
             },
           },
         },
@@ -99,7 +102,7 @@ actor = {
           origin = {-0.00, -0.50, -0.50},
           shape = "cube.mesh",
           uv_map = {20.00, 0.00},
-          color_primary = {61.00, 61.00, 61.00},
+          color_primary = "Wand",
           nodes = {
             {
               name = "wand4",
@@ -109,7 +112,7 @@ actor = {
               origin = {0.00, -0.50, -0.50},
               shape = "cube.mesh",
               uv_map = {20.00, 0.00},
-              color_primary = {61.00, 61.00, 61.00},
+              color_primary = "Wand",
             },
           },
         },
@@ -121,7 +124,7 @@ actor = {
           origin = {0.50, -0.50, 0.00},
           shape = "cube.mesh",
           uv_map = {20.00, 0.00},
-          color_primary = {61.00, 61.00, 61.00},
+          color_primary = "Wand",
           nodes = {
             {
               name = "wand8",
@@ -131,7 +134,7 @@ actor = {
               origin = {0.50, -0.50, 0.00},
               shape = "cube.mesh",
               uv_map = {20.00, 0.00},
-              color_primary = {61.00, 61.00, 61.00},
+              color_primary = "Wand",
             },
           },
         },

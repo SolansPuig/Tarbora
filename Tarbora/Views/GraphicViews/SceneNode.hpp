@@ -20,7 +20,11 @@ namespace Tarbora {
   class SceneNode;
   typedef std::shared_ptr<SceneNode> SceneNodePtr;
   typedef std::unordered_map<std::string, SceneNodePtr> NodeMap;
+  typedef glm::tvec3<unsigned char> Color;
+  typedef std::pair<std::string, Color> NamedColor;
 
+  class ActorModel;
+ 
   struct TransformProps {
     glm::vec3 position;
     glm::quat orientation;
@@ -101,6 +105,7 @@ namespace Tarbora {
     Scene *scene_{nullptr};
     SceneNode *parent_{nullptr};
     NodeMap children_;
+    ActorModel *model_{nullptr};
 
     RenderPass render_pass_{RenderPass::Static};
 
@@ -181,7 +186,7 @@ namespace Tarbora {
 
     virtual void drawGuiEditor();
     void guiProperties();
-    virtual void load(const LuaTable &table, NodeMap *map);
+    virtual void load(const LuaTable &table, NodeMap *map=nullptr);
     virtual void write(LuaFile *file);
     void writeProperties(LuaFile *file);
 
@@ -213,7 +218,7 @@ namespace Tarbora {
     void guiProperties();
     void guiColors();
     void guiTexture();
-    virtual void load(const LuaTable &table, NodeMap *map);
+    virtual void load(const LuaTable &table, NodeMap *map=nullptr);
     virtual void write(LuaFile *file);
     void writeMesh(LuaFile *file);
 
@@ -222,10 +227,8 @@ namespace Tarbora {
     void setUvMap(const glm::tvec2<unsigned short> &uv);
     void setMeshSize(const glm::vec3 &size);
     void setTextureSize(const glm::vec3 &size);
-    void setColorPrimary(const glm::tvec3<unsigned char> &color);
-    void setColorSecondary(const glm::tvec3<unsigned char> &color);
-    void setColorDetail(const glm::tvec3<unsigned char> &color);
-    void setColorEmissive(const glm::tvec3<unsigned char> &color);
+
+    void setColor(unsigned int i, const std::string &color);
 
     const std::string& getShape();
 
@@ -233,10 +236,8 @@ namespace Tarbora {
     const glm::vec3& getMeshSize();
     const glm::vec3& getTextureSize();
     bool getAutoTextureSize();
-    const glm::tvec3<unsigned char>& getColorPrimary();
-    const glm::tvec3<unsigned char>& getColorSecondary();
-    const glm::tvec3<unsigned char>& getColorDetail();
-    const glm::tvec3<unsigned char>& getColorEmissive();
+
+    const std::shared_ptr<NamedColor> getColor(unsigned int i);
 
   protected:
     ResourcePtr<Mesh> mesh_{"meshes/cube.mesh"};
@@ -247,10 +248,7 @@ namespace Tarbora {
     glm::vec3 texture_size_{0.f};
     bool auto_texture_size_{true};
 
-    glm::tvec3<unsigned char> color_primary_{255};
-    glm::tvec3<unsigned char> color_secondary_{255};
-    glm::tvec3<unsigned char> color_detail_{255};
-    glm::tvec3<unsigned char> color_emissive_{255};
+    std::weak_ptr<NamedColor> color_[4];
   };
 
   class AnimatedNode : public MeshNode
@@ -276,20 +274,14 @@ namespace Tarbora {
     void setScaleAnimation(const glm::vec3 &scale);
     void setGlobalScaleAnimation(float scale);
     void setUvMapAnimation(const glm::tvec2<unsigned short> &uv);
-    void setColorPrimaryAnimation(const glm::tvec3<unsigned char> &color);
-    void setColorSecondaryAnimation(const glm::tvec3<unsigned char> &color);
-    void setColorDetailAnimation(const glm::tvec3<unsigned char> &color);
-    void setColorEmissiveAnimation(const glm::tvec3<unsigned char> &color);
+    void setColorAnimation(unsigned int i, const Color &color);
 
     const glm::vec3& getPositionAnimation();
     const glm::quat& getOrientationAnimation();
     const glm::vec3& getScaleAnimation();
     float getGlobalScaleAnimation();
     const glm::tvec2<unsigned short>& getUvMapAnimation();
-    const glm::tvec3<unsigned char>& getColorPrimaryAnimation();
-    const glm::tvec3<unsigned char>& getColorSecondaryAnimation();
-    const glm::tvec3<unsigned char>& getColorDetailAnimation();
-    const glm::tvec3<unsigned char>& getColorEmissiveAnimation();
+    const Color& getColorAnimation(unsigned int i);
 
   protected:
     glm::vec3 position_anim_{0.f, 0.f, 0.f};
@@ -297,10 +289,7 @@ namespace Tarbora {
     glm::vec3 scale_anim_{0.f, 0.f, 0.f};
     float global_scale_anim_{1.f};
     glm::tvec2<unsigned short> uv_map_anim_{0};
-    glm::tvec3<unsigned char> color_primary_anim_{0};
-    glm::tvec3<unsigned char> color_secondary_anim_{0};
-    glm::tvec3<unsigned char> color_detail_anim_{0};
-    glm::tvec3<unsigned char> color_emissive_anim_{0};
+    Color color_anim_[4];
 
     virtual void fixLocal();
     virtual void fixTransform();
@@ -325,7 +314,7 @@ namespace Tarbora {
     virtual void drawGuiEditor();
     void guiProperties();
     void guiLight();
-    virtual void load(const LuaTable &table, NodeMap *map);
+    virtual void load(const LuaTable &table, NodeMap *map=nullptr);
     virtual void write(LuaFile *file);
     void writeLight(LuaFile *file);
 

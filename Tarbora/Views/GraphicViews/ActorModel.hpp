@@ -18,6 +18,8 @@
 #include "AnimationController.hpp"
 
 namespace Tarbora {
+  typedef std::vector<std::shared_ptr<NamedColor>> Colors;
+
   class ActorModel : public MaterialNode
   {
     friend class AnimationController;
@@ -35,6 +37,9 @@ namespace Tarbora {
       return std::make_shared<ActorModel>(*this);
     }
 
+    virtual void drawGuiEditor() override;
+    void drawColorList();
+
     virtual void load(const LuaTable &table, NodeMap *map) override;
     virtual void write(LuaFile *file) override;
 
@@ -46,13 +51,18 @@ namespace Tarbora {
 
     void endAnimation(const std::string &name, StopMode mode, float fade_out_timer);
 
-    const std::string& getModel() { return model_; }
+    const std::string& getModel() { return model_name_; }
     RenderPass getRenderPass() { return render_pass_; }
+
+    void addColor(const NamedColor& color);
+    std::weak_ptr<NamedColor> getColor(const std::string &name);
+    Colors* getColors();
 
   private:
     NodeMap nodes_;
     std::shared_ptr<AnimationController> animation_controller_;
-    std::string model_;
+    std::string model_name_;
+    Colors colors_;
   };
 }
 
