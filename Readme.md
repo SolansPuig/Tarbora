@@ -4,7 +4,7 @@ Check out the docs at https://solanspuig.github.io/Tarbora
 
 Check out my Patreon at https://www.patreon.com/tarbora
 
-You can read the thesis (written in Catalan language) at https://upcommons.upc.edu/handle/2117/335679
+You can read the thesis (written in Catalan) at https://upcommons.upc.edu/handle/2117/335679
 
 ## Some pictures
 
